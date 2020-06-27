@@ -133,3 +133,5 @@
 2020-06-26 16:15:09	[Main thread]	FATAL	data.table	[.data.table	Error in as.Date(DATE) : object 'DATE' not found 
 2020-06-26 16:17:55	[Main thread]	FATAL	curl	curl_download	Error in base::try(GetCountyData, TRUE) :    object 'GetCountyData' not found 
 2020-06-26 16:17:55	[Main thread]	FATAL	curl	curl_download	Error in curl::curl_download(input, tmpFile, mode = "wb", quiet = !showProgress) :    Operation was aborted by an application callback 
+2020-06-26 18:50:19	[Main thread]	WARN	rstan	throw_sampler_warnings	There were 17 divergent transitions after warmup. Increasing adapt_delta above 0.9 may help. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup
+2020-06-26 18:50:19	[Main thread]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
