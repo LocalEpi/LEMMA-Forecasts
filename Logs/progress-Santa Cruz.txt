@@ -1,0 +1,105 @@
+county =  Santa Cruz 
+Fitting to observed data
+
+SAMPLING FOR MODEL 'LEMMA' NOW (CHAIN 3).
+
+SAMPLING FOR MODEL 'LEMMA' NOW (CHAIN 2).
+
+
+SAMPLINGSAMPLING FOR MODEL ' FOR MODEL 'LEMMALEMMA' NOW (CHAIN ' NOW (CHAIN 41).
+).
+Chain 3: 
+Chain 3: Gradient evaluation took 0.001655 seconds
+Chain 1: 
+Chain 3: 1000 transitions using 10 leapfrog steps per transition would take 16.55 seconds.Chain 1: 
+Chain Gradient evaluation took 0.001961 seconds3: Adjust your expectations accordingly!
+Chain 3: 
+Chain 3: 
+
+Chain 1: 1000 transitions using 10 leapfrog steps per transition would take 19.61 seconds.
+Chain 1: Adjust your expectations accordingly!
+Chain 1: 
+Chain 1: 
+Chain 2: 
+Chain 2: Gradient evaluation took 0.001944 seconds
+Chain 2: 1000 transitions using 10 leapfrog steps per transition would take 19.44 seconds.
+Chain 2: Adjust your expectations accordingly!
+Chain 2: 
+Chain 2: 
+Chain 4: 
+Chain 4: Gradient evaluation took 0.001154 seconds
+Chain 4: 1000 transitions using 10 leapfrog steps per transition would take 11.54 seconds.
+Chain 4: Adjust your expectations accordingly!
+Chain 4: 
+Chain 4: 
+Chain 2: Iteration:    1 / 2000 [  0%]  (Warmup)
+Chain 3: Iteration:    1 / 2000 [  0%]  (Warmup)
+Chain 1: Iteration:    1 / 2000 [  0%]  (Warmup)
+Chain 4: Iteration:    1 / 2000 [  0%]  (Warmup)
+Chain 3: Iteration:  250 / 2000 [ 12%]  (Warmup)
+Chain 4: Iteration:  250 / 2000 [ 12%]  (Warmup)
+Chain 4: Iteration:  500 / 2000 [ 25%]  (Warmup)
+Chain 3: Iteration:  500 / 2000 [ 25%]  (Warmup)
+Chain 4: Iteration:  750 / 2000 [ 37%]  (Warmup)
+Chain 2: Iteration:  250 / 2000 [ 12%]  (Warmup)
+Chain 3: Iteration:  750 / 2000 [ 37%]  (Warmup)
+Chain 1: Iteration:  250 / 2000 [ 12%]  (Warmup)
+Chain 4: Iteration: 1000 / 2000 [ 50%]  (Warmup)
+Chain 4: Iteration: 1001 / 2000 [ 50%]  (Sampling)
+Chain 2: Iteration:  500 / 2000 [ 25%]  (Warmup)
+Chain 3: Iteration: 1000 / 2000 [ 50%]  (Warmup)
+Chain 3: Iteration: 1001 / 2000 [ 50%]  (Sampling)
+Chain 1: Iteration:  500 / 2000 [ 25%]  (Warmup)
+Chain 4: Iteration: 1250 / 2000 [ 62%]  (Sampling)
+Chain 2: Iteration:  750 / 2000 [ 37%]  (Warmup)
+Chain 1: Iteration:  750 / 2000 [ 37%]  (Warmup)
+Chain 3: Iteration: 1250 / 2000 [ 62%]  (Sampling)
+Chain 4: Iteration: 1500 / 2000 [ 75%]  (Sampling)
+Chain 2: Iteration: 1000 / 2000 [ 50%]  (Warmup)
+Chain 2: Iteration: 1001 / 2000 [ 50%]  (Sampling)
+Chain 1: Iteration: 1000 / 2000 [ 50%]  (Warmup)
+Chain 1: Iteration: 1001 / 2000 [ 50%]  (Sampling)
+Chain 3: Iteration: 1500 / 2000 [ 75%]  (Sampling)
+Chain 4: Iteration: 1750 / 2000 [ 87%]  (Sampling)
+Chain 2: Iteration: 1250 / 2000 [ 62%]  (Sampling)
+Chain 1: Iteration: 1250 / 2000 [ 62%]  (Sampling)
+Chain 3: Iteration: 1750 / 2000 [ 87%]  (Sampling)
+Chain 4: Iteration: 2000 / 2000 [100%]  (Sampling)
+Chain 4: 
+Chain 4:  Elapsed Time: 172.048 seconds (Warm-up)
+Chain 4:                151.818 seconds (Sampling)
+Chain 4:                323.867 seconds (Total)
+Chain 4: 
+Chain 2: Iteration: 1500 / 2000 [ 75%]  (Sampling)
+Chain 1: Iteration: 1500 / 2000 [ 75%]  (Sampling)
+Chain 3: Iteration: 2000 / 2000 [100%]  (Sampling)
+Chain 3: 
+Chain 3:  Elapsed Time: 200.726 seconds (Warm-up)
+Chain 3:                144.891 seconds (Sampling)
+Chain 3:                345.617 seconds (Total)
+Chain 3: 
+Chain 2: Iteration: 1750 / 2000 [ 87%]  (Sampling)
+Chain 1: Iteration: 1750 / 2000 [ 87%]  (Sampling)
+Chain 2: Iteration: 2000 / 2000 [100%]  (Sampling)
+Chain 2: 
+Chain 2:  Elapsed Time: 268.751 seconds (Warm-up)
+Chain 2:                125.338 seconds (Sampling)
+Chain 2:                394.089 seconds (Total)
+Chain 2: 
+Chain 1: Iteration: 2000 / 2000 [100%]  (Sampling)
+Chain 1: 
+Chain 1:  Elapsed Time: 272.375 seconds (Warm-up)
+Chain 1:                125.315 seconds (Sampling)
+Chain 1:                397.689 seconds (Total)
+Chain 1: 
+    user   system  elapsed 
+1467.253    6.676  411.047 
+Projecting
+   user  system elapsed 
+ 38.053   5.010  43.238 
+
+Excel output:  ~/Dropbox/LEMMA_shared/JS code branch/lemma input and output/CAcounties/Santa Cruz.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.19 0.28 0.53 0.86 1.18 1.44 1.59 
+
+PDF output:  ~/Dropbox/LEMMA_shared/JS code branch/lemma input and output/CAcounties/Santa Cruz.pdf 
