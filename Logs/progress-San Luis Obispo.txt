@@ -1,105 +1,105 @@
 county =  San Luis Obispo 
 Fitting to observed data
 
-SAMPLING FOR MODEL 'LEMMA' NOW (CHAIN 2).
-
 SAMPLING FOR MODEL 'LEMMA' NOW (CHAIN 3).
 
 SAMPLING FOR MODEL 'LEMMA' NOW (CHAIN 4).
 
+SAMPLING FOR MODEL 'LEMMA' NOW (CHAIN 2).
+
 SAMPLING FOR MODEL 'LEMMA' NOW (CHAIN 1).
+Chain 3: 
+Chain 3: Gradient evaluation took 0.0008 seconds
+Chain 3: 1000 transitions using 10 leapfrog steps per transition would take 8 seconds.
+Chain 3: Adjust your expectations accordingly!
+Chain 3: 
+Chain 3: 
 Chain 4: 
-Chain 4: Gradient evaluation took 0.001812 seconds
-Chain 4: 1000 transitions using 10 leapfrog steps per transition would take 18.12 seconds.
+Chain 4: Gradient evaluation took 0.000775 seconds
+Chain 4: 1000 transitions using 10 leapfrog steps per transition would take 7.75 seconds.
 Chain 4: Adjust your expectations accordingly!
 Chain 4: 
 Chain 4: 
 Chain 2: 
-Chain 2: Gradient evaluation took 0.0024 seconds
-Chain 2: 1000 transitions using 10 leapfrog steps per transition would take 24 seconds.
+Chain 2: Gradient evaluation took 0.000741 seconds
+Chain 2: 1000 transitions using 10 leapfrog steps per transition would take 7.41 seconds.
 Chain 2: Adjust your expectations accordingly!
 Chain 2: 
 Chain 2: 
-Chain 3: 
-Chain 3: Gradient evaluation took 0.002072 seconds
-Chain 3: 1000 transitions using 10 leapfrog steps per transition would take 20.72 seconds.
-Chain 3: Adjust your expectations accordingly!
-Chain 3: 
-Chain 3: 
 Chain 1: 
-Chain 1: Gradient evaluation took 0.001597 seconds
-Chain 1: 1000 transitions using 10 leapfrog steps per transition would take 15.97 seconds.
+Chain 1: Gradient evaluation took 0.00074 seconds
+Chain 1: 1000 transitions using 10 leapfrog steps per transition would take 7.4 seconds.
 Chain 1: Adjust your expectations accordingly!
 Chain 1: 
 Chain 1: 
-Chain 4: Iteration:    1 / 2000 [  0%]  (Warmup)
-Chain 2: Iteration:    1 / 2000 [  0%]  (Warmup)
 Chain 3: Iteration:    1 / 2000 [  0%]  (Warmup)
+Chain 2: Iteration:    1 / 2000 [  0%]  (Warmup)
+Chain 4: Iteration:    1 / 2000 [  0%]  (Warmup)
 Chain 1: Iteration:    1 / 2000 [  0%]  (Warmup)
 Chain 3: Iteration:  250 / 2000 [ 12%]  (Warmup)
-Chain 2: Iteration:  250 / 2000 [ 12%]  (Warmup)
 Chain 4: Iteration:  250 / 2000 [ 12%]  (Warmup)
+Chain 2: Iteration:  250 / 2000 [ 12%]  (Warmup)
 Chain 1: Iteration:  250 / 2000 [ 12%]  (Warmup)
-Chain 2: Iteration:  500 / 2000 [ 25%]  (Warmup)
 Chain 4: Iteration:  500 / 2000 [ 25%]  (Warmup)
 Chain 3: Iteration:  500 / 2000 [ 25%]  (Warmup)
+Chain 2: Iteration:  500 / 2000 [ 25%]  (Warmup)
 Chain 1: Iteration:  500 / 2000 [ 25%]  (Warmup)
 Chain 3: Iteration:  750 / 2000 [ 37%]  (Warmup)
-Chain 2: Iteration:  750 / 2000 [ 37%]  (Warmup)
 Chain 4: Iteration:  750 / 2000 [ 37%]  (Warmup)
+Chain 2: Iteration:  750 / 2000 [ 37%]  (Warmup)
 Chain 1: Iteration:  750 / 2000 [ 37%]  (Warmup)
-Chain 2: Iteration: 1000 / 2000 [ 50%]  (Warmup)
-Chain 2: Iteration: 1001 / 2000 [ 50%]  (Sampling)
 Chain 3: Iteration: 1000 / 2000 [ 50%]  (Warmup)
 Chain 3: Iteration: 1001 / 2000 [ 50%]  (Sampling)
 Chain 4: Iteration: 1000 / 2000 [ 50%]  (Warmup)
 Chain 4: Iteration: 1001 / 2000 [ 50%]  (Sampling)
 Chain 1: Iteration: 1000 / 2000 [ 50%]  (Warmup)
 Chain 1: Iteration: 1001 / 2000 [ 50%]  (Sampling)
+Chain 2: Iteration: 1000 / 2000 [ 50%]  (Warmup)
+Chain 2: Iteration: 1001 / 2000 [ 50%]  (Sampling)
 Chain 3: Iteration: 1250 / 2000 [ 62%]  (Sampling)
+Chain 1: Iteration: 1250 / 2000 [ 62%]  (Sampling)
 Chain 2: Iteration: 1250 / 2000 [ 62%]  (Sampling)
 Chain 4: Iteration: 1250 / 2000 [ 62%]  (Sampling)
-Chain 1: Iteration: 1250 / 2000 [ 62%]  (Sampling)
 Chain 3: Iteration: 1500 / 2000 [ 75%]  (Sampling)
-Chain 4: Iteration: 1500 / 2000 [ 75%]  (Sampling)
-Chain 2: Iteration: 1500 / 2000 [ 75%]  (Sampling)
 Chain 1: Iteration: 1500 / 2000 [ 75%]  (Sampling)
 Chain 3: Iteration: 1750 / 2000 [ 87%]  (Sampling)
-Chain 4: Iteration: 1750 / 2000 [ 87%]  (Sampling)
-Chain 2: Iteration: 1750 / 2000 [ 87%]  (Sampling)
+Chain 2: Iteration: 1500 / 2000 [ 75%]  (Sampling)
+Chain 4: Iteration: 1500 / 2000 [ 75%]  (Sampling)
 Chain 1: Iteration: 1750 / 2000 [ 87%]  (Sampling)
 Chain 3: Iteration: 2000 / 2000 [100%]  (Sampling)
 Chain 3: 
-Chain 3:  Elapsed Time: 181.158 seconds (Warm-up)
-Chain 3:                178.901 seconds (Sampling)
-Chain 3:                360.059 seconds (Total)
+Chain 3:  Elapsed Time: 105.728 seconds (Warm-up)
+Chain 3:                94.5014 seconds (Sampling)
+Chain 3:                200.23 seconds (Total)
 Chain 3: 
-Chain 4: Iteration: 2000 / 2000 [100%]  (Sampling)
-Chain 4: 
-Chain 4:  Elapsed Time: 185.202 seconds (Warm-up)
-Chain 4:                178.827 seconds (Sampling)
-Chain 4:                364.029 seconds (Total)
-Chain 4: 
+Chain 2: Iteration: 1750 / 2000 [ 87%]  (Sampling)
 Chain 1: Iteration: 2000 / 2000 [100%]  (Sampling)
 Chain 1: 
-Chain 1:  Elapsed Time: 191.539 seconds (Warm-up)
-Chain 1:                177.454 seconds (Sampling)
-Chain 1:                368.993 seconds (Total)
+Chain 1:  Elapsed Time: 119.368 seconds (Warm-up)
+Chain 1:                95.0997 seconds (Sampling)
+Chain 1:                214.467 seconds (Total)
 Chain 1: 
+Chain 4: Iteration: 1750 / 2000 [ 87%]  (Sampling)
 Chain 2: Iteration: 2000 / 2000 [100%]  (Sampling)
 Chain 2: 
-Chain 2:  Elapsed Time: 179.817 seconds (Warm-up)
-Chain 2:                189.6 seconds (Sampling)
-Chain 2:                369.417 seconds (Total)
+Chain 2:  Elapsed Time: 121.747 seconds (Warm-up)
+Chain 2:                106.182 seconds (Sampling)
+Chain 2:                227.929 seconds (Total)
 Chain 2: 
-    user   system  elapsed 
-1467.842    6.893  381.865 
+Chain 4: Iteration: 2000 / 2000 [100%]  (Sampling)
+Chain 4: 
+Chain 4:  Elapsed Time: 116.259 seconds (Warm-up)
+Chain 4:                127.945 seconds (Sampling)
+Chain 4:                244.204 seconds (Total)
+Chain 4: 
+   user  system elapsed 
+889.597   4.478 252.186 
 Projecting
    user  system elapsed 
- 35.431   5.004  40.579 
+ 20.510   3.366  24.081 
 
 Excel output:  Forecasts/San Luis Obispo.xlsx 
   5%  10%  25%  50%  75%  90%  95% 
-0.28 0.44 0.79 1.10 1.37 1.58 1.72 
+0.33 0.53 0.85 1.13 1.38 1.61 1.75 
 
 PDF output:  Forecasts/San Luis Obispo.pdf 

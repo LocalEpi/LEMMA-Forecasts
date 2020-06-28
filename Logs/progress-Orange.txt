@@ -8,98 +8,98 @@ SAMPLING FOR MODEL 'LEMMA' NOW (CHAIN 2).
 SAMPLING FOR MODEL 'LEMMA' NOW (CHAIN 4).
 
 SAMPLING FOR MODEL 'LEMMA' NOW (CHAIN 3).
-Chain 2: 
-Chain 2: Gradient evaluation took 0.001546 seconds
-Chain 2: 1000 transitions using 10 leapfrog steps per transition would take 15.46 seconds.
-Chain 2: Adjust your expectations accordingly!
-Chain 2: 
-Chain 2: 
-Chain 4: 
-Chain 4: Gradient evaluation took 0.0011 seconds
-Chain 4: 1000 transitions using 10 leapfrog steps per transition would take 11 seconds.
-Chain 4: Adjust your expectations accordingly!
-Chain 4: 
-Chain 4: 
 Chain 1: 
-Chain 1: Gradient evaluation took 0.001587 seconds
-Chain 1: 1000 transitions using 10 leapfrog steps per transition would take 15.87 seconds.
+Chain 1: Gradient evaluation took 0.001803 seconds
+Chain 1: 1000 transitions using 10 leapfrog steps per transition would take 18.03 seconds.
 Chain 1: Adjust your expectations accordingly!
 Chain 1: 
 Chain 1: 
+Chain 2: 
+Chain 2: Gradient evaluation took 0.002105 seconds
+Chain 2: 1000 transitions using 10 leapfrog steps per transition would take 21.05 seconds.
+Chain 2: Adjust your expectations accordingly!
+Chain 2: 
+Chain 2: 
 Chain 3: 
-Chain 3: Gradient evaluation took 0.00108 seconds
-Chain 3: 1000 transitions using 10 leapfrog steps per transition would take 10.8 seconds.
+Chain 3: Gradient evaluation took 0.001923 seconds
+Chain 3: 1000 transitions using 10 leapfrog steps per transition would take 19.23 seconds.
 Chain 3: Adjust your expectations accordingly!
 Chain 3: 
 Chain 3: 
-Chain 2: Iteration:    1 / 2000 [  0%]  (Warmup)
+Chain 4: 
+Chain 4: Gradient evaluation took 0.001998 seconds
+Chain 4: 1000 transitions using 10 leapfrog steps per transition would take 19.98 seconds.
+Chain 4: Adjust your expectations accordingly!
+Chain 4: 
+Chain 4: 
 Chain 1: Iteration:    1 / 2000 [  0%]  (Warmup)
+Chain 2: Iteration:    1 / 2000 [  0%]  (Warmup)
 Chain 3: Iteration:    1 / 2000 [  0%]  (Warmup)
 Chain 4: Iteration:    1 / 2000 [  0%]  (Warmup)
-Chain 1: Iteration:  250 / 2000 [ 12%]  (Warmup)
-Chain 2: Iteration:  250 / 2000 [ 12%]  (Warmup)
 Chain 3: Iteration:  250 / 2000 [ 12%]  (Warmup)
+Chain 2: Iteration:  250 / 2000 [ 12%]  (Warmup)
+Chain 1: Iteration:  250 / 2000 [ 12%]  (Warmup)
 Chain 4: Iteration:  250 / 2000 [ 12%]  (Warmup)
-Chain 2: Iteration:  500 / 2000 [ 25%]  (Warmup)
-Chain 1: Iteration:  500 / 2000 [ 25%]  (Warmup)
 Chain 3: Iteration:  500 / 2000 [ 25%]  (Warmup)
+Chain 2: Iteration:  500 / 2000 [ 25%]  (Warmup)
 Chain 4: Iteration:  500 / 2000 [ 25%]  (Warmup)
+Chain 1: Iteration:  500 / 2000 [ 25%]  (Warmup)
 Chain 3: Iteration:  750 / 2000 [ 37%]  (Warmup)
 Chain 2: Iteration:  750 / 2000 [ 37%]  (Warmup)
-Chain 1: Iteration:  750 / 2000 [ 37%]  (Warmup)
 Chain 4: Iteration:  750 / 2000 [ 37%]  (Warmup)
+Chain 1: Iteration:  750 / 2000 [ 37%]  (Warmup)
 Chain 3: Iteration: 1000 / 2000 [ 50%]  (Warmup)
 Chain 3: Iteration: 1001 / 2000 [ 50%]  (Sampling)
 Chain 4: Iteration: 1000 / 2000 [ 50%]  (Warmup)
 Chain 4: Iteration: 1001 / 2000 [ 50%]  (Sampling)
-Chain 1: Iteration: 1000 / 2000 [ 50%]  (Warmup)
 Chain 2: Iteration: 1000 / 2000 [ 50%]  (Warmup)
-Chain 1: Iteration: 1001 / 2000 [ 50%]  (Sampling)
 Chain 2: Iteration: 1001 / 2000 [ 50%]  (Sampling)
-Chain 3: Iteration: 1250 / 2000 [ 62%]  (Sampling)
+Chain 1: Iteration: 1000 / 2000 [ 50%]  (Warmup)
+Chain 1: Iteration: 1001 / 2000 [ 50%]  (Sampling)
 Chain 4: Iteration: 1250 / 2000 [ 62%]  (Sampling)
 Chain 2: Iteration: 1250 / 2000 [ 62%]  (Sampling)
-Chain 1: Iteration: 1250 / 2000 [ 62%]  (Sampling)
+Chain 3: Iteration: 1250 / 2000 [ 62%]  (Sampling)
 Chain 2: Iteration: 1500 / 2000 [ 75%]  (Sampling)
 Chain 4: Iteration: 1500 / 2000 [ 75%]  (Sampling)
-Chain 3: Iteration: 1500 / 2000 [ 75%]  (Sampling)
+Chain 1: Iteration: 1250 / 2000 [ 62%]  (Sampling)
 Chain 2: Iteration: 1750 / 2000 [ 87%]  (Sampling)
-Chain 1: Iteration: 1500 / 2000 [ 75%]  (Sampling)
 Chain 4: Iteration: 1750 / 2000 [ 87%]  (Sampling)
-Chain 3: Iteration: 1750 / 2000 [ 87%]  (Sampling)
+Chain 3: Iteration: 1500 / 2000 [ 75%]  (Sampling)
 Chain 2: Iteration: 2000 / 2000 [100%]  (Sampling)
 Chain 2: 
-Chain 2:  Elapsed Time: 1937.21 seconds (Warm-up)
-Chain 2:                1442.31 seconds (Sampling)
-Chain 2:                3379.52 seconds (Total)
+Chain 2:  Elapsed Time: 1868.95 seconds (Warm-up)
+Chain 2:                1202.07 seconds (Sampling)
+Chain 2:                3071.03 seconds (Total)
 Chain 2: 
+Chain 1: Iteration: 1500 / 2000 [ 75%]  (Sampling)
 Chain 4: Iteration: 2000 / 2000 [100%]  (Sampling)
 Chain 4: 
-Chain 4:  Elapsed Time: 1893.42 seconds (Warm-up)
-Chain 4:                1563.15 seconds (Sampling)
-Chain 4:                3456.57 seconds (Total)
+Chain 4:  Elapsed Time: 1842.7 seconds (Warm-up)
+Chain 4:                1262.31 seconds (Sampling)
+Chain 4:                3105.02 seconds (Total)
 Chain 4: 
+Chain 3: Iteration: 1750 / 2000 [ 87%]  (Sampling)
 Chain 1: Iteration: 1750 / 2000 [ 87%]  (Sampling)
 Chain 3: Iteration: 2000 / 2000 [100%]  (Sampling)
 Chain 3: 
-Chain 3:  Elapsed Time: 1798.03 seconds (Warm-up)
-Chain 3:                1802.24 seconds (Sampling)
-Chain 3:                3600.27 seconds (Total)
+Chain 3:  Elapsed Time: 1760.92 seconds (Warm-up)
+Chain 3:                1969.06 seconds (Sampling)
+Chain 3:                3729.98 seconds (Total)
 Chain 3: 
 Chain 1: Iteration: 2000 / 2000 [100%]  (Sampling)
 Chain 1: 
-Chain 1:  Elapsed Time: 1936.64 seconds (Warm-up)
-Chain 1:                1999.68 seconds (Sampling)
-Chain 1:                3936.32 seconds (Total)
+Chain 1:  Elapsed Time: 1972.03 seconds (Warm-up)
+Chain 1:                1940.63 seconds (Sampling)
+Chain 1:                3912.66 seconds (Total)
 Chain 1: 
      user    system   elapsed 
-14339.699    44.298  3957.439 
+13771.483    57.259  3936.949 
 Projecting
    user  system elapsed 
- 33.583   4.338  38.043 
+ 26.518   3.528  30.178 
 
 Excel output:  Forecasts/Orange.xlsx 
   5%  10%  25%  50%  75%  90%  95% 
-1.07 1.09 1.12 1.16 1.21 1.26 1.30 
+1.09 1.11 1.14 1.19 1.26 1.33 1.39 
 
 PDF output:  Forecasts/Orange.pdf 

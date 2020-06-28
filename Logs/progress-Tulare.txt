@@ -3,51 +3,51 @@ Fitting to observed data
 
 SAMPLING FOR MODEL 'LEMMA' NOW (CHAIN 1).
 
-SAMPLING FOR MODEL 'LEMMA' NOW (CHAIN 4).
+SAMPLING FOR MODEL 'LEMMA' NOW (CHAIN 2).
 
-SAMPLING FOR MODEL 'LEMMA' NOW (CHAIN 
-SAMPLING FOR MODEL 'LEMMA' NOW (CHAIN 23).
-).
-Chain 2: 
-Chain 2: Gradient evaluation took 0.001114 seconds
-Chain 2: 1000 transitions using 10 leapfrog steps per transition would take 11.14 seconds.
-Chain 2: Adjust your expectations accordingly!
-Chain 2: 
-Chain 2: 
-Chain 3: 
-Chain 3: Gradient evaluation took 0.00179 seconds
-Chain 3: 1000 transitions using 10 leapfrog steps per transition would take 17.9 seconds.
-Chain 3: Adjust your expectations accordingly!
-Chain 3: 
-Chain 3: 
-Chain 4: 
-Chain 4: Gradient evaluation took 0.001502 seconds
-Chain 4: 1000 transitions using 10 leapfrog steps per transition would take 15.02 seconds.
-Chain 4: Adjust your expectations accordingly!
-Chain 4: 
-Chain 4: 
+SAMPLING FOR MODEL 'LEMMA' NOW (CHAIN 3).
+
+SAMPLING FOR MODEL 'LEMMA' NOW (CHAIN 4).
 Chain 1: 
-Chain 1: Gradient evaluation took 0.001269 seconds
-Chain 1: 1000 transitions using 10 leapfrog steps per transition would take 12.69 seconds.
+Chain 1: Gradient evaluation took 0.001351 seconds
+Chain 1: 1000 transitions using 10 leapfrog steps per transition would take 13.51 seconds.
 Chain 1: Adjust your expectations accordingly!
 Chain 1: 
 Chain 1: 
+Chain 3: 
+Chain 3: Gradient evaluation took 0.001492 seconds
+Chain 3: 1000 transitions using 10 leapfrog steps per transition would take 14.92 seconds.
+Chain 3: Adjust your expectations accordingly!
+Chain 3: 
+Chain 3: 
+Chain 2: 
+Chain 2: Gradient evaluation took 0.001855 seconds
+Chain 2: 1000 transitions using 10 leapfrog steps per transition would take 18.55 seconds.
+Chain 2: Adjust your expectations accordingly!
+Chain 2: 
+Chain 2: 
+Chain 4: 
+Chain 4: Gradient evaluation took 0.00113 seconds
+Chain 4: 1000 transitions using 10 leapfrog steps per transition would take 11.3 seconds.
+Chain 4: Adjust your expectations accordingly!
+Chain 4: 
+Chain 4: 
 Chain 3: Iteration:    1 / 2000 [  0%]  (Warmup)
-Chain 2: Iteration:    1 / 2000 [  0%]  (Warmup)
 Chain 1: Iteration:    1 / 2000 [  0%]  (Warmup)
+Chain 2: Iteration:    1 / 2000 [  0%]  (Warmup)
 Chain 4: Iteration:    1 / 2000 [  0%]  (Warmup)
 Chain 2: Iteration:  250 / 2000 [ 12%]  (Warmup)
-Chain 4: Iteration:  250 / 2000 [ 12%]  (Warmup)
 Chain 3: Iteration:  250 / 2000 [ 12%]  (Warmup)
 Chain 1: Iteration:  250 / 2000 [ 12%]  (Warmup)
+Chain 4: Iteration:  250 / 2000 [ 12%]  (Warmup)
 Chain 2: Iteration:  500 / 2000 [ 25%]  (Warmup)
 Chain 4: Iteration:  500 / 2000 [ 25%]  (Warmup)
-Chain 3: Iteration:  500 / 2000 [ 25%]  (Warmup)
 Chain 1: Iteration:  500 / 2000 [ 25%]  (Warmup)
+Chain 3: Iteration:  500 / 2000 [ 25%]  (Warmup)
 Chain 2: Iteration:  750 / 2000 [ 37%]  (Warmup)
 Chain 4: Iteration:  750 / 2000 [ 37%]  (Warmup)
-Chain 1: Iteration:  750 / 2000 [ 37%]  (Warmup)
 Chain 3: Iteration:  750 / 2000 [ 37%]  (Warmup)
+Chain 1: Iteration:  750 / 2000 [ 37%]  (Warmup)
 Chain 2: Iteration: 1000 / 2000 [ 50%]  (Warmup)
 Chain 2: Iteration: 1001 / 2000 [ 50%]  (Sampling)
 Chain 4: Iteration: 1000 / 2000 [ 50%]  (Warmup)
@@ -58,48 +58,48 @@ Chain 3: Iteration: 1000 / 2000 [ 50%]  (Warmup)
 Chain 3: Iteration: 1001 / 2000 [ 50%]  (Sampling)
 Chain 2: Iteration: 1250 / 2000 [ 62%]  (Sampling)
 Chain 4: Iteration: 1250 / 2000 [ 62%]  (Sampling)
-Chain 3: Iteration: 1250 / 2000 [ 62%]  (Sampling)
-Chain 2: Iteration: 1500 / 2000 [ 75%]  (Sampling)
 Chain 1: Iteration: 1250 / 2000 [ 62%]  (Sampling)
-Chain 3: Iteration: 1500 / 2000 [ 75%]  (Sampling)
+Chain 2: Iteration: 1500 / 2000 [ 75%]  (Sampling)
 Chain 4: Iteration: 1500 / 2000 [ 75%]  (Sampling)
-Chain 2: Iteration: 1750 / 2000 [ 87%]  (Sampling)
-Chain 3: Iteration: 1750 / 2000 [ 87%]  (Sampling)
-Chain 4: Iteration: 1750 / 2000 [ 87%]  (Sampling)
+Chain 3: Iteration: 1250 / 2000 [ 62%]  (Sampling)
 Chain 1: Iteration: 1500 / 2000 [ 75%]  (Sampling)
+Chain 2: Iteration: 1750 / 2000 [ 87%]  (Sampling)
+Chain 4: Iteration: 1750 / 2000 [ 87%]  (Sampling)
+Chain 1: Iteration: 1750 / 2000 [ 87%]  (Sampling)
 Chain 2: Iteration: 2000 / 2000 [100%]  (Sampling)
 Chain 2: 
-Chain 2:  Elapsed Time: 881.67 seconds (Warm-up)
-Chain 2:                581.683 seconds (Sampling)
-Chain 2:                1463.35 seconds (Total)
+Chain 2:  Elapsed Time: 695.352 seconds (Warm-up)
+Chain 2:                602.867 seconds (Sampling)
+Chain 2:                1298.22 seconds (Total)
 Chain 2: 
-Chain 3: Iteration: 2000 / 2000 [100%]  (Sampling)
-Chain 3: 
-Chain 3:  Elapsed Time: 968.08 seconds (Warm-up)
-Chain 3:                578.803 seconds (Sampling)
-Chain 3:                1546.88 seconds (Total)
-Chain 3: 
 Chain 4: Iteration: 2000 / 2000 [100%]  (Sampling)
 Chain 4: 
-Chain 4:  Elapsed Time: 911.3 seconds (Warm-up)
-Chain 4:                691.077 seconds (Sampling)
-Chain 4:                1602.38 seconds (Total)
+Chain 4:  Elapsed Time: 732.461 seconds (Warm-up)
+Chain 4:                570.107 seconds (Sampling)
+Chain 4:                1302.57 seconds (Total)
 Chain 4: 
-Chain 1: Iteration: 1750 / 2000 [ 87%]  (Sampling)
+Chain 3: Iteration: 1500 / 2000 [ 75%]  (Sampling)
 Chain 1: Iteration: 2000 / 2000 [100%]  (Sampling)
 Chain 1: 
-Chain 1:  Elapsed Time: 916.765 seconds (Warm-up)
-Chain 1:                918.162 seconds (Sampling)
-Chain 1:                1834.93 seconds (Total)
+Chain 1:  Elapsed Time: 796.261 seconds (Warm-up)
+Chain 1:                563.276 seconds (Sampling)
+Chain 1:                1359.54 seconds (Total)
 Chain 1: 
+Chain 3: Iteration: 1750 / 2000 [ 87%]  (Sampling)
+Chain 3: Iteration: 2000 / 2000 [100%]  (Sampling)
+Chain 3: 
+Chain 3:  Elapsed Time: 806.781 seconds (Warm-up)
+Chain 3:                853.609 seconds (Sampling)
+Chain 3:                1660.39 seconds (Total)
+Chain 3: 
     user   system  elapsed 
-6433.694   21.719 1847.010 
+5605.213   24.685 1679.394 
 Projecting
    user  system elapsed 
- 18.802   1.600  20.519 
+ 20.518   3.962  25.114 
 
 Excel output:  Forecasts/Tulare.xlsx 
   5%  10%  25%  50%  75%  90%  95% 
-0.94 0.99 1.06 1.14 1.22 1.30 1.35 
+0.97 1.01 1.09 1.16 1.25 1.33 1.39 
 
 PDF output:  Forecasts/Tulare.pdf 
