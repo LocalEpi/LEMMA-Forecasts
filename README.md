@@ -9,6 +9,8 @@ These forecasts can be reproduced by installing the LEMMA package and running Co
 The .xlsx files have quantile forecasts of hospitalization, ICU and deaths due to COVID-19.  
 The .pdf files have plots with these same forecasts, along with posterior distributions of the model parameters.
 
+Note: Except for San Francisco, our forecasts are not adjusted for mutual aid transfers between counties. 
+
 
 ## Contributors
 LEMMA is a collaborative effort between experts in Medicine, Public Health, and Data Science, including but not limited to
