@@ -1,59 +1,59 @@
 county =  San Joaquin 
 Fitting to observed data
 
-SAMPLING FOR MODEL 'LEMMA' NOW (CHAIN 
 SAMPLING FOR MODEL 'LEMMA' NOW (CHAIN 2).
-1).
+
+SAMPLING FOR MODEL 'LEMMA' NOW (CHAIN 1).
 
 SAMPLING FOR MODEL 'LEMMA' NOW (CHAIN 3).
 
 SAMPLING FOR MODEL 'LEMMA' NOW (CHAIN 4).
-Chain 4: 
-Chain 4: Gradient evaluation took 0.000908 seconds
-Chain 4: Chain 1000 transitions using 10 leapfrog steps per transition would take 9.08 seconds.
-Chain 4: Adjust your expectations accordingly!
-3: 
-Chain 3: Gradient evaluation took 0.0009 seconds
-Chain 3: 1000 transitions using 10 leapfrog steps per transition would take 9 seconds.
-Chain 3: Adjust your expectations accordingly!
-Chain 4: 
-Chain 4: 
-Chain 3: 
-Chain 3: 
-Chain 2: 
-Chain 2: Gradient evaluation took 0.000838 seconds
-Chain 2: 1000 transitions using 10 leapfrog steps per transition would take 8.38 seconds.
-Chain 2: Adjust your expectations accordingly!
-Chain 2: 
-Chain 2: 
 Chain 1: 
-Chain 1: Gradient evaluation took 0.00084 seconds
-Chain 1: 1000 transitions using 10 leapfrog steps per transition would take 8.4 seconds.
+Chain 1: Gradient evaluation took 0.001548 seconds
+Chain 1: 1000 transitions using 10 leapfrog steps per transition would take 15.48 seconds.
 Chain 1: Adjust your expectations accordingly!
 Chain 1: 
 Chain 1: 
-Chain 4: Iteration:    1 / 2000 [  0%]  (Warmup)
-Chain 3: Iteration:    1 / 2000 [  0%]  (Warmup)
+Chain 2: 
+Chain 2: Gradient evaluation took 0.001149 seconds
+Chain 2: 1000 transitions using 10 leapfrog steps per transition would take 11.49 seconds.
+Chain 2: Adjust your expectations accordingly!
+Chain 2: 
+Chain 2: 
+Chain 3: 
+Chain 3: Gradient evaluation took 0.001494 seconds
+Chain 3: 1000 transitions using 10 leapfrog steps per transition would take 14.94 seconds.
+Chain 3: Adjust your expectations accordingly!
+Chain 3: 
+Chain 3: 
+Chain 4: 
+Chain 4: Gradient evaluation took 0.001446 seconds
+Chain 4: 1000 transitions using 10 leapfrog steps per transition would take 14.46 seconds.
+Chain 4: Adjust your expectations accordingly!
+Chain 4: 
+Chain 4: 
 Chain 2: Iteration:    1 / 2000 [  0%]  (Warmup)
 Chain 1: Iteration:    1 / 2000 [  0%]  (Warmup)
+Chain 4: Iteration:    1 / 2000 [  0%]  (Warmup)
+Chain 3: Iteration:    1 / 2000 [  0%]  (Warmup)
 Chain 3: Iteration:  250 / 2000 [ 12%]  (Warmup)
-Chain 1: Iteration:  250 / 2000 [ 12%]  (Warmup)
 Chain 4: Iteration:  250 / 2000 [ 12%]  (Warmup)
+Chain 1: Iteration:  250 / 2000 [ 12%]  (Warmup)
 Chain 2: Iteration:  250 / 2000 [ 12%]  (Warmup)
 Chain 1: Iteration:  500 / 2000 [ 25%]  (Warmup)
-Chain 3: Iteration:  500 / 2000 [ 25%]  (Warmup)
 Chain 4: Iteration:  500 / 2000 [ 25%]  (Warmup)
+Chain 3: Iteration:  500 / 2000 [ 25%]  (Warmup)
 Chain 2: Iteration:  500 / 2000 [ 25%]  (Warmup)
+Chain 4: Iteration:  750 / 2000 [ 37%]  (Warmup)
 Chain 1: Iteration:  750 / 2000 [ 37%]  (Warmup)
 Chain 3: Iteration:  750 / 2000 [ 37%]  (Warmup)
-Chain 4: Iteration:  750 / 2000 [ 37%]  (Warmup)
+Chain 2: Iteration:  750 / 2000 [ 37%]  (Warmup)
 Chain 1: Iteration: 1000 / 2000 [ 50%]  (Warmup)
 Chain 1: Iteration: 1001 / 2000 [ 50%]  (Sampling)
-Chain 2: Iteration:  750 / 2000 [ 37%]  (Warmup)
-Chain 3: Iteration: 1000 / 2000 [ 50%]  (Warmup)
-Chain 3: Iteration: 1001 / 2000 [ 50%]  (Sampling)
 Chain 4: Iteration: 1000 / 2000 [ 50%]  (Warmup)
 Chain 4: Iteration: 1001 / 2000 [ 50%]  (Sampling)
+Chain 3: Iteration: 1000 / 2000 [ 50%]  (Warmup)
+Chain 3: Iteration: 1001 / 2000 [ 50%]  (Sampling)
 Chain 2: Iteration: 1000 / 2000 [ 50%]  (Warmup)
 Chain 2: Iteration: 1001 / 2000 [ 50%]  (Sampling)
 Chain 1: Iteration: 1250 / 2000 [ 62%]  (Sampling)
@@ -62,44 +62,44 @@ Chain 3: Iteration: 1250 / 2000 [ 62%]  (Sampling)
 Chain 2: Iteration: 1250 / 2000 [ 62%]  (Sampling)
 Chain 1: Iteration: 1500 / 2000 [ 75%]  (Sampling)
 Chain 4: Iteration: 1500 / 2000 [ 75%]  (Sampling)
-Chain 2: Iteration: 1500 / 2000 [ 75%]  (Sampling)
 Chain 3: Iteration: 1500 / 2000 [ 75%]  (Sampling)
 Chain 1: Iteration: 1750 / 2000 [ 87%]  (Sampling)
+Chain 2: Iteration: 1500 / 2000 [ 75%]  (Sampling)
 Chain 4: Iteration: 1750 / 2000 [ 87%]  (Sampling)
+Chain 3: Iteration: 1750 / 2000 [ 87%]  (Sampling)
+Chain 1: Iteration: 2000 / 2000 [100%]  (Sampling)
+Chain 1: 
+Chain 1:  Elapsed Time: 940.971 seconds (Warm-up)
+Chain 1:                866.348 seconds (Sampling)
+Chain 1:                1807.32 seconds (Total)
+Chain 1: 
 Chain 2: Iteration: 1750 / 2000 [ 87%]  (Sampling)
 Chain 4: Iteration: 2000 / 2000 [100%]  (Sampling)
 Chain 4: 
-Chain 4:  Elapsed Time: 690.271 seconds (Warm-up)
-Chain 4:                540.992 seconds (Sampling)
-Chain 4:                1231.26 seconds (Total)
+Chain 4:  Elapsed Time: 970.368 seconds (Warm-up)
+Chain 4:                934.324 seconds (Sampling)
+Chain 4:                1904.69 seconds (Total)
 Chain 4: 
-Chain 1: Iteration: 2000 / 2000 [100%]  (Sampling)
-Chain 1: 
-Chain 1:  Elapsed Time: 544.848 seconds (Warm-up)
-Chain 1:                718.403 seconds (Sampling)
-Chain 1:                1263.25 seconds (Total)
-Chain 1: 
-Chain 3: Iteration: 1750 / 2000 [ 87%]  (Sampling)
-Chain 2: Iteration: 2000 / 2000 [100%]  (Sampling)
-Chain 2: 
-Chain 2:  Elapsed Time: 715.548 seconds (Warm-up)
-Chain 2:                580.541 seconds (Sampling)
-Chain 2:                1296.09 seconds (Total)
-Chain 2: 
 Chain 3: Iteration: 2000 / 2000 [100%]  (Sampling)
 Chain 3: 
-Chain 3:  Elapsed Time: 627.287 seconds (Warm-up)
-Chain 3:                861.123 seconds (Sampling)
-Chain 3:                1488.41 seconds (Total)
+Chain 3:  Elapsed Time: 979.19 seconds (Warm-up)
+Chain 3:                964.49 seconds (Sampling)
+Chain 3:                1943.68 seconds (Total)
 Chain 3: 
+Chain 2: Iteration: 2000 / 2000 [100%]  (Sampling)
+Chain 2: 
+Chain 2:  Elapsed Time: 1104.69 seconds (Warm-up)
+Chain 2:                949.649 seconds (Sampling)
+Chain 2:                2054.34 seconds (Total)
+Chain 2: 
     user   system  elapsed 
-5275.997   15.089 1503.090 
+7701.508   19.247 2068.417 
 Projecting
    user  system elapsed 
- 38.030   4.875  43.128 
+ 33.660   3.980  37.731 
 
 Excel output:  Forecasts/San Joaquin.xlsx 
   5%  10%  25%  50%  75%  90%  95% 
-1.47 1.52 1.60 1.71 1.84 1.96 2.04 
+1.39 1.43 1.50 1.59 1.70 1.80 1.87 
 
 PDF output:  Forecasts/San Joaquin.pdf 
