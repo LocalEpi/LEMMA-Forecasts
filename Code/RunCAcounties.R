@@ -6,7 +6,9 @@ if (quick.test) {
   cat("\n\n++++++++++++++++++  quick.test = T +++++++++++++++++ \n\n")
 }
 
-exclude.set <- c("Nevada", "Shasta", "Yolo") #not enough data to fit
+exclude.set <- c("Nevada", #not enough data to fit
+                 "San Francisco") #run separately with county data
+
 
 GetCountyData <- function() {
   dt <- fread("https://data.ca.gov/dataset/529ac907-6ba1-4cb7-9aae-8966fc96aeef/resource/42d33765-20fd-44b8-a978-b083b7542225/download/hospitals_by_county.csv")
@@ -36,8 +38,21 @@ RunOneCounty <- function(county1, county.dt, county.pop, quick.test) {
   county.dt1[, cum.admits.conf := NA_integer_]
   county.dt1[, cum.admits.pui := NA_integer_]
   if (county1 == "Los Angeles") {
-    county.dt1[, deaths.conf := NA_integer_] #including deaths for LA causes convergence problems
+    sheets$Interventions[2, mu_beta_inter := 0.5]
+    #county.dt1[, deaths.conf := NA_integer_] #including deaths for LA causes convergence problems
+  } else if (county1 == "Imperial") {
+    county.dt1[, hosp.conf := NA_integer_] #Imperial is tranferring a lot hospitalized out of county
+    county.dt1[, hosp.pui := NA_integer_]
+    county.dt1[, icu.conf := NA_integer_]
+    county.dt1[, icu.pui := NA_integer_]
+  } else if (county1 == "Kings") {
+    county.dt1[, icu.conf := NA_integer_] #Kings ICU data doesn't seem right
+    county.dt1[, icu.pui := NA_integer_]
+  } else if (county1 == "San Mateo") {
+    sheets$Interventions[7, mu_beta_inter := 1] #very recent increase
+    sheets$Interventions[8, mu_beta_inter := 1.5]
   }
+
   sheets$Data <- county.dt1
 
   inputs <- LEMMA:::ProcessSheets(sheets, input.file)
@@ -59,7 +74,7 @@ RunOneCounty <- function(county1, county.dt, county.pop, quick.test) {
 county.dt <- GetCountyData()
 county.set <- unique(county.dt$county)
 
-if (quick.test) county.set <- county.set[1:3]
+if (quick.test) county.set <- c("San Mateo", "Kings")
 
 county.pop <- fread("Inputs/county population.csv")
 
