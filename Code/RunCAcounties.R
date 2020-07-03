@@ -19,7 +19,7 @@ GetCountyData <- function() {
   deaths <- deaths[, .(county, date = as.Date(date), deaths.conf = as.numeric(totalcountdeaths))]
   county.dt <- merge(dt, deaths, all = T, keyby = c("county", "date"))
 
-  county.dt[, mean10 := mean(hosp.conf[date >= (Sys.Date() - 10)]), by = "county"]
+  county.dt[, mean10 := mean(hosp.conf[date >= (Sys.Date() - 10)], na.rm=T), by = "county"]
   county.dt <- county.dt[mean10 > 1] #exclude if average hosp over last 10 days < 1
   county.dt <- county.dt[!(county %in% exclude.set)]
   return(county.dt)
@@ -38,15 +38,16 @@ RunOneCounty <- function(county1, county.dt, county.pop, quick.test) {
   county.dt1[, cum.admits.conf := NA_integer_]
   county.dt1[, cum.admits.pui := NA_integer_]
   if (county1 == "Los Angeles") {
-    sheets$Interventions[2, mu_beta_inter := 0.5]
-    #county.dt1[, deaths.conf := NA_integer_] #including deaths for LA causes convergence problems
+    sheets$Interventions[2, mu_beta_inter := 0.5] #LA needs more informative prior to converge
+    sheets$`Parameters with Distributions`[9, Mean := 0.64] #mort/ICU seems very high in LA
+    sheets$`Parameters with Distributions`[9, `Standard Deviation` := 0.1]
   } else if (county1 == "Imperial") {
     county.dt1[, hosp.conf := NA_integer_] #Imperial is tranferring a lot hospitalized out of county
     county.dt1[, hosp.pui := NA_integer_]
     county.dt1[, icu.conf := NA_integer_]
     county.dt1[, icu.pui := NA_integer_]
   } else if (county1 == "Kings") {
-    county.dt1[, icu.conf := NA_integer_] #Kings ICU data doesn't seem right
+    county.dt1[, icu.conf := NA_integer_] #data error in Kings ICU?
     county.dt1[, icu.pui := NA_integer_]
   } else if (county1 == "San Mateo") {
     sheets$Interventions[7, mu_beta_inter := 1] #very recent increase
@@ -56,14 +57,15 @@ RunOneCounty <- function(county1, county.dt, county.pop, quick.test) {
   sheets$Data <- county.dt1
 
   inputs <- LEMMA:::ProcessSheets(sheets, input.file)
-
+  if (quick.test) inputs$internal.args$iter <- 300
+  inputs$internal.args$warmup <- NA #defaults to iter/2
   if (county1 == "Los Angeles") {
-    inputs$internal.args$adapt_delta <- 0.9
+    inputs$internal.args$warmup <- round(inputs$internal.args$iter * 0.75)
   }
   inputs$internal.args$output.filestr <- paste0("Forecasts/", county1)
   mean.ini <- 1e-5 * county.pop1
   inputs$internal.args$lambda_ini_exposed <- 1 / mean.ini
-  if (quick.test) inputs$internal.args$iter <- 300
+
   cred.int <- LEMMA:::CredibilityInterval(inputs)
   sink()
   ParallelLogger::logInfo("county = ", county1)
@@ -74,7 +76,7 @@ RunOneCounty <- function(county1, county.dt, county.pop, quick.test) {
 county.dt <- GetCountyData()
 county.set <- unique(county.dt$county)
 
-if (quick.test) county.set <- c("San Mateo", "Kings")
+if (quick.test) county.set <- c("San Mateo", "Kings", "Los Angeles")
 
 county.pop <- fread("Inputs/county population.csv")
 
