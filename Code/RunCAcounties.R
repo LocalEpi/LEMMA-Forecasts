@@ -1,29 +1,15 @@
 library(data.table)
 library(ParallelLogger)
 
-quick.test <- F
+source('Code/GetCountyData.R')
+
+quick.test <- T
 if (quick.test) {
   cat("\n\n++++++++++++++++++  quick.test = T +++++++++++++++++ \n\n")
 }
 
 exclude.set <- c("Nevada", #not enough data to fit
                  "San Francisco") #run separately with county data
-
-
-GetCountyData <- function() {
-  dt <- fread("https://data.ca.gov/dataset/529ac907-6ba1-4cb7-9aae-8966fc96aeef/resource/42d33765-20fd-44b8-a978-b083b7542225/download/hospitals_by_county.csv")
-  dt <- dt[todays_date != "", .(county, date = as.Date(todays_date), hosp.conf = hospitalized_covid_confirmed_patients, hosp.pui = hospitalized_suspected_covid_patients, icu.conf = icu_covid_confirmed_patients, icu.pui = icu_suspected_covid_patients)]
-  dt <- dt[date >= as.Date("2020/4/1"), .(county, date, hosp.conf, hosp.pui, icu.conf, icu.pui)]
-
-  deaths <- fread("https://data.ca.gov/dataset/590188d5-8545-4c93-a9a0-e230f0db7290/resource/926fd08f-cc91-4828-af38-bd45de97f8c3/download/statewide_cases.csv")
-  deaths <- deaths[, .(county, date = as.Date(date), deaths.conf = as.numeric(totalcountdeaths))]
-  county.dt <- merge(dt, deaths, all = T, keyby = c("county", "date"))
-
-  county.dt[, mean10 := mean(hosp.conf[date >= (Sys.Date() - 10)], na.rm=T), by = "county"]
-  county.dt <- county.dt[mean10 > 1] #exclude if average hosp over last 10 days < 1
-  county.dt <- county.dt[!(county %in% exclude.set)]
-  return(county.dt)
-}
 
 RunOneCounty <- function(county1, county.dt, county.pop, quick.test) {
   sink.file <- paste0("Logs/progress-", county1, ".txt")
@@ -73,7 +59,7 @@ RunOneCounty <- function(county1, county.dt, county.pop, quick.test) {
 }
 
 
-county.dt <- GetCountyData()
+county.dt <- GetCountyData(exclude.set)
 county.set <- unique(county.dt$county)
 
 if (quick.test) county.set <- c("San Mateo", "Kings", "Los Angeles")
