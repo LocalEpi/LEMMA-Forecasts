@@ -3,7 +3,7 @@ library(ParallelLogger)
 
 source('Code/GetCountyData.R')
 
-quick.test <- T
+quick.test <- F
 if (quick.test) {
   cat("\n\n++++++++++++++++++  quick.test = T +++++++++++++++++ \n\n")
 }
@@ -33,7 +33,6 @@ RunOneCounty <- function(county1, county.dt, county.pop, quick.test) {
     sheets$`Parameters with Distributions`[7, `Standard Deviation` := 0.005] #reduce frac_hosp sd
     sheets$`Parameters with Distributions`[9, Mean := 0.64] #mort/ICU seems very high in LA
     sheets$`Parameters with Distributions`[9, `Standard Deviation` := 0.1]
-    inputs$internal.args$adapt_delta <- 0.8
   } else if (county1 == "Imperial") {
     county.dt1[, hosp.conf := NA_integer_] #Imperial is tranferring a lot hospitalized out of county
     county.dt1[, hosp.pui := NA_integer_]
