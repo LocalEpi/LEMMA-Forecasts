@@ -8,14 +8,17 @@ if (quick.test) {
   cat("\n\n++++++++++++++++++  quick.test = T +++++++++++++++++ \n\n")
 }
 
-exclude.set <- c("Nevada", "El Dorado", "Yolo", "Yuba", "Tuolumne", #not enough data to fit
-                 "San Francisco") #run separately with county data
+exclude.set <- c("Nevada", "El Dorado", "Yolo", "Yuba", "Tuolumne") #not enough data to fit
 
 RunOneCounty <- function(county1, county.dt, county.pop, quick.test) {
   sink.file <- paste0("Logs/progress-", county1, ".txt")
   sink(sink.file)
   cat("county = ", county1, "\n")
-  input.file <- "Inputs/CAcounties.xlsx"
+  if (county1 == "San Francisco") {
+    input.file <- "Inputs/SF.xlsx"  #SF is separate because it has hospital transfer data manually entered from https://data.sfgov.org/COVID-19/COVID-19-Hospitalizations/nxjg-bhem
+  } else {
+    input.file <- "Inputs/CAcounties.xlsx"
+  }
   sheets <- LEMMA:::ReadInputs(input.file)
   county.pop1 <- county.pop[county == county1, population]
   sheets$`Model Inputs`[internal.name == "total.population", value := county.pop1]
@@ -92,7 +95,7 @@ RunOneCounty <- function(county1, county.dt, county.pop, quick.test) {
 county.dt <- GetCountyData(exclude.set)
 county.set <- unique(county.dt$county)
 
-if (quick.test) county.set <- c("Los Angeles")
+if (quick.test) county.set <- c("San Francisco", "Butte")
 
 county.pop <- fread("Inputs/county population.csv")
 
