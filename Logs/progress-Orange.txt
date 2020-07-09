@@ -1,11 +1,19 @@
 county =  Orange 
 Fitting to observed data
 
+SAMPLING FOR MODEL 'LEMMA' NOW (CHAIN 1).
+
 SAMPLING FOR MODEL 'LEMMA' NOW (CHAIN 2).
 
 SAMPLING FOR MODEL 'LEMMA' NOW (CHAIN 1).
 
 SAMPLING FOR MODEL 'LEMMA' NOW (CHAIN 3).
+Chain 1: 
+Chain 1: Gradient evaluation took 0 seconds
+Chain 1: 1000 transitions using 10 leapfrog steps per transition would take 0 seconds.
+Chain 1: Adjust your expectations accordingly!
+Chain 1: 
+Chain 1: 
 
 SAMPLING FOR MODEL 'LEMMA' NOW (CHAIN 4).
 Chain 3: 
@@ -46,6 +54,7 @@ Chain 4: Iteration:  100 / 2000 [  5%]  (Warmup)
 Chain 1: Iteration:  150 / 2000 [  7%]  (Warmup)
 Chain 2: Iteration:  100 / 2000 [  5%]  (Warmup)
 Chain 3: Iteration:  150 / 2000 [  7%]  (Warmup)
+Chain 2: Iteration:  150 / 2000 [  7%]  (Warmup)
 Chain 4: Iteration:  150 / 2000 [  7%]  (Warmup)
 Chain 2: Iteration:  150 / 2000 [  7%]  (Warmup)
 Chain 1: Iteration:  200 / 2000 [ 10%]  (Warmup)
@@ -220,6 +229,20 @@ Chain 1:  Elapsed Time: 3308.47 seconds (Warm-up)
 Chain 1:                2635.09 seconds (Sampling)
 Chain 1:                5943.57 seconds (Total)
 Chain 1: 
+Chain 3: Iteration: 2000 / 2000 [100%]  (Sampling)
+Chain 3: 
+Chain 3:  Elapsed Time: 2605.55 seconds (Warm-up)
+Chain 3:                2445.35 seconds (Sampling)
+Chain 3:                5050.9 seconds (Total)
+Chain 3: 
+Chain 4: Iteration: 1900 / 2000 [ 95%]  (Sampling)
+Chain 4: Iteration: 1950 / 2000 [ 97%]  (Sampling)
+Chain 4: Iteration: 2000 / 2000 [100%]  (Sampling)
+Chain 4: 
+Chain 4:  Elapsed Time: 2509.7 seconds (Warm-up)
+Chain 4:                2880.72 seconds (Sampling)
+Chain 4:                5390.42 seconds (Total)
+Chain 4: 
      user    system   elapsed 
 22846.209    73.065  5983.845 
 Projecting

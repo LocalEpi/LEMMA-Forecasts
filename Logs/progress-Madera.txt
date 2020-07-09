@@ -6,6 +6,13 @@ SAMPLING FOR MODEL 'LEMMA
 LEMMA' NOW (CHAIN 4).
 
 SAMPLING FOR MODEL 'LEMMA' NOW (CHAIN 3).
+Chain 1: 
+Chain 1: Gradient evaluation took 0 seconds
+Chain 1: 1000 transitions using 10 leapfrog steps per transition would take 0 seconds.
+Chain 1: Adjust your expectations accordingly!
+Chain 1: 
+Chain 1: 
+Chain 1: Iteration:    1 / 2000 [  0%]  (Warmup)
 
 SAMPLING FOR MODEL 'LEMMA' NOW (CHAIN 1).
 Chain 4: 
@@ -131,6 +138,8 @@ Chain 4: Iteration: 1100 / 2000 [ 55%]  (Sampling)
 Chain 3: Iteration: 1200 / 2000 [ 60%]  (Sampling)
 Chain 2: Iteration: 1100 / 2000 [ 55%]  (Sampling)
 Chain 4: Iteration: 1150 / 2000 [ 57%]  (Sampling)
+Chain 2: Iteration: 1200 / 2000 [ 60%]  (Sampling)
+Chain 3: Iteration: 1250 / 2000 [ 62%]  (Sampling)
 Chain 1: Iteration: 1150 / 2000 [ 57%]  (Sampling)
 Chain 3: Iteration: 1250 / 2000 [ 62%]  (Sampling)
 Chain 4: Iteration: 1200 / 2000 [ 60%]  (Sampling)
@@ -220,6 +229,20 @@ Chain 2:  Elapsed Time: 476.939 seconds (Warm-up)
 Chain 2:                332.576 seconds (Sampling)
 Chain 2:                809.515 seconds (Total)
 Chain 2: 
+Chain 1: Iteration: 1900 / 2000 [ 95%]  (Sampling)
+Chain 4: Iteration: 2000 / 2000 [100%]  (Sampling)
+Chain 4: 
+Chain 4:  Elapsed Time: 339.47 seconds (Warm-up)
+Chain 4:                294.94 seconds (Sampling)
+Chain 4:                634.41 seconds (Total)
+Chain 4: 
+Chain 1: Iteration: 1950 / 2000 [ 97%]  (Sampling)
+Chain 1: Iteration: 2000 / 2000 [100%]  (Sampling)
+Chain 1: 
+Chain 1:  Elapsed Time: 349.48 seconds (Warm-up)
+Chain 1:                307.89 seconds (Sampling)
+Chain 1:                657.37 seconds (Total)
+Chain 1: 
     user   system  elapsed 
 3119.389   11.981  831.179 
 Projecting
