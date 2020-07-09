@@ -95,7 +95,7 @@ RunOneCounty <- function(county1, county.dt, county.pop, quick.test) {
 county.dt <- GetCountyData(exclude.set)
 county.set <- unique(county.dt$county)
 
-if (quick.test) county.set <- c("San Francisco")
+if (quick.test) county.set <- c("San Francisco", "Butte")
 
 county.pop <- fread("Inputs/county population.csv")
 
@@ -108,7 +108,8 @@ clearLoggers()
 addDefaultFileLogger(logfile)
 
 cl <- makeCluster(3)
-z <- clusterApply(cl, county.set, RunOneCounty, county.dt, county.pop, quick.test)
+county.results <- clusterApply(cl, county.set, RunOneCounty, county.dt, county.pop, quick.test)
 stopCluster(cl)
+names(county.results) <- county.set
 cat("Data through", as.character(county.dt[, max(date)]), "\n")
 unregisterLogger(1)
