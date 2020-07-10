@@ -3,7 +3,7 @@ library(ParallelLogger)
 
 source('Code/GetCountyData.R')
 
-quick.test <- F
+quick.test <- T
 if (quick.test) {
   cat("\n\n++++++++++++++++++  quick.test = T +++++++++++++++++ \n\n")
 }
@@ -56,13 +56,16 @@ RunOneCounty <- function(county1, county.dt, county.pop, quick.test) {
 
     inputs$internal.args$warmup <- NA #defaults to iter/2
     if (county1 == "Los Angeles") {
-      inputs$internal.args$warmup <- round(inputs$internal.args$iter * 0.75)
+      inputs$internal.args$warmup <- round(inputs$internal.args$iter * 0.75) #takes longer to converge
     } else if (county1 %in% c("Yolo", "Yuba")) {
-      inputs$internal.args$simulation.start.date <- as.Date("2020/5/30")
+      inputs$internal.args$simulation.start.date <- as.Date("2020/5/30") #infections went to near zero - restart sim
       inputs$internal.args$iter <- 3000
       inputs$interventions <- inputs$interventions[mu_t_inter >= as.Date("2020/6/1")]
       inputs$model.inputs$start.display.date <- as.Date("2020/6/1")
       inputs$internal.args$inital.deaths <- inital.deaths
+    } else if (county1 == "Contra Costa") {
+      inputs$internal.args$warmup <- round(inputs$internal.args$iter * 0.75) #takes longer to converge
+      inputs$internal.args$iter <- 3000
     }
     inputs$internal.args$output.filestr <- paste0("Forecasts/", county1)
     mean.ini <- 1e-5 * county.pop1
@@ -100,13 +103,17 @@ RunOneCounty <- function(county1, county.dt, county.pop, quick.test) {
 
   sink()
   ParallelLogger::logInfo("county = ", county1)
+
+  if (county1 != "San Francisco") {
+    cred.int <- NULL #save memory
+  }
   return(cred.int)
 }
 
 county.dt <- GetCountyData(exclude.set)
 county.set <- unique(county.dt$county)
 
-if (quick.test) county.set <- c("Butte", "Yolo", "Yuba")
+if (quick.test) county.set <- c("Butte", "Yolo", "San Francisco")
 
 county.pop <- fread("Inputs/county population.csv")
 
