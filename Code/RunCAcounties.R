@@ -8,7 +8,7 @@ if (quick.test) {
   cat("\n\n++++++++++++++++++  quick.test = T +++++++++++++++++ \n\n")
 }
 
-exclude.set <- c("Nevada", "El Dorado", "Yolo", "Yuba", "Tuolumne") #not enough data to fit
+exclude.set <- c("Nevada", "El Dorado",  "Tuolumne") #not enough data to fit
 
 RunOneCounty <- function(county1, county.dt, county.pop, quick.test) {
   sink.file <- paste0("Logs/progress-", county1, ".txt")
@@ -44,24 +44,35 @@ RunOneCounty <- function(county1, county.dt, county.pop, quick.test) {
     } else if (county1 == "San Mateo") {
       sheets$Interventions[7, mu_beta_inter := 1] #very recent increase
       sheets$Interventions[8, mu_beta_inter := 1.5]
+    } else if (county1 %in% c("Yolo", "Yuba")) {
+      sheets$`Parameters with Distributions`[1, Mean := 1] #R0 = 1
+      inital.deaths <- county.dt1[date == as.Date("2020/5/30"), deaths.conf]
+      county.dt1 <- county.dt1[date >= as.Date("2020/6/1")] #infections went to near zero - restart sim
     }
 
     sheets$Data <- county.dt1
 
     inputs <- LEMMA:::ProcessSheets(sheets, input.file)
-    if (quick.test) {
-      inputs$internal.args$iter <- 300
-      inputs$internal.args$max_treedepth <- 10
-      inputs$internal.args$adapt_delta <- 0.8
-    }
+
     inputs$internal.args$warmup <- NA #defaults to iter/2
     if (county1 == "Los Angeles") {
       inputs$internal.args$warmup <- round(inputs$internal.args$iter * 0.75)
+    } else if (county1 %in% c("Yolo", "Yuba")) {
+      inputs$internal.args$simulation.start.date <- as.Date("2020/5/30")
+      inputs$internal.args$iter <- 3000
+      inputs$interventions <- inputs$interventions[mu_t_inter >= as.Date("2020/6/1")]
+      inputs$model.inputs$start.display.date <- as.Date("2020/6/1")
+      inputs$internal.args$inital.deaths <- inital.deaths
     }
     inputs$internal.args$output.filestr <- paste0("Forecasts/", county1)
     mean.ini <- 1e-5 * county.pop1
     inputs$internal.args$lambda_ini_exposed <- 1 / mean.ini
 
+    if (quick.test) {
+      inputs$internal.args$iter <- 300
+      inputs$internal.args$max_treedepth <- 10
+      inputs$internal.args$adapt_delta <- 0.8
+    }
     cred.int <- LEMMA:::CredibilityInterval(inputs)
   }
 
@@ -95,7 +106,7 @@ RunOneCounty <- function(county1, county.dt, county.pop, quick.test) {
 county.dt <- GetCountyData(exclude.set)
 county.set <- unique(county.dt$county)
 
-if (quick.test) county.set <- c("San Francisco", "Butte")
+if (quick.test) county.set <- c("Butte", "Yolo", "Yuba")
 
 county.pop <- fread("Inputs/county population.csv")
 
