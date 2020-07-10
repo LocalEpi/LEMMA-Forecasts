@@ -3,7 +3,7 @@ library(ParallelLogger)
 
 source('Code/GetCountyData.R')
 
-quick.test <- T
+quick.test <- F
 if (quick.test) {
   cat("\n\n++++++++++++++++++  quick.test = T +++++++++++++++++ \n\n")
 }
@@ -113,7 +113,7 @@ RunOneCounty <- function(county1, county.dt, county.pop, quick.test) {
 county.dt <- GetCountyData(exclude.set)
 county.set <- unique(county.dt$county)
 
-if (quick.test) county.set <- c("Butte", "Yolo", "San Francisco")
+if (quick.test) county.set <- c("Butte", "Yolo")
 
 county.pop <- fread("Inputs/county population.csv")
 
