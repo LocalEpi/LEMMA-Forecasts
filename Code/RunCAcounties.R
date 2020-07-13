@@ -125,7 +125,12 @@ unlink(logfile)
 clearLoggers()
 addDefaultFileLogger(logfile)
 
-cl <- makeCluster(3)
+# Get number of cores per job based on number of cores available. Each stan run uses 4 cores (1 per chain, 4 chains)
+n_cores <- parallel::detectCores()
+cluster_cores <- floor(n_cores/4)
+
+cl <- makeCluster(cluster_cores)
+
 county.results <- clusterApply(cl, county.set, RunOneCounty, county.dt, county.pop, quick.test)
 stopCluster(cl)
 names(county.results) <- county.set
