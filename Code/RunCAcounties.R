@@ -3,7 +3,7 @@ library(ParallelLogger)
 
 source('Code/GetCountyData.R')
 
-quick.test <- F
+quick.test <- T
 if (quick.test) {
   cat("\n\n++++++++++++++++++  quick.test = T +++++++++++++++++ \n\n")
 }
@@ -63,7 +63,7 @@ RunOneCounty <- function(county1, county.dt, county.pop, quick.test) {
       inputs$interventions <- inputs$interventions[mu_t_inter >= as.Date("2020/6/1")]
       inputs$model.inputs$start.display.date <- as.Date("2020/6/1")
       inputs$internal.args$inital.deaths <- inital.deaths
-    } else if (county1 == "Contra Costa") {
+    } else if (county1 %in% c("Contra Costa", "Santa Cruz")) {
       inputs$internal.args$warmup <- round(inputs$internal.args$iter * 0.75) #takes longer to converge
       inputs$internal.args$iter <- 3000
     }
@@ -72,9 +72,9 @@ RunOneCounty <- function(county1, county.dt, county.pop, quick.test) {
     inputs$internal.args$lambda_ini_exposed <- 1 / mean.ini
 
     if (quick.test) {
-      inputs$internal.args$iter <- 300
-      inputs$internal.args$max_treedepth <- 10
-      inputs$internal.args$adapt_delta <- 0.8
+      # inputs$internal.args$iter <- 300
+      # inputs$internal.args$max_treedepth <- 10
+      # inputs$internal.args$adapt_delta <- 0.8
     }
     cred.int <- LEMMA:::CredibilityInterval(inputs)
   }
@@ -113,7 +113,7 @@ RunOneCounty <- function(county1, county.dt, county.pop, quick.test) {
 county.dt <- GetCountyData(exclude.set)
 county.set <- unique(county.dt$county)
 
-if (quick.test) county.set <- c("Butte", "Yolo")
+if (quick.test) county.set <- c("Santa Cruz", "San Francisco")
 
 county.pop <- fread("Inputs/county population.csv")
 
@@ -125,12 +125,7 @@ unlink(logfile)
 clearLoggers()
 addDefaultFileLogger(logfile)
 
-# Get number of cores per job based on number of cores available. Each stan run uses 4 cores (1 per chain, 4 chains)
-n_cores <- parallel::detectCores()
-cluster_cores <- floor(n_cores/4)
-
-cl <- makeCluster(cluster_cores)
-
+cl <- makeCluster(3)
 county.results <- clusterApply(cl, county.set, RunOneCounty, county.dt, county.pop, quick.test)
 stopCluster(cl)
 names(county.results) <- county.set
