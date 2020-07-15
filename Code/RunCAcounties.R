@@ -3,7 +3,7 @@ library(ParallelLogger)
 
 source('Code/GetCountyData.R')
 
-quick.test <- F
+quick.test <- T
 if (quick.test) {
   cat("\n\n++++++++++++++++++  quick.test = T +++++++++++++++++ \n\n")
 }
@@ -73,9 +73,9 @@ RunOneCounty <- function(county1, county.dt, county.pop, quick.test) {
 
     if (quick.test) {
       inputs$internal.args$warmup <- NA
-      inputs$internal.args$iter <- 1500
-      inputs$internal.args$max_treedepth <- 10
-      inputs$internal.args$adapt_delta <- 0.8
+      inputs$internal.args$iter <- 2000
+      inputs$internal.args$max_treedepth <- 15
+      inputs$internal.args$adapt_delta <- 0.95
     }
     cred.int <- LEMMA:::CredibilityInterval(inputs)
   }
@@ -114,7 +114,7 @@ RunOneCounty <- function(county1, county.dt, county.pop, quick.test) {
 county.dt <- GetCountyData(exclude.set)
 county.set <- unique(county.dt$county)
 
-if (quick.test) county.set <- c("Los Angeles")
+if (quick.test) county.set <- c("Riverside")
 
 county.pop <- fread("Inputs/county population.csv")
 
@@ -126,9 +126,13 @@ unlink(logfile)
 clearLoggers()
 addDefaultFileLogger(logfile)
 
-cl <- makeCluster(3)
-county.results <- clusterApply(cl, county.set, RunOneCounty, county.dt, county.pop, quick.test)
-stopCluster(cl)
+if (quick.test) {
+  county.results <- lapply(county.set, RunOneCounty, county.dt, county.pop, quick.test)
+} else {
+  cl <- makeCluster(3)
+  county.results <- clusterApply(cl, county.set, RunOneCounty, county.dt, county.pop, quick.test)
+  stopCluster(cl)
+}
 names(county.results) <- county.set
 cat("Data through", as.character(county.dt[, max(date)]), "\n")
 unregisterLogger(1)
