@@ -10,6 +10,7 @@ GetCountyData <- function(exclude.set) {
   county.dt[, mean10 := mean(hosp.conf[date >= (Sys.Date() - 10)], na.rm=T), by = "county"]
   county.dt <- county.dt[mean10 > 1] #exclude if average hosp over last 10 days < 1
   county.dt <- county.dt[!(county %in% exclude.set)]
+  county.dt$mean10 <- NULL
 
   #make deaths NA for outliers that imply cumulative deaths decrease
   county.dt[county == 'Contra Costa' & date == '2020-03-24', deaths.conf := NA_real_]
