@@ -3,12 +3,12 @@ library(ParallelLogger)
 
 source('Code/GetCountyData.R')
 
-quick.test <- T
+quick.test <- F
 if (quick.test) {
   cat("\n\n++++++++++++++++++  quick.test = T +++++++++++++++++ \n\n")
 }
 
-exclude.set <- c("Nevada", "El Dorado",  "Tuolumne") #not enough data to fit
+exclude.set <- c("Nevada", "El Dorado",  "Tuolumne", "San Benito") #not enough data to fit
 
 RunOneCounty <- function(county1, county.dt, county.pop, quick.test) {
   sink.file <- paste0("Logs/progress-", county1, ".txt")
@@ -66,6 +66,10 @@ RunOneCounty <- function(county1, county.dt, county.pop, quick.test) {
     } else if (county1 %in% c("Contra Costa", "Santa Cruz")) {
       inputs$internal.args$warmup <- round(inputs$internal.args$iter * 0.75) #takes longer to converge
       inputs$internal.args$iter <- 3000
+    } else if (county1 == "Riverside") {
+      inputs$internal.args$iter <- 2000
+      inputs$internal.args$max_treedepth <- 15
+      inputs$internal.args$adapt_delta <- 0.95
     }
     inputs$internal.args$output.filestr <- paste0("Forecasts/", county1)
     mean.ini <- 1e-5 * county.pop1
@@ -73,9 +77,9 @@ RunOneCounty <- function(county1, county.dt, county.pop, quick.test) {
 
     if (quick.test) {
       inputs$internal.args$warmup <- NA
-      inputs$internal.args$iter <- 2000
-      inputs$internal.args$max_treedepth <- 15
-      inputs$internal.args$adapt_delta <- 0.95
+      inputs$internal.args$iter <- 300
+      inputs$internal.args$max_treedepth <- 10
+      inputs$internal.args$adapt_delta <- 0.8
     }
     cred.int <- LEMMA:::CredibilityInterval(inputs)
   }
