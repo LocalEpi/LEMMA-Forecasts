@@ -56,6 +56,7 @@ RunOneCounty <- function(county1, county.dt, county.pop, quick.test) {
 
     inputs$internal.args$warmup <- NA #defaults to iter/2
     if (county1 == "Los Angeles") {
+      inputs$internal.args$adapt_delta <- 0.8
       inputs$internal.args$warmup <- round(inputs$internal.args$iter * 0.75) #takes longer to converge
     } else if (county1 %in% c("Yolo", "Yuba")) {
       inputs$internal.args$simulation.start.date <- as.Date("2020/5/30") #infections went to near zero - restart sim
