@@ -8,7 +8,7 @@ if (quick.test) {
   cat("\n\n++++++++++++++++++  quick.test = T +++++++++++++++++ \n\n")
 }
 
-exclude.set <- c("Nevada", "El Dorado",  "Tuolumne", "San Benito") #not enough data to fit
+exclude.set <- c("Amador", "Mendocino", "Nevada", "El Dorado",  "Tuolumne", "San Benito") #not enough data to fit
 
 RunOneCounty <- function(county1, county.dt, county.pop, quick.test) {
   sink.file <- paste0("Logs/progress-", county1, ".txt")
