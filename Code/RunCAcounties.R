@@ -8,7 +8,7 @@ if (quick.test) {
   cat("\n\n++++++++++++++++++  quick.test = T +++++++++++++++++ \n\n")
 }
 
-exclude.set <- c("Amador", "Mendocino", "Nevada", "El Dorado",  "Tuolumne", "San Benito") #not enough data to fit
+exclude.set <- c("Amador", "San Benito", "Siskiyou") #not enough data to fit
 
 RunOneCounty <- function(county1, county.dt, county.pop, quick.test) {
   sink.file <- paste0("Logs/progress-", county1, ".txt")
@@ -44,7 +44,7 @@ RunOneCounty <- function(county1, county.dt, county.pop, quick.test) {
     } else if (county1 == "San Mateo") {
       sheets$Interventions[7, mu_beta_inter := 1] #very recent increase
       sheets$Interventions[8, mu_beta_inter := 1.5]
-    } else if (county1 %in% c("Yolo", "Yuba")) {
+    } else if (county1 %in% c("Yolo", "Yuba", "Mendocino", "Nevada", "El Dorado", "Tuolumne")) {
       sheets$`Parameters with Distributions`[1, Mean := 1] #R0 = 1
       inital.deaths <- county.dt1[date == as.Date("2020/5/30"), deaths.conf]
       county.dt1 <- county.dt1[date >= as.Date("2020/6/1")] #infections went to near zero - restart sim
@@ -58,7 +58,7 @@ RunOneCounty <- function(county1, county.dt, county.pop, quick.test) {
     if (county1 == "Los Angeles") {
       inputs$internal.args$adapt_delta <- 0.8
       inputs$internal.args$warmup <- round(inputs$internal.args$iter * 0.75) #takes longer to converge
-    } else if (county1 %in% c("Yolo", "Yuba")) {
+    } else if (county1 %in% c("Yolo", "Yuba", "Mendocino", "Nevada", "El Dorado", "Tuolumne")) {
       inputs$internal.args$simulation.start.date <- as.Date("2020/5/30") #infections went to near zero - restart sim
       inputs$internal.args$iter <- 3000
       inputs$interventions <- inputs$interventions[mu_t_inter >= as.Date("2020/6/1")]
