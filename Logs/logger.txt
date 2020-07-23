@@ -1,123 +1,120 @@
-2020-07-21 20:11:15	[Main thread]	TRACE			Initiating cluster with 3 threads
-2020-07-21 20:11:15	[Thread 1]	TRACE			Thread 1 initiated
-2020-07-21 20:11:15	[Thread 2]	TRACE			Thread 2 initiated
-2020-07-21 20:11:15	[Thread 3]	TRACE			Thread 3 initiated
-2020-07-21 20:25:03	[Thread 2]	WARN	rstan	throw_sampler_warnings	There were 14 divergent transitions after warmup. Increasing adapt_delta above 0.9 may help. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup
-2020-07-21 20:25:03	[Thread 2]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
-2020-07-21 20:32:20	[Thread 2]	INFO			county = Butte
-2020-07-21 20:32:55	[Thread 2]	WARN	rstan	throw_sampler_warnings	There were 36 divergent transitions after warmup. Increasing adapt_delta above 0.9 may help. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup
-2020-07-21 20:32:55	[Thread 2]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
-2020-07-21 20:40:30	[Thread 2]	INFO			county = El Dorado
-2020-07-21 21:03:34	[Thread 1]	WARN	rstan	throw_sampler_warnings	There were 1 divergent transitions after warmup. Increasing adapt_delta above 0.9 may help. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup
-2020-07-21 21:03:34	[Thread 1]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
-2020-07-21 21:09:17	[Thread 3]	WARN	rstan	throw_sampler_warnings	There were 2 divergent transitions after warmup. Increasing adapt_delta above 0.9 may help. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup
-2020-07-21 21:09:17	[Thread 3]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
-2020-07-21 21:10:04	[Thread 1]	INFO			county = Alameda
-2020-07-21 21:21:13	[Thread 3]	INFO			county = Contra Costa
-2020-07-21 21:45:09	[Thread 2]	WARN	rstan	throw_sampler_warnings	There were 13 divergent transitions after warmup. Increasing adapt_delta above 0.9 may help. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup
-2020-07-21 21:45:09	[Thread 2]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
-2020-07-21 21:53:03	[Thread 2]	INFO			county = Fresno
-2020-07-21 21:57:34	[Thread 1]	WARN	rstan	throw_sampler_warnings	There were 24 divergent transitions after warmup. Increasing adapt_delta above 0.9 may help. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup
-2020-07-21 21:57:34	[Thread 1]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
-2020-07-21 22:05:23	[Thread 1]	INFO			county = Imperial
-2020-07-21 22:15:39	[Thread 1]	WARN	rstan	throw_sampler_warnings	There were 176 divergent transitions after warmup. Increasing adapt_delta above 0.9 may help. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup
-2020-07-21 22:15:39	[Thread 1]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
-2020-07-21 22:16:04	[Thread 2]	WARN	rstan	throw_sampler_warnings	There were 4 divergent transitions after warmup. Increasing adapt_delta above 0.9 may help. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup
-2020-07-21 22:16:04	[Thread 2]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
-2020-07-21 22:20:47	[Thread 1]	INFO			county = Lake
-2020-07-21 22:21:20	[Thread 2]	INFO			county = Kings
-2020-07-21 22:28:42	[Thread 3]	WARN	rstan	throw_sampler_warnings	There were 13 divergent transitions after warmup. Increasing adapt_delta above 0.9 may help. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup
-2020-07-21 22:28:42	[Thread 3]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
-2020-07-21 22:37:00	[Thread 3]	INFO			county = Kern
-2020-07-21 22:40:51	[Thread 2]	WARN	rstan	throw_sampler_warnings	There were 22 divergent transitions after warmup. Increasing adapt_delta above 0.9 may help. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup
-2020-07-21 22:40:51	[Thread 2]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
-2020-07-21 22:48:34	[Thread 2]	INFO			county = Madera
-2020-07-21 22:49:41	[Thread 2]	WARN	rstan	throw_sampler_warnings	There were 1 divergent transitions after warmup. Increasing adapt_delta above 0.9 may help. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup
-2020-07-21 22:49:41	[Thread 2]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
-2020-07-21 22:56:06	[Thread 3]	WARN	rstan	throw_sampler_warnings	There were 97 divergent transitions after warmup. Increasing adapt_delta above 0.9 may help. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup
-2020-07-21 22:56:06	[Thread 3]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
-2020-07-21 22:56:17	[Thread 2]	INFO			county = Mendocino
-2020-07-21 23:03:57	[Thread 3]	INFO			county = Marin
-2020-07-21 23:18:53	[Thread 2]	WARN	rstan	throw_sampler_warnings	There were 11 divergent transitions after warmup. Increasing adapt_delta above 0.9 may help. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup
-2020-07-21 23:18:53	[Thread 2]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
-2020-07-21 23:26:26	[Thread 2]	INFO			county = Merced
-2020-07-21 23:35:56	[Thread 3]	INFO			county = Monterey
-2020-07-21 23:36:24	[Thread 3]	WARN	rstan	throw_sampler_warnings	There were 157 divergent transitions after warmup. Increasing adapt_delta above 0.9 may help. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup
-2020-07-21 23:36:24	[Thread 3]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
-2020-07-21 23:40:05	[Thread 2]	WARN	rstan	throw_sampler_warnings	There were 29 divergent transitions after warmup. Increasing adapt_delta above 0.9 may help. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup
-2020-07-21 23:40:05	[Thread 2]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
-2020-07-21 23:42:34	[Thread 3]	INFO			county = Nevada
-2020-07-21 23:46:51	[Thread 2]	INFO			county = Napa
-2020-07-22 00:08:10	[Thread 2]	WARN	rstan	throw_sampler_warnings	There were 38 divergent transitions after warmup. Increasing adapt_delta above 0.9 may help. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup
-2020-07-22 00:08:10	[Thread 2]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
-2020-07-22 00:14:03	[Thread 2]	INFO			county = Placer
-2020-07-22 00:45:21	[Thread 1]	WARN	rstan	throw_sampler_warnings	Bulk Effective Samples Size (ESS) is too low, indicating posterior means and medians may be unreliable. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#bulk-ess
-2020-07-22 00:45:29	[Thread 1]	WARN	rstan	throw_sampler_warnings	Tail Effective Samples Size (ESS) is too low, indicating posterior variances and tail quantiles may be unreliable. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#tail-ess
-2020-07-22 00:49:10	[Thread 1]	INFO			county = Los Angeles
-2020-07-22 01:11:55	[Thread 3]	WARN	rstan	throw_sampler_warnings	There were 8 divergent transitions after warmup. Increasing adapt_delta above 0.9 may help. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup
-2020-07-22 01:11:55	[Thread 3]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
-2020-07-22 01:19:53	[Thread 3]	INFO			county = Orange
-2020-07-22 01:48:00	[Thread 1]	WARN	rstan	throw_sampler_warnings	There were 2 divergent transitions after warmup. Increasing adapt_delta above 0.9 may help. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup
-2020-07-22 01:48:00	[Thread 1]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
-2020-07-22 01:49:54	[Thread 2]	WARN	rstan	throw_sampler_warnings	There were 12 divergent transitions after warmup. Increasing adapt_delta above 0.95 may help. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup
-2020-07-22 01:49:54	[Thread 2]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
-2020-07-22 01:54:18	[Thread 1]	INFO			county = Sacramento
-2020-07-22 01:57:20	[Thread 2]	INFO			county = Riverside
-2020-07-22 02:16:25	[Thread 2]	WARN	rstan	throw_sampler_warnings	There were 5 divergent transitions after warmup. Increasing adapt_delta above 0.9 may help. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup
-2020-07-22 02:16:25	[Thread 2]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
-2020-07-22 02:22:04	[Thread 2]	INFO			county = San Francisco
-2020-07-22 03:24:18	[Thread 2]	WARN	rstan	throw_sampler_warnings	There were 7 divergent transitions after warmup. Increasing adapt_delta above 0.9 may help. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup
-2020-07-22 03:24:18	[Thread 2]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
-2020-07-22 03:26:14	[Thread 1]	WARN	rstan	throw_sampler_warnings	There were 2 divergent transitions after warmup. Increasing adapt_delta above 0.9 may help. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup
-2020-07-22 03:26:14	[Thread 1]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
-2020-07-22 03:27:53	[Thread 3]	WARN	rstan	throw_sampler_warnings	There were 2 divergent transitions after warmup. Increasing adapt_delta above 0.9 may help. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup
-2020-07-22 03:27:53	[Thread 3]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
-2020-07-22 03:29:21	[Thread 2]	INFO			county = San Joaquin
-2020-07-22 03:32:14	[Thread 1]	INFO			county = San Diego
-2020-07-22 03:35:23	[Thread 3]	INFO			county = San Bernardino
-2020-07-22 03:40:16	[Thread 2]	WARN	rstan	throw_sampler_warnings	There were 27 divergent transitions after warmup. Increasing adapt_delta above 0.9 may help. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup
-2020-07-22 03:40:16	[Thread 2]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
-2020-07-22 03:48:30	[Thread 2]	INFO			county = San Luis Obispo
-2020-07-22 04:10:30	[Thread 1]	WARN	rstan	throw_sampler_warnings	There were 4 divergent transitions after warmup. Increasing adapt_delta above 0.9 may help. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup
-2020-07-22 04:10:30	[Thread 1]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
-2020-07-22 04:15:29	[Thread 3]	WARN	rstan	throw_sampler_warnings	There were 8 divergent transitions after warmup. Increasing adapt_delta above 0.9 may help. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup
-2020-07-22 04:15:29	[Thread 3]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
-2020-07-22 04:17:13	[Thread 1]	INFO			county = San Mateo
-2020-07-22 04:23:02	[Thread 3]	INFO			county = Santa Barbara
-2020-07-22 04:33:14	[Thread 1]	WARN	rstan	throw_sampler_warnings	There were 106 divergent transitions after warmup. Increasing adapt_delta above 0.9 may help. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup
-2020-07-22 04:33:14	[Thread 1]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
-2020-07-22 04:33:36	[Thread 3]	WARN	rstan	throw_sampler_warnings	There were 42 divergent transitions after warmup. Increasing adapt_delta above 0.9 may help. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup
-2020-07-22 04:33:36	[Thread 3]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
-2020-07-22 04:34:32	[Thread 2]	WARN	rstan	throw_sampler_warnings	There were 14 divergent transitions after warmup. Increasing adapt_delta above 0.9 may help. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup
-2020-07-22 04:34:32	[Thread 2]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
-2020-07-22 04:40:10	[Thread 3]	INFO			county = Shasta
-2020-07-22 04:42:12	[Thread 2]	INFO			county = Santa Clara
-2020-07-22 04:45:07	[Thread 1]	INFO			county = Santa Cruz
-2020-07-22 05:04:37	[Thread 2]	WARN	rstan	throw_sampler_warnings	There were 1 divergent transitions after warmup. Increasing adapt_delta above 0.9 may help. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup
-2020-07-22 05:04:37	[Thread 2]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
-2020-07-22 05:06:59	[Thread 3]	WARN	rstan	throw_sampler_warnings	There were 1 divergent transitions after warmup. Increasing adapt_delta above 0.9 may help. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup
-2020-07-22 05:06:59	[Thread 3]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
-2020-07-22 05:11:10	[Thread 2]	INFO			county = Sonoma
-2020-07-22 05:14:40	[Thread 3]	INFO			county = Solano
-2020-07-22 05:15:22	[Thread 3]	WARN	rstan	throw_sampler_warnings	There were 195 divergent transitions after warmup. Increasing adapt_delta above 0.9 may help. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup
-2020-07-22 05:15:22	[Thread 3]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
-2020-07-22 05:23:06	[Thread 3]	INFO			county = Tuolumne
-2020-07-22 05:47:49	[Thread 1]	WARN	rstan	throw_sampler_warnings	There were 2 divergent transitions after warmup. Increasing adapt_delta above 0.9 may help. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup
-2020-07-22 05:47:49	[Thread 1]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
-2020-07-22 05:55:11	[Thread 2]	WARN	rstan	throw_sampler_warnings	There were 20 divergent transitions after warmup. Increasing adapt_delta above 0.9 may help. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup
-2020-07-22 05:55:11	[Thread 2]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
-2020-07-22 05:55:38	[Thread 1]	INFO			county = Stanislaus
-2020-07-22 05:56:28	[Thread 1]	WARN	rstan	throw_sampler_warnings	There were 3 divergent transitions after warmup. Increasing adapt_delta above 0.9 may help. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup
-2020-07-22 05:56:29	[Thread 1]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
-2020-07-22 06:00:45	[Thread 3]	WARN	rstan	throw_sampler_warnings	There were 25 divergent transitions after warmup. Increasing adapt_delta above 0.9 may help. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup
-2020-07-22 06:00:45	[Thread 3]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
-2020-07-22 06:01:02	[Thread 2]	INFO			county = Tulare
-2020-07-22 06:01:50	[Thread 2]	WARN	rstan	throw_sampler_warnings	There were 5 divergent transitions after warmup. Increasing adapt_delta above 0.9 may help. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup
-2020-07-22 06:01:50	[Thread 2]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
-2020-07-22 06:02:01	[Thread 1]	INFO			county = Yolo
-2020-07-22 06:06:20	[Thread 3]	INFO			county = Ventura
-2020-07-22 06:06:46	[Thread 2]	INFO			county = Yuba
-2020-07-22 06:06:46	[Thread 3]	TRACE			Thread 3 terminated
-2020-07-22 06:06:46	[Thread 2]	TRACE			Thread 2 terminated
-2020-07-22 06:06:46	[Main thread]	TRACE			Stopping cluster
-2020-07-22 06:06:47	[Thread 1]	TRACE			Thread 1 terminated
+2020-07-22 19:57:41	[Main thread]	TRACE			Initiating cluster with 3 threads
+2020-07-22 19:57:41	[Thread 2]	TRACE			Thread 2 initiated
+2020-07-22 19:57:41	[Thread 3]	TRACE			Thread 3 initiated
+2020-07-22 19:57:41	[Thread 1]	TRACE			Thread 1 initiated
+2020-07-22 20:16:58	[Thread 2]	WARN	rstan	throw_sampler_warnings	There were 24 divergent transitions after warmup. Increasing adapt_delta above 0.9 may help. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup
+2020-07-22 20:16:58	[Thread 2]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
+2020-07-22 20:25:11	[Thread 2]	INFO			county = Butte
+2020-07-22 20:25:51	[Thread 2]	WARN	rstan	throw_sampler_warnings	There were 10 divergent transitions after warmup. Increasing adapt_delta above 0.9 may help. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup
+2020-07-22 20:25:51	[Thread 2]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
+2020-07-22 20:34:28	[Thread 2]	INFO			county = El Dorado
+2020-07-22 21:09:40	[Thread 3]	WARN	rstan	throw_sampler_warnings	There were 7 divergent transitions after warmup. Increasing adapt_delta above 0.9 may help. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup
+2020-07-22 21:09:40	[Thread 3]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
+2020-07-22 21:12:29	[Thread 1]	INFO			county = Alameda
+2020-07-22 21:22:05	[Thread 3]	INFO			county = Contra Costa
+2020-07-22 21:55:00	[Thread 2]	WARN	rstan	throw_sampler_warnings	There were 4 divergent transitions after warmup. Increasing adapt_delta above 0.9 may help. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup
+2020-07-22 21:55:00	[Thread 2]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
+2020-07-22 22:07:28	[Thread 2]	INFO			county = Fresno
+2020-07-22 22:12:39	[Thread 1]	WARN	rstan	throw_sampler_warnings	There were 124 divergent transitions after warmup. Increasing adapt_delta above 0.9 may help. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup
+2020-07-22 22:12:39	[Thread 1]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
+2020-07-22 22:20:46	[Thread 1]	INFO			county = Imperial
+2020-07-22 22:29:02	[Thread 1]	WARN	rstan	throw_sampler_warnings	There were 388 divergent transitions after warmup. Increasing adapt_delta above 0.9 may help. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup
+2020-07-22 22:29:02	[Thread 1]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
+2020-07-22 22:30:06	[Thread 2]	WARN	rstan	throw_sampler_warnings	There were 17 divergent transitions after warmup. Increasing adapt_delta above 0.9 may help. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup
+2020-07-22 22:30:06	[Thread 2]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
+2020-07-22 22:30:51	[Thread 3]	WARN	rstan	throw_sampler_warnings	There were 1 divergent transitions after warmup. Increasing adapt_delta above 0.9 may help. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup
+2020-07-22 22:30:51	[Thread 3]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
+2020-07-22 22:35:24	[Thread 1]	INFO			county = Lake
+2020-07-22 22:36:55	[Thread 2]	INFO			county = Kings
+2020-07-22 22:39:34	[Thread 3]	INFO			county = Kern
+2020-07-22 23:03:42	[Thread 2]	WARN	rstan	throw_sampler_warnings	There were 5 divergent transitions after warmup. Increasing adapt_delta above 0.9 may help. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup
+2020-07-22 23:03:42	[Thread 2]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
+2020-07-22 23:07:25	[Thread 3]	WARN	rstan	throw_sampler_warnings	There were 9 divergent transitions after warmup. Increasing adapt_delta above 0.9 may help. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup
+2020-07-22 23:07:25	[Thread 3]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
+2020-07-22 23:11:11	[Thread 2]	INFO			county = Madera
+2020-07-22 23:12:06	[Thread 2]	WARN	rstan	throw_sampler_warnings	There were 2 divergent transitions after warmup. Increasing adapt_delta above 0.9 may help. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup
+2020-07-22 23:12:06	[Thread 2]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
+2020-07-22 23:14:26	[Thread 3]	INFO			county = Marin
+2020-07-22 23:19:28	[Thread 2]	INFO			county = Mendocino
+2020-07-22 23:45:58	[Thread 2]	WARN	rstan	throw_sampler_warnings	There were 4 divergent transitions after warmup. Increasing adapt_delta above 0.9 may help. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup
+2020-07-22 23:45:58	[Thread 2]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
+2020-07-22 23:46:58	[Thread 3]	INFO			county = Merced
+2020-07-22 23:53:59	[Thread 2]	INFO			county = Monterey
+2020-07-22 23:54:29	[Thread 2]	WARN	rstan	throw_sampler_warnings	There were 173 divergent transitions after warmup. Increasing adapt_delta above 0.9 may help. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup
+2020-07-22 23:54:29	[Thread 2]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
+2020-07-23 00:01:15	[Thread 3]	WARN	rstan	throw_sampler_warnings	There were 6 divergent transitions after warmup. Increasing adapt_delta above 0.9 may help. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup
+2020-07-23 00:01:15	[Thread 3]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
+2020-07-23 00:01:46	[Thread 2]	INFO			county = Nevada
+2020-07-23 00:09:19	[Thread 3]	INFO			county = Napa
+2020-07-23 00:34:45	[Thread 3]	WARN	rstan	throw_sampler_warnings	There were 10 divergent transitions after warmup. Increasing adapt_delta above 0.9 may help. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup
+2020-07-23 00:34:45	[Thread 3]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
+2020-07-23 00:41:07	[Thread 3]	INFO			county = Placer
+2020-07-23 01:18:27	[Thread 1]	WARN	rstan	throw_sampler_warnings	There were 1 divergent transitions after warmup. Increasing adapt_delta above 0.8 may help. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup
+2020-07-23 01:18:27	[Thread 1]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
+2020-07-23 01:18:57	[Thread 1]	WARN	rstan	throw_sampler_warnings	Bulk Effective Samples Size (ESS) is too low, indicating posterior means and medians may be unreliable. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#bulk-ess
+2020-07-23 01:19:08	[Thread 1]	WARN	rstan	throw_sampler_warnings	Tail Effective Samples Size (ESS) is too low, indicating posterior variances and tail quantiles may be unreliable. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#tail-ess
+2020-07-23 01:22:47	[Thread 1]	INFO			county = Los Angeles
+2020-07-23 02:03:29	[Thread 2]	WARN	rstan	throw_sampler_warnings	There were 6 divergent transitions after warmup. Increasing adapt_delta above 0.9 may help. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup
+2020-07-23 02:03:29	[Thread 2]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
+2020-07-23 02:10:21	[Thread 2]	INFO			county = Orange
+2020-07-23 02:10:24	[Thread 3]	WARN	rstan	throw_sampler_warnings	There were 13 divergent transitions after warmup. Increasing adapt_delta above 0.95 may help. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup
+2020-07-23 02:10:24	[Thread 3]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
+2020-07-23 02:16:43	[Thread 3]	INFO			county = Riverside
+2020-07-23 02:31:40	[Thread 1]	WARN	rstan	throw_sampler_warnings	There were 2 divergent transitions after warmup. Increasing adapt_delta above 0.9 may help. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup
+2020-07-23 02:31:40	[Thread 1]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
+2020-07-23 02:32:12	[Thread 1]	WARN	rstan	throw_sampler_warnings	Tail Effective Samples Size (ESS) is too low, indicating posterior variances and tail quantiles may be unreliable. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#tail-ess
+2020-07-23 02:40:38	[Thread 1]	INFO			county = Sacramento
+2020-07-23 03:01:14	[Thread 1]	WARN	rstan	throw_sampler_warnings	There were 5 divergent transitions after warmup. Increasing adapt_delta above 0.9 may help. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup
+2020-07-23 03:01:14	[Thread 1]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
+2020-07-23 03:06:57	[Thread 1]	INFO			county = San Francisco
+2020-07-23 04:06:00	[Thread 3]	WARN	rstan	throw_sampler_warnings	There were 7 divergent transitions after warmup. Increasing adapt_delta above 0.9 may help. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup
+2020-07-23 04:06:00	[Thread 3]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
+2020-07-23 04:12:23	[Thread 3]	INFO			county = San Diego
+2020-07-23 04:22:17	[Thread 3]	WARN	rstan	throw_sampler_warnings	There were 3 divergent transitions after warmup. Increasing adapt_delta above 0.9 may help. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup
+2020-07-23 04:22:17	[Thread 3]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
+2020-07-23 04:26:55	[Thread 3]	INFO			county = San Luis Obispo
+2020-07-23 04:29:48	[Thread 1]	INFO			county = San Joaquin
+2020-07-23 04:58:44	[Thread 3]	WARN	rstan	throw_sampler_warnings	There were 5 divergent transitions after warmup. Increasing adapt_delta above 0.9 may help. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup
+2020-07-23 04:58:44	[Thread 3]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
+2020-07-23 05:00:19	[Thread 1]	WARN	rstan	throw_sampler_warnings	There were 13 divergent transitions after warmup. Increasing adapt_delta above 0.9 may help. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup
+2020-07-23 05:00:19	[Thread 1]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
+2020-07-23 05:03:47	[Thread 3]	INFO			county = San Mateo
+2020-07-23 05:05:50	[Thread 1]	INFO			county = Santa Barbara
+2020-07-23 05:26:24	[Thread 1]	WARN	rstan	throw_sampler_warnings	There were 169 divergent transitions after warmup. Increasing adapt_delta above 0.9 may help. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup
+2020-07-23 05:26:24	[Thread 1]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
+2020-07-23 05:31:09	[Thread 2]	WARN	rstan	throw_sampler_warnings	There were 3 divergent transitions after warmup. Increasing adapt_delta above 0.9 may help. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup
+2020-07-23 05:31:09	[Thread 2]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
+2020-07-23 05:37:30	[Thread 1]	INFO			county = Santa Cruz
+2020-07-23 05:39:15	[Thread 2]	INFO			county = San Bernardino
+2020-07-23 05:41:12	[Thread 3]	WARN	rstan	throw_sampler_warnings	There were 1 divergent transitions after warmup. Increasing adapt_delta above 0.9 may help. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup
+2020-07-23 05:41:12	[Thread 3]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
+2020-07-23 05:47:24	[Thread 1]	WARN	rstan	throw_sampler_warnings	There were 50 divergent transitions after warmup. Increasing adapt_delta above 0.9 may help. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup
+2020-07-23 05:47:24	[Thread 1]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
+2020-07-23 05:49:14	[Thread 3]	INFO			county = Santa Clara
+2020-07-23 05:56:14	[Thread 1]	INFO			county = Shasta
+2020-07-23 06:02:22	[Thread 2]	WARN	rstan	throw_sampler_warnings	There were 25 divergent transitions after warmup. Increasing adapt_delta above 0.9 may help. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup
+2020-07-23 06:02:22	[Thread 2]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
+2020-07-23 06:10:24	[Thread 3]	WARN	rstan	throw_sampler_warnings	There were 3 divergent transitions after warmup. Increasing adapt_delta above 0.9 may help. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup
+2020-07-23 06:10:24	[Thread 3]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
+2020-07-23 06:10:46	[Thread 2]	INFO			county = Solano
+2020-07-23 06:18:55	[Thread 3]	INFO			county = Sonoma
+2020-07-23 06:19:42	[Thread 3]	WARN	rstan	throw_sampler_warnings	There were 725 divergent transitions after warmup. Increasing adapt_delta above 0.9 may help. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup
+2020-07-23 06:19:42	[Thread 3]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
+2020-07-23 06:27:42	[Thread 3]	INFO			county = Tuolumne
+2020-07-23 06:57:39	[Thread 2]	WARN	rstan	throw_sampler_warnings	There were 12 divergent transitions after warmup. Increasing adapt_delta above 0.9 may help. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup
+2020-07-23 06:57:39	[Thread 2]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
+2020-07-23 07:04:40	[Thread 2]	INFO			county = Tulare
+2020-07-23 07:10:33	[Thread 3]	WARN	rstan	throw_sampler_warnings	There were 4 divergent transitions after warmup. Increasing adapt_delta above 0.9 may help. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup
+2020-07-23 07:10:33	[Thread 3]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
+2020-07-23 07:10:45	[Thread 2]	INFO			county = Yolo
+2020-07-23 07:11:28	[Thread 2]	WARN	rstan	throw_sampler_warnings	There were 8 divergent transitions after warmup. Increasing adapt_delta above 0.9 may help. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup
+2020-07-23 07:11:28	[Thread 2]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
+2020-07-23 07:11:33	[Thread 1]	WARN	rstan	throw_sampler_warnings	There were 10 divergent transitions after warmup. Increasing adapt_delta above 0.9 may help. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup
+2020-07-23 07:11:33	[Thread 1]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
+2020-07-23 07:18:59	[Thread 3]	INFO			county = Ventura
+2020-07-23 07:19:59	[Thread 2]	INFO			county = Yuba
+2020-07-23 07:20:44	[Thread 1]	INFO			county = Stanislaus
+2020-07-23 07:20:44	[Thread 1]	TRACE			Thread 1 terminated
+2020-07-23 07:20:44	[Thread 3]	TRACE			Thread 3 terminated
+2020-07-23 07:20:44	[Thread 2]	TRACE			Thread 2 terminated
+2020-07-23 07:20:44	[Main thread]	TRACE			Stopping cluster
