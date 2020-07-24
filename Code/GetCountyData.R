@@ -18,6 +18,7 @@ GetCountyData <- function(exclude.set) {
   county.dt[county == 'Contra Costa' & date == '2020-05-10', deaths.conf := NA_real_]
   county.dt[county == 'Los Angeles' & date == '2020-03-25', deaths.conf := NA_real_]
   county.dt[county == 'Orange' & date == '2020-04-10', deaths.conf := NA_real_]
+  county.dt[county == 'Orange' & date == '2020-07-19', deaths.conf := NA_real_]
   county.dt[county == 'Sacramento' & date == '2020-03-21', deaths.conf := NA_real_]
   county.dt[county == 'Sacramento' & date == '2020-06-17', deaths.conf := NA_real_]
   county.dt[county == 'Sacramento' & date == '2020-06-18', deaths.conf := NA_real_]
