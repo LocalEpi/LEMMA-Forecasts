@@ -3,13 +3,13 @@ library(ParallelLogger)
 
 source('Code/GetCountyData.R')
 
-quick.test <- F
+quick.test <- T
 if (quick.test) {
   cat("\n\n++++++++++++++++++  quick.test = T +++++++++++++++++ \n\n")
 }
 
 exclude.set <- c("Amador", "San Benito", "Siskiyou") #not enough data to fit
-not.updating <- c("Los Angeles", "San Bernadino", "San Diego", "Kern", "Stanislaus", "Sonoma")
+not.updating <- c( "San Diego", "Kern", "Stanislaus", "Sonoma")
 exclude.set <- c(exclude.set, not.updating)
 
 RunOneCounty <- function(county1, county.dt, county.pop, quick.test) {
@@ -67,9 +67,8 @@ RunOneCounty <- function(county1, county.dt, county.pop, quick.test) {
       inputs$model.inputs$start.display.date <- as.Date("2020/6/1")
       inputs$internal.args$inital.deaths <- inital.deaths
     } else if (county1 %in% c("Contra Costa", "Santa Cruz")) {
-      inputs$internal.args$warmup <- round(inputs$internal.args$iter * 0.75) #takes longer to converge
-      inputs$internal.args$iter <- 3000
-    } else if (county1 == "Riverside") {
+      inputs$internal.args$iter <- 2400
+    } else if (county1 %in% c("Riverside", "San Joaquin")) {
       inputs$internal.args$iter <- 2000
       inputs$internal.args$max_treedepth <- 15
       inputs$internal.args$adapt_delta <- 0.95
@@ -79,10 +78,10 @@ RunOneCounty <- function(county1, county.dt, county.pop, quick.test) {
     inputs$internal.args$lambda_ini_exposed <- 1 / mean.ini
 
     if (quick.test) {
-      inputs$internal.args$warmup <- NA
-      inputs$internal.args$iter <- 300
-      inputs$internal.args$max_treedepth <- 10
-      inputs$internal.args$adapt_delta <- 0.8
+      # inputs$internal.args$warmup <- NA
+      # inputs$internal.args$iter <- 300
+      # inputs$internal.args$max_treedepth <- 10
+      # inputs$internal.args$adapt_delta <- 0.8
     }
     cred.int <- LEMMA:::CredibilityInterval(inputs)
   }
@@ -121,7 +120,7 @@ RunOneCounty <- function(county1, county.dt, county.pop, quick.test) {
 county.dt <- GetCountyData(exclude.set)
 county.set <- unique(county.dt$county)
 
-if (quick.test) county.set <- c("Riverside")
+if (quick.test) county.set <- c("San Joaquin")
 
 county.pop <- fread("Inputs/county population.csv")
 
