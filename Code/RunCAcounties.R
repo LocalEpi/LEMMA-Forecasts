@@ -3,13 +3,13 @@ library(ParallelLogger)
 
 source('Code/GetCountyData.R')
 
-quick.test <- T
+quick.test <- F
 if (quick.test) {
   cat("\n\n++++++++++++++++++  quick.test = T +++++++++++++++++ \n\n")
 }
 
 exclude.set <- c("Amador", "San Benito", "Siskiyou") #not enough data to fit
-not.updating <- c( "San Diego", "Kern", "Stanislaus", "Sonoma")
+not.updating <- c("Los Angeles", "San Bernadino", "San Diego", "Fresno", "Stanislaus","Alameda","Sonoma", "Santa Cruz")
 exclude.set <- c(exclude.set, not.updating)
 
 RunOneCounty <- function(county1, county.dt, county.pop, quick.test) {
