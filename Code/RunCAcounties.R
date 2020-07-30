@@ -9,7 +9,7 @@ if (quick.test) {
 }
 
 exclude.set <- c("Amador", "San Benito", "Siskiyou") #not enough data to fit
-not.updating <- c("Los Angeles", "San Bernadino", "San Diego", "Fresno", "Stanislaus","Alameda","Sonoma", "Santa Cruz")
+not.updating <- c("San Bernardino", "San Diego")
 exclude.set <- c(exclude.set, not.updating)
 
 RunOneCounty <- function(county1, county.dt, county.pop, quick.test) {
@@ -120,7 +120,7 @@ RunOneCounty <- function(county1, county.dt, county.pop, quick.test) {
 county.dt <- GetCountyData(exclude.set)
 county.set <- unique(county.dt$county)
 
-if (quick.test) county.set <- c("San Joaquin")
+if (quick.test) county.set <- c("Alameda")
 
 county.pop <- fread("Inputs/county population.csv")
 
