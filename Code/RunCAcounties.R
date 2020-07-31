@@ -9,7 +9,7 @@ if (quick.test) {
 }
 
 exclude.set <- c("Amador", "San Benito", "Siskiyou") #not enough data to fit
-not.updating <- c("San Bernardino", "San Diego")
+not.updating <- c("Riverside", "San Diego")
 exclude.set <- c(exclude.set, not.updating)
 
 RunOneCounty <- function(county1, county.dt, county.pop, quick.test) {
@@ -66,7 +66,7 @@ RunOneCounty <- function(county1, county.dt, county.pop, quick.test) {
       inputs$interventions <- inputs$interventions[mu_t_inter >= as.Date("2020/6/1")]
       inputs$model.inputs$start.display.date <- as.Date("2020/6/1")
       inputs$internal.args$inital.deaths <- inital.deaths
-    } else if (county1 %in% c("Contra Costa", "Santa Cruz")) {
+    } else if (county1 %in% c("San Bernardino", "Contra Costa", "Santa Cruz")) {
       inputs$internal.args$iter <- 2400
     } else if (county1 %in% c("Riverside", "San Joaquin")) {
       inputs$internal.args$iter <- 2000
