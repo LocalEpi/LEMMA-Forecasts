@@ -9,10 +9,11 @@ if (quick.test) {
 }
 
 exclude.set <- c("Amador", "San Benito", "Siskiyou") #not enough data to fit
-not.updating <- c("Riverside", "San Diego")
+not.updating <- c("San Diego", "Contra Costa")
 exclude.set <- c(exclude.set, not.updating)
 
 RunOneCounty <- function(county1, county.dt, county.pop, quick.test) {
+  restart.set <- c("Mono", "Yolo", "Yuba", "Mendocino", "Nevada", "El Dorado", "Tuolumne") #infections went to near zero - restart sim
   sink.file <- paste0("Logs/progress-", county1, ".txt")
   sink(sink.file)
   cat("county = ", county1, "\n")
@@ -46,7 +47,7 @@ RunOneCounty <- function(county1, county.dt, county.pop, quick.test) {
     } else if (county1 == "San Mateo") {
       sheets$Interventions[7, mu_beta_inter := 1] #very recent increase
       sheets$Interventions[8, mu_beta_inter := 1.5]
-    } else if (county1 %in% c("Yolo", "Yuba", "Mendocino", "Nevada", "El Dorado", "Tuolumne")) {
+    } else if (county1 %in% restart.set) {
       sheets$`Parameters with Distributions`[1, Mean := 1] #R0 = 1
       inital.deaths <- county.dt1[date == as.Date("2020/5/30"), deaths.conf]
       county.dt1 <- county.dt1[date >= as.Date("2020/6/1")] #infections went to near zero - restart sim
@@ -60,13 +61,13 @@ RunOneCounty <- function(county1, county.dt, county.pop, quick.test) {
     if (county1 == "Los Angeles") {
       inputs$internal.args$adapt_delta <- 0.8
       inputs$internal.args$warmup <- round(inputs$internal.args$iter * 0.75) #takes longer to converge
-    } else if (county1 %in% c("Yolo", "Yuba", "Mendocino", "Nevada", "El Dorado", "Tuolumne")) {
+    } else if (county1 %in% restart.set) {
       inputs$internal.args$simulation.start.date <- as.Date("2020/5/30") #infections went to near zero - restart sim
       inputs$internal.args$iter <- 3000
       inputs$interventions <- inputs$interventions[mu_t_inter >= as.Date("2020/6/1")]
       inputs$model.inputs$start.display.date <- as.Date("2020/6/1")
       inputs$internal.args$inital.deaths <- inital.deaths
-    } else if (county1 %in% c("San Bernardino", "Contra Costa", "Santa Cruz")) {
+    } else if (county1 %in% c("Contra Costa", "Santa Cruz")) {
       inputs$internal.args$iter <- 2400
     } else if (county1 %in% c("Riverside", "San Joaquin")) {
       inputs$internal.args$iter <- 2000

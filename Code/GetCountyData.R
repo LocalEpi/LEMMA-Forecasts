@@ -26,6 +26,7 @@ GetCountyData <- function(exclude.set) {
   county.dt[county == 'Sacramento' & date == '2020-06-20', deaths.conf := NA_real_]
   county.dt[county == 'Sacramento' & date == '2020-06-21', deaths.conf := NA_real_]
   county.dt[county == 'San Bernardino' & date == '2020-04-10', deaths.conf := NA_real_]
+  county.dt[county == 'San Bernardino' & date == '2020-07-30', deaths.conf := NA_real_]
   county.dt[county == 'San Francisco' & date == '2020-03-26', deaths.conf := NA_real_]
   county.dt[county == 'San Mateo' & date == '2020-03-30', deaths.conf := NA_real_]
   county.dt[county == 'San Mateo' & date == '2020-04-10', deaths.conf := NA_real_]
