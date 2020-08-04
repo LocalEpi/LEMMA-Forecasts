@@ -8,12 +8,12 @@ if (quick.test) {
   cat("\n\n++++++++++++++++++  quick.test = T +++++++++++++++++ \n\n")
 }
 
-exclude.set <- c("Amador", "San Benito", "Siskiyou") #not enough data to fit
-not.updating <- c("San Diego", "Contra Costa")
+exclude.set <- c("San Benito", "Siskiyou") #not enough data to fit
+not.updating <- c("Los Angeles", "Stanislaus", "San Joaquin", "Alameda", "Santa Cruz", "Mono")
 exclude.set <- c(exclude.set, not.updating)
 
 RunOneCounty <- function(county1, county.dt, county.pop, quick.test) {
-  restart.set <- c("Mono", "Yolo", "Yuba", "Mendocino", "Nevada", "El Dorado", "Tuolumne") #infections went to near zero - restart sim
+  restart.set <- c("Mono", "Yolo", "Yuba", "Mendocino", "Nevada", "El Dorado", "Tuolumne", "Amador") #infections went to near zero - restart sim
   sink.file <- paste0("Logs/progress-", county1, ".txt")
   sink(sink.file)
   cat("county = ", county1, "\n")
@@ -58,7 +58,7 @@ RunOneCounty <- function(county1, county.dt, county.pop, quick.test) {
     inputs <- LEMMA:::ProcessSheets(sheets, input.file)
 
     inputs$internal.args$warmup <- NA #defaults to iter/2
-    if (county1 == "Los Angeles") {
+    if (county1 %in% c("Los Angeles", "San Bernardino")) {
       inputs$internal.args$adapt_delta <- 0.8
       inputs$internal.args$warmup <- round(inputs$internal.args$iter * 0.75) #takes longer to converge
     } else if (county1 %in% restart.set) {
@@ -79,10 +79,10 @@ RunOneCounty <- function(county1, county.dt, county.pop, quick.test) {
     inputs$internal.args$lambda_ini_exposed <- 1 / mean.ini
 
     if (quick.test) {
-      # inputs$internal.args$warmup <- NA
-      # inputs$internal.args$iter <- 300
-      # inputs$internal.args$max_treedepth <- 10
-      # inputs$internal.args$adapt_delta <- 0.8
+      inputs$internal.args$warmup <- NA
+      inputs$internal.args$iter <- 100
+      inputs$internal.args$max_treedepth <- 10
+      inputs$internal.args$adapt_delta <- 0.8
     }
     cred.int <- LEMMA:::CredibilityInterval(inputs)
   }
@@ -121,7 +121,7 @@ RunOneCounty <- function(county1, county.dt, county.pop, quick.test) {
 county.dt <- GetCountyData(exclude.set)
 county.set <- unique(county.dt$county)
 
-if (quick.test) county.set <- c("Alameda")
+if (quick.test) county.set <- c("Yolo")
 
 county.pop <- fread("Inputs/county population.csv")
 
