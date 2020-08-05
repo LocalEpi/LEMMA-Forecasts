@@ -9,7 +9,7 @@ if (quick.test) {
 }
 
 exclude.set <- c("San Benito", "Siskiyou") #not enough data to fit
-not.updating <- c("Los Angeles", "Stanislaus", "San Joaquin", "Alameda", "Santa Cruz", "Mono")
+not.updating <- ""
 exclude.set <- c(exclude.set, not.updating)
 
 RunOneCounty <- function(county1, county.dt, county.pop, quick.test) {
