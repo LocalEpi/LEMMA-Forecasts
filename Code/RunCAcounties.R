@@ -58,7 +58,7 @@ RunOneCounty <- function(county1, county.dt, county.pop, quick.test) {
     inputs <- LEMMA:::ProcessSheets(sheets, input.file)
 
     inputs$internal.args$warmup <- NA #defaults to iter/2
-    if (county1 %in% c("Los Angeles", "San Bernardino")) {
+    if (county1 %in% c("Los Angeles", "San Bernardino", "San Joaquin")) {
       inputs$internal.args$adapt_delta <- 0.8
       inputs$internal.args$warmup <- round(inputs$internal.args$iter * 0.75) #takes longer to converge
     } else if (county1 %in% restart.set) {
@@ -69,7 +69,7 @@ RunOneCounty <- function(county1, county.dt, county.pop, quick.test) {
       inputs$internal.args$inital.deaths <- inital.deaths
     } else if (county1 %in% c("Contra Costa", "Santa Cruz")) {
       inputs$internal.args$iter <- 2400
-    } else if (county1 %in% c("Riverside", "San Joaquin")) {
+    } else if (county1 %in% c("Riverside")) {
       inputs$internal.args$iter <- 2000
       inputs$internal.args$max_treedepth <- 15
       inputs$internal.args$adapt_delta <- 0.95
