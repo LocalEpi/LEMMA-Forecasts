@@ -79,10 +79,10 @@ RunOneCounty <- function(county1, county.dt, county.pop, quick.test) {
     inputs$internal.args$lambda_ini_exposed <- 1 / mean.ini
 
     if (quick.test) {
-      inputs$internal.args$warmup <- NA
-      inputs$internal.args$iter <- 100
-      inputs$internal.args$max_treedepth <- 10
-      inputs$internal.args$adapt_delta <- 0.8
+      # inputs$internal.args$warmup <- NA
+      # inputs$internal.args$iter <- 100
+      # inputs$internal.args$max_treedepth <- 10
+      # inputs$internal.args$adapt_delta <- 0.8
     }
     cred.int <- LEMMA:::CredibilityInterval(inputs)
   }
@@ -121,7 +121,7 @@ RunOneCounty <- function(county1, county.dt, county.pop, quick.test) {
 county.dt <- GetCountyData(exclude.set)
 county.set <- unique(county.dt$county)
 
-if (quick.test) county.set <- c("Yolo")
+if (quick.test) county.set <- c("Tulare", "Stanislaus", "Ventura")
 
 county.pop <- fread("Inputs/county population.csv")
 
