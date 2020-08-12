@@ -3,7 +3,7 @@ library(ParallelLogger)
 
 source('Code/GetCountyData.R')
 
-quick.test <- F
+quick.test <- T
 if (quick.test) {
   cat("\n\n++++++++++++++++++  quick.test = T +++++++++++++++++ \n\n")
 }
@@ -49,7 +49,7 @@ RunOneCounty <- function(county1, county.dt, county.pop, quick.test) {
       sheets$Interventions[8, mu_beta_inter := 1.5]
     } else if (county1 %in% restart.set) {
       sheets$`Parameters with Distributions`[1, Mean := 1] #R0 = 1
-      inital.deaths <- county.dt1[date == as.Date("2020/5/30"), deaths.conf]
+      initial.deaths <- county.dt1[date == as.Date("2020/5/30"), deaths.conf]
       county.dt1 <- county.dt1[date >= as.Date("2020/6/1")] #infections went to near zero - restart sim
     }
 
@@ -58,22 +58,12 @@ RunOneCounty <- function(county1, county.dt, county.pop, quick.test) {
     inputs <- LEMMA:::ProcessSheets(sheets, input.file)
 
     inputs$internal.args$warmup <- NA #defaults to iter/2
-    if (county1 %in% c("Los Angeles", "San Bernardino", "San Joaquin")) {
-      # inputs$internal.args$adapt_delta <- 0.8
-      # inputs$internal.args$warmup <- round(inputs$internal.args$iter * 0.75) #takes longer to converge
-      # inputs$internal.args$iter <- 2400
-    } else if (county1 %in% restart.set) {
+    if (county1 %in% restart.set) {
       inputs$internal.args$simulation.start.date <- as.Date("2020/5/30") #infections went to near zero - restart sim
       inputs$internal.args$iter <- 3000
       inputs$interventions <- inputs$interventions[mu_t_inter >= as.Date("2020/6/1")]
       inputs$model.inputs$start.display.date <- as.Date("2020/6/1")
-      inputs$internal.args$inital.deaths <- inital.deaths
-    } else if (county1 %in% c("Contra Costa", "Santa Cruz")) {
-      # inputs$internal.args$iter <- 2400
-    } else if (county1 %in% c("Riverside")) {
-      # inputs$internal.args$iter <- 2000
-      # inputs$internal.args$max_treedepth <- 15
-      # inputs$internal.args$adapt_delta <- 0.95
+      inputs$internal.args$initial.deaths <- initial.deaths
     }
     inputs$internal.args$output.filestr <- paste0("Forecasts/", county1)
     mean.ini <- 1e-5 * county.pop1
@@ -122,7 +112,7 @@ RunOneCounty <- function(county1, county.dt, county.pop, quick.test) {
 county.dt <- GetCountyData(exclude.set)
 county.set <- unique(county.dt$county)
 
-if (quick.test) county.set <- c("Tulare", "Stanislaus", "Ventura")
+if (quick.test) county.set <- c("Yolo")
 
 county.pop <- fread("Inputs/county population.csv")
 
