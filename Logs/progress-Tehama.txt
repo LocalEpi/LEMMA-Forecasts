@@ -130,3 +130,72 @@ Chain 3:                372.009 seconds (Sampling)
 Chain 3:                749.42 seconds (Total)
 Chain 3: 
 Chain 4: Iteration: 750 / 1000 [ 75%]  (Sampling)
+Chain 4: Iteration: 800 / 1000 [ 80%]  (Sampling)
+Chain 4: Iteration: 850 / 1000 [ 85%]  (Sampling)
+Chain 4: Iteration: 900 / 1000 [ 90%]  (Sampling)
+Chain 4: Iteration: 950 / 1000 [ 95%]  (Sampling)
+Chain 4: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 4: 
+Chain 4:  Elapsed Time: 584.152 seconds (Warm-up)
+Chain 4:                325.22 seconds (Sampling)
+Chain 4:                909.372 seconds (Total)
+Chain 4: 
+    user   system  elapsed 
+3088.612    1.720  923.332 
+Projecting
+   user  system elapsed 
+188.280   0.332 188.624 
+
+Excel output:  Forecasts/Tehama.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.86 0.95 1.08 1.22 1.35 1.50 1.58 
+
+PDF output:  Forecasts/Tehama.pdf 
+   user  system elapsed 
+350.165   0.252 350.428 
+
+Excel output:  Scenarios/Tehama_scenario_noChange.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.86 0.95 1.08 1.22 1.35 1.50 1.58 
+
+PDF output:  Scenarios/Tehama_scenario_noChange.pdf 
+   user  system elapsed 
+346.196   0.260 346.469 
+
+Excel output:  Scenarios/Tehama_scenario_actToday.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.86 0.95 1.08 1.22 1.35 1.50 1.58 
+
+PDF output:  Scenarios/Tehama_scenario_actToday.pdf 
+   user  system elapsed 
+345.869   0.228 346.105 
+
+Excel output:  Scenarios/Tehama_scenario_actTwoWeeks.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.86 0.95 1.08 1.22 1.35 1.50 1.58 
+
+PDF output:  Scenarios/Tehama_scenario_actTwoWeeks.pdf 
+[[1]]
+[[1]]$hosp
+
+[[1]]$icu
+
+[[1]]$deaths
+
+
+[[2]]
+[[2]]$hosp
+
+[[2]]$icu
+
+[[2]]$deaths
+
+
+[[3]]
+[[3]]$hosp
+
+[[3]]$icu
+
+[[3]]$deaths
+
+
