@@ -1,38 +1,114 @@
 county =  Yolo 
--/                                                                                                         -/                                                                                                         -/                                                                                                         -/                                                                                                         -/                                                                                                         -/                                                                                                         Fitting to observed data
+Fitting to observed data
+
+SAMPLING FOR MODEL 'LEMMA' NOW (CHAIN 1).
+Chain 1: 
+Chain 1: Gradient evaluation took 0.000353 seconds
+Chain 1: 1000 transitions using 10 leapfrog steps per transition would take 3.53 seconds.
+Chain 1: Adjust your expectations accordingly!
+Chain 1: 
+Chain 1: 
+Chain 1: WARNING: No variance estimation is
+Chain 1:          performed for num_warmup < 20
+Chain 1: 
+Chain 1: Iteration: 1 / 10 [ 10%]  (Warmup)
+
+SAMPLING FOR MODEL 'LEMMA' NOW (CHAIN 2).
+
+SAMPLING FOR MODEL 'LEMMA' NOW (CHAIN 3).
+
+SAMPLING FOR MODEL 'LEMMA' NOW (CHAIN 4).
+Chain 1: Iteration: 6 / 10 [ 60%]  (Sampling)
+Chain 1: Iteration: 10 / 10 [100%]  (Sampling)
+Chain 1: 
+Chain 1:  Elapsed Time: 0.00352 seconds (Warm-up)
+Chain 1:                0.002568 seconds (Sampling)
+Chain 1:                0.006088 seconds (Total)
+Chain 1: 
+Chain 2: 
+Chain 2: Gradient evaluation took 0.000549 seconds
+Chain 2: 1000 transitions using 10 leapfrog steps per transition would take 5.49 seconds.
+Chain 2: Adjust your expectations accordingly!
+Chain 2: 
+Chain 2: 
+Chain 2: WARNING: No variance estimation is
+Chain 2:          performed for num_warmup < 20
+Chain 2: 
+Chain 3: 
+Chain 3: Gradient evaluation took 0.000553 seconds
+Chain 3: 1000 transitions using 10 leapfrog steps per transition would take 5.53 seconds.
+Chain 3: Adjust your expectations accordingly!
+Chain 3: 
+Chain 3: 
+Chain 3: WARNING: No variance estimation is
+Chain 3:          performed for num_warmup < 20
+Chain 3: 
+Chain 4: 
+Chain 4: Gradient evaluation took 0.000573 seconds
+Chain 4: 1000 transitions using 10 leapfrog steps per transition would take 5.73 seconds.
+Chain 4: Adjust your expectations accordingly!
+Chain 4: 
+Chain 4: 
+Chain 4: WARNING: No variance estimation is
+Chain 4:          performed for num_warmup < 20
+Chain 4: 
+Chain 2: Iteration: 1 / 10 [ 10%]  (Warmup)
+Chain 3: Iteration: 1 / 10 [ 10%]  (Warmup)
+Chain 4: Iteration: 1 / 10 [ 10%]  (Warmup)
+Chain 2: Iteration: 6 / 10 [ 60%]  (Sampling)
+Chain 3: Iteration: 6 / 10 [ 60%]  (Sampling)
+Chain 4: Iteration: 6 / 10 [ 60%]  (Sampling)
+Chain 2: Iteration: 10 / 10 [100%]  (Sampling)
+Chain 2: 
+Chain 2:  Elapsed Time: 0.004172 seconds (Warm-up)
+Chain 2:                0.004417 seconds (Sampling)
+Chain 2:                0.008589 seconds (Total)
+Chain 2: 
+Chain 3: Iteration: 10 / 10 [100%]  (Sampling)
+Chain 4: Iteration: 10 / 10 [100%]  (Sampling)
+Chain 3: 
+Chain 3:  Elapsed Time: 0.004787 seconds (Warm-up)
+Chain 3:                0.00444 seconds (Sampling)
+Chain 3:                0.009227 seconds (Total)
+Chain 3: 
+Chain 4: 
+Chain 4:  Elapsed Time: 0.004264 seconds (Warm-up)
+Chain 4:                0.004448 seconds (Sampling)
+Chain 4:                0.008712 seconds (Total)
+Chain 4: 
    user  system elapsed 
-  8.958   0.839 206.436 
+  1.615   0.233   1.425 
 Projecting
    user  system elapsed 
- 36.319   1.597  38.047 
+  0.777   0.004   0.781 
 
 Excel output:  Forecasts/Yolo.xlsx 
   5%  10%  25%  50%  75%  90%  95% 
-0.49 0.54 0.63 0.71 0.77 0.84 0.89 
+1.12 1.12 1.12 1.13 1.36 2.04 2.04 
 
 PDF output:  Forecasts/Yolo.pdf 
    user  system elapsed 
- 47.772   1.382  49.284 
+  1.457   0.004   1.461 
 
 Excel output:  Scenarios/Yolo_scenario_noChange.xlsx 
   5%  10%  25%  50%  75%  90%  95% 
-0.49 0.54 0.63 0.71 0.77 0.84 0.89 
+1.12 1.12 1.12 1.13 1.36 2.04 2.04 
 
 PDF output:  Scenarios/Yolo_scenario_noChange.pdf 
    user  system elapsed 
- 48.006   1.261  49.413 
+  1.495   0.000   1.495 
 
 Excel output:  Scenarios/Yolo_scenario_actToday.xlsx 
   5%  10%  25%  50%  75%  90%  95% 
-0.49 0.54 0.63 0.71 0.77 0.84 0.89 
+1.12 1.12 1.12 1.13 1.36 2.04 2.04 
 
 PDF output:  Scenarios/Yolo_scenario_actToday.pdf 
    user  system elapsed 
- 46.828   1.407  48.380 
+  1.433   0.012   1.445 
 
 Excel output:  Scenarios/Yolo_scenario_actTwoWeeks.xlsx 
   5%  10%  25%  50%  75%  90%  95% 
-0.49 0.54 0.63 0.71 0.77 0.84 0.89 
+1.12 1.12 1.12 1.13 1.36 2.04 2.04 
 
 PDF output:  Scenarios/Yolo_scenario_actTwoWeeks.pdf 
 [[1]]
