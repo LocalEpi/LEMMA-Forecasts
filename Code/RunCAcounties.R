@@ -64,6 +64,8 @@ RunOneCounty <- function(county1, county.dt, county.pop, quick.test) {
       inputs$interventions <- inputs$interventions[mu_t_inter >= as.Date("2020/6/1")]
       inputs$model.inputs$start.display.date <- as.Date("2020/6/1")
       inputs$internal.args$initial.deaths <- initial.deaths
+    } else if (county1 %in% c("Kings", "San Joaquin", "Fresno", "Stanislaus")) {
+      inputs$internal.args$iter <- 1500 #needs more iterations to converge
     }
     inputs$internal.args$output.filestr <- paste0("Forecasts/", county1)
     mean.ini <- 1e-5 * county.pop1

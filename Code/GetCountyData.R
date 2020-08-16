@@ -2,7 +2,7 @@ GetCountyData <- function(exclude.set) {
   dt <- fread("https://data.ca.gov/dataset/529ac907-6ba1-4cb7-9aae-8966fc96aeef/resource/42d33765-20fd-44b8-a978-b083b7542225/download/hospitals_by_county.csv")
   #dt <- dt[todays_date != "", .(county, date = as.Date(todays_date), hosp.conf = hospitalized_covid_confirmed_patients, hosp.pui = hospitalized_suspected_covid_patients, icu.conf = icu_covid_confirmed_patients, icu.pui = icu_suspected_covid_patients)]
   dt <- dt[, .(county, date = as.Date(todays_date), hosp.conf = hospitalized_covid_confirmed_patients, hosp.pui = hospitalized_suspected_covid_patients, icu.conf = icu_covid_confirmed_patients, icu.pui = icu_suspected_covid_patients)]
-  
+
   dt <- dt[date >= as.Date("2020/4/1"), .(county, date, hosp.conf, hosp.pui, icu.conf, icu.pui)]
 
   deaths <- fread("https://data.ca.gov/dataset/590188d5-8545-4c93-a9a0-e230f0db7290/resource/926fd08f-cc91-4828-af38-bd45de97f8c3/download/statewide_cases.csv")
@@ -21,6 +21,7 @@ GetCountyData <- function(exclude.set) {
   county.dt[county == 'Los Angeles' & date == '2020-03-25', deaths.conf := NA_real_]
   county.dt[county == 'Orange' & date == '2020-04-10', deaths.conf := NA_real_]
   county.dt[county == 'Orange' & date == '2020-07-19', deaths.conf := NA_real_]
+  county.dt[county == 'Orange' & date == '2020-08-10', deaths.conf := NA_real_]
   county.dt[county == 'Sacramento' & date == '2020-03-21', deaths.conf := NA_real_]
   county.dt[county == 'Sacramento' & date == '2020-06-17', deaths.conf := NA_real_]
   county.dt[county == 'Sacramento' & date == '2020-06-18', deaths.conf := NA_real_]
