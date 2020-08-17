@@ -3,7 +3,7 @@ library(ParallelLogger)
 
 source('Code/GetCountyData.R')
 
-quick.test <- F
+quick.test <- T
 if (quick.test) {
   cat("\n\n++++++++++++++++++  quick.test = T +++++++++++++++++ \n\n")
 }
@@ -72,10 +72,10 @@ RunOneCounty <- function(county1, county.dt, county.pop, quick.test) {
     inputs$internal.args$lambda_ini_exposed <- 1 / mean.ini
 
     if (quick.test) {
-      inputs$internal.args$warmup <- NA
-      inputs$internal.args$iter <- 10
-      inputs$internal.args$max_treedepth <- 10
-      inputs$internal.args$adapt_delta <- 0.8
+      # inputs$internal.args$warmup <- NA
+      # inputs$internal.args$iter <- 10
+      # inputs$internal.args$max_treedepth <- 10
+      # inputs$internal.args$adapt_delta <- 0.8
     }
     cred.int <- LEMMA:::CredibilityInterval(inputs)
   }
@@ -114,7 +114,7 @@ RunOneCounty <- function(county1, county.dt, county.pop, quick.test) {
 county.dt <- GetCountyData(exclude.set)
 county.set <- unique(county.dt$county)
 
-if (quick.test) county.set <- c("Yolo", "Yuba")
+if (quick.test) county.set <- c("Kings", "San Joaquin", "Fresno", "Stanislaus")
 
 county.pop <- fread("Inputs/county population.csv")
 
