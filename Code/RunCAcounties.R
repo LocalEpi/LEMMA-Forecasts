@@ -147,8 +147,12 @@ IsBad <- function(w) {
   if (w %in% c("Bulk Effective Samples Size (ESS) is too low, indicating posterior means and medians may be unreliable. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#bulk-ess",
                "Tail Effective Samples Size (ESS) is too low, indicating posterior variances and tail quantiles may be unreliable. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#tail-ess",
                "Examine the pairs() plot to diagnose sampling problems")) return(F)
-  if (grepl("There were [[:digit:]]+ divergent transitions after warmup. Increasing adapt_delta above", w)) {
+  if (grepl("There were [[:digit:]]+ divergent transitions after warmup.", w)) {
     x <- as.numeric(strsplit(sub("There were ", "", w), split = " divergent")[[1]][1])
+    return(x > 50)
+  }
+  if (grepl("There were [[:digit:]]+ transitions after warmup that exceeded the maximum treedepth.", w)) {
+    x <- as.numeric(strsplit(sub("There were ", "", w), split = " transitions")[[1]][1])
     return(x > 50)
   }
   return(T)
