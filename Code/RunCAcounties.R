@@ -3,7 +3,7 @@ library(ParallelLogger)
 
 source('Code/GetCountyData.R')
 
-quick.test <- T
+quick.test <- F
 if (quick.test) {
   cat("\n\n++++++++++++++++++  quick.test = T +++++++++++++++++ \n\n")
 }
@@ -45,7 +45,7 @@ RunOneCounty <- function(county1, county.dt, county.pop, quick.test) {
       county.dt1[, icu.conf := NA_integer_] #data error in Kings ICU?
       county.dt1[, icu.pui := NA_integer_]
     } else if (county1 == "San Mateo") {
-      sheets$Interventions[7, mu_beta_inter := 1] #very recent increase
+      sheets$Interventions[7, mu_beta_inter := 1] #more recent increase
       sheets$Interventions[8, mu_beta_inter := 1.5]
     } else if (county1 %in% restart.set) {
       sheets$`Parameters with Distributions`[1, Mean := 1] #R0 = 1
@@ -64,7 +64,8 @@ RunOneCounty <- function(county1, county.dt, county.pop, quick.test) {
       inputs$interventions <- inputs$interventions[mu_t_inter >= as.Date("2020/6/1")]
       inputs$model.inputs$start.display.date <- as.Date("2020/6/1")
       inputs$internal.args$initial.deaths <- initial.deaths
-    } else if (county1 %in% c("Kings", "San Joaquin", "Fresno", "Stanislaus")) {
+    } else if (county1 %in% c("Kings", "San Joaquin", "Fresno", "Stanislaus", "Kern", "San Bernardino", "Butte")) {
+      inputs$internal.args$adapt_delta <- 0.95
       inputs$internal.args$iter <- 1500 #needs more iterations to converge
     }
     inputs$internal.args$output.filestr <- paste0("Forecasts/", county1)
@@ -136,3 +137,31 @@ if (F && quick.test) {
 names(county.results) <- county.set
 cat("Data through", as.character(county.dt[, max(date)]), "\n")
 unregisterLogger(1)
+
+dt <- fread("Logs/logger.txt")
+setnames(dt, c("time", "threadLabel", "level", "packageName", "functionName", "message"))
+setkey(dt, threadLabel, time)
+
+
+IsBad <- function(w) {
+  if (w %in% c("Bulk Effective Samples Size (ESS) is too low, indicating posterior means and medians may be unreliable. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#bulk-ess",
+               "Tail Effective Samples Size (ESS) is too low, indicating posterior variances and tail quantiles may be unreliable. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#tail-ess",
+               "Examine the pairs() plot to diagnose sampling problems")) return(F)
+  if (grepl("There were [[:digit:]]+ divergent transitions after warmup. Increasing adapt_delta above", w)) {
+    x <- as.numeric(strsplit(sub("There were ", "", w), split = " divergent")[[1]][1])
+    return(x > 50)
+  }
+  return(T)
+}
+
+for (i in 1:nrow(dt)) {
+  if (dt[i, level == "WARN" & IsBad(message)]) {
+    cat(dt[i, message], "\n")
+    next.county <- dt[, grep("county = ", message)]
+    next.county <- min(next.county[next.county > i])
+    cat(dt[next.county, message], "\n\n")
+  }
+}
+
+cat("\n\nData through", as.character(county.dt[, max(date)]), "\n")
+
