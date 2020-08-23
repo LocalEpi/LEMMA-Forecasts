@@ -3,14 +3,14 @@ Fitting to observed data
 
 SAMPLING FOR MODEL 'LEMMA' NOW (CHAIN 1).
 
-SAMPLING FOR MODEL 'LEMMA' NOW (CHAIN 2).
-
 SAMPLING FOR MODEL 'LEMMA' NOW (CHAIN 3).
+
+SAMPLING FOR MODEL 'LEMMA' NOW (CHAIN 2).
 
 SAMPLING FOR MODEL 'LEMMA' NOW (CHAIN 4).
 Chain 1: 
-Chain 1: Gradient evaluation took 0 seconds
-Chain 1: 1000 transitions using 10 leapfrog steps per transition would take 0 seconds.
+Chain 1: Gradient evaluation took 0.01 seconds
+Chain 1: 1000 transitions using 10 leapfrog steps per transition would take 100 seconds.
 Chain 1: Adjust your expectations accordingly!
 Chain 1: 
 Chain 1: 
@@ -21,158 +21,158 @@ Chain 3: 1000 transitions using 10 leapfrog steps per transition would take 0 se
 Chain 3: Adjust your expectations accordingly!
 Chain 3: 
 Chain 3: 
+Chain 3: Iteration:   1 / 1000 [  0%]  (Warmup)
 Chain 2: 
-Chain 2: Gradient evaluation took 0 seconds
-Chain 2: 1000 transitions using 10 leapfrog steps per transition would take 0 seconds.
+Chain 2: Gradient evaluation took 0.01 seconds
+Chain 2: 1000 transitions using 10 leapfrog steps per transition would take 100 seconds.
 Chain 2: Adjust your expectations accordingly!
 Chain 2: 
 Chain 2: 
-Chain 3: Iteration:   1 / 1000 [  0%]  (Warmup)
 Chain 2: Iteration:   1 / 1000 [  0%]  (Warmup)
 Chain 4: 
-Chain 4: Gradient evaluation took 0.01 seconds
-Chain 4: 1000 transitions using 10 leapfrog steps per transition would take 100 seconds.
+Chain 4: Gradient evaluation took 0 seconds
+Chain 4: 1000 transitions using 10 leapfrog steps per transition would take 0 seconds.
 Chain 4: Adjust your expectations accordingly!
 Chain 4: 
 Chain 4: 
 Chain 4: Iteration:   1 / 1000 [  0%]  (Warmup)
 Chain 3: Iteration:  50 / 1000 [  5%]  (Warmup)
-Chain 2: Iteration:  50 / 1000 [  5%]  (Warmup)
+Chain 4: Iteration:  50 / 1000 [  5%]  (Warmup)
 Chain 1: Iteration:  50 / 1000 [  5%]  (Warmup)
 Chain 3: Iteration: 100 / 1000 [ 10%]  (Warmup)
-Chain 4: Iteration:  50 / 1000 [  5%]  (Warmup)
+Chain 2: Iteration:  50 / 1000 [  5%]  (Warmup)
+Chain 1: Iteration: 100 / 1000 [ 10%]  (Warmup)
 Chain 2: Iteration: 100 / 1000 [ 10%]  (Warmup)
 Chain 3: Iteration: 150 / 1000 [ 15%]  (Warmup)
 Chain 4: Iteration: 100 / 1000 [ 10%]  (Warmup)
+Chain 1: Iteration: 150 / 1000 [ 15%]  (Warmup)
 Chain 3: Iteration: 200 / 1000 [ 20%]  (Warmup)
+Chain 1: Iteration: 200 / 1000 [ 20%]  (Warmup)
 Chain 2: Iteration: 150 / 1000 [ 15%]  (Warmup)
-Chain 1: Iteration: 100 / 1000 [ 10%]  (Warmup)
+Chain 4: Iteration: 150 / 1000 [ 15%]  (Warmup)
+Chain 1: Iteration: 250 / 1000 [ 25%]  (Warmup)
+Chain 4: Iteration: 200 / 1000 [ 20%]  (Warmup)
+Chain 1: Iteration: 300 / 1000 [ 30%]  (Warmup)
 Chain 2: Iteration: 200 / 1000 [ 20%]  (Warmup)
 Chain 3: Iteration: 250 / 1000 [ 25%]  (Warmup)
-Chain 4: Iteration: 150 / 1000 [ 15%]  (Warmup)
-Chain 3: Iteration: 300 / 1000 [ 30%]  (Warmup)
-Chain 2: Iteration: 250 / 1000 [ 25%]  (Warmup)
-Chain 4: Iteration: 200 / 1000 [ 20%]  (Warmup)
-Chain 3: Iteration: 350 / 1000 [ 35%]  (Warmup)
-Chain 1: Iteration: 150 / 1000 [ 15%]  (Warmup)
-Chain 2: Iteration: 300 / 1000 [ 30%]  (Warmup)
 Chain 4: Iteration: 250 / 1000 [ 25%]  (Warmup)
-Chain 3: Iteration: 400 / 1000 [ 40%]  (Warmup)
-Chain 2: Iteration: 350 / 1000 [ 35%]  (Warmup)
-Chain 1: Iteration: 200 / 1000 [ 20%]  (Warmup)
-Chain 4: Iteration: 300 / 1000 [ 30%]  (Warmup)
-Chain 3: Iteration: 450 / 1000 [ 45%]  (Warmup)
-Chain 1: Iteration: 250 / 1000 [ 25%]  (Warmup)
-Chain 2: Iteration: 400 / 1000 [ 40%]  (Warmup)
-Chain 4: Iteration: 350 / 1000 [ 35%]  (Warmup)
-Chain 3: Iteration: 500 / 1000 [ 50%]  (Warmup)
-Chain 3: Iteration: 501 / 1000 [ 50%]  (Sampling)
-Chain 2: Iteration: 450 / 1000 [ 45%]  (Warmup)
-Chain 4: Iteration: 400 / 1000 [ 40%]  (Warmup)
-Chain 1: Iteration: 300 / 1000 [ 30%]  (Warmup)
-Chain 3: Iteration: 550 / 1000 [ 55%]  (Sampling)
-Chain 4: Iteration: 450 / 1000 [ 45%]  (Warmup)
-Chain 2: Iteration: 500 / 1000 [ 50%]  (Warmup)
-Chain 2: Iteration: 501 / 1000 [ 50%]  (Sampling)
 Chain 1: Iteration: 350 / 1000 [ 35%]  (Warmup)
-Chain 3: Iteration: 600 / 1000 [ 60%]  (Sampling)
-Chain 2: Iteration: 550 / 1000 [ 55%]  (Sampling)
+Chain 3: Iteration: 300 / 1000 [ 30%]  (Warmup)
+Chain 4: Iteration: 300 / 1000 [ 30%]  (Warmup)
 Chain 1: Iteration: 400 / 1000 [ 40%]  (Warmup)
-Chain 4: Iteration: 500 / 1000 [ 50%]  (Warmup)
-Chain 4: Iteration: 501 / 1000 [ 50%]  (Sampling)
-Chain 3: Iteration: 650 / 1000 [ 65%]  (Sampling)
-Chain 2: Iteration: 600 / 1000 [ 60%]  (Sampling)
+Chain 2: Iteration: 250 / 1000 [ 25%]  (Warmup)
+Chain 4: Iteration: 350 / 1000 [ 35%]  (Warmup)
 Chain 1: Iteration: 450 / 1000 [ 45%]  (Warmup)
-Chain 4: Iteration: 550 / 1000 [ 55%]  (Sampling)
-Chain 3: Iteration: 700 / 1000 [ 70%]  (Sampling)
-Chain 2: Iteration: 650 / 1000 [ 65%]  (Sampling)
-Chain 4: Iteration: 600 / 1000 [ 60%]  (Sampling)
-Chain 3: Iteration: 750 / 1000 [ 75%]  (Sampling)
-Chain 2: Iteration: 700 / 1000 [ 70%]  (Sampling)
+Chain 3: Iteration: 350 / 1000 [ 35%]  (Warmup)
+Chain 4: Iteration: 400 / 1000 [ 40%]  (Warmup)
+Chain 3: Iteration: 400 / 1000 [ 40%]  (Warmup)
+Chain 2: Iteration: 300 / 1000 [ 30%]  (Warmup)
 Chain 1: Iteration: 500 / 1000 [ 50%]  (Warmup)
 Chain 1: Iteration: 501 / 1000 [ 50%]  (Sampling)
-Chain 4: Iteration: 650 / 1000 [ 65%]  (Sampling)
-Chain 3: Iteration: 800 / 1000 [ 80%]  (Sampling)
-Chain 2: Iteration: 750 / 1000 [ 75%]  (Sampling)
+Chain 4: Iteration: 450 / 1000 [ 45%]  (Warmup)
+Chain 3: Iteration: 450 / 1000 [ 45%]  (Warmup)
 Chain 1: Iteration: 550 / 1000 [ 55%]  (Sampling)
-Chain 4: Iteration: 700 / 1000 [ 70%]  (Sampling)
-Chain 3: Iteration: 850 / 1000 [ 85%]  (Sampling)
-Chain 2: Iteration: 800 / 1000 [ 80%]  (Sampling)
+Chain 2: Iteration: 350 / 1000 [ 35%]  (Warmup)
 Chain 1: Iteration: 600 / 1000 [ 60%]  (Sampling)
-Chain 4: Iteration: 750 / 1000 [ 75%]  (Sampling)
-Chain 3: Iteration: 900 / 1000 [ 90%]  (Sampling)
-Chain 2: Iteration: 850 / 1000 [ 85%]  (Sampling)
+Chain 4: Iteration: 500 / 1000 [ 50%]  (Warmup)
+Chain 4: Iteration: 501 / 1000 [ 50%]  (Sampling)
+Chain 2: Iteration: 400 / 1000 [ 40%]  (Warmup)
+Chain 3: Iteration: 500 / 1000 [ 50%]  (Warmup)
+Chain 3: Iteration: 501 / 1000 [ 50%]  (Sampling)
 Chain 1: Iteration: 650 / 1000 [ 65%]  (Sampling)
-Chain 4: Iteration: 800 / 1000 [ 80%]  (Sampling)
-Chain 3: Iteration: 950 / 1000 [ 95%]  (Sampling)
-Chain 2: Iteration: 900 / 1000 [ 90%]  (Sampling)
+Chain 4: Iteration: 550 / 1000 [ 55%]  (Sampling)
+Chain 2: Iteration: 450 / 1000 [ 45%]  (Warmup)
+Chain 3: Iteration: 550 / 1000 [ 55%]  (Sampling)
 Chain 1: Iteration: 700 / 1000 [ 70%]  (Sampling)
-Chain 4: Iteration: 850 / 1000 [ 85%]  (Sampling)
-Chain 3: Iteration: 1000 / 1000 [100%]  (Sampling)
-Chain 3: 
-Chain 3:  Elapsed Time: 895.84 seconds (Warm-up)
-Chain 3:                922.07 seconds (Sampling)
-Chain 3:                1817.91 seconds (Total)
-Chain 3: 
-Chain 2: Iteration: 950 / 1000 [ 95%]  (Sampling)
+Chain 4: Iteration: 600 / 1000 [ 60%]  (Sampling)
+Chain 3: Iteration: 600 / 1000 [ 60%]  (Sampling)
+Chain 2: Iteration: 500 / 1000 [ 50%]  (Warmup)
+Chain 2: Iteration: 501 / 1000 [ 50%]  (Sampling)
 Chain 1: Iteration: 750 / 1000 [ 75%]  (Sampling)
-Chain 4: Iteration: 900 / 1000 [ 90%]  (Sampling)
-Chain 2: Iteration: 1000 / 1000 [100%]  (Sampling)
-Chain 2: 
-Chain 2:  Elapsed Time: 1035.13 seconds (Warm-up)
-Chain 2:                930.56 seconds (Sampling)
-Chain 2:                1965.69 seconds (Total)
-Chain 2: 
+Chain 4: Iteration: 650 / 1000 [ 65%]  (Sampling)
+Chain 3: Iteration: 650 / 1000 [ 65%]  (Sampling)
+Chain 2: Iteration: 550 / 1000 [ 55%]  (Sampling)
 Chain 1: Iteration: 800 / 1000 [ 80%]  (Sampling)
-Chain 4: Iteration: 950 / 1000 [ 95%]  (Sampling)
+Chain 3: Iteration: 700 / 1000 [ 70%]  (Sampling)
+Chain 4: Iteration: 700 / 1000 [ 70%]  (Sampling)
+Chain 2: Iteration: 600 / 1000 [ 60%]  (Sampling)
 Chain 1: Iteration: 850 / 1000 [ 85%]  (Sampling)
-Chain 4: Iteration: 1000 / 1000 [100%]  (Sampling)
-Chain 4: 
-Chain 4:  Elapsed Time: 1159.91 seconds (Warm-up)
-Chain 4:                925.61 seconds (Sampling)
-Chain 4:                2085.52 seconds (Total)
-Chain 4: 
+Chain 3: Iteration: 750 / 1000 [ 75%]  (Sampling)
+Chain 4: Iteration: 750 / 1000 [ 75%]  (Sampling)
+Chain 2: Iteration: 650 / 1000 [ 65%]  (Sampling)
 Chain 1: Iteration: 900 / 1000 [ 90%]  (Sampling)
+Chain 3: Iteration: 800 / 1000 [ 80%]  (Sampling)
+Chain 4: Iteration: 800 / 1000 [ 80%]  (Sampling)
+Chain 2: Iteration: 700 / 1000 [ 70%]  (Sampling)
 Chain 1: Iteration: 950 / 1000 [ 95%]  (Sampling)
+Chain 3: Iteration: 850 / 1000 [ 85%]  (Sampling)
+Chain 2: Iteration: 750 / 1000 [ 75%]  (Sampling)
+Chain 4: Iteration: 850 / 1000 [ 85%]  (Sampling)
 Chain 1: Iteration: 1000 / 1000 [100%]  (Sampling)
 Chain 1: 
-Chain 1:  Elapsed Time: 1416.26 seconds (Warm-up)
-Chain 1:                939.43 seconds (Sampling)
-Chain 1:                2355.69 seconds (Total)
+Chain 1:  Elapsed Time: 1066.42 seconds (Warm-up)
+Chain 1:                903.12 seconds (Sampling)
+Chain 1:                1969.54 seconds (Total)
 Chain 1: 
+Chain 3: Iteration: 900 / 1000 [ 90%]  (Sampling)
+Chain 2: Iteration: 800 / 1000 [ 80%]  (Sampling)
+Chain 4: Iteration: 900 / 1000 [ 90%]  (Sampling)
+Chain 3: Iteration: 950 / 1000 [ 95%]  (Sampling)
+Chain 2: Iteration: 850 / 1000 [ 85%]  (Sampling)
+Chain 4: Iteration: 950 / 1000 [ 95%]  (Sampling)
+Chain 3: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 3: 
+Chain 3:  Elapsed Time: 1282.71 seconds (Warm-up)
+Chain 3:                908.6 seconds (Sampling)
+Chain 3:                2191.31 seconds (Total)
+Chain 3: 
+Chain 2: Iteration: 900 / 1000 [ 90%]  (Sampling)
+Chain 4: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 4: 
+Chain 4:  Elapsed Time: 1258.15 seconds (Warm-up)
+Chain 4:                973.13 seconds (Sampling)
+Chain 4:                2231.28 seconds (Total)
+Chain 4: 
+Chain 2: Iteration: 950 / 1000 [ 95%]  (Sampling)
+Chain 2: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 2: 
+Chain 2:  Elapsed Time: 1480.51 seconds (Warm-up)
+Chain 2:                913.9 seconds (Sampling)
+Chain 2:                2394.41 seconds (Total)
+Chain 2: 
     user   system  elapsed 
-8267.346    4.396 2399.509 
+8830.762    4.496 2439.963 
 Projecting
    user  system elapsed 
-370.254   0.204 370.721 
+357.864   0.195 358.297 
 
 Excel output:  Forecasts/Los Angeles.xlsx 
   5%  10%  25%  50%  75%  90%  95% 
-0.63 0.70 0.78 0.85 0.92 1.00 1.07 
+0.65 0.71 0.78 0.86 0.93 1.02 1.08 
 
 PDF output:  Forecasts/Los Angeles.pdf 
    user  system elapsed 
-611.584   0.167 612.178 
+618.404   0.211 619.120 
 
 Excel output:  Scenarios/Los Angeles_scenario_noChange.xlsx 
   5%  10%  25%  50%  75%  90%  95% 
-0.63 0.70 0.78 0.85 0.92 1.00 1.07 
+0.65 0.71 0.78 0.86 0.93 1.02 1.08 
 
 PDF output:  Scenarios/Los Angeles_scenario_noChange.pdf 
    user  system elapsed 
-607.284   0.254 607.965 
+613.880   0.185 614.488 
 
 Excel output:  Scenarios/Los Angeles_scenario_actToday.xlsx 
   5%  10%  25%  50%  75%  90%  95% 
-0.63 0.70 0.78 0.85 0.92 1.00 1.07 
+0.65 0.71 0.78 0.86 0.93 1.02 1.08 
 
 PDF output:  Scenarios/Los Angeles_scenario_actToday.pdf 
    user  system elapsed 
-606.501   0.206 607.137 
+614.214   0.172 614.808 
 
 Excel output:  Scenarios/Los Angeles_scenario_actTwoWeeks.xlsx 
   5%  10%  25%  50%  75%  90%  95% 
-0.63 0.70 0.78 0.85 0.92 1.00 1.07 
+0.65 0.71 0.78 0.86 0.93 1.02 1.08 
 
 PDF output:  Scenarios/Los Angeles_scenario_actTwoWeeks.pdf 
 [[1]]
