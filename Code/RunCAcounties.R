@@ -64,10 +64,14 @@ RunOneCounty <- function(county1, county.dt, county.pop, quick.test) {
       inputs$interventions <- inputs$interventions[mu_t_inter >= as.Date("2020/6/1")]
       inputs$model.inputs$start.display.date <- as.Date("2020/6/1")
       inputs$internal.args$initial.deaths <- initial.deaths
-    } else if (county1 %in% c("Kings", "San Joaquin", "Fresno", "Stanislaus", "Kern", "San Bernardino", "Butte")) {
+    } else if (county1 %in% c("Kings", "San Joaquin", "Fresno", "Kern", "San Bernardino", "Butte")) {
       inputs$internal.args$adapt_delta <- 0.95
       inputs$internal.args$iter <- 1500 #needs more iterations to converge
+    } else if (county1 %in% c("Stanislaus")) {
+      inputs$internal.args$adapt_delta <- 0.8
+      inputs$internal.args$iter <- 1500 #needs more iterations to converge
     }
+
     inputs$internal.args$output.filestr <- paste0("Forecasts/", county1)
     mean.ini <- 1e-5 * county.pop1
     inputs$internal.args$lambda_ini_exposed <- 1 / mean.ini
