@@ -15,10 +15,12 @@ GetCountyData <- function(exclude.set) {
   county.dt$mean10 <- NULL
 
   #make deaths NA for outliers that imply cumulative deaths decrease
+  county.dt[county == 'Alameda' & date == '2020-08-22', deaths.conf := NA_real_]
   county.dt[county == 'Contra Costa' & date == '2020-03-24', deaths.conf := NA_real_]
   county.dt[county == 'Contra Costa' & date == '2020-03-25', deaths.conf := NA_real_]
   county.dt[county == 'Contra Costa' & date == '2020-05-10', deaths.conf := NA_real_]
   county.dt[county == 'Los Angeles' & date == '2020-03-25', deaths.conf := NA_real_]
+  county.dt[county == 'Marin' & date == '2020-08-27', deaths.conf := NA_real_]
   county.dt[county == 'Orange' & date == '2020-04-10', deaths.conf := NA_real_]
   county.dt[county == 'Orange' & date == '2020-07-19', deaths.conf := NA_real_]
   county.dt[county == 'Orange' & date == '2020-08-10', deaths.conf := NA_real_]
@@ -36,6 +38,7 @@ GetCountyData <- function(exclude.set) {
   county.dt[county == 'Santa Barbara' & date == '2020-04-10', deaths.conf := NA_real_]
   county.dt[county == 'Santa Barbara' & date == '2020-07-08', deaths.conf := NA_real_]
   county.dt[county == 'Santa Clara' & date == '2020-03-31', deaths.conf := NA_real_]
+  county.dt[county == 'Santa Clara' & date == '2020-08-29', deaths.conf := NA_real_]
   county.dt[county == 'Santa Cruz' & date == '2020-06-18', deaths.conf := NA_real_]
   county.dt[county == 'Shasta' & date == '2020-06-11', deaths.conf := NA_real_]
   county.dt[county == 'Shasta' & date == '2020-06-12', deaths.conf := NA_real_]
