@@ -3,14 +3,22 @@ library(ParallelLogger)
 
 source('Code/GetCountyData.R')
 
-quick.test <- T
+quick.test <- F
 if (quick.test) {
   cat("\n\n++++++++++++++++++  quick.test = T +++++++++++++++++ \n\n")
 }
 
+county.pop <- fread("Inputs/county population.csv")
+
+#run half the counties each day
+if (as.numeric(Sys.Date()) %% 2 == 1) {
+  omit.counties <- county.pop[seq(1, 58, by = 2), county]
+} else {
+  omit.counties <- county.pop[seq(2, 58, by = 2), county]
+}
+
 exclude.set <- c("San Benito", "Siskiyou") #not enough data to fit
-not.updating <- ""
-exclude.set <- c(exclude.set, not.updating)
+exclude.set <- c(exclude.set, "San Francisco", omit.counties) #SF is run separately
 
 RunOneCounty <- function(county1, county.dt, county.pop, quick.test) {
   restart.set <- c("Tehama", "Mono", "Yolo", "Yuba", "Mendocino", "Nevada", "El Dorado", "Tuolumne", "Amador", "Inyo", "Calaveras") #infections went to near zero - restart sim
@@ -52,11 +60,11 @@ RunOneCounty <- function(county1, county.dt, county.pop, quick.test) {
       initial.deaths <- county.dt1[date == as.Date("2020/5/30"), deaths.conf]
       county.dt1 <- county.dt1[date >= as.Date("2020/6/1")] #infections went to near zero - restart sim
     }
-    
+
     sheets$Data <- county.dt1
-    
+
     inputs <- LEMMA:::ProcessSheets(sheets, input.file)
-    
+
     inputs$internal.args$warmup <- NA #defaults to iter/2
     if (county1 %in% restart.set) {
       inputs$internal.args$simulation.start.date <- as.Date("2020/5/30") #infections went to near zero - restart sim
@@ -71,11 +79,11 @@ RunOneCounty <- function(county1, county.dt, county.pop, quick.test) {
       inputs$internal.args$adapt_delta <- 0.8
       inputs$internal.args$iter <- 1500 #needs more iterations to converge
     }
-    
+
     inputs$internal.args$output.filestr <- paste0("Forecasts/", county1)
     mean.ini <- 1e-5 * county.pop1
     inputs$internal.args$lambda_ini_exposed <- 1 / mean.ini
-    
+
     if (quick.test) {
       # inputs$internal.args$warmup <- NA
       # inputs$internal.args$iter <- 10
@@ -84,11 +92,11 @@ RunOneCounty <- function(county1, county.dt, county.pop, quick.test) {
     }
     cred.int <- LEMMA:::CredibilityInterval(inputs)
   }
-  
+
   max.date <- max(cred.int$inputs$obs.data$date)
   outfile <- paste0("Scenarios/", county1)
   cred.int$inputs$model.inputs$end.date <- as.Date("2020/12/31")
-  
+
   ProjScen <- function(int.list) {
     int.date <- int.list$date
     int.str <- int.list$str
@@ -101,15 +109,15 @@ RunOneCounty <- function(county1, county.dt, county.pop, quick.test) {
     }
     lapply(LEMMA:::ProjectScenario(cred.int, new.int=intervention, paste0("Scenarios/", county1, "_scenario_", int.str))$gplot$long.term, function (z) z + ggplot2::labs(subtitle = subtitl))
   }
-  
+
   scen.plots <- lapply(list(list(date = NA, str = "noChange"), list(date = max.date + 3, str = "actToday"), list(date = max.date + 17, str = "actTwoWeeks")), ProjScen)
   grDevices::pdf(file = paste0("Scenarios/", county1, "_scenarios_summary.pdf"), width = 9.350, height = 7.225) #overwrite the .pdf
   print(scen.plots)
   dev.off()
-  
+
   sink()
   ParallelLogger::logInfo("county = ", county1)
-  
+
   if (county1 != "San Francisco") {
     cred.int <- NULL #save memory
   }
@@ -119,12 +127,7 @@ RunOneCounty <- function(county1, county.dt, county.pop, quick.test) {
 county.dt <- GetCountyData(exclude.set)
 county.set <- unique(county.dt$county)
 
-if (quick.test) county.set <- c("San Mateo", "Santa Barbara", 
-                                "Santa Clara", "Santa Cruz", "Shasta", "Siskiyou", "Solano", 
-                                "Sonoma", "Stanislaus", "Tehama", "Tulare", "Tuolumne", "Ventura", 
-                                "Yolo", "Yuba")
-
-county.pop <- fread("Inputs/county population.csv")
+if (quick.test) county.set <- county.set[1:2]
 
 options(warn = 1)
 assign("last.warning", NULL, envir = baseenv())
@@ -137,7 +140,7 @@ addDefaultFileLogger(logfile)
 if (F && quick.test) {
   county.results <- lapply(county.set, RunOneCounty, county.dt, county.pop, quick.test)
 } else {
-  cl <- makeCluster(4)
+  cl <- makeCluster(3)
   county.results <- clusterApply(cl, county.set, RunOneCounty, county.dt, county.pop, quick.test)
   stopCluster(cl)
 }
