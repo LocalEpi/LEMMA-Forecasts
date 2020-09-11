@@ -10,11 +10,15 @@ if (quick.test) {
 
 county.pop <- fread("Inputs/county population.csv")
 
-#run half the counties each day
-if (as.numeric(Sys.Date()) %% 2 == 0) {
-  omit.counties <- county.pop[seq(1, 58, by = 2), county]
+if (F) {
+  #run half the counties each day
+  if (as.numeric(Sys.Date()) %% 2 == 1) {
+    omit.counties <- county.pop[seq(1, 58, by = 2), county]
+  } else {
+    omit.counties <- county.pop[seq(2, 58, by = 2), county]
+  }
 } else {
-  omit.counties <- county.pop[seq(2, 58, by = 2), county]
+  omit.counties <- ""
 }
 
 exclude.set <- c("San Benito", "Siskiyou") #not enough data to fit
