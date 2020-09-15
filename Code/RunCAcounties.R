@@ -12,7 +12,7 @@ county.pop <- fread("Inputs/county population.csv")
 
 if (T) {
   #run half the counties each day
-  if (as.numeric(Sys.Date()) %% 2 == 1) {
+  if (as.numeric(Sys.Date()) %% 2 == 0) {
     omit.counties <- county.pop[seq(1, 58, by = 2), county]
   } else {
     omit.counties <- county.pop[seq(2, 58, by = 2), county]
