@@ -3,22 +3,22 @@ library(ParallelLogger)
 
 source('Code/GetCountyData.R')
 
-quick.test <- F
+quick.test <- T
 if (quick.test) {
   cat("\n\n++++++++++++++++++  quick.test = T +++++++++++++++++ \n\n")
 }
 
 county.pop <- fread("Inputs/county population.csv")
 
-if (T) {
+if (quick.test) {
+  omit.counties <- ""
+} else {
   #run half the counties each day
   if (as.numeric(Sys.Date()) %% 2 == 0) {
     omit.counties <- county.pop[seq(1, 58, by = 2), county]
   } else {
     omit.counties <- county.pop[seq(2, 58, by = 2), county]
   }
-} else {
-  omit.counties <- ""
 }
 
 exclude.set <- c("San Benito", "Siskiyou") #not enough data to fit
@@ -79,7 +79,7 @@ RunOneCounty <- function(county1, county.dt, county.pop, quick.test) {
     } else if (county1 %in% c("Kings", "San Joaquin", "Fresno", "Kern", "San Bernardino", "Butte")) {
       inputs$internal.args$adapt_delta <- 0.95
       inputs$internal.args$iter <- 1500 #needs more iterations to converge
-    } else if (county1 %in% c("Stanislaus")) {
+    } else if (county1 %in% c("Stanislaus", "Merced")) {
       inputs$internal.args$adapt_delta <- 0.8
       inputs$internal.args$iter <- 1500 #needs more iterations to converge
     }
@@ -131,7 +131,7 @@ RunOneCounty <- function(county1, county.dt, county.pop, quick.test) {
 county.dt <- GetCountyData(exclude.set)
 county.set <- unique(county.dt$county)
 
-if (quick.test) county.set <- county.set[1:2]
+if (quick.test) county.set <- c("Merced", "Sonoma", "Tehama", "Ventura", "Yuba")
 print(county.set)
 
 options(warn = 1)
