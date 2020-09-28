@@ -1,34 +1,79 @@
-2020-09-25 15:05:19	[Main thread]	TRACE			Initiating cluster with 3 threads
-2020-09-25 15:05:19	[Thread 1]	TRACE			Thread 1 initiated
-2020-09-25 15:05:19	[Thread 2]	TRACE			Thread 2 initiated
-2020-09-25 15:05:19	[Thread 3]	TRACE			Thread 3 initiated
-2020-09-25 16:01:24	[Thread 2]	WARN	rstan	throw_sampler_warnings	Tail Effective Samples Size (ESS) is too low, indicating posterior variances and tail quantiles may be unreliable. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#tail-ess
-2020-09-25 16:05:54	[Thread 2]	INFO			county = Santa Cruz
-2020-09-25 16:36:48	[Thread 3]	INFO			county = Solano
-2020-09-25 16:51:08	[Thread 1]	WARN	rstan	throw_sampler_warnings	There were 59 divergent transitions after warmup. Increasing adapt_delta above 0.9 may help. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup
-2020-09-25 16:51:08	[Thread 1]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
-2020-09-25 16:51:31	[Thread 1]	WARN	rstan	throw_sampler_warnings	Tail Effective Samples Size (ESS) is too low, indicating posterior variances and tail quantiles may be unreliable. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#tail-ess
-2020-09-25 16:55:52	[Thread 1]	INFO			county = Santa Clara
-2020-09-25 17:22:30	[Thread 1]	WARN	rstan	throw_sampler_warnings	There were 4 divergent transitions after warmup. Increasing adapt_delta above 0.9 may help. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup
-2020-09-25 17:22:30	[Thread 1]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
-2020-09-25 17:32:50	[Thread 1]	INFO			county = Yolo
-2020-09-25 17:42:51	[Main thread]	FATAL			Error in base::try(IsBad, TRUE) : object 'IsBad' not found 
-2020-09-27 14:58:51	[Main thread]	WARN	LEMMA	RunSim	closing unused connection 5 (<-localhost:11636)
-2020-09-27 14:58:51	[Main thread]	WARN	LEMMA	RunSim	closing unused connection 4 (<-localhost:11636)
-2020-09-27 14:58:51	[Main thread]	WARN	LEMMA	RunSim	closing unused connection 3 (<-localhost:11636)
-2020-09-27 15:33:01	[Main thread]	WARN	rstan	throw_sampler_warnings	There were 4 divergent transitions after warmup. Increasing adapt_delta above 0.9 may help. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup
-2020-09-27 15:33:01	[Main thread]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
-2020-09-27 16:20:27	[Main thread]	WARN	rstan	throw_sampler_warnings	There were 1 divergent transitions after warmup. Increasing adapt_delta above 0.9 may help. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup
-2020-09-27 16:20:27	[Main thread]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
-2020-09-27 20:06:05	[Thread 3]	FATAL			Error in unserialize(node$con) : error reading from connection Calls: local ... doTryCatch -> recvData -> recvData.SOCKnode -> unserialize 
-2020-09-27 20:06:05	[Thread 3]	TRACE			Thread 3 terminated
-2020-09-27 20:06:05	[Thread 2]	FATAL			Error in unserialize(node$con) : error reading from connection Calls: local ... doTryCatch -> recvData -> recvData.SOCKnode -> unserialize 
-2020-09-27 20:06:06	[Thread 2]	TRACE			Thread 2 terminated
-2020-09-27 20:06:06	[Thread 1]	FATAL			Error in unserialize(node$con) : error reading from connection Calls: local ... doTryCatch -> recvData -> recvData.SOCKnode -> unserialize 
-2020-09-27 20:06:06	[Thread 1]	TRACE			Thread 1 terminated
-2020-09-27 20:06:07	[Thread 3]	FATAL			Error in unserialize(node$con) : error reading from connection Calls: local ... doTryCatch -> recvData -> recvData.SOCKnode -> unserialize 
-2020-09-27 20:06:07	[Thread 3]	TRACE			Thread 3 terminated
-2020-09-27 20:06:07	[Thread 2]	FATAL			Error in unserialize(node$con) : error reading from connection Calls: local ... doTryCatch -> recvData -> recvData.SOCKnode -> unserialize 
-2020-09-27 20:06:07	[Thread 2]	TRACE			Thread 2 terminated
-2020-09-27 20:06:07	[Thread 1]	FATAL			Error in unserialize(node$con) : error reading from connection Calls: local ... doTryCatch -> recvData -> recvData.SOCKnode -> unserialize 
-2020-09-27 20:06:07	[Thread 1]	TRACE			Thread 1 terminated
+2020-09-28 05:06:12	[Main thread]	TRACE			Initiating cluster with 3 threads
+2020-09-28 05:06:12	[Thread 1]	TRACE			Thread 1 initiated
+2020-09-28 05:06:12	[Thread 2]	TRACE			Thread 2 initiated
+2020-09-28 05:06:12	[Thread 3]	TRACE			Thread 3 initiated
+2020-09-28 06:32:27	[Thread 2]	WARN	rstan	throw_sampler_warnings	There were 1 divergent transitions after warmup. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup to find out why this is a problem and how to eliminate them.
+2020-09-28 06:32:27	[Thread 2]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
+2020-09-28 06:44:03	[Thread 3]	WARN	rstan	throw_sampler_warnings	There were 4 divergent transitions after warmup. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup to find out why this is a problem and how to eliminate them.
+2020-09-28 06:44:03	[Thread 3]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
+2020-09-28 06:47:07	[Thread 1]	WARN	rstan	throw_sampler_warnings	There were 1 divergent transitions after warmup. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup to find out why this is a problem and how to eliminate them.
+2020-09-28 06:47:07	[Thread 1]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
+2020-09-28 07:05:19	[Thread 2]	INFO			county = Butte
+2020-09-28 07:06:16	[Thread 3]	INFO			county = Contra Costa
+2020-09-28 07:09:07	[Thread 1]	INFO			county = Alameda
+2020-09-28 07:30:49	[Thread 2]	WARN	rstan	throw_sampler_warnings	There were 1 divergent transitions after warmup. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup to find out why this is a problem and how to eliminate them.
+2020-09-28 07:30:49	[Thread 2]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
+2020-09-28 07:58:05	[Thread 2]	INFO			county = Humboldt
+2020-09-28 09:29:00	[Thread 3]	WARN	rstan	throw_sampler_warnings	There were 1 divergent transitions after warmup. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup to find out why this is a problem and how to eliminate them.
+2020-09-28 09:29:00	[Thread 3]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
+2020-09-28 09:45:44	[Thread 2]	INFO			county = Los Angeles
+2020-09-28 10:01:40	[Thread 3]	INFO			county = Kern
+2020-09-28 11:22:58	[Thread 3]	WARN	rstan	throw_sampler_warnings	There were 2 divergent transitions after warmup. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup to find out why this is a problem and how to eliminate them.
+2020-09-28 11:22:58	[Thread 3]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
+2020-09-28 11:45:11	[Thread 3]	INFO			county = Monterey
+2020-09-28 11:59:00	[Thread 2]	WARN	rstan	throw_sampler_warnings	There were 22 divergent transitions after warmup. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup to find out why this is a problem and how to eliminate them.
+2020-09-28 11:59:00	[Thread 2]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
+2020-09-28 12:11:07	[Thread 1]	WARN	rstan	throw_sampler_warnings	There were 3 divergent transitions after warmup. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup to find out why this is a problem and how to eliminate them.
+2020-09-28 12:11:07	[Thread 1]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
+2020-09-28 12:32:24	[Thread 2]	INFO			county = Merced
+2020-09-28 12:46:51	[Thread 1]	INFO			county = Kings
+2020-09-28 15:24:35	[Thread 1]	WARN	rstan	throw_sampler_warnings	There were 6 divergent transitions after warmup. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup to find out why this is a problem and how to eliminate them.
+2020-09-28 15:24:35	[Thread 1]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
+2020-09-28 15:24:55	[Thread 1]	WARN	rstan	throw_sampler_warnings	Tail Effective Samples Size (ESS) is too low, indicating posterior variances and tail quantiles may be unreliable. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#tail-ess
+2020-09-28 15:58:20	[Thread 1]	INFO			county = San Joaquin
+2020-09-28 16:32:54	[Thread 1]	WARN	rstan	throw_sampler_warnings	There were 15 divergent transitions after warmup. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup to find out why this is a problem and how to eliminate them.
+2020-09-28 16:32:54	[Thread 1]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
+2020-09-28 16:41:58	[Thread 3]	WARN	rstan	throw_sampler_warnings	There were 1 divergent transitions after warmup. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup to find out why this is a problem and how to eliminate them.
+2020-09-28 16:41:58	[Thread 3]	WARN	rstan	throw_sampler_warnings	There were 985 transitions after warmup that exceeded the maximum treedepth. Increase max_treedepth above 15. See http://mc-stan.org/misc/warnings.html#maximum-treedepth-exceeded
+2020-09-28 16:41:58	[Thread 3]	WARN	rstan	throw_sampler_warnings	There were 1 chains where the estimated Bayesian Fraction of Missing Information was low. See http://mc-stan.org/misc/warnings.html#bfmi-low
+2020-09-28 16:41:58	[Thread 3]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
+2020-09-28 16:42:04	[Thread 3]	WARN	rstan	throw_sampler_warnings	The largest R-hat is 1.12, indicating chains have not mixed. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#r-hat
+2020-09-28 16:42:09	[Thread 3]	WARN	rstan	throw_sampler_warnings	Bulk Effective Samples Size (ESS) is too low, indicating posterior means and medians may be unreliable. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#bulk-ess
+2020-09-28 16:42:16	[Thread 3]	WARN	rstan	throw_sampler_warnings	Tail Effective Samples Size (ESS) is too low, indicating posterior variances and tail quantiles may be unreliable. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#tail-ess
+2020-09-28 16:55:09	[Thread 1]	INFO			county = San Luis Obispo
+2020-09-28 17:04:42	[Thread 3]	INFO			county = Orange
+2020-09-28 17:35:47	[Thread 3]	WARN	rstan	throw_sampler_warnings	There were 71 divergent transitions after warmup. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup to find out why this is a problem and how to eliminate them.
+2020-09-28 17:35:47	[Thread 3]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
+2020-09-28 17:36:04	[Thread 3]	WARN	rstan	throw_sampler_warnings	Tail Effective Samples Size (ESS) is too low, indicating posterior variances and tail quantiles may be unreliable. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#tail-ess
+2020-09-28 17:58:50	[Thread 3]	INFO			county = Shasta
+2020-09-28 18:03:08	[Thread 2]	WARN	rstan	throw_sampler_warnings	There were 3 divergent transitions after warmup. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup to find out why this is a problem and how to eliminate them.
+2020-09-28 18:03:08	[Thread 2]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
+2020-09-28 18:08:14	[Thread 1]	WARN	rstan	throw_sampler_warnings	There were 510 divergent transitions after warmup. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup to find out why this is a problem and how to eliminate them.
+2020-09-28 18:08:14	[Thread 1]	WARN	rstan	throw_sampler_warnings	There were 1 chains where the estimated Bayesian Fraction of Missing Information was low. See http://mc-stan.org/misc/warnings.html#bfmi-low
+2020-09-28 18:08:14	[Thread 1]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
+2020-09-28 18:08:20	[Thread 1]	WARN	rstan	throw_sampler_warnings	The largest R-hat is 1.61, indicating chains have not mixed. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#r-hat
+2020-09-28 18:08:28	[Thread 1]	WARN	rstan	throw_sampler_warnings	Bulk Effective Samples Size (ESS) is too low, indicating posterior means and medians may be unreliable. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#bulk-ess
+2020-09-28 18:08:39	[Thread 1]	WARN	rstan	throw_sampler_warnings	Tail Effective Samples Size (ESS) is too low, indicating posterior variances and tail quantiles may be unreliable. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#tail-ess
+2020-09-28 18:31:02	[Thread 1]	INFO			county = Santa Barbara
+2020-09-28 18:37:37	[Thread 2]	INFO			county = San Bernardino
+2020-09-28 19:13:23	[Thread 3]	WARN	rstan	throw_sampler_warnings	There were 53 divergent transitions after warmup. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup to find out why this is a problem and how to eliminate them.
+2020-09-28 19:13:23	[Thread 3]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
+2020-09-28 19:13:39	[Thread 3]	WARN	rstan	throw_sampler_warnings	Tail Effective Samples Size (ESS) is too low, indicating posterior variances and tail quantiles may be unreliable. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#tail-ess
+2020-09-28 19:15:37	[Thread 1]	INFO			county = Tehama
+2020-09-28 19:36:24	[Thread 3]	INFO			county = Sonoma
+2020-09-28 19:37:58	[Thread 1]	WARN	rstan	throw_sampler_warnings	There were 5 divergent transitions after warmup. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup to find out why this is a problem and how to eliminate them.
+2020-09-28 19:37:58	[Thread 1]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
+2020-09-28 19:49:52	[Thread 2]	WARN	rstan	throw_sampler_warnings	There were 2 divergent transitions after warmup. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup to find out why this is a problem and how to eliminate them.
+2020-09-28 19:49:52	[Thread 2]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
+2020-09-28 20:08:04	[Thread 1]	INFO			county = Yuba
+2020-09-28 20:12:44	[Thread 2]	INFO			county = Ventura
+2020-09-28 20:12:44	[Main thread]	TRACE			Stopping cluster
+2020-09-28 20:12:44	[Thread 3]	TRACE			Thread 3 terminated
+2020-09-28 20:12:44	[Thread 2]	TRACE			Thread 2 terminated
+2020-09-28 20:12:44	[Thread 1]	TRACE			Thread 1 terminated
+2020-09-28 21:35:05	[Thread 3]	FATAL			Error in unserialize(node$con) : error reading from connection Calls: local ... doTryCatch -> recvData -> recvData.SOCKnode -> unserialize 
+2020-09-28 21:35:05	[Thread 3]	TRACE			Thread 3 terminated
+2020-09-28 21:35:05	[Thread 2]	FATAL			Error in unserialize(node$con) : error reading from connection Calls: local ... doTryCatch -> recvData -> recvData.SOCKnode -> unserialize 
+2020-09-28 21:35:05	[Thread 2]	TRACE			Thread 2 terminated
+2020-09-28 21:35:05	[Thread 1]	FATAL			Error in unserialize(node$con) : error reading from connection Calls: local ... doTryCatch -> recvData -> recvData.SOCKnode -> unserialize 
+2020-09-28 21:35:05	[Thread 1]	TRACE			Thread 1 terminated
