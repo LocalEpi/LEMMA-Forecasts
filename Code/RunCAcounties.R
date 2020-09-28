@@ -3,7 +3,7 @@ library(ParallelLogger)
 
 source('Code/GetCountyData.R')
 
-quick.test <- T
+quick.test <- F
 if (quick.test) {
   cat("\n\n++++++++++++++++++  quick.test = T +++++++++++++++++ \n\n")
 }
@@ -79,7 +79,7 @@ RunOneCounty <- function(county1, county.dt, county.pop, quick.test) {
     } else if (county1 %in% c("Kings", "San Joaquin", "Fresno", "Kern", "San Bernardino", "Butte")) {
       inputs$internal.args$adapt_delta <- 0.95
       inputs$internal.args$iter <- 1500 #needs more iterations to converge
-    } else if (county1 %in% c("Stanislaus", "Merced", "Tulare")) {
+    } else if (county1 %in% c("Stanislaus", "Merced", "Santa Barbara")) {
       inputs$internal.args$adapt_delta <- 0.8
       inputs$internal.args$iter <- 1500 #needs more iterations to converge
     }
@@ -131,7 +131,7 @@ RunOneCounty <- function(county1, county.dt, county.pop, quick.test) {
 county.dt <- GetCountyData(exclude.set)
 county.set <- unique(county.dt$county)
 
-if (quick.test) county.set <- c("Tulare")
+if (quick.test) county.set <- c("Santa Clara", "Santa Cruz", "Solano", "Stanislaus", "Tulare", "Yolo")
 print(county.set)
 
 options(warn = 1)
