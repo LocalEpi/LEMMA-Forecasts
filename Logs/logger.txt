@@ -1,34 +1,12 @@
-2020-09-25 15:05:19	[Main thread]	TRACE			Initiating cluster with 3 threads
-2020-09-25 15:05:19	[Thread 1]	TRACE			Thread 1 initiated
-2020-09-25 15:05:19	[Thread 2]	TRACE			Thread 2 initiated
-2020-09-25 15:05:19	[Thread 3]	TRACE			Thread 3 initiated
-2020-09-25 16:01:24	[Thread 2]	WARN	rstan	throw_sampler_warnings	Tail Effective Samples Size (ESS) is too low, indicating posterior variances and tail quantiles may be unreliable. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#tail-ess
-2020-09-25 16:05:54	[Thread 2]	INFO			county = Santa Cruz
-2020-09-25 16:36:48	[Thread 3]	INFO			county = Solano
-2020-09-25 16:51:08	[Thread 1]	WARN	rstan	throw_sampler_warnings	There were 59 divergent transitions after warmup. Increasing adapt_delta above 0.9 may help. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup
-2020-09-25 16:51:08	[Thread 1]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
-2020-09-25 16:51:31	[Thread 1]	WARN	rstan	throw_sampler_warnings	Tail Effective Samples Size (ESS) is too low, indicating posterior variances and tail quantiles may be unreliable. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#tail-ess
-2020-09-25 16:55:52	[Thread 1]	INFO			county = Santa Clara
-2020-09-25 17:22:30	[Thread 1]	WARN	rstan	throw_sampler_warnings	There were 4 divergent transitions after warmup. Increasing adapt_delta above 0.9 may help. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup
-2020-09-25 17:22:30	[Thread 1]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
-2020-09-25 17:32:50	[Thread 1]	INFO			county = Yolo
-2020-09-25 17:42:51	[Main thread]	FATAL			Error in base::try(IsBad, TRUE) : object 'IsBad' not found 
-2020-09-27 14:58:51	[Main thread]	WARN	LEMMA	RunSim	closing unused connection 5 (<-localhost:11636)
-2020-09-27 14:58:51	[Main thread]	WARN	LEMMA	RunSim	closing unused connection 4 (<-localhost:11636)
-2020-09-27 14:58:51	[Main thread]	WARN	LEMMA	RunSim	closing unused connection 3 (<-localhost:11636)
-2020-09-27 15:33:01	[Main thread]	WARN	rstan	throw_sampler_warnings	There were 4 divergent transitions after warmup. Increasing adapt_delta above 0.9 may help. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup
-2020-09-27 15:33:01	[Main thread]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
-2020-09-27 16:20:27	[Main thread]	WARN	rstan	throw_sampler_warnings	There were 1 divergent transitions after warmup. Increasing adapt_delta above 0.9 may help. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup
-2020-09-27 16:20:27	[Main thread]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
-2020-09-27 20:06:05	[Thread 3]	FATAL			Error in unserialize(node$con) : error reading from connection Calls: local ... doTryCatch -> recvData -> recvData.SOCKnode -> unserialize 
-2020-09-27 20:06:05	[Thread 3]	TRACE			Thread 3 terminated
-2020-09-27 20:06:05	[Thread 2]	FATAL			Error in unserialize(node$con) : error reading from connection Calls: local ... doTryCatch -> recvData -> recvData.SOCKnode -> unserialize 
-2020-09-27 20:06:06	[Thread 2]	TRACE			Thread 2 terminated
-2020-09-27 20:06:06	[Thread 1]	FATAL			Error in unserialize(node$con) : error reading from connection Calls: local ... doTryCatch -> recvData -> recvData.SOCKnode -> unserialize 
-2020-09-27 20:06:06	[Thread 1]	TRACE			Thread 1 terminated
-2020-09-27 20:06:07	[Thread 3]	FATAL			Error in unserialize(node$con) : error reading from connection Calls: local ... doTryCatch -> recvData -> recvData.SOCKnode -> unserialize 
-2020-09-27 20:06:07	[Thread 3]	TRACE			Thread 3 terminated
-2020-09-27 20:06:07	[Thread 2]	FATAL			Error in unserialize(node$con) : error reading from connection Calls: local ... doTryCatch -> recvData -> recvData.SOCKnode -> unserialize 
-2020-09-27 20:06:07	[Thread 2]	TRACE			Thread 2 terminated
-2020-09-27 20:06:07	[Thread 1]	FATAL			Error in unserialize(node$con) : error reading from connection Calls: local ... doTryCatch -> recvData -> recvData.SOCKnode -> unserialize 
-2020-09-27 20:06:07	[Thread 1]	TRACE			Thread 1 terminated
+2020-09-28 10:51:30	[Main thread]	TRACE			Initiating cluster with 3 threads
+2020-09-28 10:51:30	[Thread 1]	TRACE			Thread 1 initiated
+2020-09-28 10:51:30	[Thread 2]	TRACE			Thread 2 initiated
+2020-09-28 10:51:30	[Thread 3]	TRACE			Thread 3 initiated
+2020-09-28 13:30:25	[Thread 1]	WARN	rstan	throw_sampler_warnings	There were 5 divergent transitions after warmup. Increasing adapt_delta above 0.8 may help. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup
+2020-09-28 13:30:25	[Thread 1]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
+2020-09-28 13:30:38	[Thread 1]	WARN	rstan	throw_sampler_warnings	Tail Effective Samples Size (ESS) is too low, indicating posterior variances and tail quantiles may be unreliable. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#tail-ess
+2020-09-28 13:33:27	[Thread 1]	INFO			county = Tulare
+2020-09-28 13:33:27	[Main thread]	TRACE			Stopping cluster
+2020-09-28 13:33:27	[Thread 2]	TRACE			Thread 2 terminated
+2020-09-28 13:33:27	[Thread 3]	TRACE			Thread 3 terminated
+2020-09-28 13:33:27	[Thread 1]	TRACE			Thread 1 terminated
