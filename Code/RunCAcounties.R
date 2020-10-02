@@ -3,7 +3,7 @@ library(ParallelLogger)
 
 source('Code/GetCountyData.R')
 
-quick.test <- F
+quick.test <- T
 if (quick.test) {
   cat("\n\n++++++++++++++++++  quick.test = T +++++++++++++++++ \n\n")
 }
@@ -76,10 +76,10 @@ RunOneCounty <- function(county1, county.dt, county.pop, quick.test) {
       inputs$interventions <- inputs$interventions[mu_t_inter >= as.Date("2020/6/1")]
       inputs$model.inputs$start.display.date <- as.Date("2020/6/1")
       inputs$internal.args$initial.deaths <- initial.deaths
-    } else if (county1 %in% c("Kings", "San Joaquin", "Fresno", "Kern", "San Bernardino", "Butte")) {
+    } else if (county1 %in% c("Kings", "San Joaquin", "Kern", "San Bernardino", "Butte")) {
       inputs$internal.args$adapt_delta <- 0.95
       inputs$internal.args$iter <- 1500 #needs more iterations to converge
-    } else if (county1 %in% c("Stanislaus", "Merced", "Santa Barbara")) {
+    } else if (county1 %in% c("Stanislaus", "Merced", "Santa Barbara", "Fresno")) {
       inputs$internal.args$adapt_delta <- 0.8
       inputs$internal.args$iter <- 1500 #needs more iterations to converge
     }
@@ -131,7 +131,7 @@ RunOneCounty <- function(county1, county.dt, county.pop, quick.test) {
 county.dt <- GetCountyData(exclude.set)
 county.set <- unique(county.dt$county)
 
-if (quick.test) county.set <- c("Santa Barbara")
+if (quick.test) county.set <- c("Fresno")
 print(county.set)
 
 options(warn = 1)
