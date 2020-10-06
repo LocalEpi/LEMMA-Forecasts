@@ -131,7 +131,9 @@ RunOneCounty <- function(county1, county.dt, county.pop, quick.test) {
 county.dt <- GetCountyData(exclude.set)
 county.set <- unique(county.dt$county)
 
-if (quick.test) county.set <- c("Fresno")
+if (quick.test) county.set <- c("Merced", "Orange", "San Bernardino",
+                                "San Joaquin", "San Luis Obispo", "Santa Barbara", "Shasta",
+                                "Sonoma", "Tehama", "Ventura", "Yuba")
 print(county.set)
 
 options(warn = 1)
@@ -142,7 +144,7 @@ unlink(logfile)
 clearLoggers()
 addDefaultFileLogger(logfile)
 
-if (quick.test) {
+if (F && quick.test) {
   county.results <- lapply(county.set, RunOneCounty, county.dt, county.pop, quick.test)
 } else {
   cl <- makeCluster(3)
