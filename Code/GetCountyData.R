@@ -16,6 +16,10 @@ GetCountyData <- function(exclude.set) {
 
   #make deaths NA for outliers that imply cumulative deaths decrease
   county.dt[county == 'Alameda' & date == '2020-08-22', deaths.conf := NA_real_]
+  county.dt[county == 'Alameda' & date == '2020-10-04', deaths.conf := NA_real_]
+  county.dt[county == 'Alameda' & date == '2020-10-11', deaths.conf := NA_real_]
+  county.dt[county == 'Alameda' & date == '2020-10-12', deaths.conf := NA_real_]
+  county.dt[county == 'Alameda' & date == '2020-10-13', deaths.conf := NA_real_]
   county.dt[county == 'Contra Costa' & date == '2020-03-24', deaths.conf := NA_real_]
   county.dt[county == 'Contra Costa' & date == '2020-03-25', deaths.conf := NA_real_]
   county.dt[county == 'Contra Costa' & date == '2020-05-10', deaths.conf := NA_real_]
