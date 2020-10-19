@@ -5,21 +5,34 @@ SAMPLING FOR MODEL 'LEMMA' NOW (CHAIN 1).
 
 SAMPLING FOR MODEL 'LEMMA' NOW (CHAIN 2).
 
-SAMPLING FOR MODEL 'LEMMA' NOW (CHAIN 
-4SAMPLING FOR MODEL ').
-LEMMA' NOW (CHAIN 3).
+SAMPLING FOR MODEL 'LEMMA' NOW (CHAIN 4).
+
+SAMPLING FOR MODEL 'LEMMA' NOW (CHAIN 3).
 Chain 1: 
-Chain 1: Gradient evaluation took 0.003637 seconds
-Chain 1: 1000 transitions using 10 leapfrog steps per transition would take 36.37 seconds.
+Chain 1: Gradient evaluation took 0.003158 seconds
+Chain 1: 1000 transitions using 10 leapfrog steps per transition would take 31.58 seconds.
 Chain 1: Adjust your expectations accordingly!
 Chain 1: 
 Chain 1: 
-Chain 2: 
-Chain 2: Gradient evaluation took 0.003728 seconds
-Chain 2: 1000 transitions using 10 leapfrog steps per transition would take 37.28 seconds.
-Chain 2: Adjust your expectations accordingly!
-Chain 2: 
-Chain 2: 
+Chain 3: 
+Chain Chain 3: Chain Gradient evaluation took 0.004576 seconds42
+: Chain 3: : 1000 transitions using 10 leapfrog steps per transition would take 45.76 seconds.
+
+
+Chain Chain 2Chain 4: 3: Gradient evaluation took 0.004742 seconds: Gradient evaluation took 0.004633 seconds
+Adjust your expectations accordingly!
+Chain 
+Chain Chain 2: 1000 transitions using 10 leapfrog steps per transition would take 47.42 seconds.
+4Chain 3: : 21000 transitions using 10 leapfrog steps per transition would take 46.33 seconds.
+: Chain 
+3Adjust your expectations accordingly!Chain : 
+4
+: Adjust your expectations accordingly!
 Chain 4: 
-Chain 4: Gradient evaluation took 0.00322 seconds
-Chain 4: 1000 transitions using 10 leapfrog steps per transition would take 32.2 seconds.
+Chain 4: 
+Chain 2: 
+Chain 2: 
+Chain 1: Iteration:   1 / 1000 [  0%]  (Warmup)
+Chain 4: Iteration:   1 / 1000 [  0%]  (Warmup)
+Chain 2: Iteration:   1 / 1000 [  0%]  (Warmup)
+Chain 3: Iteration:   1 / 1000 [  0%]  (Warmup)
