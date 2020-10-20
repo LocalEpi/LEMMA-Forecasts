@@ -3,7 +3,7 @@ library(ParallelLogger)
 
 source('Code/GetCountyData.R')
 
-quick.test <- F
+quick.test <- T
 if (quick.test) {
   cat("\n\n++++++++++++++++++  quick.test = T +++++++++++++++++ \n\n")
 }
@@ -25,7 +25,7 @@ exclude.set <- c("San Benito", "Siskiyou") #not enough data to fit
 exclude.set <- c(exclude.set, "San Francisco", omit.counties) #SF is run separately
 
 RunOneCounty <- function(county1, county.dt, county.pop, quick.test) {
-  restart.set <- c("Tehama", "Mono", "Yolo", "Yuba", "Mendocino", "Nevada", "El Dorado", "Tuolumne", "Amador", "Inyo", "Calaveras") #infections went to near zero - restart sim
+  restart.set <- c("Tehama", "Mono", "Yolo", "Yuba", "Mendocino", "Nevada", "El Dorado", "Tuolumne", "Amador", "Inyo", "Calaveras", "Madera") #infections went to near zero - restart sim
   sink.file <- paste0("Logs/progress-", county1, ".txt")
   sink(sink.file)
   cat("county = ", county1, "\n")
@@ -56,9 +56,6 @@ RunOneCounty <- function(county1, county.dt, county.pop, quick.test) {
     } else if (county1 == "Kings") {
       county.dt1[, icu.conf := NA_integer_] #data error in Kings ICU?
       county.dt1[, icu.pui := NA_integer_]
-    } else if (county1 == "San Mateo") {
-      sheets$Interventions[7, mu_beta_inter := 1] #more recent increase
-      sheets$Interventions[8, mu_beta_inter := 1.5]
     } else if (county1 %in% restart.set) {
       sheets$`Parameters with Distributions`[1, Mean := 1] #R0 = 1
       initial.deaths <- county.dt1[date == as.Date("2020/5/30"), deaths.conf]
@@ -131,7 +128,7 @@ RunOneCounty <- function(county1, county.dt, county.pop, quick.test) {
 county.dt <- GetCountyData(exclude.set)
 county.set <- unique(county.dt$county)
 
-if (quick.test) county.set <- c("Shasta", "Sonoma", "Tehama", "Ventura", "Yuba")
+if (quick.test) county.set <- "San Mateo"
 print(county.set)
 
 options(warn = 1)
