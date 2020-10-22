@@ -3,7 +3,7 @@ library(ParallelLogger)
 
 source('Code/GetCountyData.R')
 
-quick.test <- T
+quick.test <- F
 if (quick.test) {
   cat("\n\n++++++++++++++++++  quick.test = T +++++++++++++++++ \n\n")
 }
@@ -14,18 +14,19 @@ if (quick.test) {
   omit.counties <- ""
 } else {
   #run half the counties each day
-  if (as.numeric(Sys.Date()) %% 2 == 0) {
+  if (as.numeric(Sys.Date()) %% 2 == 1) {
     omit.counties <- county.pop[seq(1, 58, by = 2), county]
   } else {
     omit.counties <- county.pop[seq(2, 58, by = 2), county]
   }
 }
 
-exclude.set <- c("San Benito", "Siskiyou") #not enough data to fit
+#exclude.set <- c("San Benito", "Siskiyou") #not enough data to fit
+exclude.set <- ""
 exclude.set <- c(exclude.set, "San Francisco", omit.counties) #SF is run separately
 
 RunOneCounty <- function(county1, county.dt, county.pop, quick.test) {
-  restart.set <- c("Tehama", "Mono", "Yolo", "Yuba", "Mendocino", "Nevada", "El Dorado", "Tuolumne", "Amador", "Inyo", "Calaveras", "Madera") #infections went to near zero - restart sim
+  restart.set <- c("Tehama", "Mono", "Yolo", "Yuba", "Mendocino", "Nevada", "El Dorado", "Tuolumne", "Amador", "Inyo", "Calaveras", "Madera", "Humboldt") #infections went to near zero - restart sim
   sink.file <- paste0("Logs/progress-", county1, ".txt")
   sink(sink.file)
   cat("county = ", county1, "\n")
@@ -73,111 +74,112 @@ RunOneCounty <- function(county1, county.dt, county.pop, quick.test) {
       inputs$interventions <- inputs$interventions[mu_t_inter >= as.Date("2020/6/1")]
       inputs$model.inputs$start.display.date <- as.Date("2020/6/1")
       inputs$internal.args$initial.deaths <- initial.deaths
-    } else if (county1 %in% c("Kings", "San Joaquin", "Kern", "San Bernardino", "Butte")) {
-      inputs$internal.args$adapt_delta <- 0.95
-      inputs$internal.args$iter <- 1500 #needs more iterations to converge
-    } else if (county1 %in% c("Stanislaus", "Merced", "Santa Barbara", "Fresno")) {
-      inputs$internal.args$adapt_delta <- 0.8
-      inputs$internal.args$iter <- 1500 #needs more iterations to converge
+      # } else if (county1 %in% c("Kings", "San Joaquin", "Kern", "San Bernardino", "Butte")) {
+      } else if (county1 %in% c("Butte")) {
+        inputs$internal.args$adapt_delta <- 0.95
+        inputs$internal.args$iter <- 1500 #needs more iterations to converge
+      } else if (county1 %in% c("Stanislaus", "Merced", "Santa Barbara", "Fresno")) {
+        inputs$internal.args$adapt_delta <- 0.8
+        inputs$internal.args$iter <- 1500 #needs more iterations to converge
+      }
+
+      inputs$internal.args$output.filestr <- paste0("Forecasts/", county1)
+      mean.ini <- 1e-5 * county.pop1
+      inputs$internal.args$lambda_ini_exposed <- 1 / mean.ini
+
+      if (quick.test) {
+        # inputs$internal.args$warmup <- NA
+        # inputs$internal.args$iter <- 10
+        # inputs$internal.args$max_treedepth <- 10
+        # inputs$internal.args$adapt_delta <- 0.8
+      }
+      cred.int <- LEMMA:::CredibilityInterval(inputs)
     }
 
-    inputs$internal.args$output.filestr <- paste0("Forecasts/", county1)
-    mean.ini <- 1e-5 * county.pop1
-    inputs$internal.args$lambda_ini_exposed <- 1 / mean.ini
+    max.date <- max(cred.int$inputs$obs.data$date)
+    outfile <- paste0("Scenarios/", county1)
+    cred.int$inputs$model.inputs$end.date <- as.Date("2020/12/31")
 
-    if (quick.test) {
-      # inputs$internal.args$warmup <- NA
-      # inputs$internal.args$iter <- 10
-      # inputs$internal.args$max_treedepth <- 10
-      # inputs$internal.args$adapt_delta <- 0.8
+    ProjScen <- function(int.list) {
+      int.date <- int.list$date
+      int.str <- int.list$str
+      if (is.na(int.date)) {
+        intervention <- NULL
+        subtitl <- "Scenario: No change from current Re"
+      } else {
+        intervention <- data.frame(mu_t_inter = int.date, sigma_t_inter = 0.0001, mu_beta_inter = 0.5, sigma_beta_inter = 0.0001, mu_len_inter = 7, sigma_len_inter = 2)
+        subtitl <- paste("Scenario: Reduce Re by 50% starting", as.character(as.Date(int.date), format = "%b%e"))
+      }
+      lapply(LEMMA:::ProjectScenario(cred.int, new.int=intervention, paste0("Scenarios/", county1, "_scenario_", int.str))$gplot$long.term, function (z) z + ggplot2::labs(subtitle = subtitl))
     }
-    cred.int <- LEMMA:::CredibilityInterval(inputs)
-  }
 
-  max.date <- max(cred.int$inputs$obs.data$date)
-  outfile <- paste0("Scenarios/", county1)
-  cred.int$inputs$model.inputs$end.date <- as.Date("2020/12/31")
+    scen.plots <- lapply(list(list(date = NA, str = "noChange"), list(date = max.date + 3, str = "actToday"), list(date = max.date + 17, str = "actTwoWeeks")), ProjScen)
+    grDevices::pdf(file = paste0("Scenarios/", county1, "_scenarios_summary.pdf"), width = 9.350, height = 7.225) #overwrite the .pdf
+    print(scen.plots)
+    dev.off()
 
-  ProjScen <- function(int.list) {
-    int.date <- int.list$date
-    int.str <- int.list$str
-    if (is.na(int.date)) {
-      intervention <- NULL
-      subtitl <- "Scenario: No change from current Re"
-    } else {
-      intervention <- data.frame(mu_t_inter = int.date, sigma_t_inter = 0.0001, mu_beta_inter = 0.5, sigma_beta_inter = 0.0001, mu_len_inter = 7, sigma_len_inter = 2)
-      subtitl <- paste("Scenario: Reduce Re by 50% starting", as.character(as.Date(int.date), format = "%b%e"))
+    sink()
+    ParallelLogger::logInfo("county = ", county1)
+
+    if (county1 != "San Francisco") {
+      cred.int <- NULL #save memory
     }
-    lapply(LEMMA:::ProjectScenario(cred.int, new.int=intervention, paste0("Scenarios/", county1, "_scenario_", int.str))$gplot$long.term, function (z) z + ggplot2::labs(subtitle = subtitl))
+    return(cred.int)
   }
 
-  scen.plots <- lapply(list(list(date = NA, str = "noChange"), list(date = max.date + 3, str = "actToday"), list(date = max.date + 17, str = "actTwoWeeks")), ProjScen)
-  grDevices::pdf(file = paste0("Scenarios/", county1, "_scenarios_summary.pdf"), width = 9.350, height = 7.225) #overwrite the .pdf
-  print(scen.plots)
-  dev.off()
+  county.dt <- GetCountyData(exclude.set)
+  county.set <- unique(county.dt$county)
 
-  sink()
-  ParallelLogger::logInfo("county = ", county1)
+  if (quick.test) county.set <- "San Mateo"
+  print(county.set)
 
-  if (county1 != "San Francisco") {
-    cred.int <- NULL #save memory
+  options(warn = 1)
+  assign("last.warning", NULL, envir = baseenv())
+
+  logfile <- "Logs/logger.txt"
+  unlink(logfile)
+  clearLoggers()
+  addDefaultFileLogger(logfile)
+
+  if (F && quick.test) {
+    county.results <- lapply(county.set, RunOneCounty, county.dt, county.pop, quick.test)
+  } else {
+    cl <- makeCluster(3)
+    county.results <- clusterApply(cl, county.set, RunOneCounty, county.dt, county.pop, quick.test)
+    stopCluster(cl)
   }
-  return(cred.int)
-}
+  names(county.results) <- county.set
+  cat("Data through", as.character(county.dt[, max(date)]), "\n")
+  unregisterLogger(1)
 
-county.dt <- GetCountyData(exclude.set)
-county.set <- unique(county.dt$county)
-
-if (quick.test) county.set <- "San Mateo"
-print(county.set)
-
-options(warn = 1)
-assign("last.warning", NULL, envir = baseenv())
-
-logfile <- "Logs/logger.txt"
-unlink(logfile)
-clearLoggers()
-addDefaultFileLogger(logfile)
-
-if (F && quick.test) {
-  county.results <- lapply(county.set, RunOneCounty, county.dt, county.pop, quick.test)
-} else {
-  cl <- makeCluster(3)
-  county.results <- clusterApply(cl, county.set, RunOneCounty, county.dt, county.pop, quick.test)
-  stopCluster(cl)
-}
-names(county.results) <- county.set
-cat("Data through", as.character(county.dt[, max(date)]), "\n")
-unregisterLogger(1)
-
-dt <- fread("Logs/logger.txt")
-setnames(dt, c("time", "threadLabel", "level", "packageName", "functionName", "message"))
-setkey(dt, threadLabel, time)
+  dt <- fread("Logs/logger.txt")
+  setnames(dt, c("time", "threadLabel", "level", "packageName", "functionName", "message"))
+  setkey(dt, threadLabel, time)
 
 
-IsBad <- function(w) {
-  if (w %in% c("Bulk Effective Samples Size (ESS) is too low, indicating posterior means and medians may be unreliable. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#bulk-ess",
-               "Tail Effective Samples Size (ESS) is too low, indicating posterior variances and tail quantiles may be unreliable. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#tail-ess",
-               "Examine the pairs() plot to diagnose sampling problems")) return(F)
-  if (grepl("There were [[:digit:]]+ divergent transitions after warmup.", w)) {
-    x <- as.numeric(strsplit(sub("There were ", "", w), split = " divergent")[[1]][1])
-    return(x > 50)
+  IsBad <- function(w) {
+    if (w %in% c("Bulk Effective Samples Size (ESS) is too low, indicating posterior means and medians may be unreliable. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#bulk-ess",
+                 "Tail Effective Samples Size (ESS) is too low, indicating posterior variances and tail quantiles may be unreliable. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#tail-ess",
+                 "Examine the pairs() plot to diagnose sampling problems")) return(F)
+    if (grepl("There were [[:digit:]]+ divergent transitions after warmup.", w)) {
+      x <- as.numeric(strsplit(sub("There were ", "", w), split = " divergent")[[1]][1])
+      return(x > 50)
+    }
+    if (grepl("There were [[:digit:]]+ transitions after warmup that exceeded the maximum treedepth.", w)) {
+      x <- as.numeric(strsplit(sub("There were ", "", w), split = " transitions")[[1]][1])
+      return(x > 50)
+    }
+    return(T)
   }
-  if (grepl("There were [[:digit:]]+ transitions after warmup that exceeded the maximum treedepth.", w)) {
-    x <- as.numeric(strsplit(sub("There were ", "", w), split = " transitions")[[1]][1])
-    return(x > 50)
-  }
-  return(T)
-}
 
-for (i in 1:nrow(dt)) {
-  if (dt[i, level == "WARN" & IsBad(message)]) {
-    cat(dt[i, message], "\n")
-    next.county <- dt[, grep("county = ", message)]
-    next.county <- min(next.county[next.county > i])
-    cat(dt[next.county, message], "\n\n")
+  for (i in 1:nrow(dt)) {
+    if (dt[i, level == "WARN" & IsBad(message)]) {
+      cat(dt[i, message], "\n")
+      next.county <- dt[, grep("county = ", message)]
+      next.county <- min(next.county[next.county > i])
+      cat(dt[next.county, message], "\n\n")
+    }
   }
-}
 
-cat("\n\nData through", as.character(county.dt[, max(date)]), "\n")
+  cat("\n\nData through", as.character(county.dt[, max(date)]), "\n")
 

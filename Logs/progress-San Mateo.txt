@@ -8,34 +8,34 @@ SAMPLING FOR MODEL 'LEMMA' NOW (CHAIN 2).
 SAMPLING FOR MODEL 'LEMMA' NOW (CHAIN 3).
 
 SAMPLING FOR MODEL 'LEMMA' NOW (CHAIN 4).
-Chain 1: 
-Chain 1: Gradient evaluation took 0.001885 seconds
-Chain 1: 1000 transitions using 10 leapfrog steps per transition would take 18.85 seconds.
-Chain 1: Adjust your expectations accordingly!
-Chain 1: 
-Chain 1: 
-Chain 2: 
-Chain 2: Gradient evaluation took 0.001901 secondsChain 3: 
-Chain 3: Gradient evaluation took 0.001901 seconds
+Chain 1: Chain 3: 
 
-Chain 2: 1000 transitions using 10 leapfrog steps per transition would take 19.01 seconds.
-Chain 2: Adjust your expectations accordingly!
+Chain Chain 3: Gradient evaluation took 0.001953 seconds
 Chain 2: 
-Chain Chain 3: 1000 transitions using 10 leapfrog steps per transition would take 19.01 seconds.
-Chain 3: Adjust your expectations accordingly!
-2: 
-Chain Chain 4: 
-Chain 4: Gradient evaluation took 0.001837 seconds
-Chain 43: 
+4Chain Chain 21: Gradient evaluation took 0.00202 seconds
+Chain 3: : : 
+Gradient evaluation took 0.001999 secondsChain 
+1000 transitions using 10 leapfrog steps per transition would take 19.53 seconds.
+Chain 4: 3: Adjust your expectations accordingly!
+Gradient evaluation took 0.00197 seconds
 Chain 3: 
-: 1000 transitions using 10 leapfrog steps per transition would take 18.37 seconds.
+Chain 3: 
+Chain 1: 1000 transitions using 10 leapfrog steps per transition would take 20.2 seconds.
+Chain Chain 2: 1000 transitions using 10 leapfrog steps per transition would take 19.99 seconds.
+Chain 21: Adjust your expectations accordingly!
+Chain 1: 
+Chain 1: : Adjust your expectations accordingly!
+Chain 4: Chain 21000 transitions using 10 leapfrog steps per transition would take 19.7 seconds.
+
 Chain 4: Adjust your expectations accordingly!
+Chain 4: : 
+Chain 2: 
+
 Chain 4: 
-Chain 4: 
+Chain 4: Iteration:   1 / 1000 [  0%]  (Warmup)
 Chain 1: Iteration:   1 / 1000 [  0%]  (Warmup)
 Chain 2: Iteration:   1 / 1000 [  0%]  (Warmup)
 Chain 3: Iteration:   1 / 1000 [  0%]  (Warmup)
-Chain 4: Iteration:   1 / 1000 [  0%]  (Warmup)
 Chain 1: Iteration:  50 / 1000 [  5%]  (Warmup)
 Chain 2: Iteration:  50 / 1000 [  5%]  (Warmup)
 Chain 4: Iteration:  50 / 1000 [  5%]  (Warmup)
@@ -97,9 +97,9 @@ Chain 3: Iteration: 850 / 1000 [ 85%]  (Sampling)
 Chain 1: Iteration: 750 / 1000 [ 75%]  (Sampling)
 Chain 4: Iteration: 1000 / 1000 [100%]  (Sampling)
 Chain 4: 
-Chain 4:  Elapsed Time: 826.81 seconds (Warm-up)
-Chain 4:                1036.34 seconds (Sampling)
-Chain 4:                1863.15 seconds (Total)
+Chain 4:  Elapsed Time: 793.261 seconds (Warm-up)
+Chain 4:                846.274 seconds (Sampling)
+Chain 4:                1639.53 seconds (Total)
 Chain 4: 
 Chain 3: Iteration: 900 / 1000 [ 90%]  (Sampling)
 Chain 1: Iteration: 800 / 1000 [ 80%]  (Sampling)
@@ -109,9 +109,9 @@ Chain 1: Iteration: 850 / 1000 [ 85%]  (Sampling)
 Chain 2: Iteration: 350 / 1000 [ 35%]  (Warmup)
 Chain 3: Iteration: 1000 / 1000 [100%]  (Sampling)
 Chain 3: 
-Chain 3:  Elapsed Time: 1074.53 seconds (Warm-up)
-Chain 3:                1111.12 seconds (Sampling)
-Chain 3:                2185.65 seconds (Total)
+Chain 3:  Elapsed Time: 1029.79 seconds (Warm-up)
+Chain 3:                818.787 seconds (Sampling)
+Chain 3:                1848.58 seconds (Total)
 Chain 3: 
 Chain 1: Iteration: 900 / 1000 [ 90%]  (Sampling)
 Chain 2: Iteration: 400 / 1000 [ 40%]  (Warmup)
@@ -119,9 +119,9 @@ Chain 1: Iteration: 950 / 1000 [ 95%]  (Sampling)
 Chain 2: Iteration: 450 / 1000 [ 45%]  (Warmup)
 Chain 1: Iteration: 1000 / 1000 [100%]  (Sampling)
 Chain 1: 
-Chain 1:  Elapsed Time: 1279.58 seconds (Warm-up)
-Chain 1:                1095.42 seconds (Sampling)
-Chain 1:                2375 seconds (Total)
+Chain 1:  Elapsed Time: 1204.26 seconds (Warm-up)
+Chain 1:                807.089 seconds (Sampling)
+Chain 1:                2011.35 seconds (Total)
 Chain 1: 
 Chain 2: Iteration: 500 / 1000 [ 50%]  (Warmup)
 Chain 2: Iteration: 501 / 1000 [ 50%]  (Sampling)
@@ -136,15 +136,15 @@ Chain 2: Iteration: 900 / 1000 [ 90%]  (Sampling)
 Chain 2: Iteration: 950 / 1000 [ 95%]  (Sampling)
 Chain 2: Iteration: 1000 / 1000 [100%]  (Sampling)
 Chain 2: 
-Chain 2:  Elapsed Time: 2448.67 seconds (Warm-up)
-Chain 2:                753.476 seconds (Sampling)
-Chain 2:                3202.14 seconds (Total)
+Chain 2:  Elapsed Time: 2074.91 seconds (Warm-up)
+Chain 2:                664.473 seconds (Sampling)
+Chain 2:                2739.39 seconds (Total)
 Chain 2: 
     user   system  elapsed 
-9625.615   15.634 3223.835 
+8244.659    7.204 2753.643 
 Projecting
    user  system elapsed 
- 21.690   0.818  22.568 
+ 18.316   0.590  18.924 
 
 Excel output:  Forecasts/San Mateo.xlsx 
   5%  10%  25%  50%  75%  90%  95% 
@@ -152,7 +152,7 @@ Excel output:  Forecasts/San Mateo.xlsx
 
 PDF output:  Forecasts/San Mateo.pdf 
    user  system elapsed 
- 22.486   0.890  23.441 
+ 19.061   0.649  19.728 
 
 Excel output:  Scenarios/San Mateo_scenario_noChange.xlsx 
   5%  10%  25%  50%  75%  90%  95% 
@@ -160,7 +160,7 @@ Excel output:  Scenarios/San Mateo_scenario_noChange.xlsx
 
 PDF output:  Scenarios/San Mateo_scenario_noChange.pdf 
    user  system elapsed 
- 21.605   0.571  22.231 
+ 18.157   0.409  18.584 
 
 Excel output:  Scenarios/San Mateo_scenario_actToday.xlsx 
   5%  10%  25%  50%  75%  90%  95% 
@@ -168,7 +168,7 @@ Excel output:  Scenarios/San Mateo_scenario_actToday.xlsx
 
 PDF output:  Scenarios/San Mateo_scenario_actToday.pdf 
    user  system elapsed 
- 21.389   0.471  21.917 
+ 17.821   0.339  18.180 
 
 Excel output:  Scenarios/San Mateo_scenario_actTwoWeeks.xlsx 
   5%  10%  25%  50%  75%  90%  95% 
