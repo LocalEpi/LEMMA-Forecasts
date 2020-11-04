@@ -131,7 +131,7 @@ RunOneCounty <- function(county1, county.dt, county.pop, quick.test) {
   county.set <- unique(county.dt$county)
 
   if (quick.test) county.set <- c("Santa Barbara",
-                                  "Sonoma", "Tehama", "Tuolumne", "Ventura",
+                                  "Sonoma",  "Ventura",
                                   "Yuba")
   print(county.set)
 
