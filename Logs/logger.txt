@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 2020-11-04 15:00:11	[Main thread]	TRACE			Initiating cluster with 3 threads
 2020-11-04 15:00:12	[Thread 1]	TRACE			Thread 1 initiated
 2020-11-04 15:00:12	[Thread 2]	TRACE			Thread 2 initiated
@@ -65,3 +66,23 @@
 2020-11-05 09:44:30	[Thread 3]	TRACE			Thread 3 terminated
 2020-11-05 09:44:30	[Thread 1]	TRACE			Thread 1 terminated
 2020-11-05 09:44:30	[Thread 2]	TRACE			Thread 2 terminated
+=======
+2020-11-04 07:01:17	[Main thread]	TRACE			Initiating cluster with 3 threads
+2020-11-04 07:01:18	[Thread 1]	TRACE			Thread 1 initiated
+2020-11-04 07:01:18	[Thread 2]	TRACE			Thread 2 initiated
+2020-11-04 07:01:18	[Thread 3]	TRACE			Thread 3 initiated
+2020-11-04 10:23:46	[Thread 3]	INFO			county = Ventura
+2020-11-04 11:00:33	[Thread 3]	WARN	rstan	throw_sampler_warnings	There were 1 divergent transitions after warmup. Increasing adapt_delta above 0.9 may help. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup
+2020-11-04 11:00:33	[Thread 3]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
+2020-11-04 11:01:50	[Thread 1]	WARN	rstan	throw_sampler_warnings	There were 8 divergent transitions after warmup. Increasing adapt_delta above 0.95 may help. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup
+2020-11-04 11:01:50	[Thread 1]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
+2020-11-04 11:05:59	[Thread 1]	INFO			county = Santa Barbara
+2020-11-04 11:06:15	[Thread 3]	INFO			county = Yuba
+2020-11-04 11:12:08	[Thread 2]	WARN	rstan	throw_sampler_warnings	There were 13 divergent transitions after warmup. Increasing adapt_delta above 0.9 may help. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup
+2020-11-04 11:12:08	[Thread 2]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
+2020-11-04 11:14:18	[Thread 2]	INFO			county = Sonoma
+2020-11-04 11:14:18	[Thread 2]	TRACE			Thread 2 terminated
+2020-11-04 11:14:18	[Main thread]	TRACE			Stopping cluster
+2020-11-04 11:14:18	[Thread 1]	TRACE			Thread 1 terminated
+2020-11-04 11:14:18	[Thread 3]	TRACE			Thread 3 terminated
+>>>>>>> ac6fec5e7104d230d7845847326133591813ddfc
