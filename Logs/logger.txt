@@ -1,3 +1,9 @@
 2020-11-08 10:46:22	[Main thread]	WARN	rstan	throw_sampler_warnings	There were 8 divergent transitions after warmup. Increasing adapt_delta above 0.9 may help. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup
 2020-11-08 10:46:22	[Main thread]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
 2020-11-08 10:48:34	[Main thread]	INFO			county = Santa Cruz
+2020-11-08 11:39:16	[Thread 3]	FATAL			Error in unserialize(node$con) : error reading from connection Calls: local ... doTryCatch -> recvData -> recvData.SOCKnode -> unserialize 
+2020-11-08 11:39:16	[Thread 3]	TRACE			Thread 3 terminated
+2020-11-08 11:39:17	[Thread 2]	FATAL			Error in unserialize(node$con) : error reading from connection Calls: local ... doTryCatch -> recvData -> recvData.SOCKnode -> unserialize 
+2020-11-08 11:39:17	[Thread 2]	TRACE			Thread 2 terminated
+2020-11-08 11:39:17	[Thread 1]	FATAL			Error in unserialize(node$con) : error reading from connection Calls: local ... doTryCatch -> recvData -> recvData.SOCKnode -> unserialize 
+2020-11-08 11:39:17	[Thread 1]	TRACE			Thread 1 terminated
