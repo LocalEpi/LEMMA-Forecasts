@@ -26,7 +26,7 @@ exclude.set <- ""
 exclude.set <- c(exclude.set, "San Francisco", omit.counties) #SF is run separately
 
 RunOneCounty <- function(county1, county.dt, county.pop, quick.test) {
-  restart.set <- c("Tehama", "Mono", "Yolo", "Yuba", "Mendocino", "Nevada", "El Dorado", "Tuolumne", "Amador", "Inyo", "Calaveras", "Madera", "Humboldt", "Siskiyou") #infections went to near zero - restart sim
+  restart.set <- c("Tehama", "Mono", "Yolo", "Yuba", "Mendocino", "Nevada", "El Dorado", "Tuolumne", "Amador", "Inyo", "Calaveras", "Madera", "Humboldt", "Siskiyou", "Butte") #infections went to near zero - restart sim
   sink.file <- paste0("Logs/progress-", county1, ".txt")
   sink(sink.file)
   cat("county = ", county1, "\n")
@@ -75,7 +75,7 @@ RunOneCounty <- function(county1, county.dt, county.pop, quick.test) {
       inputs$model.inputs$start.display.date <- as.Date("2020/6/1")
       inputs$internal.args$initial.deaths <- initial.deaths
       # } else if (county1 %in% c("Kings", "San Joaquin", "Kern", "San Bernardino", "Butte")) {
-      } else if (county1 %in% c("Butte", "Santa Barbara")) {
+      } else if (county1 %in% c("Santa Barbara")) {
         inputs$internal.args$adapt_delta <- 0.95
         inputs$internal.args$iter <- 1500 #needs more iterations to converge
       } else if (county1 %in% c("Stanislaus", "Merced", "Fresno")) {
