@@ -69,6 +69,12 @@ GetCountyData <- function(exclude.set) {
   county.dt[county == 'Yuba' & date == '2020-06-17', deaths.conf := NA_real_]
   county.dt[county == 'Yuba' & date == '2020-06-18', deaths.conf := NA_real_]
 
+  #data errors
+  county.dt[county == 'Merced' & date == '2020-08-16', hosp.conf := NA_real_]
+  county.dt[county == 'Merced' & date == '2020-08-16', hosp.pui := NA_real_]
+  county.dt[county == 'Merced' & date == '2020-08-16', icu.conf := NA_real_]
+  county.dt[county == 'Merced' & date == '2020-08-16', icu.pui := NA_real_]
+
   #check for new problems with death reporting
   for (county1 in unique(county.dt$county)) {
     dt <- county.dt[county == county1]
