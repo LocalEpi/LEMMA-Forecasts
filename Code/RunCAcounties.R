@@ -21,8 +21,8 @@ if (quick.test) {
   }
 }
 
-#exclude.set <- c("San Benito", "Siskiyou") #not enough data to fit
-exclude.set <- ""
+exclude.set <- c("Lake", "Modoc") #not enough data to fit - need to update this when there is more data
+# exclude.set <- ""
 exclude.set <- c(exclude.set, "San Francisco", omit.counties) #SF is run separately
 
 RunOneCounty <- function(county1, county.dt, county.pop, quick.test) {
@@ -31,7 +31,11 @@ RunOneCounty <- function(county1, county.dt, county.pop, quick.test) {
                    "Madera", "Humboldt", "Siskiyou", "Butte", "San Benito", "Merced") #infections went to near zero - restart sim
   if (county1 %in% restart.set) {
     if (county1 == "San Benito") {
-      restart.date <- as.Date("2020/11/2")
+      restart.date <- as.Date("2020/11/02")
+    } else if (county1 %in% c("Modoc", "Amador")) {
+        restart.date <- as.Date("2020/11/05")
+    } else if (county1 == "Lake") {
+      restart.date <- as.Date("2020/10/11")
     } else if (county1 == "Merced") {
       restart.date <- as.Date("2020/5/1")
     } else {
@@ -72,6 +76,8 @@ RunOneCounty <- function(county1, county.dt, county.pop, quick.test) {
       sheets$`Parameters with Distributions`[1, Mean := 1] #R0 = 1
       initial.deaths <- county.dt1[date == (restart.date - 1), deaths.conf]
       county.dt1 <- county.dt1[date >= restart.date] #infections went to near zero - restart sim
+      sheets$Interventions <- sheets$Interventions[mu_t_inter >= restart.date]
+      sheets$Internal[internal.name == "simulation.start.date", value := restart.date - 10]
     }
 
     sheets$Data <- county.dt1
@@ -80,8 +86,8 @@ RunOneCounty <- function(county1, county.dt, county.pop, quick.test) {
 
     inputs$internal.args$warmup <- NA #defaults to iter/2
     if (county1 %in% restart.set) {
-      inputs$internal.args$simulation.start.date <- (restart.date - 1) #infections went to near zero - restart sim
-      inputs$interventions <- inputs$interventions[mu_t_inter >= restart.date]
+      #inputs$internal.args$simulation.start.date <- (restart.date - 10) #infections went to near zero - restart sim
+      #inputs$interventions <- inputs$interventions[mu_t_inter >= restart.date]
       inputs$model.inputs$start.display.date <- restart.date
       inputs$internal.args$initial.deaths <- initial.deaths
       # } else if (county1 %in% c("Santa Barbara")) {
@@ -98,7 +104,7 @@ RunOneCounty <- function(county1, county.dt, county.pop, quick.test) {
 
     if (quick.test) {
       # inputs$internal.args$warmup <- NA
-      # inputs$internal.args$iter <- 10
+      inputs$internal.args$iter <- 100
       # inputs$internal.args$max_treedepth <- 10
       # inputs$internal.args$adapt_delta <- 0.8
     }
@@ -139,8 +145,7 @@ RunOneCounty <- function(county1, county.dt, county.pop, quick.test) {
 county.dt <- GetCountyData(exclude.set)
 county.set <- unique(county.dt$county)
 
-if (quick.test) county.set <- c("San Mateo", "Santa Clara",
-                                "Santa Cruz", "Solano", "Stanislaus", "Tulare", "Yolo")
+if (quick.test) county.set <- c("Amador")
 print(county.set)
 
 options(warn = 1)
@@ -151,7 +156,7 @@ unlink(logfile)
 clearLoggers()
 addDefaultFileLogger(logfile)
 
-if (F && quick.test) {
+if (quick.test) {
   county.results <- lapply(county.set, RunOneCounty, county.dt, county.pop, quick.test)
 } else {
   cl <- makeCluster(3)
