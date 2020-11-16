@@ -3,7 +3,7 @@ library(ParallelLogger)
 
 source('Code/GetCountyData.R')
 
-quick.test <- F
+quick.test <- T
 if (quick.test) {
   cat("\n\n++++++++++++++++++  quick.test = T +++++++++++++++++ \n\n")
 }
@@ -104,7 +104,7 @@ RunOneCounty <- function(county1, county.dt, county.pop, quick.test) {
 
     if (quick.test) {
       # inputs$internal.args$warmup <- NA
-      inputs$internal.args$iter <- 100
+      inputs$internal.args$iter <- 1500
       # inputs$internal.args$max_treedepth <- 10
       # inputs$internal.args$adapt_delta <- 0.8
     }
@@ -145,7 +145,7 @@ RunOneCounty <- function(county1, county.dt, county.pop, quick.test) {
 county.dt <- GetCountyData(exclude.set)
 county.set <- unique(county.dt$county)
 
-if (quick.test) county.set <- c("Amador")
+if (quick.test) county.set <- c("San Joaquin")
 print(county.set)
 
 options(warn = 1)
