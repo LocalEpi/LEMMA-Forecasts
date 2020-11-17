@@ -1,2 +1,61 @@
 county =  San Joaquin 
 -/                                                                                                                     -/                                                                                                                     -/                                                                                                                     -/                                                                                                                     -/                                                                                                                     -/                                                                                                                     Fitting to observed data
+    user   system  elapsed 
+  22.493    9.236 8822.930 
+Projecting
+   user  system elapsed 
+ 27.390   0.803  28.199 
+
+Excel output:  Forecasts/San Joaquin.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.88 0.99 1.19 1.40 1.61 1.84 1.97 
+
+PDF output:  Forecasts/San Joaquin.pdf 
+   user  system elapsed 
+ 28.872   0.855  29.741 
+
+Excel output:  Scenarios/San Joaquin_scenario_noChange.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.88 0.99 1.19 1.40 1.61 1.84 1.97 
+
+PDF output:  Scenarios/San Joaquin_scenario_noChange.pdf 
+   user  system elapsed 
+ 27.610   0.754  28.375 
+
+Excel output:  Scenarios/San Joaquin_scenario_actToday.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.88 0.99 1.19 1.40 1.61 1.84 1.97 
+
+PDF output:  Scenarios/San Joaquin_scenario_actToday.pdf 
+   user  system elapsed 
+ 27.164   0.568  27.739 
+
+Excel output:  Scenarios/San Joaquin_scenario_actTwoWeeks.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.88 0.99 1.19 1.40 1.61 1.84 1.97 
+
+PDF output:  Scenarios/San Joaquin_scenario_actTwoWeeks.pdf 
+[[1]]
+[[1]]$hosp
+
+[[1]]$icu
+
+[[1]]$deaths
+
+
+[[2]]
+[[2]]$hosp
+
+[[2]]$icu
+
+[[2]]$deaths
+
+
+[[3]]
+[[3]]$hosp
+
+[[3]]$icu
+
+[[3]]$deaths
+
+
