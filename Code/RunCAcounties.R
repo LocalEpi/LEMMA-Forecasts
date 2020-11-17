@@ -3,7 +3,7 @@ library(ParallelLogger)
 
 source('Code/GetCountyData.R')
 
-quick.test <- T
+quick.test <- F
 if (quick.test) {
   cat("\n\n++++++++++++++++++  quick.test = T +++++++++++++++++ \n\n")
 }
