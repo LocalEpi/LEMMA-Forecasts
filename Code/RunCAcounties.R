@@ -32,7 +32,9 @@ RunOneCounty <- function(county1, county.dt, county.pop, quick.test) {
   if (county1 %in% restart.set) {
     if (county1 == "San Benito") {
       restart.date <- as.Date("2020/11/02")
-    } else if (county1 %in% c("Modoc", "Amador")) {
+    } else if (county1 %in% c("Amador")) {
+      restart.date <- as.Date("2020/10/22")
+    } else if (county1 %in% c("Modoc")) {
       restart.date <- as.Date("2020/11/05")
     } else if (county1 == "Lake") {
       restart.date <- as.Date("2020/10/11")
@@ -93,7 +95,7 @@ RunOneCounty <- function(county1, county.dt, county.pop, quick.test) {
       # } else if (county1 %in% c("Santa Barbara")) {
       #   inputs$internal.args$adapt_delta <- 0.95
       #   inputs$internal.args$iter <- 1500 #needs more iterations to converge
-    } else if (county1 %in% c("San Mateo")) {
+    } else if (county1 %in% c("San Mateo", "San Joaquin")) {
       inputs$internal.args$iter <- 1500 #needs more iterations to converge
     }
 
@@ -144,10 +146,7 @@ RunOneCounty <- function(county1, county.dt, county.pop, quick.test) {
 county.dt <- GetCountyData(exclude.set)
 county.set <- unique(county.dt$county)
 
-if (quick.test) county.set <- c("San Mateo", "Colusa","Lake", "Orange",
-                                "San Bernardino", "San Joaquin", "San Luis Obispo", "Santa Barbara",
-                                "Shasta", "Siskiyou", "Sonoma", "Tehama", "Tuolumne", "Ventura",
-                                "Yuba")
+if (quick.test) county.set <- c("Amador")
 print(county.set)
 
 options(warn = 1)
@@ -158,7 +157,7 @@ unlink(logfile)
 clearLoggers()
 addDefaultFileLogger(logfile)
 
-if (F & quick.test) {
+if (quick.test) {
   county.results <- lapply(county.set, RunOneCounty, county.dt, county.pop, quick.test)
 } else {
   num.clusters <- floor(parallel::detectCores() / 4) - 1
