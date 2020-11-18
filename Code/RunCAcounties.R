@@ -14,7 +14,7 @@ if (quick.test) {
   omit.counties <- ""
 } else {
   #run half the counties each day
-  if (as.numeric(Sys.Date()) %% 2 == 0) {
+  if (as.numeric(Sys.Date()) %% 2 == 1) {
     omit.counties <- county.pop[seq(1, 58, by = 2), county]
   } else {
     omit.counties <- county.pop[seq(2, 58, by = 2), county]
@@ -159,7 +159,9 @@ addDefaultFileLogger(logfile)
 if (quick.test) {
   county.results <- lapply(county.set, RunOneCounty, county.dt, county.pop, quick.test)
 } else {
-  cl <- makeCluster(3)
+  num.clusters <- floor(parallel::detectCores() / 4) - 1
+  cat("num.clusters = ", num.clusters, "\n")
+  cl <- makeCluster(num.clusters)
   county.results <- clusterApply(cl, county.set, RunOneCounty, county.dt, county.pop, quick.test)
   stopCluster(cl)
 }
