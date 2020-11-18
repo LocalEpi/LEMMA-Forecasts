@@ -3,7 +3,7 @@ library(ParallelLogger)
 
 source('Code/GetCountyData.R')
 
-quick.test <- F
+quick.test <- T
 if (quick.test) {
   cat("\n\n++++++++++++++++++  quick.test = T +++++++++++++++++ \n\n")
 }
@@ -14,7 +14,7 @@ if (quick.test) {
   omit.counties <- ""
 } else {
   #run half the counties each day
-  if (as.numeric(Sys.Date()) %% 2 == 1) {
+  if (as.numeric(Sys.Date()) %% 2 == 0) {
     omit.counties <- county.pop[seq(1, 58, by = 2), county]
   } else {
     omit.counties <- county.pop[seq(2, 58, by = 2), county]
@@ -33,7 +33,7 @@ RunOneCounty <- function(county1, county.dt, county.pop, quick.test) {
     if (county1 == "San Benito") {
       restart.date <- as.Date("2020/11/02")
     } else if (county1 %in% c("Modoc", "Amador")) {
-        restart.date <- as.Date("2020/11/05")
+      restart.date <- as.Date("2020/11/05")
     } else if (county1 == "Lake") {
       restart.date <- as.Date("2020/10/11")
     } else if (county1 == "Merced") {
@@ -93,9 +93,8 @@ RunOneCounty <- function(county1, county.dt, county.pop, quick.test) {
       # } else if (county1 %in% c("Santa Barbara")) {
       #   inputs$internal.args$adapt_delta <- 0.95
       #   inputs$internal.args$iter <- 1500 #needs more iterations to converge
-      # } else if (county1 %in% c("Stanislaus", "Merced", "Fresno")) {
-      #   inputs$internal.args$adapt_delta <- 0.8
-      #   inputs$internal.args$iter <- 1500 #needs more iterations to converge
+    } else if (county1 %in% c("San Mateo")) {
+      inputs$internal.args$iter <- 1500 #needs more iterations to converge
     }
 
     inputs$internal.args$output.filestr <- paste0("Forecasts/", county1)
@@ -104,7 +103,7 @@ RunOneCounty <- function(county1, county.dt, county.pop, quick.test) {
 
     if (quick.test) {
       # inputs$internal.args$warmup <- NA
-      inputs$internal.args$iter <- 1500
+      # inputs$internal.args$iter <- 1500
       # inputs$internal.args$max_treedepth <- 10
       # inputs$internal.args$adapt_delta <- 0.8
     }
@@ -145,7 +144,10 @@ RunOneCounty <- function(county1, county.dt, county.pop, quick.test) {
 county.dt <- GetCountyData(exclude.set)
 county.set <- unique(county.dt$county)
 
-if (quick.test) county.set <- c("San Joaquin")
+if (quick.test) county.set <- c("San Mateo", "Colusa","Lake", "Orange",
+                                "San Bernardino", "San Joaquin", "San Luis Obispo", "Santa Barbara",
+                                "Shasta", "Siskiyou", "Sonoma", "Tehama", "Tuolumne", "Ventura",
+                                "Yuba")
 print(county.set)
 
 options(warn = 1)
@@ -156,7 +158,7 @@ unlink(logfile)
 clearLoggers()
 addDefaultFileLogger(logfile)
 
-if (quick.test) {
+if (F & quick.test) {
   county.results <- lapply(county.set, RunOneCounty, county.dt, county.pop, quick.test)
 } else {
   num.clusters <- floor(parallel::detectCores() / 4) - 1
