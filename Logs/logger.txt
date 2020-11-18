@@ -1,4 +1,5 @@
-2020-11-18 09:58:59	[Main thread]	WARN	LEMMA	AddInterventions	no non-missing arguments to min; returning Inf
-2020-11-18 09:59:14	[Main thread]	WARN	rstan	throw_sampler_warnings	There were 1 divergent transitions after warmup. Increasing adapt_delta above 0.9 may help. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup
-2020-11-18 09:59:14	[Main thread]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
-2020-11-18 10:00:25	[Main thread]	INFO			county = Amador
+2020-11-18 10:10:57	[Main thread]	WARN	LEMMA	AddInterventions	no non-missing arguments to min; returning Inf
+2020-11-18 10:11:15	[Main thread]	WARN	rstan	throw_sampler_warnings	There were 1227 divergent transitions after warmup. Increasing adapt_delta above 0.9 may help. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup
+2020-11-18 10:11:15	[Main thread]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
+2020-11-18 10:11:17	[Main thread]	WARN	rstan	throw_sampler_warnings	Tail Effective Samples Size (ESS) is too low, indicating posterior variances and tail quantiles may be unreliable. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#tail-ess
+2020-11-18 10:12:48	[Main thread]	INFO			county = Colusa

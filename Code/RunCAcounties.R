@@ -28,7 +28,7 @@ exclude.set <- c(exclude.set, "San Francisco", omit.counties) #SF is run separat
 RunOneCounty <- function(county1, county.dt, county.pop, quick.test) {
   restart.set <- c("Tehama", "Mono", "Yolo", "Yuba", "Mendocino", "Nevada", "El Dorado",
                    "Tuolumne", "Amador", "Inyo", "Calaveras",
-                   "Madera", "Humboldt", "Siskiyou", "Butte", "San Benito", "Merced") #infections went to near zero - restart sim
+                   "Madera", "Humboldt", "Siskiyou", "Butte", "San Benito", "Merced", "Colusa") #infections went to near zero - restart sim
   if (county1 %in% restart.set) {
     if (county1 == "San Benito") {
       restart.date <- as.Date("2020/11/02")
@@ -40,6 +40,8 @@ RunOneCounty <- function(county1, county.dt, county.pop, quick.test) {
       restart.date <- as.Date("2020/10/11")
     } else if (county1 == "Merced") {
       restart.date <- as.Date("2020/5/1")
+    } else if (county1 == "Colusa") {
+      restart.date <- as.Date("2020/11/08")
     } else {
       restart.date <- as.Date("2020/6/1")
     }
@@ -92,6 +94,7 @@ RunOneCounty <- function(county1, county.dt, county.pop, quick.test) {
       #inputs$interventions <- inputs$interventions[mu_t_inter >= restart.date]
       inputs$model.inputs$start.display.date <- restart.date
       inputs$internal.args$initial.deaths <- initial.deaths
+      inputs$internal.args$iter <- 1500
       # } else if (county1 %in% c("Santa Barbara")) {
       #   inputs$internal.args$adapt_delta <- 0.95
       #   inputs$internal.args$iter <- 1500 #needs more iterations to converge
@@ -146,7 +149,7 @@ RunOneCounty <- function(county1, county.dt, county.pop, quick.test) {
 county.dt <- GetCountyData(exclude.set)
 county.set <- unique(county.dt$county)
 
-if (quick.test) county.set <- c("Amador")
+if (quick.test) county.set <- c("Colusa")
 print(county.set)
 
 options(warn = 1)
