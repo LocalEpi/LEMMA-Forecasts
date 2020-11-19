@@ -1,6 +1,0 @@
-2020-11-18 10:19:34	[Main thread]	WARN	rstan	.local	some chains had errors; consider specifying chains = 1 to debug
-2020-11-18 10:19:34	[Main thread]	FATAL	LEMMA	ExtendSim	Error in 1:total.chains : argument of length 0 
-2020-11-18 15:33:08	[Main thread]	WARN	rstan	throw_sampler_warnings	There were 10 divergent transitions after warmup. Increasing adapt_delta above 0.9 may help. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup
-2020-11-18 15:33:08	[Main thread]	WARN	rstan	throw_sampler_warnings	There were 747 transitions after warmup that exceeded the maximum treedepth. Increase max_treedepth above 15. See http://mc-stan.org/misc/warnings.html#maximum-treedepth-exceeded
-2020-11-18 15:33:08	[Main thread]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
-2020-11-18 15:36:38	[Main thread]	INFO			county = San Joaquin
