@@ -21,7 +21,7 @@ if (quick.test) {
   }
 }
 
-exclude.set <- c("Lake", "Modoc") #not enough data to fit - need to update this when there is more data
+exclude.set <- c("Modoc") #not enough data to fit - need to update this when there is more data
 # exclude.set <- ""
 exclude.set <- c(exclude.set, "San Francisco", omit.counties) #SF is run separately
 
@@ -37,7 +37,7 @@ RunOneCounty <- function(county1, county.dt, county.pop, quick.test) {
     } else if (county1 %in% c("Modoc")) {
       restart.date <- as.Date("2020/11/05")
     } else if (county1 == "Lake") {
-      restart.date <- as.Date("2020/10/11")
+      restart.date <- as.Date("2020/10/10")
     } else if (county1 == "Merced") {
       restart.date <- as.Date("2020/5/1")
     } else if (county1 == "Colusa") {
@@ -149,7 +149,7 @@ RunOneCounty <- function(county1, county.dt, county.pop, quick.test) {
 county.dt <- GetCountyData(exclude.set)
 county.set <- unique(county.dt$county)
 
-if (quick.test) county.set <- c("Colusa")
+if (quick.test) county.set <- c("Lake")
 print(county.set)
 
 options(warn = 1)
