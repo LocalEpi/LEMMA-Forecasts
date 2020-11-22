@@ -3,7 +3,7 @@ library(ParallelLogger)
 
 source('Code/GetCountyData.R')
 
-quick.test <- F
+quick.test <- T
 if (quick.test) {
   cat("\n\n++++++++++++++++++  quick.test = T +++++++++++++++++ \n\n")
 }
@@ -149,7 +149,8 @@ RunOneCounty <- function(county1, county.dt, county.pop, quick.test) {
 county.dt <- GetCountyData(exclude.set)
 county.set <- unique(county.dt$county)
 
-if (quick.test) county.set <- c("Lake")
+if (quick.test) county.set <- c("Sonoma", "Tehama", "Tuolumne", "Ventura",
+                                "Yuba")
 print(county.set)
 
 options(warn = 1)
@@ -160,7 +161,7 @@ unlink(logfile)
 clearLoggers()
 addDefaultFileLogger(logfile)
 
-if (quick.test) {
+if (F & quick.test) {
   county.results <- lapply(county.set, RunOneCounty, county.dt, county.pop, quick.test)
 } else {
   num.clusters <- floor(parallel::detectCores() / 4) - 1
