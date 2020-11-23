@@ -117,7 +117,7 @@ RunOneCounty <- function(county1, county.dt, county.pop, quick.test) {
 
   max.date <- max(cred.int$inputs$obs.data$date)
   outfile <- paste0("Scenarios/", county1)
-  cred.int$inputs$model.inputs$end.date <- as.Date("2020/12/31")
+  cred.int$inputs$model.inputs$end.date <- as.Date("2021/3/31")
 
   ProjScen <- function(int.list) {
     int.date <- int.list$date
@@ -149,8 +149,7 @@ RunOneCounty <- function(county1, county.dt, county.pop, quick.test) {
 county.dt <- GetCountyData(exclude.set)
 county.set <- unique(county.dt$county)
 
-if (quick.test) county.set <- c("Sonoma", "Tehama", "Tuolumne", "Ventura",
-                                "Yuba")
+if (quick.test) county.set <- c("Solano", "Stanislaus", "Tulare", "Yolo")
 print(county.set)
 
 options(warn = 1)

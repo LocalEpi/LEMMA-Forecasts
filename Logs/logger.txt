@@ -1,23 +1,4 @@
-2020-11-22 10:42:49	[Main thread]	TRACE			Initiating cluster with 3 threads
-2020-11-22 10:42:50	[Thread 1]	TRACE			Thread 1 initiated
-2020-11-22 10:42:50	[Thread 2]	TRACE			Thread 2 initiated
-2020-11-22 10:42:50	[Thread 3]	TRACE			Thread 3 initiated
-2020-11-22 12:04:28	[Thread 3]	WARN	rstan	throw_sampler_warnings	There were 5 divergent transitions after warmup. Increasing adapt_delta above 0.9 may help. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup
-2020-11-22 12:04:28	[Thread 3]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
-2020-11-22 12:08:36	[Thread 3]	INFO			county = Tuolumne
-2020-11-22 12:17:14	[Thread 2]	WARN	rstan	throw_sampler_warnings	There were 1 divergent transitions after warmup. Increasing adapt_delta above 0.9 may help. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup
-2020-11-22 12:17:14	[Thread 2]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
-2020-11-22 12:23:22	[Thread 2]	INFO			county = Tehama
-2020-11-22 13:11:18	[Thread 2]	WARN	rstan	throw_sampler_warnings	There were 1 divergent transitions after warmup. Increasing adapt_delta above 0.9 may help. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup
-2020-11-22 13:11:18	[Thread 2]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
-2020-11-22 13:11:44	[Thread 2]	WARN	rstan	throw_sampler_warnings	Tail Effective Samples Size (ESS) is too low, indicating posterior variances and tail quantiles may be unreliable. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#tail-ess
-2020-11-22 13:17:27	[Thread 2]	INFO			county = Yuba
-2020-11-22 14:36:14	[Thread 3]	INFO			county = Ventura
-2020-11-22 14:40:10	[Thread 1]	WARN	rstan	throw_sampler_warnings	There were 46 divergent transitions after warmup. Increasing adapt_delta above 0.9 may help. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup
-2020-11-22 14:40:10	[Thread 1]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
-2020-11-22 14:40:22	[Thread 1]	WARN	rstan	throw_sampler_warnings	Tail Effective Samples Size (ESS) is too low, indicating posterior variances and tail quantiles may be unreliable. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#tail-ess
-2020-11-22 14:42:25	[Thread 1]	INFO			county = Sonoma
-2020-11-22 14:42:25	[Main thread]	TRACE			Stopping cluster
-2020-11-22 14:42:25	[Thread 1]	TRACE			Thread 1 terminated
-2020-11-22 14:42:25	[Thread 3]	TRACE			Thread 3 terminated
-2020-11-22 14:42:25	[Thread 2]	TRACE			Thread 2 terminated
+2020-11-23 08:23:40	[Main thread]	TRACE			Initiating cluster with 3 threads
+2020-11-23 08:23:41	[Thread 1]	TRACE			Thread 1 initiated
+2020-11-23 08:23:41	[Thread 2]	TRACE			Thread 2 initiated
+2020-11-23 08:23:41	[Thread 3]	TRACE			Thread 3 initiated
