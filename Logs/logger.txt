@@ -2,3 +2,17 @@
 2020-11-23 08:23:41	[Thread 1]	TRACE			Thread 1 initiated
 2020-11-23 08:23:41	[Thread 2]	TRACE			Thread 2 initiated
 2020-11-23 08:23:41	[Thread 3]	TRACE			Thread 3 initiated
+2020-11-23 12:46:06	[Thread 1]	INFO			county = Solano
+2020-11-23 13:37:23	[Thread 1]	WARN	rstan	throw_sampler_warnings	There were 8 divergent transitions after warmup. Increasing adapt_delta above 0.9 may help. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup
+2020-11-23 13:37:23	[Thread 1]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
+2020-11-23 13:41:34	[Thread 1]	INFO			county = Yolo
+2020-11-23 14:17:43	[Thread 2]	WARN	rstan	throw_sampler_warnings	There were 6 divergent transitions after warmup. Increasing adapt_delta above 0.9 may help. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup
+2020-11-23 14:17:43	[Thread 2]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
+2020-11-23 14:17:51	[Thread 2]	WARN	rstan	throw_sampler_warnings	Bulk Effective Samples Size (ESS) is too low, indicating posterior means and medians may be unreliable. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#bulk-ess
+2020-11-23 14:17:56	[Thread 2]	WARN	rstan	throw_sampler_warnings	Tail Effective Samples Size (ESS) is too low, indicating posterior variances and tail quantiles may be unreliable. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#tail-ess
+2020-11-23 14:20:22	[Thread 2]	INFO			county = Stanislaus
+2020-11-23 14:23:44	[Thread 3]	INFO			county = Tulare
+2020-11-23 14:23:44	[Main thread]	TRACE			Stopping cluster
+2020-11-23 14:23:44	[Thread 3]	TRACE			Thread 3 terminated
+2020-11-23 14:23:44	[Thread 2]	TRACE			Thread 2 terminated
+2020-11-23 14:23:44	[Thread 1]	TRACE			Thread 1 terminated
