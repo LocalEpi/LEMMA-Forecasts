@@ -14,7 +14,7 @@ if (quick.test) {
   omit.counties <- ""
 } else {
   #run half the counties each day
-  if (as.numeric(Sys.Date()) %% 2 == 0) {
+  if (as.numeric(Sys.Date()) %% 2 == 1) {
     omit.counties <- county.pop[seq(1, 58, by = 2), county]
   } else {
     omit.counties <- county.pop[seq(2, 58, by = 2), county]
@@ -149,7 +149,9 @@ RunOneCounty <- function(county1, county.dt, county.pop, quick.test) {
 county.dt <- GetCountyData(exclude.set)
 county.set <- unique(county.dt$county)
 
-if (quick.test) county.set <- c("Solano", "Stanislaus", "Tulare", "Yolo")
+if (quick.test) county.set <- c("San Luis Obispo",
+                                "Sonoma", "Tehama", "Tuolumne",
+                                "Ventura", "Yuba")
 print(county.set)
 
 options(warn = 1)
@@ -160,7 +162,7 @@ unlink(logfile)
 clearLoggers()
 addDefaultFileLogger(logfile)
 
-if (F & quick.test) {
+if (F && quick.test) {
   county.results <- lapply(county.set, RunOneCounty, county.dt, county.pop, quick.test)
 } else {
   num.clusters <- floor(parallel::detectCores() / 4) - 1
