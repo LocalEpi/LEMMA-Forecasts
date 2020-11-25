@@ -76,6 +76,8 @@ GetCountyData <- function(exclude.set) {
   county.dt[county == 'Merced' & date == '2020-08-16', icu.conf := NA_real_]
   county.dt[county == 'Merced' & date == '2020-08-16', icu.pui := NA_real_]
 
+  county.dt[county == "Kings" & date == '2020-04-03', icu.conf := NA_real_]
+
   #check for new problems with death reporting
   for (county1 in unique(county.dt$county)) {
     dt <- county.dt[county == county1]

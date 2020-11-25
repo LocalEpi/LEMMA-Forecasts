@@ -3,7 +3,7 @@ library(ParallelLogger)
 
 source('Code/GetCountyData.R')
 
-quick.test <- T
+quick.test <- F
 if (quick.test) {
   cat("\n\n++++++++++++++++++  quick.test = T +++++++++++++++++ \n\n")
 }
@@ -14,7 +14,7 @@ if (quick.test) {
   omit.counties <- ""
 } else {
   #run half the counties each day
-  if (as.numeric(Sys.Date()) %% 2 == 1) {
+  if (as.numeric(Sys.Date()) %% 2 == 0) {
     omit.counties <- county.pop[seq(1, 58, by = 2), county]
   } else {
     omit.counties <- county.pop[seq(2, 58, by = 2), county]
@@ -149,10 +149,9 @@ RunOneCounty <- function(county1, county.dt, county.pop, quick.test) {
 county.dt <- GetCountyData(exclude.set)
 county.set <- unique(county.dt$county)
 
-if (quick.test) county.set <- c("San Luis Obispo",
-                                "Sonoma", "Tehama", "Tuolumne",
-                                "Ventura", "Yuba")
+if (quick.test) county.set <- "Lake"
 print(county.set)
+# county.set <- union(c("Shasta", "Kings", "San Joaquin"), county.set); cat("temp! remove this\n")
 
 options(warn = 1)
 assign("last.warning", NULL, envir = baseenv())
@@ -162,7 +161,7 @@ unlink(logfile)
 clearLoggers()
 addDefaultFileLogger(logfile)
 
-if (F && quick.test) {
+if (length(county.set) == 1) {
   county.results <- lapply(county.set, RunOneCounty, county.dt, county.pop, quick.test)
 } else {
   num.clusters <- floor(parallel::detectCores() / 4) - 1
