@@ -57,3 +57,5 @@
 2020-11-26 04:34:48	[Thread 2]	WARN	rstan	throw_sampler_warnings	The largest R-hat is 1.22, indicating chains have not mixed. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#r-hat
 2020-11-26 04:34:55	[Thread 2]	WARN	rstan	throw_sampler_warnings	Bulk Effective Samples Size (ESS) is too low, indicating posterior means and medians may be unreliable. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#bulk-ess
 2020-11-26 04:35:04	[Thread 2]	WARN	rstan	throw_sampler_warnings	Tail Effective Samples Size (ESS) is too low, indicating posterior variances and tail quantiles may be unreliable. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#tail-ess
+2020-11-26 05:09:40	[Thread 2]	INFO			county = Tulare
+2020-11-26 05:09:40	[Main thread]	FATAL			Error in clusterApply(cl, county.set, RunOneCounty, county.dt, county.pop,  :    Error(s) when calling function 'fun', see earlier messages for details 
