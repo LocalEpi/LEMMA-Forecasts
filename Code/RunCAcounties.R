@@ -3,7 +3,7 @@ library(ParallelLogger)
 
 source('Code/GetCountyData.R')
 
-quick.test <- F
+quick.test <- T
 if (quick.test) {
   cat("\n\n++++++++++++++++++  quick.test = T +++++++++++++++++ \n\n")
 }
@@ -31,7 +31,7 @@ RunOneCounty <- function(county1, county.dt, county.pop, quick.test) {
                    "Madera", "Humboldt", "Siskiyou", "Butte", "San Benito", "Merced", "Colusa") #infections went to near zero - restart sim
   if (county1 %in% restart.set) {
     if (county1 == "San Benito") {
-      restart.date <- as.Date("2020/11/02")
+      restart.date <- as.Date("2020/11/03")
     } else if (county1 %in% c("Amador")) {
       restart.date <- as.Date("2020/10/22")
     } else if (county1 %in% c("Modoc")) {
@@ -149,9 +149,10 @@ RunOneCounty <- function(county1, county.dt, county.pop, quick.test) {
 county.dt <- GetCountyData(exclude.set)
 county.set <- unique(county.dt$county)
 
-if (quick.test) county.set <- "Lake"
+if (quick.test) county.set <- c("Shasta", "Kings", "San Joaquin", "Placer", "Riverside", "Sacramento", "San Benito", 
+                                "San Diego", "San Mateo", "Santa Clara", "Santa Cruz", "Solano", 
+                                "Stanislaus", "Tulare", "Yolo")
 print(county.set)
-# county.set <- union(c("Shasta", "Kings", "San Joaquin"), county.set); cat("temp! remove this\n")
 
 options(warn = 1)
 assign("last.warning", NULL, envir = baseenv())
