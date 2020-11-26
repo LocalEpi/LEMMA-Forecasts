@@ -70,6 +70,17 @@ GetCountyData <- function(exclude.set) {
   county.dt[county == 'Yuba' & date == '2020-06-17', deaths.conf := NA_real_]
   county.dt[county == 'Yuba' & date == '2020-06-18', deaths.conf := NA_real_]
 
+  county.dt[county == 'Alameda' & date == '2020-11-04', deaths.conf := NA_real_]
+  county.dt[county == 'Alameda' & date == '2020-11-10', deaths.conf := NA_real_]
+  county.dt[county == 'Contra Costa' & date == '2020-11-12', deaths.conf := NA_real_]
+  county.dt[county == 'Humboldt' & date == '2020-11-17', deaths.conf := NA_real_]
+  county.dt[county == 'Kings' & date == '2020-11-14', deaths.conf := NA_real_]
+  county.dt[county == 'Kings' & date == '2020-11-18', deaths.conf := NA_real_]
+  county.dt[county == 'Orange' & date == '2020-11-02', deaths.conf := NA_real_]
+  county.dt[county == 'San Joaquin' & date == '2020-11-19', deaths.conf := NA_real_]
+  county.dt[county == 'San Joaquin' & date == '2020-11-20', deaths.conf := NA_real_]
+  county.dt[county == 'Yolo' & date == '2020-11-23', deaths.conf := NA_real_]
+
   #data errors
   county.dt[county == 'Merced' & date == '2020-08-16', hosp.conf := NA_real_]
   county.dt[county == 'Merced' & date == '2020-08-16', hosp.pui := NA_real_]
@@ -85,7 +96,7 @@ GetCountyData <- function(exclude.set) {
     index <- which(dt[, deaths.inc < 0])
     for (index1 in index) {
       index2 <- seq(pmax(1, index1-5),pmin(nrow(dt), index1+5))
-      print(dt[index2, .(county, date, deaths.conf, deaths.inc)])
+      # print(dt[index2, .(county, date, deaths.conf, deaths.inc)])
       d <- dt[index1, date]
       cat("county.dt[county == '", county1, "' & date == '", as.character(d), "', deaths.conf := NA_real_]\n", sep = "")
     }

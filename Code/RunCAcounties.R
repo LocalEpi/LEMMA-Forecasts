@@ -34,10 +34,12 @@ RunOneCounty <- function(county1, county.dt, county.pop, quick.test) {
       restart.date <- as.Date("2020/11/03")
     } else if (county1 %in% c("Amador")) {
       restart.date <- as.Date("2020/10/22")
-    } else if (county1 %in% c("Modoc")) {
+    } else if (county1 %in% c("Modoc", "Lassen")) {
       restart.date <- as.Date("2020/11/05")
     } else if (county1 == "Lake") {
       restart.date <- as.Date("2020/10/10")
+    } else if (county1 == "El Dorado") {
+      restart.date <- as.Date("2020/10/25")
     } else if (county1 == "Merced") {
       restart.date <- as.Date("2020/5/1")
     } else if (county1 == "Colusa") {
@@ -149,9 +151,9 @@ RunOneCounty <- function(county1, county.dt, county.pop, quick.test) {
 county.dt <- GetCountyData(exclude.set)
 county.set <- unique(county.dt$county)
 
-if (quick.test) county.set <- c("Shasta", "Kings", "San Joaquin", "Placer", "Riverside", "Sacramento", "San Benito", 
-                                "San Diego", "San Mateo", "Santa Clara", "Santa Cruz", "Solano", 
-                                "Stanislaus", "Tulare", "Yolo")
+if (quick.test) county.set <- c("Orange", "San Bernardino", "San Joaquin", "San Luis Obispo",
+                                "Santa Barbara", "Shasta", "Siskiyou", "Sonoma", "Tehama", "Tuolumne",
+                                "Ventura", "Yuba")
 print(county.set)
 
 options(warn = 1)
