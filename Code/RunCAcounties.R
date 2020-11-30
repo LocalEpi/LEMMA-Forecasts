@@ -95,7 +95,7 @@ RunOneCounty <- function(county1, county.dt, county.pop, quick.test) {
       #inputs$interventions <- inputs$interventions[mu_t_inter >= restart.date]
       inputs$model.inputs$start.display.date <- restart.date
       inputs$internal.args$initial.deaths <- initial.deaths
-      inputs$internal.args$iter <- 1500
+      # inputs$internal.args$iter <- 1500 #removed 11/29
       # } else if (county1 %in% c("Santa Barbara")) {
       #   inputs$internal.args$adapt_delta <- 0.95
       #   inputs$internal.args$iter <- 1500 #needs more iterations to converge
@@ -150,7 +150,11 @@ RunOneCounty <- function(county1, county.dt, county.pop, quick.test) {
 county.dt <- GetCountyData(exclude.set)
 county.set <- unique(county.dt$county)
 
-if (quick.test) county.set <- c("Amador")
+if (quick.test) county.set <- c("Yolo", "Tulare", "Stanislaus", "Alameda", "Butte", "Contra Costa", "El Dorado", "Humboldt",
+                                "Kern", "Kings", "Lassen", "Los Angeles", "Merced", "Monterey",
+                                "Orange", "San Bernardino", "San Joaquin", "San Luis Obispo",
+                                "Santa Barbara", "Shasta", "Siskiyou", "Sonoma", "Tehama", "Tuolumne",
+                                "Ventura", "Yuba")
 print(county.set)
 
 options(warn = 1)
