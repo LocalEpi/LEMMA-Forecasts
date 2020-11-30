@@ -1,2 +1,61 @@
 county =  Amador 
-Type: EXEC 
+-/                                                                                                   -/                                                                                                   -/                                                                                                   -/                                                                                                   -/                                                                                                   -/                                                                                                   Fitting to observed data
+   user  system elapsed 
+ 11.273   1.331  81.410 
+Projecting
+   user  system elapsed 
+ 52.795   2.680  55.545 
+
+Excel output:  Forecasts/Amador.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.58 0.67 0.81 0.94 1.08 1.22 1.31 
+
+PDF output:  Forecasts/Amador.pdf 
+   user  system elapsed 
+ 71.306   3.413  74.802 
+
+Excel output:  Scenarios/Amador_scenario_noChange.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.58 0.67 0.81 0.94 1.08 1.22 1.31 
+
+PDF output:  Scenarios/Amador_scenario_noChange.pdf 
+   user  system elapsed 
+ 66.159   2.751  68.915 
+
+Excel output:  Scenarios/Amador_scenario_actToday.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.58 0.67 0.81 0.94 1.08 1.22 1.31 
+
+PDF output:  Scenarios/Amador_scenario_actToday.pdf 
+   user  system elapsed 
+ 65.717   2.562  68.357 
+
+Excel output:  Scenarios/Amador_scenario_actTwoWeeks.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.58 0.67 0.81 0.94 1.08 1.22 1.31 
+
+PDF output:  Scenarios/Amador_scenario_actTwoWeeks.pdf 
+[[1]]
+[[1]]$hosp
+
+[[1]]$icu
+
+[[1]]$deaths
+
+
+[[2]]
+[[2]]$hosp
+
+[[2]]$icu
+
+[[2]]$deaths
+
+
+[[3]]
+[[3]]$hosp
+
+[[3]]$icu
+
+[[3]]$deaths
+
+

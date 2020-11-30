@@ -3,7 +3,7 @@ library(ParallelLogger)
 
 source('Code/GetCountyData.R')
 
-quick.test <- F
+quick.test <- T
 if (quick.test) {
   cat("\n\n++++++++++++++++++  quick.test = T +++++++++++++++++ \n\n")
 }
@@ -21,8 +21,7 @@ if (quick.test) {
   }
 }
 
-exclude.set <- c("Modoc") #not enough data to fit - need to update this when there is more data
-# exclude.set <- ""
+exclude.set <- ""
 exclude.set <- c(exclude.set, "San Francisco", omit.counties) #SF is run separately
 
 RunOneCounty <- function(county1, county.dt, county.pop, quick.test) {
@@ -33,7 +32,7 @@ RunOneCounty <- function(county1, county.dt, county.pop, quick.test) {
     if (county1 == "San Benito") {
       restart.date <- as.Date("2020/11/03")
     } else if (county1 %in% c("Amador")) {
-      restart.date <- as.Date("2020/10/22")
+      restart.date <- as.Date("2020/11/04")
     } else if (county1 %in% c("Modoc", "Lassen")) {
       restart.date <- as.Date("2020/11/05")
     } else if (county1 == "Lake") {
@@ -151,10 +150,7 @@ RunOneCounty <- function(county1, county.dt, county.pop, quick.test) {
 county.dt <- GetCountyData(exclude.set)
 county.set <- unique(county.dt$county)
 
-if (quick.test) county.set <- c("Amador", "Calaveras", "Colusa", "Fresno", "Imperial", "Lake",
-                                "Madera", "Marin", "Mendocino", "Napa", "Nevada", "Placer", "Riverside",
-                                "Sacramento", "San Benito", "San Diego", "San Mateo", "Santa Clara",
-                                "Santa Cruz", "Solano", "Stanislaus", "Tulare", "Yolo")
+if (quick.test) county.set <- c("Amador")
 print(county.set)
 
 options(warn = 1)
