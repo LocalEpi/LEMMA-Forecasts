@@ -109,7 +109,7 @@ RunOneCounty <- function(county1, county.dt, county.pop, quick.test) {
 
     if (quick.test) {
       # inputs$internal.args$warmup <- NA
-      # inputs$internal.args$iter <- 1500
+      # inputs$internal.args$iter <- 500
       # inputs$internal.args$max_treedepth <- 10
       # inputs$internal.args$adapt_delta <- 0.8
     }
@@ -150,11 +150,9 @@ RunOneCounty <- function(county1, county.dt, county.pop, quick.test) {
 county.dt <- GetCountyData(exclude.set)
 county.set <- unique(county.dt$county)
 
-if (quick.test) county.set <- c("Yolo", "Tulare", "Stanislaus", "Alameda", "Butte", "Contra Costa", "El Dorado", "Humboldt",
-                                "Kern", "Kings", "Lassen", "Los Angeles", "Merced", "Monterey",
-                                "Orange", "San Bernardino", "San Joaquin", "San Luis Obispo",
+if (quick.test) county.set <- c("San Joaquin", "San Luis Obispo",
                                 "Santa Barbara", "Shasta", "Siskiyou", "Sonoma", "Tehama", "Tuolumne",
-                                "Ventura", "Yuba")
+                                "Ventura", "Yuba", "San Bernardino", "Monterey")
 print(county.set)
 
 options(warn = 1)
