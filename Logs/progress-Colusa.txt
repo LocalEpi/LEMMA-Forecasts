@@ -1,61 +1,66 @@
 county =  Colusa 
 -/                                                                                                   -/                                                                                                   -/                                                                                                   -/                                                                                                   -/                                                                                                   -/                                                                                                   Fitting to observed data
    user  system elapsed 
-  2.853   0.299  16.347 
+  0.025   0.001   0.027 
 Projecting
-   user  system elapsed 
-  7.602   0.481   8.099 
+Stan model 'LEMMA' does not contain samples.
 
-Excel output:  Forecasts/Colusa.xlsx 
-  5%  10%  25%  50%  75%  90%  95% 
-0.94 0.98 1.04 1.11 1.19 1.28 1.35 
+> library(data.table)
 
-PDF output:  Forecasts/Colusa.pdf 
-   user  system elapsed 
- 10.887   0.690  11.682 
+> library(ParallelLogger)
 
-Excel output:  Scenarios/Colusa_scenario_noChange.xlsx 
-  5%  10%  25%  50%  75%  90%  95% 
-0.94 0.98 1.04 1.11 1.19 1.28 1.35 
+> source('Code/GetCountyData.R')
 
-PDF output:  Scenarios/Colusa_scenario_noChange.pdf 
-   user  system elapsed 
-  8.802   0.323   9.134 
+> quick.test <- F
 
-Excel output:  Scenarios/Colusa_scenario_actToday.xlsx 
-  5%  10%  25%  50%  75%  90%  95% 
-0.94 0.98 1.04 1.11 1.19 1.28 1.35 
+> if (quick.test) {
++   cat("\n\n++++++++++++++++++  quick.test = T +++++++++++++++++ \n\n")
++ }
 
-PDF output:  Scenarios/Colusa_scenario_actToday.pdf 
-   user  system elapsed 
-  8.817   0.366   9.209 
+> county.pop <- fread("Inputs/county population.csv")
 
-Excel output:  Scenarios/Colusa_scenario_actTwoWeeks.xlsx 
-  5%  10%  25%  50%  75%  90%  95% 
-0.94 0.98 1.04 1.11 1.19 1.28 1.35 
+> if (quick.test) {
++   omit.counties <- ""
++ } else {
++   #run half the counties each day
++   if (as.numeric(Sys.Date()) %% 2 == 0) {
++     omit.coun .... [TRUNCATED] 
 
-PDF output:  Scenarios/Colusa_scenario_actTwoWeeks.pdf 
-[[1]]
-[[1]]$hosp
+> exclude.set <- ""
 
-[[1]]$icu
+> exclude.set <- c(exclude.set, "San Francisco", omit.counties) #SF is run separately
 
-[[1]]$deaths
+> RunOneCounty <- function(county1, county.dt, county.pop, quick.test) {
++   restart.set <- c("Tehama", "Mono", "Yolo", "Yuba", "Mendocino", "Nevada", .... [TRUNCATED] 
 
+> county.dt <- GetCountyData(exclude.set)
 
-[[2]]
-[[2]]$hosp
+> county.set <- unique(county.dt$county)
 
-[[2]]$icu
+> if (quick.test) county.set <- c("Colusa")
 
-[[2]]$deaths
+> print(county.set)
+ [1] "Alameda"         "Butte"           "Contra Costa"    "El Dorado"       "Humboldt"       
+ [6] "Kern"            "Kings"           "Lassen"          "Los Angeles"     "Merced"         
+[11] "Monterey"        "Orange"          "San Bernardino"  "San Joaquin"     "San Luis Obispo"
+[16] "Santa Barbara"   "Shasta"          "Siskiyou"        "Sonoma"          "Tehama"         
+[21] "Tuolumne"        "Ventura"         "Yuba"           
 
+> options(warn = 1)
 
-[[3]]
-[[3]]$hosp
+> assign("last.warning", NULL, envir = baseenv())
 
-[[3]]$icu
+> logfile <- "Logs/logger.txt"
 
-[[3]]$deaths
+> unlink(logfile)
 
+> clearLoggers()
 
+> addDefaultFileLogger(logfile)
+
+> if (length(county.set) == 1) {
++   county.results <- lapply(county.set, RunOneCounty, county.dt, county.pop, quick.test)
++ } else {
++   num.clusters .... [TRUNCATED] 
+num.clusters =  3 
+  |                                                                                                   |                                                                                           |   0%
