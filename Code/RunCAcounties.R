@@ -150,7 +150,9 @@ RunOneCounty <- function(county1, county.dt, county.pop, quick.test) {
 county.dt <- GetCountyData(exclude.set)
 county.set <- unique(county.dt$county)
 
-if (quick.test) county.set <- c("Colusa")
+if (quick.test) county.set <- c("Monterey", "Orange", "Placer", "Riverside", "Sacramento", 
+                                "San Benito", "San Diego", "San Mateo", "Santa Clara", "Santa Cruz", 
+                                "Solano")
 print(county.set)
 
 options(warn = 1)
