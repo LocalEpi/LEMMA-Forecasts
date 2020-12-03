@@ -3,7 +3,7 @@ library(ParallelLogger)
 
 source('Code/GetCountyData.R')
 
-quick.test <- T
+quick.test <- F
 if (quick.test) {
   cat("\n\n++++++++++++++++++  quick.test = T +++++++++++++++++ \n\n")
 }
@@ -14,7 +14,7 @@ if (quick.test) {
   omit.counties <- ""
 } else {
   #run half the counties each day
-  if (as.numeric(Sys.Date()) %% 2 == 0) {
+  if (as.numeric(Sys.Date()) %% 2 == 1) {
     omit.counties <- county.pop[seq(1, 58, by = 2), county]
   } else {
     omit.counties <- county.pop[seq(2, 58, by = 2), county]

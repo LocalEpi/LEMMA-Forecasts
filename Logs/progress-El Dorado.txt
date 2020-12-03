@@ -1,33 +1,43 @@
 county =  El Dorado 
--/                                                                                                                    -/                                                                                                                    -/                                                                                                                    -/                                                                                                                    -/                                                                                                                    -/                                                                                                                    Fitting to observed data
-   user  system elapsed 
-  3.733   0.200  27.366 
-Projecting
-   user  system elapsed 
- 35.116   0.447  35.562 
+Fitting to observed data
 
-Excel output:  Forecasts/El Dorado.xlsx 
-  5%  10%  25%  50%  75%  Data through 2020-11-30 
+SAMPLING FOR MODEL 'LEMMA' NOW (CHAIN 2).
 
+SAMPLING FOR MODEL 'LEMMA' NOW (CHAIN 3).
 
-Data through 2020-11-30 
+SAMPLING FOR MODEL 'LEMMA' NOW (CHAIN 1).
 
-
-++++++++++++++++++  quick.test = T +++++++++++++++++ 
-
-[1] "Stanislaus" "Tulare"     "Yolo"      
-num.clusters =  3 
-  |                                                                                                                    |                                                                                                            |   0%  |                                                                                                                    |====================================                                                                        |  33%  |                                                                                                                    |========================================================================                                    |  67%  |                                                                                                                    |============================================================================================================| 100%
-Data through 2020-11-30 
-There were 456 transitions after warmup that exceeded the maximum treedepth. Increase max_treedepth above 15. See http://mc-stan.org/misc/warnings.html#maximum-treedepth-exceeded 
-county = Stanislaus 
-
-There were 1 chains where the estimated Bayesian Fraction of Missing Information was low. See http://mc-stan.org/misc/warnings.html#bfmi-low 
-county = Stanislaus 
-
-The largest R-hat is 1.37, indicating chains have not mixed. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#r-hat 
-county = Stanislaus 
-
-
-
-Data through 2020-11-30 
+SAMPLING FOR MODEL 'LEMMA' NOW (CHAIN 4).
+Chain 2: 
+Chain 2: Gradient evaluation took 0.00022 seconds
+Chain 2: 1000 transitions using 10 leapfrog steps per transition would take 2.2 seconds.
+Chain 2: Adjust your expectations accordingly!
+Chain 2: 
+Chain 2: 
+Chain 3: 
+Chain 3: Gradient evaluation took 0.000215 seconds
+Chain 3: 1000 transitions using 10 leapfrog steps per transition would take 2.15 seconds.
+Chain 3: Adjust your expectations accordingly!
+Chain 3: 
+Chain 3: 
+Chain 4: 
+Chain 4: Gradient evaluation took 0.000215 seconds
+Chain 4: 1000 transitions using 10 leapfrog steps per transition would take 2.15 seconds.
+Chain 4: Adjust your expectations accordingly!
+Chain 4: 
+Chain 4: 
+Chain 1: 
+Chain 1: Gradient evaluation took 0.000301 seconds
+Chain 1: 1000 transitions using 10 leapfrog steps per transition would take 3.01 seconds.
+Chain 1: Adjust your expectations accordingly!
+Chain 1: 
+Chain 1: 
+Chain 2Chain : 3Iteration:   1 / 1000 [  0%]  (Warmup): 
+Iteration:   1 / 1000 [  0%]  (Warmup)
+Chain 4: Iteration:   1 / 1000 [  0%]  (Warmup)
+Chain 1: Iteration:   1 / 1000 [  0%]  (Warmup)
+Chain 4: Iteration:  10 / 1000 [  1%]  (Warmup)
+Chain 3: Iteration:  10 / 1000 [  1%]  (Warmup)
+Chain 2: Iteration:  10 / 1000 [  1%]  (Warmup)
+Chain 1: Iteration:  10 / 1000 [  1%]  (Warmup)
+Chain 1: Iteration:  20 / 1000 [  2%]  (Warmup)
