@@ -1,66 +1,7 @@
 county =  Colusa 
--/                                                                                                   -/                                                                                                   -/                                                                                                   -/                                                                                                   -/                                                                                                   -/                                                                                                   Fitting to observed data
+Fitting to observed data
    user  system elapsed 
-  0.025   0.001   0.027 
+  0.020   0.000   0.021 
 Projecting
 Stan model 'LEMMA' does not contain samples.
-
-> library(data.table)
-
-> library(ParallelLogger)
-
-> source('Code/GetCountyData.R')
-
-> quick.test <- F
-
-> if (quick.test) {
-+   cat("\n\n++++++++++++++++++  quick.test = T +++++++++++++++++ \n\n")
-+ }
-
-> county.pop <- fread("Inputs/county population.csv")
-
-> if (quick.test) {
-+   omit.counties <- ""
-+ } else {
-+   #run half the counties each day
-+   if (as.numeric(Sys.Date()) %% 2 == 0) {
-+     omit.coun .... [TRUNCATED] 
-
-> exclude.set <- ""
-
-> exclude.set <- c(exclude.set, "San Francisco", omit.counties) #SF is run separately
-
-> RunOneCounty <- function(county1, county.dt, county.pop, quick.test) {
-+   restart.set <- c("Tehama", "Mono", "Yolo", "Yuba", "Mendocino", "Nevada", .... [TRUNCATED] 
-
-> county.dt <- GetCountyData(exclude.set)
-
-> county.set <- unique(county.dt$county)
-
-> if (quick.test) county.set <- c("Colusa")
-
-> print(county.set)
- [1] "Alameda"         "Butte"           "Contra Costa"    "El Dorado"       "Humboldt"       
- [6] "Kern"            "Kings"           "Lassen"          "Los Angeles"     "Merced"         
-[11] "Monterey"        "Orange"          "San Bernardino"  "San Joaquin"     "San Luis Obispo"
-[16] "Santa Barbara"   "Shasta"          "Siskiyou"        "Sonoma"          "Tehama"         
-[21] "Tuolumne"        "Ventura"         "Yuba"           
-
-> options(warn = 1)
-
-> assign("last.warning", NULL, envir = baseenv())
-
-> logfile <- "Logs/logger.txt"
-
-> unlink(logfile)
-
-> clearLoggers()
-
-> addDefaultFileLogger(logfile)
-
-> if (length(county.set) == 1) {
-+   county.results <- lapply(county.set, RunOneCounty, county.dt, county.pop, quick.test)
-+ } else {
-+   num.clusters .... [TRUNCATED] 
-num.clusters =  3 
-  |                                                                                                   |                                                                                           |   0%
+Type: EXEC 

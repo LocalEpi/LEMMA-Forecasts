@@ -3,7 +3,7 @@ library(ParallelLogger)
 
 source('Code/GetCountyData.R')
 
-quick.test <- F
+quick.test <- T
 if (quick.test) {
   cat("\n\n++++++++++++++++++  quick.test = T +++++++++++++++++ \n\n")
 }
@@ -38,7 +38,7 @@ RunOneCounty <- function(county1, county.dt, county.pop, quick.test) {
     } else if (county1 == "Lake") {
       restart.date <- as.Date("2020/10/10")
     } else if (county1 == "El Dorado") {
-      restart.date <- as.Date("2020/10/25")
+      restart.date <- as.Date("2020/10/24")
     } else if (county1 == "Merced") {
       restart.date <- as.Date("2020/5/1")
     } else if (county1 == "Colusa") {
@@ -150,9 +150,7 @@ RunOneCounty <- function(county1, county.dt, county.pop, quick.test) {
 county.dt <- GetCountyData(exclude.set)
 county.set <- unique(county.dt$county)
 
-if (quick.test) county.set <- c("Monterey", "Orange", "Placer", "Riverside", "Sacramento", 
-                                "San Benito", "San Diego", "San Mateo", "Santa Clara", "Santa Cruz", 
-                                "Solano")
+if (quick.test) county.set <- c("Stanislaus", "Tulare", "Yolo")
 print(county.set)
 
 options(warn = 1)
