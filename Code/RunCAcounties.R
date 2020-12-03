@@ -3,7 +3,7 @@ library(ParallelLogger)
 
 source('Code/GetCountyData.R')
 
-quick.test <- F
+quick.test <- T
 if (quick.test) {
   cat("\n\n++++++++++++++++++  quick.test = T +++++++++++++++++ \n\n")
 }
@@ -42,7 +42,7 @@ RunOneCounty <- function(county1, county.dt, county.pop, quick.test) {
     } else if (county1 == "Merced") {
       restart.date <- as.Date("2020/5/1")
     } else if (county1 == "Colusa") {
-      restart.date <- as.Date("2020/11/10")
+      restart.date <- as.Date("2020/11/9")
     } else {
       restart.date <- as.Date("2020/6/1")
     }
@@ -150,7 +150,7 @@ RunOneCounty <- function(county1, county.dt, county.pop, quick.test) {
 county.dt <- GetCountyData(exclude.set)
 county.set <- unique(county.dt$county)
 
-if (quick.test) county.set <- c("Stanislaus", "Tulare", "Yolo")
+if (quick.test) county.set <- c("Colusa")
 print(county.set)
 
 options(warn = 1)
