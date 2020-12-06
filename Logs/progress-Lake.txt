@@ -433,3 +433,89 @@ Chain 2: Iteration: 860 / 1000 [ 86%]  (Sampling)
 Chain 1: Iteration: 950 / 1000 [ 95%]  (Sampling)
 Chain 2: Iteration: 870 / 1000 [ 87%]  (Sampling)
 Chain 1: Iteration: 960 / 1000 [ 96%]  (Sampling)
+Chain 1: Iteration: 970 / 1000 [ 97%]  (Sampling)
+Chain 2: Iteration: 880 / 1000 [ 88%]  (Sampling)
+Chain 1: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 2: Iteration: 890 / 1000 [ 89%]  (Sampling)
+Chain 1: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 2: Iteration: 900 / 1000 [ 90%]  (Sampling)
+Chain 1: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 2: Iteration: 910 / 1000 [ 91%]  (Sampling)
+Chain 1: 
+Chain 1:  Elapsed Time: 7105.66 seconds (Warm-up)
+Chain 1:                7689.03 seconds (Sampling)
+Chain 1:                14794.7 seconds (Total)
+Chain 1: 
+Chain 2: Iteration: 920 / 1000 [ 92%]  (Sampling)
+Chain 2: Iteration: 930 / 1000 [ 93%]  (Sampling)
+Chain 2: Iteration: 940 / 1000 [ 94%]  (Sampling)
+Chain 2: Iteration: 950 / 1000 [ 95%]  (Sampling)
+Chain 2: Iteration: 960 / 1000 [ 96%]  (Sampling)
+Chain 2: Iteration: 970 / 1000 [ 97%]  (Sampling)
+Chain 2: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 2: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 2: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 2: 
+Chain 2:  Elapsed Time: 8385.35 seconds (Warm-up)
+Chain 2:                7583.04 seconds (Sampling)
+Chain 2:                15968.4 seconds (Total)
+Chain 2: 
+     user    system   elapsed 
+53814.808   135.227 15994.239 
+Projecting
+   user  system elapsed 
+398.631   1.922 400.572 
+
+Excel output:  Forecasts/Lake.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.62 0.70 0.83 0.97 1.11 1.24 1.31 
+
+PDF output:  Forecasts/Lake.pdf 
+   user  system elapsed 
+561.610   2.986 564.626 
+
+Excel output:  Scenarios/Lake_scenario_noChange.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.62 0.70 0.83 0.97 1.11 1.24 1.31 
+
+PDF output:  Scenarios/Lake_scenario_noChange.pdf 
+   user  system elapsed 
+531.885   2.383 534.312 
+
+Excel output:  Scenarios/Lake_scenario_actToday.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.62 0.70 0.83 0.97 1.11 1.24 1.31 
+
+PDF output:  Scenarios/Lake_scenario_actToday.pdf 
+   user  system elapsed 
+603.522   2.711 606.277 
+
+Excel output:  Scenarios/Lake_scenario_actTwoWeeks.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.62 0.70 0.83 0.97 1.11 1.24 1.31 
+
+PDF output:  Scenarios/Lake_scenario_actTwoWeeks.pdf 
+[[1]]
+[[1]]$hosp
+
+[[1]]$icu
+
+[[1]]$deaths
+
+
+[[2]]
+[[2]]$hosp
+
+[[2]]$icu
+
+[[2]]$deaths
+
+
+[[3]]
+[[3]]$hosp
+
+[[3]]$icu
+
+[[3]]$deaths
+
+
