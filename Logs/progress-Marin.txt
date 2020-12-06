@@ -450,3 +450,72 @@ Chain 1:                6630.45 seconds (Sampling)
 Chain 1:                13555.1 seconds (Total)
 Chain 1: 
 Chain 2: Iteration: 950 / 1000 [ 95%]  (Sampling)
+Chain 2: Iteration: 960 / 1000 [ 96%]  (Sampling)
+Chain 2: Iteration: 970 / 1000 [ 97%]  (Sampling)
+Chain 2: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 2: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 2: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 2: 
+Chain 2:  Elapsed Time: 7298.95 seconds (Warm-up)
+Chain 2:                7176.25 seconds (Sampling)
+Chain 2:                14475.2 seconds (Total)
+Chain 2: 
+     user    system   elapsed 
+47540.314    76.816 14523.917 
+Projecting
+   user  system elapsed 
+516.374   3.083 519.496 
+
+Excel output:  Forecasts/Marin.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.94 1.02 1.15 1.28 1.44 1.58 1.68 
+
+PDF output:  Forecasts/Marin.pdf 
+   user  system elapsed 
+683.182   4.507 687.738 
+
+Excel output:  Scenarios/Marin_scenario_noChange.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.94 1.02 1.15 1.28 1.44 1.58 1.68 
+
+PDF output:  Scenarios/Marin_scenario_noChange.pdf 
+   user  system elapsed 
+671.486   3.655 675.187 
+
+Excel output:  Scenarios/Marin_scenario_actToday.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.94 1.02 1.15 1.28 1.44 1.58 1.68 
+
+PDF output:  Scenarios/Marin_scenario_actToday.pdf 
+   user  system elapsed 
+671.172   3.751 674.966 
+
+Excel output:  Scenarios/Marin_scenario_actTwoWeeks.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.94 1.02 1.15 1.28 1.44 1.58 1.68 
+
+PDF output:  Scenarios/Marin_scenario_actTwoWeeks.pdf 
+[[1]]
+[[1]]$hosp
+
+[[1]]$icu
+
+[[1]]$deaths
+
+
+[[2]]
+[[2]]$hosp
+
+[[2]]$icu
+
+[[2]]$deaths
+
+
+[[3]]
+[[3]]$hosp
+
+[[3]]$icu
+
+[[3]]$deaths
+
+
