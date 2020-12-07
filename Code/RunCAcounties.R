@@ -158,6 +158,7 @@ if (quick.test) county.set <- c("Kern", "Kings", "Lassen", "Los Angeles", "Merce
                                 "San Bernardino", "San Diego", "San Mateo", "Santa Clara", "Santa Cruz", 
                                 "Solano", "Stanislaus", "Tulare", "Yolo")
 print(county.set)
+cat("Data through", as.character(county.dt[, max(date)]), "\n")
 
 options(warn = 1)
 assign("last.warning", NULL, envir = baseenv())
