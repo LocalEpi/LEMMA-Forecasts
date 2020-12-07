@@ -143,6 +143,7 @@ RunOneCounty <- function(county1, county.dt, county.pop, quick.test) {
 
   commit.name <- paste0('"', county1, " data through ", as.character(max.date), '"')
   system2("git", args = c('commit', '-a', '-m', commit.name))
+  system2("git", args = "pull")
   system2("git", c("push", "https://joshuaschwab:Q2zDSR4BEaV6GnHgYhND@github.com/LocalEpi/LEMMA-Forecasts"))
 
   if (county1 != "San Francisco") {
@@ -157,8 +158,8 @@ county.dt <- GetCountyData(exclude.set)
 max.date <- county.dt[, max(date)]
 dt.max <- county.dt[date == max.date, ]
 stopifnot(setequal(dt.max$county, unique(county.dt$county)))
-for (i in county.set) {
-  x <- as.data.table(readxl::read_excel(paste0("~/Documents/GitHub/LEMMA-Forecasts/Forecasts/", i, ".xlsx"), sheet = "rt"))
+for (i in dt.max$county) {
+  x <- as.data.table(readxl::read_excel(paste0("Forecasts/", i, ".xlsx"), sheet = "rt"))
   dt.max[county == i, last.rt := max(as.Date(x$date))]
 }
 setkey(dt.max, last.rt)
