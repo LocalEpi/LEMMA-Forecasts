@@ -149,7 +149,17 @@ RunOneCounty <- function(county1, county.dt, county.pop, quick.test) {
 }
 
 county.dt <- GetCountyData(exclude.set)
-county.set <- unique(county.dt$county)
+
+#order by last Rt date in forecasts
+max.date <- county.dt[, max(date)]
+dt.max <- county.dt[date == max.date, ]
+stopifnot(setequal(dt.max$county, unique(county.dt$county)))
+for (i in county.set) {
+  x <- as.data.table(readxl::read_excel(paste0("~/Documents/GitHub/LEMMA-Forecasts/Forecasts/", i, ".xlsx"), sheet = "rt"))
+  dt.max[county == i, last.rt := max(as.Date(x$date))]
+}
+setkey(dt.max, last.rt)
+county.set <- dt.max[, county]
 
 if (quick.test) county.set <- c("Kern", "Kings", "Lassen", "Los Angeles", "Merced", "Amador", 
                                 "Calaveras", "Colusa", "Fresno", "Imperial", "Inyo", "Lake", 

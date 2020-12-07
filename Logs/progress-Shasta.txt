@@ -391,3 +391,131 @@ Chain 1: Iteration: 870 / 1000 [ 87%]  (Sampling)
 Chain 3: Iteration: 890 / 1000 [ 89%]  (Sampling)
 Chain 2: Iteration: 960 / 1000 [ 96%]  (Sampling)
 Chain 4: Iteration: 790 / 1000 [ 79%]  (Sampling)
+Chain 3: Iteration: 900 / 1000 [ 90%]  (Sampling)
+Chain 2: Iteration: 970 / 1000 [ 97%]  (Sampling)
+Chain 1: Iteration: 880 / 1000 [ 88%]  (Sampling)
+Chain 3: Iteration: 910 / 1000 [ 91%]  (Sampling)
+Chain 4: Iteration: 800 / 1000 [ 80%]  (Sampling)
+Chain 2: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 3: Iteration: 920 / 1000 [ 92%]  (Sampling)
+Chain 4: Iteration: 810 / 1000 [ 81%]  (Sampling)
+Chain 2: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 1: Iteration: 890 / 1000 [ 89%]  (Sampling)
+Chain 3: Iteration: 930 / 1000 [ 93%]  (Sampling)
+Chain 4: Iteration: 820 / 1000 [ 82%]  (Sampling)
+Chain 2: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 2: 
+Chain 2:  Elapsed Time: 3034.9 seconds (Warm-up)
+Chain 2:                4145.06 seconds (Sampling)
+Chain 2:                7179.96 seconds (Total)
+Chain 2: 
+Chain 3: Iteration: 940 / 1000 [ 94%]  (Sampling)
+Chain 4: Iteration: 830 / 1000 [ 83%]  (Sampling)
+Chain 1: Iteration: 900 / 1000 [ 90%]  (Sampling)
+Chain 3: Iteration: 950 / 1000 [ 95%]  (Sampling)
+Chain 4: Iteration: 840 / 1000 [ 84%]  (Sampling)
+Chain 1: Iteration: 910 / 1000 [ 91%]  (Sampling)
+Chain 3: Iteration: 960 / 1000 [ 96%]  (Sampling)
+Chain 4: Iteration: 850 / 1000 [ 85%]  (Sampling)
+Chain 3: Iteration: 970 / 1000 [ 97%]  (Sampling)
+Chain 4: Iteration: 860 / 1000 [ 86%]  (Sampling)
+Chain 1: Iteration: 920 / 1000 [ 92%]  (Sampling)
+Chain 3: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 4: Iteration: 870 / 1000 [ 87%]  (Sampling)
+Chain 3: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 4: Iteration: 880 / 1000 [ 88%]  (Sampling)
+Chain 1: Iteration: 930 / 1000 [ 93%]  (Sampling)
+Chain 3: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 3: 
+Chain 3:  Elapsed Time: 3920.68 seconds (Warm-up)
+Chain 3:                3745.1 seconds (Sampling)
+Chain 3:                7665.78 seconds (Total)
+Chain 3: 
+Chain 4: Iteration: 890 / 1000 [ 89%]  (Sampling)
+Chain 4: Iteration: 900 / 1000 [ 90%]  (Sampling)
+Chain 1: Iteration: 940 / 1000 [ 94%]  (Sampling)
+Chain 4: Iteration: 910 / 1000 [ 91%]  (Sampling)
+Chain 1: Iteration: 950 / 1000 [ 95%]  (Sampling)
+Chain 4: Iteration: 920 / 1000 [ 92%]  (Sampling)
+Chain 1: Iteration: 960 / 1000 [ 96%]  (Sampling)
+Chain 4: Iteration: 930 / 1000 [ 93%]  (Sampling)
+Chain 1: Iteration: 970 / 1000 [ 97%]  (Sampling)
+Chain 4: Iteration: 940 / 1000 [ 94%]  (Sampling)
+Chain 1: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 4: Iteration: 950 / 1000 [ 95%]  (Sampling)
+Chain 1: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 4: Iteration: 960 / 1000 [ 96%]  (Sampling)
+Chain 1: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 1: 
+Chain 1:  Elapsed Time: 1962.56 seconds (Warm-up)
+Chain 1:                6670 seconds (Sampling)
+Chain 1:                8632.56 seconds (Total)
+Chain 1: 
+Chain 4: Iteration: 970 / 1000 [ 97%]  (Sampling)
+Chain 4: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 4: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 4: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 4: 
+Chain 4:  Elapsed Time: 4655.2 seconds (Warm-up)
+Chain 4:                4212.56 seconds (Sampling)
+Chain 4:                8867.76 seconds (Total)
+Chain 4: 
+     user    system   elapsed 
+32287.634    88.548  8893.975 
+Projecting
+   user  system elapsed 
+411.005   1.847 412.870 
+
+Excel output:  Forecasts/Shasta.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.91 0.96 1.04 1.12 1.20 1.28 1.34 
+
+PDF output:  Forecasts/Shasta.pdf 
+   user  system elapsed 
+592.039   2.803 594.874 
+
+Excel output:  Scenarios/Shasta_scenario_noChange.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.91 0.96 1.04 1.12 1.20 1.28 1.34 
+
+PDF output:  Scenarios/Shasta_scenario_noChange.pdf 
+   user  system elapsed 
+559.813   2.495 562.339 
+
+Excel output:  Scenarios/Shasta_scenario_actToday.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.91 0.96 1.04 1.12 1.20 1.28 1.34 
+
+PDF output:  Scenarios/Shasta_scenario_actToday.pdf 
+   user  system elapsed 
+642.965   3.172 646.172 
+
+Excel output:  Scenarios/Shasta_scenario_actTwoWeeks.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.91 0.96 1.04 1.12 1.20 1.28 1.34 
+
+PDF output:  Scenarios/Shasta_scenario_actTwoWeeks.pdf 
+[[1]]
+[[1]]$hosp
+
+[[1]]$icu
+
+[[1]]$deaths
+
+
+[[2]]
+[[2]]$hosp
+
+[[2]]$icu
+
+[[2]]$deaths
+
+
+[[3]]
+[[3]]$hosp
+
+[[3]]$icu
+
+[[3]]$deaths
+
+

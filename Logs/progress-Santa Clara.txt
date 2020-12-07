@@ -453,3 +453,69 @@ Chain 1: Iteration: 950 / 1000 [ 95%]  (Sampling)
 Chain 1: Iteration: 960 / 1000 [ 96%]  (Sampling)
 Chain 1: Iteration: 970 / 1000 [ 97%]  (Sampling)
 Chain 1: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 1: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 1: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 1: 
+Chain 1:  Elapsed Time: 5705.76 seconds (Warm-up)
+Chain 1:                7552.22 seconds (Sampling)
+Chain 1:                13258 seconds (Total)
+Chain 1: 
+     user    system   elapsed 
+40157.367   126.793 13303.244 
+Projecting
+   user  system elapsed 
+488.689   3.608 492.323 
+
+Excel output:  Forecasts/Santa Clara.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+1.18 1.22 1.30 1.39 1.48 1.57 1.63 
+
+PDF output:  Forecasts/Santa Clara.pdf 
+   user  system elapsed 
+596.468   3.687 600.194 
+
+Excel output:  Scenarios/Santa Clara_scenario_noChange.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+1.18 1.22 1.30 1.39 1.48 1.57 1.63 
+
+PDF output:  Scenarios/Santa Clara_scenario_noChange.pdf 
+   user  system elapsed 
+602.292   2.931 605.262 
+
+Excel output:  Scenarios/Santa Clara_scenario_actToday.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+1.18 1.22 1.30 1.39 1.48 1.57 1.63 
+
+PDF output:  Scenarios/Santa Clara_scenario_actToday.pdf 
+   user  system elapsed 
+560.365   2.407 562.803 
+
+Excel output:  Scenarios/Santa Clara_scenario_actTwoWeeks.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+1.18 1.22 1.30 1.39 1.48 1.57 1.63 
+
+PDF output:  Scenarios/Santa Clara_scenario_actTwoWeeks.pdf 
+[[1]]
+[[1]]$hosp
+
+[[1]]$icu
+
+[[1]]$deaths
+
+
+[[2]]
+[[2]]$hosp
+
+[[2]]$icu
+
+[[2]]$deaths
+
+
+[[3]]
+[[3]]$hosp
+
+[[3]]$icu
+
+[[3]]$deaths
+
+

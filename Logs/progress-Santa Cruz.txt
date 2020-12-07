@@ -443,3 +443,79 @@ Chain 3: Iteration: 850 / 1000 [ 85%]  (Sampling)
 Chain 3: Iteration: 860 / 1000 [ 86%]  (Sampling)
 Chain 3: Iteration: 870 / 1000 [ 87%]  (Sampling)
 Chain 3: Iteration: 880 / 1000 [ 88%]  (Sampling)
+Chain 3: Iteration: 890 / 1000 [ 89%]  (Sampling)
+Chain 3: Iteration: 900 / 1000 [ 90%]  (Sampling)
+Chain 3: Iteration: 910 / 1000 [ 91%]  (Sampling)
+Chain 3: Iteration: 920 / 1000 [ 92%]  (Sampling)
+Chain 3: Iteration: 930 / 1000 [ 93%]  (Sampling)
+Chain 3: Iteration: 940 / 1000 [ 94%]  (Sampling)
+Chain 3: Iteration: 950 / 1000 [ 95%]  (Sampling)
+Chain 3: Iteration: 960 / 1000 [ 96%]  (Sampling)
+Chain 3: Iteration: 970 / 1000 [ 97%]  (Sampling)
+Chain 3: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 3: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 3: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 3: 
+Chain 3:  Elapsed Time: 4284.72 seconds (Warm-up)
+Chain 3:                3808.8 seconds (Sampling)
+Chain 3:                8093.52 seconds (Total)
+Chain 3: 
+     user    system   elapsed 
+25550.697    60.412  8124.481 
+Projecting
+   user  system elapsed 
+415.122   2.167 417.312 
+
+Excel output:  Forecasts/Santa Cruz.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+1.21 1.27 1.38 1.49 1.61 1.74 1.82 
+
+PDF output:  Forecasts/Santa Cruz.pdf 
+   user  system elapsed 
+692.492   4.287 696.834 
+
+Excel output:  Scenarios/Santa Cruz_scenario_noChange.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+1.21 1.27 1.38 1.49 1.61 1.74 1.82 
+
+PDF output:  Scenarios/Santa Cruz_scenario_noChange.pdf 
+   user  system elapsed 
+534.659   2.395 537.091 
+
+Excel output:  Scenarios/Santa Cruz_scenario_actToday.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+1.21 1.27 1.38 1.49 1.61 1.74 1.82 
+
+PDF output:  Scenarios/Santa Cruz_scenario_actToday.pdf 
+   user  system elapsed 
+537.135   2.155 539.323 
+
+Excel output:  Scenarios/Santa Cruz_scenario_actTwoWeeks.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+1.21 1.27 1.38 1.49 1.61 1.74 1.82 
+
+PDF output:  Scenarios/Santa Cruz_scenario_actTwoWeeks.pdf 
+[[1]]
+[[1]]$hosp
+
+[[1]]$icu
+
+[[1]]$deaths
+
+
+[[2]]
+[[2]]$hosp
+
+[[2]]$icu
+
+[[2]]$deaths
+
+
+[[3]]
+[[3]]$hosp
+
+[[3]]$icu
+
+[[3]]$deaths
+
+
