@@ -463,3 +463,43 @@ Chain 3:
      user    system   elapsed 
 12115.284     1.642  3143.259 
 Projecting
+   user  system elapsed 
+275.375   2.562 278.085 
+
+Excel output:  Forecasts/Mendocino.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.92 0.96 1.03 1.12 1.23 1.33 1.39 
+
+PDF output:  Forecasts/Mendocino.pdf 
+   user  system elapsed 
+286.237   2.752 289.070 
+
+Excel output:  Scenarios/Mendocino_scenario_actToday.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.92 0.96 1.03 1.12 1.23 1.33 1.39 
+
+PDF output:  Scenarios/Mendocino_scenario_actToday.pdf 
+   user  system elapsed 
+277.992   2.460 280.546 
+
+Excel output:  Scenarios/Mendocino_scenario_actTwoWeeks.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.92 0.96 1.03 1.12 1.23 1.33 1.39 
+
+PDF output:  Scenarios/Mendocino_scenario_actTwoWeeks.pdf 
+[[1]]
+[[1]]$hosp
+
+[[1]]$icu
+
+[[1]]$deaths
+
+
+[[2]]
+[[2]]$hosp
+
+[[2]]$icu
+
+[[2]]$deaths
+
+
