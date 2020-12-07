@@ -119,7 +119,6 @@ RunOneCounty <- function(county1, county.dt, county.pop, quick.test) {
 
   max.date <- max(cred.int$inputs$obs.data$date)
   outfile <- paste0("Scenarios/", county1)
-  cred.int$inputs$model.inputs$end.date <- as.Date("2021/3/31")
 
   ProjScen <- function(int.list) {
     int.date <- int.list$date
@@ -134,13 +133,17 @@ RunOneCounty <- function(county1, county.dt, county.pop, quick.test) {
     lapply(LEMMA:::ProjectScenario(cred.int, new.int=intervention, paste0("Scenarios/", county1, "_scenario_", int.str))$gplot$long.term, function (z) z + ggplot2::labs(subtitle = subtitl))
   }
 
-  scen.plots <- lapply(list(list(date = NA, str = "noChange"), list(date = max.date + 3, str = "actToday"), list(date = max.date + 17, str = "actTwoWeeks")), ProjScen)
+  scen.plots <- lapply(list(list(date = max.date + 3, str = "actToday"), list(date = max.date + 17, str = "actTwoWeeks")), ProjScen)
   grDevices::pdf(file = paste0("Scenarios/", county1, "_scenarios_summary.pdf"), width = 9.350, height = 7.225) #overwrite the .pdf
   print(scen.plots)
   dev.off()
 
   sink()
   ParallelLogger::logInfo("county = ", county1)
+
+  commit.name <- paste0('"', county1, " data through ", as.character(max.date), '"')
+  system2("git", args = c('commit', '-a', '-m', commit.name))
+  system2("git", c("push", "https://joshuaschwab:Q2zDSR4BEaV6GnHgYhND@github.com/LocalEpi/LEMMA-Forecasts"))
 
   if (county1 != "San Francisco") {
     cred.int <- NULL #save memory
@@ -161,11 +164,11 @@ for (i in county.set) {
 setkey(dt.max, last.rt)
 county.set <- dt.max[, county]
 
-if (quick.test) county.set <- c("Kern", "Kings", "Lassen", "Los Angeles", "Merced", "Amador", 
-                                "Calaveras", "Colusa", "Fresno", "Imperial", "Inyo", "Lake", 
-                                "Madera", "Marin", "Mendocino", "Monterey", "Napa", "Nevada", 
-                                "Orange", "Placer", "Riverside", "Sacramento", "San Benito", 
-                                "San Bernardino", "San Diego", "San Mateo", "Santa Clara", "Santa Cruz", 
+if (quick.test) county.set <- c("Kern", "Kings", "Lassen", "Los Angeles", "Merced", "Amador",
+                                "Calaveras", "Colusa", "Fresno", "Imperial", "Inyo", "Lake",
+                                "Madera", "Marin", "Mendocino", "Monterey", "Napa", "Nevada",
+                                "Orange", "Placer", "Riverside", "Sacramento", "San Benito",
+                                "San Bernardino", "San Diego", "San Mateo", "Santa Clara", "Santa Cruz",
                                 "Solano", "Stanislaus", "Tulare", "Yolo")
 print(county.set)
 cat("Data through", as.character(county.dt[, max(date)]), "\n")
