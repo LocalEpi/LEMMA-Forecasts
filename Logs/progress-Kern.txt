@@ -438,3 +438,68 @@ Chain 1: Iteration: 910 / 1000 [ 91%]  (Sampling)
 Chain 1: Iteration: 920 / 1000 [ 92%]  (Sampling)
 Chain 2: Iteration: 950 / 1000 [ 95%]  (Sampling)
 Chain 1: Iteration: 930 / 1000 [ 93%]  (Sampling)
+Chain 2: Iteration: 960 / 1000 [ 96%]  (Sampling)
+Chain 1: Iteration: 940 / 1000 [ 94%]  (Sampling)
+Chain 2: Iteration: 970 / 1000 [ 97%]  (Sampling)
+Chain 1: Iteration: 950 / 1000 [ 95%]  (Sampling)
+Chain 2: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 1: Iteration: 960 / 1000 [ 96%]  (Sampling)
+Chain 2: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 1: Iteration: 970 / 1000 [ 97%]  (Sampling)
+Chain 2: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 2: 
+Chain 2:  Elapsed Time: 5294.55 seconds (Warm-up)
+Chain 2:                7546.3 seconds (Sampling)
+Chain 2:                12840.8 seconds (Total)
+Chain 2: 
+Chain 1: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 1: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 1: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 1: 
+Chain 1:  Elapsed Time: 5490.91 seconds (Warm-up)
+Chain 1:                7756.86 seconds (Sampling)
+Chain 1:                13247.8 seconds (Total)
+Chain 1: 
+     user    system   elapsed 
+48295.740     3.231 13297.202 
+Projecting
+   user  system elapsed 
+464.661   2.879 467.710 
+
+Excel output:  Forecasts/Kern.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+1.18 1.24 1.35 1.46 1.58 1.69 1.75 
+
+PDF output:  Forecasts/Kern.pdf 
+   user  system elapsed 
+460.767   4.072 465.002 
+
+Excel output:  Scenarios/Kern_scenario_actToday.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+1.18 1.24 1.35 1.46 1.58 1.69 1.75 
+
+PDF output:  Scenarios/Kern_scenario_actToday.pdf 
+   user  system elapsed 
+429.895   2.515 432.479 
+
+Excel output:  Scenarios/Kern_scenario_actTwoWeeks.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+1.18 1.24 1.35 1.46 1.58 1.69 1.75 
+
+PDF output:  Scenarios/Kern_scenario_actTwoWeeks.pdf 
+[[1]]
+[[1]]$hosp
+
+[[1]]$icu
+
+[[1]]$deaths
+
+
+[[2]]
+[[2]]$hosp
+
+[[2]]$icu
+
+[[2]]$deaths
+
+
