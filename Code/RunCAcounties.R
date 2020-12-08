@@ -139,7 +139,7 @@ RunOneCounty <- function(county1, county.dt, county.pop, quick.test) {
   commit.name <- paste0('"', county1, " data through ", as.character(max.date), '"')
   system2("git", args = c('commit', '-a', '-m', commit.name))
   system2("git", args = "pull")
-  system2("git", c("push", "https://joshuaschwab:Q2zDSR4BEaV6GnHgYhND@github.com/LocalEpi/LEMMA-Forecasts"))
+  system2("git", args = "push")
 
   if (county1 != "San Francisco") {
     cred.int <- NULL #save memory
