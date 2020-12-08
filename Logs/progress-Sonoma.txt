@@ -450,3 +450,56 @@ Chain 4: Iteration: 920 / 1000 [ 92%]  (Sampling)
 Chain 4: Iteration: 930 / 1000 [ 93%]  (Sampling)
 Chain 4: Iteration: 940 / 1000 [ 94%]  (Sampling)
 Chain 4: Iteration: 950 / 1000 [ 95%]  (Sampling)
+Chain 4: Iteration: 960 / 1000 [ 96%]  (Sampling)
+Chain 4: Iteration: 970 / 1000 [ 97%]  (Sampling)
+Chain 4: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 4: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 4: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 4: 
+Chain 4:  Elapsed Time: 14608.6 seconds (Warm-up)
+Chain 4:                9558.89 seconds (Sampling)
+Chain 4:                24167.5 seconds (Total)
+Chain 4: 
+     user    system   elapsed 
+86938.212     2.703 24185.444 
+Projecting
+   user  system elapsed 
+355.604   1.374 356.983 
+
+Excel output:  Forecasts/Sonoma.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.97 1.03 1.14 1.27 1.40 1.54 1.62 
+
+PDF output:  Forecasts/Sonoma.pdf 
+   user  system elapsed 
+356.668   1.959 358.634 
+
+Excel output:  Scenarios/Sonoma_scenario_actToday.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.97 1.03 1.14 1.27 1.40 1.54 1.62 
+
+PDF output:  Scenarios/Sonoma_scenario_actToday.pdf 
+   user  system elapsed 
+354.261   1.407 355.676 
+
+Excel output:  Scenarios/Sonoma_scenario_actTwoWeeks.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.97 1.03 1.14 1.27 1.40 1.54 1.62 
+
+PDF output:  Scenarios/Sonoma_scenario_actTwoWeeks.pdf 
+[[1]]
+[[1]]$hosp
+
+[[1]]$icu
+
+[[1]]$deaths
+
+
+[[2]]
+[[2]]$hosp
+
+[[2]]$icu
+
+[[2]]$deaths
+
+

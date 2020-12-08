@@ -406,3 +406,100 @@ Chain 1: Iteration: 710 / 1000 [ 71%]  (Sampling)
 Chain 4: Iteration: 830 / 1000 [ 83%]  (Sampling)
 Chain 1: Iteration: 720 / 1000 [ 72%]  (Sampling)
 Chain 1: Iteration: 730 / 1000 [ 73%]  (Sampling)
+Chain 4: Iteration: 840 / 1000 [ 84%]  (Sampling)
+Chain 1: Iteration: 740 / 1000 [ 74%]  (Sampling)
+Chain 1: Iteration: 750 / 1000 [ 75%]  (Sampling)
+Chain 1: Iteration: 760 / 1000 [ 76%]  (Sampling)
+Chain 4: Iteration: 850 / 1000 [ 85%]  (Sampling)
+Chain 1: Iteration: 770 / 1000 [ 77%]  (Sampling)
+Chain 1: Iteration: 780 / 1000 [ 78%]  (Sampling)
+Chain 4: Iteration: 860 / 1000 [ 86%]  (Sampling)
+Chain 1: Iteration: 790 / 1000 [ 79%]  (Sampling)
+Chain 1: Iteration: 800 / 1000 [ 80%]  (Sampling)
+Chain 4: Iteration: 870 / 1000 [ 87%]  (Sampling)
+Chain 1: Iteration: 810 / 1000 [ 81%]  (Sampling)
+Chain 1: Iteration: 820 / 1000 [ 82%]  (Sampling)
+Chain 4: Iteration: 880 / 1000 [ 88%]  (Sampling)
+Chain 1: Iteration: 830 / 1000 [ 83%]  (Sampling)
+Chain 1: Iteration: 840 / 1000 [ 84%]  (Sampling)
+Chain 4: Iteration: 890 / 1000 [ 89%]  (Sampling)
+Chain 1: Iteration: 850 / 1000 [ 85%]  (Sampling)
+Chain 1: Iteration: 860 / 1000 [ 86%]  (Sampling)
+Chain 4: Iteration: 900 / 1000 [ 90%]  (Sampling)
+Chain 1: Iteration: 870 / 1000 [ 87%]  (Sampling)
+Chain 4: Iteration: 910 / 1000 [ 91%]  (Sampling)
+Chain 1: Iteration: 880 / 1000 [ 88%]  (Sampling)
+Chain 1: Iteration: 890 / 1000 [ 89%]  (Sampling)
+Chain 4: Iteration: 920 / 1000 [ 92%]  (Sampling)
+Chain 1: Iteration: 900 / 1000 [ 90%]  (Sampling)
+Chain 1: Iteration: 910 / 1000 [ 91%]  (Sampling)
+Chain 4: Iteration: 930 / 1000 [ 93%]  (Sampling)
+Chain 1: Iteration: 920 / 1000 [ 92%]  (Sampling)
+Chain 1: Iteration: 930 / 1000 [ 93%]  (Sampling)
+Chain 4: Iteration: 940 / 1000 [ 94%]  (Sampling)
+Chain 1: Iteration: 940 / 1000 [ 94%]  (Sampling)
+Chain 1: Iteration: 950 / 1000 [ 95%]  (Sampling)
+Chain 4: Iteration: 950 / 1000 [ 95%]  (Sampling)
+Chain 1: Iteration: 960 / 1000 [ 96%]  (Sampling)
+Chain 1: Iteration: 970 / 1000 [ 97%]  (Sampling)
+Chain 4: Iteration: 960 / 1000 [ 96%]  (Sampling)
+Chain 1: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 1: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 4: Iteration: 970 / 1000 [ 97%]  (Sampling)
+Chain 1: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 1: 
+Chain 1:  Elapsed Time: 15813.5 seconds (Warm-up)
+Chain 1:                3150.83 seconds (Sampling)
+Chain 1:                18964.3 seconds (Total)
+Chain 1: 
+Chain 4: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 4: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 4: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 4: 
+Chain 4:  Elapsed Time: 10496 seconds (Warm-up)
+Chain 4:                8805.34 seconds (Sampling)
+Chain 4:                19301.3 seconds (Total)
+Chain 4: 
+    user   system  elapsed 
+69298.39   295.63 19319.65 
+Projecting
+   user  system elapsed 
+349.358   1.407 350.771 
+
+Excel output:  Forecasts/San Bernardino.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+1.19 1.23 1.30 1.38 1.46 1.54 1.59 
+
+PDF output:  Forecasts/San Bernardino.pdf 
+   user  system elapsed 
+347.392   1.579 348.979 
+
+Excel output:  Scenarios/San Bernardino_scenario_actToday.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+1.19 1.23 1.30 1.38 1.46 1.54 1.59 
+
+PDF output:  Scenarios/San Bernardino_scenario_actToday.pdf 
+   user  system elapsed 
+335.096   1.495 336.596 
+
+Excel output:  Scenarios/San Bernardino_scenario_actTwoWeeks.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+1.19 1.23 1.30 1.38 1.46 1.54 1.59 
+
+PDF output:  Scenarios/San Bernardino_scenario_actTwoWeeks.pdf 
+[[1]]
+[[1]]$hosp
+
+[[1]]$icu
+
+[[1]]$deaths
+
+
+[[2]]
+[[2]]$hosp
+
+[[2]]$icu
+
+[[2]]$deaths
+
+
