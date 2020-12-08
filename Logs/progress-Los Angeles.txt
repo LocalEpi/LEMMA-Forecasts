@@ -420,3 +420,62 @@ Chain 3: Iteration: 910 / 1000 [ 91%]  (Sampling)
 Chain 2: Iteration: 980 / 1000 [ 98%]  (Sampling)
 Chain 4: Iteration: 920 / 1000 [ 92%]  (Sampling)
 Chain 1: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 2: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 3: Iteration: 920 / 1000 [ 92%]  (Sampling)
+Chain 4: Iteration: 930 / 1000 [ 93%]  (Sampling)
+Chain 1: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 1: 
+Chain 1:  Elapsed Time: 5236.5 seconds (Warm-up)
+Chain 1:                7054.24 seconds (Sampling)
+Chain 1:                12290.7 seconds (Total)
+Chain 1: 
+Chain 2: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 2: 
+Chain 2:  Elapsed Time: 5476.9 seconds (Warm-up)
+Chain 2:                6870.92 seconds (Sampling)
+Chain 2:                12347.8 seconds (Total)
+Chain 2: 
+Chain 3: Iteration: 930 / 1000 [ 93%]  (Sampling)
+Chain 4: Iteration: 940 / 1000 [ 94%]  (Sampling)
+Chain 4: Iteration: 950 / 1000 [ 95%]  (Sampling)
+Chain 3: Iteration: 940 / 1000 [ 94%]  (Sampling)
+Chain 4: Iteration: 960 / 1000 [ 96%]  (Sampling)
+Chain 3: Iteration: 950 / 1000 [ 95%]  (Sampling)
+Chain 4: Iteration: 970 / 1000 [ 97%]  (Sampling)
+Chain 3: Iteration: 960 / 1000 [ 96%]  (Sampling)
+Chain 4: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 3: Iteration: 970 / 1000 [ 97%]  (Sampling)
+Chain 4: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 3: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 4: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 4: 
+Chain 4:  Elapsed Time: 6052.44 seconds (Warm-up)
+Chain 4:                7159.91 seconds (Sampling)
+Chain 4:                13212.4 seconds (Total)
+Chain 4: 
+Chain 3: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 3: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 3: 
+Chain 3:  Elapsed Time: 5890.07 seconds (Warm-up)
+Chain 3:                7528.15 seconds (Sampling)
+Chain 3:                13418.2 seconds (Total)
+Chain 3: 
+     user    system   elapsed 
+51319.936     3.243 13466.057 
+Projecting
+   user  system elapsed 
+481.553   2.406 484.108 
+
+Excel output:  Forecasts/Los Angeles.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+1.27 1.32 1.40 1.49 1.58 1.68 1.73 
+
+PDF output:  Forecasts/Los Angeles.pdf 
+   user  system elapsed 
+479.478   4.120 483.736 
+
+Excel output:  Scenarios/Los Angeles_scenario_actToday.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+1.27 1.32 1.40 1.49 1.58 1.68 1.73 
+
+PDF output:  Scenarios/Los Angeles_scenario_actToday.pdf 
