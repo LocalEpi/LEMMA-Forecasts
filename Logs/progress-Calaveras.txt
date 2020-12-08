@@ -428,3 +428,78 @@ Chain 4: Iteration: 960 / 1000 [ 96%]  (Sampling)
 Chain 1: Iteration: 950 / 1000 [ 95%]  (Sampling)
 Chain 3: Iteration: 910 / 1000 [ 91%]  (Sampling)
 Chain 4: Iteration: 970 / 1000 [ 97%]  (Sampling)
+Chain 1: Iteration: 960 / 1000 [ 96%]  (Sampling)
+Chain 3: Iteration: 920 / 1000 [ 92%]  (Sampling)
+Chain 4: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 1: Iteration: 970 / 1000 [ 97%]  (Sampling)
+Chain 3: Iteration: 930 / 1000 [ 93%]  (Sampling)
+Chain 4: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 1: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 3: Iteration: 940 / 1000 [ 94%]  (Sampling)
+Chain 4: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 4: 
+Chain 4:  Elapsed Time: 1182.1 seconds (Warm-up)
+Chain 4:                1583.08 seconds (Sampling)
+Chain 4:                2765.18 seconds (Total)
+Chain 4: 
+Chain 1: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 3: Iteration: 950 / 1000 [ 95%]  (Sampling)
+Chain 1: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 1: 
+Chain 1:  Elapsed Time: 1324.59 seconds (Warm-up)
+Chain 1:                1477.69 seconds (Sampling)
+Chain 1:                2802.29 seconds (Total)
+Chain 1: 
+Chain 3: Iteration: 960 / 1000 [ 96%]  (Sampling)
+Chain 3: Iteration: 970 / 1000 [ 97%]  (Sampling)
+Chain 3: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 3: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 3: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 3: 
+Chain 3:  Elapsed Time: 1425.47 seconds (Warm-up)
+Chain 3:                1502.59 seconds (Sampling)
+Chain 3:                2928.06 seconds (Total)
+Chain 3: 
+     user    system   elapsed 
+11037.454     1.549  2959.329 
+Projecting
+   user  system elapsed 
+285.484   2.032 287.627 
+
+Excel output:  Forecasts/Calaveras.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.87 0.95 1.06 1.18 1.29 1.39 1.46 
+
+PDF output:  Forecasts/Calaveras.pdf 
+   user  system elapsed 
+281.009   3.104 284.141 
+
+Excel output:  Scenarios/Calaveras_scenario_actToday.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.87 0.95 1.06 1.18 1.29 1.39 1.46 
+
+PDF output:  Scenarios/Calaveras_scenario_actToday.pdf 
+   user  system elapsed 
+284.401   2.592 287.152 
+
+Excel output:  Scenarios/Calaveras_scenario_actTwoWeeks.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.87 0.95 1.06 1.18 1.29 1.39 1.46 
+
+PDF output:  Scenarios/Calaveras_scenario_actTwoWeeks.pdf 
+[[1]]
+[[1]]$hosp
+
+[[1]]$icu
+
+[[1]]$deaths
+
+
+[[2]]
+[[2]]$hosp
+
+[[2]]$icu
+
+[[2]]$deaths
+
+
