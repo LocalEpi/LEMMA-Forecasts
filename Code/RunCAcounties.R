@@ -149,7 +149,7 @@ extra.iter.set <- c("San Mateo", "San Joaquin")
 county.dt[county %in% extra.iter.set, iter := 1500]
 
 if (quick.test) {
-  county.set <- c("San Benito")
+  county.set <- c("Amador")
 } else {
   #order by last Rt date in forecasts
   max.date <- county.dt[, max(date)]
