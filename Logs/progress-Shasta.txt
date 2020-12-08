@@ -451,3 +451,55 @@ Chain 2: Iteration: 930 / 1000 [ 93%]  (Sampling)
 Chain 2: Iteration: 940 / 1000 [ 94%]  (Sampling)
 Chain 2: Iteration: 950 / 1000 [ 95%]  (Sampling)
 Chain 2: Iteration: 960 / 1000 [ 96%]  (Sampling)
+Chain 2: Iteration: 970 / 1000 [ 97%]  (Sampling)
+Chain 2: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 2: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 2: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 2: 
+Chain 2:  Elapsed Time: 4469.71 seconds (Warm-up)
+Chain 2:                4590.73 seconds (Sampling)
+Chain 2:                9060.44 seconds (Total)
+Chain 2: 
+     user    system   elapsed 
+28295.450    84.857  9076.470 
+Projecting
+   user  system elapsed 
+321.862   1.164 323.042 
+
+Excel output:  Forecasts/Shasta.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.85 0.89 0.97 1.06 1.15 1.23 1.29 
+
+PDF output:  Forecasts/Shasta.pdf 
+   user  system elapsed 
+317.664   1.219 318.900 
+
+Excel output:  Scenarios/Shasta_scenario_actToday.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.85 0.89 0.97 1.06 1.15 1.23 1.29 
+
+PDF output:  Scenarios/Shasta_scenario_actToday.pdf 
+   user  system elapsed 
+322.046   1.091 323.154 
+
+Excel output:  Scenarios/Shasta_scenario_actTwoWeeks.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.85 0.89 0.97 1.06 1.15 1.23 1.29 
+
+PDF output:  Scenarios/Shasta_scenario_actTwoWeeks.pdf 
+[[1]]
+[[1]]$hosp
+
+[[1]]$icu
+
+[[1]]$deaths
+
+
+[[2]]
+[[2]]$hosp
+
+[[2]]$icu
+
+[[2]]$deaths
+
+
