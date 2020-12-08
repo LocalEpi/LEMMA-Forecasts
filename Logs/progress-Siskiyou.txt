@@ -454,3 +454,20 @@ Chain 3: Iteration: 960 / 1000 [ 96%]  (Sampling)
 Chain 3: Iteration: 970 / 1000 [ 97%]  (Sampling)
 Chain 3: Iteration: 980 / 1000 [ 98%]  (Sampling)
 Chain 3: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 3: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 3: 
+Chain 3:  Elapsed Time: 1063.7 seconds (Warm-up)
+Chain 3:                738.974 seconds (Sampling)
+Chain 3:                1802.67 seconds (Total)
+Chain 3: 
+    user   system  elapsed 
+5735.719   59.421 1828.455 
+Projecting
+   user  system elapsed 
+262.525   1.992 264.523 
+
+Excel output:  Forecasts/Siskiyou.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.98 1.03 1.11 1.19 1.29 1.38 1.44 
+
+PDF output:  Forecasts/Siskiyou.pdf 
