@@ -1,8 +1,45 @@
 county =  Amador 
-Fitting to observed data
+-/                                                                                                   -/                                                                                                   -/                                                                                                   -/                                                                                                   -/                                                                                                   -/                                                                                                   Fitting to observed data
    user  system elapsed 
-  0.021   0.004   0.027 
+  4.540   1.393  35.224 
 Projecting
-Stan model 'LEMMA' does not contain samples.
-Type: EXEC 
-Type: EXEC 
+   user  system elapsed 
+ 10.218   1.173  11.654 
+
+Excel output:  Forecasts/Amador.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+1.24 1.32 1.43 1.57 1.71 1.84 1.94 
+
+PDF output:  Forecasts/Amador.pdf 
+   user  system elapsed 
+  9.110   0.783  10.076 
+
+Excel output:  Scenarios/Amador_scenario_actToday.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+1.24 1.32 1.43 1.57 1.71 1.84 1.94 
+
+PDF output:  Scenarios/Amador_scenario_actToday.pdf 
+   user  system elapsed 
+  8.405   0.498   8.975 
+
+Excel output:  Scenarios/Amador_scenario_actTwoWeeks.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+1.24 1.32 1.43 1.57 1.71 1.84 1.94 
+
+PDF output:  Scenarios/Amador_scenario_actTwoWeeks.pdf 
+[[1]]
+[[1]]$hosp
+
+[[1]]$icu
+
+[[1]]$deaths
+
+
+[[2]]
+[[2]]$hosp
+
+[[2]]$icu
+
+[[2]]$deaths
+
+
