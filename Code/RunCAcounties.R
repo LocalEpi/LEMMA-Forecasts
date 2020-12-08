@@ -75,14 +75,10 @@ RunOneCounty <- function(county1, county.dt, county.pop, quick.test) {
       county.dt1[date < as.Date("2020/9/1"), hosp.pui := NA_integer_]
       county.dt1[date < as.Date("2020/9/1"), icu.conf := NA_integer_]
       county.dt1[date < as.Date("2020/9/1"), icu.pui := NA_integer_]
-      # } else if (county1 == "Kings") {
-      #   county.dt1[, icu.conf := NA_integer_] #data error in Kings ICU?
-      #   county.dt1[, icu.pui := NA_integer_]
     } else if (county1 %in% restart.set) {
       sheets$`Parameters with Distributions`[1, Mean := 1] #R0 = 1
       initial.deaths <- county.dt1[date == (restart.date - 1), deaths.conf]
       county.dt1 <- county.dt1[date >= restart.date] #infections went to near zero - restart sim
-      sheets$Interventions <- sheets$Interventions[mu_t_inter >= restart.date]
       sheets$Internal[internal.name == "simulation.start.date", value := restart.date - 10]
     }
 
@@ -92,8 +88,7 @@ RunOneCounty <- function(county1, county.dt, county.pop, quick.test) {
 
     inputs$internal.args$warmup <- NA #defaults to iter/2
     if (county1 %in% restart.set) {
-      #inputs$internal.args$simulation.start.date <- (restart.date - 10) #infections went to near zero - restart sim
-      #inputs$interventions <- inputs$interventions[mu_t_inter >= restart.date]
+      inputs$interventions <- inputs$interventions[mu_t_inter >= restart.date]
       inputs$model.inputs$start.display.date <- restart.date
       inputs$internal.args$initial.deaths <- initial.deaths
     }
@@ -153,15 +148,21 @@ extra.iter.set <- c("San Mateo", "San Joaquin")
 county.dt[county %in% extra.iter.set, iter := 1500]
 
 if (quick.test) {
-  county.set <- c("San Benito")
+  county.set <- c("San Benito", "Amador")
 } else {
   #order by last Rt date in forecasts
   max.date <- county.dt[, max(date)]
   dt.max <- county.dt[date == max.date, ]
   stopifnot(setequal(dt.max$county, unique(county.dt$county)))
-  for (i in dt.max$county) {
-    x <- as.data.table(readxl::read_excel(paste0("Forecasts/", i, ".xlsx"), sheet = "rt"))
-    dt.max[county == i, last.rt := max(as.Date(x$date))]
+  for (i in county.set) {
+    filestr <- paste0("~/Documents/GitHub/LEMMA-Forecasts/Forecasts/", i, ".xlsx")
+    if (file.exists(filestr)) {
+      x <- as.data.table(readxl::read_excel(filestr, sheet = "rt"))
+      date1 <- max(as.Date(x$date))
+    } else {
+      date1 <- as.Date("2020/1/1")
+    }
+    dt.max[county == i, last.rt := date1]
   }
   setorder(dt.max, last.rt, -iter)
   county.set <- dt.max[, county]
