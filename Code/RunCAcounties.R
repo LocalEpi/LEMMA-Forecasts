@@ -3,7 +3,7 @@ library(ParallelLogger)
 
 source('Code/GetCountyData.R')
 
-quick.test <- T
+quick.test <- F
 if (quick.test) {
   cat("\n\n++++++++++++++++++  quick.test = T +++++++++++++++++ \n\n")
 }
@@ -82,7 +82,7 @@ RunOneCounty <- function(county1, county.dt, county.pop, quick.test) {
       sheets$Internal[internal.name == "simulation.start.date", value := restart.date - 10]
     }
 
-    sheets$Data <- copy(county.dt1)
+    sheets$Data <- data.table::copy(county.dt1)
     sheets$Data$iter <- NULL
 
     inputs <- LEMMA:::ProcessSheets(sheets, input.file)
@@ -155,7 +155,7 @@ if (quick.test) {
   max.date <- county.dt[, max(date)]
   dt.max <- county.dt[date == max.date, ]
   stopifnot(setequal(dt.max$county, unique(county.dt$county)))
-  for (i in county.set) {
+  for (i in unique(county.dt$county)) {
     filestr <- paste0("~/Documents/GitHub/LEMMA-Forecasts/Forecasts/", i, ".xlsx")
     if (file.exists(filestr)) {
       x <- as.data.table(readxl::read_excel(filestr, sheet = "rt"))
