@@ -3,7 +3,7 @@ library(ParallelLogger)
 
 source('Code/GetCountyData.R')
 
-quick.test <- F
+quick.test <- T
 if (quick.test) {
   cat("\n\n++++++++++++++++++  quick.test = T +++++++++++++++++ \n\n")
 }
@@ -96,14 +96,9 @@ RunOneCounty <- function(county1, county.dt, county.pop, quick.test) {
       #inputs$interventions <- inputs$interventions[mu_t_inter >= restart.date]
       inputs$model.inputs$start.display.date <- restart.date
       inputs$internal.args$initial.deaths <- initial.deaths
-      # inputs$internal.args$iter <- 1500 #removed 11/29
-      # } else if (county1 %in% c("Santa Barbara")) {
-      #   inputs$internal.args$adapt_delta <- 0.95
-      #   inputs$internal.args$iter <- 1500 #needs more iterations to converge
-    } else if (county1 %in% c("San Mateo", "San Joaquin")) {
-      inputs$internal.args$iter <- 1500 #needs more iterations to converge
     }
 
+    inputs$internal.args$iter <- county.dt1[, max(iter)] #iter is the same for all dates
     inputs$internal.args$output.filestr <- paste0("Forecasts/", county1)
     mean.ini <- 1e-5 * county.pop1
     inputs$internal.args$lambda_ini_exposed <- 1 / mean.ini
@@ -153,24 +148,24 @@ RunOneCounty <- function(county1, county.dt, county.pop, quick.test) {
 }
 
 county.dt <- GetCountyData(exclude.set)
+county.dt[, iter := 1000] #iter for most counties
+extra.iter.set <- c("San Mateo", "San Joaquin")
+county.dt[county %in% extra.iter.set, iter := 1500]
 
-#order by last Rt date in forecasts
-max.date <- county.dt[, max(date)]
-dt.max <- county.dt[date == max.date, ]
-stopifnot(setequal(dt.max$county, unique(county.dt$county)))
-for (i in dt.max$county) {
-  x <- as.data.table(readxl::read_excel(paste0("Forecasts/", i, ".xlsx"), sheet = "rt"))
-  dt.max[county == i, last.rt := max(as.Date(x$date))]
+if (quick.test) {
+  county.set <- c("San Mateo")
+} else {
+  #order by last Rt date in forecasts
+  max.date <- county.dt[, max(date)]
+  dt.max <- county.dt[date == max.date, ]
+  stopifnot(setequal(dt.max$county, unique(county.dt$county)))
+  for (i in dt.max$county) {
+    x <- as.data.table(readxl::read_excel(paste0("Forecasts/", i, ".xlsx"), sheet = "rt"))
+    dt.max[county == i, last.rt := max(as.Date(x$date))]
+  }
+  setorder(dt.max, last.rt, -iter)
+  county.set <- dt.max[, county]
 }
-setkey(dt.max, last.rt)
-county.set <- dt.max[, county]
-
-if (quick.test) county.set <- c("Kern", "Kings", "Lassen", "Los Angeles", "Merced", "Amador",
-                                "Calaveras", "Colusa", "Fresno", "Imperial", "Inyo", "Lake",
-                                "Madera", "Marin", "Mendocino", "Monterey", "Napa", "Nevada",
-                                "Orange", "Placer", "Riverside", "Sacramento", "San Benito",
-                                "San Bernardino", "San Diego", "San Mateo", "Santa Clara", "Santa Cruz",
-                                "Solano", "Stanislaus", "Tulare", "Yolo")
 print(county.set)
 cat("Data through", as.character(county.dt[, max(date)]), "\n")
 
