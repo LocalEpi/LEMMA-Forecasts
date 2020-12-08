@@ -82,7 +82,8 @@ RunOneCounty <- function(county1, county.dt, county.pop, quick.test) {
       sheets$Internal[internal.name == "simulation.start.date", value := restart.date - 10]
     }
 
-    sheets$Data <- county.dt1
+    sheets$Data <- copy(county.dt1)
+    sheets$Data$iter <- NULL
 
     inputs <- LEMMA:::ProcessSheets(sheets, input.file)
 
@@ -148,7 +149,7 @@ extra.iter.set <- c("San Mateo", "San Joaquin")
 county.dt[county %in% extra.iter.set, iter := 1500]
 
 if (quick.test) {
-  county.set <- c("San Benito", "Amador")
+  county.set <- c("San Benito")
 } else {
   #order by last Rt date in forecasts
   max.date <- county.dt[, max(date)]
