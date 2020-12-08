@@ -452,3 +452,54 @@ Chain 1: Iteration: 940 / 1000 [ 94%]  (Sampling)
 Chain 1: Iteration: 950 / 1000 [ 95%]  (Sampling)
 Chain 1: Iteration: 960 / 1000 [ 96%]  (Sampling)
 Chain 1: Iteration: 970 / 1000 [ 97%]  (Sampling)
+Chain 1: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 1: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 1: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 1: 
+Chain 1:  Elapsed Time: 9262.47 seconds (Warm-up)
+Chain 1:                5533.24 seconds (Sampling)
+Chain 1:                14795.7 seconds (Total)
+Chain 1: 
+     user    system   elapsed 
+55635.250   234.937 14835.301 
+Projecting
+   user  system elapsed 
+455.939   2.523 458.478 
+
+Excel output:  Forecasts/Riverside.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+1.11 1.16 1.24 1.32 1.40 1.48 1.53 
+
+PDF output:  Forecasts/Riverside.pdf 
+   user  system elapsed 
+419.934   2.828 422.770 
+
+Excel output:  Scenarios/Riverside_scenario_actToday.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+1.11 1.16 1.24 1.32 1.40 1.48 1.53 
+
+PDF output:  Scenarios/Riverside_scenario_actToday.pdf 
+   user  system elapsed 
+391.475   1.687 393.168 
+
+Excel output:  Scenarios/Riverside_scenario_actTwoWeeks.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+1.11 1.16 1.24 1.32 1.40 1.48 1.53 
+
+PDF output:  Scenarios/Riverside_scenario_actTwoWeeks.pdf 
+[[1]]
+[[1]]$hosp
+
+[[1]]$icu
+
+[[1]]$deaths
+
+
+[[2]]
+[[2]]$hosp
+
+[[2]]$icu
+
+[[2]]$deaths
+
+
