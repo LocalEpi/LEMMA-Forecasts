@@ -3,27 +3,37 @@ library(ParallelLogger)
 
 source('Code/GetCountyData.R')
 
+exclude.set <- c("San Francisco") #SF is run separately
+county.pop <- fread("Inputs/county population.csv")
+county.dt <- GetCountyData(exclude.set)
+
 quick.test <- F
 if (quick.test) {
   cat("\n\n++++++++++++++++++  quick.test = T +++++++++++++++++ \n\n")
-}
-
-county.pop <- fread("Inputs/county population.csv")
-
-if (quick.test) {
-  omit.counties <- ""
+  county.set <- c("Amador")
 } else {
-  omit.counties <- ""
-  # #run half the counties each day
-  # if (as.numeric(Sys.Date()) %% 2 == 1) {
-  #   omit.counties <- county.pop[seq(1, 58, by = 2), county]
-  # } else {
-  #   omit.counties <- county.pop[seq(2, 58, by = 2), county]
-  # }
-}
+  #order by last Rt date in forecasts and then last run time
+  max.date <- county.dt[, max(date)]
+  dt.max <- county.dt[date == max.date, ]
+  stopifnot(setequal(dt.max$county, unique(county.dt$county)))
+  for (i in unique(county.dt$county)) {
+    filestr <- paste0("~/Documents/GitHub/LEMMA-Forecasts/Forecasts/", i, ".xlsx")
+    if (file.exists(filestr)) {
+      x <- as.data.table(readxl::read_excel(filestr, sheet = "rt"))
+      date1 <- max(as.Date(x$date))
+    } else {
+      date1 <- as.Date("2020/1/1")
+    }
+    dt.max[county == i, last.rt := date1]
+  }
+  dt.max[, run.time := sapply(county, GetRunTime)]
 
-exclude.set <- ""
-exclude.set <- c(exclude.set, "San Francisco", omit.counties) #SF is run separately
+  setorder(dt.max, last.rt, -run.time)
+  county.set <- dt.max[, county]
+}
+print(county.set)
+cat("Data through", as.character(county.dt[, max(date)]), "\n")
+
 
 RunOneCounty <- function(county1, county.dt, county.pop, quick.test) {
   restart.set <- c("Tehama", "Mono", "Yolo", "Yuba", "Mendocino", "Nevada", "El Dorado",
@@ -51,62 +61,59 @@ RunOneCounty <- function(county1, county.dt, county.pop, quick.test) {
   sink.file <- paste0("Logs/progress-", county1, ".txt")
   sink(sink.file)
   cat("county = ", county1, "\n")
-  if (county1 == "San Francisco") {
-    input.file <- "Inputs/SF.xlsx"  #SF is separate because it has hospital transfer data manually entered from https://data.sfgov.org/COVID-19/COVID-19-Hospitalizations/nxjg-bhem
-    cred.int <- LEMMA::CredibilityIntervalFromExcel(input.file)
-  } else {
-    input.file <- "Inputs/CAcounties.xlsx"
-    sheets <- LEMMA:::ReadInputs(input.file)
-    county.pop1 <- county.pop[county == county1, population]
-    sheets$`Model Inputs`[internal.name == "total.population", value := county.pop1]
-    county.dt1 <- county.dt[county == county1, -1]
-    county.dt1[, deaths.pui := NA_integer_]
-    county.dt1[, cum.admits.conf := NA_integer_]
-    county.dt1[, cum.admits.pui := NA_integer_]
-    if (county1 == "Los Angeles") {
-      #LA has convergence problems
-      sheets$Interventions <- sheets$Interventions[2:.N]
-      sheets$Interventions[1, mu_beta_inter := 0.5] #more informative prior
-      sheets$`Parameters with Distributions`[7, `Standard Deviation` := 0.005] #reduce frac_hosp sd
-      sheets$`Parameters with Distributions`[9, Mean := 0.64] #mort/ICU seems very high in LA
-      sheets$`Parameters with Distributions`[9, `Standard Deviation` := 0.1]
-    } else if (county1 == "Imperial") {
-      county.dt1[date < as.Date("2020/9/1"), hosp.conf := NA_integer_] #Imperial was tranferring a lot hospitalized out of county
-      county.dt1[date < as.Date("2020/9/1"), hosp.pui := NA_integer_]
-      county.dt1[date < as.Date("2020/9/1"), icu.conf := NA_integer_]
-      county.dt1[date < as.Date("2020/9/1"), icu.pui := NA_integer_]
-    } else if (county1 %in% restart.set) {
-      sheets$`Parameters with Distributions`[1, Mean := 1] #R0 = 1
-      initial.deaths <- county.dt1[date == (restart.date - 1), deaths.conf]
-      county.dt1 <- county.dt1[date >= restart.date] #infections went to near zero - restart sim
-      sheets$Internal[internal.name == "simulation.start.date", value := restart.date - 10]
-    }
 
-    sheets$Data <- data.table::copy(county.dt1)
-    sheets$Data$iter <- NULL
-
-    inputs <- LEMMA:::ProcessSheets(sheets, input.file)
-
-    inputs$internal.args$warmup <- NA #defaults to iter/2
-    if (county1 %in% restart.set) {
-      inputs$interventions <- inputs$interventions[mu_t_inter >= restart.date]
-      inputs$model.inputs$start.display.date <- restart.date
-      inputs$internal.args$initial.deaths <- initial.deaths
-    }
-
-    inputs$internal.args$iter <- county.dt1[, max(iter)] #iter is the same for all dates
-    inputs$internal.args$output.filestr <- paste0("Forecasts/", county1)
-    mean.ini <- 1e-5 * county.pop1
-    inputs$internal.args$lambda_ini_exposed <- 1 / mean.ini
-
-    if (quick.test) {
-      # inputs$internal.args$warmup <- NA
-      # inputs$internal.args$iter <- 500
-      # inputs$internal.args$max_treedepth <- 10
-      # inputs$internal.args$adapt_delta <- 0.8
-    }
-    cred.int <- LEMMA:::CredibilityInterval(inputs)
+  input.file <- "Inputs/CAcounties.xlsx"
+  sheets <- LEMMA:::ReadInputs(input.file)
+  county.pop1 <- county.pop[county == county1, population]
+  sheets$`Model Inputs`[internal.name == "total.population", value := county.pop1]
+  county.dt1 <- county.dt[county == county1, -1]
+  county.dt1[, deaths.pui := NA_integer_]
+  county.dt1[, cum.admits.conf := NA_integer_]
+  county.dt1[, cum.admits.pui := NA_integer_]
+  if (county1 == "Los Angeles") {
+    #LA has convergence problems
+    sheets$Interventions <- sheets$Interventions[2:.N]
+    sheets$Interventions[1, mu_beta_inter := 0.5] #more informative prior
+    sheets$`Parameters with Distributions`[7, `Standard Deviation` := 0.005] #reduce frac_hosp sd
+    sheets$`Parameters with Distributions`[9, Mean := 0.64] #mort/ICU seems very high in LA
+    sheets$`Parameters with Distributions`[9, `Standard Deviation` := 0.1]
+  } else if (county1 == "Imperial") {
+    county.dt1[date < as.Date("2020/9/1"), hosp.conf := NA_integer_] #Imperial was tranferring a lot hospitalized out of county
+    county.dt1[date < as.Date("2020/9/1"), hosp.pui := NA_integer_]
+    county.dt1[date < as.Date("2020/9/1"), icu.conf := NA_integer_]
+    county.dt1[date < as.Date("2020/9/1"), icu.pui := NA_integer_]
+  } else if (county1 %in% restart.set) {
+    sheets$`Parameters with Distributions`[1, Mean := 1] #R0 = 1
+    initial.deaths <- county.dt1[date == (restart.date - 1), deaths.conf]
+    county.dt1 <- county.dt1[date >= restart.date] #infections went to near zero - restart sim
+    sheets$Internal[internal.name == "simulation.start.date", value := restart.date - 10]
   }
+
+  sheets$Data <- county.dt1
+  inputs <- LEMMA:::ProcessSheets(sheets, input.file)
+
+  inputs$internal.args$warmup <- NA #defaults to iter/2
+  if (county1 %in% restart.set) {
+    inputs$interventions <- inputs$interventions[mu_t_inter >= restart.date]
+    inputs$model.inputs$start.display.date <- restart.date
+    inputs$internal.args$initial.deaths <- initial.deaths
+  }
+  if (county1 %in% c("San Mateo", "San Joaquin")) {
+    inputs$internal.args$iter <- 1500
+  }
+
+  inputs$internal.args$output.filestr <- paste0("Forecasts/", county1)
+  mean.ini <- 1e-5 * county.pop1
+  inputs$internal.args$lambda_ini_exposed <- 1 / mean.ini
+
+  if (quick.test) {
+    # inputs$internal.args$warmup <- NA
+    # inputs$internal.args$iter <- 500
+    # inputs$internal.args$max_treedepth <- 10
+    # inputs$internal.args$adapt_delta <- 0.8
+  }
+  cred.int <- LEMMA:::CredibilityInterval(inputs)
+
 
   max.date <- max(cred.int$inputs$obs.data$date)
   outfile <- paste0("Scenarios/", county1)
@@ -114,20 +121,12 @@ RunOneCounty <- function(county1, county.dt, county.pop, quick.test) {
   ProjScen <- function(int.list) {
     int.date <- int.list$date
     int.str <- int.list$str
-    if (is.na(int.date)) {
-      intervention <- NULL
-      subtitl <- "Scenario: No change from current Re"
-    } else {
-      intervention <- data.frame(mu_t_inter = int.date, sigma_t_inter = 0.0001, mu_beta_inter = 0.5, sigma_beta_inter = 0.0001, mu_len_inter = 7, sigma_len_inter = 2)
-      subtitl <- paste("Scenario: Reduce Re by 50% starting", as.character(as.Date(int.date), format = "%b%e"))
-    }
+    intervention <- data.frame(mu_t_inter = int.date, sigma_t_inter = 0.0001, mu_beta_inter = 0.5, sigma_beta_inter = 0.0001, mu_len_inter = 7, sigma_len_inter = 2)
+    subtitl <- paste("Scenario: Reduce Re by 50% starting", as.character(as.Date(int.date), format = "%b%e"))
     lapply(LEMMA:::ProjectScenario(cred.int, new.int=intervention, paste0("Scenarios/", county1, "_scenario_", int.str))$gplot$long.term, function (z) z + ggplot2::labs(subtitle = subtitl))
   }
 
   scen.plots <- lapply(list(list(date = max.date + 3, str = "actToday"), list(date = max.date + 17, str = "actTwoWeeks")), ProjScen)
-  grDevices::pdf(file = paste0("Scenarios/", county1, "_scenarios_summary.pdf"), width = 9.350, height = 7.225) #overwrite the .pdf
-  print(scen.plots)
-  dev.off()
 
   sink()
   ParallelLogger::logInfo("county = ", county1)
@@ -136,40 +135,10 @@ RunOneCounty <- function(county1, county.dt, county.pop, quick.test) {
   system2("git", args = c('commit', '-a', '-m', commit.name))
   system2("git", args = "pull")
   system2("git", args = "push")
-
-  if (county1 != "San Francisco") {
-    cred.int <- NULL #save memory
-  }
-  return(cred.int)
+  return(NULL)
 }
 
-county.dt <- GetCountyData(exclude.set)
-county.dt[, iter := 1000] #iter for most counties
-extra.iter.set <- c("San Mateo", "San Joaquin")
-county.dt[county %in% extra.iter.set, iter := 1500]
 
-if (quick.test) {
-  county.set <- c("Amador")
-} else {
-  #order by last Rt date in forecasts
-  max.date <- county.dt[, max(date)]
-  dt.max <- county.dt[date == max.date, ]
-  stopifnot(setequal(dt.max$county, unique(county.dt$county)))
-  for (i in unique(county.dt$county)) {
-    filestr <- paste0("~/Documents/GitHub/LEMMA-Forecasts/Forecasts/", i, ".xlsx")
-    if (file.exists(filestr)) {
-      x <- as.data.table(readxl::read_excel(filestr, sheet = "rt"))
-      date1 <- max(as.Date(x$date))
-    } else {
-      date1 <- as.Date("2020/1/1")
-    }
-    dt.max[county == i, last.rt := date1]
-  }
-  setorder(dt.max, last.rt, -iter)
-  county.set <- dt.max[, county]
-}
-print(county.set)
-cat("Data through", as.character(county.dt[, max(date)]), "\n")
 
 options(warn = 1)
 assign("last.warning", NULL, envir = baseenv())
@@ -197,20 +166,6 @@ setnames(dt, c("time", "threadLabel", "level", "packageName", "functionName", "m
 setkey(dt, threadLabel, time)
 
 
-IsBad <- function(w) {
-  if (w %in% c("Bulk Effective Samples Size (ESS) is too low, indicating posterior means and medians may be unreliable. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#bulk-ess",
-               "Tail Effective Samples Size (ESS) is too low, indicating posterior variances and tail quantiles may be unreliable. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#tail-ess",
-               "Examine the pairs() plot to diagnose sampling problems")) return(F)
-  if (grepl("There were [[:digit:]]+ divergent transitions after warmup.", w)) {
-    x <- as.numeric(strsplit(sub("There were ", "", w), split = " divergent")[[1]][1])
-    return(x > 50)
-  }
-  if (grepl("There were [[:digit:]]+ transitions after warmup that exceeded the maximum treedepth.", w)) {
-    x <- as.numeric(strsplit(sub("There were ", "", w), split = " transitions")[[1]][1])
-    return(x > 50)
-  }
-  return(T)
-}
 
 for (i in 1:nrow(dt)) {
   if (dt[i, level == "WARN" & IsBad(message)]) {

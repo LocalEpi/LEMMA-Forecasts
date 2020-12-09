@@ -105,3 +105,37 @@ GetCountyData <- function(exclude.set) {
   }
   return(county.dt)
 }
+
+GetRunTime <- function(county1) {
+  filestr <- paste0("Logs/progress-", county1, ".txt")
+  time.num <- NA
+  if (file.exists(filestr)) {
+    log.str <- readLines(filestr)
+    index <- grep("elapsed", log.str)
+    if (length(index) >= 1) {
+      index <- min(index) + 1
+      time.num <- as.numeric(strsplit(trimws(log.str[index]), " ")[[1]])
+      time.num <- time.num[length(time.num)]
+    }
+  }
+  if (is.na(time.num)) {
+    time.num <- Inf
+  }
+  return(time.num)
+}
+
+
+IsBad <- function(w) {
+  if (w %in% c("Bulk Effective Samples Size (ESS) is too low, indicating posterior means and medians may be unreliable. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#bulk-ess",
+               "Tail Effective Samples Size (ESS) is too low, indicating posterior variances and tail quantiles may be unreliable. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#tail-ess",
+               "Examine the pairs() plot to diagnose sampling problems")) return(F)
+  if (grepl("There were [[:digit:]]+ divergent transitions after warmup.", w)) {
+    x <- as.numeric(strsplit(sub("There were ", "", w), split = " divergent")[[1]][1])
+    return(x > 50)
+  }
+  if (grepl("There were [[:digit:]]+ transitions after warmup that exceeded the maximum treedepth.", w)) {
+    x <- as.numeric(strsplit(sub("There were ", "", w), split = " transitions")[[1]][1])
+    return(x > 50)
+  }
+  return(T)
+}
