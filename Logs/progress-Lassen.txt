@@ -443,3 +443,63 @@ Chain 1: Iteration: 950 / 1000 [ 95%]  (Sampling)
 Chain 3: Iteration: 960 / 1000 [ 96%]  (Sampling)
 Chain 1: Iteration: 960 / 1000 [ 96%]  (Sampling)
 Chain 3: Iteration: 970 / 1000 [ 97%]  (Sampling)
+Chain 1: Iteration: 970 / 1000 [ 97%]  (Sampling)
+Chain 3: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 1: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 3: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 3: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 1: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 3: 
+Chain 3:  Elapsed Time: 5368.03 seconds (Warm-up)
+Chain 3:                6455.31 seconds (Sampling)
+Chain 3:                11823.3 seconds (Total)
+Chain 3: 
+Chain 1: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 1: 
+Chain 1:  Elapsed Time: 5304.88 seconds (Warm-up)
+Chain 1:                6596.51 seconds (Sampling)
+Chain 1:                11901.4 seconds (Total)
+Chain 1: 
+     user    system   elapsed 
+43006.707     2.792 11929.899 
+Projecting
+   user  system elapsed 
+456.612   2.658 459.399 
+
+Excel output:  Forecasts/Lassen.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+1.30 1.36 1.48 1.61 1.77 1.91 1.98 
+
+PDF output:  Forecasts/Lassen.pdf 
+   user  system elapsed 
+469.501   4.391 474.104 
+
+Excel output:  Scenarios/Lassen_scenario_actToday.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+1.30 1.36 1.48 1.61 1.77 1.91 1.98 
+
+PDF output:  Scenarios/Lassen_scenario_actToday.pdf 
+   user  system elapsed 
+477.312   3.720 481.257 
+
+Excel output:  Scenarios/Lassen_scenario_actTwoWeeks.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+1.30 1.36 1.48 1.61 1.77 1.91 1.98 
+
+PDF output:  Scenarios/Lassen_scenario_actTwoWeeks.pdf 
+[[1]]
+[[1]]$hosp
+
+[[1]]$icu
+
+[[1]]$deaths
+
+
+[[2]]
+[[2]]$hosp
+
+[[2]]$icu
+
+[[2]]$deaths
+
+
