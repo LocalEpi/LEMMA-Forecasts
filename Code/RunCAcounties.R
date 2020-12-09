@@ -66,7 +66,7 @@ RunOneCounty <- function(county1) {
       } else if (county1 == "Colusa") {
         restart.date <- as.Date("2020/11/9")
       } else if (county1 == "Glenn") {
-        restart.date <- as.Date("2020/12/3")
+        restart.date <- as.Date("2020/12/4")
       } else {
         restart.date <- as.Date("2020/6/1")
       }
