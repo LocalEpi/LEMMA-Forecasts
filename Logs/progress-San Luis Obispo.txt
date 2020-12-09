@@ -444,3 +444,38 @@ Chain 4: Iteration: 970 / 1000 [ 97%]  (Sampling)
 Chain 3: Iteration: 950 / 1000 [ 95%]  (Sampling)
 Chain 4: Iteration: 980 / 1000 [ 98%]  (Sampling)
 Chain 3: Iteration: 960 / 1000 [ 96%]  (Sampling)
+Chain 4: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 3: Iteration: 970 / 1000 [ 97%]  (Sampling)
+Chain 4: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 4: 
+Chain 4:  Elapsed Time: 6640.73 seconds (Warm-up)
+Chain 4:                7185.14 seconds (Sampling)
+Chain 4:                13825.9 seconds (Total)
+Chain 4: 
+Chain 3: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 3: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 3: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 3: 
+Chain 3:  Elapsed Time: 6307.22 seconds (Warm-up)
+Chain 3:                7769.65 seconds (Sampling)
+Chain 3:                14076.9 seconds (Total)
+Chain 3: 
+     user    system   elapsed 
+50695.827     2.222 14117.120 
+Projecting
+   user  system elapsed 
+407.288   1.545 408.975 
+
+Excel output:  Forecasts/San Luis Obispo.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.67 0.78 0.93 1.10 1.26 1.43 1.52 
+
+PDF output:  Forecasts/San Luis Obispo.pdf 
+   user  system elapsed 
+408.673   2.548 411.231 
+
+Excel output:  Scenarios/San Luis Obispo_scenario_actToday.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.67 0.78 0.93 1.10 1.26 1.43 1.52 
+
+PDF output:  Scenarios/San Luis Obispo_scenario_actToday.pdf 
