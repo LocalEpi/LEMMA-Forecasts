@@ -121,6 +121,9 @@ GetRunTime <- function(county1) {
   if (is.na(time.num)) {
     time.num <- 100000
   }
+  if (county1 %in% c("San Joaquin", "San Mateo", "Stanislaus")) { #temp
+    time.num <- time.num + 1 
+  }
   return(time.num)
 }
 

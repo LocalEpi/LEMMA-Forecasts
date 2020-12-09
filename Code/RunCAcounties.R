@@ -30,6 +30,7 @@ if (quick.test) {
   
   setorder(dt.max, last.rt, -run.time)
   print(dt.max)
+  dt.max <- dt.max[last.rt <= as.Date("2020/12/11")]; print(dt.max) #temp
   sink("Logs/CountySet.txt")
   print(dt.max)
   sink()
@@ -47,7 +48,8 @@ RunOneCounty <- function(county1) {
     
     restart.set <- c("Tehama", "Mono", "Yolo", "Yuba", "Mendocino", "Nevada", "El Dorado",
                      "Tuolumne", "Amador", "Inyo", "Calaveras",
-                     "Madera", "Humboldt", "Siskiyou", "Butte", "San Benito", "Merced", "Colusa") #infections went to near zero - restart sim
+                     "Madera", "Humboldt", "Siskiyou", "Butte", "San Benito", 
+                     "Merced", "Colusa", "Glenn") #infections went to near zero - restart sim
     if (county1 %in% restart.set) {
       if (county1 == "San Benito") {
         restart.date <- as.Date("2020/11/03")
@@ -63,6 +65,8 @@ RunOneCounty <- function(county1) {
         restart.date <- as.Date("2020/5/1")
       } else if (county1 == "Colusa") {
         restart.date <- as.Date("2020/11/9")
+      } else if (county1 == "Glenn") {
+        restart.date <- as.Date("2020/12/4")
       } else {
         restart.date <- as.Date("2020/6/1")
       }
