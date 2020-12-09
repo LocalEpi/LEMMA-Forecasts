@@ -119,7 +119,7 @@ GetRunTime <- function(county1) {
     }
   }
   if (is.na(time.num)) {
-    time.num <- Inf
+    time.num <- 100000
   }
   return(time.num)
 }
