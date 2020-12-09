@@ -440,3 +440,34 @@ Chain 2:  Elapsed Time: 6972.25 seconds (Warm-up)
 Chain 2:                6495.59 seconds (Sampling)
 Chain 2:                13467.8 seconds (Total)
 Chain 2: 
+Chain 3: Iteration: 940 / 1000 [ 94%]  (Sampling)
+Chain 1: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 3: Iteration: 950 / 1000 [ 95%]  (Sampling)
+Chain 1: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 3: Iteration: 960 / 1000 [ 96%]  (Sampling)
+Chain 1: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 1: 
+Chain 1:  Elapsed Time: 7658.2 seconds (Warm-up)
+Chain 1:                6164.18 seconds (Sampling)
+Chain 1:                13822.4 seconds (Total)
+Chain 1: 
+Chain 3: Iteration: 970 / 1000 [ 97%]  (Sampling)
+Chain 3: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 3: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 3: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 3: 
+Chain 3:  Elapsed Time: 7314.21 seconds (Warm-up)
+Chain 3:                6826.41 seconds (Sampling)
+Chain 3:                14140.6 seconds (Total)
+Chain 3: 
+     user    system   elapsed 
+54022.250     3.608 14179.921 
+Projecting
+   user  system elapsed 
+471.273   3.656 475.058 
+
+Excel output:  Forecasts/Kern.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+1.17 1.23 1.33 1.45 1.57 1.67 1.75 
+
+PDF output:  Forecasts/Kern.pdf 
