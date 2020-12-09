@@ -7,10 +7,10 @@ exclude.set <- c("San Francisco") #SF is run separately
 county.dt <- GetCountyData(exclude.set)
 saveRDS(county.dt, "Inputs/CountyData.rds")
 
-quick.test <- F
+quick.test <- T
 if (quick.test) {
   cat("\n\n++++++++++++++++++  quick.test = T +++++++++++++++++ \n\n")
-  county.set <- c("Amador")
+  county.set <- "Mariposa" #c("Glenn")
 } else {
   #order by last Rt date in forecasts and then last run time
   max.date <- county.dt[, max(date)]
@@ -27,10 +27,10 @@ if (quick.test) {
     dt.max[county == i, last.rt := date1]
   }
   dt.max[, run.time := sapply(county, GetRunTime)]
-  
+
   setorder(dt.max, last.rt, -run.time)
   print(dt.max)
-  dt.max <- dt.max[last.rt <= as.Date("2020/12/11")]; print(dt.max) #temp
+  # dt.max <- dt.max[last.rt <= as.Date("2020/12/11")]; print(dt.max) #temp
   sink("Logs/CountySet.txt")
   print(dt.max)
   sink()
@@ -40,15 +40,15 @@ print(county.set)
 cat("Data through", as.character(county.dt[, max(date)]), "\n")
 
 RunOneCounty <- function(county1) {
-  try.result <- tryCatch({
+  try.result <- try({
     county.dt <- readRDS("Inputs/CountyData.rds")
     county.pop <- data.table::fread("Inputs/county population.csv")
     county.dt1 <- county.dt[county == county1, -1]
     county.pop1 <- county.pop[county == county1, population]
-    
+
     restart.set <- c("Tehama", "Mono", "Yolo", "Yuba", "Mendocino", "Nevada", "El Dorado",
                      "Tuolumne", "Amador", "Inyo", "Calaveras",
-                     "Madera", "Humboldt", "Siskiyou", "Butte", "San Benito", 
+                     "Madera", "Humboldt", "Siskiyou", "Butte", "San Benito",
                      "Merced", "Colusa", "Glenn") #infections went to near zero - restart sim
     if (county1 %in% restart.set) {
       if (county1 == "San Benito") {
@@ -74,11 +74,11 @@ RunOneCounty <- function(county1) {
     sink.file <- paste0("Logs/progress-", county1, ".txt")
     sink(sink.file)
     cat("county = ", county1, "\n")
-    
+
     input.file <- "Inputs/CAcounties.xlsx"
     sheets <- LEMMA:::ReadInputs(input.file)
     sheets$`Model Inputs`[internal.name == "total.population", value := county.pop1]
-    
+
     county.dt1[, deaths.pui := NA_integer_]
     county.dt1[, cum.admits.conf := NA_integer_]
     county.dt1[, cum.admits.pui := NA_integer_]
@@ -100,10 +100,10 @@ RunOneCounty <- function(county1) {
       county.dt1 <- county.dt1[date >= restart.date] #infections went to near zero - restart sim
       sheets$Internal[internal.name == "simulation.start.date", value := restart.date - 10]
     }
-    
+
     sheets$Data <- county.dt1
     inputs <- LEMMA:::ProcessSheets(sheets, input.file)
-    
+
     inputs$internal.args$warmup <- NA #defaults to iter/2
     if (county1 %in% restart.set) {
       inputs$interventions <- inputs$interventions[mu_t_inter >= restart.date]
@@ -113,22 +113,22 @@ RunOneCounty <- function(county1) {
     if (county1 %in% c("San Mateo", "San Joaquin")) {
       inputs$internal.args$iter <- 1500
     }
-    
+
     inputs$internal.args$output.filestr <- paste0("Forecasts/", county1)
     mean.ini <- 1e-5 * county.pop1
     inputs$internal.args$lambda_ini_exposed <- 1 / mean.ini
-    
+
     # inputs$internal.args$warmup <- NA
     # inputs$internal.args$iter <- 500
     # inputs$internal.args$max_treedepth <- 10
     # inputs$internal.args$adapt_delta <- 0.8
 
     cred.int <- LEMMA:::CredibilityInterval(inputs)
-    
-    
+
+
     max.date <- max(cred.int$inputs$obs.data$date)
     outfile <- paste0("Scenarios/", county1)
-    
+
     ProjScen <- function(int.list) {
       int.date <- int.list$date
       int.str <- int.list$str
@@ -136,18 +136,18 @@ RunOneCounty <- function(county1) {
       subtitl <- paste("Scenario: Reduce Re by 50% starting", as.character(as.Date(int.date), format = "%b%e"))
       lapply(LEMMA:::ProjectScenario(cred.int, new.int=intervention, paste0("Scenarios/", county1, "_scenario_", int.str))$gplot$long.term, function (z) z + ggplot2::labs(subtitle = subtitl))
     }
-    
+
     scen.plots <- lapply(list(list(date = max.date + 3, str = "actToday"), list(date = max.date + 17, str = "actTwoWeeks")), ProjScen)
-    
+
     sink()
     ParallelLogger::logInfo("county = ", county1)
-    
+
     commit.name <- paste0('"', county1, " data through ", as.character(max.date), '"')
     system2("git", args = c('commit', '-a', '-m', commit.name))
     system2("git", args = "pull")
     system2("git", args = "push")
   })
-  
+
   if (inherits(try.result, "try-error")) {
     ParallelLogger::logInfo("ERROR in = ", county1)
     ParallelLogger::logInfo(as.character(try.result))
