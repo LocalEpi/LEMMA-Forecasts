@@ -3,11 +3,11 @@ library(ParallelLogger)
 
 source('Code/GetCountyData.R')
 
-exclude.set <- c("San Francisco") #SF is run separately
+exclude.set <- c("San Francisco", "Glenn", "Mariposa") #SF is run separately
 county.dt <- GetCountyData(exclude.set)
 saveRDS(county.dt, "Inputs/CountyData.rds")
 
-quick.test <- T
+quick.test <- F
 if (quick.test) {
   cat("\n\n++++++++++++++++++  quick.test = T +++++++++++++++++ \n\n")
   county.set <- "Mariposa" #c("Glenn")
