@@ -433,3 +433,57 @@ Chain 4: Iteration: 750 / 1000 [ 75%]  (Sampling)
 Chain 4: Iteration: 760 / 1000 [ 76%]  (Sampling)
 Chain 4: Iteration: 770 / 1000 [ 77%]  (Sampling)
 Chain 4: Iteration: 780 / 1000 [ 78%]  (Sampling)
+Chain 4: Iteration: 790 / 1000 [ 79%]  (Sampling)
+Chain 4: Iteration: 800 / 1000 [ 80%]  (Sampling)
+Chain 4: Iteration: 810 / 1000 [ 81%]  (Sampling)
+Chain 4: Iteration: 820 / 1000 [ 82%]  (Sampling)
+Chain 4: Iteration: 830 / 1000 [ 83%]  (Sampling)
+Chain 4: Iteration: 840 / 1000 [ 84%]  (Sampling)
+Chain 4: Iteration: 850 / 1000 [ 85%]  (Sampling)
+Chain 4: Iteration: 860 / 1000 [ 86%]  (Sampling)
+Chain 4: Iteration: 870 / 1000 [ 87%]  (Sampling)
+Chain 4: Iteration: 880 / 1000 [ 88%]  (Sampling)
+Chain 4: Iteration: 890 / 1000 [ 89%]  (Sampling)
+Chain 4: Iteration: 900 / 1000 [ 90%]  (Sampling)
+Chain 4: Iteration: 910 / 1000 [ 91%]  (Sampling)
+Chain 4: Iteration: 920 / 1000 [ 92%]  (Sampling)
+Chain 4: Iteration: 930 / 1000 [ 93%]  (Sampling)
+Chain 4: Iteration: 940 / 1000 [ 94%]  (Sampling)
+Chain 4: Iteration: 950 / 1000 [ 95%]  (Sampling)
+Chain 4: Iteration: 960 / 1000 [ 96%]  (Sampling)
+Chain 4: Iteration: 970 / 1000 [ 97%]  (Sampling)
+Chain 4: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 4: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 4: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 4: 
+Chain 4:  Elapsed Time: 4327.26 seconds (Warm-up)
+Chain 4:                1424.37 seconds (Sampling)
+Chain 4:                5751.63 seconds (Total)
+Chain 4: 
+     user    system   elapsed 
+16386.134     1.539  5779.447 
+Projecting
+   user  system elapsed 
+271.866   1.542 273.451 
+
+Excel output:  Forecasts/Tuolumne.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.49 0.55 0.66 0.76 0.86 0.94 0.98 
+
+PDF output:  Forecasts/Tuolumne.pdf 
+   user  system elapsed 
+274.430   3.020 277.507 
+
+Excel output:  Scenarios/Tuolumne_scenario_actToday.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.49 0.55 0.66 0.76 0.86 0.94 0.98 
+
+PDF output:  Scenarios/Tuolumne_scenario_actToday.pdf 
+   user  system elapsed 
+239.060   1.976 241.109 
+
+Excel output:  Scenarios/Tuolumne_scenario_actTwoWeeks.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.49 0.55 0.66 0.76 0.86 0.94 0.98 
+
+PDF output:  Scenarios/Tuolumne_scenario_actTwoWeeks.pdf 
