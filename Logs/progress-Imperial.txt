@@ -460,3 +460,30 @@ Chain 2:  Elapsed Time: 12197.3 seconds (Warm-up)
 Chain 2:                15262.2 seconds (Sampling)
 Chain 2:                27459.5 seconds (Total)
 Chain 2: 
+      user     system    elapsed 
+100103.193      2.427  27477.233 
+Projecting
+   user  system elapsed 
+355.054   1.207 356.270 
+
+Excel output:  Forecasts/Imperial.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+1.36 1.39 1.45 1.52 1.60 1.68 1.71 
+
+PDF output:  Forecasts/Imperial.pdf 
+   user  system elapsed 
+354.849   1.999 356.854 
+
+Excel output:  Scenarios/Imperial_scenario_actToday.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+1.36 1.39 1.45 1.52 1.60 1.68 1.71 
+
+PDF output:  Scenarios/Imperial_scenario_actToday.pdf 
+   user  system elapsed 
+352.534   1.423 353.962 
+
+Excel output:  Scenarios/Imperial_scenario_actTwoWeeks.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+1.36 1.39 1.45 1.52 1.60 1.68 1.71 
+
+PDF output:  Scenarios/Imperial_scenario_actTwoWeeks.pdf 
