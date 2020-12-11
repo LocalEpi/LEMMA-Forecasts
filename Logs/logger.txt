@@ -152,3 +152,6 @@
 2020-12-11 03:18:17	[Thread 11]	INFO			county = Mendocino
 2020-12-11 03:18:47	[Thread 21]	INFO			county = San Joaquin
 2020-12-11 03:18:58	[Thread 13]	INFO			county = Santa Cruz
+2020-12-11 03:20:49	[Thread 20]	WARN	rstan	throw_sampler_warnings	There were 14 divergent transitions after warmup. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup to find out why this is a problem and how to eliminate them.
+2020-12-11 03:20:49	[Thread 20]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
+2020-12-11 03:21:03	[Thread 3]	INFO			county = Riverside
