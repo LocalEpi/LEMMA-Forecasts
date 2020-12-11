@@ -444,3 +444,46 @@ Chain 1: Iteration: 860 / 1000 [ 86%]  (Sampling)
 Chain 1: Iteration: 870 / 1000 [ 87%]  (Sampling)
 Chain 1: Iteration: 880 / 1000 [ 88%]  (Sampling)
 Chain 1: Iteration: 890 / 1000 [ 89%]  (Sampling)
+Chain 1: Iteration: 900 / 1000 [ 90%]  (Sampling)
+Chain 1: Iteration: 910 / 1000 [ 91%]  (Sampling)
+Chain 1: Iteration: 920 / 1000 [ 92%]  (Sampling)
+Chain 1: Iteration: 930 / 1000 [ 93%]  (Sampling)
+Chain 1: Iteration: 940 / 1000 [ 94%]  (Sampling)
+Chain 1: Iteration: 950 / 1000 [ 95%]  (Sampling)
+Chain 1: Iteration: 960 / 1000 [ 96%]  (Sampling)
+Chain 1: Iteration: 970 / 1000 [ 97%]  (Sampling)
+Chain 1: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 1: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 1: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 1: 
+Chain 1:  Elapsed Time: 8502.8 seconds (Warm-up)
+Chain 1:                7619.48 seconds (Sampling)
+Chain 1:                16122.3 seconds (Total)
+Chain 1: 
+     user    system   elapsed 
+56006.756     2.516 16166.019 
+Projecting
+   user  system elapsed 
+466.930   2.386 469.337 
+
+Excel output:  Forecasts/Ventura.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+1.20 1.26 1.36 1.47 1.58 1.69 1.77 
+
+PDF output:  Forecasts/Ventura.pdf 
+   user  system elapsed 
+475.269   3.868 479.158 
+
+Excel output:  Scenarios/Ventura_scenario_actToday.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+1.20 1.26 1.36 1.47 1.58 1.69 1.77 
+
+PDF output:  Scenarios/Ventura_scenario_actToday.pdf 
+   user  system elapsed 
+414.753   2.223 416.994 
+
+Excel output:  Scenarios/Ventura_scenario_actTwoWeeks.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+1.20 1.26 1.36 1.47 1.58 1.69 1.77 
+
+PDF output:  Scenarios/Ventura_scenario_actTwoWeeks.pdf 
