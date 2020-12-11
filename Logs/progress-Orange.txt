@@ -433,3 +433,41 @@ Chain 4: Iteration: 950 / 1000 [ 95%]  (Sampling)
 Chain 3: Iteration: 930 / 1000 [ 93%]  (Sampling)
 Chain 2: Iteration: 990 / 1000 [ 99%]  (Sampling)
 Chain 4: Iteration: 960 / 1000 [ 96%]  (Sampling)
+Chain 3: Iteration: 940 / 1000 [ 94%]  (Sampling)
+Chain 2: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 4: Iteration: 970 / 1000 [ 97%]  (Sampling)
+Chain 2: 
+Chain 2:  Elapsed Time: 5379.46 seconds (Warm-up)
+Chain 2:                5153.3 seconds (Sampling)
+Chain 2:                10532.8 seconds (Total)
+Chain 2: 
+Chain 3: Iteration: 950 / 1000 [ 95%]  (Sampling)
+Chain 4: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 3: Iteration: 960 / 1000 [ 96%]  (Sampling)
+Chain 4: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 3: Iteration: 970 / 1000 [ 97%]  (Sampling)
+Chain 4: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 4: 
+Chain 4:  Elapsed Time: 6589.08 seconds (Warm-up)
+Chain 4:                4160.1 seconds (Sampling)
+Chain 4:                10749.2 seconds (Total)
+Chain 4: 
+Chain 3: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 3: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 3: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 3: 
+Chain 3:  Elapsed Time: 5881.96 seconds (Warm-up)
+Chain 3:                5044.86 seconds (Sampling)
+Chain 3:                10926.8 seconds (Total)
+Chain 3: 
+     user    system   elapsed 
+41630.496   140.478 10947.171 
+Projecting
+   user  system elapsed 
+367.778   1.787 369.569 
+
+Excel output:  Forecasts/Orange.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+1.33 1.38 1.46 1.56 1.66 1.76 1.82 
+
+PDF output:  Forecasts/Orange.pdf 

@@ -454,3 +454,28 @@ Chain 4: Iteration: 960 / 1000 [ 96%]  (Sampling)
 Chain 4: Iteration: 970 / 1000 [ 97%]  (Sampling)
 Chain 4: Iteration: 980 / 1000 [ 98%]  (Sampling)
 Chain 4: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 4: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 4: 
+Chain 4:  Elapsed Time: 8873.39 seconds (Warm-up)
+Chain 4:                12693.3 seconds (Sampling)
+Chain 4:                21566.7 seconds (Total)
+Chain 4: 
+     user    system   elapsed 
+77933.254   245.971 21599.906 
+Projecting
+   user  system elapsed 
+383.216   2.138 385.362 
+
+Excel output:  Forecasts/Lake.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.77 0.85 0.98 1.10 1.23 1.35 1.43 
+
+PDF output:  Forecasts/Lake.pdf 
+   user  system elapsed 
+356.981   1.986 358.978 
+
+Excel output:  Scenarios/Lake_scenario_actToday.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.77 0.85 0.98 1.10 1.23 1.35 1.43 
+
+PDF output:  Scenarios/Lake_scenario_actToday.pdf 
