@@ -461,3 +461,30 @@ Chain 3:  Elapsed Time: 14.6067 seconds (Warm-up)
 Chain 3:                9.62957 seconds (Sampling)
 Chain 3:                24.2363 seconds (Total)
 Chain 3: 
+   user  system elapsed 
+ 85.791   2.928  30.768 
+Projecting
+   user  system elapsed 
+ 53.200   1.036  54.237 
+
+Excel output:  Forecasts/San Benito.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.88 0.93 1.01 1.10 1.18 1.26 1.32 
+
+PDF output:  Forecasts/San Benito.pdf 
+   user  system elapsed 
+ 52.756   0.576  53.334 
+
+Excel output:  Scenarios/San Benito_scenario_actToday.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.88 0.93 1.01 1.10 1.18 1.26 1.32 
+
+PDF output:  Scenarios/San Benito_scenario_actToday.pdf 
+   user  system elapsed 
+ 50.376   0.516  50.894 
+
+Excel output:  Scenarios/San Benito_scenario_actTwoWeeks.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.88 0.93 1.01 1.10 1.18 1.26 1.32 
+
+PDF output:  Scenarios/San Benito_scenario_actTwoWeeks.pdf 
