@@ -452,3 +452,39 @@ Chain 2: Iteration: 930 / 1000 [ 93%]  (Sampling)
 Chain 2: Iteration: 940 / 1000 [ 94%]  (Sampling)
 Chain 2: Iteration: 950 / 1000 [ 95%]  (Sampling)
 Chain 2: Iteration: 960 / 1000 [ 96%]  (Sampling)
+Chain 2: Iteration: 970 / 1000 [ 97%]  (Sampling)
+Chain 2: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 2: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 2: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 2: 
+Chain 2:  Elapsed Time: 11.0424 seconds (Warm-up)
+Chain 2:                19724.8 seconds (Sampling)
+Chain 2:                19735.8 seconds (Total)
+Chain 2: 
+     user    system   elapsed 
+35259.404     2.591 19761.624 
+Projecting
+   user  system elapsed 
+215.600   1.076 216.689 
+
+Excel output:  Forecasts/Tehama.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.80 0.85 0.92 0.99 1.06 1.12 1.15 
+
+PDF output:  Forecasts/Tehama.pdf 
+   user  system elapsed 
+219.402   1.711 221.122 
+
+Excel output:  Scenarios/Tehama_scenario_actToday.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.80 0.85 0.92 0.99 1.06 1.12 1.15 
+
+PDF output:  Scenarios/Tehama_scenario_actToday.pdf 
+   user  system elapsed 
+240.141   1.631 241.793 
+
+Excel output:  Scenarios/Tehama_scenario_actTwoWeeks.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.80 0.85 0.92 0.99 1.06 1.12 1.15 
+
+PDF output:  Scenarios/Tehama_scenario_actTwoWeeks.pdf 
