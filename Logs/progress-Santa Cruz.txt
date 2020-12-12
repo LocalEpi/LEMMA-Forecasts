@@ -451,3 +451,38 @@ Chain 3: Iteration: 920 / 1000 [ 92%]  (Sampling)
 Chain 3: Iteration: 930 / 1000 [ 93%]  (Sampling)
 Chain 3: Iteration: 940 / 1000 [ 94%]  (Sampling)
 Chain 3: Iteration: 950 / 1000 [ 95%]  (Sampling)
+Chain 3: Iteration: 960 / 1000 [ 96%]  (Sampling)
+Chain 3: Iteration: 970 / 1000 [ 97%]  (Sampling)
+Chain 3: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 3: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 3: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 3: 
+Chain 3:  Elapsed Time: 4579.81 seconds (Warm-up)
+Chain 3:                2970.45 seconds (Sampling)
+Chain 3:                7550.26 seconds (Total)
+Chain 3: 
+     user    system   elapsed 
+26591.765    45.345  7569.846 
+Projecting
+   user  system elapsed 
+349.684   1.451 351.147 
+
+Excel output:  Forecasts/Santa Cruz.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.91 0.98 1.09 1.19 1.31 1.42 1.48 
+
+PDF output:  Forecasts/Santa Cruz.pdf 
+   user  system elapsed 
+351.696   1.555 353.261 
+
+Excel output:  Scenarios/Santa Cruz_scenario_actToday.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.91 0.98 1.09 1.19 1.31 1.42 1.48 
+
+PDF output:  Scenarios/Santa Cruz_scenario_actToday.pdf 
+   user  system elapsed 
+351.058   1.571 352.636 
+
+Excel output:  Scenarios/Santa Cruz_scenario_actTwoWeeks.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.91 0.98 1.09 1.19 1.31 1.42 1.48 

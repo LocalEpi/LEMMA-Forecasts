@@ -439,3 +439,44 @@ Chain 3: Iteration: 890 / 1000 [ 89%]  (Sampling)
 Chain 4: Iteration: 970 / 1000 [ 97%]  (Sampling)
 Chain 3: Iteration: 900 / 1000 [ 90%]  (Sampling)
 Chain 4: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 3: Iteration: 910 / 1000 [ 91%]  (Sampling)
+Chain 4: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 3: Iteration: 920 / 1000 [ 92%]  (Sampling)
+Chain 4: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 4: 
+Chain 4:  Elapsed Time: 3945.5 seconds (Warm-up)
+Chain 4:                3314.69 seconds (Sampling)
+Chain 4:                7260.2 seconds (Total)
+Chain 4: 
+Chain 3: Iteration: 930 / 1000 [ 93%]  (Sampling)
+Chain 3: Iteration: 940 / 1000 [ 94%]  (Sampling)
+Chain 3: Iteration: 950 / 1000 [ 95%]  (Sampling)
+Chain 3: Iteration: 960 / 1000 [ 96%]  (Sampling)
+Chain 3: Iteration: 970 / 1000 [ 97%]  (Sampling)
+Chain 3: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 3: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 3: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 3: 
+Chain 3:  Elapsed Time: 4389.72 seconds (Warm-up)
+Chain 3:                3302.53 seconds (Sampling)
+Chain 3:                7692.26 seconds (Total)
+Chain 3: 
+     user    system   elapsed 
+28167.270    77.857  7711.928 
+Projecting
+   user  system elapsed 
+347.342   1.415 348.764 
+
+Excel output:  Forecasts/Napa.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.99 1.06 1.18 1.30 1.44 1.57 1.65 
+
+PDF output:  Forecasts/Napa.pdf 
+   user  system elapsed 
+350.630   1.719 352.357 
+
+Excel output:  Scenarios/Napa_scenario_actToday.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.99 1.06 1.18 1.30 1.44 1.57 1.65 
+
+PDF output:  Scenarios/Napa_scenario_actToday.pdf 
