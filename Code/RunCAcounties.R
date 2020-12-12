@@ -74,6 +74,7 @@ RunOneCounty <- function(county1) {
     sink.file <- paste0("Logs/progress-", county1, ".txt")
     sink(sink.file)
     cat("county = ", county1, "\n")
+    cat("start time = ", as.character(Sys.time()), "\n")
 
     input.file <- "Inputs/CAcounties.xlsx"
     sheets <- LEMMA:::ReadInputs(input.file)
