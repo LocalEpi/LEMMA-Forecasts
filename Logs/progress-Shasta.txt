@@ -461,3 +461,14 @@ Chain 3:  Elapsed Time: 18957.8 seconds (Warm-up)
 Chain 3:                8044.65 seconds (Sampling)
 Chain 3:                27002.4 seconds (Total)
 Chain 3: 
+     user    system   elapsed 
+84466.940     3.324 27036.981 
+Projecting
+   user  system elapsed 
+444.684   1.747 446.443 
+
+Excel output:  Forecasts/Shasta.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.68 0.74 0.82 0.90 0.98 1.04 1.07 
+
+PDF output:  Forecasts/Shasta.pdf 
