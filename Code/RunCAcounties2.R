@@ -114,6 +114,7 @@ RunOneCounty <- function(county1) {
     mean.ini <- 1e-5 * county.pop1
     inputs$internal.args$lambda_ini_exposed <- 1 / mean.ini
 
+    inputs$interventions <- inputs$interventions[(mu_t_inter %in% sheets$Interventions$mu_t_inter) | (mu_t_inter > max(sheets$Interventions$mu_t_inter))]
     cred.int <- LEMMA:::CredibilityInterval(inputs)
 
 
