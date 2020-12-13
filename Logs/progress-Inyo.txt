@@ -464,3 +464,27 @@ Chain 4:
      user    system   elapsed 
 15803.000    64.863  5503.707 
 Projecting
+   user  system elapsed 
+193.309   1.048 194.360 
+
+Excel output:  Forecasts/Inyo.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+1.67 1.75 1.89 2.07 2.27 2.48 2.58 
+
+PDF output:  Forecasts/Inyo.pdf 
+   user  system elapsed 
+191.892   0.763 192.661 
+
+Excel output:  Scenarios/Inyo_scenario_actToday.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+1.67 1.75 1.89 2.07 2.27 2.48 2.58 
+
+PDF output:  Scenarios/Inyo_scenario_actToday.pdf 
+   user  system elapsed 
+191.606   1.028 192.639 
+
+Excel output:  Scenarios/Inyo_scenario_actTwoWeeks.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+1.67 1.75 1.89 2.07 2.27 2.48 2.58 
+
+PDF output:  Scenarios/Inyo_scenario_actTwoWeeks.pdf 
