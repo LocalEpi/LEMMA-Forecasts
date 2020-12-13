@@ -3,7 +3,7 @@ library(ParallelLogger)
 
 source('Code/GetCountyData.R')
 
-exclude.set <- c("San Francisco", "Glenn", "Mariposa") #SF is run separately
+exclude.set <- c("San Francisco", "Glenn", "Mariposa", "Del Norte") #SF is run separately
 county.dt <- GetCountyData(exclude.set)
 saveRDS(county.dt, "Inputs/CountyData.rds")
 
@@ -49,7 +49,7 @@ RunOneCounty <- function(county1) {
     restart.set <- c("Tehama", "Mono", "Yolo", "Yuba", "Mendocino", "Nevada", "El Dorado",
                      "Tuolumne", "Amador", "Inyo", "Calaveras",
                      "Madera", "Humboldt", "Siskiyou", "Butte", "San Benito",
-                     "Merced", "Colusa", "Glenn") #infections went to near zero - restart sim
+                     "Merced", "Colusa", "Glenn", "Del Norte") #infections went to near zero - restart sim
     if (county1 %in% restart.set) {
       if (county1 == "San Benito") {
         restart.date <- as.Date("2020/11/03")
@@ -66,6 +66,8 @@ RunOneCounty <- function(county1) {
       } else if (county1 == "Colusa") {
         restart.date <- as.Date("2020/11/9")
       } else if (county1 == "Glenn") {
+        restart.date <- as.Date("2020/12/4")
+      } else if (county1 == "Del Norte") {
         restart.date <- as.Date("2020/12/4")
       } else {
         restart.date <- as.Date("2020/6/1")
