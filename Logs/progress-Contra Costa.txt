@@ -453,3 +453,38 @@ Chain 2:                21226.1 seconds (Total)
 Chain 2: 
 Chain 4: Iteration: 960 / 1000 [ 96%]  (Sampling)
 Chain 4: Iteration: 970 / 1000 [ 97%]  (Sampling)
+Chain 4: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 4: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 4: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 4: 
+Chain 4:  Elapsed Time: 10508 seconds (Warm-up)
+Chain 4:                11598.5 seconds (Sampling)
+Chain 4:                22106.5 seconds (Total)
+Chain 4: 
+     user    system   elapsed 
+80736.440    23.099 22145.433 
+Projecting
+   user  system elapsed 
+441.976   1.851 443.846 
+
+Excel output:  Forecasts/Contra Costa.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+1.12 1.17 1.26 1.36 1.46 1.57 1.63 
+
+PDF output:  Forecasts/Contra Costa.pdf 
+   user  system elapsed 
+458.348   3.696 462.062 
+
+Excel output:  Scenarios/Contra Costa_scenario_actToday.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+1.12 1.17 1.26 1.36 1.46 1.57 1.63 
+
+PDF output:  Scenarios/Contra Costa_scenario_actToday.pdf 
+   user  system elapsed 
+429.520   2.751 432.288 
+
+Excel output:  Scenarios/Contra Costa_scenario_actTwoWeeks.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+1.12 1.17 1.26 1.36 1.46 1.57 1.63 
+
+PDF output:  Scenarios/Contra Costa_scenario_actTwoWeeks.pdf 
