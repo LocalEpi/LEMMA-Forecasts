@@ -647,3 +647,36 @@ Chain 2:                20072.7 seconds (Total)
 Chain 2: 
 Chain 3: Iteration: 1400 / 1500 [ 93%]  (Sampling)
 Chain 3: Iteration: 1410 / 1500 [ 94%]  (Sampling)
+Chain 3: Iteration: 1420 / 1500 [ 94%]  (Sampling)
+Chain 3: Iteration: 1430 / 1500 [ 95%]  (Sampling)
+Chain 3: Iteration: 1440 / 1500 [ 96%]  (Sampling)
+Chain 3: Iteration: 1450 / 1500 [ 96%]  (Sampling)
+Chain 3: Iteration: 1460 / 1500 [ 97%]  (Sampling)
+Chain 3: Iteration: 1470 / 1500 [ 98%]  (Sampling)
+Chain 3: Iteration: 1480 / 1500 [ 98%]  (Sampling)
+Chain 3: Iteration: 1490 / 1500 [ 99%]  (Sampling)
+Chain 3: Iteration: 1500 / 1500 [100%]  (Sampling)
+Chain 3: 
+Chain 3:  Elapsed Time: 10929.1 seconds (Warm-up)
+Chain 3:                10514.8 seconds (Sampling)
+Chain 3:                21443.9 seconds (Total)
+Chain 3: 
+    user   system  elapsed 
+78337.01    18.66 21491.37 
+Projecting
+   user  system elapsed 
+670.977   3.382 674.381 
+
+Excel output:  Forecasts/San Mateo.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+1.20 1.27 1.37 1.49 1.61 1.73 1.80 
+
+PDF output:  Forecasts/San Mateo.pdf 
+   user  system elapsed 
+617.506   5.282 622.797 
+
+Excel output:  Scenarios/San Mateo_scenario_actToday.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+1.20 1.27 1.37 1.49 1.61 1.73 1.80 
+
+PDF output:  Scenarios/San Mateo_scenario_actToday.pdf 
