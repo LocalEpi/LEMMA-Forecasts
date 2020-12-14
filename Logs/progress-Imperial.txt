@@ -461,3 +461,14 @@ Chain 3:  Elapsed Time: 15795.6 seconds (Warm-up)
 Chain 3:                10162.9 seconds (Sampling)
 Chain 3:                25958.6 seconds (Total)
 Chain 3: 
+     user    system   elapsed 
+98867.588     3.296 25991.613 
+Projecting
+   user  system elapsed 
+392.631   1.286 393.926 
+
+Excel output:  Forecasts/Imperial.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+1.26 1.29 1.34 1.40 1.46 1.53 1.56 
+
+PDF output:  Forecasts/Imperial.pdf 
