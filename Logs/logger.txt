@@ -176,3 +176,8 @@
 2020-12-14 06:01:25	[Thread 4]	INFO			county = Santa Barbara
 2020-12-14 06:03:15	[Thread 18]	INFO			county = San Luis Obispo
 2020-12-14 06:04:18	[Thread 10]	INFO			county = Yolo
+2020-12-14 08:12:07	[Thread 2]	WARN	rstan	throw_sampler_warnings	There were 499 transitions after warmup that exceeded the maximum treedepth. Increase max_treedepth above 15. See http://mc-stan.org/misc/warnings.html#maximum-treedepth-exceeded
+2020-12-14 08:12:07	[Thread 2]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
+2020-12-14 08:12:16	[Thread 2]	WARN	rstan	throw_sampler_warnings	Bulk Effective Samples Size (ESS) is too low, indicating posterior means and medians may be unreliable. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#bulk-ess
+2020-12-14 08:12:22	[Thread 2]	WARN	rstan	throw_sampler_warnings	Tail Effective Samples Size (ESS) is too low, indicating posterior variances and tail quantiles may be unreliable. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#tail-ess
+2020-12-14 08:29:17	[Thread 2]	INFO			county = Los Angeles
