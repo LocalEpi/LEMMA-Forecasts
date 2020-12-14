@@ -30,11 +30,13 @@ if (quick.test) {
 
   setorder(dt.max, last.rt, -run.time)
   print(dt.max)
-  # dt.max <- dt.max[last.rt <= as.Date("2020/12/11")]; print(dt.max) #temp
   sink("Logs/CountySet.txt")
   print(dt.max)
   sink()
   county.set <- dt.max[, county]
+
+  county.set <- county.set[seq(length(county.set), 1, length.out = 12)]  #temp!
+
 }
 print(county.set)
 cat("Data through", as.character(county.dt[, max(date)]), "\n")
@@ -76,7 +78,7 @@ RunOneCounty <- function(county1) {
     cat("county = ", county1, "\n")
     cat("start time = ", as.character(Sys.time()), "\n")
 
-    input.file <- "Inputs/CAcounties2.xlsx"
+    input.file <- "Inputs/CAcounties3.xlsx"
     sheets <- LEMMA:::ReadInputs(input.file)
     sheets$`Model Inputs`[internal.name == "total.population", value := county.pop1]
 
@@ -95,6 +97,11 @@ RunOneCounty <- function(county1) {
       sheets$Internal[internal.name == "simulation.start.date", value := restart.date - 10]
     }
 
+    county.dt1[date < as.Date("2020/8/1"), icu.conf := NA_integer_]
+    county.dt1[date < as.Date("2020/8/1"), icu.pui := NA_integer_]
+    county.dt1[date < as.Date("2020/8/1"), deaths.conf := NA_integer_]
+    county.dt1[date < as.Date("2020/8/1"), deaths.pui := NA_integer_]
+
     sheets$Data <- county.dt1
     inputs <- LEMMA:::ProcessSheets(sheets, input.file)
 
@@ -104,11 +111,6 @@ RunOneCounty <- function(county1) {
       inputs$model.inputs$start.display.date <- restart.date
       inputs$internal.args$initial.deaths <- initial.deaths
     }
-
-    county.dt1[date < as.Date("2020/8/1"), icu.conf := NA_integer_]
-    county.dt1[date < as.Date("2020/8/1"), icu.pui := NA_integer_]
-    county.dt1[date < as.Date("2020/8/1"), deaths.conf := NA_integer_]
-    county.dt1[date < as.Date("2020/8/1"), deaths.pui := NA_integer_]
 
     inputs$internal.args$output.filestr <- paste0("Forecasts/", county1)
     mean.ini <- 1e-5 * county.pop1
@@ -121,15 +123,15 @@ RunOneCounty <- function(county1) {
     max.date <- max(cred.int$inputs$obs.data$date)
     outfile <- paste0("Scenarios/", county1)
 
-    ProjScen <- function(int.list) {
-      int.date <- int.list$date
-      int.str <- int.list$str
-      intervention <- data.frame(mu_t_inter = int.date, sigma_t_inter = 0.0001, mu_beta_inter = 0.5, sigma_beta_inter = 0.0001, mu_len_inter = 7, sigma_len_inter = 2)
-      subtitl <- paste("Scenario: Reduce Re by 50% starting", as.character(as.Date(int.date), format = "%b%e"))
-      lapply(LEMMA:::ProjectScenario(cred.int, new.int=intervention, paste0("Scenarios/", county1, "_scenario_", int.str))$gplot$long.term, function (z) z + ggplot2::labs(subtitle = subtitl))
-    }
-
-    scen.plots <- lapply(list(list(date = max.date + 3, str = "actToday"), list(date = max.date + 17, str = "actTwoWeeks")), ProjScen)
+    # ProjScen <- function(int.list) {
+    #   int.date <- int.list$date
+    #   int.str <- int.list$str
+    #   intervention <- data.frame(mu_t_inter = int.date, sigma_t_inter = 0.0001, mu_beta_inter = 0.5, sigma_beta_inter = 0.0001, mu_len_inter = 7, sigma_len_inter = 2)
+    #   subtitl <- paste("Scenario: Reduce Re by 50% starting", as.character(as.Date(int.date), format = "%b%e"))
+    #   lapply(LEMMA:::ProjectScenario(cred.int, new.int=intervention, paste0("Scenarios/", county1, "_scenario_", int.str))$gplot$long.term, function (z) z + ggplot2::labs(subtitle = subtitl))
+    # }
+    #
+    # scen.plots <- lapply(list(list(date = max.date + 3, str = "actToday"), list(date = max.date + 17, str = "actTwoWeeks")), ProjScen)
 
     sink()
     ParallelLogger::logInfo("county = ", county1)
@@ -169,7 +171,7 @@ names(county.results) <- county.set
 cat("Data through", as.character(county.dt[, max(date)]), "\n")
 unregisterLogger(1)
 
-dt <- fread("Logs/logger.txt")
+dt <- fread(logfile)
 setnames(dt, c("time", "threadLabel", "level", "packageName", "functionName", "message"))
 setkey(dt, threadLabel, time)
 
