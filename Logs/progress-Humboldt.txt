@@ -461,3 +461,14 @@ Chain 4:  Elapsed Time: 761.357 seconds (Warm-up)
 Chain 4:                775.109 seconds (Sampling)
 Chain 4:                1536.47 seconds (Total)
 Chain 4: 
+    user   system  elapsed 
+5402.671   24.299 1565.416 
+Projecting
+   user  system elapsed 
+235.556   1.843 237.404 
+
+Excel output:  Forecasts/Humboldt.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.78 0.86 1.00 1.14 1.29 1.42 1.52 
+
+PDF output:  Forecasts/Humboldt.pdf 
