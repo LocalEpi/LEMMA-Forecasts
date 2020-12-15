@@ -448,3 +448,43 @@ Chain 2:                6713.76 seconds (Total)
 Chain 2: 
 Chain 3: Iteration: 910 / 1000 [ 91%]  (Sampling)
 Chain 3: Iteration: 920 / 1000 [ 92%]  (Sampling)
+Chain 3: Iteration: 930 / 1000 [ 93%]  (Sampling)
+Chain 3: Iteration: 940 / 1000 [ 94%]  (Sampling)
+Chain 3: Iteration: 950 / 1000 [ 95%]  (Sampling)
+Chain 3: Iteration: 960 / 1000 [ 96%]  (Sampling)
+Chain 3: Iteration: 970 / 1000 [ 97%]  (Sampling)
+Chain 3: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 3: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 3: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 3: 
+Chain 3:  Elapsed Time: 9.757 seconds (Warm-up)
+Chain 3:                8878.34 seconds (Sampling)
+Chain 3:                8888.09 seconds (Total)
+Chain 3: 
+     user    system   elapsed 
+21722.216    51.303  8906.374 
+Projecting
+   user  system elapsed 
+184.432   0.879 185.315 
+
+Excel output:  Forecasts/Yuba.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+1.06 1.10 1.15 1.22 1.30 1.66 1.69 
+
+PDF output:  Forecasts/Yuba.pdf 
+   user  system elapsed 
+175.161   0.803 175.968 
+
+Excel output:  Scenarios/Yuba_scenario_actToday.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+1.06 1.10 1.15 1.22 1.30 1.66 1.69 
+
+PDF output:  Scenarios/Yuba_scenario_actToday.pdf 
+   user  system elapsed 
+183.665   0.863 184.531 
+
+Excel output:  Scenarios/Yuba_scenario_actTwoWeeks.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+1.06 1.10 1.15 1.22 1.30 1.66 1.69 
+
+PDF output:  Scenarios/Yuba_scenario_actTwoWeeks.pdf 
