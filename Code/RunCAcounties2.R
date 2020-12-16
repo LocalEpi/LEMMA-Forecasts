@@ -134,9 +134,9 @@ RunOneCounty <- function(county1) {
     ParallelLogger::logInfo("county = ", county1)
 
     commit.name <- paste0('"', county1, " data through ", as.character(max.date), '"')
-    # system2("git", args = c('commit', '-a', '-m', commit.name))
-    # system2("git", args = "pull")
-    # system2("git", args = "push")
+    system2("git", args = c('commit', '-a', '-m', commit.name))
+    system2("git", args = "pull")
+    system2("git", args = "push")
   })
 
   if (inherits(try.result, "try-error")) {
