@@ -3,7 +3,7 @@ library(ParallelLogger)
 
 source('Code/GetCountyData.R')
 
-exclude.set <- c("San Francisco", "Glenn", "Mariposa", "Del Norte") #SF is run separately
+exclude.set <- c("San Francisco", "Glenn", "Mariposa", "Del Norte", "Plumas") #SF is run separately
 county.dt <- GetCountyData(exclude.set)
 saveRDS(county.dt, "Inputs/CountyData.rds")
 

@@ -82,6 +82,13 @@ GetCountyData <- function(exclude.set) {
   county.dt[county == 'Yolo' & date == '2020-11-23', deaths.conf := NA_real_]
   county.dt[county == 'Inyo' & date == '2020-09-04', deaths.conf := NA_real_]
   county.dt[county == 'San Joaquin' & date == '2020-11-25', deaths.conf := NA_real_]
+  county.dt[county == 'Alameda' & date == '2020-12-07', deaths.conf := NA_real_]
+  county.dt[county == 'Lake' & date == '2020-12-16', deaths.conf := NA_real_]
+  county.dt[county == 'San Joaquin' & date == '2020-12-11', deaths.conf := NA_real_]
+  county.dt[county == 'Santa Barbara' & date == '2020-12-12', deaths.conf := NA_real_]
+  county.dt[county == 'Stanislaus' & date == '2020-12-16', deaths.conf := NA_real_]
+  county.dt[county == 'Yolo' & date == '2020-12-10', deaths.conf := NA_real_]
+  county.dt[county == 'Yuba' & date == '2020-12-09', deaths.conf := NA_real_]
 
   #data errors
   county.dt[county == 'Merced' & date == '2020-08-16', hosp.conf := NA_real_]
