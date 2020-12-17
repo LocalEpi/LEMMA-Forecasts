@@ -464,3 +464,19 @@ Chain 4:
      user    system   elapsed 
 46099.924     2.044 13062.439 
 Projecting
+   user  system elapsed 
+343.266   0.824 344.097 
+
+Excel output:  Forecasts/Kings.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.95 0.99 1.05 1.12 1.19 1.24 1.28 
+
+PDF output:  Forecasts/Kings.pdf 
+   user  system elapsed 
+423.706   2.736 426.465 
+
+Excel output:  Scenarios/Kings_scenario_actToday.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.95 0.99 1.05 1.12 1.19 1.24 1.28 
+
+PDF output:  Scenarios/Kings_scenario_actToday.pdf 
