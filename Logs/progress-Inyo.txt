@@ -461,3 +461,30 @@ Chain 2:  Elapsed Time: 1948.74 seconds (Warm-up)
 Chain 2:                2179.79 seconds (Sampling)
 Chain 2:                4128.53 seconds (Total)
 Chain 2: 
+     user    system   elapsed 
+15353.582     1.785  4159.509 
+Projecting
+   user  system elapsed 
+284.831   1.649 286.505 
+
+Excel output:  Forecasts/Inyo.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+1.54 1.65 1.78 1.96 2.14 2.32 2.41 
+
+PDF output:  Forecasts/Inyo.pdf 
+   user  system elapsed 
+282.556   3.245 285.844 
+
+Excel output:  Scenarios/Inyo_scenario_actToday.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+1.54 1.65 1.78 1.96 2.14 2.32 2.41 
+
+PDF output:  Scenarios/Inyo_scenario_actToday.pdf 
+   user  system elapsed 
+285.146   2.630 287.959 
+
+Excel output:  Scenarios/Inyo_scenario_actTwoWeeks.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+1.54 1.65 1.78 1.96 2.14 2.32 2.41 
+
+PDF output:  Scenarios/Inyo_scenario_actTwoWeeks.pdf 
