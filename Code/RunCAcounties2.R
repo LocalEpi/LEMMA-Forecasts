@@ -3,7 +3,8 @@ library(ParallelLogger)
 
 source('Code/GetCountyData.R')
 
-exclude.set <- c("San Francisco", "Glenn", "Mariposa", "Del Norte", "Plumas") #SF is run separately
+exclude.set <- c("San Francisco") #SF is run separately
+
 county.dt <- GetCountyData(exclude.set)
 saveRDS(county.dt, "Inputs/CountyData.rds")
 
@@ -34,6 +35,13 @@ if (quick.test) {
   print(dt.max)
   sink()
   county.set <- dt.max[, county]
+  
+  insuff.data <- c("Glenn", "Mariposa", "Del Norte", "Plumas")
+  for (i in insuff.data) {
+    cat("Excluding", i, "need more data\n")
+    print(tail(county.dt[county == i]), 30)
+  }
+  county.set <- setdiff(county.set, insuff.data)
 }
 print(county.set)
 cat("Data through", as.character(county.dt[, max(date)]), "\n")
