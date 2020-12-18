@@ -41,10 +41,10 @@ if (quick.test) {
   county.set <- dt.max[, county]
   county.set <- c("Colusa", setdiff(county.set, "Colusa")) #run Colusa first as a test (it's fast)
 
-  insuff.data <- c("Glenn", "Mariposa", "Del Norte", "Plumas")
+  insuff.data <- c("Glenn", "Mariposa", "Del Norte")
   for (i in insuff.data) {
     cat("Excluding", i, "need more data\n")
-    print(tail(county.dt[county == i]), 30)
+    print(tail(county.dt[county == i], 10))
   }
   county.set <- setdiff(county.set, insuff.data)
 }
@@ -61,7 +61,7 @@ RunOneCounty <- function(county1, git.pw, quick.test) {
     restart.set <- c("Tehama", "Mono", "Yolo", "Yuba", "Mendocino", "Nevada", "El Dorado",
                      "Tuolumne", "Amador", "Inyo", "Calaveras",
                      "Madera", "Humboldt", "Siskiyou", "Butte", "San Benito",
-                     "Merced", "Colusa", "Glenn", "Mono") #infections went to near zero - restart sim
+                     "Merced", "Colusa", "Glenn", "Mono", "Plumas") #infections went to near zero - restart sim
     if (county1 %in% restart.set) {
       if (county1 == "San Benito") {
         restart.date <- as.Date("2020/11/03")
@@ -83,6 +83,8 @@ RunOneCounty <- function(county1, git.pw, quick.test) {
         restart.date <- as.Date("2020/7/15")
       } else if (county1 == "Mono") {
         restart.date <- as.Date("2020/12/9")
+      } else if (county1 == "Plumas") {
+        restart.date <- as.Date("2020/12/8")
       } else {
         restart.date <- as.Date("2020/6/1")
       }
