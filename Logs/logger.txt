@@ -95,3 +95,12 @@
 2020-12-18 05:03:40	[Thread 1]	WARN	rstan	throw_sampler_warnings	Bulk Effective Samples Size (ESS) is too low, indicating posterior means and medians may be unreliable. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#bulk-ess
 2020-12-18 05:03:45	[Thread 1]	WARN	rstan	throw_sampler_warnings	Tail Effective Samples Size (ESS) is too low, indicating posterior variances and tail quantiles may be unreliable. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#tail-ess
 2020-12-18 05:05:41	[Thread 5]	INFO			county = San Luis Obispo
+2020-12-18 05:05:50	[Thread 5]	FATAL			Error in unserialize(node$con) : error reading from connection Calls: local ... doTryCatch -> recvData -> recvData.SOCKnode -> unserialize 
+2020-12-18 05:05:50	[Thread 5]	TRACE			Thread 5 terminated
+2020-12-18 05:05:50	[Thread 4]	FATAL			Error in unserialize(node$con) : error reading from connection Calls: local ... doTryCatch -> recvData -> recvData.SOCKnode -> unserialize 
+2020-12-18 05:05:50	[Thread 4]	TRACE			Thread 4 terminated
+2020-12-18 05:05:50	[Thread 3]	FATAL			Error in unserialize(node$con) : error reading from connection Calls: local ... doTryCatch -> recvData -> recvData.SOCKnode -> unserialize 
+2020-12-18 05:05:50	[Thread 3]	TRACE			Thread 3 terminated
+2020-12-18 05:05:50	[Thread 2]	FATAL			Error in unserialize(node$con) : error reading from connection Calls: local ... doTryCatch -> recvData -> recvData.SOCKnode -> unserialize 
+2020-12-18 05:05:50	[Thread 2]	TRACE			Thread 2 terminated
+2020-12-18 05:09:42	[Thread 1]	INFO			county = Santa Clara
