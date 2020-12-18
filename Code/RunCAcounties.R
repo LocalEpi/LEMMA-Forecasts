@@ -98,9 +98,9 @@ RunOneCounty <- function(county1, git.pw, quick.test) {
     sheets <- LEMMA:::ReadInputs(input.file)
     sheets$`Model Inputs`[internal.name == "total.population", value := county.pop1]
 
-    if (county1 == "Santa Clara") {
-      county.dt1 <- readRDS("Inputs/scc.RDS")
-    }
+    # if (county1 == "Santa Clara") {
+    #   county.dt1 <- readRDS("Inputs/scc.RDS")
+    # }
 
     county.dt1[, deaths.pui := NA_integer_]
     county.dt1[, cum.admits.conf := NA_integer_]
