@@ -1,46 +1,46 @@
 county =  San Luis Obispo 
-start time =  2020-12-18 19:45:35 
+start time =  2020-12-18 19:59:12 
 Fitting to observed data
 
-SAMPLING FOR MODEL 'LEMMA' NOW (CHAIN 1).
+SAMPLING FOR MODEL 'LEMMA' NOW (CHAIN 4).
 
 SAMPLING FOR MODEL 'LEMMA' NOW (CHAIN 2).
 
-SAMPLING FOR MODEL 'LEMMA' NOW (CHAIN 3).
+SAMPLING FOR MODEL 'LEMMA' NOW (CHAIN 1).
 
-SAMPLING FOR MODEL 'LEMMA' NOW (CHAIN 4).
-Chain 1: 
-Chain 1: Gradient evaluation took 0.004549 seconds
-Chain 1: 1000 transitions using 10 leapfrog steps per transition would take 45.49 seconds.
-Chain 1: Adjust your expectations accordingly!
-Chain 1: 
-Chain 1: 
-Chain 2: 
-Chain 2: Gradient evaluation took 0.004459 seconds
-Chain 2: 1000 transitions using 10 leapfrog steps per transition would take 44.59 seconds.
-Chain 2: Adjust your expectations accordingly!
-Chain 2: 
-Chain 2: 
-Chain 3: 
-Chain 3: Gradient evaluation took 0.004377 seconds
-Chain 3: 1000 transitions using 10 leapfrog steps per transition would take 43.77 seconds.
-Chain 3: Adjust your expectations accordingly!
-Chain 3: 
-Chain 3: 
+SAMPLING FOR MODEL 'LEMMA' NOW (CHAIN 3).
 Chain 4: 
-Chain 4: Gradient evaluation took 0.004395 seconds
-Chain 4: 1000 transitions using 10 leapfrog steps per transition would take 43.95 seconds.
+Chain 4: Gradient evaluation took 0.003698 seconds
+Chain 4: 1000 transitions using 10 leapfrog steps per transition would take 36.98 seconds.
 Chain 4: Adjust your expectations accordingly!
 Chain 4: 
 Chain 4: 
-Chain 3: Iteration:   1 / 1000 [  0%]  (Warmup)
-Chain 1: Iteration:   1 / 1000 [  0%]  (Warmup)
-Chain 2: Iteration:   1 / 1000 [  0%]  (Warmup)
+Chain 2: 
+Chain 2: Gradient evaluation took 0.003886 seconds
+Chain 2: 1000 transitions using 10 leapfrog steps per transition would take 38.86 seconds.
+Chain 2: Adjust your expectations accordingly!
+Chain 2: 
+Chain 2: 
+Chain 1: 
+Chain 1: Gradient evaluation took 0.003737 seconds
+Chain 1: 1000 transitions using 10 leapfrog steps per transition would take 37.37 seconds.
+Chain 1: Adjust your expectations accordingly!
+Chain 1: 
+Chain 1: 
+Chain 3: 
+Chain 3: Gradient evaluation took 0.003719 seconds
+Chain 3: 1000 transitions using 10 leapfrog steps per transition would take 37.19 seconds.
+Chain 3: Adjust your expectations accordingly!
+Chain 3: 
+Chain 3: 
 Chain 4: Iteration:   1 / 1000 [  0%]  (Warmup)
+Chain 2: Iteration:   1 / 1000 [  0%]  (Warmup)
+Chain 1: Iteration:   1 / 1000 [  0%]  (Warmup)
+Chain 3: Iteration:   1 / 1000 [  0%]  (Warmup)
 Chain 1: Iteration:  10 / 1000 [  1%]  (Warmup)
+Chain 4: Iteration:  10 / 1000 [  1%]  (Warmup)
 Chain 3: Iteration:  10 / 1000 [  1%]  (Warmup)
 Chain 2: Iteration:  10 / 1000 [  1%]  (Warmup)
-Chain 4: Iteration:  10 / 1000 [  1%]  (Warmup)
 Chain 3: Iteration:  20 / 1000 [  2%]  (Warmup)
 Chain 1: Iteration:  20 / 1000 [  2%]  (Warmup)
 Chain 4: Iteration:  20 / 1000 [  2%]  (Warmup)
@@ -60,9 +60,9 @@ Chain 2: Iteration:  60 / 1000 [  6%]  (Warmup)
 Chain 3: Iteration:  70 / 1000 [  7%]  (Warmup)
 Chain 4: Iteration:  60 / 1000 [  6%]  (Warmup)
 Chain 3: Iteration:  80 / 1000 [  8%]  (Warmup)
-Chain 1: Iteration:  40 / 1000 [  4%]  (Warmup)
 Chain 2: Iteration:  70 / 1000 [  7%]  (Warmup)
 Chain 4: Iteration:  70 / 1000 [  7%]  (Warmup)
+Chain 1: Iteration:  40 / 1000 [  4%]  (Warmup)
 Chain 4: Iteration:  80 / 1000 [  8%]  (Warmup)
 Chain 2: Iteration:  80 / 1000 [  8%]  (Warmup)
 Chain 4: Iteration:  90 / 1000 [  9%]  (Warmup)
@@ -77,10 +77,3 @@ Chain 1: Iteration:  60 / 1000 [  6%]  (Warmup)
 Chain 4: Iteration: 130 / 1000 [ 13%]  (Warmup)
 Chain 1: Iteration:  70 / 1000 [  7%]  (Warmup)
 Chain 4: Iteration: 140 / 1000 [ 14%]  (Warmup)
-Chain 2: Iteration: 100 / 1000 [ 10%]  (Warmup)
-Chain 1: Iteration:  80 / 1000 [  8%]  (Warmup)
-Chain 4: Iteration: 150 / 1000 [ 15%]  (Warmup)
-Chain 3: Iteration: 110 / 1000 [ 11%]  (Warmup)
-Chain 1: Iteration:  90 / 1000 [  9%]  (Warmup)
-Chain 2: Iteration: 110 / 1000 [ 11%]  (Warmup)
-Chain 4: Iteration: 160 / 1000 [ 16%]  (Warmup)
