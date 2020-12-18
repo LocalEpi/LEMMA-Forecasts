@@ -1,71 +1,0 @@
-county =  Modoc 
--/                                                                                                                     -/                                                                                                                     -/                                                                                                                     -/                                                                                                                     -/                                                                                                                     -/                                                                                                                     Fitting to observed data
-[[1]]
-Stan model 'LEMMA' does not contain samples.
-
-[[2]]
-Stan model 'LEMMA' does not contain samples.
-
-[[3]]
-Stan model 'LEMMA' does not contain samples.
-
-[[4]]
-Stan model 'LEMMA' does not contain samples.
-
-   user  system elapsed 
-  0.949   0.172   6.710 
-Projecting
-Stan model 'LEMMA' does not contain samples.
-Called from: ExtendSim(list(inputs = inputs, fit.to.data = fit.to.data), new.interventions, 
-    extend.iter = NULL)
-
-
-++++++++++++++++++  quick.test = T +++++++++++++++++ 
-
-     county       date deaths.conf deaths.inc
- 1: Alameda 2020-10-30         463          0
- 2: Alameda 2020-10-31         464          1
- 3: Alameda 2020-11-01         464          0
- 4: Alameda 2020-11-02         464          0
- 5: Alameda 2020-11-03         466          2
- 6: Alameda 2020-11-04         463         -3
- 7: Alameda 2020-11-05         465          2
- 8: Alameda 2020-11-06         471          6
- 9: Alameda 2020-11-07         471          0
-10: Alameda 2020-11-08         475          4
-11: Alameda 2020-11-09         475          0
-county.dt[county == 'Alameda' & date == '2020-11-04', deaths.conf := NA_real_]
-    county       date deaths.conf deaths.inc
-1: Alameda 2020-11-05         465          2
-2: Alameda 2020-11-06         471          6
-3: Alameda 2020-11-07         471          0
-4: Alameda 2020-11-08         475          4
-5: Alameda 2020-11-09         475          0
-6: Alameda 2020-11-10         474         -1
-7: Alameda 2020-11-11         483          9
-8: Alameda 2020-11-12         483          0
-9: Alameda 2020-11-13         486          3
-county.dt[county == 'Alameda' & date == '2020-11-10', deaths.conf := NA_real_]
-         county       date deaths.conf deaths.inc
-1: Contra Costa 2020-11-07         251          1
-2: Contra Costa 2020-11-08         253          2
-3: Contra Costa 2020-11-09         253          0
-4: Contra Costa 2020-11-10         253          0
-5: Contra Costa 2020-11-11         253          0
-6: Contra Costa 2020-11-12         252         -1
-7: Contra Costa 2020-11-13         253          1
-county.dt[county == 'Contra Costa' & date == '2020-11-12', deaths.conf := NA_real_]
-    county       date deaths.conf deaths.inc
- 1: Orange 2020-10-28        1467         13
- 2: Orange 2020-10-29        1468          1
- 3: Orange 2020-10-30        1475          7
- 4: Orange 2020-10-31        1483          8
- 5: Orange 2020-11-01        1484          1
- 6: Orange 2020-11-02        1483         -1
- 7: Orange 2020-11-03        1484          1
- 8: Orange 2020-11-04        1491          7
- 9: Orange 2020-11-05        1494          3
-10: Orange 2020-11-06        1503          9
-11: Orange 2020-11-07        1506          3
-county.dt[county == 'Orange' & date == '2020-11-02', deaths.conf := NA_real_]
-[1] "Lake"
