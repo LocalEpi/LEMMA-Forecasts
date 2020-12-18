@@ -461,3 +461,14 @@ Chain 3:  Elapsed Time: 2100.03 seconds (Warm-up)
 Chain 3:                2488.77 seconds (Sampling)
 Chain 3:                4588.79 seconds (Total)
 Chain 3: 
+     user    system   elapsed 
+15013.632    46.506  4608.059 
+Projecting
+   user  system elapsed 
+342.541   1.459 344.035 
+
+Excel output:  Forecasts/Solano.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+1.17 1.21 1.26 1.34 1.42 1.49 1.54 
+
+PDF output:  Forecasts/Solano.pdf 
