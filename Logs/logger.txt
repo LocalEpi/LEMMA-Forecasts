@@ -104,3 +104,6 @@
 2020-12-18 05:05:50	[Thread 2]	FATAL			Error in unserialize(node$con) : error reading from connection Calls: local ... doTryCatch -> recvData -> recvData.SOCKnode -> unserialize 
 2020-12-18 05:05:50	[Thread 2]	TRACE			Thread 2 terminated
 2020-12-18 05:09:42	[Thread 1]	INFO			county = Santa Clara
+2020-12-18 05:09:52	[Thread 1]	FATAL			Error in unserialize(node$con) : error reading from connection Calls: local ... doTryCatch -> recvData -> recvData.SOCKnode -> unserialize 
+2020-12-18 05:09:52	[Thread 1]	TRACE			Thread 1 terminated
+2020-12-18 05:46:38	[Thread 1]	INFO			county = Santa Clara
