@@ -454,3 +454,21 @@ Chain 2: Iteration: 950 / 1000 [ 95%]  (Sampling)
 Chain 2: Iteration: 960 / 1000 [ 96%]  (Sampling)
 Chain 2: Iteration: 970 / 1000 [ 97%]  (Sampling)
 Chain 2: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 2: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 2: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 2: 
+Chain 2:  Elapsed Time: 1655.27 seconds (Warm-up)
+Chain 2:                3506.02 seconds (Sampling)
+Chain 2:                5161.29 seconds (Total)
+Chain 2: 
+     user    system   elapsed 
+16546.162    55.255  5179.318 
+Projecting
+   user  system elapsed 
+331.929   1.396 333.334 
+
+Excel output:  Forecasts/Kern.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+1.22 1.25 1.30 1.36 1.43 1.51 1.55 
+
+PDF output:  Forecasts/Kern.pdf 
