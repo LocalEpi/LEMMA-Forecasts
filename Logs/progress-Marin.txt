@@ -442,3 +442,41 @@ Chain 2: Iteration: 960 / 1000 [ 96%]  (Sampling)
 Chain 1: Iteration: 930 / 1000 [ 93%]  (Sampling)
 Chain 2: Iteration: 970 / 1000 [ 97%]  (Sampling)
 Chain 1: Iteration: 940 / 1000 [ 94%]  (Sampling)
+Chain 1: Iteration: 950 / 1000 [ 95%]  (Sampling)
+Chain 2: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 1: Iteration: 960 / 1000 [ 96%]  (Sampling)
+Chain 2: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 1: Iteration: 970 / 1000 [ 97%]  (Sampling)
+Chain 2: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 2: 
+Chain 2:  Elapsed Time: 5592.05 seconds (Warm-up)
+Chain 2:                4192.29 seconds (Sampling)
+Chain 2:                9784.34 seconds (Total)
+Chain 2: 
+Chain 1: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 1: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 1: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 1: 
+Chain 1:  Elapsed Time: 5417.52 seconds (Warm-up)
+Chain 1:                4498.23 seconds (Sampling)
+Chain 1:                9915.75 seconds (Total)
+Chain 1: 
+     user    system   elapsed 
+36779.995     1.551  9948.180 
+Projecting
+   user  system elapsed 
+403.008   2.328 405.354 
+
+Excel output:  Forecasts/Marin.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+1.45 1.50 1.59 1.69 1.81 1.93 1.99 
+
+PDF output:  Forecasts/Marin.pdf 
+   user  system elapsed 
+418.587   2.996 421.593 
+
+Excel output:  Scenarios/Marin_scenario_actToday.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+1.45 1.50 1.59 1.69 1.81 1.93 1.99 
+
+PDF output:  Scenarios/Marin_scenario_actToday.pdf 
