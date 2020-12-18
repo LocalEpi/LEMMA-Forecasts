@@ -79,6 +79,8 @@ RunOneCounty <- function(county1, git.pw, quick.test) {
         restart.date <- as.Date("2020/11/9")
       } else if (county1 == "Glenn") {
         restart.date <- as.Date("2020/12/4")
+      } else if (county1 == "Mendocino") {
+        restart.date <- as.Date("2020/7/15")
       } else if (county1 == "Mono") {
         restart.date <- as.Date("2020/12/9")
       } else {
