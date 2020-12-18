@@ -465,7 +465,7 @@ Chain 1:
 178.637   0.432 107.094 
 Projecting
    user  system elapsed 
- 64.556   1.068  91.112 
+ 66.965   1.132 149.051 
 
 Excel output:  Forecasts/Colusa.xlsx 
   5%  10%  25%  50%  75%  90%  95% 
@@ -473,10 +473,18 @@ Excel output:  Forecasts/Colusa.xlsx
 
 PDF output:  Forecasts/Colusa.pdf 
    user  system elapsed 
- 65.444   1.003 106.370 
+ 65.808   1.236 143.761 
 
 Excel output:  Scenarios/Colusa_scenario_actToday.xlsx 
   5%  10%  25%  50%  75%  90%  95% 
 0.13 0.19 0.30 0.41 0.51 0.58 0.63 
 
 PDF output:  Scenarios/Colusa_scenario_actToday.pdf 
+   user  system elapsed 
+ 70.446   1.016 170.871 
+
+Excel output:  Scenarios/Colusa_scenario_actTwoWeeks.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.13 0.19 0.30 0.41 0.51 0.58 0.63 
+
+PDF output:  Scenarios/Colusa_scenario_actTwoWeeks.pdf 
