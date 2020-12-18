@@ -194,13 +194,17 @@ PDF output:  Forecasts/Madera.pdf
 Excel output:  Scenarios/Madera_scenario_actToday.xlsx 
   5%  10%  25%  50%  75%  90%  95% 
 0.92 0.96 1.01 1.07 1.13 1.19 1.22 
-: 470 / 1000 [ 47%]  (Warmup)
-Chain 1: Iteration: 490 / 1000 [ 49%]  (Warmup)
-Chain 4: Iteration: 300 / 1000 [ 30%]  (Warmup)
-Chain 2: Iteration: 480 / 1000 [ 48%]  (Warmup)
-Chain 4: Iteration: 310 / 1000 [ 31%]  (Warmup)
-Chain 1: Iteration: 500 / 1000 [ 50%]  (Warmup)
-Chain 1: Iteration: 501 / 1000 [ 50%]  (Sampling)
+
+PDF output:  Scenarios/Madera_scenario_actToday.pdf 
+   user  system elapsed 
+ 74.313   0.100  74.492 
+
+Excel output:  Scenarios/Madera_scenario_actTwoWeeks.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.92 0.96 1.01 1.07 1.13 1.19 1.22 
+
+PDF output:  Scenarios/Madera_scenario_actTwoWeeks.pdf 
+ / 1000 [ 50%]  (Sampling)
 Chain 2: Iteration: 490 / 1000 [ 49%]  (Warmup)
 Chain 4: Iteration: 320 / 1000 [ 32%]  (Warmup)
 Chain 1: Iteration: 510 / 1000 [ 51%]  (Sampling)
@@ -407,3 +411,12 @@ Chain 2:
 Chain 4: Iteration: 850 / 1000 [ 85%]  (Sampling)
 Chain 1: Iteration: 880 / 1000 [ 88%]  (Sampling)
 Chain 3: Iteration: 780 / 1000 [ 78%]  (Sampling)
+Chain 4: Iteration: 860 / 1000 [ 86%]  (Sampling)
+Chain 3: Iteration: 790 / 1000 [ 79%]  (Sampling)
+Chain 1: Iteration: 890 / 1000 [ 89%]  (Sampling)
+Chain 4: Iteration: 870 / 1000 [ 87%]  (Sampling)
+Chain 3: Iteration: 800 / 1000 [ 80%]  (Sampling)
+Chain 4: Iteration: 880 / 1000 [ 88%]  (Sampling)
+Chain 1: Iteration: 900 / 1000 [ 90%]  (Sampling)
+Chain 3: Iteration: 810 / 1000 [ 81%]  (Sampling)
+Chain 4: Iteration: 890 / 1000 [ 89%]  (Sampling)
