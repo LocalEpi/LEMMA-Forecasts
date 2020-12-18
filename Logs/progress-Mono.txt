@@ -198,12 +198,15 @@ Excel output:  Scenarios/Mono_scenario_actToday.xlsx
 0.35 0.66 0.86 1.01 1.08 1.28 1.32 
 
 PDF output:  Scenarios/Mono_scenario_actToday.pdf 
-ation: 390 / 1000 [ 39%]  (Warmup)
-Chain 1: Iteration: 430 / 1000 [ 43%]  (Warmup)
-Chain 2: Iteration: 470 / 1000 [ 47%]  (Warmup)
-Chain 1: Iteration: 440 / 1000 [ 44%]  (Warmup)
-Chain 2: Iteration: 480 / 1000 [ 48%]  (Warmup)
-Chain 1: Iteration: 450 / 1000 [ 45%]  (Warmup)
+   user  system elapsed 
+ 74.233   0.132  74.383 
+
+Excel output:  Scenarios/Mono_scenario_actTwoWeeks.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.35 0.66 0.86 1.01 1.08 1.28 1.32 
+
+PDF output:  Scenarios/Mono_scenario_actTwoWeeks.pdf 
+ Iteration: 450 / 1000 [ 45%]  (Warmup)
 Chain 1: Iteration: 460 / 1000 [ 46%]  (Warmup)
 Chain 2: Iteration: 490 / 1000 [ 49%]  (Warmup)
 Chain 1: Iteration: 470 / 1000 [ 47%]  (Warmup)
