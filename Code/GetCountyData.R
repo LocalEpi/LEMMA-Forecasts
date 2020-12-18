@@ -95,8 +95,9 @@ GetCountyData <- function(exclude.set) {
   county.dt[county == 'Merced' & date == '2020-08-16', hosp.pui := NA_real_]
   county.dt[county == 'Merced' & date == '2020-08-16', icu.conf := NA_real_]
   county.dt[county == 'Merced' & date == '2020-08-16', icu.pui := NA_real_]
-
   county.dt[county == "Kings" & date == '2020-04-03', icu.conf := NA_real_]
+  county.dt[county == "Yolo" & date == '2020-12-12', hosp.conf := NA_real_]
+  county.dt[county == "Yolo" & date == '2020-12-12', icu.conf := NA_real_]
 
   #check for new problems with death reporting
   for (county1 in unique(county.dt$county)) {
@@ -129,7 +130,7 @@ GetRunTime <- function(county1) {
     time.num <- 100000
   }
   if (county1 %in% c("San Joaquin", "San Mateo", "Stanislaus")) { #temp
-    time.num <- time.num + 1 
+    time.num <- time.num + 1
   }
   return(time.num)
 }
