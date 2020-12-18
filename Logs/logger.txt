@@ -27,3 +27,10 @@
 2020-12-18 19:51:30	[Thread 14]	INFO			county = San Benito
 2020-12-18 19:51:51	[Thread 13]	INFO			county = El Dorado
 2020-12-18 19:52:16	[Thread 15]	INFO			county = Amador
+2020-12-18 19:52:22	[Thread 15]	FATAL			Error in unserialize(node$con) : error reading from connection Calls: local ... doTryCatch -> recvData -> recvData.SOCKnode -> unserialize 
+2020-12-18 19:52:22	[Thread 15]	TRACE			Thread 15 terminated
+2020-12-18 19:52:23	[Thread 14]	FATAL			Error in unserialize(node$con) : error reading from connection Calls: local ... doTryCatch -> recvData -> recvData.SOCKnode -> unserialize 
+2020-12-18 19:52:23	[Thread 14]	TRACE			Thread 14 terminated
+2020-12-18 19:52:23	[Thread 13]	FATAL			Error in unserialize(node$con) : error reading from connection Calls: local ... doTryCatch -> recvData -> recvData.SOCKnode -> unserialize 
+2020-12-18 19:52:23	[Thread 13]	TRACE			Thread 13 terminated
+2020-12-18 19:53:01	[Thread 1]	INFO			county = Colusa
