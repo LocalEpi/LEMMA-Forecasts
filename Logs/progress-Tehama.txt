@@ -195,12 +195,15 @@ Excel output:  Scenarios/Tehama_scenario_actToday.xlsx
 0.90 0.95 1.02 1.07 1.14 1.33 1.35 
 
 PDF output:  Scenarios/Tehama_scenario_actToday.pdf 
-n: 290 / 1000 [ 29%]  (Warmup)
-Chain 2: Iteration: 370 / 1000 [ 37%]  (Warmup)
-Chain 1: Iteration: 520 / 1000 [ 52%]  (Sampling)
-Chain 3: Iteration: 300 / 1000 [ 30%]  (Warmup)
-Chain 1: Iteration: 530 / 1000 [ 53%]  (Sampling)
-Chain 4: Iteration: 330 / 1000 [ 33%]  (Warmup)
+   user  system elapsed 
+ 73.462   0.144  75.917 
+
+Excel output:  Scenarios/Tehama_scenario_actTwoWeeks.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.90 0.95 1.02 1.07 1.14 1.33 1.35 
+
+PDF output:  Scenarios/Tehama_scenario_actTwoWeeks.pdf 
+ration: 330 / 1000 [ 33%]  (Warmup)
 Chain 2: Iteration: 380 / 1000 [ 38%]  (Warmup)
 Chain 3: Iteration: 310 / 1000 [ 31%]  (Warmup)
 Chain 1: Iteration: 540 / 1000 [ 54%]  (Sampling)
@@ -474,3 +477,5 @@ Chain 4:
      user    system   elapsed 
 12344.837     1.537  5097.540 
 Projecting
+   user  system elapsed 
+255.267   1.293 259.587 
