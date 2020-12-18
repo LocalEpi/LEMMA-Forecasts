@@ -55,3 +55,8 @@
 2020-12-18 03:54:50	[Thread 2]	INFO			county = Yolo
 2020-12-18 03:55:38	[Thread 6]	INFO			county = Tehama
 2020-12-18 03:57:08	[Thread 7]	INFO			county = Mendocino
+2020-12-18 03:57:13	[Thread 7]	FATAL			Error in unserialize(node$con) : error reading from connection Calls: local ... doTryCatch -> recvData -> recvData.SOCKnode -> unserialize 
+2020-12-18 03:57:13	[Thread 7]	TRACE			Thread 7 terminated
+2020-12-18 03:57:13	[Thread 6]	FATAL			Error in unserialize(node$con) : error reading from connection Calls: local ... doTryCatch -> recvData -> recvData.SOCKnode -> unserialize 
+2020-12-18 03:57:13	[Thread 6]	TRACE			Thread 6 terminated
+2020-12-18 04:09:38	[Thread 8]	INFO			county = Madera
