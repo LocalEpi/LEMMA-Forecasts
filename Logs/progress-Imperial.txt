@@ -423,3 +423,68 @@ Chain 3: Iteration: 780 / 1000 [ 78%]  (Sampling)
 Chain 2: Iteration: 990 / 1000 [ 99%]  (Sampling)
 Chain 4: Iteration: 990 / 1000 [ 99%]  (Sampling)
 Chain 3: Iteration: 790 / 1000 [ 79%]  (Sampling)
+Chain 4: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 4: 
+Chain 4:  Elapsed Time: 1659.18 seconds (Warm-up)
+Chain 4:                5444.88 seconds (Sampling)
+Chain 4:                7104.06 seconds (Total)
+Chain 4: 
+Chain 2: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 2: 
+Chain 2:  Elapsed Time: 792.75 seconds (Warm-up)
+Chain 2:                6343.42 seconds (Sampling)
+Chain 2:                7136.17 seconds (Total)
+Chain 2: 
+Chain 3: Iteration: 800 / 1000 [ 80%]  (Sampling)
+Chain 3: Iteration: 810 / 1000 [ 81%]  (Sampling)
+Chain 3: Iteration: 820 / 1000 [ 82%]  (Sampling)
+Chain 3: Iteration: 830 / 1000 [ 83%]  (Sampling)
+Chain 3: Iteration: 840 / 1000 [ 84%]  (Sampling)
+Chain 3: Iteration: 850 / 1000 [ 85%]  (Sampling)
+Chain 3: Iteration: 860 / 1000 [ 86%]  (Sampling)
+Chain 3: Iteration: 870 / 1000 [ 87%]  (Sampling)
+Chain 3: Iteration: 880 / 1000 [ 88%]  (Sampling)
+Chain 3: Iteration: 890 / 1000 [ 89%]  (Sampling)
+Chain 3: Iteration: 900 / 1000 [ 90%]  (Sampling)
+Chain 3: Iteration: 910 / 1000 [ 91%]  (Sampling)
+Chain 3: Iteration: 920 / 1000 [ 92%]  (Sampling)
+Chain 3: Iteration: 930 / 1000 [ 93%]  (Sampling)
+Chain 3: Iteration: 940 / 1000 [ 94%]  (Sampling)
+Chain 3: Iteration: 950 / 1000 [ 95%]  (Sampling)
+Chain 3: Iteration: 960 / 1000 [ 96%]  (Sampling)
+Chain 3: Iteration: 970 / 1000 [ 97%]  (Sampling)
+Chain 3: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 3: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 3: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 3: 
+Chain 3:  Elapsed Time: 1073.79 seconds (Warm-up)
+Chain 3:                8253.56 seconds (Sampling)
+Chain 3:                9327.35 seconds (Total)
+Chain 3: 
+     user    system   elapsed 
+30105.051     2.124  9366.654 
+Projecting
+   user  system elapsed 
+456.114   2.079 458.211 
+
+Excel output:  Forecasts/Imperial.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+1.41 1.44 1.49 1.55 1.61 1.68 1.72 
+
+PDF output:  Forecasts/Imperial.pdf 
+   user  system elapsed 
+451.916   3.060 454.997 
+
+Excel output:  Scenarios/Imperial_scenario_actToday.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+1.41 1.44 1.49 1.55 1.61 1.68 1.72 
+
+PDF output:  Scenarios/Imperial_scenario_actToday.pdf 
+   user  system elapsed 
+441.704   2.239 443.963 
+
+Excel output:  Scenarios/Imperial_scenario_actTwoWeeks.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+1.41 1.44 1.49 1.55 1.61 1.68 1.72 
+
+PDF output:  Scenarios/Imperial_scenario_actTwoWeeks.pdf 
