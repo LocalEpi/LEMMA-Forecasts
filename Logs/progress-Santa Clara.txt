@@ -447,3 +447,44 @@ Chain 2:                3728.77 seconds (Sampling)
 Chain 2:                10773.1 seconds (Total)
 Chain 2: 
 Chain 1: Iteration: 910 / 1000 [ 91%]  (Sampling)
+Chain 1: Iteration: 920 / 1000 [ 92%]  (Sampling)
+Chain 1: Iteration: 930 / 1000 [ 93%]  (Sampling)
+Chain 1: Iteration: 940 / 1000 [ 94%]  (Sampling)
+Chain 1: Iteration: 950 / 1000 [ 95%]  (Sampling)
+Chain 1: Iteration: 960 / 1000 [ 96%]  (Sampling)
+Chain 1: Iteration: 970 / 1000 [ 97%]  (Sampling)
+Chain 1: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 1: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 1: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 1: 
+Chain 1:  Elapsed Time: 6401.37 seconds (Warm-up)
+Chain 1:                4925.73 seconds (Sampling)
+Chain 1:                11327.1 seconds (Total)
+Chain 1: 
+     user    system   elapsed 
+40786.805     2.049 11357.245 
+Projecting
+   user  system elapsed 
+397.137   1.484 398.636 
+
+Excel output:  Forecasts/Santa Clara.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+1.24 1.26 1.31 1.36 1.41 1.46 1.49 
+
+PDF output:  Forecasts/Santa Clara.pdf 
+   user  system elapsed 
+349.815   1.972 351.799 
+
+Excel output:  Scenarios/Santa Clara_scenario_actToday.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+1.24 1.26 1.31 1.36 1.41 1.46 1.49 
+
+PDF output:  Scenarios/Santa Clara_scenario_actToday.pdf 
+   user  system elapsed 
+348.001   1.544 349.550 
+
+Excel output:  Scenarios/Santa Clara_scenario_actTwoWeeks.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+1.24 1.26 1.31 1.36 1.41 1.46 1.49 
+
+PDF output:  Scenarios/Santa Clara_scenario_actTwoWeeks.pdf 

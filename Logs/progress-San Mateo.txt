@@ -421,3 +421,62 @@ Chain 3: Iteration: 910 / 1000 [ 91%]  (Sampling)
 Chain 1: Iteration: 890 / 1000 [ 89%]  (Sampling)
 Chain 2: Iteration: 940 / 1000 [ 94%]  (Sampling)
 Chain 1: Iteration: 900 / 1000 [ 90%]  (Sampling)
+Chain 2: Iteration: 950 / 1000 [ 95%]  (Sampling)
+Chain 3: Iteration: 920 / 1000 [ 92%]  (Sampling)
+Chain 1: Iteration: 910 / 1000 [ 91%]  (Sampling)
+Chain 2: Iteration: 960 / 1000 [ 96%]  (Sampling)
+Chain 3: Iteration: 930 / 1000 [ 93%]  (Sampling)
+Chain 1: Iteration: 920 / 1000 [ 92%]  (Sampling)
+Chain 2: Iteration: 970 / 1000 [ 97%]  (Sampling)
+Chain 3: Iteration: 940 / 1000 [ 94%]  (Sampling)
+Chain 1: Iteration: 930 / 1000 [ 93%]  (Sampling)
+Chain 2: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 3: Iteration: 950 / 1000 [ 95%]  (Sampling)
+Chain 3: Iteration: 960 / 1000 [ 96%]  (Sampling)
+Chain 1: Iteration: 940 / 1000 [ 94%]  (Sampling)
+Chain 2: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 3: Iteration: 970 / 1000 [ 97%]  (Sampling)
+Chain 1: Iteration: 950 / 1000 [ 95%]  (Sampling)
+Chain 3: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 2: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 2: 
+Chain 2:  Elapsed Time: 5958.29 seconds (Warm-up)
+Chain 2:                5435.32 seconds (Sampling)
+Chain 2:                11393.6 seconds (Total)
+Chain 2: 
+Chain 3: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 1: Iteration: 960 / 1000 [ 96%]  (Sampling)
+Chain 3: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 3: 
+Chain 3:  Elapsed Time: 6505.38 seconds (Warm-up)
+Chain 3:                5028.45 seconds (Sampling)
+Chain 3:                11533.8 seconds (Total)
+Chain 3: 
+Chain 1: Iteration: 970 / 1000 [ 97%]  (Sampling)
+Chain 1: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 1: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 1: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 1: 
+Chain 1:  Elapsed Time: 7550.44 seconds (Warm-up)
+Chain 1:                4166.6 seconds (Sampling)
+Chain 1:                11717 seconds (Total)
+Chain 1: 
+     user    system   elapsed 
+45145.918     2.145 11737.668 
+Projecting
+   user  system elapsed 
+354.008   1.097 355.112 
+
+Excel output:  Forecasts/San Mateo.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+1.22 1.26 1.33 1.41 1.51 1.59 1.64 
+
+PDF output:  Forecasts/San Mateo.pdf 
+   user  system elapsed 
+351.178   1.856 353.038 
+
+Excel output:  Scenarios/San Mateo_scenario_actToday.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+1.22 1.26 1.33 1.41 1.51 1.59 1.64 
+
+PDF output:  Scenarios/San Mateo_scenario_actToday.pdf 
