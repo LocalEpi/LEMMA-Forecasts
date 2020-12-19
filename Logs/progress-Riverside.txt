@@ -464,3 +464,25 @@ Chain 3:
      user    system   elapsed 
 45772.879     1.845 13018.608 
 Projecting
+   user  system elapsed 
+370.073   0.978 371.122 
+
+Excel output:  Forecasts/Riverside.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+1.25 1.28 1.31 1.35 1.40 1.44 1.47 
+
+PDF output:  Forecasts/Riverside.pdf 
+   user  system elapsed 
+441.958   2.832 444.832 
+
+Excel output:  Scenarios/Riverside_scenario_actToday.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+1.25 1.28 1.31 1.35 1.40 1.44 1.47 
+
+PDF output:  Scenarios/Riverside_scenario_actToday.pdf 
+   user  system elapsed 
+424.301   2.083 426.518 
+
+Excel output:  Scenarios/Riverside_scenario_actTwoWeeks.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+1.25 1.28 1.31 1.35 1.40 1.44 1.47 
