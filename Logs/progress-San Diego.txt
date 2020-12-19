@@ -461,3 +461,14 @@ Chain 1:  Elapsed Time: 9351.39 seconds (Warm-up)
 Chain 1:                5860.52 seconds (Sampling)
 Chain 1:                15211.9 seconds (Total)
 Chain 1: 
+     user    system   elapsed 
+53115.020     1.981 15246.532 
+Projecting
+   user  system elapsed 
+451.958   1.753 453.782 
+
+Excel output:  Forecasts/San Diego.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+1.18 1.20 1.23 1.28 1.32 1.37 1.40 
+
+PDF output:  Forecasts/San Diego.pdf 
