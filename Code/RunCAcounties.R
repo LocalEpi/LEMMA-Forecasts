@@ -15,7 +15,7 @@ if (quick.test) {
   cat("\n\n++++++++++++++++++  quick.test = T +++++++++++++++++ \n\n")
   county.set <- c("Santa Clara", "Colusa", "Yuba",  "Mono", "San Luis Obispo",
                   "Tehama", "Mendocino", "Madera", "Yolo", "Nevada", "Calaveras",
-                  "Humboldt", "El Dorado", "San Benito", "Amador")
+                  "Humboldt", "El Dorado", "San Benito", "Amador", "Siskiyou")
 } else {
   #order by last Rt date in forecasts and then last run time
   max.date <- county.dt[, max(date)]
@@ -41,7 +41,7 @@ if (quick.test) {
   county.set <- dt.max[, county]
   county.set <- c("Colusa", setdiff(county.set, "Colusa")) #run Colusa first as a test (it's fast)
 
-  insuff.data <- c("Glenn", "Mariposa", "Del Norte", "Mono")
+  insuff.data <- c("Glenn", "Mariposa", "Del Norte", "Mono", "Plumas")
   for (i in insuff.data) {
     cat("Excluding", i, "need more data\n")
     print(tail(county.dt[county == i], 10))
@@ -61,7 +61,7 @@ RunOneCounty <- function(county1, git.pw, quick.test) {
     restart.set <- c("Tehama", "Mono", "Yolo", "Yuba", "Mendocino", "Nevada", "El Dorado",
                      "Tuolumne", "Amador", "Inyo", "Calaveras",
                      "Madera", "Humboldt", "Siskiyou", "Butte", "San Benito",
-                     "Merced", "Colusa", "Glenn", "Mono", "Plumas") #infections went to near zero - restart sim
+                     "Merced", "Colusa", "Glenn", "Mono", "Plumas", "Shasta") #infections went to near zero - restart sim
     if (county1 %in% restart.set) {
       if (county1 == "San Benito") {
         restart.date <- as.Date("2020/11/03")
@@ -85,6 +85,12 @@ RunOneCounty <- function(county1, git.pw, quick.test) {
         restart.date <- as.Date("2020/12/9")
       } else if (county1 == "Plumas") {
         restart.date <- as.Date("2020/12/8")
+      } else if (county1 == "Siskiyou") {
+        restart.date <- as.Date("2020/10/26")
+      } else if (county1 == "Inyo") {
+        restart.date <- as.Date("2020/11/19")
+      } else if (county1 == "Shasta") {
+        restart.date <- as.Date("2020/6/17")
       } else {
         restart.date <- as.Date("2020/6/1")
       }
