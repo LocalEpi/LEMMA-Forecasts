@@ -452,3 +452,39 @@ Chain 2: Iteration: 930 / 1000 [ 93%]  (Sampling)
 Chain 2: Iteration: 940 / 1000 [ 94%]  (Sampling)
 Chain 2: Iteration: 950 / 1000 [ 95%]  (Sampling)
 Chain 2: Iteration: 960 / 1000 [ 96%]  (Sampling)
+Chain 2: Iteration: 970 / 1000 [ 97%]  (Sampling)
+Chain 2: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 2: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 2: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 2: 
+Chain 2:  Elapsed Time: 5.55618 seconds (Warm-up)
+Chain 2:                11423.5 seconds (Sampling)
+Chain 2:                11429 seconds (Total)
+Chain 2: 
+     user    system   elapsed 
+18013.725    70.114 11445.893 
+Projecting
+   user  system elapsed 
+173.388   1.236 174.630 
+
+Excel output:  Forecasts/Siskiyou.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.24 0.30 0.40 0.49 0.58 0.65 0.70 
+
+PDF output:  Forecasts/Siskiyou.pdf 
+   user  system elapsed 
+174.769   0.928 175.704 
+
+Excel output:  Scenarios/Siskiyou_scenario_actToday.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.24 0.30 0.40 0.49 0.58 0.65 0.70 
+
+PDF output:  Scenarios/Siskiyou_scenario_actToday.pdf 
+   user  system elapsed 
+180.466   0.772 181.246 
+
+Excel output:  Scenarios/Siskiyou_scenario_actTwoWeeks.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.24 0.30 0.40 0.49 0.58 0.65 0.70 
+
+PDF output:  Scenarios/Siskiyou_scenario_actTwoWeeks.pdf 
