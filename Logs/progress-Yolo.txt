@@ -461,3 +461,14 @@ Chain 3:  Elapsed Time: 3760.62 seconds (Warm-up)
 Chain 3:                1981.76 seconds (Sampling)
 Chain 3:                5742.38 seconds (Total)
 Chain 3: 
+     user    system   elapsed 
+16580.055    58.608  5755.702 
+Projecting
+   user  system elapsed 
+198.492   1.168 199.667 
+
+Excel output:  Forecasts/Yolo.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.98 1.01 1.06 1.11 1.16 1.21 1.24 
+
+PDF output:  Forecasts/Yolo.pdf 
