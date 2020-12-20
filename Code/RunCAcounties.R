@@ -39,7 +39,7 @@ if (quick.test) {
   print(dt.max)
   sink()
   county.set <- dt.max[, county]
-  county.set <- c("Colusa", setdiff(county.set, "Colusa")) #run Colusa first as a test (it's fast)
+  county.set <- c("Colusa", setdiff(county.set, c("Colusa", "Santa Clara")), "Santa Clara") #run Colusa first as a test (it's fast), run Santa Clara last because it updates later
 
   insuff.data <- c("Glenn", "Mariposa", "Del Norte", "Mono", "Plumas")
   for (i in insuff.data) {
@@ -99,14 +99,15 @@ RunOneCounty <- function(county1, git.pw, quick.test) {
     sink(sink.file)
     cat("county = ", county1, "\n")
     cat("start time = ", as.character(Sys.time()), "\n")
+    cat("max date = ", as.character(max(county.dt1$date)), "\n")
 
     input.file <- "Inputs/CAcounties.xlsx"
     sheets <- LEMMA:::ReadInputs(input.file)
     sheets$`Model Inputs`[internal.name == "total.population", value := county.pop1]
 
-    # if (county1 == "Santa Clara") {
-    #   county.dt1 <- readRDS("Inputs/scc.RDS")
-    # }
+    if (county1 == "Santa Clara") {
+      county.dt1 <- readRDS("Inputs/scc.RDS")
+    }
 
     county.dt1[, deaths.pui := NA_integer_]
     county.dt1[, cum.admits.conf := NA_integer_]
