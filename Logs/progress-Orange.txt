@@ -465,3 +465,19 @@ Chain 4:
      user    system   elapsed 
 39224.875     1.646 10113.944 
 Projecting
+   user  system elapsed 
+388.071   1.831 389.917 
+
+Excel output:  Forecasts/Orange.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+1.38 1.41 1.45 1.50 1.56 1.61 1.65 
+
+PDF output:  Forecasts/Orange.pdf 
+   user  system elapsed 
+363.233   2.232 365.473 
+
+Excel output:  Scenarios/Orange_scenario_actToday.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+1.38 1.41 1.45 1.50 1.56 1.61 1.65 
+
+PDF output:  Scenarios/Orange_scenario_actToday.pdf 
