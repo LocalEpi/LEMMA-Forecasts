@@ -4,7 +4,6 @@ library(ParallelLogger)
 source('Code/GetCountyData.R')
 
 git.pw <- readline("Enter github password: ")
-
 exclude.set <- c("San Francisco") #SF is run separately
 
 county.dt <- GetCountyData(exclude.set)
