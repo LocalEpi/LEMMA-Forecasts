@@ -662,3 +662,30 @@ Chain 1:  Elapsed Time: 12.6606 seconds (Warm-up)
 Chain 1:                20157.3 seconds (Sampling)
 Chain 1:                20170 seconds (Total)
 Chain 1: 
+     user    system   elapsed 
+45161.217     1.997 20191.828 
+Projecting
+   user  system elapsed 
+288.761   1.279 290.050 
+
+Excel output:  Forecasts/Yuba.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.94 0.97 1.01 1.05 1.09 1.13 1.16 
+
+PDF output:  Forecasts/Yuba.pdf 
+   user  system elapsed 
+291.074   1.911 292.994 
+
+Excel output:  Scenarios/Yuba_scenario_actToday.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.94 0.97 1.01 1.05 1.09 1.13 1.16 
+
+PDF output:  Scenarios/Yuba_scenario_actToday.pdf 
+   user  system elapsed 
+282.553   1.844 284.409 
+
+Excel output:  Scenarios/Yuba_scenario_actTwoWeeks.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.94 0.97 1.01 1.05 1.09 1.13 1.16 
+
+PDF output:  Scenarios/Yuba_scenario_actTwoWeeks.pdf 
