@@ -447,3 +447,45 @@ Chain 1: Iteration: 960 / 1000 [ 96%]  (Sampling)
 Chain 2: Iteration: 970 / 1000 [ 97%]  (Sampling)
 Chain 1: Iteration: 970 / 1000 [ 97%]  (Sampling)
 Chain 2: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 1: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 2: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 1: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 2: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 2: 
+Chain 2:  Elapsed Time: 2819.22 seconds (Warm-up)
+Chain 2:                3511.57 seconds (Sampling)
+Chain 2:                6330.79 seconds (Total)
+Chain 2: 
+Chain 1: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 1: 
+Chain 1:  Elapsed Time: 2850.28 seconds (Warm-up)
+Chain 1:                3520.99 seconds (Sampling)
+Chain 1:                6371.28 seconds (Total)
+Chain 1: 
+     user    system   elapsed 
+22776.073    61.053  6392.665 
+Projecting
+   user  system elapsed 
+405.640   1.811 407.465 
+
+Excel output:  Forecasts/Kern.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+1.19 1.22 1.26 1.32 1.38 1.44 1.48 
+
+PDF output:  Forecasts/Kern.pdf 
+   user  system elapsed 
+405.789   2.128 407.926 
+
+Excel output:  Scenarios/Kern_scenario_actToday.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+1.19 1.22 1.26 1.32 1.38 1.44 1.48 
+
+PDF output:  Scenarios/Kern_scenario_actToday.pdf 
+   user  system elapsed 
+395.841   1.895 397.746 
+
+Excel output:  Scenarios/Kern_scenario_actTwoWeeks.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+1.19 1.22 1.26 1.32 1.38 1.44 1.48 
+
+PDF output:  Scenarios/Kern_scenario_actTwoWeeks.pdf 
