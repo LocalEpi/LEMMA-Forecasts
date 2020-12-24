@@ -442,3 +442,50 @@ Chain 1: Iteration: 900 / 1000 [ 90%]  (Sampling)
 Chain 2: Iteration: 980 / 1000 [ 98%]  (Sampling)
 Chain 1: Iteration: 910 / 1000 [ 91%]  (Sampling)
 Chain 2: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 2: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 2: 
+Chain 2:  Elapsed Time: 9223.84 seconds (Warm-up)
+Chain 2:                7756.77 seconds (Sampling)
+Chain 2:                16980.6 seconds (Total)
+Chain 2: 
+Chain 1: Iteration: 920 / 1000 [ 92%]  (Sampling)
+Chain 1: Iteration: 930 / 1000 [ 93%]  (Sampling)
+Chain 1: Iteration: 940 / 1000 [ 94%]  (Sampling)
+Chain 1: Iteration: 950 / 1000 [ 95%]  (Sampling)
+Chain 1: Iteration: 960 / 1000 [ 96%]  (Sampling)
+Chain 1: Iteration: 970 / 1000 [ 97%]  (Sampling)
+Chain 1: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 1: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 1: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 1: 
+Chain 1:  Elapsed Time: 11660.6 seconds (Warm-up)
+Chain 1:                7049.32 seconds (Sampling)
+Chain 1:                18710 seconds (Total)
+Chain 1: 
+     user    system   elapsed 
+68800.521     1.936 18743.184 
+Projecting
+   user  system elapsed 
+467.120   1.932 469.065 
+
+Excel output:  Forecasts/Monterey.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+1.16 1.19 1.24 1.30 1.37 1.42 1.46 
+
+PDF output:  Forecasts/Monterey.pdf 
+   user  system elapsed 
+437.256   2.516 439.785 
+
+Excel output:  Scenarios/Monterey_scenario_actToday.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+1.16 1.19 1.24 1.30 1.37 1.42 1.46 
+
+PDF output:  Scenarios/Monterey_scenario_actToday.pdf 
+   user  system elapsed 
+400.871   1.900 402.780 
+
+Excel output:  Scenarios/Monterey_scenario_actTwoWeeks.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+1.16 1.19 1.24 1.30 1.37 1.42 1.46 
+
+PDF output:  Scenarios/Monterey_scenario_actTwoWeeks.pdf 
