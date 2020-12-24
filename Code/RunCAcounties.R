@@ -9,7 +9,7 @@ exclude.set <- c("San Francisco") #SF is run separately
 county.dt <- GetCountyData(exclude.set)
 saveRDS(county.dt, "Inputs/CountyData.rds")
 
-quick.test <- T
+quick.test <- F
 if (quick.test) {
   cat("\n\n++++++++++++++++++  quick.test = T +++++++++++++++++ \n\n")
   county.set <- c("Santa Clara")
@@ -99,7 +99,7 @@ RunOneCounty <- function(county1, git.pw, quick.test) {
     sink.file <- paste0("Logs/progress-", county1, ".txt")
     sink(sink.file)
     cat("county = ", county1, "\n")
-    cat("start time = ", as.character(Sys.time()), "\n")
+    cat("start time = ", as.character(Sys.time() - 3600 * 8), "\n")
     cat("max date = ", as.character(max(county.dt1$date)), "\n")
 
     input.file <- "Inputs/CAcounties.xlsx"
