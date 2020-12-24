@@ -9,7 +9,7 @@ exclude.set <- c("San Francisco") #SF is run separately
 county.dt <- GetCountyData(exclude.set)
 saveRDS(county.dt, "Inputs/CountyData.rds")
 
-quick.test <- F
+quick.test <- T
 if (quick.test) {
   cat("\n\n++++++++++++++++++  quick.test = T +++++++++++++++++ \n\n")
   county.set <- c("Santa Clara")
