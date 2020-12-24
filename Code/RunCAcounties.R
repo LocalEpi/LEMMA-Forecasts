@@ -53,6 +53,10 @@ RunOneCounty <- function(county1, git.pw, quick.test) {
     county.dt <- readRDS("Inputs/CountyData.rds")
     county.pop <- data.table::fread("Inputs/county population.csv")
     county.dt1 <- county.dt[county == county1, -1]
+    if (county1 == "Santa Clara") {
+      county.dt1 <- readRDS("Inputs/scc.RDS")
+    }
+
     county.pop1 <- county.pop[county == county1, population]
 
     restart.set <- c("Tehama", "Mono", "Yolo", "Yuba", "Mendocino", "Nevada", "El Dorado",
@@ -101,10 +105,6 @@ RunOneCounty <- function(county1, git.pw, quick.test) {
     input.file <- "Inputs/CAcounties.xlsx"
     sheets <- LEMMA:::ReadInputs(input.file)
     sheets$`Model Inputs`[internal.name == "total.population", value := county.pop1]
-
-    if (county1 == "Santa Clara") {
-      county.dt1 <- readRDS("Inputs/scc.RDS")
-    }
 
     county.dt1[, deaths.pui := NA_integer_]
     county.dt1[, cum.admits.conf := NA_integer_]
