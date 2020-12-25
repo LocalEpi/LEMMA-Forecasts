@@ -38,3 +38,6 @@
 2020-12-25 22:02:53	[Thread 1]	INFO			county = Nevada
 2020-12-25 22:08:47	[Thread 23]	INFO			county = Tehama
 2020-12-25 22:09:15	[Thread 6]	INFO			county = Shasta
+2020-12-25 23:05:47	[Thread 23]	WARN	rstan	throw_sampler_warnings	There were 2 divergent transitions after warmup. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup to find out why this is a problem and how to eliminate them.
+2020-12-25 23:05:47	[Thread 23]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
+2020-12-25 23:24:58	[Thread 23]	INFO			county = Butte
