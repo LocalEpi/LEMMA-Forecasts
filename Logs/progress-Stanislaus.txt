@@ -462,3 +462,14 @@ Chain 4:  Elapsed Time: 3218.73 seconds (Warm-up)
 Chain 4:                10257.4 seconds (Sampling)
 Chain 4:                13476.1 seconds (Total)
 Chain 4: 
+     user    system   elapsed 
+49677.107     1.569 13496.186 
+Projecting
+   user  system elapsed 
+431.670   1.383 433.065 
+
+Excel output:  Forecasts/Stanislaus.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+1.09 1.11 1.15 1.19 1.23 1.27 1.29 
+
+PDF output:  Forecasts/Stanislaus.pdf 
