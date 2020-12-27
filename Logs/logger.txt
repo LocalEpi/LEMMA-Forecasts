@@ -92,3 +92,6 @@
 2020-12-27 00:47:49	[Thread 4]	INFO			county = Monterey
 2020-12-27 00:55:00	[Thread 7]	INFO			county = San Diego
 2020-12-27 00:56:53	[Thread 6]	INFO			county = Tulare
+2020-12-27 01:01:00	[Thread 18]	WARN	rstan	throw_sampler_warnings	There were 2 divergent transitions after warmup. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup to find out why this is a problem and how to eliminate them.
+2020-12-27 01:01:00	[Thread 18]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
+2020-12-27 01:08:04	[Thread 2]	INFO			county = Sacramento
