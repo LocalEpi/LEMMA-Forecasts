@@ -9,10 +9,12 @@ exclude.set <- c("San Francisco") #SF is run separately
 county.dt <- GetCountyData(exclude.set)
 saveRDS(county.dt, "Inputs/CountyData.rds")
 
-quick.test <- F
+quick.test <- T
 if (quick.test) {
   cat("\n\n++++++++++++++++++  quick.test = T +++++++++++++++++ \n\n")
-  county.set <- c("Santa Clara")
+  county.set <- c("Yolo", "Shasta", "Tehama", "Madera", "Nevada", "Butte", "Calaveras", 
+                 "Mendocino", "Tuolumne", "Humboldt", "Siskiyou", "El Dorado", 
+                 "Amador", "San Benito", "Inyo")
 } else {
   #order by last Rt date in forecasts and then last run time
   max.date <- county.dt[, max(date)]
