@@ -462,3 +462,14 @@ Chain 3:  Elapsed Time: 1811.11 seconds (Warm-up)
 Chain 3:                2624.24 seconds (Sampling)
 Chain 3:                4435.35 seconds (Total)
 Chain 3: 
+     user    system   elapsed 
+15745.869    30.369  4455.117 
+Projecting
+   user  system elapsed 
+399.511   1.551 401.138 
+
+Excel output:  Forecasts/Santa Cruz.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.99 1.03 1.09 1.14 1.20 1.26 1.31 
+
+PDF output:  Forecasts/Santa Cruz.pdf 
