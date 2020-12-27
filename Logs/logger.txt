@@ -59,3 +59,7 @@
 2020-12-27 23:49:23	[Thread 23]	INFO			county = San Mateo
 2020-12-27 23:49:33	[Thread 12]	INFO			county = Orange
 2020-12-27 23:54:20	[Thread 13]	INFO			county = Merced
+2020-12-27 23:55:14	[Thread 18]	WARN	rstan	throw_sampler_warnings	There were 2 divergent transitions after warmup. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup to find out why this is a problem and how to eliminate them.
+2020-12-27 23:55:14	[Thread 18]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
+2020-12-27 23:55:46	[Thread 18]	WARN	rstan	throw_sampler_warnings	Tail Effective Samples Size (ESS) is too low, indicating posterior variances and tail quantiles may be unreliable. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#tail-ess
+2020-12-27 23:56:53	[Thread 17]	INFO			county = Stanislaus
