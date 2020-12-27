@@ -665,3 +665,27 @@ Chain 4:
      user    system   elapsed 
 57694.506     2.258 22402.108 
 Projecting
+   user  system elapsed 
+332.737   1.068 333.817 
+
+Excel output:  Forecasts/Yuba.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.89 0.91 0.95 0.99 1.03 1.07 1.14 
+
+PDF output:  Forecasts/Yuba.pdf 
+   user  system elapsed 
+333.619   2.075 335.706 
+
+Excel output:  Scenarios/Yuba_scenario_actToday.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.89 0.91 0.95 0.99 1.03 1.07 1.14 
+
+PDF output:  Scenarios/Yuba_scenario_actToday.pdf 
+   user  system elapsed 
+332.810   1.671 334.495 
+
+Excel output:  Scenarios/Yuba_scenario_actTwoWeeks.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.89 0.91 0.95 0.99 1.03 1.07 1.14 
+
+PDF output:  Scenarios/Yuba_scenario_actTwoWeeks.pdf 
