@@ -454,3 +454,22 @@ Chain 4:
 Chain 1: Iteration: 950 / 1000 [ 95%]  (Sampling)
 Chain 1: Iteration: 960 / 1000 [ 96%]  (Sampling)
 Chain 1: Iteration: 970 / 1000 [ 97%]  (Sampling)
+Chain 1: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 1: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 1: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 1: 
+Chain 1:  Elapsed Time: 4949.57 seconds (Warm-up)
+Chain 1:                10159.6 seconds (Sampling)
+Chain 1:                15109.2 seconds (Total)
+Chain 1: 
+     user    system   elapsed 
+54580.272    20.498 15128.613 
+Projecting
+   user  system elapsed 
+420.141   1.248 421.461 
+
+Excel output:  Forecasts/Placer.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.89 0.92 0.96 1.01 1.05 1.08 1.10 
+
+PDF output:  Forecasts/Placer.pdf 
