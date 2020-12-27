@@ -1,4 +1,4 @@
-GetCountyData <- function(exclude.set) {
+GetCountyData <- function(exclude.set = NULL) {
   dt <- fread("https://data.ca.gov/dataset/529ac907-6ba1-4cb7-9aae-8966fc96aeef/resource/42d33765-20fd-44b8-a978-b083b7542225/download/hospitals_by_county.csv")
   #dt <- dt[todays_date != "", .(county, date = as.Date(todays_date), hosp.conf = hospitalized_covid_confirmed_patients, hosp.pui = hospitalized_suspected_covid_patients, icu.conf = icu_covid_confirmed_patients, icu.pui = icu_suspected_covid_patients)]
   dt <- dt[, .(county, date = as.Date(todays_date), hosp.conf = hospitalized_covid_confirmed_patients, hosp.pui = hospitalized_suspected_covid_patients, icu.conf = icu_covid_confirmed_patients, icu.pui = icu_suspected_covid_patients)]
@@ -112,6 +112,16 @@ GetCountyData <- function(exclude.set) {
     }
   }
   return(county.dt)
+}
+
+GetSantaClaraData <- function() {
+  sc.deaths <- fread("https://data.sccgov.org/api/views/tg4j-23y2/rows.csv?accessType=DOWNLOAD")
+  sc.deaths[, date := as.Date(Date)]
+  sc.hosp <- fread("https://data.sccgov.org/api/views/5xkz-6esm/rows.csv?accessType=DOWNLOAD")
+  sc.hosp <- sc.hosp[, .(date = as.Date(Date), icu_covid, icu_pui, non_icu_covid, non_icu_pui)]
+  sc <- merge(sc.deaths[, .(Cumulative, date)], sc.hosp, all = T, by = "date")
+  sc <- sc[date >= as.Date("2020/3/27"), .(date, hosp.conf = icu_covid + non_icu_covid, hosp.pui = icu_pui + non_icu_pui, icu.conf = icu_covid, icu.pui = icu_pui, deaths.conf = Cumulative)]
+  return(sc)
 }
 
 GetRunTime <- function(county1) {

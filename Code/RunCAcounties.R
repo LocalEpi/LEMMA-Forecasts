@@ -12,8 +12,8 @@ saveRDS(county.dt, "Inputs/CountyData.rds")
 quick.test <- T
 if (quick.test) {
   cat("\n\n++++++++++++++++++  quick.test = T +++++++++++++++++ \n\n")
-  county.set <- c("Yolo", "Shasta", "Tehama", "Madera", "Nevada", "Butte", "Calaveras", 
-                 "Mendocino", "Tuolumne", "Humboldt", "Siskiyou", "El Dorado", 
+  county.set <- c("Yolo", "Shasta", "Tehama", "Madera", "Nevada", "Butte", "Calaveras",
+                 "Mendocino", "Tuolumne", "Humboldt", "Siskiyou", "El Dorado",
                  "Amador", "San Benito", "Inyo")
 } else {
   #order by last Rt date in forecasts and then last run time
@@ -56,7 +56,7 @@ RunOneCounty <- function(county1, git.pw, quick.test) {
     county.pop <- data.table::fread("Inputs/county population.csv")
     county.dt1 <- county.dt[county == county1, -1]
     if (county1 == "Santa Clara") {
-      county.dt1 <- readRDS("Inputs/scc.RDS")
+      county.dt1 <- GetSantaClaraData()
     }
 
     county.pop1 <- county.pop[county == county1, population]
