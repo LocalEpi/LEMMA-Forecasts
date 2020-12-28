@@ -121,6 +121,8 @@ GetSantaClaraData <- function() {
   sc.hosp <- sc.hosp[, .(date = as.Date(Date), icu_covid, icu_pui, non_icu_covid, non_icu_pui)]
   sc <- merge(sc.deaths[, .(Cumulative, date)], sc.hosp, all = T, by = "date")
   sc <- sc[date >= as.Date("2020/3/27"), .(county = "Santq Clara", date, hosp.conf = icu_covid + non_icu_covid, hosp.pui = icu_pui + non_icu_pui, icu.conf = icu_covid, icu.pui = icu_pui, deaths.conf = Cumulative)]
+  sc[date == as.Date("2021/12/27"), date := as.Date("2020/12/27")]
+  stopifnot(all(sc$date) <= Sys.Date())
   return(sc)
 }
 
