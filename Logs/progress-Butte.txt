@@ -435,3 +435,57 @@ Chain 4: Iteration: 890 / 1000 [ 89%]  (Sampling)
 Chain 2: Iteration: 920 / 1000 [ 92%]  (Sampling)
 Chain 4: Iteration: 900 / 1000 [ 90%]  (Sampling)
 Chain 2: Iteration: 930 / 1000 [ 93%]  (Sampling)
+Chain 4: Iteration: 910 / 1000 [ 91%]  (Sampling)
+Chain 2: Iteration: 940 / 1000 [ 94%]  (Sampling)
+Chain 4: Iteration: 920 / 1000 [ 92%]  (Sampling)
+Chain 2: Iteration: 950 / 1000 [ 95%]  (Sampling)
+Chain 4: Iteration: 930 / 1000 [ 93%]  (Sampling)
+Chain 2: Iteration: 960 / 1000 [ 96%]  (Sampling)
+Chain 4: Iteration: 940 / 1000 [ 94%]  (Sampling)
+Chain 2: Iteration: 970 / 1000 [ 97%]  (Sampling)
+Chain 4: Iteration: 950 / 1000 [ 95%]  (Sampling)
+Chain 2: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 4: Iteration: 960 / 1000 [ 96%]  (Sampling)
+Chain 2: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 4: Iteration: 970 / 1000 [ 97%]  (Sampling)
+Chain 2: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 2: 
+Chain 2:  Elapsed Time: 618.952 seconds (Warm-up)
+Chain 2:                11198 seconds (Sampling)
+Chain 2:                11817 seconds (Total)
+Chain 2: 
+Chain 4: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 4: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 4: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 4: 
+Chain 4:  Elapsed Time: 5.17542 seconds (Warm-up)
+Chain 4:                12425.6 seconds (Sampling)
+Chain 4:                12430.8 seconds (Total)
+Chain 4: 
+     user    system   elapsed 
+30537.723    92.769 12445.502 
+Projecting
+   user  system elapsed 
+234.648   1.111 235.768 
+
+Excel output:  Forecasts/Butte.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+1.06 1.09 1.13 1.18 1.23 1.27 1.30 
+
+PDF output:  Forecasts/Butte.pdf 
+   user  system elapsed 
+232.749   0.911 233.668 
+
+Excel output:  Scenarios/Butte_scenario_actToday.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+1.06 1.09 1.13 1.18 1.23 1.27 1.30 
+
+PDF output:  Scenarios/Butte_scenario_actToday.pdf 
+   user  system elapsed 
+233.907   1.095 235.011 
+
+Excel output:  Scenarios/Butte_scenario_actTwoWeeks.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+1.06 1.09 1.13 1.18 1.23 1.27 1.30 
+
+PDF output:  Scenarios/Butte_scenario_actTwoWeeks.pdf 
