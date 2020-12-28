@@ -462,3 +462,30 @@ Chain 4:  Elapsed Time: 962.352 seconds (Warm-up)
 Chain 4:                9400.96 seconds (Sampling)
 Chain 4:                10363.3 seconds (Total)
 Chain 4: 
+     user    system   elapsed 
+16986.696    42.721 10380.671 
+Projecting
+   user  system elapsed 
+218.125   1.400 219.534 
+
+Excel output:  Forecasts/Tuolumne.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.66 0.71 0.77 0.83 0.90 0.95 0.98 
+
+PDF output:  Forecasts/Tuolumne.pdf 
+   user  system elapsed 
+219.891   1.100 221.000 
+
+Excel output:  Scenarios/Tuolumne_scenario_actToday.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.66 0.71 0.77 0.83 0.90 0.95 0.98 
+
+PDF output:  Scenarios/Tuolumne_scenario_actToday.pdf 
+   user  system elapsed 
+220.825   1.068 221.903 
+
+Excel output:  Scenarios/Tuolumne_scenario_actTwoWeeks.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.66 0.71 0.77 0.83 0.90 0.95 0.98 
+
+PDF output:  Scenarios/Tuolumne_scenario_actTwoWeeks.pdf 
