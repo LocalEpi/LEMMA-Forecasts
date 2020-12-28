@@ -12,9 +12,7 @@ saveRDS(county.dt, "Inputs/CountyData.rds")
 quick.test <- F
 if (quick.test) {
   cat("\n\n++++++++++++++++++  quick.test = T +++++++++++++++++ \n\n")
-  county.set <- c("Yolo", "Shasta", "Tehama", "Madera", "Nevada", "Butte", "Calaveras",
-                 "Mendocino", "Tuolumne", "Humboldt", "Siskiyou", "El Dorado",
-                 "Amador", "San Benito", "Inyo")
+  county.set <- c("Yolo")
 } else {
   #order by last Rt date in forecasts and then last run time
   max.date <- county.dt[, max(date)]
