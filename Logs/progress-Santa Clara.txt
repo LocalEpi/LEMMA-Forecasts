@@ -2,3 +2,36 @@ county =  Santa Clara
 start time =  2020-12-28 10:52:39 
 max date =  2020-12-28 
 -/                                                                                                          -/                                                                                                          -/                                                                                                          -/                                                                                                          -/                                                                                                          -/                                                                                                          Fitting to observed data
+     user    system   elapsed 
+   61.975    59.018 17000.912 
+Projecting
+   user  system elapsed 
+ 24.706   0.765  25.496 
+
+Excel output:  Forecasts/Santa Clara.xlsx 
+NULL
+NULL
+  5%  10%  25%  50%  75%  90%  95% 
+1.06 1.09 1.13 1.17 1.22 1.26 1.29 
+
+PDF output:  Forecasts/Santa Clara.pdf 
+   user  system elapsed 
+ 26.103   0.646  26.708 
+
+Excel output:  Scenarios/Santa Clara_scenario_actToday.xlsx 
+NULL
+NULL
+  5%  10%  25%  50%  75%  90%  95% 
+1.06 1.09 1.13 1.17 1.22 1.26 1.29 
+
+PDF output:  Scenarios/Santa Clara_scenario_actToday.pdf 
+   user  system elapsed 
+ 22.901   0.359  23.277 
+
+Excel output:  Scenarios/Santa Clara_scenario_actTwoWeeks.xlsx 
+NULL
+NULL
+  5%  10%  25%  50%  75%  90%  95% 
+1.06 1.09 1.13 1.17 1.22 1.26 1.29 
+
+PDF output:  Scenarios/Santa Clara_scenario_actTwoWeeks.pdf 
