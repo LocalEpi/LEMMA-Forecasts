@@ -9,14 +9,13 @@ exclude.set <- c("San Francisco", "Santa Clara") #SF is run separately, SC uses 
 county.dt <- rbind(GetCountyData(exclude.set), GetSantaClaraData())
 saveRDS(county.dt, "Inputs/CountyData.rds")
 
-quick.test <- T
+quick.test <- F
 if (quick.test) {
   cat("\n\n++++++++++++++++++  quick.test = T +++++++++++++++++ \n\n")
   county.set <- c("Santa Clara")
 } else {
   #order by last Rt date in forecasts and then last run time
-  max.date <- county.dt[, max(date)]
-  dt.max <- county.dt[date == max.date, ]
+  dt.max <- county.dt[date == max(date), .SD, by = "county"]
   stopifnot(setequal(dt.max$county, unique(county.dt$county)))
   for (i in unique(county.dt$county)) {
     filestr <- paste0("Forecasts/", i, ".xlsx")
