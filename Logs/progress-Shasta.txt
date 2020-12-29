@@ -456,3 +456,20 @@ Chain 2: Iteration: 960 / 1000 [ 96%]  (Sampling)
 Chain 2: Iteration: 970 / 1000 [ 97%]  (Sampling)
 Chain 2: Iteration: 980 / 1000 [ 98%]  (Sampling)
 Chain 2: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 2: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 2: 
+Chain 2:  Elapsed Time: 4.86173 seconds (Warm-up)
+Chain 2:                7181.05 seconds (Sampling)
+Chain 2:                7185.91 seconds (Total)
+Chain 2: 
+     user    system   elapsed 
+13228.956    32.838  7204.700 
+Projecting
+   user  system elapsed 
+206.985   1.187 208.175 
+
+Excel output:  Forecasts/Shasta.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.75 0.81 0.87 0.92 0.97 1.01 1.02 
+
+PDF output:  Forecasts/Shasta.pdf 
