@@ -4,9 +4,9 @@ library(ParallelLogger)
 source('Code/GetCountyData.R')
 
 git.pw <- readline("Enter github password: ")
-exclude.set <- c("San Francisco") #SF is run separately
+exclude.set <- c("San Francisco", "Santa Clara") #SF is run separately, SC uses local data
 
-county.dt <- GetCountyData(exclude.set)
+county.dt <- rbind(GetCountyData(exclude.set), GetSantaClaraData())
 saveRDS(county.dt, "Inputs/CountyData.rds")
 
 quick.test <- F
@@ -53,9 +53,6 @@ RunOneCounty <- function(county1, git.pw, quick.test) {
     county.dt <- readRDS("Inputs/CountyData.rds")
     county.pop <- data.table::fread("Inputs/county population.csv")
     county.dt1 <- county.dt[county == county1, -1]
-    if (county1 == "Santa Clara") {
-      county.dt1 <- GetSantaClaraData()
-    }
 
     county.pop1 <- county.pop[county == county1, population]
 
