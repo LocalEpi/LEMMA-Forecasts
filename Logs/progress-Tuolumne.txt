@@ -455,3 +455,31 @@ Chain 3:  Elapsed Time: 8.52965 seconds (Warm-up)
 Chain 3:                9486.71 seconds (Sampling)
 Chain 3:                9495.24 seconds (Total)
 Chain 3: 
+Chain 1: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 1: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 1: 
+Chain 1:  Elapsed Time: 486.452 seconds (Warm-up)
+Chain 1:                9240.29 seconds (Sampling)
+Chain 1:                9726.74 seconds (Total)
+Chain 1: 
+     user    system   elapsed 
+25124.016    89.131  9746.161 
+Projecting
+   user  system elapsed 
+226.952   1.244 228.202 
+
+Excel output:  Forecasts/Tuolumne.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.70 0.75 0.81 0.88 0.94 0.99 1.03 
+
+PDF output:  Forecasts/Tuolumne.pdf 
+   user  system elapsed 
+229.713   1.156 230.876 
+
+Excel output:  Scenarios/Tuolumne_scenario_actToday.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.70 0.75 0.81 0.88 0.94 0.99 1.03 
+
+PDF output:  Scenarios/Tuolumne_scenario_actToday.pdf 
+   user  system elapsed 
+232.276   1.207 233.493 
