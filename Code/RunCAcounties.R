@@ -58,7 +58,7 @@ RunOneCounty <- function(county1, git.pw, quick.test) {
     restart.set <- c("Tehama", "Mono", "Yolo", "Yuba", "Mendocino", "Nevada", "El Dorado",
                      "Tuolumne", "Amador", "Inyo", "Calaveras",
                      "Madera", "Humboldt", "Siskiyou", "Butte", "San Benito",
-                     "Merced", "Colusa", "Glenn", "Mono", "Plumas", "Shasta") #infections went to near zero - restart sim
+                     "Merced", "Colusa", "Glenn", "Mono", "Plumas", "Shasta", "Tehama") #infections went to near zero - restart sim
     if (county1 %in% restart.set) {
       if (county1 == "San Benito") {
         restart.date <- as.Date("2020/11/03")
@@ -88,6 +88,8 @@ RunOneCounty <- function(county1, git.pw, quick.test) {
         restart.date <- as.Date("2020/11/19")
       } else if (county1 == "Shasta") {
         restart.date <- as.Date("2020/6/17")
+      } else if (county1 == "Tehama") {
+        restart.date <- as.Date("2020/9/1")
       } else {
         restart.date <- as.Date("2020/6/1")
       }
