@@ -6,7 +6,21 @@ source('Code/GetCountyData.R')
 git.pw <- readline("Enter github password: ")
 exclude.set <- c("San Francisco", "Santa Clara") #SF is run separately, SC uses local data
 
-county.dt <- rbind(GetCountyData(exclude.set), GetSantaClaraData())
+county.dt <- readRDS("Inputs/CountyData.rds")
+sc.dt <- GetSantaClaraData()
+while (T) {
+  county.dt2 <- GetCountyData(exclude.set)
+  prev.max.date <- county.dt[county == "San Mateo", max(date)]
+  curr.max.date <- county.dt2[county == "San Mateo", max(date)]
+  cat("prev.max.date =", as.character(prev.max.date), "curr.max.date =", as.character(curr.max.date), "\n")
+  if (curr.max.date > prev.max.date) {
+    break
+  }
+  cat("waiting one minute\n")
+  Sys.sleep(60)
+}
+
+county.dt <- rbind(county.dt2, sc.dt)
 saveRDS(county.dt, "Inputs/CountyData.rds")
 
 quick.test <- F
