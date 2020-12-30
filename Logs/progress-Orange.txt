@@ -456,3 +456,28 @@ Chain 2: Iteration: 960 / 1000 [ 96%]  (Sampling)
 Chain 2: Iteration: 970 / 1000 [ 97%]  (Sampling)
 Chain 2: Iteration: 980 / 1000 [ 98%]  (Sampling)
 Chain 2: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 2: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 2: 
+Chain 2:  Elapsed Time: 6360.64 seconds (Warm-up)
+Chain 2:                6174.45 seconds (Sampling)
+Chain 2:                12535.1 seconds (Total)
+Chain 2: 
+     user    system   elapsed 
+45791.904     2.586 12555.925 
+Projecting
+   user  system elapsed 
+432.056   2.037 434.108 
+
+Excel output:  Forecasts/Orange.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+1.15 1.18 1.21 1.25 1.30 1.34 1.37 
+
+PDF output:  Forecasts/Orange.pdf 
+   user  system elapsed 
+413.319   2.019 415.350 
+
+Excel output:  Scenarios/Orange_scenario_actToday.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+1.15 1.18 1.21 1.25 1.30 1.34 1.37 
+
+PDF output:  Scenarios/Orange_scenario_actToday.pdf 
