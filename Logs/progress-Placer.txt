@@ -443,3 +443,33 @@ Chain 1: Iteration: 930 / 1000 [ 93%]  (Sampling)
 Chain 1: Iteration: 940 / 1000 [ 94%]  (Sampling)
 Chain 3: Iteration: 960 / 1000 [ 96%]  (Sampling)
 Chain 1: Iteration: 950 / 1000 [ 95%]  (Sampling)
+Chain 3: Iteration: 970 / 1000 [ 97%]  (Sampling)
+Chain 1: Iteration: 960 / 1000 [ 96%]  (Sampling)
+Chain 3: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 1: Iteration: 970 / 1000 [ 97%]  (Sampling)
+Chain 3: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 1: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 3: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 3: 
+Chain 3:  Elapsed Time: 9634.47 seconds (Warm-up)
+Chain 3:                7318.67 seconds (Sampling)
+Chain 3:                16953.1 seconds (Total)
+Chain 3: 
+Chain 1: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 1: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 1: 
+Chain 1:  Elapsed Time: 10805.2 seconds (Warm-up)
+Chain 1:                6302.22 seconds (Sampling)
+Chain 1:                17107.4 seconds (Total)
+Chain 1: 
+     user    system   elapsed 
+60898.082     2.597 17142.797 
+Projecting
+   user  system elapsed 
+499.498   2.862 502.376 
+
+Excel output:  Forecasts/Placer.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.91 0.93 0.97 1.01 1.05 1.08 1.10 
+
+PDF output:  Forecasts/Placer.pdf 
