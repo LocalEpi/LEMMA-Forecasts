@@ -1,4 +1,4 @@
-GetCountyData <- function(exclude.set = NULL) {
+GetCountyData <- function(exclude.set = NULL, include.regions = TRUE) {
   dt <- fread("https://data.ca.gov/dataset/529ac907-6ba1-4cb7-9aae-8966fc96aeef/resource/42d33765-20fd-44b8-a978-b083b7542225/download/hospitals_by_county.csv")
   #dt <- dt[todays_date != "", .(county, date = as.Date(todays_date), hosp.conf = hospitalized_covid_confirmed_patients, hosp.pui = hospitalized_suspected_covid_patients, icu.conf = icu_covid_confirmed_patients, icu.pui = icu_suspected_covid_patients)]
   dt <- dt[, .(county, date = as.Date(todays_date), hosp.conf = hospitalized_covid_confirmed_patients, hosp.pui = hospitalized_suspected_covid_patients, icu.conf = icu_covid_confirmed_patients, icu.pui = icu_suspected_covid_patients)]
@@ -112,6 +112,31 @@ GetCountyData <- function(exclude.set = NULL) {
       cat("county.dt[county == '", county1, "' & date == '", as.character(d), "', deaths.conf := NA_real_]\n", sep = "")
     }
   }
+
+  county.pop <- data.table::fread("Inputs/county population.csv")
+  county.dt <- merge(county.dt, county.pop, by = "county")
+  county.dt[, is.region := F]
+
+  if (include.regions) {
+    regions <- list(BayArea = c("Alameda", "Contra Costa", "Marin", "Monterey", "Napa", "San Francisco", "San Mateo", "Santa Clara", "Santa Cruz", "Solano", "Sonoma"),
+                    GreaterSacramento = c("Alpine", "Amador", "Butte", "Colusa", "El Dorado", "Nevada",
+                             "Placer", "Plumas", "Sacramento", "Sierra", "Sutter", "Yolo",
+                             "Yuba"),
+                    SanJoaquinValley = c("Calaveras", "Fresno", "Kern", "Kings", "Madera", "Mariposa",
+                            "Merced", "San Benito", "San Joaquin", "Stanislaus", "Tulare",
+                            "Tuolumne"),
+                    SouthernCalifornia = c("Imperial", "Inyo", "Los Angeles", "Mono", "Orange", "Riverside",
+                              "San Bernardino", "San Diego", "San Luis Obispo", "Santa Barbara",
+                              "Ventura"))
+
+    for (reg in names(regions)) {
+      region.dt <- county.dt[county %in% regions[[reg]], lapply(.SD, sum), by = "date", .SDcols = -c("county", "is.region")]
+      region.dt[, county := reg]
+      region.dt[, is.region := T]
+      county.dt <- rbind(county.dt, region.dt)
+    }
+  }
+
   return(county.dt)
 }
 
@@ -125,6 +150,9 @@ GetSantaClaraData <- function() {
   sc[date == as.Date("2021/12/27"), date := as.Date("2020/12/27")]
   sc[date == as.Date("2021/12/28"), date := as.Date("2020/12/28")]
   stopifnot(all(sc$date <= Sys.Date()))
+  sc[, is.region := F]
+  pop <- data.table::fread("Inputs/county population.csv")[county == "Santa Clara", population]
+  sc[, population := pop]
   return(sc)
 }
 
@@ -164,3 +192,5 @@ IsBad <- function(w) {
   }
   return(T)
 }
+
+

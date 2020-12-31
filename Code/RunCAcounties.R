@@ -6,21 +6,22 @@ source('Code/GetCountyData.R')
 git.pw <- readline("Enter github password: ")
 exclude.set <- c("San Francisco", "Santa Clara") #SF is run separately, SC uses local data
 
-county.dt <- readRDS("Inputs/CountyData.rds")
+prev.county.dt <- readRDS("Inputs/CountyData.rds")
 sc.dt <- GetSantaClaraData()
 while (T) {
-  county.dt2 <- GetCountyData(exclude.set)
-  prev.max.date <- county.dt[county == "San Mateo", max(date)]
-  curr.max.date <- county.dt2[county == "San Mateo", max(date)]
+  county.dt <- GetCountyData(exclude.set)
+  prev.max.date <- prev.county.dt[county == "San Mateo", max(date)] #San Mateo is arbitrary
+  curr.max.date <- county.dt[county == "San Mateo", max(date)]
   cat("prev.max.date =", as.character(prev.max.date), "curr.max.date =", as.character(curr.max.date), "\n")
   if (curr.max.date > prev.max.date) {
     break
   }
+  break #temp
   cat("waiting one minute\n")
   Sys.sleep(60)
 }
 
-county.dt <- rbind(county.dt2, sc.dt)
+county.dt <- rbind(county.dt, sc.dt)
 saveRDS(county.dt, "Inputs/CountyData.rds")
 
 quick.test <- F
@@ -29,7 +30,7 @@ if (quick.test) {
   county.set <- c("Santa Clara")
 } else {
   #order by last Rt date in forecasts and then last run time
-  dt.max <- county.dt[date == max(date), .SD, by = "county"]
+  dt.max <- merge(county.dt, county.dt[, .(date = max(date)), by = "county"], by = c("county", "date"))
   stopifnot(setequal(dt.max$county, unique(county.dt$county)))
   for (i in unique(county.dt$county)) {
     filestr <- paste0("Forecasts/", i, ".xlsx")
@@ -62,12 +63,18 @@ print(county.set)
 cat("Data through", as.character(county.dt[, max(date)]), "\n")
 
 RunOneCounty <- function(county1, git.pw, quick.test) {
+  library(data.table)
+  Get1 <- function(zz) {
+    stopifnot(uniqueN(zz) == 1)
+    zz[1]
+  }
+
   try.result <- try({
     county.dt <- readRDS("Inputs/CountyData.rds")
-    county.pop <- data.table::fread("Inputs/county population.csv")
     county.dt1 <- county.dt[county == county1, -1]
 
-    county.pop1 <- county.pop[county == county1, population]
+    county.pop1 <- county.dt[county == county1, Get1(population)]
+    is.region <- county.dt[county == county1, Get1(is.region)]
 
     restart.set <- c("Tehama", "Mono", "Yolo", "Yuba", "Mendocino", "Nevada", "El Dorado",
                      "Tuolumne", "Amador", "Inyo", "Calaveras",
@@ -145,19 +152,23 @@ RunOneCounty <- function(county1, git.pw, quick.test) {
     if (county1 %in% c("Yuba")) {
       inputs$internal.args$iter <- 1500
     }
-    # if (quick.test) {
-    #   inputs$internal.args$iter <- 300
-    # }
 
-    inputs$internal.args$output.filestr <- paste0("Forecasts/", county1)
+    inputs$internal.args$iter <- 100 #temp
+
+    if (is.region) {
+      dir <- "Regional/"
+    } else {
+      dir <- ""
+    }
+
+    inputs$internal.args$output.filestr <- paste0(dir, "Forecasts/", county1)
     mean.ini <- 1e-5 * county.pop1
     inputs$internal.args$lambda_ini_exposed <- 1 / mean.ini
 
     cred.int <- LEMMA:::CredibilityInterval(inputs)
 
-
     max.date <- max(cred.int$inputs$obs.data$date)
-    outfile <- paste0("Scenarios/", county1)
+    outfile <- paste0(dir, "Scenarios/", county1)
 
     ProjScen <- function(int.list) {
       int.date <- int.list$date
@@ -173,10 +184,12 @@ RunOneCounty <- function(county1, git.pw, quick.test) {
     ParallelLogger::logInfo("county = ", county1)
 
     commit.name <- paste0('"', county1, " data through ", as.character(max.date), '"')
-    system2("git", args = c('commit', '-a', '-m', commit.name))
-    system2("git", args = "pull")
-    git.dest <- paste0("https://joshuaschwab:", git.pw, "@github.com/LocalEpi/LEMMA-Forecasts")
-    system2("git", args = c("push", git.dest))
+
+    #temp
+    # system2("git", args = c('commit', '-a', '-m', commit.name))
+    # system2("git", args = "pull")
+    # git.dest <- paste0("https://joshuaschwab:", git.pw, "@github.com/LocalEpi/LEMMA-Forecasts")
+    # system2("git", args = c("push", git.dest))
   })
 
   if (inherits(try.result, "try-error")) {
