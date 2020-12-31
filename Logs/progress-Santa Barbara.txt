@@ -454,3 +454,30 @@ Chain 2:                6920.82 seconds (Total)
 Chain 2: 
 Chain 4: Iteration: 960 / 1000 [ 96%]  (Sampling)
 Chain 4: Iteration: 970 / 1000 [ 97%]  (Sampling)
+Chain 4: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 4: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 4: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 4: 
+Chain 4:  Elapsed Time: 4270.44 seconds (Warm-up)
+Chain 4:                2912.9 seconds (Sampling)
+Chain 4:                7183.35 seconds (Total)
+Chain 4: 
+     user    system   elapsed 
+25714.716    62.345  7203.312 
+Projecting
+   user  system elapsed 
+400.027   1.691 401.731 
+
+Excel output:  Forecasts/Santa Barbara.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+1.08 1.11 1.16 1.22 1.28 1.33 1.37 
+
+PDF output:  Forecasts/Santa Barbara.pdf 
+   user  system elapsed 
+402.622   1.903 404.531 
+
+Excel output:  Scenarios/Santa Barbara_scenario_actToday.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+1.08 1.11 1.16 1.22 1.28 1.33 1.37 
+
+PDF output:  Scenarios/Santa Barbara_scenario_actToday.pdf 
