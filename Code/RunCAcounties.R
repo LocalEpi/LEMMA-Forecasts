@@ -16,7 +16,7 @@ while (T) {
   if (curr.max.date > prev.max.date) {
     break
   }
-  break #temp
+  cat("override\n"); break #temp
   cat("waiting one minute\n")
   Sys.sleep(60)
 }
@@ -153,8 +153,6 @@ RunOneCounty <- function(county1, git.pw, quick.test) {
       inputs$internal.args$iter <- 1500
     }
 
-    inputs$internal.args$iter <- 100 #temp
-
     if (is.region) {
       dir <- "Regional/"
     } else {
@@ -185,11 +183,10 @@ RunOneCounty <- function(county1, git.pw, quick.test) {
 
     commit.name <- paste0('"', county1, " data through ", as.character(max.date), '"')
 
-    #temp
-    # system2("git", args = c('commit', '-a', '-m', commit.name))
-    # system2("git", args = "pull")
-    # git.dest <- paste0("https://joshuaschwab:", git.pw, "@github.com/LocalEpi/LEMMA-Forecasts")
-    # system2("git", args = c("push", git.dest))
+    system2("git", args = c('commit', '-a', '-m', commit.name))
+    system2("git", args = "pull")
+    git.dest <- paste0("https://joshuaschwab:", git.pw, "@github.com/LocalEpi/LEMMA-Forecasts")
+    system2("git", args = c("push", git.dest))
   })
 
   if (inherits(try.result, "try-error")) {
