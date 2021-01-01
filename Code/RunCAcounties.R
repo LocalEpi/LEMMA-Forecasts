@@ -16,7 +16,6 @@ while (T) {
   if (curr.max.date > prev.max.date) {
     break
   }
-  cat("override\n"); break #temp
   cat("waiting one minute\n")
   Sys.sleep(60)
 }
