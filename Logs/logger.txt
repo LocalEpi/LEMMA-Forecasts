@@ -165,3 +165,6 @@
 2021-01-01 05:50:25	[Thread 19]	WARN	rstan	throw_sampler_warnings	Bulk Effective Samples Size (ESS) is too low, indicating posterior means and medians may be unreliable. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#bulk-ess
 2021-01-01 05:50:42	[Thread 19]	WARN	rstan	throw_sampler_warnings	Tail Effective Samples Size (ESS) is too low, indicating posterior variances and tail quantiles may be unreliable. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#tail-ess
 2021-01-01 05:51:27	[Thread 17]	INFO			county = Los Angeles
+2021-01-01 05:51:36	[Thread 17]	FATAL			Error in unserialize(node$con) : error reading from connection Calls: local ... doTryCatch -> recvData -> recvData.SOCKnode -> unserialize 
+2021-01-01 05:51:36	[Thread 17]	TRACE			Thread 17 terminated
+2021-01-01 05:57:38	[Thread 6]	INFO			county = Butte
