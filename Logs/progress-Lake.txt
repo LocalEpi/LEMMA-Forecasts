@@ -456,15 +456,21 @@ Chain 1: Iteration: 960 / 1000 [ 96%]  (Sampling)
 Chain 1: Iteration: 970 / 1000 [ 97%]  (Sampling)
 Chain 1: Iteration: 980 / 1000 [ 98%]  (Sampling)
 Chain 1: Iteration: 990 / 1000 [ 99%]  (Sampling)
-)
 Chain 1: Iteration: 1000 / 1000 [100%]  (Sampling)
 Chain 1: 
-Chain 1:  Elapsed Time: 8193.3 seconds (Warm-up)
-Chain 1:                10891.5 seconds (Sampling)
-Chain 1:                19084.8 seconds (Total)
+Chain 1:  Elapsed Time: 8318.04 seconds (Warm-up)
+Chain 1:                11191.1 seconds (Sampling)
+Chain 1:                19509.1 seconds (Total)
 Chain 1: 
      user    system   elapsed 
-69350.596     5.387 29463.011 
+69440.214     4.203 29822.864 
 Projecting
+
    user  system elapsed 
 519.296   2.904 522.234 
+
+Excel output:  Forecasts/Lake.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+1.19 1.24 1.33 1.42 1.52 1.63 1.69 
+
+PDF output:  Forecasts/Lake.pdf 
