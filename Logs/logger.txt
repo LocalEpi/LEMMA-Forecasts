@@ -215,3 +215,25 @@
 2021-01-01 07:21:36	[Thread 21]	INFO			county = Sacramento
 2021-01-01 07:21:38	[Thread 16]	WARN	rstan	throw_sampler_warnings	Tail Effective Samples Size (ESS) is too low, indicating posterior variances and tail quantiles may be unreliable. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#tail-ess
 2021-01-01 07:22:37	[Thread 16]	INFO			county = Monterey
+2021-01-01 07:22:43	[Thread 16]	FATAL			Error in unserialize(node$con) : error reading from connection Calls: local ... doTryCatch -> recvData -> recvData.SOCKnode -> unserialize 
+2021-01-01 07:22:43	[Thread 16]	TRACE			Thread 16 terminated
+2021-01-01 07:22:44	[Thread 15]	FATAL			Error in unserialize(node$con) : error reading from connection Calls: local ... doTryCatch -> recvData -> recvData.SOCKnode -> unserialize 
+2021-01-01 07:22:44	[Thread 15]	TRACE			Thread 15 terminated
+2021-01-01 07:22:44	[Thread 14]	FATAL			Error in unserialize(node$con) : error reading from connection Calls: local ... doTryCatch -> recvData -> recvData.SOCKnode -> unserialize 
+2021-01-01 07:22:44	[Thread 14]	TRACE			Thread 14 terminated
+2021-01-01 07:22:45	[Thread 13]	FATAL			Error in unserialize(node$con) : error reading from connection Calls: local ... doTryCatch -> recvData -> recvData.SOCKnode -> unserialize 
+2021-01-01 07:22:45	[Thread 13]	TRACE			Thread 13 terminated
+2021-01-01 07:22:45	[Thread 12]	FATAL			Error in unserialize(node$con) : error reading from connection Calls: local ... doTryCatch -> recvData -> recvData.SOCKnode -> unserialize 
+2021-01-01 07:22:45	[Thread 12]	TRACE			Thread 12 terminated
+2021-01-01 07:22:46	[Thread 11]	FATAL			Error in unserialize(node$con) : error reading from connection Calls: local ... doTryCatch -> recvData -> recvData.SOCKnode -> unserialize 
+2021-01-01 07:22:46	[Thread 11]	TRACE			Thread 11 terminated
+2021-01-01 07:22:46	[Thread 10]	FATAL			Error in unserialize(node$con) : error reading from connection Calls: local ... doTryCatch -> recvData -> recvData.SOCKnode -> unserialize 
+2021-01-01 07:22:46	[Thread 10]	TRACE			Thread 10 terminated
+2021-01-01 07:22:53	[Thread 15]	WARN	rstan	throw_sampler_warnings	There were 2 divergent transitions after warmup. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup to find out why this is a problem and how to eliminate them.
+2021-01-01 07:22:53	[Thread 15]	WARN	rstan	throw_sampler_warnings	There were 475 transitions after warmup that exceeded the maximum treedepth. Increase max_treedepth above 15. See http://mc-stan.org/misc/warnings.html#maximum-treedepth-exceeded
+2021-01-01 07:22:53	[Thread 15]	WARN	rstan	throw_sampler_warnings	There were 1 chains where the estimated Bayesian Fraction of Missing Information was low. See http://mc-stan.org/misc/warnings.html#bfmi-low
+2021-01-01 07:22:53	[Thread 15]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
+2021-01-01 07:23:01	[Thread 15]	WARN	rstan	throw_sampler_warnings	The largest R-hat is 1.23, indicating chains have not mixed. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#r-hat
+2021-01-01 07:23:10	[Thread 15]	WARN	rstan	throw_sampler_warnings	Bulk Effective Samples Size (ESS) is too low, indicating posterior means and medians may be unreliable. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#bulk-ess
+2021-01-01 07:23:22	[Thread 15]	WARN	rstan	throw_sampler_warnings	Tail Effective Samples Size (ESS) is too low, indicating posterior variances and tail quantiles may be unreliable. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#tail-ess
+2021-01-01 07:24:05	[Thread 22]	INFO			county = Siskiyou
