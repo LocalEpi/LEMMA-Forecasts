@@ -465,9 +465,9 @@ Chain 1:
      user    system   elapsed 
 60184.404   307.279 26134.779 
 Projecting
-g
    user  system elapsed 
-561.685   4.282 565.986 
+541.338   3.672 545.053 
+ 
 
 Excel output:  Forecasts/Sonoma.xlsx 
   5%  10%  25%  50%  75%  90%  95% 
@@ -482,3 +482,11 @@ Excel output:  Scenarios/Sonoma_scenario_actToday.xlsx
 1.03 1.08 1.15 1.23 1.32 1.40 1.46 
 
 PDF output:  Scenarios/Sonoma_scenario_actToday.pdf 
+   user  system elapsed 
+526.056   3.176 529.305 
+
+Excel output:  Scenarios/Sonoma_scenario_actTwoWeeks.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+1.03 1.08 1.15 1.23 1.32 1.40 1.46 
+
+PDF output:  Scenarios/Sonoma_scenario_actTwoWeeks.pdf 

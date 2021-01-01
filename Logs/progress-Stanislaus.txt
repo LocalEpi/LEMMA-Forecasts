@@ -364,14 +364,14 @@ Chain 4: Iteration: 850 / 1000 [ 85%]  (Sampling)
 Chain 2: Iteration: 910 / 1000 [ 91%]  (Sampling)
 Chain 3: Iteration: 710 / 1000 [ 71%]  (Sampling)
 Chain 4: Iteration: 860 / 1000 [ 86%]  (Sampling)
-Chain 3: Iteration: 750 / 1000 [ 75%]  (Sampling)
-Chain 2: Iteration: 910 / 1000 [ 91%]  (Sampling)
-Chain 4: Iteration: 850 / 1000 [ 85%]  (Sampling)
-Chain 3: Iteration: 760 / 1000 [ 76%]  (Sampling)
 Chain 1: Iteration: 750 / 1000 [ 75%]  (Sampling)
 Chain 2: Iteration: 920 / 1000 [ 92%]  (Sampling)
-Chain 4: Iteration: 860 / 1000 [ 86%]  (Sampling)
-Chain 3: Iteration: 770 / 1000 [ 77%]  (Sampling)
+Chain 3: Iteration: 720 / 1000 [ 72%]  (Sampling)
+Chain 4: Iteration: 870 / 1000 [ 87%]  (Sampling)
+Chain 2: Iteration: 930 / 1000 [ 93%]  (Sampling)
+Chain 3: Iteration: 730 / 1000 [ 73%]  (Sampling)
+Chain 1: Iteration: 760 / 1000 [ 76%]  (Sampling)
+Chain 4: Iteration: 880 / 1000 [ 88%]  (Sampling)
 Chain 2: Iteration: 930 / 1000 [ 93%]  (Sampling)
 Chain 4: Iteration: 870 / 1000 [ 87%]  (Sampling)
 Chain 1: Iteration: 760 / 1000 [ 76%]  (Sampling)
@@ -465,3 +465,11 @@ Chain 1:
      user    system   elapsed 
 62742.315     2.677 27156.339 
 Projecting
+   user  system elapsed 
+506.427   3.224 509.708 
+
+Excel output:  Forecasts/Stanislaus.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.87 0.90 0.95 0.99 1.03 1.07 1.09 
+
+PDF output:  Forecasts/Stanislaus.pdf 
