@@ -456,3 +456,22 @@ Chain 1: Iteration: 960 / 1000 [ 96%]  (Sampling)
 Chain 1: Iteration: 970 / 1000 [ 97%]  (Sampling)
 Chain 1: Iteration: 980 / 1000 [ 98%]  (Sampling)
 Chain 1: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 1: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 1: 
+Chain 1:  Elapsed Time: 218.844 seconds (Warm-up)
+Chain 1:                14344.4 seconds (Sampling)
+Chain 1:                14563.2 seconds (Total)
+Chain 1: 
+     user    system   elapsed 
+25460.594    78.316 14582.940 
+Projecting
+   user  system elapsed 
+232.818   1.058 233.879 
+
+Excel output:  Forecasts/Tuolumne.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.82 0.84 0.90 0.95 1.00 1.06 1.10 
+
+PDF output:  Forecasts/Tuolumne.pdf 
+   user  system elapsed 
+230.683   1.010 231.697 
