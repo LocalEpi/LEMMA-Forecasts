@@ -340,10 +340,10 @@ Chain 1: Iteration: 760 / 1000 [ 76%]  (Sampling)
 Chain 3: Iteration: 760 / 1000 [ 76%]  (Sampling)
 Chain 2: Iteration: 720 / 1000 [ 72%]  (Sampling)
 Chain 4: Iteration: 740 / 1000 [ 74%]  (Sampling)
-ain 2: Iteration: 690 / 1000 [ 69%]  (Sampling)
-Chain 3: Iteration: 810 / 1000 [ 81%]  (Sampling)
-Chain 4: Iteration: 790 / 1000 [ 79%]  (Sampling)
-Chain 2: Iteration: 700 / 1000 [ 70%]  (Sampling)
+Chain 2: Iteration: 730 / 1000 [ 73%]  (Sampling)
+Chain 3: Iteration: 770 / 1000 [ 77%]  (Sampling)
+Chain 4: Iteration: 750 / 1000 [ 75%]  (Sampling)
+ain 2: Iteration: 700 / 1000 [ 70%]  (Sampling)
 Chain 1: Iteration: 730 / 1000 [ 73%]  (Sampling)
 Chain 3: Iteration: 820 / 1000 [ 82%]  (Sampling)
 Chain 4: Iteration: 800 / 1000 [ 80%]  (Sampling)
@@ -481,3 +481,11 @@ Excel output:  Scenarios/Tulare_scenario_actToday.xlsx
 1.07 1.11 1.16 1.21 1.26 1.30 1.33 
 
 PDF output:  Scenarios/Tulare_scenario_actToday.pdf 
+   user  system elapsed 
+481.622   2.121 483.754 
+
+Excel output:  Scenarios/Tulare_scenario_actTwoWeeks.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+1.07 1.11 1.16 1.21 1.26 1.30 1.33 
+
+PDF output:  Scenarios/Tulare_scenario_actTwoWeeks.pdf 
