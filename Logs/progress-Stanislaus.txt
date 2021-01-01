@@ -372,28 +372,28 @@ Chain 2: Iteration: 930 / 1000 [ 93%]  (Sampling)
 Chain 3: Iteration: 730 / 1000 [ 73%]  (Sampling)
 Chain 1: Iteration: 760 / 1000 [ 76%]  (Sampling)
 Chain 4: Iteration: 880 / 1000 [ 88%]  (Sampling)
-Chain 2: Iteration: 930 / 1000 [ 93%]  (Sampling)
-Chain 4: Iteration: 870 / 1000 [ 87%]  (Sampling)
-Chain 1: Iteration: 760 / 1000 [ 76%]  (Sampling)
-Chain 3: Iteration: 780 / 1000 [ 78%]  (Sampling)
 Chain 2: Iteration: 940 / 1000 [ 94%]  (Sampling)
-Chain 4: Iteration: 880 / 1000 [ 88%]  (Sampling)
-Chain 3: Iteration: 790 / 1000 [ 79%]  (Sampling)
-Chain 2: Iteration: 950 / 1000 [ 95%]  (Sampling)
+Chain 3: Iteration: 740 / 1000 [ 74%]  (Sampling)
 Chain 4: Iteration: 890 / 1000 [ 89%]  (Sampling)
+Chain 2: Iteration: 950 / 1000 [ 95%]  (Sampling)
+Chain 3: Iteration: 750 / 1000 [ 75%]  (Sampling)
 Chain 1: Iteration: 770 / 1000 [ 77%]  (Sampling)
-Chain 3: Iteration: 800 / 1000 [ 80%]  (Sampling)
-Chain 2: Iteration: 960 / 1000 [ 96%]  (Sampling)
 Chain 4: Iteration: 900 / 1000 [ 90%]  (Sampling)
-Chain 3: Iteration: 810 / 1000 [ 81%]  (Sampling)
-Chain 2: Iteration: 970 / 1000 [ 97%]  (Sampling)
-Chain 1: Iteration: 780 / 1000 [ 78%]  (Sampling)
+Chain 3: Iteration: 760 / 1000 [ 76%]  (Sampling)
+Chain 2: Iteration: 960 / 1000 [ 96%]  (Sampling)
+Chain 3: Iteration: 770 / 1000 [ 77%]  (Sampling)
 Chain 4: Iteration: 910 / 1000 [ 91%]  (Sampling)
-Chain 3: Iteration: 820 / 1000 [ 82%]  (Sampling)
-Chain 2: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 1: Iteration: 780 / 1000 [ 78%]  (Sampling)
+Chain 2: Iteration: 970 / 1000 [ 97%]  (Sampling)
+Chain 3: Iteration: 780 / 1000 [ 78%]  (Sampling)
+Chain 3: Iteration: 790 / 1000 [ 79%]  (Sampling)
 Chain 4: Iteration: 920 / 1000 [ 92%]  (Sampling)
-Chain 3: Iteration: 830 / 1000 [ 83%]  (Sampling)
+Chain 2: Iteration: 980 / 1000 [ 98%]  (Sampling)
 Chain 1: Iteration: 790 / 1000 [ 79%]  (Sampling)
+Chain 3: Iteration: 800 / 1000 [ 80%]  (Sampling)
+Chain 4: Iteration: 930 / 1000 [ 93%]  (Sampling)
+Chain 3: Iteration: 810 / 1000 [ 81%]  (Sampling)
+Chain 2: Iteration: 990 / 1000 [ 99%]  (Sampling)
 Chain 2: Iteration: 990 / 1000 [ 99%]  (Sampling)
 Chain 4: Iteration: 930 / 1000 [ 93%]  (Sampling)
 Chain 3: Iteration: 840 / 1000 [ 84%]  (Sampling)
@@ -473,3 +473,11 @@ Excel output:  Forecasts/Stanislaus.xlsx
 0.87 0.90 0.95 0.99 1.03 1.07 1.09 
 
 PDF output:  Forecasts/Stanislaus.pdf 
+   user  system elapsed 
+510.883   3.617 514.576 
+
+Excel output:  Scenarios/Stanislaus_scenario_actToday.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.87 0.90 0.95 0.99 1.03 1.07 1.09 
+
+PDF output:  Scenarios/Stanislaus_scenario_actToday.pdf 
