@@ -70,3 +70,9 @@
 2021-01-02 00:54:20	[Thread 19]	INFO			county = Fresno
 2021-01-02 00:58:07	[Thread 5]	INFO			county = SouthernCalifornia
 2021-01-02 01:01:56	[Thread 17]	INFO			county = Yuba
+2021-01-02 01:19:48	[Thread 7]	WARN	rstan	throw_sampler_warnings	There were 1206 transitions after warmup that exceeded the maximum treedepth. Increase max_treedepth above 15. See http://mc-stan.org/misc/warnings.html#maximum-treedepth-exceeded
+2021-01-02 01:19:48	[Thread 7]	WARN	rstan	throw_sampler_warnings	There were 3 chains where the estimated Bayesian Fraction of Missing Information was low. See http://mc-stan.org/misc/warnings.html#bfmi-low
+2021-01-02 01:19:48	[Thread 7]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
+2021-01-02 01:19:56	[Thread 7]	WARN	rstan	throw_sampler_warnings	The largest R-hat is 1.98, indicating chains have not mixed. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#r-hat
+2021-01-02 01:20:08	[Thread 7]	WARN	rstan	throw_sampler_warnings	Bulk Effective Samples Size (ESS) is too low, indicating posterior means and medians may be unreliable. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#bulk-ess
+2021-01-02 01:20:12	[Thread 18]	INFO			county = Lake
