@@ -25,7 +25,7 @@ while (T) {
 county.dt <- rbind(county.dt, sc.dt)
 saveRDS(county.dt, "Inputs/CountyData.rds")
 
-quick.test <- T
+quick.test <- F
 if (quick.test) {
   cat("\n\n++++++++++++++++++  quick.test = T +++++++++++++++++ \n\n")
   county.set <- c("GreaterSacramento", "SanJoaquinValley", "SouthernCalifornia")
