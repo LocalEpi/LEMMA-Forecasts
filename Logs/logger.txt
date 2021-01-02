@@ -37,3 +37,6 @@
 2021-01-02 22:30:14	[Thread 1]	INFO			county = El Dorado
 2021-01-02 22:44:25	[Thread 6]	INFO			county = Tehama
 2021-01-02 22:48:46	[Thread 22]	INFO			county = Humboldt
+2021-01-02 23:29:25	[Thread 20]	WARN	rstan	throw_sampler_warnings	There were 8 divergent transitions after warmup. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup to find out why this is a problem and how to eliminate them.
+2021-01-02 23:29:25	[Thread 20]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
+2021-01-02 23:48:49	[Thread 20]	INFO			county = Calaveras
