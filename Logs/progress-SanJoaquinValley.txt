@@ -1,0 +1,149 @@
+county =  SanJoaquinValley 
+start time =  2021-01-02 05:25:36 
+max date =  2021-01-01 
+Fitting to observed data
+
+SAMPLING FOR MODEL 'LEMMA' NOW (CHAIN 1).
+
+SAMPLING FOR MODEL 'LEMMA' NOW (CHAIN 3).
+
+SAMPLING FOR MODEL 'LEMMA' NOW (CHAIN 4).
+
+SAMPLING FOR MODEL 'LEMMA' NOW (CHAIN 2).
+Chain 1: 
+Chain 1: Gradient evaluation took 0.004175 seconds
+Chain 1: 1000 transitions using 10 leapfrog steps per transition would take 41.75 seconds.
+Chain 1: Adjust your expectations accordingly!
+Chain 1: 
+Chain 1: 
+Chain 1: WARNING: There aren't enough warmup iterations to fit the
+Chain 1:          three stages of adaptation as currently configured.
+Chain 1:          Reducing each adaptation stage to 15%/75%/10% of
+Chain 1:          the given number of warmup iterations:
+Chain 1:            init_buffer = 3
+Chain 1:            adapt_window = 20
+Chain 1:            term_buffer = 2
+Chain 1: 
+Chain 3: 
+Chain 3: Gradient evaluation took 0.003684 seconds
+Chain 3: 1000 transitions using 10 leapfrog steps per transition would take 36.84 seconds.
+Chain 3: Adjust your expectations accordingly!
+Chain 3: 
+Chain 3: 
+Chain 3: WARNING: There aren't enough warmup iterations to fit the
+Chain 3:          three stages of adaptation as currently configured.
+Chain 3:          Reducing each adaptation stage to 15%/75%/10% of
+Chain 3:          the given number of warmup iterations:
+Chain 3:            init_buffer = 3
+Chain 3:            adapt_window = 20
+Chain 3:            term_buffer = 2
+Chain 3: 
+Chain 2: 
+Chain 2: Gradient evaluation took 0.004009 seconds
+Chain 2: 1000 transitions using 10 leapfrog steps per transition would take 40.09 seconds.
+Chain 2: Adjust your expectations accordingly!
+Chain 2: 
+Chain 2: 
+Chain 2: WARNING: There aren't enough warmup iterations to fit the
+Chain 2:          three stages of adaptation as currently configured.
+Chain 2:          Reducing each adaptation stage to 15%/75%/10% of
+Chain 2:          the given number of warmup iterations:
+Chain Chain 42: : 
+           init_buffer = 3Chain 
+4Chain : 2Gradient evaluation took 0.004437 seconds: 
+           adapt_window = 20Chain 
+4: 1000 transitions using 10 leapfrog steps per transition would take 44.37 seconds.
+Chain 4: Adjust your expectations accordingly!
+Chain 4: 
+Chain 4: 
+Chain 2:            term_buffer = 2
+Chain 2: 
+Chain 4: WARNING: There aren't enough warmup iterations to fit the
+Chain 4:          three stages of adaptation as currently configured.
+Chain 4:          Reducing each adaptation stage to 15%/75%/10% of
+Chain 4:          the given number of warmup iterations:
+Chain 4:            init_buffer = 3
+Chain 4:            adapt_window = 20
+Chain 4:            term_buffer = 2
+Chain 4: 
+Chain 3: Iteration:  1 / 50 [  2%]  (Warmup)
+Chain 1: Iteration:  1 / 50 [  2%]  (Warmup)
+Chain 2: Iteration:  1 / 50 [  2%]  (Warmup)
+Chain 4: Iteration:  1 / 50 [  2%]  (Warmup)
+Chain 1: Iteration: 10 / 50 [ 20%]  (Warmup)
+Chain 4: Iteration: 10 / 50 [ 20%]  (Warmup)
+Chain 3: Iteration: 10 / 50 [ 20%]  (Warmup)
+Chain 2: Iteration: 10 / 50 [ 20%]  (Warmup)
+Chain 1: Iteration: 20 / 50 [ 40%]  (Warmup)
+Chain 4: Iteration: 20 / 50 [ 40%]  (Warmup)
+Chain 3: Iteration: 20 / 50 [ 40%]  (Warmup)
+Chain 3: Iteration: 26 / 50 [ 52%]  (Sampling)
+Chain 1: Iteration: 26 / 50 [ 52%]  (Sampling)
+Chain 2: Iteration: 20 / 50 [ 40%]  (Warmup)
+Chain 4: Iteration: 26 / 50 [ 52%]  (Sampling)
+Chain 1: Iteration: 35 / 50 [ 70%]  (Sampling)
+Chain 2: Iteration: 26 / 50 [ 52%]  (Sampling)
+Chain 4: Iteration: 35 / 50 [ 70%]  (Sampling)
+Chain 1: Iteration: 45 / 50 [ 90%]  (Sampling)
+Chain 1: Iteration: 50 / 50 [100%]  (Sampling)
+Chain 1: 
+Chain 1:  Elapsed Time: 0.447676 seconds (Warm-up)
+Chain 1:                0.587838 seconds (Sampling)
+Chain 1:                1.03551 seconds (Total)
+Chain 1: 
+Chain 2: Iteration: 35 / 50 [ 70%]  (Sampling)
+Chain 2: Iteration: 45 / 50 [ 90%]  (Sampling)
+Chain 2: Iteration: 50 / 50 [100%]  (Sampling)
+Chain 2: 
+Chain 2:  Elapsed Time: 0.785868 seconds (Warm-up)
+Chain 2:                0.744267 seconds (Sampling)
+Chain 2:                1.53014 seconds (Total)
+Chain 2: 
+Chain 4: Iteration: 45 / 50 [ 90%]  (Sampling)
+Chain 4: Iteration: 50 / 50 [100%]  (Sampling)
+Chain 4: 
+Chain 4:  Elapsed Time: 0.666726 seconds (Warm-up)
+Chain 4:                1.13605 seconds (Sampling)
+Chain 4:                1.80278 seconds (Total)
+Chain 4: 
+Chain 3: Iteration: 35 / 50 [ 70%]  (Sampling)
+Chain 3: Iteration: 45 / 50 [ 90%]  (Sampling)
+Chain 3: Iteration: 50 / 50 [100%]  (Sampling)
+Chain 3: 
+Chain 3:  Elapsed Time: 0.393873 seconds (Warm-up)
+Chain 3:                2.03449 seconds (Sampling)
+Chain 3:                2.42836 seconds (Total)
+Chain 3: 
+   user  system elapsed 
+ 14.580   0.553   9.659 
+Projecting
+   user  system elapsed 
+  1.500   0.037   1.539 
+
+Excel output:  Regional/Forecasts/SanJoaquinValley.xlsx 
+NULL
+NULL
+  5%  10%  25%  50%  75%  90%  95% 
+1.03 1.05 1.06 1.08 1.19 1.19 1.21 
+
+PDF output:  Regional/Forecasts/SanJoaquinValley.pdf 
+   user  system elapsed 
+  1.545   0.034   1.579 
+
+Excel output:  Scenarios/SanJoaquinValley_scenario_actToday.xlsx 
+NULL
+NULL
+  5%  10%  25%  50%  75%  90%  95% 
+1.03 1.05 1.06 1.08 1.19 1.19 1.21 
+
+PDF output:  Scenarios/SanJoaquinValley_scenario_actToday.pdf 
+   user  system elapsed 
+  1.297   0.025   1.323 
+
+Excel output:  Scenarios/SanJoaquinValley_scenario_actTwoWeeks.xlsx 
+NULL
+NULL
+  5%  10%  25%  50%  75%  90%  95% 
+1.03 1.05 1.06 1.08 1.19 1.19 1.21 
+
+PDF output:  Scenarios/SanJoaquinValley_scenario_actTwoWeeks.pdf 
