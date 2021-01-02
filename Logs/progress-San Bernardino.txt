@@ -449,3 +449,27 @@ Chain 3:  Elapsed Time: 4902.43 seconds (Warm-up)
 Chain 3:                4366.25 seconds (Sampling)
 Chain 3:                9268.67 seconds (Total)
 Chain 3: 
+Chain 4: Iteration: 930 / 1000 [ 93%]  (Sampling)
+Chain 4: Iteration: 940 / 1000 [ 94%]  (Sampling)
+Chain 4: Iteration: 950 / 1000 [ 95%]  (Sampling)
+Chain 4: Iteration: 960 / 1000 [ 96%]  (Sampling)
+Chain 4: Iteration: 970 / 1000 [ 97%]  (Sampling)
+Chain 4: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 4: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 4: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 4: 
+Chain 4:  Elapsed Time: 3403.47 seconds (Warm-up)
+Chain 4:                6762.06 seconds (Sampling)
+Chain 4:                10165.5 seconds (Total)
+Chain 4: 
+     user    system   elapsed 
+35873.911   100.179 10185.536 
+Projecting
+   user  system elapsed 
+408.973   1.659 410.638 
+
+Excel output:  Forecasts/San Bernardino.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.99 1.01 1.04 1.08 1.11 1.14 1.15 
+
+PDF output:  Forecasts/San Bernardino.pdf 
