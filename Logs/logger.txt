@@ -1,7 +1,23 @@
-2021-01-02 13:21:07	[Main thread]	WARN	rstan	throw_sampler_warnings	There were 11 transitions after warmup that exceeded the maximum treedepth. Increase max_treedepth above 15. See http://mc-stan.org/misc/warnings.html#maximum-treedepth-exceeded
-2021-01-02 13:21:07	[Main thread]	WARN	rstan	throw_sampler_warnings	There were 4 chains where the estimated Bayesian Fraction of Missing Information was low. See http://mc-stan.org/misc/warnings.html#bfmi-low
-2021-01-02 13:21:07	[Main thread]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
-2021-01-02 13:21:09	[Main thread]	WARN	rstan	throw_sampler_warnings	The largest R-hat is 2.91, indicating chains have not mixed. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#r-hat
-2021-01-02 13:21:11	[Main thread]	WARN	rstan	throw_sampler_warnings	Bulk Effective Samples Size (ESS) is too low, indicating posterior means and medians may be unreliable. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#bulk-ess
-2021-01-02 13:21:15	[Main thread]	WARN	rstan	throw_sampler_warnings	Tail Effective Samples Size (ESS) is too low, indicating posterior variances and tail quantiles may be unreliable. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#tail-ess
-2021-01-02 13:21:42	[Main thread]	INFO			county = BayArea
+2021-01-02 13:25:36	[Main thread]	TRACE			Initiating cluster with 3 threads
+2021-01-02 13:25:36	[Thread 1]	TRACE			Thread 1 initiated
+2021-01-02 13:25:36	[Thread 2]	TRACE			Thread 2 initiated
+2021-01-02 13:25:36	[Thread 3]	TRACE			Thread 3 initiated
+2021-01-02 13:25:37	[Thread 1]	WARN	ggplot2	fun	replacing previous import ‘vctrs::data_frame’ by ‘tibble::data_frame’ when loading ‘dplyr’
+2021-01-02 13:25:37	[Thread 2]	WARN	ggplot2	fun	replacing previous import ‘vctrs::data_frame’ by ‘tibble::data_frame’ when loading ‘dplyr’
+2021-01-02 13:25:37	[Thread 3]	WARN	ggplot2	fun	replacing previous import ‘vctrs::data_frame’ by ‘tibble::data_frame’ when loading ‘dplyr’
+2021-01-02 13:25:40	[Thread 3]	WARN	rstan	throw_sampler_warnings	There were 4 chains where the estimated Bayesian Fraction of Missing Information was low. See http://mc-stan.org/misc/warnings.html#bfmi-low
+2021-01-02 13:25:40	[Thread 3]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
+2021-01-02 13:25:41	[Thread 2]	WARN	rstan	throw_sampler_warnings	There were 4 chains where the estimated Bayesian Fraction of Missing Information was low. See http://mc-stan.org/misc/warnings.html#bfmi-low
+2021-01-02 13:25:41	[Thread 2]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
+2021-01-02 13:25:42	[Thread 3]	WARN	rstan	throw_sampler_warnings	The largest R-hat is 4, indicating chains have not mixed. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#r-hat
+2021-01-02 13:25:42	[Thread 1]	WARN	rstan	throw_sampler_warnings	There were 4 chains where the estimated Bayesian Fraction of Missing Information was low. See http://mc-stan.org/misc/warnings.html#bfmi-low
+2021-01-02 13:25:42	[Thread 1]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
+2021-01-02 13:25:43	[Thread 2]	WARN	rstan	throw_sampler_warnings	The largest R-hat is NA, indicating chains have not mixed. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#r-hat
+2021-01-02 13:25:44	[Thread 3]	WARN	rstan	throw_sampler_warnings	Bulk Effective Samples Size (ESS) is too low, indicating posterior means and medians may be unreliable. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#bulk-ess
+2021-01-02 13:25:44	[Thread 2]	WARN	rstan	throw_sampler_warnings	Bulk Effective Samples Size (ESS) is too low, indicating posterior means and medians may be unreliable. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#bulk-ess
+2021-01-02 13:25:44	[Thread 1]	WARN	rstan	throw_sampler_warnings	The largest R-hat is 3.08, indicating chains have not mixed. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#r-hat
+2021-01-02 13:25:46	[Thread 1]	WARN	rstan	throw_sampler_warnings	Bulk Effective Samples Size (ESS) is too low, indicating posterior means and medians may be unreliable. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#bulk-ess
+2021-01-02 13:25:47	[Thread 3]	WARN	rstan	throw_sampler_warnings	Tail Effective Samples Size (ESS) is too low, indicating posterior variances and tail quantiles may be unreliable. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#tail-ess
+2021-01-02 13:25:47	[Thread 2]	WARN	rstan	throw_sampler_warnings	Tail Effective Samples Size (ESS) is too low, indicating posterior variances and tail quantiles may be unreliable. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#tail-ess
+2021-01-02 13:25:49	[Thread 1]	WARN	rstan	throw_sampler_warnings	Tail Effective Samples Size (ESS) is too low, indicating posterior variances and tail quantiles may be unreliable. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#tail-ess
+2021-01-02 13:26:09	[Thread 3]	INFO			county = SouthernCalifornia

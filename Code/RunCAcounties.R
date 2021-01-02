@@ -27,7 +27,7 @@ saveRDS(county.dt, "Inputs/CountyData.rds")
 quick.test <- T
 if (quick.test) {
   cat("\n\n++++++++++++++++++  quick.test = T +++++++++++++++++ \n\n")
-  county.set <- c("BayArea")
+  county.set <- c("GreaterSacramento", "SanJoaquinValley", "SouthernCalifornia")
 } else {
   #order by last Rt date in forecasts and then last run time
   dt.max <- merge(county.dt, county.dt[, .(date = max(date)), by = "county"], by = c("county", "date"))
@@ -159,7 +159,7 @@ RunOneCounty <- function(county1, git.pw, quick.test) {
     } else {
       dir <- ""
     }
-    inputs$internal.args$iter <- 100 #temp
+    inputs$internal.args$iter <- 50 #temp
 
     inputs$internal.args$output.filestr <- paste0(dir, "Forecasts/", county1)
     mean.ini <- 1e-5 * county.pop1
