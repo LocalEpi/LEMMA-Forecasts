@@ -16,6 +16,7 @@ while (T) {
   if (curr.max.date > prev.max.date) {
     break
   }
+  break #temp
   cat("waiting one minute\n")
   Sys.sleep(60)
 }
@@ -23,10 +24,10 @@ while (T) {
 county.dt <- rbind(county.dt, sc.dt)
 saveRDS(county.dt, "Inputs/CountyData.rds")
 
-quick.test <- F
+quick.test <- T
 if (quick.test) {
   cat("\n\n++++++++++++++++++  quick.test = T +++++++++++++++++ \n\n")
-  county.set <- c("Santa Clara")
+  county.set <- c("BayArea")
 } else {
   #order by last Rt date in forecasts and then last run time
   dt.max <- merge(county.dt, county.dt[, .(date = max(date)), by = "county"], by = c("county", "date"))
@@ -158,6 +159,7 @@ RunOneCounty <- function(county1, git.pw, quick.test) {
     } else {
       dir <- ""
     }
+    inputs$internal.args$iter <- 100 #temp
 
     inputs$internal.args$output.filestr <- paste0(dir, "Forecasts/", county1)
     mean.ini <- 1e-5 * county.pop1
