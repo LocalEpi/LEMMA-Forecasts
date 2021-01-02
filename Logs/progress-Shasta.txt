@@ -462,3 +462,30 @@ Chain 2:  Elapsed Time: 12.7596 seconds (Warm-up)
 Chain 2:                17062 seconds (Sampling)
 Chain 2:                17074.7 seconds (Total)
 Chain 2: 
+    user   system  elapsed 
+48409.28     2.40 17113.74 
+Projecting
+   user  system elapsed 
+251.979   1.268 253.256 
+
+Excel output:  Forecasts/Shasta.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.59 0.64 0.72 0.80 0.97 1.07 1.10 
+
+PDF output:  Forecasts/Shasta.pdf 
+   user  system elapsed 
+286.042   2.612 288.667 
+
+Excel output:  Scenarios/Shasta_scenario_actToday.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.59 0.64 0.72 0.80 0.97 1.07 1.10 
+
+PDF output:  Scenarios/Shasta_scenario_actToday.pdf 
+   user  system elapsed 
+287.155   1.943 289.106 
+
+Excel output:  Scenarios/Shasta_scenario_actTwoWeeks.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.59 0.64 0.72 0.80 0.97 1.07 1.10 
+
+PDF output:  Scenarios/Shasta_scenario_actTwoWeeks.pdf 
