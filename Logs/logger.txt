@@ -1,25 +1,80 @@
-2021-01-02 13:27:50	[Main thread]	TRACE			Initiating cluster with 3 threads
-2021-01-02 13:27:51	[Thread 1]	TRACE			Thread 1 initiated
-2021-01-02 13:27:51	[Thread 2]	TRACE			Thread 2 initiated
-2021-01-02 13:27:51	[Thread 3]	TRACE			Thread 3 initiated
-2021-01-02 13:27:51	[Thread 1]	WARN	ggplot2	fun	replacing previous import ‘vctrs::data_frame’ by ‘tibble::data_frame’ when loading ‘dplyr’
-2021-01-02 13:27:51	[Thread 3]	WARN	ggplot2	fun	replacing previous import ‘vctrs::data_frame’ by ‘tibble::data_frame’ when loading ‘dplyr’
-2021-01-02 13:27:51	[Thread 2]	WARN	ggplot2	fun	replacing previous import ‘vctrs::data_frame’ by ‘tibble::data_frame’ when loading ‘dplyr’
-2021-01-02 13:27:55	[Thread 3]	WARN	rstan	throw_sampler_warnings	There were 4 chains where the estimated Bayesian Fraction of Missing Information was low. See http://mc-stan.org/misc/warnings.html#bfmi-low
-2021-01-02 13:27:55	[Thread 3]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
-2021-01-02 13:27:55	[Thread 2]	WARN	rstan	throw_sampler_warnings	There were 4 chains where the estimated Bayesian Fraction of Missing Information was low. See http://mc-stan.org/misc/warnings.html#bfmi-low
-2021-01-02 13:27:55	[Thread 2]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
-2021-01-02 13:27:57	[Thread 3]	WARN	rstan	throw_sampler_warnings	The largest R-hat is 4, indicating chains have not mixed. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#r-hat
-2021-01-02 13:27:57	[Thread 1]	WARN	rstan	throw_sampler_warnings	There were 4 chains where the estimated Bayesian Fraction of Missing Information was low. See http://mc-stan.org/misc/warnings.html#bfmi-low
-2021-01-02 13:27:57	[Thread 1]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
-2021-01-02 13:27:57	[Thread 2]	WARN	rstan	throw_sampler_warnings	The largest R-hat is NA, indicating chains have not mixed. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#r-hat
-2021-01-02 13:27:58	[Thread 3]	WARN	rstan	throw_sampler_warnings	Bulk Effective Samples Size (ESS) is too low, indicating posterior means and medians may be unreliable. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#bulk-ess
-2021-01-02 13:27:58	[Thread 2]	WARN	rstan	throw_sampler_warnings	Bulk Effective Samples Size (ESS) is too low, indicating posterior means and medians may be unreliable. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#bulk-ess
-2021-01-02 13:27:59	[Thread 1]	WARN	rstan	throw_sampler_warnings	The largest R-hat is 3.08, indicating chains have not mixed. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#r-hat
-2021-01-02 13:28:00	[Thread 1]	WARN	rstan	throw_sampler_warnings	Bulk Effective Samples Size (ESS) is too low, indicating posterior means and medians may be unreliable. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#bulk-ess
-2021-01-02 13:28:02	[Thread 3]	WARN	rstan	throw_sampler_warnings	Tail Effective Samples Size (ESS) is too low, indicating posterior variances and tail quantiles may be unreliable. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#tail-ess
-2021-01-02 13:28:02	[Thread 2]	WARN	rstan	throw_sampler_warnings	Tail Effective Samples Size (ESS) is too low, indicating posterior variances and tail quantiles may be unreliable. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#tail-ess
-2021-01-02 13:28:04	[Thread 1]	WARN	rstan	throw_sampler_warnings	Tail Effective Samples Size (ESS) is too low, indicating posterior variances and tail quantiles may be unreliable. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#tail-ess
-2021-01-02 13:28:27	[Thread 3]	INFO			county = SouthernCalifornia
-2021-01-02 13:28:27	[Thread 2]	INFO			county = SanJoaquinValley
-2021-01-02 13:28:29	[Thread 1]	INFO			county = GreaterSacramento
+2021-01-02 21:43:59	[Main thread]	TRACE			Initiating cluster with 23 threads
+2021-01-02 21:44:03	[Thread 1]	TRACE			Thread 1 initiated
+2021-01-02 21:44:03	[Thread 3]	TRACE			Thread 3 initiated
+2021-01-02 21:44:03	[Thread 2]	TRACE			Thread 2 initiated
+2021-01-02 21:44:03	[Thread 4]	TRACE			Thread 4 initiated
+2021-01-02 21:44:03	[Thread 6]	TRACE			Thread 6 initiated
+2021-01-02 21:44:03	[Thread 5]	TRACE			Thread 5 initiated
+2021-01-02 21:44:03	[Thread 7]	TRACE			Thread 7 initiated
+2021-01-02 21:44:03	[Thread 8]	TRACE			Thread 8 initiated
+2021-01-02 21:44:03	[Thread 11]	TRACE			Thread 11 initiated
+2021-01-02 21:44:03	[Thread 10]	TRACE			Thread 10 initiated
+2021-01-02 21:44:03	[Thread 9]	TRACE			Thread 9 initiated
+2021-01-02 21:44:03	[Thread 13]	TRACE			Thread 13 initiated
+2021-01-02 21:44:03	[Thread 12]	TRACE			Thread 12 initiated
+2021-01-02 21:44:03	[Thread 14]	TRACE			Thread 14 initiated
+2021-01-02 21:44:03	[Thread 17]	TRACE			Thread 17 initiated
+2021-01-02 21:44:03	[Thread 16]	TRACE			Thread 16 initiated
+2021-01-02 21:44:03	[Thread 15]	TRACE			Thread 15 initiated
+2021-01-02 21:44:03	[Thread 18]	TRACE			Thread 18 initiated
+2021-01-02 21:44:03	[Thread 20]	TRACE			Thread 20 initiated
+2021-01-02 21:44:03	[Thread 23]	TRACE			Thread 23 initiated
+2021-01-02 21:44:03	[Thread 19]	TRACE			Thread 19 initiated
+2021-01-02 21:44:03	[Thread 21]	TRACE			Thread 21 initiated
+2021-01-02 21:44:03	[Thread 22]	TRACE			Thread 22 initiated
+2021-01-02 21:44:09	[Thread 3]	WARN	rstan	throw_sampler_warnings	There were 4 chains where the estimated Bayesian Fraction of Missing Information was low. See http://mc-stan.org/misc/warnings.html#bfmi-low
+2021-01-02 21:44:09	[Thread 3]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
+2021-01-02 21:44:10	[Thread 2]	WARN	rstan	throw_sampler_warnings	There were 4 chains where the estimated Bayesian Fraction of Missing Information was low. See http://mc-stan.org/misc/warnings.html#bfmi-low
+2021-01-02 21:44:10	[Thread 2]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
+2021-01-02 21:44:11	[Thread 3]	WARN	rstan	throw_sampler_warnings	The largest R-hat is 4, indicating chains have not mixed. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#r-hat
+2021-01-02 21:44:11	[Thread 2]	WARN	rstan	throw_sampler_warnings	The largest R-hat is NA, indicating chains have not mixed. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#r-hat
+2021-01-02 21:44:12	[Thread 1]	WARN	rstan	throw_sampler_warnings	There were 4 chains where the estimated Bayesian Fraction of Missing Information was low. See http://mc-stan.org/misc/warnings.html#bfmi-low
+2021-01-02 21:44:12	[Thread 1]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
+2021-01-02 21:44:12	[Thread 3]	WARN	rstan	throw_sampler_warnings	Bulk Effective Samples Size (ESS) is too low, indicating posterior means and medians may be unreliable. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#bulk-ess
+2021-01-02 21:44:13	[Thread 2]	WARN	rstan	throw_sampler_warnings	Bulk Effective Samples Size (ESS) is too low, indicating posterior means and medians may be unreliable. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#bulk-ess
+2021-01-02 21:44:13	[Thread 1]	WARN	rstan	throw_sampler_warnings	The largest R-hat is 3.08, indicating chains have not mixed. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#r-hat
+2021-01-02 21:44:15	[Thread 1]	WARN	rstan	throw_sampler_warnings	Bulk Effective Samples Size (ESS) is too low, indicating posterior means and medians may be unreliable. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#bulk-ess
+2021-01-02 21:44:16	[Thread 3]	WARN	rstan	throw_sampler_warnings	Tail Effective Samples Size (ESS) is too low, indicating posterior variances and tail quantiles may be unreliable. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#tail-ess
+2021-01-02 21:44:16	[Thread 2]	WARN	rstan	throw_sampler_warnings	Tail Effective Samples Size (ESS) is too low, indicating posterior variances and tail quantiles may be unreliable. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#tail-ess
+2021-01-02 21:44:18	[Thread 1]	WARN	rstan	throw_sampler_warnings	Tail Effective Samples Size (ESS) is too low, indicating posterior variances and tail quantiles may be unreliable. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#tail-ess
+2021-01-02 21:45:08	[Thread 23]	FATAL			Error in unserialize(node$con) : error reading from connection Calls: local ... doTryCatch -> recvData -> recvData.SOCKnode -> unserialize 
+2021-01-02 21:45:08	[Thread 23]	TRACE			Thread 23 terminated
+2021-01-02 21:45:08	[Thread 22]	FATAL			Error in unserialize(node$con) : error reading from connection Calls: local ... doTryCatch -> recvData -> recvData.SOCKnode -> unserialize 
+2021-01-02 21:45:08	[Thread 22]	TRACE			Thread 22 terminated
+2021-01-02 21:45:08	[Thread 21]	FATAL			Error in unserialize(node$con) : error reading from connection Calls: local ... doTryCatch -> recvData -> recvData.SOCKnode -> unserialize 
+2021-01-02 21:45:08	[Thread 21]	TRACE			Thread 21 terminated
+2021-01-02 21:45:08	[Thread 20]	FATAL			Error in unserialize(node$con) : error reading from connection Calls: local ... doTryCatch -> recvData -> recvData.SOCKnode -> unserialize 
+2021-01-02 21:45:08	[Thread 20]	TRACE			Thread 20 terminated
+2021-01-02 21:45:08	[Thread 19]	FATAL			Error in unserialize(node$con) : error reading from connection Calls: local ... doTryCatch -> recvData -> recvData.SOCKnode -> unserialize 
+2021-01-02 21:45:08	[Thread 19]	TRACE			Thread 19 terminated
+2021-01-02 21:45:08	[Thread 18]	FATAL			Error in unserialize(node$con) : error reading from connection Calls: local ... doTryCatch -> recvData -> recvData.SOCKnode -> unserialize 
+2021-01-02 21:45:08	[Thread 18]	TRACE			Thread 18 terminated
+2021-01-02 21:45:08	[Thread 17]	FATAL			Error in unserialize(node$con) : error reading from connection Calls: local ... doTryCatch -> recvData -> recvData.SOCKnode -> unserialize 
+2021-01-02 21:45:08	[Thread 17]	TRACE			Thread 17 terminated
+2021-01-02 21:45:09	[Thread 16]	FATAL			Error in unserialize(node$con) : error reading from connection Calls: local ... doTryCatch -> recvData -> recvData.SOCKnode -> unserialize 
+2021-01-02 21:45:09	[Thread 16]	TRACE			Thread 16 terminated
+2021-01-02 21:45:09	[Thread 15]	FATAL			Error in unserialize(node$con) : error reading from connection Calls: local ... doTryCatch -> recvData -> recvData.SOCKnode -> unserialize 
+2021-01-02 21:45:09	[Thread 15]	TRACE			Thread 15 terminated
+2021-01-02 21:45:09	[Thread 14]	FATAL			Error in unserialize(node$con) : error reading from connection Calls: local ... doTryCatch -> recvData -> recvData.SOCKnode -> unserialize 
+2021-01-02 21:45:09	[Thread 14]	TRACE			Thread 14 terminated
+2021-01-02 21:45:09	[Thread 13]	FATAL			Error in unserialize(node$con) : error reading from connection Calls: local ... doTryCatch -> recvData -> recvData.SOCKnode -> unserialize 
+2021-01-02 21:45:09	[Thread 13]	TRACE			Thread 13 terminated
+2021-01-02 21:45:09	[Thread 12]	FATAL			Error in unserialize(node$con) : error reading from connection Calls: local ... doTryCatch -> recvData -> recvData.SOCKnode -> unserialize 
+2021-01-02 21:45:09	[Thread 12]	TRACE			Thread 12 terminated
+2021-01-02 21:45:09	[Thread 11]	FATAL			Error in unserialize(node$con) : error reading from connection Calls: local ... doTryCatch -> recvData -> recvData.SOCKnode -> unserialize 
+2021-01-02 21:45:09	[Thread 11]	TRACE			Thread 11 terminated
+2021-01-02 21:45:09	[Thread 10]	FATAL			Error in unserialize(node$con) : error reading from connection Calls: local ... doTryCatch -> recvData -> recvData.SOCKnode -> unserialize 
+2021-01-02 21:45:09	[Thread 10]	TRACE			Thread 10 terminated
+2021-01-02 21:45:09	[Thread 9]	FATAL			Error in unserialize(node$con) : error reading from connection Calls: local ... doTryCatch -> recvData -> recvData.SOCKnode -> unserialize 
+2021-01-02 21:45:09	[Thread 9]	TRACE			Thread 9 terminated
+2021-01-02 21:45:09	[Thread 8]	FATAL			Error in unserialize(node$con) : error reading from connection Calls: local ... doTryCatch -> recvData -> recvData.SOCKnode -> unserialize 
+2021-01-02 21:45:09	[Thread 8]	TRACE			Thread 8 terminated
+2021-01-02 21:45:09	[Thread 7]	FATAL			Error in unserialize(node$con) : error reading from connection Calls: local ... doTryCatch -> recvData -> recvData.SOCKnode -> unserialize 
+2021-01-02 21:45:09	[Thread 7]	TRACE			Thread 7 terminated
+2021-01-02 21:45:09	[Thread 6]	FATAL			Error in unserialize(node$con) : error reading from connection Calls: local ... doTryCatch -> recvData -> recvData.SOCKnode -> unserialize 
+2021-01-02 21:45:09	[Thread 6]	TRACE			Thread 6 terminated
+2021-01-02 21:45:09	[Thread 5]	FATAL			Error in unserialize(node$con) : error reading from connection Calls: local ... doTryCatch -> recvData -> recvData.SOCKnode -> unserialize 
+2021-01-02 21:45:09	[Thread 5]	TRACE			Thread 5 terminated
+2021-01-02 21:45:09	[Thread 4]	FATAL			Error in unserialize(node$con) : error reading from connection Calls: local ... doTryCatch -> recvData -> recvData.SOCKnode -> unserialize 
+2021-01-02 21:45:09	[Thread 4]	TRACE			Thread 4 terminated
+2021-01-02 21:45:30	[Thread 1]	INFO			county = GreaterSacramento

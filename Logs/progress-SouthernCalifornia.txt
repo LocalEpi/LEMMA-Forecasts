@@ -1,18 +1,18 @@
 county =  SouthernCalifornia 
-start time =  2021-01-02 05:27:51 
+start time =  2021-01-02 13:44:03 
 max date =  2021-01-01 
 Fitting to observed data
 
 SAMPLING FOR MODEL 'LEMMA' NOW (CHAIN 1).
 
-SAMPLING FOR MODEL 'LEMMA' NOW (CHAIN 4).
-
 SAMPLING FOR MODEL 'LEMMA' NOW (CHAIN 2).
 
 SAMPLING FOR MODEL 'LEMMA' NOW (CHAIN 3).
+
+SAMPLING FOR MODEL 'LEMMA' NOW (CHAIN 4).
 Chain 1: 
-Chain 1: Gradient evaluation took 0.002079 seconds
-Chain 1: 1000 transitions using 10 leapfrog steps per transition would take 20.79 seconds.
+Chain 1: Gradient evaluation took 0.002415 seconds
+Chain 1: 1000 transitions using 10 leapfrog steps per transition would take 24.15 seconds.
 Chain 1: Adjust your expectations accordingly!
 Chain 1: 
 Chain 1: 
@@ -24,23 +24,9 @@ Chain 1:            init_buffer = 3
 Chain 1:            adapt_window = 20
 Chain 1:            term_buffer = 2
 Chain 1: 
-Chain 4: 
-Chain 4: Gradient evaluation took 0.002969 seconds
-Chain 4: 1000 transitions using 10 leapfrog steps per transition would take 29.69 seconds.
-Chain 4: Adjust your expectations accordingly!
-Chain 4: 
-Chain 4: 
-Chain 4: WARNING: There aren't enough warmup iterations to fit the
-Chain 4:          three stages of adaptation as currently configured.
-Chain 4:          Reducing each adaptation stage to 15%/75%/10% of
-Chain 4:          the given number of warmup iterations:
-Chain 4:            init_buffer = 3
-Chain 4:            adapt_window = 20
-Chain 4:            term_buffer = 2
-Chain 4: 
 Chain 2: 
-Chain 2: Gradient evaluation took 0.003812 seconds
-Chain 2: 1000 transitions using 10 leapfrog steps per transition would take 38.12 seconds.
+Chain 2: Gradient evaluation took 0.002426 seconds
+Chain 2: 1000 transitions using 10 leapfrog steps per transition would take 24.26 seconds.
 Chain 2: Adjust your expectations accordingly!
 Chain 2: 
 Chain 2: 
@@ -52,9 +38,23 @@ Chain 2:            init_buffer = 3
 Chain 2:            adapt_window = 20
 Chain 2:            term_buffer = 2
 Chain 2: 
+Chain 4: 
+Chain 4: Gradient evaluation took 0.002403 seconds
+Chain 4: 1000 transitions using 10 leapfrog steps per transition would take 24.03 seconds.
+Chain 4: Adjust your expectations accordingly!
+Chain 4: 
+Chain 4: 
+Chain 4: WARNING: There aren't enough warmup iterations to fit the
+Chain 4:          three stages of adaptation as currently configured.
+Chain 4:          Reducing each adaptation stage to 15%/75%/10% of
+Chain 4:          the given number of warmup iterations:
+Chain 4:            init_buffer = 3
+Chain 4:            adapt_window = 20
+Chain 4:            term_buffer = 2
+Chain 4: 
 Chain 3: 
-Chain 3: Gradient evaluation took 0.004572 seconds
-Chain 3: 1000 transitions using 10 leapfrog steps per transition would take 45.72 seconds.
+Chain 3: Gradient evaluation took 0.002441 seconds
+Chain 3: 1000 transitions using 10 leapfrog steps per transition would take 24.41 seconds.
 Chain 3: Adjust your expectations accordingly!
 Chain 3: 
 Chain 3: 
@@ -81,28 +81,28 @@ Chain 2: Iteration: 20 / 50 [ 40%]  (Warmup)
 Chain 1: Iteration: 35 / 50 [ 70%]  (Sampling)
 Chain 2: Iteration: 26 / 50 [ 52%]  (Sampling)
 Chain 3: Iteration: 26 / 50 [ 52%]  (Sampling)
-Chain 3: Iteration: 35 / 50 [ 70%]  (Sampling)
 Chain 2: Iteration: 35 / 50 [ 70%]  (Sampling)
+Chain 3: Iteration: 35 / 50 [ 70%]  (Sampling)
+Chain 2: Iteration: 45 / 50 [ 90%]  (Sampling)
 Chain 3: Iteration: 45 / 50 [ 90%]  (Sampling)
 Chain 1: Iteration: 45 / 50 [ 90%]  (Sampling)
-Chain 2: Iteration: 45 / 50 [ 90%]  (Sampling)
 Chain 1: Iteration: 50 / 50 [100%]  (Sampling)
 Chain 1: 
-Chain 1:  Elapsed Time: 0.397901 seconds (Warm-up)
-Chain 1:                1.04358 seconds (Sampling)
-Chain 1:                1.44149 seconds (Total)
+Chain 1:  Elapsed Time: 0.139599 seconds (Warm-up)
+Chain 1:                0.388126 seconds (Sampling)
+Chain 1:                0.527725 seconds (Total)
 Chain 1: 
 Chain 2: Iteration: 50 / 50 [100%]  (Sampling)
 Chain 2: 
-Chain 2:  Elapsed Time: 0.699229 seconds (Warm-up)
-Chain 2:                0.751852 seconds (Sampling)
-Chain 2:                1.45108 seconds (Total)
+Chain 2:  Elapsed Time: 0.24137 seconds (Warm-up)
+Chain 2:                0.294471 seconds (Sampling)
+Chain 2:                0.535841 seconds (Total)
 Chain 2: 
 Chain 3: Iteration: 50 / 50 [100%]  (Sampling)
 Chain 3: 
-Chain 3:  Elapsed Time: 0.689984 seconds (Warm-up)
-Chain 3:                0.820584 seconds (Sampling)
-Chain 3:                1.51057 seconds (Total)
+Chain 3:  Elapsed Time: 0.272908 seconds (Warm-up)
+Chain 3:                0.354435 seconds (Sampling)
+Chain 3:                0.627343 seconds (Total)
 Chain 3: 
 Chain 4: Iteration: 20 / 50 [ 40%]  (Warmup)
 Chain 4: Iteration: 26 / 50 [ 52%]  (Sampling)
@@ -110,40 +110,32 @@ Chain 4: Iteration: 35 / 50 [ 70%]  (Sampling)
 Chain 4: Iteration: 45 / 50 [ 90%]  (Sampling)
 Chain 4: Iteration: 50 / 50 [100%]  (Sampling)
 Chain 4: 
-Chain 4:  Elapsed Time: 1.77354 seconds (Warm-up)
-Chain 4:                0.217748 seconds (Sampling)
-Chain 4:                1.99129 seconds (Total)
+Chain 4:  Elapsed Time: 0.816839 seconds (Warm-up)
+Chain 4:                0.293682 seconds (Sampling)
+Chain 4:                1.11052 seconds (Total)
 Chain 4: 
    user  system elapsed 
- 14.351   0.539   9.390 
+ 10.986   0.324   8.651 
 Projecting
    user  system elapsed 
-  2.173   0.061   2.235 
+ 18.937   0.071  19.008 
 
 Excel output:  Regional/Forecasts/SouthernCalifornia.xlsx 
-NULL
-NULL
   5%  10%  25%  50%  75%  90%  95% 
 0.86 0.86 0.97 1.09 1.16 1.18 1.22 
 
 PDF output:  Regional/Forecasts/SouthernCalifornia.pdf 
    user  system elapsed 
-  1.675   0.038   1.716 
+ 19.155   0.084  19.294 
 
 Excel output:  Scenarios/SouthernCalifornia_scenario_actToday.xlsx 
-NULL
-NULL
   5%  10%  25%  50%  75%  90%  95% 
 0.86 0.86 0.97 1.09 1.16 1.18 1.22 
 
 PDF output:  Scenarios/SouthernCalifornia_scenario_actToday.pdf 
    user  system elapsed 
-  1.441   0.030   1.486 
+ 18.701   0.020  18.721 
 
 Excel output:  Scenarios/SouthernCalifornia_scenario_actTwoWeeks.xlsx 
-NULL
-NULL
   5%  10%  25%  50%  75%  90%  95% 
 0.86 0.86 0.97 1.09 1.16 1.18 1.22 
-
-PDF output:  Scenarios/SouthernCalifornia_scenario_actTwoWeeks.pdf 
