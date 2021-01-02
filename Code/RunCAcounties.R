@@ -160,7 +160,7 @@ RunOneCounty <- function(county1, git.pw, quick.test) {
     } else {
       dir <- ""
     }
-    inputs$internal.args$iter <- 50 #temp
+    # inputs$internal.args$iter <- 50 #temp
 
     inputs$internal.args$output.filestr <- paste0(dir, "Forecasts/", county1)
     mean.ini <- 1e-5 * county.pop1
