@@ -148,7 +148,8 @@ RunOneCounty <- function(county1, git.pw, quick.test) {
       inputs$model.inputs$start.display.date <- restart.date
       inputs$internal.args$initial.deaths <- initial.deaths
     }
-    if (county1 %in% c("Yuba")) {
+    if (county1 %in% c("Yuba", "Shasta", "Butte")) {
+      inputs$internal.args$warmup <- 1000
       inputs$internal.args$iter <- 1500
     }
 
