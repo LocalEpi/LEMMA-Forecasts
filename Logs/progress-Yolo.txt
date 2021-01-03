@@ -442,3 +442,50 @@ Chain 2: Iteration: 900 / 1000 [ 90%]  (Sampling)
 Chain 1: Iteration: 980 / 1000 [ 98%]  (Sampling)
 Chain 1: Iteration: 990 / 1000 [ 99%]  (Sampling)
 Chain 2: Iteration: 910 / 1000 [ 91%]  (Sampling)
+Chain 1: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 2: Iteration: 920 / 1000 [ 92%]  (Sampling)
+Chain 1: 
+Chain 1:  Elapsed Time: 3501.81 seconds (Warm-up)
+Chain 1:                2896.08 seconds (Sampling)
+Chain 1:                6397.89 seconds (Total)
+Chain 1: 
+Chain 2: Iteration: 930 / 1000 [ 93%]  (Sampling)
+Chain 2: Iteration: 940 / 1000 [ 94%]  (Sampling)
+Chain 2: Iteration: 950 / 1000 [ 95%]  (Sampling)
+Chain 2: Iteration: 960 / 1000 [ 96%]  (Sampling)
+Chain 2: Iteration: 970 / 1000 [ 97%]  (Sampling)
+Chain 2: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 2: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 2: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 2: 
+Chain 2:  Elapsed Time: 3695.52 seconds (Warm-up)
+Chain 2:                3212.81 seconds (Sampling)
+Chain 2:                6908.33 seconds (Total)
+Chain 2: 
+     user    system   elapsed 
+23956.809     2.154  6940.922 
+Projecting
+   user  system elapsed 
+306.621   2.141 308.788 
+
+Excel output:  Forecasts/Yolo.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.79 0.82 0.87 0.92 0.97 1.01 1.03 
+
+PDF output:  Forecasts/Yolo.pdf 
+   user  system elapsed 
+315.071   2.656 317.742 
+
+Excel output:  Scenarios/Yolo_scenario_actToday.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.79 0.82 0.87 0.92 0.97 1.01 1.03 
+
+PDF output:  Scenarios/Yolo_scenario_actToday.pdf 
+   user  system elapsed 
+314.263   2.196 316.477 
+
+Excel output:  Scenarios/Yolo_scenario_actTwoWeeks.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.79 0.82 0.87 0.92 0.97 1.01 1.03 
+
+PDF output:  Scenarios/Yolo_scenario_actTwoWeeks.pdf 
