@@ -83,3 +83,6 @@
 2021-01-03 01:35:59	[Thread 1]	WARN	rstan	throw_sampler_warnings	Tail Effective Samples Size (ESS) is too low, indicating posterior variances and tail quantiles may be unreliable. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#tail-ess
 2021-01-03 01:37:58	[Thread 5]	INFO			county = BayArea
 2021-01-03 01:40:23	[Thread 14]	INFO			county = Santa Barbara
+2021-01-03 01:44:31	[Thread 23]	WARN	rstan	throw_sampler_warnings	There were 2 divergent transitions after warmup. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup to find out why this is a problem and how to eliminate them.
+2021-01-03 01:44:31	[Thread 23]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
+2021-01-03 01:49:53	[Thread 3]	INFO			county = SanJoaquinValley
