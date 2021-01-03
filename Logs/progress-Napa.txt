@@ -454,3 +454,22 @@ Chain 1: Iteration: 940 / 1000 [ 94%]  (Sampling)
 Chain 1: Iteration: 950 / 1000 [ 95%]  (Sampling)
 Chain 1: Iteration: 960 / 1000 [ 96%]  (Sampling)
 Chain 1: Iteration: 970 / 1000 [ 97%]  (Sampling)
+Chain 1: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 1: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 1: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 1: 
+Chain 1:  Elapsed Time: 4855.45 seconds (Warm-up)
+Chain 1:                5430.9 seconds (Sampling)
+Chain 1:                10286.3 seconds (Total)
+Chain 1: 
+     user    system   elapsed 
+36347.882     2.609 10322.304 
+Projecting
+   user  system elapsed 
+489.894   2.336 492.304 
+
+Excel output:  Forecasts/Napa.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+1.10 1.14 1.21 1.28 1.36 1.43 1.48 
+
+PDF output:  Forecasts/Napa.pdf 
