@@ -17,7 +17,6 @@ while (T) {
   if (curr.max.date > prev.max.date) {
     break
   }
-  break #temp
   cat("waiting one minute\n")
   Sys.sleep(60)
 }
@@ -160,7 +159,6 @@ RunOneCounty <- function(county1, git.pw, quick.test) {
     } else {
       dir <- ""
     }
-    # inputs$internal.args$iter <- 50 #temp
 
     inputs$internal.args$output.filestr <- paste0(dir, "Forecasts/", county1)
     mean.ini <- 1e-5 * county.pop1
