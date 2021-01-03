@@ -465,3 +465,17 @@ Chain 3:
      user    system   elapsed 
 55571.839     2.795 14186.284 
 Projecting
+   user  system elapsed 
+465.238   2.131 467.398 
+
+Excel output:  Forecasts/San Bernardino.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.94 0.96 0.99 1.03 1.06 1.09 1.11 
+
+PDF output:  Forecasts/San Bernardino.pdf 
+   user  system elapsed 
+485.324   2.928 488.311 
+
+Excel output:  Scenarios/San Bernardino_scenario_actToday.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.94 0.96 0.99 1.03 1.06 1.09 1.11 
