@@ -456,3 +456,20 @@ Chain 4: Iteration: 960 / 1000 [ 96%]  (Sampling)
 Chain 4: Iteration: 970 / 1000 [ 97%]  (Sampling)
 Chain 4: Iteration: 980 / 1000 [ 98%]  (Sampling)
 Chain 4: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 4: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 4: 
+Chain 4:  Elapsed Time: 5608.74 seconds (Warm-up)
+Chain 4:                3011.24 seconds (Sampling)
+Chain 4:                8619.98 seconds (Total)
+Chain 4: 
+     user    system   elapsed 
+31453.238    87.795  8640.292 
+Projecting
+   user  system elapsed 
+400.241   1.724 401.966 
+
+Excel output:  Forecasts/San Luis Obispo.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+1.10 1.14 1.21 1.28 1.36 1.44 1.48 
+
+PDF output:  Forecasts/San Luis Obispo.pdf 
