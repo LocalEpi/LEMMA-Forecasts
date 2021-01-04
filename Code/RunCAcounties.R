@@ -52,7 +52,7 @@ if (quick.test) {
   county.set <- dt.max[, county]
   county.set <- c("Colusa", setdiff(county.set, c("Colusa", "Santa Clara")), "Santa Clara") #run Colusa first as a test (it's fast), run Santa Clara last because it updates later
 
-  insuff.data <- c("Glenn", "Mariposa", "Del Norte", "Mono", "Plumas")
+  insuff.data <- c("Glenn", "Mariposa", "Del Norte", "Mono", "Plumas", "Modoc")
   for (i in insuff.data) {
     cat("Excluding", i, "need more data\n")
     print(tail(county.dt[county == i], 10))
