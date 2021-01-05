@@ -25,7 +25,7 @@ exclude.set <- c("San Francisco", "Santa Clara") #SF is run separately, SC uses 
 county.dt <- rbind(county.dt[!(county %in% exclude.set)], sc.dt)
 saveRDS(county.dt, "Inputs/CountyData.rds")
 
-quick.test <- T
+quick.test <- F
 if (quick.test) {
   cat("\n\n++++++++++++++++++  quick.test = T +++++++++++++++++ \n\n")
   county.set <- c("BayArea")

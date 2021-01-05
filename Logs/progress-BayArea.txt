@@ -1,37 +1,97 @@
 county =  BayArea 
-start time =  2021-01-04 06:21:44 
-max date =  2021-01-03 
--/                                                                                                          -/                                                                                                          -/                                                                                                          -/                                                                                                          -/                                                                                                          -/                                                                                                          Fitting to observed data
-     user    system   elapsed 
-   76.567    56.573 16803.392 
-Projecting
-   user  system elapsed 
- 52.968   2.110  55.200 
+start time =  2021-01-05 11:56:02 
+max date =  2021-01-04 
+Fitting to observed data
 
-Excel output:  Regional/Forecasts/BayArea.xlsx 
-NULL
-NULL
-  5%  10%  25%  50%  75%  90%  95% 
-0.99 1.01 1.05 1.09 1.13 1.17 1.19 
+SAMPLING FOR MODEL 'LEMMA' NOW (CHAIN 1).
 
-PDF output:  Regional/Forecasts/BayArea.pdf 
-   user  system elapsed 
- 56.285   1.779  58.230 
+SAMPLING FOR MODEL 'LEMMA' NOW (CHAIN 2).
 
-Excel output:  Scenarios/BayArea_scenario_actToday.xlsx 
-NULL
-NULL
-  5%  10%  25%  50%  75%  90%  95% 
-0.99 1.01 1.05 1.09 1.13 1.17 1.19 
+SAMPLING FOR MODEL 'LEMMA' NOW (CHAIN 3).
 
-PDF output:  Scenarios/BayArea_scenario_actToday.pdf 
-   user  system elapsed 
- 51.936   1.205  53.214 
-
-Excel output:  Scenarios/BayArea_scenario_actTwoWeeks.xlsx 
-NULL
-NULL
-  5%  10%  25%  50%  75%  90%  95% 
-0.99 1.01 1.05 1.09 1.13 1.17 1.19 
-
-PDF output:  Scenarios/BayArea_scenario_actTwoWeeks.pdf 
+SAMPLING FOR MODEL 'LEMMA' NOW (CHAIN 4).
+Chain 1: 
+Chain 1: Gradient evaluation took 0.00394 seconds
+Chain 1: 1000 transitions using 10 leapfrog steps per transition would take 39.4 seconds.
+Chain 1: Adjust your expectations accordingly!
+Chain 1: 
+Chain 1: 
+Chain 2: 
+Chain 2: Gradient evaluation took 0.003966 seconds
+Chain 2: 1000 transitions using 10 leapfrog steps per transition would take 39.66 seconds.
+Chain 2: Adjust your expectations accordingly!
+Chain 2: 
+Chain 2: 
+Chain 3: 
+Chain 3: Gradient evaluation took 0.004093 seconds
+Chain 3: 1000 transitions using 10 leapfrog steps per transition would take 40.93 seconds.
+Chain 3: Adjust your expectations accordingly!
+Chain 3: 
+Chain 3: 
+Chain 4: 
+Chain 4: Gradient evaluation took 0.004015 seconds
+Chain 4: 1000 transitions using 10 leapfrog steps per transition would take 40.15 seconds.
+Chain 4: Adjust your expectations accordingly!
+Chain 4: 
+Chain 4: 
+Chain 1: Iteration:   1 / 1000 [  0%]  (Warmup)
+Chain 2: Iteration:   1 / 1000 [  0%]  (Warmup)
+Chain 3: Iteration:   1 / 1000 [  0%]  (Warmup)
+Chain 4: Iteration:   1 / 1000 [  0%]  (Warmup)
+Chain 3: Iteration:  10 / 1000 [  1%]  (Warmup)
+Chain 2: Iteration:  10 / 1000 [  1%]  (Warmup)
+Chain 4: Iteration:  10 / 1000 [  1%]  (Warmup)
+Chain 1: Iteration:  10 / 1000 [  1%]  (Warmup)
+Chain 2: Iteration:  20 / 1000 [  2%]  (Warmup)
+Chain 3: Iteration:  20 / 1000 [  2%]  (Warmup)
+Chain 1: Iteration:  20 / 1000 [  2%]  (Warmup)
+Chain 1: Iteration:  30 / 1000 [  3%]  (Warmup)
+Chain 4: Iteration:  20 / 1000 [  2%]  (Warmup)
+Chain 1: Iteration:  40 / 1000 [  4%]  (Warmup)
+Chain 2: Iteration:  30 / 1000 [  3%]  (Warmup)
+Chain 4: Iteration:  30 / 1000 [  3%]  (Warmup)
+Chain 2: Iteration:  40 / 1000 [  4%]  (Warmup)
+Chain 2: Iteration:  50 / 1000 [  5%]  (Warmup)
+Chain 3: Iteration:  30 / 1000 [  3%]  (Warmup)
+Chain 1: Iteration:  50 / 1000 [  5%]  (Warmup)
+Chain 2: Iteration:  60 / 1000 [  6%]  (Warmup)
+Chain 3: Iteration:  40 / 1000 [  4%]  (Warmup)
+Chain 1: Iteration:  60 / 1000 [  6%]  (Warmup)
+Chain 4: Iteration:  40 / 1000 [  4%]  (Warmup)
+Chain 2: Iteration:  70 / 1000 [  7%]  (Warmup)
+Chain 3: Iteration:  50 / 1000 [  5%]  (Warmup)
+Chain 4: Iteration:  50 / 1000 [  5%]  (Warmup)
+Chain 3: Iteration:  60 / 1000 [  6%]  (Warmup)
+Chain 1: Iteration:  70 / 1000 [  7%]  (Warmup)
+Chain 2: Iteration:  80 / 1000 [  8%]  (Warmup)
+Chain 1: Iteration:  80 / 1000 [  8%]  (Warmup)
+Chain 3: Iteration:  70 / 1000 [  7%]  (Warmup)
+Chain 3: Iteration:  80 / 1000 [  8%]  (Warmup)
+Chain 2: Iteration:  90 / 1000 [  9%]  (Warmup)
+Chain 1: Iteration:  90 / 1000 [  9%]  (Warmup)
+Chain 2: Iteration: 100 / 1000 [ 10%]  (Warmup)
+Chain 3: Iteration:  90 / 1000 [  9%]  (Warmup)
+Chain 1: Iteration: 100 / 1000 [ 10%]  (Warmup)
+Chain 2: Iteration: 110 / 1000 [ 11%]  (Warmup)
+Chain 3: Iteration: 100 / 1000 [ 10%]  (Warmup)
+Chain 2: Iteration: 120 / 1000 [ 12%]  (Warmup)
+Chain 1: Iteration: 110 / 1000 [ 11%]  (Warmup)
+Chain 4: Iteration:  60 / 1000 [  6%]  (Warmup)
+Chain 3: Iteration: 110 / 1000 [ 11%]  (Warmup)
+Chain 3: Iteration: 120 / 1000 [ 12%]  (Warmup)
+Chain 2: Iteration: 130 / 1000 [ 13%]  (Warmup)
+Chain 4: Iteration:  70 / 1000 [  7%]  (Warmup)
+Chain 1: Iteration: 120 / 1000 [ 12%]  (Warmup)
+Chain 3: Iteration: 130 / 1000 [ 13%]  (Warmup)
+Chain 4: Iteration:  80 / 1000 [  8%]  (Warmup)
+Chain 2: Iteration: 140 / 1000 [ 14%]  (Warmup)
+Chain 4: Iteration:  90 / 1000 [  9%]  (Warmup)
+Chain 1: Iteration: 130 / 1000 [ 13%]  (Warmup)
+Chain 4: Iteration: 100 / 1000 [ 10%]  (Warmup)
+Chain 4: Iteration: 110 / 1000 [ 11%]  (Warmup)
+Chain 2: Iteration: 150 / 1000 [ 15%]  (Warmup)
+Chain 1: Iteration: 140 / 1000 [ 14%]  (Warmup)
+Chain 4: Iteration: 120 / 1000 [ 12%]  (Warmup)
+Chain 3: Iteration: 140 / 1000 [ 14%]  (Warmup)
+Chain 2: Iteration: 160 / 1000 [ 16%]  (Warmup)
+Chain 4: Iteration: 130 / 1000 [ 13%]  (Warmup)
