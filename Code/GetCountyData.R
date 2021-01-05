@@ -1,4 +1,4 @@
-GetCountyData <- function(exclude.set = NULL, include.regions = TRUE) {
+GetCountyData <- function(include.regions = TRUE) {
   dt <- fread("https://data.ca.gov/dataset/529ac907-6ba1-4cb7-9aae-8966fc96aeef/resource/42d33765-20fd-44b8-a978-b083b7542225/download/hospitals_by_county.csv")
   #dt <- dt[todays_date != "", .(county, date = as.Date(todays_date), hosp.conf = hospitalized_covid_confirmed_patients, hosp.pui = hospitalized_suspected_covid_patients, icu.conf = icu_covid_confirmed_patients, icu.pui = icu_suspected_covid_patients)]
   dt <- dt[, .(county, date = as.Date(todays_date), hosp.conf = hospitalized_covid_confirmed_patients, hosp.pui = hospitalized_suspected_covid_patients, icu.conf = icu_covid_confirmed_patients, icu.pui = icu_suspected_covid_patients)]
@@ -11,7 +11,6 @@ GetCountyData <- function(exclude.set = NULL, include.regions = TRUE) {
 
   county.dt[, mean10 := mean(hosp.conf[date >= (Sys.Date() - 10)], na.rm=T), by = "county"]
   county.dt <- county.dt[mean10 > 1] #exclude if average hosp over last 10 days < 1
-  county.dt <- county.dt[!(county %in% exclude.set)]
   county.dt$mean10 <- NULL
 
   #make deaths NA for outliers that imply cumulative deaths decrease
@@ -90,6 +89,7 @@ GetCountyData <- function(exclude.set = NULL, include.regions = TRUE) {
   county.dt[county == 'Yolo' & date == '2020-12-10', deaths.conf := NA_real_]
   county.dt[county == 'Yuba' & date == '2020-12-09', deaths.conf := NA_real_]
   county.dt[county == 'Yolo' & date == '2020-12-25', deaths.conf := NA_real_]
+  county.dt[county == 'Alameda' & date == '2021-01-01', deaths.conf := NA_real_]
 
   #data errors
   county.dt[county == 'Merced' & date == '2020-08-16', hosp.conf := NA_real_]
