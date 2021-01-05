@@ -5,29 +5,30 @@ source('Code/GetCountyData.R')
 
 git.pw <- readline("Enter github password: ")
 git.pw <- paste0("Q2zDSR4BEaV6GnHgYh", git.pw)
-exclude.set <- c("San Francisco", "Santa Clara") #SF is run separately, SC uses local data
 
 prev.county.dt <- readRDS("Inputs/CountyData.rds")
 sc.dt <- GetSantaClaraData()
 while (T) {
-  county.dt <- GetCountyData(exclude.set)
+  county.dt <- GetCountyData()
   prev.max.date <- prev.county.dt[county == "San Mateo", max(date)] #San Mateo is arbitrary
   curr.max.date <- county.dt[county == "San Mateo", max(date)]
   cat("prev.max.date =", as.character(prev.max.date), "curr.max.date =", as.character(curr.max.date), "\n")
   if (curr.max.date > prev.max.date) {
     break
   }
+  break #temp
   cat("waiting one minute\n")
-  Sys.sleep(60)
+  system("sleep 60")
 }
 
-county.dt <- rbind(county.dt, sc.dt)
+exclude.set <- c("San Francisco", "Santa Clara") #SF is run separately, SC uses local data
+county.dt <- rbind(county.dt[!(county %in% exclude.set)], sc.dt)
 saveRDS(county.dt, "Inputs/CountyData.rds")
 
-quick.test <- F
+quick.test <- T
 if (quick.test) {
   cat("\n\n++++++++++++++++++  quick.test = T +++++++++++++++++ \n\n")
-  county.set <- c("GreaterSacramento", "SanJoaquinValley", "SouthernCalifornia")
+  county.set <- c("BayArea")
 } else {
   #order by last Rt date in forecasts and then last run time
   dt.max <- merge(county.dt, county.dt[, .(date = max(date)), by = "county"], by = c("county", "date"))
