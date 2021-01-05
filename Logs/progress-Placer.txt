@@ -465,3 +465,27 @@ Chain 4:
      user    system   elapsed 
 91144.573     2.266 32478.755 
 Projecting
+   user  system elapsed 
+394.813   1.526 396.345 
+
+Excel output:  Forecasts/Placer.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.83 0.86 0.91 0.95 0.99 1.02 1.04 
+
+PDF output:  Forecasts/Placer.pdf 
+   user  system elapsed 
+395.168   1.771 396.949 
+
+Excel output:  Scenarios/Placer_scenario_actToday.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.83 0.86 0.91 0.95 0.99 1.02 1.04 
+
+PDF output:  Scenarios/Placer_scenario_actToday.pdf 
+   user  system elapsed 
+393.822   1.472 395.301 
+
+Excel output:  Scenarios/Placer_scenario_actTwoWeeks.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.83 0.86 0.91 0.95 0.99 1.02 1.04 
+
+PDF output:  Scenarios/Placer_scenario_actTwoWeeks.pdf 
