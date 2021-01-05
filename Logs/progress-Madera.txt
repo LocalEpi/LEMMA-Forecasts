@@ -455,3 +455,21 @@ Chain 3:                16227.9 seconds (Total)
 Chain 3: 
 Chain 1: Iteration: 970 / 1000 [ 97%]  (Sampling)
 Chain 1: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 1: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 1: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 1: 
+Chain 1:  Elapsed Time: 32.3691 seconds (Warm-up)
+Chain 1:                17093.8 seconds (Sampling)
+Chain 1:                17126.2 seconds (Total)
+Chain 1: 
+     user    system   elapsed 
+44000.360     1.812 17153.762 
+Projecting
+   user  system elapsed 
+297.522   2.008 299.599 
+
+Excel output:  Forecasts/Madera.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+1.03 1.05 1.08 1.11 1.15 1.19 1.22 
+
+PDF output:  Forecasts/Madera.pdf 
