@@ -443,3 +443,41 @@ Chain 2: Iteration: 940 / 1000 [ 94%]  (Sampling)
 Chain 3: Iteration: 950 / 1000 [ 95%]  (Sampling)
 Chain 2: Iteration: 950 / 1000 [ 95%]  (Sampling)
 Chain 3: Iteration: 960 / 1000 [ 96%]  (Sampling)
+Chain 2: Iteration: 960 / 1000 [ 96%]  (Sampling)
+Chain 3: Iteration: 970 / 1000 [ 97%]  (Sampling)
+Chain 2: Iteration: 970 / 1000 [ 97%]  (Sampling)
+Chain 3: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 2: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 3: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 2: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 3: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 3: 
+Chain 3:  Elapsed Time: 5198.33 seconds (Warm-up)
+Chain 3:                5505.41 seconds (Sampling)
+Chain 3:                10703.7 seconds (Total)
+Chain 3: 
+Chain 2: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 2: 
+Chain 2:  Elapsed Time: 6302.04 seconds (Warm-up)
+Chain 2:                4440.88 seconds (Sampling)
+Chain 2:                10742.9 seconds (Total)
+Chain 2: 
+     user    system   elapsed 
+40218.221   126.064 10766.067 
+Projecting
+   user  system elapsed 
+415.598   1.855 417.459 
+
+Excel output:  Forecasts/San Mateo.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+1.01 1.05 1.09 1.14 1.19 1.23 1.27 
+
+PDF output:  Forecasts/San Mateo.pdf 
+   user  system elapsed 
+410.245   2.095 412.349 
+
+Excel output:  Scenarios/San Mateo_scenario_actToday.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+1.01 1.05 1.09 1.14 1.19 1.23 1.27 
+
+PDF output:  Scenarios/San Mateo_scenario_actToday.pdf 
