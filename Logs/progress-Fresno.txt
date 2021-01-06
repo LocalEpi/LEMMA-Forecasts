@@ -454,3 +454,22 @@ Chain 4:
 Chain 3: Iteration: 950 / 1000 [ 95%]  (Sampling)
 Chain 3: Iteration: 960 / 1000 [ 96%]  (Sampling)
 Chain 3: Iteration: 970 / 1000 [ 97%]  (Sampling)
+Chain 3: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 3: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 3: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 3: 
+Chain 3:  Elapsed Time: 6177.95 seconds (Warm-up)
+Chain 3:                6249.12 seconds (Sampling)
+Chain 3:                12427.1 seconds (Total)
+Chain 3: 
+     user    system   elapsed 
+42669.300   163.227 12449.288 
+Projecting
+   user  system elapsed 
+402.946   1.575 404.527 
+
+Excel output:  Forecasts/Fresno.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.92 0.94 0.97 1.01 1.04 1.07 1.09 
+
+PDF output:  Forecasts/Fresno.pdf 
