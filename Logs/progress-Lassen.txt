@@ -446,3 +446,30 @@ Chain 2:
 Chain 4: Iteration: 870 / 1000 [ 87%]  (Sampling)
 Chain 4: Iteration: 880 / 1000 [ 88%]  (Sampling)
 Chain 4: Iteration: 890 / 1000 [ 89%]  (Sampling)
+Chain 4: Iteration: 900 / 1000 [ 90%]  (Sampling)
+Chain 4: Iteration: 910 / 1000 [ 91%]  (Sampling)
+Chain 4: Iteration: 920 / 1000 [ 92%]  (Sampling)
+Chain 4: Iteration: 930 / 1000 [ 93%]  (Sampling)
+Chain 4: Iteration: 940 / 1000 [ 94%]  (Sampling)
+Chain 4: Iteration: 950 / 1000 [ 95%]  (Sampling)
+Chain 4: Iteration: 960 / 1000 [ 96%]  (Sampling)
+Chain 4: Iteration: 970 / 1000 [ 97%]  (Sampling)
+Chain 4: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 4: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 4: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 4: 
+Chain 4:  Elapsed Time: 5526.22 seconds (Warm-up)
+Chain 4:                4025.98 seconds (Sampling)
+Chain 4:                9552.21 seconds (Total)
+Chain 4: 
+     user    system   elapsed 
+33891.292   155.355  9576.904 
+Projecting
+   user  system elapsed 
+431.740   1.967 433.714 
+
+Excel output:  Forecasts/Lassen.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.76 0.81 0.88 0.94 1.00 1.05 1.09 
+
+PDF output:  Forecasts/Lassen.pdf 
