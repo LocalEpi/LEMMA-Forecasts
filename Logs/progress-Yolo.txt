@@ -465,3 +465,27 @@ Chain 4:
      user    system   elapsed 
 22963.290   101.345  7084.098 
 Projecting
+   user  system elapsed 
+249.142   1.427 250.578 
+
+Excel output:  Forecasts/Yolo.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.83 0.87 0.91 0.95 1.00 1.03 1.06 
+
+PDF output:  Forecasts/Yolo.pdf 
+   user  system elapsed 
+236.332   1.460 237.797 
+
+Excel output:  Scenarios/Yolo_scenario_actToday.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.83 0.87 0.91 0.95 1.00 1.03 1.06 
+
+PDF output:  Scenarios/Yolo_scenario_actToday.pdf 
+   user  system elapsed 
+245.492   1.616 247.111 
+
+Excel output:  Scenarios/Yolo_scenario_actTwoWeeks.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.83 0.87 0.91 0.95 1.00 1.03 1.06 
+
+PDF output:  Scenarios/Yolo_scenario_actTwoWeeks.pdf 
