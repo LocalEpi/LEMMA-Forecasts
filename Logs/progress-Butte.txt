@@ -655,3 +655,21 @@ Chain 3: Iteration: 1450 / 1500 [ 96%]  (Sampling)
 Chain 3: Iteration: 1460 / 1500 [ 97%]  (Sampling)
 Chain 3: Iteration: 1470 / 1500 [ 98%]  (Sampling)
 Chain 3: Iteration: 1480 / 1500 [ 98%]  (Sampling)
+Chain 3: Iteration: 1490 / 1500 [ 99%]  (Sampling)
+Chain 3: Iteration: 1500 / 1500 [100%]  (Sampling)
+Chain 3: 
+Chain 3:  Elapsed Time: 21.4085 seconds (Warm-up)
+Chain 3:                20128.7 seconds (Sampling)
+Chain 3:                20150.1 seconds (Total)
+Chain 3: 
+     user    system   elapsed 
+47680.793     3.181 20183.717 
+Projecting
+   user  system elapsed 
+278.617   1.603 280.223 
+
+Excel output:  Forecasts/Butte.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.82 0.84 0.89 0.94 0.98 1.02 1.05 
+
+PDF output:  Forecasts/Butte.pdf 
