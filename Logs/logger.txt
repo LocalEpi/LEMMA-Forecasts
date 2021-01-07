@@ -85,3 +85,7 @@
 2021-01-07 02:27:08	[Thread 18]	INFO			county = Los Angeles
 2021-01-07 02:28:37	[Thread 7]	INFO			county = SouthernCalifornia
 2021-01-07 02:33:25	[Thread 20]	INFO			county = Contra Costa
+2021-01-07 02:41:27	[Thread 14]	WARN	rstan	throw_sampler_warnings	There were 671 transitions after warmup that exceeded the maximum treedepth. Increase max_treedepth above 15. See http://mc-stan.org/misc/warnings.html#maximum-treedepth-exceeded
+2021-01-07 02:41:27	[Thread 14]	WARN	rstan	throw_sampler_warnings	There were 2 chains where the estimated Bayesian Fraction of Missing Information was low. See http://mc-stan.org/misc/warnings.html#bfmi-low
+2021-01-07 02:41:27	[Thread 14]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
+2021-01-07 02:41:34	[Thread 12]	INFO			county = Placer
