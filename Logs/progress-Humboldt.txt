@@ -433,3 +433,43 @@ Chain 3:                1726.83 seconds (Total)
 Chain 3: 
 Chain 4: Iteration: 940 / 1000 [ 94%]  (Sampling)
 Chain 1: Iteration: 870 / 1000 [ 87%]  (Sampling)
+Chain 4: Iteration: 950 / 1000 [ 95%]  (Sampling)
+Chain 1: Iteration: 880 / 1000 [ 88%]  (Sampling)
+Chain 4: Iteration: 960 / 1000 [ 96%]  (Sampling)
+Chain 1: Iteration: 890 / 1000 [ 89%]  (Sampling)
+Chain 4: Iteration: 970 / 1000 [ 97%]  (Sampling)
+Chain 1: Iteration: 900 / 1000 [ 90%]  (Sampling)
+Chain 1: Iteration: 910 / 1000 [ 91%]  (Sampling)
+Chain 4: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 1: Iteration: 920 / 1000 [ 92%]  (Sampling)
+Chain 4: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 1: Iteration: 930 / 1000 [ 93%]  (Sampling)
+Chain 4: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 4: 
+Chain 4:  Elapsed Time: 1117.06 seconds (Warm-up)
+Chain 4:                717.801 seconds (Sampling)
+Chain 4:                1834.86 seconds (Total)
+Chain 4: 
+Chain 1: Iteration: 940 / 1000 [ 94%]  (Sampling)
+Chain 1: Iteration: 950 / 1000 [ 95%]  (Sampling)
+Chain 1: Iteration: 960 / 1000 [ 96%]  (Sampling)
+Chain 1: Iteration: 970 / 1000 [ 97%]  (Sampling)
+Chain 1: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 1: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 1: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 1: 
+Chain 1:  Elapsed Time: 858.052 seconds (Warm-up)
+Chain 1:                1058.17 seconds (Sampling)
+Chain 1:                1916.22 seconds (Total)
+Chain 1: 
+    user   system  elapsed 
+6698.512   23.685 1945.646 
+Projecting
+   user  system elapsed 
+310.086   2.088 312.179 
+
+Excel output:  Forecasts/Humboldt.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.62 0.69 0.79 0.90 1.01 1.11 1.17 
+
+PDF output:  Forecasts/Humboldt.pdf 
