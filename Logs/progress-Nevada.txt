@@ -435,9 +435,9 @@ Chain 2: Iteration: 790 / 1000 [ 79%]  (Sampling)
 Chain 2: Iteration: 800 / 1000 [ 80%]  (Sampling)
 Chain 2: Iteration: 810 / 1000 [ 81%]  (Sampling)
 Chain 2: Iteration: 820 / 1000 [ 82%]  (Sampling)
+Chain 2: Iteration: 830 / 1000 [ 83%]  (Sampling)
+Chain 2: Iteration: 840 / 1000 [ 84%]  (Sampling)
 Sampling)
-Chain 4: Iteration: 990 / 1000 [ 99%]  (Sampling)
-Chain 1: Iteration: 940 / 1000 [ 94%]  (Sampling)
 Chain 2: Iteration: 990 / 1000 [ 99%]  (Sampling)
 Chain 4: Iteration: 1000 / 1000 [100%]  (Sampling)
 Chain 4: 
@@ -473,3 +473,19 @@ Excel output:  Forecasts/Nevada.xlsx
 0.62 0.65 0.72 0.78 0.83 0.87 0.90 
 
 PDF output:  Forecasts/Nevada.pdf 
+   user  system elapsed 
+325.428   2.527 327.977 
+
+Excel output:  Scenarios/Nevada_scenario_actToday.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.62 0.65 0.72 0.78 0.83 0.87 0.90 
+
+PDF output:  Scenarios/Nevada_scenario_actToday.pdf 
+   user  system elapsed 
+282.722   1.877 284.619 
+
+Excel output:  Scenarios/Nevada_scenario_actTwoWeeks.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.62 0.65 0.72 0.78 0.83 0.87 0.90 
+
+PDF output:  Scenarios/Nevada_scenario_actTwoWeeks.pdf 

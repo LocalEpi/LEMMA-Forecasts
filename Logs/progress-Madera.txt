@@ -442,9 +442,9 @@ Chain 3: Iteration: 820 / 1000 [ 82%]  (Sampling)
 Chain 3: Iteration: 830 / 1000 [ 83%]  (Sampling)
 Chain 3: Iteration: 840 / 1000 [ 84%]  (Sampling)
 Chain 3: Iteration: 850 / 1000 [ 85%]  (Sampling)
-on: 910 / 1000 [ 91%]  (Sampling)
-Chain 2: Iteration: 990 / 1000 [ 99%]  (Sampling)
-Chain 3: Iteration: 920 / 1000 [ 92%]  (Sampling)
+Chain 3: Iteration: 860 / 1000 [ 86%]  (Sampling)
+Chain 3: Iteration: 870 / 1000 [ 87%]  (Sampling)
+on: 920 / 1000 [ 92%]  (Sampling)
 Chain 2: Iteration: 1000 / 1000 [100%]  (Sampling)
 Chain 2: 
 Chain 2:  Elapsed Time: 1575.28 seconds (Warm-up)
@@ -458,3 +458,20 @@ Chain 3: Iteration: 960 / 1000 [ 96%]  (Sampling)
 Chain 3: Iteration: 970 / 1000 [ 97%]  (Sampling)
 Chain 3: Iteration: 980 / 1000 [ 98%]  (Sampling)
 Chain 3: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 3: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 3: 
+Chain 3:  Elapsed Time: 9.33767 seconds (Warm-up)
+Chain 3:                27038.4 seconds (Sampling)
+Chain 3:                27047.8 seconds (Total)
+Chain 3: 
+     user    system   elapsed 
+55482.951     3.857 34707.901 
+Projecting
+   user  system elapsed 
+328.877   2.294 331.182 
+
+Excel output:  Forecasts/Madera.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+1.04 1.06 1.10 1.14 1.26 1.32 1.33 
+
+PDF output:  Forecasts/Madera.pdf 
