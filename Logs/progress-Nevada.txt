@@ -452,15 +452,16 @@ Chain 2: Iteration: 960 / 1000 [ 96%]  (Sampling)
 Chain 2: Iteration: 970 / 1000 [ 97%]  (Sampling)
 Chain 2: Iteration: 980 / 1000 [ 98%]  (Sampling)
 Chain 2: Iteration: 990 / 1000 [ 99%]  (Sampling)
-Chain 1: Iteration: 1000 / 1000 [100%]  (Sampling)
-Chain 1: 
-Chain 1:  Elapsed Time: 17.7562 seconds (Warm-up)
-Chain 1:                26979.5 seconds (Sampling)
-Chain 1:                26997.3 seconds (Total)
-Chain 1: 
+Chain 2: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 2: 
+Chain 2:  Elapsed Time: 306.028 seconds (Warm-up)
+Chain 2:                24201 seconds (Sampling)
+Chain 2:                24507.1 seconds (Total)
+Chain 2: 
      user    system   elapsed 
-79178.572     6.036 34111.450 
+39251.265     3.544 32107.436 
 Projecting
+g
    user  system elapsed 
 334.412   2.629 337.084 
 
