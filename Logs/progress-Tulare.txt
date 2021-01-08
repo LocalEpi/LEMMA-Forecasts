@@ -399,8 +399,8 @@ Chain 4:                22466.7 seconds (Total)
 Chain 4: 
 Chain 2: Iteration: 780 / 1000 [ 78%]  (Sampling)
 Chain 1: Iteration: 690 / 1000 [ 69%]  (Sampling)
-: 900 / 1000 [ 90%]  (Sampling)
-Chain 4: Iteration: 910 / 1000 [ 91%]  (Sampling)
+Chain 2: Iteration: 790 / 1000 [ 79%]  (Sampling)
+: 910 / 1000 [ 91%]  (Sampling)
 Chain 3: Iteration: 830 / 1000 [ 83%]  (Sampling)
 Chain 2: Iteration: 800 / 1000 [ 80%]  (Sampling)
 Chain 4: Iteration: 920 / 1000 [ 92%]  (Sampling)
@@ -475,3 +475,11 @@ Excel output:  Forecasts/Tulare.xlsx
 1.05 1.07 1.09 1.12 1.15 1.17 1.19 
 
 PDF output:  Forecasts/Tulare.pdf 
+   user  system elapsed 
+470.474   2.857 473.346 
+
+Excel output:  Scenarios/Tulare_scenario_actToday.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+1.05 1.07 1.09 1.12 1.15 1.17 1.19 
+
+PDF output:  Scenarios/Tulare_scenario_actToday.pdf 
