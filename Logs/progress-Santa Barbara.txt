@@ -364,21 +364,19 @@ Chain 2: Iteration: 890 / 1000 [ 89%]  (Sampling)
 Chain 3: Iteration: 780 / 1000 [ 78%]  (Sampling)
 Chain 1: Iteration: 650 / 1000 [ 65%]  (Sampling)
 Chain 4: Iteration: 900 / 1000 [ 90%]  (Sampling)
-ing)
-Chain 4: Iteration: 990 / 1000 [ 99%]  (Sampling)
-Chain 2: Iteration: 810 / 1000 [ 81%]  (Sampling)
-Chain 1: Iteration: 650 / 1000 [ 65%]  (Sampling)
-Chain 4: Iteration: 1000 / 1000 [100%]  (Sampling)
-Chain 4: 
-Chain 4:  Elapsed Time: 6863.79 seconds (Warm-up)
-Chain 4:                6744.08 seconds (Sampling)
-Chain 4:                13607.9 seconds (Total)
-Chain 4: 
-Chain 3: Iteration: 810 / 1000 [ 81%]  (Sampling)
-Chain 2: Iteration: 820 / 1000 [ 82%]  (Sampling)
-Chain 2: Iteration: 830 / 1000 [ 83%]  (Sampling)
 Chain 1: Iteration: 660 / 1000 [ 66%]  (Sampling)
-Chain 3: Iteration: 820 / 1000 [ 82%]  (Sampling)
+Chain 2: Iteration: 900 / 1000 [ 90%]  (Sampling)
+Chain 3: Iteration: 790 / 1000 [ 79%]  (Sampling)
+Chain 4: Iteration: 910 / 1000 [ 91%]  (Sampling)
+Chain 1: Iteration: 670 / 1000 [ 67%]  (Sampling)
+Chain 2: Iteration: 910 / 1000 [ 91%]  (Sampling)
+Chain 3: Iteration: 800 / 1000 [ 80%]  (Sampling)
+Chain 4: Iteration: 920 / 1000 [ 92%]  (Sampling)
+Chain 1: Iteration: 680 / 1000 [ 68%]  (Sampling)
+Chain 2: Iteration: 920 / 1000 [ 92%]  (Sampling)
+Chain 3: Iteration: 810 / 1000 [ 81%]  (Sampling)
+Chain 4: Iteration: 930 / 1000 [ 93%]  (Sampling)
+ 1000 [ 82%]  (Sampling)
 Chain 2: Iteration: 840 / 1000 [ 84%]  (Sampling)
 Chain 1: Iteration: 670 / 1000 [ 67%]  (Sampling)
 Chain 3: Iteration: 830 / 1000 [ 83%]  (Sampling)
@@ -474,3 +472,11 @@ Excel output:  Forecasts/Santa Barbara.xlsx
 1.13 1.15 1.19 1.24 1.29 1.34 1.37 
 
 PDF output:  Forecasts/Santa Barbara.pdf 
+   user  system elapsed 
+569.829   4.700 698.997 
+
+Excel output:  Scenarios/Santa Barbara_scenario_actToday.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+1.13 1.15 1.19 1.24 1.29 1.34 1.37 
+
+PDF output:  Scenarios/Santa Barbara_scenario_actToday.pdf 
