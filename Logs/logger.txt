@@ -53,3 +53,8 @@
 2021-01-08 04:35:01	[Thread 5]	INFO			county = BayArea
 2021-01-08 04:39:50	[Thread 20]	INFO			county = Santa Barbara
 2021-01-08 04:46:43	[Thread 23]	INFO			county = San Bernardino
+2021-01-08 04:46:52	[Thread 23]	FATAL			Error in unserialize(node$con) : error reading from connection Calls: local ... doTryCatch -> recvData -> recvData.SOCKnode -> unserialize 
+2021-01-08 04:46:52	[Thread 23]	TRACE			Thread 23 terminated
+2021-01-08 04:46:53	[Thread 22]	FATAL			Error in unserialize(node$con) : error reading from connection Calls: local ... doTryCatch -> recvData -> recvData.SOCKnode -> unserialize 
+2021-01-08 04:46:53	[Thread 22]	TRACE			Thread 22 terminated
+2021-01-08 04:49:31	[Thread 16]	INFO			county = Contra Costa

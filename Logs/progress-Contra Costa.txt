@@ -397,15 +397,15 @@ Chain 2: Iteration: 840 / 1000 [ 84%]  (Sampling)
 Chain 1: Iteration: 990 / 1000 [ 99%]  (Sampling)
 Chain 4: Iteration: 930 / 1000 [ 93%]  (Sampling)
 Chain 3: Iteration: 790 / 1000 [ 79%]  (Sampling)
- 99%]  (Sampling)
-Chain 3: Iteration: 830 / 1000 [ 83%]  (Sampling)
-Chain 2: Iteration: 1000 / 1000 [100%]  (Sampling)
-Chain 2: 
-Chain 2:  Elapsed Time: 8105.43 seconds (Warm-up)
-Chain 2:                7193.33 seconds (Sampling)
-Chain 2:                15298.8 seconds (Total)
-Chain 2: 
-Chain 4: Iteration: 720 / 1000 [ 72%]  (Sampling)
+Chain 2: Iteration: 850 / 1000 [ 85%]  (Sampling)
+Chain 1: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 1: 
+Chain 1:  Elapsed Time: 9132.3 seconds (Warm-up)
+Chain 1:                7472.52 seconds (Sampling)
+Chain 1:                16604.8 seconds (Total)
+Chain 1: 
+Chain 4: Iteration: 940 / 1000 [ 94%]  (Sampling)
+[ 72%]  (Sampling)
 Chain 3: Iteration: 840 / 1000 [ 84%]  (Sampling)
 Chain 4: Iteration: 730 / 1000 [ 73%]  (Sampling)
 Chain 3: Iteration: 850 / 1000 [ 85%]  (Sampling)
@@ -480,3 +480,11 @@ Excel output:  Scenarios/Contra Costa_scenario_actToday.xlsx
 0.93 0.96 1.01 1.06 1.11 1.15 1.18 
 
 PDF output:  Scenarios/Contra Costa_scenario_actToday.pdf 
+   user  system elapsed 
+570.315   5.122 619.373 
+
+Excel output:  Scenarios/Contra Costa_scenario_actTwoWeeks.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.93 0.96 1.01 1.06 1.11 1.15 1.18 
+
+PDF output:  Scenarios/Contra Costa_scenario_actTwoWeeks.pdf 
