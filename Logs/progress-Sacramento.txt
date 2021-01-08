@@ -410,13 +410,15 @@ Chain 2: Iteration: 830 / 1000 [ 83%]  (Sampling)
 Chain 3: Iteration: 800 / 1000 [ 80%]  (Sampling)
 Chain 4: Iteration: 990 / 1000 [ 99%]  (Sampling)
 Chain 3: Iteration: 810 / 1000 [ 81%]  (Sampling)
-Chain 4: Iteration: 830 / 1000 [ 83%]  (Sampling)
-Chain 2: Iteration: 980 / 1000 [ 98%]  (Sampling)
-Chain 4: Iteration: 840 / 1000 [ 84%]  (Sampling)
-Chain 2: Iteration: 990 / 1000 [ 99%]  (Sampling)
-Chain 1: Iteration: 850 / 1000 [ 85%]  (Sampling)
-Chain 4: Iteration: 850 / 1000 [ 85%]  (Sampling)
-Chain 2: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 4: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 4: 
+Chain 4:  Elapsed Time: 13513.4 seconds (Warm-up)
+Chain 4:                10175.3 seconds (Sampling)
+Chain 4:                23688.7 seconds (Total)
+Chain 4: 
+Chain 3: Iteration: 820 / 1000 [ 82%]  (Sampling)
+Chain 2: Iteration: 840 / 1000 [ 84%]  (Sampling)
+1000 / 1000 [100%]  (Sampling)
 Chain 2: 
 Chain 2:  Elapsed Time: 10951.5 seconds (Warm-up)
 Chain 2:                15522.9 seconds (Sampling)
@@ -481,3 +483,5 @@ Excel output:  Scenarios/Sacramento_scenario_actToday.xlsx
 0.80 0.83 0.88 0.93 0.97 1.01 1.03 
 
 PDF output:  Scenarios/Sacramento_scenario_actToday.pdf 
+   user  system elapsed 
+527.857   2.589 530.464 
