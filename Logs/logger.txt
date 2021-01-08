@@ -159,3 +159,24 @@
 2021-01-08 06:53:04	[Thread 11]	TRACE			Thread 11 terminated
 2021-01-08 06:56:51	[Thread 13]	INFO			county = Monterey
 2021-01-08 06:57:02	[Thread 10]	INFO			county = Sacramento
+2021-01-08 06:57:10	[Thread 10]	FATAL			Error in unserialize(node$con) : error reading from connection Calls: local ... doTryCatch -> recvData -> recvData.SOCKnode -> unserialize 
+2021-01-08 06:57:10	[Thread 10]	TRACE			Thread 10 terminated
+2021-01-08 06:57:10	[Thread 9]	FATAL			Error in unserialize(node$con) : error reading from connection Calls: local ... doTryCatch -> recvData -> recvData.SOCKnode -> unserialize 
+2021-01-08 06:57:10	[Thread 9]	TRACE			Thread 9 terminated
+2021-01-08 06:57:10	[Thread 8]	FATAL			Error in unserialize(node$con) : error reading from connection Calls: local ... doTryCatch -> recvData -> recvData.SOCKnode -> unserialize 
+2021-01-08 06:57:10	[Thread 8]	TRACE			Thread 8 terminated
+2021-01-08 06:57:11	[Thread 7]	FATAL			Error in unserialize(node$con) : error reading from connection Calls: local ... doTryCatch -> recvData -> recvData.SOCKnode -> unserialize 
+2021-01-08 06:57:11	[Thread 7]	TRACE			Thread 7 terminated
+2021-01-08 06:57:11	[Thread 6]	FATAL			Error in unserialize(node$con) : error reading from connection Calls: local ... doTryCatch -> recvData -> recvData.SOCKnode -> unserialize 
+2021-01-08 06:57:11	[Thread 6]	TRACE			Thread 6 terminated
+2021-01-08 06:57:11	[Thread 5]	FATAL			Error in unserialize(node$con) : error reading from connection Calls: local ... doTryCatch -> recvData -> recvData.SOCKnode -> unserialize 
+2021-01-08 06:57:11	[Thread 5]	TRACE			Thread 5 terminated
+2021-01-08 06:57:12	[Thread 4]	FATAL			Error in unserialize(node$con) : error reading from connection Calls: local ... doTryCatch -> recvData -> recvData.SOCKnode -> unserialize 
+2021-01-08 06:57:12	[Thread 4]	TRACE			Thread 4 terminated
+2021-01-08 06:57:12	[Thread 3]	FATAL			Error in unserialize(node$con) : error reading from connection Calls: local ... doTryCatch -> recvData -> recvData.SOCKnode -> unserialize 
+2021-01-08 06:57:12	[Thread 3]	TRACE			Thread 3 terminated
+2021-01-08 06:57:13	[Thread 2]	FATAL			Error in unserialize(node$con) : error reading from connection Calls: local ... doTryCatch -> recvData -> recvData.SOCKnode -> unserialize 
+2021-01-08 06:57:13	[Thread 2]	TRACE			Thread 2 terminated
+2021-01-08 06:57:13	[Thread 1]	FATAL			Error in unserialize(node$con) : error reading from connection Calls: local ... doTryCatch -> recvData -> recvData.SOCKnode -> unserialize 
+2021-01-08 06:57:13	[Thread 1]	TRACE			Thread 1 terminated
+2021-01-08 06:58:07	[Thread 22]	INFO			county = Ventura
