@@ -439,3 +439,53 @@ Chain 4: Iteration: 920 / 1000 [ 92%]  (Sampling)
 Chain 2: Iteration: 930 / 1000 [ 93%]  (Sampling)
 Chain 4: Iteration: 930 / 1000 [ 93%]  (Sampling)
 Chain 2: Iteration: 940 / 1000 [ 94%]  (Sampling)
+Chain 4: Iteration: 940 / 1000 [ 94%]  (Sampling)
+Chain 2: Iteration: 950 / 1000 [ 95%]  (Sampling)
+Chain 2: Iteration: 960 / 1000 [ 96%]  (Sampling)
+Chain 4: Iteration: 950 / 1000 [ 95%]  (Sampling)
+Chain 2: Iteration: 970 / 1000 [ 97%]  (Sampling)
+Chain 4: Iteration: 960 / 1000 [ 96%]  (Sampling)
+Chain 2: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 4: Iteration: 970 / 1000 [ 97%]  (Sampling)
+Chain 2: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 2: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 2: 
+Chain 2:  Elapsed Time: 5944.05 seconds (Warm-up)
+Chain 2:                5261.08 seconds (Sampling)
+Chain 2:                11205.1 seconds (Total)
+Chain 2: 
+Chain 4: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 4: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 4: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 4: 
+Chain 4:  Elapsed Time: 3949.05 seconds (Warm-up)
+Chain 4:                7460.75 seconds (Sampling)
+Chain 4:                11409.8 seconds (Total)
+Chain 4: 
+     user    system   elapsed 
+41766.014   101.854 11430.894 
+Projecting
+   user  system elapsed 
+405.648   1.767 407.429 
+
+Excel output:  Forecasts/Alameda.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.88 0.91 0.96 1.01 1.05 1.09 1.11 
+
+PDF output:  Forecasts/Alameda.pdf 
+   user  system elapsed 
+402.368   2.238 404.617 
+
+Excel output:  Scenarios/Alameda_scenario_actToday.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.88 0.91 0.96 1.01 1.05 1.09 1.11 
+
+PDF output:  Scenarios/Alameda_scenario_actToday.pdf 
+   user  system elapsed 
+394.504   1.681 396.196 
+
+Excel output:  Scenarios/Alameda_scenario_actTwoWeeks.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.88 0.91 0.96 1.01 1.05 1.09 1.11 
+
+PDF output:  Scenarios/Alameda_scenario_actTwoWeeks.pdf 
