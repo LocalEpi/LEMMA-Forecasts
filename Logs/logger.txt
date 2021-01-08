@@ -103,3 +103,16 @@
 2021-01-08 05:47:14	[Thread 1]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
 2021-01-08 05:52:08	[Thread 9]	WARN	rstan	throw_sampler_warnings	Tail Effective Samples Size (ESS) is too low, indicating posterior variances and tail quantiles may be unreliable. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#tail-ess
 2021-01-08 06:00:06	[Thread 17]	INFO			county = Los Angeles
+2021-01-08 06:00:12	[Thread 2]	WARN	rstan	throw_sampler_warnings	There were 15 divergent transitions after warmup. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup to find out why this is a problem and how to eliminate them.
+2021-01-08 06:00:12	[Thread 2]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
+2021-01-08 06:00:19	[Thread 17]	FATAL			Error in unserialize(node$con) : error reading from connection Calls: local ... doTryCatch -> recvData -> recvData.SOCKnode -> unserialize 
+2021-01-08 06:00:19	[Thread 17]	TRACE			Thread 17 terminated
+2021-01-08 06:00:19	[Thread 16]	FATAL			Error in unserialize(node$con) : error reading from connection Calls: local ... doTryCatch -> recvData -> recvData.SOCKnode -> unserialize 
+2021-01-08 06:00:19	[Thread 16]	TRACE			Thread 16 terminated
+2021-01-08 06:00:20	[Thread 15]	FATAL			Error in unserialize(node$con) : error reading from connection Calls: local ... doTryCatch -> recvData -> recvData.SOCKnode -> unserialize 
+2021-01-08 06:00:20	[Thread 15]	TRACE			Thread 15 terminated
+2021-01-08 06:00:20	[Thread 14]	FATAL			Error in unserialize(node$con) : error reading from connection Calls: local ... doTryCatch -> recvData -> recvData.SOCKnode -> unserialize 
+2021-01-08 06:00:20	[Thread 14]	TRACE			Thread 14 terminated
+2021-01-08 06:00:20	[Thread 13]	FATAL			Error in unserialize(node$con) : error reading from connection Calls: local ... doTryCatch -> recvData -> recvData.SOCKnode -> unserialize 
+2021-01-08 06:00:20	[Thread 13]	TRACE			Thread 13 terminated
+2021-01-08 06:01:46	[Thread 2]	INFO			county = GreaterSacramento
