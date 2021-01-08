@@ -66,3 +66,9 @@
 2021-01-08 04:52:26	[Thread 6]	WARN	rstan	throw_sampler_warnings	Bulk Effective Samples Size (ESS) is too low, indicating posterior means and medians may be unreliable. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#bulk-ess
 2021-01-08 04:52:46	[Thread 6]	WARN	rstan	throw_sampler_warnings	Tail Effective Samples Size (ESS) is too low, indicating posterior variances and tail quantiles may be unreliable. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#tail-ess
 2021-01-08 04:56:28	[Thread 21]	INFO			county = Ventura
+2021-01-08 04:56:35	[Thread 21]	FATAL			Error in unserialize(node$con) : error reading from connection Calls: local ... doTryCatch -> recvData -> recvData.SOCKnode -> unserialize 
+2021-01-08 04:56:35	[Thread 21]	TRACE			Thread 21 terminated
+2021-01-08 04:56:36	[Thread 20]	FATAL			Error in unserialize(node$con) : error reading from connection Calls: local ... doTryCatch -> recvData -> recvData.SOCKnode -> unserialize 
+2021-01-08 04:56:36	[Thread 20]	TRACE			Thread 20 terminated
+2021-01-08 04:58:00	[Thread 4]	WARN	rstan	throw_sampler_warnings	Tail Effective Samples Size (ESS) is too low, indicating posterior variances and tail quantiles may be unreliable. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#tail-ess
+2021-01-08 04:59:50	[Thread 19]	INFO			county = Monterey

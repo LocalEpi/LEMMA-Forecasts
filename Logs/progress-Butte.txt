@@ -656,17 +656,16 @@ Chain 2: Iteration: 1460 / 1500 [ 97%]  (Sampling)
 Chain 2: Iteration: 1470 / 1500 [ 98%]  (Sampling)
 Chain 2: Iteration: 1480 / 1500 [ 98%]  (Sampling)
 Chain 2: Iteration: 1490 / 1500 [ 99%]  (Sampling)
-)
-Chain 1: Iteration: 1500 / 1500 [100%]  (Sampling)
-Chain 1: 
-Chain 1:  Elapsed Time: 8963.73 seconds (Warm-up)
-Chain 1:                3083.45 seconds (Sampling)
-Chain 1:                12047.2 seconds (Total)
-Chain 1: 
-    user   system  elapsed 
-32619.58     3.72 14344.67 
+Chain 2: Iteration: 1500 / 1500 [100%]  (Sampling)
+Chain 2: 
+Chain 2:  Elapsed Time: 13601.6 seconds (Warm-up)
+Chain 2:                3151.28 seconds (Sampling)
+Chain 2:                16752.9 seconds (Total)
+Chain 2: 
+     user    system   elapsed 
+44881.941     5.929 24157.751 
 Projecting
-   user  system elapsed 
+ser  system elapsed 
 359.465   3.512 627.162 
 
 Excel output:  Forecasts/Butte.xlsx 

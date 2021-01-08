@@ -612,9 +612,9 @@ Chain 2: Iteration: 1020 / 1500 [ 68%]  (Sampling)
 Chain 2: Iteration: 1030 / 1500 [ 68%]  (Sampling)
 Chain 2: Iteration: 1040 / 1500 [ 69%]  (Sampling)
 Chain 2: Iteration: 1050 / 1500 [ 70%]  (Sampling)
- 94%]  (Sampling)
-Chain 1: Iteration: 1400 / 1500 [ 93%]  (Sampling)
-Chain 2: Iteration: 1430 / 1500 [ 95%]  (Sampling)
+Chain 2: Iteration: 1060 / 1500 [ 70%]  (Sampling)
+Chain 2: Iteration: 1070 / 1500 [ 71%]  (Sampling)
+ 95%]  (Sampling)
 Chain 4: Iteration: 1320 / 1500 [ 88%]  (Sampling)
 Chain 1: Iteration: 1410 / 1500 [ 94%]  (Sampling)
 Chain 2: Iteration: 1440 / 1500 [ 96%]  (Sampling)
@@ -669,3 +669,11 @@ Chain 4:
      user    system   elapsed 
 71457.904     5.415 33085.804 
 Projecting
+   user  system elapsed 
+332.047   2.505 334.631 
+
+Excel output:  Forecasts/Yuba.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+1.02 1.04 1.06 1.09 1.13 1.16 1.20 
+
+PDF output:  Forecasts/Yuba.pdf 
