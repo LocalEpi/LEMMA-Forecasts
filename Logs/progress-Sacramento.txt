@@ -383,23 +383,25 @@ Chain 4: Iteration: 900 / 1000 [ 90%]  (Sampling)
 Chain 3: Iteration: 730 / 1000 [ 73%]  (Sampling)
 Chain 1: Iteration: 990 / 1000 [ 99%]  (Sampling)
 Chain 4: Iteration: 910 / 1000 [ 91%]  (Sampling)
-Chain 2: Iteration: 900 / 1000 [ 90%]  (Sampling)
-Chain 3: Iteration: 950 / 1000 [ 95%]  (Sampling)
-Chain 4: Iteration: 790 / 1000 [ 79%]  (Sampling)
-Chain 2: Iteration: 910 / 1000 [ 91%]  (Sampling)
-Chain 3: Iteration: 960 / 1000 [ 96%]  (Sampling)
-Chain 1: Iteration: 810 / 1000 [ 81%]  (Sampling)
-Chain 2: Iteration: 920 / 1000 [ 92%]  (Sampling)
-Chain 3: Iteration: 970 / 1000 [ 97%]  (Sampling)
-Chain 4: Iteration: 800 / 1000 [ 80%]  (Sampling)
-Chain 2: Iteration: 930 / 1000 [ 93%]  (Sampling)
-Chain 3: Iteration: 980 / 1000 [ 98%]  (Sampling)
-Chain 1: Iteration: 820 / 1000 [ 82%]  (Sampling)
-Chain 2: Iteration: 940 / 1000 [ 94%]  (Sampling)
-Chain 3: Iteration: 990 / 1000 [ 99%]  (Sampling)
-Chain 4: Iteration: 810 / 1000 [ 81%]  (Sampling)
-Chain 2: Iteration: 950 / 1000 [ 95%]  (Sampling)
-Chain 1: Iteration: 830 / 1000 [ 83%]  (Sampling)
+Chain 3: Iteration: 740 / 1000 [ 74%]  (Sampling)
+Chain 2: Iteration: 790 / 1000 [ 79%]  (Sampling)
+Chain 4: Iteration: 920 / 1000 [ 92%]  (Sampling)
+Chain 1: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 1: 
+Chain 1:  Elapsed Time: 12094.6 seconds (Warm-up)
+Chain 1:                10565.7 seconds (Sampling)
+Chain 1:                22660.3 seconds (Total)
+Chain 1: 
+Chain 3: Iteration: 750 / 1000 [ 75%]  (Sampling)
+Chain 4: Iteration: 930 / 1000 [ 93%]  (Sampling)
+Chain 2: Iteration: 800 / 1000 [ 80%]  (Sampling)
+Chain 3: Iteration: 760 / 1000 [ 76%]  (Sampling)
+Chain 4: Iteration: 940 / 1000 [ 94%]  (Sampling)
+Chain 3: Iteration: 770 / 1000 [ 77%]  (Sampling)
+Chain 4: Iteration: 950 / 1000 [ 95%]  (Sampling)
+Chain 2: Iteration: 810 / 1000 [ 81%]  (Sampling)
+Chain 4: Iteration: 960 / 1000 [ 96%]  (Sampling)
+830 / 1000 [ 83%]  (Sampling)
 Chain 3: Iteration: 1000 / 1000 [100%]  (Sampling)
 Chain 3: 
 Chain 3:  Elapsed Time: 10057.3 seconds (Warm-up)
@@ -465,3 +467,11 @@ Chain 1:
       user     system    elapsed 
 114110.090      2.726  38893.518 
 Projecting
+   user  system elapsed 
+505.154   2.465 507.636 
+
+Excel output:  Forecasts/Sacramento.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.80 0.83 0.88 0.93 0.97 1.01 1.03 
+
+PDF output:  Forecasts/Sacramento.pdf 

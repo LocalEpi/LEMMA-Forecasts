@@ -146,3 +146,6 @@
 2021-01-08 06:29:14	[Thread 13]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
 2021-01-08 06:30:01	[Thread 23]	INFO			county = San Joaquin
 2021-01-08 06:31:09	[Thread 12]	INFO			county = San Diego
+2021-01-08 06:31:17	[Thread 12]	FATAL			Error in unserialize(node$con) : error reading from connection Calls: local ... doTryCatch -> recvData -> recvData.SOCKnode -> unserialize 
+2021-01-08 06:31:17	[Thread 12]	TRACE			Thread 12 terminated
+2021-01-08 06:41:17	[Thread 8]	INFO			county = SouthernCalifornia
