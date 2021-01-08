@@ -238,3 +238,8 @@
 2021-01-08 09:48:09	[Thread 2]	INFO			county = Alameda
 2021-01-08 09:50:47	[Thread 22]	INFO			county = Kern
 2021-01-08 09:51:05	[Thread 13]	INFO			county = Napa
+2021-01-08 09:52:53	[Thread 4]	WARN	rstan	throw_sampler_warnings	There were 451 transitions after warmup that exceeded the maximum treedepth. Increase max_treedepth above 15. See http://mc-stan.org/misc/warnings.html#maximum-treedepth-exceeded
+2021-01-08 09:52:53	[Thread 4]	WARN	rstan	throw_sampler_warnings	There were 1 chains where the estimated Bayesian Fraction of Missing Information was low. See http://mc-stan.org/misc/warnings.html#bfmi-low
+2021-01-08 09:52:53	[Thread 4]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
+2021-01-08 09:52:58	[Thread 4]	WARN	rstan	throw_sampler_warnings	The largest R-hat is 1.1, indicating chains have not mixed. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#r-hat
+2021-01-08 09:52:59	[Thread 23]	INFO			county = Kings
