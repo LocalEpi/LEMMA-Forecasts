@@ -7,7 +7,6 @@ git.pw <- readline("Enter github password: ")
 git.pw <- paste0("Q2zDSR4BEaV6GnHgYh", git.pw)
 
 prev.county.dt <- readRDS("Inputs/CountyData.rds")
-sc.dt <- GetSantaClaraData()
 while (T) {
   county.dt <- GetCountyData()
   prev.max.date <- prev.county.dt[county == "San Mateo", max(date)] #San Mateo is arbitrary
@@ -16,13 +15,12 @@ while (T) {
   if (curr.max.date > prev.max.date) {
     break
   }
-  break #temp
   cat("waiting one minute\n")
   system("sleep 60")
 }
 
 exclude.set <- c("San Francisco", "Santa Clara") #SF is run separately, SC uses local data
-county.dt <- rbind(county.dt[!(county %in% exclude.set)], sc.dt)
+county.dt <- county.dt[!(county %in% exclude.set)]
 saveRDS(county.dt, "Inputs/CountyData.rds")
 
 quick.test <- F
@@ -51,8 +49,7 @@ if (quick.test) {
   print(dt.max)
   sink()
   county.set <- dt.max[, county]
-  county.set <- c("Colusa", setdiff(county.set, c("Colusa", "Santa Clara")), "Santa Clara") #run Colusa first as a test (it's fast), run Santa Clara last because it updates later
-
+  county.set <- c("Colusa", setdiff(county.set, "Colusa")) #run Colusa first as a test (it's fast)
   insuff.data <- c("Glenn", "Mariposa", "Del Norte", "Mono", "Plumas", "Modoc")
   for (i in insuff.data) {
     cat("Excluding", i, "need more data\n")
