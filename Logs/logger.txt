@@ -158,3 +158,8 @@
 2021-01-09 03:58:03	[Thread 2]	INFO			county = GreaterSacramento
 2021-01-09 04:10:08	[Thread 15]	INFO			county = Sonoma
 2021-01-09 04:16:01	[Thread 18]	INFO			county = Lassen
+2021-01-09 04:16:12	[Thread 18]	FATAL			Error in unserialize(node$con) : error reading from connection Calls: local ... doTryCatch -> recvData -> recvData.SOCKnode -> unserialize 
+2021-01-09 04:16:12	[Thread 18]	TRACE			Thread 18 terminated
+2021-01-09 04:16:12	[Thread 17]	FATAL			Error in unserialize(node$con) : error reading from connection Calls: local ... doTryCatch -> recvData -> recvData.SOCKnode -> unserialize 
+2021-01-09 04:16:12	[Thread 17]	TRACE			Thread 17 terminated
+2021-01-09 04:26:48	[Thread 4]	INFO			county = Fresno
