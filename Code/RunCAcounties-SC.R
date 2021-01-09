@@ -5,7 +5,8 @@ library(ParallelLogger)
 
 source('Code/GetCountyData.R')
 
-git.pw <- readline("Enter github password: ")
+#git.pw <- readline("Enter github password: ")
+git.pw <- "ND"
 git.pw <- paste0("Q2zDSR4BEaV6GnHgYh", git.pw)
 
 sc.dt <- GetSantaClaraData()
@@ -140,7 +141,11 @@ RunOneCounty <- function(county1, git.pw, quick.test) {
 
     commit.name <- paste0('"', county1, " data through ", as.character(max.date), '"')
 
-    system2("git", args = c('commit', '-a', '-m', commit.name))
+    files <- list.files(pattern = "Santa Clara", recursive = T)
+    for (f in files) {
+      system2("git", args = c("add", paste0('"', f, '"')))
+    }
+    system2("git", args = c('commit', '-m', commit.name))
     system2("git", args = "pull")
     git.dest <- paste0("https://joshuaschwab:", git.pw, "@github.com/LocalEpi/LEMMA-Forecasts")
     system2("git", args = c("push", git.dest))
