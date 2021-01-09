@@ -431,3 +431,61 @@ Chain 1: Iteration: 890 / 1000 [ 89%]  (Sampling)
 Chain 4: Iteration: 880 / 1000 [ 88%]  (Sampling)
 Chain 1: Iteration: 900 / 1000 [ 90%]  (Sampling)
 Chain 1: Iteration: 910 / 1000 [ 91%]  (Sampling)
+Chain 4: Iteration: 890 / 1000 [ 89%]  (Sampling)
+Chain 1: Iteration: 920 / 1000 [ 92%]  (Sampling)
+Chain 4: Iteration: 900 / 1000 [ 90%]  (Sampling)
+Chain 1: Iteration: 930 / 1000 [ 93%]  (Sampling)
+Chain 4: Iteration: 910 / 1000 [ 91%]  (Sampling)
+Chain 1: Iteration: 940 / 1000 [ 94%]  (Sampling)
+Chain 4: Iteration: 920 / 1000 [ 92%]  (Sampling)
+Chain 1: Iteration: 950 / 1000 [ 95%]  (Sampling)
+Chain 4: Iteration: 930 / 1000 [ 93%]  (Sampling)
+Chain 1: Iteration: 960 / 1000 [ 96%]  (Sampling)
+Chain 4: Iteration: 940 / 1000 [ 94%]  (Sampling)
+Chain 1: Iteration: 970 / 1000 [ 97%]  (Sampling)
+Chain 4: Iteration: 950 / 1000 [ 95%]  (Sampling)
+Chain 1: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 4: Iteration: 960 / 1000 [ 96%]  (Sampling)
+Chain 1: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 4: Iteration: 970 / 1000 [ 97%]  (Sampling)
+Chain 1: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 1: 
+Chain 1:  Elapsed Time: 2660.7 seconds (Warm-up)
+Chain 1:                869.359 seconds (Sampling)
+Chain 1:                3530.06 seconds (Total)
+Chain 1: 
+Chain 4: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 4: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 4: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 4: 
+Chain 4:  Elapsed Time: 2452.81 seconds (Warm-up)
+Chain 4:                1132.39 seconds (Sampling)
+Chain 4:                3585.2 seconds (Total)
+Chain 4: 
+     user    system   elapsed 
+11374.035     1.495  3600.844 
+Projecting
+   user  system elapsed 
+216.101   1.605 217.725 
+
+Excel output:  Forecasts/Mendocino.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.92 0.95 1.00 1.05 1.11 1.16 1.20 
+
+PDF output:  Forecasts/Mendocino.pdf 
+   user  system elapsed 
+215.645   1.968 217.624 
+
+Excel output:  Scenarios/Mendocino_scenario_actToday.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.92 0.95 1.00 1.05 1.11 1.16 1.20 
+
+PDF output:  Scenarios/Mendocino_scenario_actToday.pdf 
+   user  system elapsed 
+244.751   2.335 247.099 
+
+Excel output:  Scenarios/Mendocino_scenario_actTwoWeeks.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.92 0.95 1.00 1.05 1.11 1.16 1.20 
+
+PDF output:  Scenarios/Mendocino_scenario_actTwoWeeks.pdf 
