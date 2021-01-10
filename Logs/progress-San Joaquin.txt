@@ -456,3 +456,22 @@ Chain 4: Iteration: 960 / 1000 [ 96%]  (Sampling)
 Chain 4: Iteration: 970 / 1000 [ 97%]  (Sampling)
 Chain 4: Iteration: 980 / 1000 [ 98%]  (Sampling)
 Chain 4: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 4: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 4: 
+Chain 4:  Elapsed Time: 4599.95 seconds (Warm-up)
+Chain 4:                6501.1 seconds (Sampling)
+Chain 4:                11101.1 seconds (Total)
+Chain 4: 
+     user    system   elapsed 
+39166.505   106.686 11122.971 
+Projecting
+   user  system elapsed 
+404.491   1.939 406.443 
+
+Excel output:  Forecasts/San Joaquin.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.87 0.89 0.92 0.95 0.98 1.00 1.02 
+
+PDF output:  Forecasts/San Joaquin.pdf 
+   user  system elapsed 
+408.631   2.072 410.712 
