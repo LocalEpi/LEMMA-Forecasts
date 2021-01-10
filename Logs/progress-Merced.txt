@@ -422,3 +422,70 @@ Chain 3: Iteration: 850 / 1000 [ 85%]  (Sampling)
 Chain 1: Iteration: 830 / 1000 [ 83%]  (Sampling)
 Chain 3: Iteration: 860 / 1000 [ 86%]  (Sampling)
 Chain 1: Iteration: 840 / 1000 [ 84%]  (Sampling)
+Chain 3: Iteration: 870 / 1000 [ 87%]  (Sampling)
+Chain 1: Iteration: 850 / 1000 [ 85%]  (Sampling)
+Chain 3: Iteration: 880 / 1000 [ 88%]  (Sampling)
+Chain 1: Iteration: 860 / 1000 [ 86%]  (Sampling)
+Chain 3: Iteration: 890 / 1000 [ 89%]  (Sampling)
+Chain 1: Iteration: 870 / 1000 [ 87%]  (Sampling)
+Chain 1: Iteration: 880 / 1000 [ 88%]  (Sampling)
+Chain 3: Iteration: 900 / 1000 [ 90%]  (Sampling)
+Chain 1: Iteration: 890 / 1000 [ 89%]  (Sampling)
+Chain 3: Iteration: 910 / 1000 [ 91%]  (Sampling)
+Chain 1: Iteration: 900 / 1000 [ 90%]  (Sampling)
+Chain 3: Iteration: 920 / 1000 [ 92%]  (Sampling)
+Chain 1: Iteration: 910 / 1000 [ 91%]  (Sampling)
+Chain 3: Iteration: 930 / 1000 [ 93%]  (Sampling)
+Chain 1: Iteration: 920 / 1000 [ 92%]  (Sampling)
+Chain 3: Iteration: 940 / 1000 [ 94%]  (Sampling)
+Chain 1: Iteration: 930 / 1000 [ 93%]  (Sampling)
+Chain 3: Iteration: 950 / 1000 [ 95%]  (Sampling)
+Chain 1: Iteration: 940 / 1000 [ 94%]  (Sampling)
+Chain 3: Iteration: 960 / 1000 [ 96%]  (Sampling)
+Chain 1: Iteration: 950 / 1000 [ 95%]  (Sampling)
+Chain 1: Iteration: 960 / 1000 [ 96%]  (Sampling)
+Chain 3: Iteration: 970 / 1000 [ 97%]  (Sampling)
+Chain 1: Iteration: 970 / 1000 [ 97%]  (Sampling)
+Chain 3: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 1: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 3: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 1: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 3: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 3: 
+Chain 3:  Elapsed Time: 17.3419 seconds (Warm-up)
+Chain 3:                18522.7 seconds (Sampling)
+Chain 3:                18540.1 seconds (Total)
+Chain 3: 
+Chain 1: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 1: 
+Chain 1:  Elapsed Time: 1185.69 seconds (Warm-up)
+Chain 1:                17513.6 seconds (Sampling)
+Chain 1:                18699.3 seconds (Total)
+Chain 1: 
+    user   system  elapsed 
+51629.60   160.38 18722.78 
+Projecting
+   user  system elapsed 
+266.469   1.111 267.595 
+
+Excel output:  Forecasts/Merced.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.84 0.87 0.92 0.97 1.04 1.12 1.13 
+
+PDF output:  Forecasts/Merced.pdf 
+   user  system elapsed 
+264.043   1.175 265.233 
+
+Excel output:  Scenarios/Merced_scenario_actToday.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.84 0.87 0.92 0.97 1.04 1.12 1.13 
+
+PDF output:  Scenarios/Merced_scenario_actToday.pdf 
+   user  system elapsed 
+265.155   1.204 266.371 
+
+Excel output:  Scenarios/Merced_scenario_actTwoWeeks.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.84 0.87 0.92 0.97 1.04 1.12 1.13 
+
+PDF output:  Scenarios/Merced_scenario_actTwoWeeks.pdf 
