@@ -462,3 +462,30 @@ Chain 1:  Elapsed Time: 7738.88 seconds (Warm-up)
 Chain 1:                2830.05 seconds (Sampling)
 Chain 1:                10568.9 seconds (Total)
 Chain 1: 
+     user    system   elapsed 
+35964.341    86.273 10588.801 
+Projecting
+   user  system elapsed 
+368.288   1.408 369.708 
+
+Excel output:  Forecasts/Marin.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.97 1.01 1.07 1.13 1.21 1.30 1.37 
+
+PDF output:  Forecasts/Marin.pdf 
+   user  system elapsed 
+370.825   1.432 372.267 
+
+Excel output:  Scenarios/Marin_scenario_actToday.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.97 1.01 1.07 1.13 1.21 1.30 1.37 
+
+PDF output:  Scenarios/Marin_scenario_actToday.pdf 
+   user  system elapsed 
+371.789   1.240 373.041 
+
+Excel output:  Scenarios/Marin_scenario_actTwoWeeks.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.97 1.01 1.07 1.13 1.21 1.30 1.37 
+
+PDF output:  Scenarios/Marin_scenario_actTwoWeeks.pdf 
