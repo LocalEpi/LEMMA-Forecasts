@@ -465,3 +465,19 @@ Chain 1:
      user    system   elapsed 
 57787.074     2.888 18341.984 
 Projecting
+   user  system elapsed 
+447.406   2.048 449.465 
+
+Excel output:  Forecasts/Los Angeles.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.98 1.00 1.03 1.06 1.09 1.12 1.14 
+
+PDF output:  Forecasts/Los Angeles.pdf 
+   user  system elapsed 
+445.661   2.588 448.256 
+
+Excel output:  Scenarios/Los Angeles_scenario_actToday.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.98 1.00 1.03 1.06 1.09 1.12 1.14 
+
+PDF output:  Scenarios/Los Angeles_scenario_actToday.pdf 
