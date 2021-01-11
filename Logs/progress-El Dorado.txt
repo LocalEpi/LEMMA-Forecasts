@@ -462,3 +462,30 @@ Chain 1:  Elapsed Time: 142.869 seconds (Warm-up)
 Chain 1:                116.088 seconds (Sampling)
 Chain 1:                258.957 seconds (Total)
 Chain 1: 
+   user  system elapsed 
+763.568   7.175 270.043 
+Projecting
+   user  system elapsed 
+107.479   1.767 109.260 
+
+Excel output:  Forecasts/El Dorado.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+1.12 1.14 1.17 1.21 1.26 1.31 1.34 
+
+PDF output:  Forecasts/El Dorado.pdf 
+   user  system elapsed 
+107.607   1.584 109.196 
+
+Excel output:  Scenarios/El Dorado_scenario_actToday.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+1.12 1.14 1.17 1.21 1.26 1.31 1.34 
+
+PDF output:  Scenarios/El Dorado_scenario_actToday.pdf 
+   user  system elapsed 
+105.443   1.416 106.862 
+
+Excel output:  Scenarios/El Dorado_scenario_actTwoWeeks.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+1.12 1.14 1.17 1.21 1.26 1.31 1.34 
+
+PDF output:  Scenarios/El Dorado_scenario_actTwoWeeks.pdf 
