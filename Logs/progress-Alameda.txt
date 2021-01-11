@@ -465,3 +465,19 @@ Chain 1:
      user    system   elapsed 
 37186.674   144.466  9550.593 
 Projecting
+   user  system elapsed 
+401.176   1.547 402.727 
+
+Excel output:  Forecasts/Alameda.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.84 0.88 0.92 0.97 1.01 1.05 1.08 
+
+PDF output:  Forecasts/Alameda.pdf 
+   user  system elapsed 
+404.984   1.788 406.775 
+
+Excel output:  Scenarios/Alameda_scenario_actToday.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.84 0.88 0.92 0.97 1.01 1.05 1.08 
+
+PDF output:  Scenarios/Alameda_scenario_actToday.pdf 
