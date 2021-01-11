@@ -438,3 +438,38 @@ Chain 2: Iteration: 930 / 1000 [ 93%]  (Sampling)
 Chain 4: Iteration: 910 / 1000 [ 91%]  (Sampling)
 Chain 2: Iteration: 940 / 1000 [ 94%]  (Sampling)
 Chain 4: Iteration: 920 / 1000 [ 92%]  (Sampling)
+Chain 2: Iteration: 950 / 1000 [ 95%]  (Sampling)
+Chain 4: Iteration: 930 / 1000 [ 93%]  (Sampling)
+Chain 2: Iteration: 960 / 1000 [ 96%]  (Sampling)
+Chain 4: Iteration: 940 / 1000 [ 94%]  (Sampling)
+Chain 2: Iteration: 970 / 1000 [ 97%]  (Sampling)
+Chain 4: Iteration: 950 / 1000 [ 95%]  (Sampling)
+Chain 2: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 4: Iteration: 960 / 1000 [ 96%]  (Sampling)
+Chain 4: Iteration: 970 / 1000 [ 97%]  (Sampling)
+Chain 2: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 4: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 2: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 2: 
+Chain 2:  Elapsed Time: 8934.6 seconds (Warm-up)
+Chain 2:                6710.6 seconds (Sampling)
+Chain 2:                15645.2 seconds (Total)
+Chain 2: 
+Chain 4: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 4: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 4: 
+Chain 4:  Elapsed Time: 8680.83 seconds (Warm-up)
+Chain 4:                7125.25 seconds (Sampling)
+Chain 4:                15806.1 seconds (Total)
+Chain 4: 
+     user    system   elapsed 
+55897.114     1.825 15826.326 
+Projecting
+   user  system elapsed 
+417.663   1.912 419.583 
+
+Excel output:  Regional/Forecasts/SanJoaquinValley.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.93 0.95 0.97 1.00 1.02 1.05 1.06 
+
+PDF output:  Regional/Forecasts/SanJoaquinValley.pdf 
