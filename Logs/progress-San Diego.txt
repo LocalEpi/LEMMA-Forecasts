@@ -465,3 +465,23 @@ Chain 4:
      user    system   elapsed 
 75940.023     2.563 19670.675 
 Projecting
+   user  system elapsed 
+461.638   2.073 463.727 
+
+Excel output:  Forecasts/San Diego.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.96 0.98 1.01 1.04 1.07 1.09 1.11 
+
+PDF output:  Forecasts/San Diego.pdf 
+   user  system elapsed 
+467.209   2.967 470.188 
+
+Excel output:  Scenarios/San Diego_scenario_actToday.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.96 0.98 1.01 1.04 1.07 1.09 1.11 
+
+PDF output:  Scenarios/San Diego_scenario_actToday.pdf 
+   user  system elapsed 
+502.385   2.767 505.162 
+
+Excel output:  Scenarios/San Diego_scenario_actTwoWeeks.xlsx 

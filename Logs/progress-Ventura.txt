@@ -465,3 +465,27 @@ Chain 2:
      user    system   elapsed 
 66923.000   195.908 19157.950 
 Projecting
+   user  system elapsed 
+468.211   2.080 470.300 
+
+Excel output:  Forecasts/Ventura.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.95 0.98 1.01 1.06 1.10 1.13 1.15 
+
+PDF output:  Forecasts/Ventura.pdf 
+   user  system elapsed 
+511.355   3.387 514.759 
+
+Excel output:  Scenarios/Ventura_scenario_actToday.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.95 0.98 1.01 1.06 1.10 1.13 1.15 
+
+PDF output:  Scenarios/Ventura_scenario_actToday.pdf 
+   user  system elapsed 
+462.762   1.951 464.726 
+
+Excel output:  Scenarios/Ventura_scenario_actTwoWeeks.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.95 0.98 1.01 1.06 1.10 1.13 1.15 
+
+PDF output:  Scenarios/Ventura_scenario_actTwoWeeks.pdf 
