@@ -437,3 +437,55 @@ Chain 3: Iteration: 900 / 1000 [ 90%]  (Sampling)
 Chain 4: Iteration: 930 / 1000 [ 93%]  (Sampling)
 Chain 3: Iteration: 910 / 1000 [ 91%]  (Sampling)
 Chain 4: Iteration: 940 / 1000 [ 94%]  (Sampling)
+Chain 3: Iteration: 920 / 1000 [ 92%]  (Sampling)
+Chain 4: Iteration: 950 / 1000 [ 95%]  (Sampling)
+Chain 3: Iteration: 930 / 1000 [ 93%]  (Sampling)
+Chain 4: Iteration: 960 / 1000 [ 96%]  (Sampling)
+Chain 3: Iteration: 940 / 1000 [ 94%]  (Sampling)
+Chain 4: Iteration: 970 / 1000 [ 97%]  (Sampling)
+Chain 3: Iteration: 950 / 1000 [ 95%]  (Sampling)
+Chain 4: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 3: Iteration: 960 / 1000 [ 96%]  (Sampling)
+Chain 4: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 3: Iteration: 970 / 1000 [ 97%]  (Sampling)
+Chain 3: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 4: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 4: 
+Chain 4:  Elapsed Time: 4062.48 seconds (Warm-up)
+Chain 4:                4507.59 seconds (Sampling)
+Chain 4:                8570.07 seconds (Total)
+Chain 4: 
+Chain 3: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 3: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 3: 
+Chain 3:  Elapsed Time: 2985.84 seconds (Warm-up)
+Chain 3:                5725.02 seconds (Sampling)
+Chain 3:                8710.86 seconds (Total)
+Chain 3: 
+     user    system   elapsed 
+32155.056   104.502  8732.488 
+Projecting
+   user  system elapsed 
+423.639   1.983 425.637 
+
+Excel output:  Forecasts/Santa Cruz.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.90 0.94 0.99 1.04 1.10 1.14 1.18 
+
+PDF output:  Forecasts/Santa Cruz.pdf 
+   user  system elapsed 
+403.285   1.831 405.126 
+
+Excel output:  Scenarios/Santa Cruz_scenario_actToday.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.90 0.94 0.99 1.04 1.10 1.14 1.18 
+
+PDF output:  Scenarios/Santa Cruz_scenario_actToday.pdf 
+   user  system elapsed 
+389.656   1.363 391.023 
+
+Excel output:  Scenarios/Santa Cruz_scenario_actTwoWeeks.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.90 0.94 0.99 1.04 1.10 1.14 1.18 
+
+PDF output:  Scenarios/Santa Cruz_scenario_actTwoWeeks.pdf 
