@@ -215,6 +215,7 @@ if (length(county.set) == 1) {
 }
 names(county.results) <- county.set
 cat("Data through", as.character(county.dt[, max(date)]), "\n")
+ParallelLogger::logInfo("done")
 unregisterLogger(1)
 
 dt <- fread(logfile)
@@ -234,7 +235,7 @@ for (i in 1:nrow(dt)) {
 
 cat("\n\nData through", as.character(county.dt[, max(date)]), "\n")
 
-ParallelLogger::logInfo("done")
+
 commit.name <- paste0('"', "finished data through ", as.character(max.date), '"')
 system2("git", args = c('commit', '-a', '-m', commit.name))
 system2("git", args = "pull")
