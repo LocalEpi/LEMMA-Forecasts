@@ -143,12 +143,11 @@ GetCountyData <- function(include.regions = TRUE) {
 GetSantaClaraData <- function() {
   sc.deaths <- fread("https://data.sccgov.org/api/views/tg4j-23y2/rows.csv?accessType=DOWNLOAD")
   sc.deaths[, date := as.Date(Date)]
+  sc.deaths <- sc.deaths[date != "2021/12/23"] #data error
   sc.hosp <- fread("https://data.sccgov.org/api/views/5xkz-6esm/rows.csv?accessType=DOWNLOAD")
   sc.hosp <- sc.hosp[, .(date = as.Date(Date), icu_covid, icu_pui, non_icu_covid, non_icu_pui)]
   sc <- merge(sc.deaths[, .(Cumulative, date)], sc.hosp, all = T, by = "date")
   sc <- sc[date >= as.Date("2020/3/27"), .(county = "Santa Clara", date, hosp.conf = icu_covid + non_icu_covid, hosp.pui = icu_pui + non_icu_pui, icu.conf = icu_covid, icu.pui = icu_pui, deaths.conf = Cumulative)]
-  sc[date == as.Date("2021/12/27"), date := as.Date("2020/12/27")]
-  sc[date == as.Date("2021/12/28"), date := as.Date("2020/12/28")]
   stopifnot(all(sc$date <= Sys.Date()))
   sc[, is.region := F]
   pop <- data.table::fread("Inputs/county population.csv")[county == "Santa Clara", population]
