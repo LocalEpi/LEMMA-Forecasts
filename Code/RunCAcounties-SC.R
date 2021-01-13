@@ -1,7 +1,6 @@
 #update commit to only commit SC files (avoids problems with logger.txt and CountyData.rds)
 
 library(data.table)
-library(ParallelLogger)
 
 source('Code/GetCountyData.R')
 
@@ -9,191 +8,68 @@ source('Code/GetCountyData.R')
 git.pw <- "ND"
 git.pw <- paste0("Q2zDSR4BEaV6GnHgYh", git.pw)
 
-sc.dt <- GetSantaClaraData()
-county.dt <- sc.dt
-saveRDS(county.dt, "Inputs/CountyData.rds")
-
-quick.test <- F
-county.set <- "Santa Clara"
-
-print(county.set)
-cat("Data through", as.character(county.dt[, max(date)]), "\n")
-
-RunOneCounty <- function(county1, git.pw, quick.test) {
-  library(data.table)
-  Get1 <- function(zz) {
-    stopifnot(uniqueN(zz) == 1)
-    zz[1]
-  }
-
-  try.result <- try({
-    county.dt <- readRDS("Inputs/CountyData.rds")
-    county.dt1 <- county.dt[county == county1, -1]
-
-    county.pop1 <- county.dt[county == county1, Get1(population)]
-    is.region <- county.dt[county == county1, Get1(is.region)]
-
-    restart.set <- c("Tehama", "Mono", "Yolo", "Yuba", "Mendocino", "Nevada", "El Dorado",
-                     "Tuolumne", "Amador", "Inyo", "Calaveras",
-                     "Madera", "Humboldt", "Siskiyou", "Butte", "San Benito",
-                     "Merced", "Colusa", "Glenn", "Mono", "Plumas", "Shasta", "Tehama") #infections went to near zero - restart sim
-    if (county1 %in% restart.set) {
-      if (county1 == "San Benito") {
-        restart.date <- as.Date("2020/11/03")
-      } else if (county1 %in% c("Amador")) {
-        restart.date <- as.Date("2020/11/04")
-      } else if (county1 %in% c("Modoc", "Lassen")) {
-        restart.date <- as.Date("2020/11/05")
-      } else if (county1 == "Lake") {
-        restart.date <- as.Date("2020/10/10")
-      } else if (county1 == "El Dorado") {
-        restart.date <- as.Date("2020/10/24")
-      } else if (county1 == "Merced") {
-        restart.date <- as.Date("2020/5/1")
-      } else if (county1 == "Colusa") {
-        restart.date <- as.Date("2020/11/9")
-      } else if (county1 == "Glenn") {
-        restart.date <- as.Date("2020/12/4")
-      } else if (county1 == "Mendocino") {
-        restart.date <- as.Date("2020/7/15")
-      } else if (county1 == "Mono") {
-        restart.date <- as.Date("2020/12/9")
-      } else if (county1 == "Plumas") {
-        restart.date <- as.Date("2020/12/8")
-      } else if (county1 == "Siskiyou") {
-        restart.date <- as.Date("2020/10/26")
-      } else if (county1 == "Inyo") {
-        restart.date <- as.Date("2020/11/19")
-      } else if (county1 == "Shasta") {
-        restart.date <- as.Date("2020/6/17")
-      } else if (county1 == "Tehama") {
-        restart.date <- as.Date("2020/9/1")
-      } else {
-        restart.date <- as.Date("2020/6/1")
-      }
-    }
-    sink.file <- paste0("Logs/progress-", county1, ".txt")
-    sink(sink.file)
-    cat("county = ", county1, "\n")
-    cat("start time = ", as.character(Sys.time() - 3600 * 8), "\n")
-    cat("max date = ", as.character(max(county.dt1$date)), "\n")
-
-    input.file <- "Inputs/CAcounties.xlsx"
-    sheets <- LEMMA:::ReadInputs(input.file)
-    sheets$`Model Inputs`[internal.name == "total.population", value := county.pop1]
-
-    county.dt1[, deaths.pui := NA_integer_]
-    county.dt1[, cum.admits.conf := NA_integer_]
-    county.dt1[, cum.admits.pui := NA_integer_]
-    if (county1 %in% restart.set) {
-      sheets$`Parameters with Distributions`[1, Mean := 1] #R0 = 1
-      initial.deaths <- county.dt1[date == (restart.date - 1), deaths.conf]
-      county.dt1 <- county.dt1[date >= restart.date] #infections went to near zero - restart sim
-      sheets$Internal[internal.name == "simulation.start.date", value := restart.date - 10]
-    }
-
-    county.dt1[date < as.Date("2020/8/1"), icu.conf := NA_integer_]
-    county.dt1[date < as.Date("2020/8/1"), icu.pui := NA_integer_]
-    county.dt1[date < as.Date("2020/8/1"), deaths.conf := NA_integer_]
-    county.dt1[date < as.Date("2020/8/1"), deaths.pui := NA_integer_]
-
-    sheets$Data <- county.dt1
-    inputs <- LEMMA:::ProcessSheets(sheets, input.file)
-
-    inputs$internal.args$warmup <- NA #defaults to iter/2
-    if (county1 %in% restart.set) {
-      inputs$interventions <- inputs$interventions[mu_t_inter >= restart.date]
-      inputs$model.inputs$start.display.date <- restart.date
-      inputs$internal.args$initial.deaths <- initial.deaths
-    }
-    if (county1 %in% c("Yuba", "Shasta", "Butte")) {
-      inputs$internal.args$warmup <- 1000
-      inputs$internal.args$iter <- 1500
-    }
-
-    if (is.region) {
-      dir <- "Regional/"
-    } else {
-      dir <- ""
-    }
-
-    inputs$internal.args$output.filestr <- paste0(dir, "Forecasts/", county1)
-    mean.ini <- 1e-5 * county.pop1
-    inputs$internal.args$lambda_ini_exposed <- 1 / mean.ini
-
-    cred.int <- LEMMA:::CredibilityInterval(inputs)
-
-    max.date <- max(cred.int$inputs$obs.data$date)
-    outfile <- paste0(dir, "Scenarios/", county1)
-
-    ProjScen <- function(int.list) {
-      int.date <- int.list$date
-      int.str <- int.list$str
-      intervention <- data.frame(mu_t_inter = int.date, sigma_t_inter = 0.0001, mu_beta_inter = 0.5, sigma_beta_inter = 0.0001, mu_len_inter = 7, sigma_len_inter = 2)
-      subtitl <- paste("Scenario: Reduce Re by 50% starting", as.character(as.Date(int.date), format = "%b%e"))
-      lapply(LEMMA:::ProjectScenario(cred.int, new.int=intervention, paste0("Scenarios/", county1, "_scenario_", int.str))$gplot$long.term, function (z) z + ggplot2::labs(subtitle = subtitl))
-    }
-
-    scen.plots <- lapply(list(list(date = max.date + 3, str = "actToday"), list(date = max.date + 17, str = "actTwoWeeks")), ProjScen)
-
-    sink()
-    ParallelLogger::logInfo("county = ", county1)
-
-    commit.name <- paste0('"', county1, " data through ", as.character(max.date), '"')
-
-    files <- list.files(pattern = "Santa Clara", recursive = T)
-    for (f in files) {
-      system2("git", args = c("add", paste0('"', f, '"')))
-    }
-    system2("git", args = c('commit', '-m', commit.name))
-    system2("git", args = "pull")
-    git.dest <- paste0("https://joshuaschwab:", git.pw, "@github.com/LocalEpi/LEMMA-Forecasts")
-    system2("git", args = c("push", git.dest))
-  })
-
-  if (inherits(try.result, "try-error")) {
-    ParallelLogger::logInfo("ERROR in = ", county1)
-    ParallelLogger::logInfo(as.character(try.result))
-  }
-  return(NULL)
+library(data.table)
+Get1 <- function(zz) {
+  stopifnot(uniqueN(zz) == 1)
+  zz[1]
 }
 
+county.dt1 <- GetSantaClaraData()
+county.pop1 <- county.dt1[, Get1(population)]
 
-options(warn = 1)
-assign("last.warning", NULL, envir = baseenv())
+cat("county = ", county1, "\n")
+cat("start time = ", as.character(Sys.time() - 3600 * 8), "\n")
+cat("max date = ", as.character(max(county.dt1$date)), "\n")
 
-logfile <- "Logs/logger.txt"
-unlink(logfile)
-clearLoggers()
-addDefaultFileLogger(logfile)
+input.file <- "Inputs/CAcounties.xlsx"
+sheets <- LEMMA:::ReadInputs(input.file)
+sheets$`Model Inputs`[internal.name == "total.population", value := county.pop1]
 
-if (length(county.set) == 1) {
-  county.results <- lapply(county.set, RunOneCounty, git.pw, quick.test)
-} else {
-  num.clusters <- floor(parallel::detectCores() / 4) - 1
-  cat("num.clusters = ", num.clusters, "\n")
-  cl <- makeCluster(num.clusters)
-  county.results <- clusterApply(cl, county.set, RunOneCounty, git.pw, quick.test)
-  stopCluster(cl)
+county.dt1[, deaths.pui := NA_integer_]
+county.dt1[, cum.admits.conf := NA_integer_]
+county.dt1[, cum.admits.pui := NA_integer_]
+
+county.dt1[date < as.Date("2020/8/1"), icu.conf := NA_integer_]
+county.dt1[date < as.Date("2020/8/1"), icu.pui := NA_integer_]
+county.dt1[date < as.Date("2020/8/1"), deaths.conf := NA_integer_]
+county.dt1[date < as.Date("2020/8/1"), deaths.pui := NA_integer_]
+
+sheets$Data <- county.dt1
+inputs <- LEMMA:::ProcessSheets(sheets, input.file)
+
+inputs$internal.args$warmup <- NA #defaults to iter/2
+
+
+inputs$internal.args$output.filestr <- paste0("Forecasts/", county1)
+mean.ini <- 1e-5 * county.pop1
+inputs$internal.args$lambda_ini_exposed <- 1 / mean.ini
+
+cred.int <- LEMMA:::CredibilityInterval(inputs)
+
+max.date <- max(cred.int$inputs$obs.data$date)
+outfile <- paste0(dir, "Scenarios/", county1)
+
+ProjScen <- function(int.list) {
+  int.date <- int.list$date
+  int.str <- int.list$str
+  intervention <- data.frame(mu_t_inter = int.date, sigma_t_inter = 0.0001, mu_beta_inter = 0.5, sigma_beta_inter = 0.0001, mu_len_inter = 7, sigma_len_inter = 2)
+  subtitl <- paste("Scenario: Reduce Re by 50% starting", as.character(as.Date(int.date), format = "%b%e"))
+  lapply(LEMMA:::ProjectScenario(cred.int, new.int=intervention, paste0("Scenarios/", county1, "_scenario_", int.str))$gplot$long.term, function (z) z + ggplot2::labs(subtitle = subtitl))
 }
-names(county.results) <- county.set
-cat("Data through", as.character(county.dt[, max(date)]), "\n")
-unregisterLogger(1)
 
-dt <- fread(logfile)
-setnames(dt, c("time", "threadLabel", "level", "packageName", "functionName", "message"))
-setkey(dt, threadLabel, time)
+scen.plots <- lapply(list(list(date = max.date + 3, str = "actToday"), list(date = max.date + 17, str = "actTwoWeeks")), ProjScen)
 
 
+commit.name <- paste0('"', county1, " data through ", as.character(max.date), '"')
 
-for (i in 1:nrow(dt)) {
-  if (dt[i, level == "WARN" & IsBad(message)]) {
-    cat(dt[i, message], "\n")
-    next.county <- dt[, grep("county = ", message)]
-    next.county <- min(next.county[next.county > i])
-    cat(dt[next.county, message], "\n\n")
-  }
+files <- list.files(pattern = "Santa Clara", recursive = T)
+for (f in files) {
+  system2("git", args = c("add", paste0('"', f, '"')))
 }
+system2("git", args = c('commit', '-m', commit.name))
+system2("git", args = "pull")
+git.dest <- paste0("https://joshuaschwab:", git.pw, "@github.com/LocalEpi/LEMMA-Forecasts")
+system2("git", args = c("push", git.dest))
 
-cat("\n\nData through", as.character(county.dt[, max(date)]), "\n")
+
 
