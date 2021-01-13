@@ -430,3 +430,62 @@ Chain 3: Iteration: 910 / 1000 [ 91%]  (Sampling)
 Chain 2: Iteration: 850 / 1000 [ 85%]  (Sampling)
 Chain 3: Iteration: 920 / 1000 [ 92%]  (Sampling)
 Chain 2: Iteration: 860 / 1000 [ 86%]  (Sampling)
+Chain 3: Iteration: 930 / 1000 [ 93%]  (Sampling)
+Chain 2: Iteration: 870 / 1000 [ 87%]  (Sampling)
+Chain 3: Iteration: 940 / 1000 [ 94%]  (Sampling)
+Chain 2: Iteration: 880 / 1000 [ 88%]  (Sampling)
+Chain 3: Iteration: 950 / 1000 [ 95%]  (Sampling)
+Chain 2: Iteration: 890 / 1000 [ 89%]  (Sampling)
+Chain 3: Iteration: 960 / 1000 [ 96%]  (Sampling)
+Chain 2: Iteration: 900 / 1000 [ 90%]  (Sampling)
+Chain 3: Iteration: 970 / 1000 [ 97%]  (Sampling)
+Chain 2: Iteration: 910 / 1000 [ 91%]  (Sampling)
+Chain 3: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 2: Iteration: 920 / 1000 [ 92%]  (Sampling)
+Chain 3: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 2: Iteration: 930 / 1000 [ 93%]  (Sampling)
+Chain 3: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 3: 
+Chain 3:  Elapsed Time: 6114.9 seconds (Warm-up)
+Chain 3:                3482.82 seconds (Sampling)
+Chain 3:                9597.72 seconds (Total)
+Chain 3: 
+Chain 2: Iteration: 940 / 1000 [ 94%]  (Sampling)
+Chain 2: Iteration: 950 / 1000 [ 95%]  (Sampling)
+Chain 2: Iteration: 960 / 1000 [ 96%]  (Sampling)
+Chain 2: Iteration: 970 / 1000 [ 97%]  (Sampling)
+Chain 2: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 2: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 2: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 2: 
+Chain 2:  Elapsed Time: 5067.95 seconds (Warm-up)
+Chain 2:                4974.33 seconds (Sampling)
+Chain 2:                10042.3 seconds (Total)
+Chain 2: 
+     user    system   elapsed 
+36700.699   141.378 10066.004 
+Projecting
+   user  system elapsed 
+440.610   2.160 442.784 
+
+Excel output:  Forecasts/Contra Costa.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.93 0.95 0.99 1.04 1.08 1.11 1.13 
+
+PDF output:  Forecasts/Contra Costa.pdf 
+   user  system elapsed 
+402.396   2.208 404.615 
+
+Excel output:  Scenarios/Contra Costa_scenario_actToday.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.93 0.95 0.99 1.04 1.08 1.11 1.13 
+
+PDF output:  Scenarios/Contra Costa_scenario_actToday.pdf 
+   user  system elapsed 
+409.799   1.960 411.767 
+
+Excel output:  Scenarios/Contra Costa_scenario_actTwoWeeks.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.93 0.95 0.99 1.04 1.08 1.11 1.13 
+
+PDF output:  Scenarios/Contra Costa_scenario_actTwoWeeks.pdf 
