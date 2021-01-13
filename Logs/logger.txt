@@ -154,3 +154,8 @@
 2021-01-13 05:27:48	[Thread 9]	INFO			county = San Joaquin
 2021-01-13 05:34:45	[Thread 21]	INFO			county = Kings
 2021-01-13 05:36:01	[Thread 7]	INFO			county = Riverside
+2021-01-13 05:36:54	[Thread 20]	WARN	rstan	throw_sampler_warnings	There were 150 transitions after warmup that exceeded the maximum treedepth. Increase max_treedepth above 15. See http://mc-stan.org/misc/warnings.html#maximum-treedepth-exceeded
+2021-01-13 05:36:54	[Thread 20]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
+2021-01-13 05:37:02	[Thread 20]	WARN	rstan	throw_sampler_warnings	Bulk Effective Samples Size (ESS) is too low, indicating posterior means and medians may be unreliable. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#bulk-ess
+2021-01-13 05:37:06	[Thread 20]	WARN	rstan	throw_sampler_warnings	Tail Effective Samples Size (ESS) is too low, indicating posterior variances and tail quantiles may be unreliable. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#tail-ess
+2021-01-13 05:48:53	[Thread 20]	INFO			county = Tuolumne
