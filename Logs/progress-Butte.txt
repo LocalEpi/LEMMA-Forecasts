@@ -656,3 +656,28 @@ Chain 4: Iteration: 1460 / 1500 [ 97%]  (Sampling)
 Chain 4: Iteration: 1470 / 1500 [ 98%]  (Sampling)
 Chain 4: Iteration: 1480 / 1500 [ 98%]  (Sampling)
 Chain 4: Iteration: 1490 / 1500 [ 99%]  (Sampling)
+Chain 4: Iteration: 1500 / 1500 [100%]  (Sampling)
+Chain 4: 
+Chain 4:  Elapsed Time: 16154.2 seconds (Warm-up)
+Chain 4:                1727.6 seconds (Sampling)
+Chain 4:                17881.8 seconds (Total)
+Chain 4: 
+     user    system   elapsed 
+45539.860     2.702 17897.491 
+Projecting
+   user  system elapsed 
+260.641   1.517 262.177 
+
+Excel output:  Forecasts/Butte.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.78 0.81 0.86 0.90 0.93 0.96 0.98 
+
+PDF output:  Forecasts/Butte.pdf 
+   user  system elapsed 
+256.097   1.743 257.845 
+
+Excel output:  Scenarios/Butte_scenario_actToday.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.78 0.81 0.86 0.90 0.93 0.96 0.98 
+
+PDF output:  Scenarios/Butte_scenario_actToday.pdf 
