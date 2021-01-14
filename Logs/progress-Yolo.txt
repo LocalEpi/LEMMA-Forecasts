@@ -453,3 +453,37 @@ Chain 4: Iteration: 930 / 1000 [ 93%]  (Sampling)
 Chain 4: Iteration: 940 / 1000 [ 94%]  (Sampling)
 Chain 4: Iteration: 950 / 1000 [ 95%]  (Sampling)
 Chain 4: Iteration: 960 / 1000 [ 96%]  (Sampling)
+Chain 4: Iteration: 970 / 1000 [ 97%]  (Sampling)
+Chain 4: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 4: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 4: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 4: 
+Chain 4:  Elapsed Time: 13.0519 seconds (Warm-up)
+Chain 4:                15147.3 seconds (Sampling)
+Chain 4:                15160.3 seconds (Total)
+Chain 4: 
+     user    system   elapsed 
+28976.481    84.337 15178.853 
+Projecting
+   user  system elapsed 
+245.220   1.192 246.418 
+
+Excel output:  Forecasts/Yolo.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.93 0.95 0.99 1.03 1.08 1.13 1.16 
+
+PDF output:  Forecasts/Yolo.pdf 
+   user  system elapsed 
+243.789   1.124 244.916 
+
+Excel output:  Scenarios/Yolo_scenario_actToday.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.93 0.95 0.99 1.03 1.08 1.13 1.16 
+
+PDF output:  Scenarios/Yolo_scenario_actToday.pdf 
+   user  system elapsed 
+238.410   1.316 239.731 
+
+Excel output:  Scenarios/Yolo_scenario_actTwoWeeks.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.93 0.95 0.99 1.03 1.08 1.13 1.16 
