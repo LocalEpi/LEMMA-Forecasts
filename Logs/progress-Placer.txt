@@ -462,3 +462,30 @@ Chain 2:  Elapsed Time: 1404.52 seconds (Warm-up)
 Chain 2:                32458 seconds (Sampling)
 Chain 2:                33862.5 seconds (Total)
 Chain 2: 
+     user    system   elapsed 
+83289.627     2.672 33880.881 
+Projecting
+   user  system elapsed 
+373.692   1.350 375.065 
+
+Excel output:  Forecasts/Placer.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.77 0.80 0.85 0.89 0.94 0.97 1.00 
+
+PDF output:  Forecasts/Placer.pdf 
+   user  system elapsed 
+373.141   1.734 374.898 
+
+Excel output:  Scenarios/Placer_scenario_actToday.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.77 0.80 0.85 0.89 0.94 0.97 1.00 
+
+PDF output:  Scenarios/Placer_scenario_actToday.pdf 
+   user  system elapsed 
+372.521   1.139 373.681 
+
+Excel output:  Scenarios/Placer_scenario_actTwoWeeks.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.77 0.80 0.85 0.89 0.94 0.97 1.00 
+
+PDF output:  Scenarios/Placer_scenario_actTwoWeeks.pdf 
