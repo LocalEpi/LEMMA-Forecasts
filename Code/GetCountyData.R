@@ -144,6 +144,7 @@ GetSantaClaraData <- function() {
   sc.deaths <- fread("https://data.sccgov.org/api/views/tg4j-23y2/rows.csv?accessType=DOWNLOAD")
   sc.deaths[, date := as.Date(Date)]
   sc.deaths <- sc.deaths[date != "2021/12/23"] #data error
+  sc.deaths <- sc.deaths[date != "2021/12/31"] #data error
   sc.hosp <- fread("https://data.sccgov.org/api/views/5xkz-6esm/rows.csv?accessType=DOWNLOAD")
   sc.hosp <- sc.hosp[, .(date = as.Date(Date), icu_covid, icu_pui, non_icu_covid, non_icu_pui)]
   sc <- merge(sc.deaths[, .(Cumulative, date)], sc.hosp, all = T, by = "date")

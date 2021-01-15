@@ -14,10 +14,10 @@ Get1 <- function(zz) {
   zz[1]
 }
 
+county1 <- "Santa Clara"
 county.dt1 <- GetSantaClaraData()
 county.pop1 <- county.dt1[, Get1(population)]
 
-cat("county = ", county1, "\n")
 cat("start time = ", as.character(Sys.time() - 3600 * 8), "\n")
 cat("max date = ", as.character(max(county.dt1$date)), "\n")
 
@@ -47,7 +47,7 @@ inputs$internal.args$lambda_ini_exposed <- 1 / mean.ini
 cred.int <- LEMMA:::CredibilityInterval(inputs)
 
 max.date <- max(cred.int$inputs$obs.data$date)
-outfile <- paste0(dir, "Scenarios/", county1)
+outfile <- paste0("Scenarios/", county1)
 
 ProjScen <- function(int.list) {
   int.date <- int.list$date
