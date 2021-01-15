@@ -84,3 +84,10 @@
 2021-01-15 01:51:27	[Thread 10]	INFO			county = Placer
 2021-01-15 01:54:05	[Thread 18]	INFO			county = Tulare
 2021-01-15 01:55:28	[Thread 12]	INFO			county = Sacramento
+2021-01-15 01:55:44	[Thread 2]	WARN	rstan	throw_sampler_warnings	There were 4 divergent transitions after warmup. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup to find out why this is a problem and how to eliminate them.
+2021-01-15 01:55:44	[Thread 2]	WARN	rstan	throw_sampler_warnings	There were 624 transitions after warmup that exceeded the maximum treedepth. Increase max_treedepth above 15. See http://mc-stan.org/misc/warnings.html#maximum-treedepth-exceeded
+2021-01-15 01:55:44	[Thread 2]	WARN	rstan	throw_sampler_warnings	There were 1 chains where the estimated Bayesian Fraction of Missing Information was low. See http://mc-stan.org/misc/warnings.html#bfmi-low
+2021-01-15 01:55:44	[Thread 2]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
+2021-01-15 01:55:54	[Thread 2]	WARN	rstan	throw_sampler_warnings	The largest R-hat is 1.48, indicating chains have not mixed. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#r-hat
+2021-01-15 01:56:09	[Thread 2]	WARN	rstan	throw_sampler_warnings	Bulk Effective Samples Size (ESS) is too low, indicating posterior means and medians may be unreliable. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#bulk-ess
+2021-01-15 01:56:16	[Thread 17]	INFO			county = Orange
