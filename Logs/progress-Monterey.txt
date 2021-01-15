@@ -425,3 +425,67 @@ Chain 1: Iteration: 860 / 1000 [ 86%]  (Sampling)
 Chain 4: Iteration: 850 / 1000 [ 85%]  (Sampling)
 Chain 1: Iteration: 870 / 1000 [ 87%]  (Sampling)
 Chain 4: Iteration: 860 / 1000 [ 86%]  (Sampling)
+Chain 1: Iteration: 880 / 1000 [ 88%]  (Sampling)
+Chain 4: Iteration: 870 / 1000 [ 87%]  (Sampling)
+Chain 1: Iteration: 890 / 1000 [ 89%]  (Sampling)
+Chain 4: Iteration: 880 / 1000 [ 88%]  (Sampling)
+Chain 1: Iteration: 900 / 1000 [ 90%]  (Sampling)
+Chain 4: Iteration: 890 / 1000 [ 89%]  (Sampling)
+Chain 1: Iteration: 910 / 1000 [ 91%]  (Sampling)
+Chain 4: Iteration: 900 / 1000 [ 90%]  (Sampling)
+Chain 1: Iteration: 920 / 1000 [ 92%]  (Sampling)
+Chain 4: Iteration: 910 / 1000 [ 91%]  (Sampling)
+Chain 1: Iteration: 930 / 1000 [ 93%]  (Sampling)
+Chain 4: Iteration: 920 / 1000 [ 92%]  (Sampling)
+Chain 1: Iteration: 940 / 1000 [ 94%]  (Sampling)
+Chain 4: Iteration: 930 / 1000 [ 93%]  (Sampling)
+Chain 1: Iteration: 950 / 1000 [ 95%]  (Sampling)
+Chain 1: Iteration: 960 / 1000 [ 96%]  (Sampling)
+Chain 4: Iteration: 940 / 1000 [ 94%]  (Sampling)
+Chain 1: Iteration: 970 / 1000 [ 97%]  (Sampling)
+Chain 4: Iteration: 950 / 1000 [ 95%]  (Sampling)
+Chain 1: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 4: Iteration: 960 / 1000 [ 96%]  (Sampling)
+Chain 1: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 4: Iteration: 970 / 1000 [ 97%]  (Sampling)
+Chain 1: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 1: 
+Chain 1:  Elapsed Time: 12734.7 seconds (Warm-up)
+Chain 1:                6120.16 seconds (Sampling)
+Chain 1:                18854.8 seconds (Total)
+Chain 1: 
+Chain 4: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 4: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 4: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 4: 
+Chain 4:  Elapsed Time: 9888.83 seconds (Warm-up)
+Chain 4:                9281.84 seconds (Sampling)
+Chain 4:                19170.7 seconds (Total)
+Chain 4: 
+     user    system   elapsed 
+69576.161     3.951 19198.456 
+Projecting
+   user  system elapsed 
+451.124   2.188 453.325 
+
+Excel output:  Forecasts/Monterey.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.92 0.95 0.99 1.03 1.07 1.10 1.13 
+
+PDF output:  Forecasts/Monterey.pdf 
+   user  system elapsed 
+515.376   3.544 518.932 
+
+Excel output:  Scenarios/Monterey_scenario_actToday.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.92 0.95 0.99 1.03 1.07 1.10 1.13 
+
+PDF output:  Scenarios/Monterey_scenario_actToday.pdf 
+   user  system elapsed 
+511.446   2.595 514.055 
+
+Excel output:  Scenarios/Monterey_scenario_actTwoWeeks.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.92 0.95 0.99 1.03 1.07 1.10 1.13 
+
+PDF output:  Scenarios/Monterey_scenario_actTwoWeeks.pdf 

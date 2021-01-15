@@ -428,3 +428,64 @@ Chain 4: Iteration: 840 / 1000 [ 84%]  (Sampling)
 Chain 3: Iteration: 900 / 1000 [ 90%]  (Sampling)
 Chain 4: Iteration: 850 / 1000 [ 85%]  (Sampling)
 Chain 3: Iteration: 910 / 1000 [ 91%]  (Sampling)
+Chain 3: Iteration: 920 / 1000 [ 92%]  (Sampling)
+Chain 4: Iteration: 860 / 1000 [ 86%]  (Sampling)
+Chain 3: Iteration: 930 / 1000 [ 93%]  (Sampling)
+Chain 4: Iteration: 870 / 1000 [ 87%]  (Sampling)
+Chain 3: Iteration: 940 / 1000 [ 94%]  (Sampling)
+Chain 4: Iteration: 880 / 1000 [ 88%]  (Sampling)
+Chain 3: Iteration: 950 / 1000 [ 95%]  (Sampling)
+Chain 4: Iteration: 890 / 1000 [ 89%]  (Sampling)
+Chain 3: Iteration: 960 / 1000 [ 96%]  (Sampling)
+Chain 4: Iteration: 900 / 1000 [ 90%]  (Sampling)
+Chain 3: Iteration: 970 / 1000 [ 97%]  (Sampling)
+Chain 4: Iteration: 910 / 1000 [ 91%]  (Sampling)
+Chain 3: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 3: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 4: Iteration: 920 / 1000 [ 92%]  (Sampling)
+Chain 3: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 3: 
+Chain 3:  Elapsed Time: 10497.4 seconds (Warm-up)
+Chain 3:                7777.05 seconds (Sampling)
+Chain 3:                18274.4 seconds (Total)
+Chain 3: 
+Chain 4: Iteration: 930 / 1000 [ 93%]  (Sampling)
+Chain 4: Iteration: 940 / 1000 [ 94%]  (Sampling)
+Chain 4: Iteration: 950 / 1000 [ 95%]  (Sampling)
+Chain 4: Iteration: 960 / 1000 [ 96%]  (Sampling)
+Chain 4: Iteration: 970 / 1000 [ 97%]  (Sampling)
+Chain 4: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 4: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 4: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 4: 
+Chain 4:  Elapsed Time: 10100.3 seconds (Warm-up)
+Chain 4:                9138.27 seconds (Sampling)
+Chain 4:                19238.6 seconds (Total)
+Chain 4: 
+     user    system   elapsed 
+70370.050     2.749 19260.670 
+Projecting
+   user  system elapsed 
+450.902   2.072 452.982 
+
+Excel output:  Forecasts/San Diego.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.97 0.99 1.01 1.04 1.07 1.10 1.12 
+
+PDF output:  Forecasts/San Diego.pdf 
+   user  system elapsed 
+521.596   3.736 525.347 
+
+Excel output:  Scenarios/San Diego_scenario_actToday.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.97 0.99 1.01 1.04 1.07 1.10 1.12 
+
+PDF output:  Scenarios/San Diego_scenario_actToday.pdf 
+   user  system elapsed 
+503.566   2.631 506.208 
+
+Excel output:  Scenarios/San Diego_scenario_actTwoWeeks.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.97 0.99 1.01 1.04 1.07 1.10 1.12 
+
+PDF output:  Scenarios/San Diego_scenario_actTwoWeeks.pdf 

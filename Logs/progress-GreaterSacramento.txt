@@ -389,3 +389,103 @@ Chain 3: Iteration: 950 / 1000 [ 95%]  (Sampling)
 Chain 1: Iteration: 670 / 1000 [ 67%]  (Sampling)
 Chain 4: Iteration: 970 / 1000 [ 97%]  (Sampling)
 Chain 2: Iteration: 880 / 1000 [ 88%]  (Sampling)
+Chain 3: Iteration: 960 / 1000 [ 96%]  (Sampling)
+Chain 1: Iteration: 680 / 1000 [ 68%]  (Sampling)
+Chain 4: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 2: Iteration: 890 / 1000 [ 89%]  (Sampling)
+Chain 3: Iteration: 970 / 1000 [ 97%]  (Sampling)
+Chain 1: Iteration: 690 / 1000 [ 69%]  (Sampling)
+Chain 4: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 3: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 2: Iteration: 900 / 1000 [ 90%]  (Sampling)
+Chain 1: Iteration: 700 / 1000 [ 70%]  (Sampling)
+Chain 4: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 4: 
+Chain 4:  Elapsed Time: 9645.57 seconds (Warm-up)
+Chain 4:                8077.79 seconds (Sampling)
+Chain 4:                17723.4 seconds (Total)
+Chain 4: 
+Chain 3: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 2: Iteration: 910 / 1000 [ 91%]  (Sampling)
+Chain 1: Iteration: 710 / 1000 [ 71%]  (Sampling)
+Chain 3: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 3: 
+Chain 3:  Elapsed Time: 8972.26 seconds (Warm-up)
+Chain 3:                8905.03 seconds (Sampling)
+Chain 3:                17877.3 seconds (Total)
+Chain 3: 
+Chain 1: Iteration: 720 / 1000 [ 72%]  (Sampling)
+Chain 2: Iteration: 920 / 1000 [ 92%]  (Sampling)
+Chain 1: Iteration: 730 / 1000 [ 73%]  (Sampling)
+Chain 2: Iteration: 930 / 1000 [ 93%]  (Sampling)
+Chain 1: Iteration: 740 / 1000 [ 74%]  (Sampling)
+Chain 2: Iteration: 940 / 1000 [ 94%]  (Sampling)
+Chain 1: Iteration: 750 / 1000 [ 75%]  (Sampling)
+Chain 2: Iteration: 950 / 1000 [ 95%]  (Sampling)
+Chain 1: Iteration: 760 / 1000 [ 76%]  (Sampling)
+Chain 2: Iteration: 960 / 1000 [ 96%]  (Sampling)
+Chain 1: Iteration: 770 / 1000 [ 77%]  (Sampling)
+Chain 2: Iteration: 970 / 1000 [ 97%]  (Sampling)
+Chain 1: Iteration: 780 / 1000 [ 78%]  (Sampling)
+Chain 2: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 1: Iteration: 790 / 1000 [ 79%]  (Sampling)
+Chain 2: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 1: Iteration: 800 / 1000 [ 80%]  (Sampling)
+Chain 1: Iteration: 810 / 1000 [ 81%]  (Sampling)
+Chain 2: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 2: 
+Chain 2:  Elapsed Time: 8901.94 seconds (Warm-up)
+Chain 2:                10144.1 seconds (Sampling)
+Chain 2:                19046 seconds (Total)
+Chain 2: 
+Chain 1: Iteration: 820 / 1000 [ 82%]  (Sampling)
+Chain 1: Iteration: 830 / 1000 [ 83%]  (Sampling)
+Chain 1: Iteration: 840 / 1000 [ 84%]  (Sampling)
+Chain 1: Iteration: 850 / 1000 [ 85%]  (Sampling)
+Chain 1: Iteration: 860 / 1000 [ 86%]  (Sampling)
+Chain 1: Iteration: 870 / 1000 [ 87%]  (Sampling)
+Chain 1: Iteration: 880 / 1000 [ 88%]  (Sampling)
+Chain 1: Iteration: 890 / 1000 [ 89%]  (Sampling)
+Chain 1: Iteration: 900 / 1000 [ 90%]  (Sampling)
+Chain 1: Iteration: 910 / 1000 [ 91%]  (Sampling)
+Chain 1: Iteration: 920 / 1000 [ 92%]  (Sampling)
+Chain 1: Iteration: 930 / 1000 [ 93%]  (Sampling)
+Chain 1: Iteration: 940 / 1000 [ 94%]  (Sampling)
+Chain 1: Iteration: 950 / 1000 [ 95%]  (Sampling)
+Chain 1: Iteration: 960 / 1000 [ 96%]  (Sampling)
+Chain 1: Iteration: 970 / 1000 [ 97%]  (Sampling)
+Chain 1: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 1: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 1: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 1: 
+Chain 1:  Elapsed Time: 14734 seconds (Warm-up)
+Chain 1:                8299.58 seconds (Sampling)
+Chain 1:                23033.6 seconds (Total)
+Chain 1: 
+     user    system   elapsed 
+77726.703     2.466 23078.454 
+Projecting
+   user  system elapsed 
+483.943   3.026 486.987 
+
+Excel output:  Regional/Forecasts/GreaterSacramento.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.87 0.89 0.93 0.96 0.99 1.03 1.05 
+
+PDF output:  Regional/Forecasts/GreaterSacramento.pdf 
+   user  system elapsed 
+480.055   3.508 483.578 
+
+Excel output:  Scenarios/GreaterSacramento_scenario_actToday.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.87 0.89 0.93 0.96 0.99 1.03 1.05 
+
+PDF output:  Scenarios/GreaterSacramento_scenario_actToday.pdf 
+   user  system elapsed 
+495.679   3.944 499.655 
+
+Excel output:  Scenarios/GreaterSacramento_scenario_actTwoWeeks.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.87 0.89 0.93 0.96 0.99 1.03 1.05 
+
+PDF output:  Scenarios/GreaterSacramento_scenario_actTwoWeeks.pdf 
