@@ -440,3 +440,36 @@ Chain 1:                8704.81 seconds (Sampling)
 Chain 1:                15606.8 seconds (Total)
 Chain 1: 
 Chain 3: Iteration: 830 / 1000 [ 83%]  (Sampling)
+Chain 3: Iteration: 840 / 1000 [ 84%]  (Sampling)
+Chain 3: Iteration: 850 / 1000 [ 85%]  (Sampling)
+Chain 3: Iteration: 860 / 1000 [ 86%]  (Sampling)
+Chain 3: Iteration: 870 / 1000 [ 87%]  (Sampling)
+Chain 3: Iteration: 880 / 1000 [ 88%]  (Sampling)
+Chain 3: Iteration: 890 / 1000 [ 89%]  (Sampling)
+Chain 3: Iteration: 900 / 1000 [ 90%]  (Sampling)
+Chain 3: Iteration: 910 / 1000 [ 91%]  (Sampling)
+Chain 3: Iteration: 920 / 1000 [ 92%]  (Sampling)
+Chain 3: Iteration: 930 / 1000 [ 93%]  (Sampling)
+Chain 3: Iteration: 940 / 1000 [ 94%]  (Sampling)
+Chain 3: Iteration: 950 / 1000 [ 95%]  (Sampling)
+Chain 3: Iteration: 960 / 1000 [ 96%]  (Sampling)
+Chain 3: Iteration: 970 / 1000 [ 97%]  (Sampling)
+Chain 3: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 3: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 3: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 3: 
+Chain 3:  Elapsed Time: 11335.3 seconds (Warm-up)
+Chain 3:                5561.56 seconds (Sampling)
+Chain 3:                16896.9 seconds (Total)
+Chain 3: 
+     user    system   elapsed 
+59355.508     2.036 16917.779 
+Projecting
+   user  system elapsed 
+417.638   1.850 419.503 
+
+Excel output:  Forecasts/Stanislaus.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.91 0.93 0.96 1.00 1.03 1.06 1.09 
+
+PDF output:  Forecasts/Stanislaus.pdf 
