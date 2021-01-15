@@ -420,3 +420,72 @@ Chain 4: Iteration: 990 / 1000 [ 99%]  (Sampling)
 Chain 3: Iteration: 930 / 1000 [ 93%]  (Sampling)
 Chain 1: Iteration: 940 / 1000 [ 94%]  (Sampling)
 Chain 3: Iteration: 940 / 1000 [ 94%]  (Sampling)
+Chain 2: Iteration: 920 / 1000 [ 92%]  (Sampling)
+Chain 4: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 4: 
+Chain 4:  Elapsed Time: 4729.09 seconds (Warm-up)
+Chain 4:                4235.37 seconds (Sampling)
+Chain 4:                8964.46 seconds (Total)
+Chain 4: 
+Chain 3: Iteration: 950 / 1000 [ 95%]  (Sampling)
+Chain 1: Iteration: 950 / 1000 [ 95%]  (Sampling)
+Chain 3: Iteration: 960 / 1000 [ 96%]  (Sampling)
+Chain 2: Iteration: 930 / 1000 [ 93%]  (Sampling)
+Chain 3: Iteration: 970 / 1000 [ 97%]  (Sampling)
+Chain 1: Iteration: 960 / 1000 [ 96%]  (Sampling)
+Chain 2: Iteration: 940 / 1000 [ 94%]  (Sampling)
+Chain 3: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 1: Iteration: 970 / 1000 [ 97%]  (Sampling)
+Chain 2: Iteration: 950 / 1000 [ 95%]  (Sampling)
+Chain 3: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 1: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 2: Iteration: 960 / 1000 [ 96%]  (Sampling)
+Chain 3: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 3: 
+Chain 3:  Elapsed Time: 4973.37 seconds (Warm-up)
+Chain 3:                4347.06 seconds (Sampling)
+Chain 3:                9320.43 seconds (Total)
+Chain 3: 
+Chain 1: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 2: Iteration: 970 / 1000 [ 97%]  (Sampling)
+Chain 1: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 1: 
+Chain 1:  Elapsed Time: 3801.61 seconds (Warm-up)
+Chain 1:                5617.65 seconds (Sampling)
+Chain 1:                9419.26 seconds (Total)
+Chain 1: 
+Chain 2: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 2: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 2: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 2: 
+Chain 2:  Elapsed Time: 5386.43 seconds (Warm-up)
+Chain 2:                4210.22 seconds (Sampling)
+Chain 2:                9596.65 seconds (Total)
+Chain 2: 
+     user    system   elapsed 
+37228.293    99.176  9619.730 
+Projecting
+   user  system elapsed 
+428.600   1.850 430.464 
+
+Excel output:  Forecasts/Napa.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.90 0.94 1.01 1.08 1.14 1.20 1.23 
+
+PDF output:  Forecasts/Napa.pdf 
+   user  system elapsed 
+416.930   2.388 419.337 
+
+Excel output:  Scenarios/Napa_scenario_actToday.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.90 0.94 1.01 1.08 1.14 1.20 1.23 
+
+PDF output:  Scenarios/Napa_scenario_actToday.pdf 
+   user  system elapsed 
+405.123   1.715 406.854 
+
+Excel output:  Scenarios/Napa_scenario_actTwoWeeks.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.90 0.94 1.01 1.08 1.14 1.20 1.23 
+
+PDF output:  Scenarios/Napa_scenario_actTwoWeeks.pdf 
