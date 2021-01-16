@@ -69,3 +69,6 @@
 2021-01-16 00:38:37	[Thread 23]	INFO			county = Lake
 2021-01-16 00:42:33	[Thread 8]	INFO			county = Butte
 2021-01-16 00:49:10	[Thread 16]	INFO			county = Placer
+2021-01-16 00:51:02	[Thread 15]	WARN	rstan	throw_sampler_warnings	Bulk Effective Samples Size (ESS) is too low, indicating posterior means and medians may be unreliable. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#bulk-ess
+2021-01-16 00:51:10	[Thread 15]	WARN	rstan	throw_sampler_warnings	Tail Effective Samples Size (ESS) is too low, indicating posterior variances and tail quantiles may be unreliable. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#tail-ess
+2021-01-16 00:52:38	[Thread 13]	INFO			county = Orange
