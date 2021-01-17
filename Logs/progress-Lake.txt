@@ -465,3 +465,19 @@ Chain 2:
      user    system   elapsed 
 62492.461     3.602 17341.165 
 Projecting
+   user  system elapsed 
+475.370   2.266 477.657 
+
+Excel output:  Forecasts/Lake.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.93 0.97 1.05 1.13 1.22 1.31 1.37 
+
+PDF output:  Forecasts/Lake.pdf 
+   user  system elapsed 
+448.509   2.395 450.913 
+
+Excel output:  Scenarios/Lake_scenario_actToday.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.93 0.97 1.05 1.13 1.22 1.31 1.37 
+
+PDF output:  Scenarios/Lake_scenario_actToday.pdf 
