@@ -164,3 +164,8 @@
 2021-01-17 04:49:59	[Thread 7]	INFO			county = Riverside
 2021-01-17 04:53:19	[Thread 16]	INFO			county = Kings
 2021-01-17 04:53:24	[Thread 15]	INFO			county = San Mateo
+2021-01-17 04:54:20	[Thread 11]	WARN	rstan	throw_sampler_warnings	There were 2 divergent transitions after warmup. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup to find out why this is a problem and how to eliminate them.
+2021-01-17 04:54:20	[Thread 11]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
+2021-01-17 04:58:22	[Thread 3]	WARN	rstan	throw_sampler_warnings	There were 8 divergent transitions after warmup. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup to find out why this is a problem and how to eliminate them.
+2021-01-17 04:58:22	[Thread 3]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
+2021-01-17 04:59:35	[Thread 4]	INFO			county = Santa Barbara
