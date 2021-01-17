@@ -455,3 +455,29 @@ Chain 3:                22300.8 seconds (Sampling)
 Chain 3:                22315.1 seconds (Total)
 Chain 3: 
 Chain 2: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 2: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 2: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 2: 
+Chain 2:  Elapsed Time: 41.7978 seconds (Warm-up)
+Chain 2:                23210.2 seconds (Sampling)
+Chain 2:                23252 seconds (Total)
+Chain 2: 
+     user    system   elapsed 
+71272.266     2.812 23279.382 
+Projecting
+   user  system elapsed 
+311.945   2.584 314.557 
+
+Excel output:  Forecasts/Nevada.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.71 0.74 0.79 0.83 0.88 0.92 0.95 
+
+PDF output:  Forecasts/Nevada.pdf 
+   user  system elapsed 
+278.056   2.042 280.107 
+
+Excel output:  Scenarios/Nevada_scenario_actToday.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.71 0.74 0.79 0.83 0.88 0.92 0.95 
+
+PDF output:  Scenarios/Nevada_scenario_actToday.pdf 
