@@ -455,3 +455,29 @@ Chain 4: Iteration: 950 / 1000 [ 95%]  (Sampling)
 Chain 4: Iteration: 960 / 1000 [ 96%]  (Sampling)
 Chain 4: Iteration: 970 / 1000 [ 97%]  (Sampling)
 Chain 4: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 4: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 4: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 4: 
+Chain 4:  Elapsed Time: 7067.3 seconds (Warm-up)
+Chain 4:                1864.39 seconds (Sampling)
+Chain 4:                8931.69 seconds (Total)
+Chain 4: 
+     user    system   elapsed 
+30584.264    80.438  8952.905 
+Projecting
+   user  system elapsed 
+408.318   1.531 409.853 
+
+Excel output:  Forecasts/Kings.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.93 0.96 1.00 1.04 1.09 1.13 1.16 
+
+PDF output:  Forecasts/Kings.pdf 
+   user  system elapsed 
+394.429   1.891 396.324 
+
+Excel output:  Scenarios/Kings_scenario_actToday.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.93 0.96 1.00 1.04 1.09 1.13 1.16 
+
+PDF output:  Scenarios/Kings_scenario_actToday.pdf 
