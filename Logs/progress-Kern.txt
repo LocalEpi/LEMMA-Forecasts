@@ -430,3 +430,62 @@ Chain 1: Iteration: 890 / 1000 [ 89%]  (Sampling)
 Chain 4: Iteration: 870 / 1000 [ 87%]  (Sampling)
 Chain 1: Iteration: 900 / 1000 [ 90%]  (Sampling)
 Chain 4: Iteration: 880 / 1000 [ 88%]  (Sampling)
+Chain 1: Iteration: 910 / 1000 [ 91%]  (Sampling)
+Chain 4: Iteration: 890 / 1000 [ 89%]  (Sampling)
+Chain 1: Iteration: 920 / 1000 [ 92%]  (Sampling)
+Chain 4: Iteration: 900 / 1000 [ 90%]  (Sampling)
+Chain 1: Iteration: 930 / 1000 [ 93%]  (Sampling)
+Chain 4: Iteration: 910 / 1000 [ 91%]  (Sampling)
+Chain 1: Iteration: 940 / 1000 [ 94%]  (Sampling)
+Chain 4: Iteration: 920 / 1000 [ 92%]  (Sampling)
+Chain 1: Iteration: 950 / 1000 [ 95%]  (Sampling)
+Chain 4: Iteration: 930 / 1000 [ 93%]  (Sampling)
+Chain 1: Iteration: 960 / 1000 [ 96%]  (Sampling)
+Chain 4: Iteration: 940 / 1000 [ 94%]  (Sampling)
+Chain 4: Iteration: 950 / 1000 [ 95%]  (Sampling)
+Chain 1: Iteration: 970 / 1000 [ 97%]  (Sampling)
+Chain 4: Iteration: 960 / 1000 [ 96%]  (Sampling)
+Chain 1: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 4: Iteration: 970 / 1000 [ 97%]  (Sampling)
+Chain 1: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 4: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 1: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 4: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 1: 
+Chain 1:  Elapsed Time: 4857.67 seconds (Warm-up)
+Chain 1:                3594.45 seconds (Sampling)
+Chain 1:                8452.11 seconds (Total)
+Chain 1: 
+Chain 4: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 4: 
+Chain 4:  Elapsed Time: 5146.51 seconds (Warm-up)
+Chain 4:                3358.46 seconds (Sampling)
+Chain 4:                8504.97 seconds (Total)
+Chain 4: 
+     user    system   elapsed 
+30483.431   108.713  8526.264 
+Projecting
+   user  system elapsed 
+407.278   1.467 408.753 
+
+Excel output:  Forecasts/Kern.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.98 1.00 1.04 1.07 1.11 1.14 1.17 
+
+PDF output:  Forecasts/Kern.pdf 
+   user  system elapsed 
+408.126   2.143 410.280 
+
+Excel output:  Scenarios/Kern_scenario_actToday.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.98 1.00 1.04 1.07 1.11 1.14 1.17 
+
+PDF output:  Scenarios/Kern_scenario_actToday.pdf 
+   user  system elapsed 
+395.106   1.411 396.521 
+
+Excel output:  Scenarios/Kern_scenario_actTwoWeeks.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.98 1.00 1.04 1.07 1.11 1.14 1.17 
+
+PDF output:  Scenarios/Kern_scenario_actTwoWeeks.pdf 
