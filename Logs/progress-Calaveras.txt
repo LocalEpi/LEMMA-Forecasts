@@ -455,3 +455,37 @@ Chain 4: Iteration: 950 / 1000 [ 95%]  (Sampling)
 Chain 4: Iteration: 960 / 1000 [ 96%]  (Sampling)
 Chain 4: Iteration: 970 / 1000 [ 97%]  (Sampling)
 Chain 4: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 4: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 4: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 4: 
+Chain 4:  Elapsed Time: 15.9141 seconds (Warm-up)
+Chain 4:                15923.4 seconds (Sampling)
+Chain 4:                15939.3 seconds (Total)
+Chain 4: 
+     user    system   elapsed 
+26208.455   102.146 15953.028 
+Projecting
+   user  system elapsed 
+217.898   0.979 218.888 
+
+Excel output:  Forecasts/Calaveras.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+1.18 1.22 1.28 1.36 1.45 1.53 1.58 
+
+PDF output:  Forecasts/Calaveras.pdf 
+   user  system elapsed 
+220.474   0.871 221.355 
+
+Excel output:  Scenarios/Calaveras_scenario_actToday.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+1.18 1.22 1.28 1.36 1.45 1.53 1.58 
+
+PDF output:  Scenarios/Calaveras_scenario_actToday.pdf 
+   user  system elapsed 
+220.605   0.975 221.591 
+
+Excel output:  Scenarios/Calaveras_scenario_actTwoWeeks.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+1.18 1.22 1.28 1.36 1.45 1.53 1.58 
+
+PDF output:  Scenarios/Calaveras_scenario_actTwoWeeks.pdf 
