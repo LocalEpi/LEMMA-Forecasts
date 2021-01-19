@@ -41,3 +41,7 @@
 2021-01-19 00:05:51	[Thread 7]	INFO			county = Yuba
 2021-01-19 00:11:45	[Thread 2]	INFO			county = Calaveras
 2021-01-19 00:19:41	[Thread 19]	INFO			county = Imperial
+2021-01-19 00:32:29	[Thread 13]	WARN	rstan	throw_sampler_warnings	There were 131 transitions after warmup that exceeded the maximum treedepth. Increase max_treedepth above 15. See http://mc-stan.org/misc/warnings.html#maximum-treedepth-exceeded
+2021-01-19 00:32:29	[Thread 13]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
+2021-01-19 00:32:47	[Thread 13]	WARN	rstan	throw_sampler_warnings	Bulk Effective Samples Size (ESS) is too low, indicating posterior means and medians may be unreliable. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#bulk-ess
+2021-01-19 00:51:01	[Thread 13]	INFO			county = Madera
