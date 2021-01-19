@@ -465,3 +465,27 @@ Chain 1:
      user    system   elapsed 
 37352.265    98.132 11327.688 
 Projecting
+   user  system elapsed 
+405.652   1.311 406.969 
+
+Excel output:  Forecasts/Napa.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.63 0.68 0.76 0.84 0.91 0.97 1.01 
+
+PDF output:  Forecasts/Napa.pdf 
+   user  system elapsed 
+404.996   1.727 406.751 
+
+Excel output:  Scenarios/Napa_scenario_actToday.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.63 0.68 0.76 0.84 0.91 0.97 1.01 
+
+PDF output:  Scenarios/Napa_scenario_actToday.pdf 
+   user  system elapsed 
+405.373   1.344 406.727 
+
+Excel output:  Scenarios/Napa_scenario_actTwoWeeks.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.63 0.68 0.76 0.84 0.91 0.97 1.01 
+
+PDF output:  Scenarios/Napa_scenario_actTwoWeeks.pdf 
