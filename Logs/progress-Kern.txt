@@ -465,3 +465,27 @@ Chain 4:
      user    system   elapsed 
 31159.572    79.097  8138.168 
 Projecting
+   user  system elapsed 
+408.460   1.459 409.925 
+
+Excel output:  Forecasts/Kern.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.95 0.98 1.02 1.06 1.09 1.12 1.14 
+
+PDF output:  Forecasts/Kern.pdf 
+   user  system elapsed 
+393.910   1.972 395.886 
+
+Excel output:  Scenarios/Kern_scenario_actToday.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.95 0.98 1.02 1.06 1.09 1.12 1.14 
+
+PDF output:  Scenarios/Kern_scenario_actToday.pdf 
+   user  system elapsed 
+396.363   1.583 397.953 
+
+Excel output:  Scenarios/Kern_scenario_actTwoWeeks.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.95 0.98 1.02 1.06 1.09 1.12 1.14 
+
+PDF output:  Scenarios/Kern_scenario_actTwoWeeks.pdf 
