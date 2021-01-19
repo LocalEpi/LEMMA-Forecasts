@@ -445,3 +445,47 @@ Chain 1: Iteration: 850 / 1000 [ 85%]  (Sampling)
 Chain 1: Iteration: 860 / 1000 [ 86%]  (Sampling)
 Chain 1: Iteration: 870 / 1000 [ 87%]  (Sampling)
 Chain 1: Iteration: 880 / 1000 [ 88%]  (Sampling)
+Chain 1: Iteration: 890 / 1000 [ 89%]  (Sampling)
+Chain 1: Iteration: 900 / 1000 [ 90%]  (Sampling)
+Chain 1: Iteration: 910 / 1000 [ 91%]  (Sampling)
+Chain 1: Iteration: 920 / 1000 [ 92%]  (Sampling)
+Chain 1: Iteration: 930 / 1000 [ 93%]  (Sampling)
+Chain 1: Iteration: 940 / 1000 [ 94%]  (Sampling)
+Chain 1: Iteration: 950 / 1000 [ 95%]  (Sampling)
+Chain 1: Iteration: 960 / 1000 [ 96%]  (Sampling)
+Chain 1: Iteration: 970 / 1000 [ 97%]  (Sampling)
+Chain 1: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 1: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 1: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 1: 
+Chain 1:  Elapsed Time: 267.624 seconds (Warm-up)
+Chain 1:                173.628 seconds (Sampling)
+Chain 1:                441.253 seconds (Total)
+Chain 1: 
+    user   system  elapsed 
+1249.818    6.673  454.228 
+Projecting
+   user  system elapsed 
+103.102   1.632 104.739 
+
+Excel output:  Forecasts/El Dorado.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.94 0.97 1.02 1.08 1.12 1.16 1.19 
+
+PDF output:  Forecasts/El Dorado.pdf 
+   user  system elapsed 
+ 91.516   0.952  92.468 
+
+Excel output:  Scenarios/El Dorado_scenario_actToday.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.94 0.97 1.02 1.08 1.12 1.16 1.19 
+
+PDF output:  Scenarios/El Dorado_scenario_actToday.pdf 
+   user  system elapsed 
+ 91.172   0.824  91.999 
+
+Excel output:  Scenarios/El Dorado_scenario_actTwoWeeks.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.94 0.97 1.02 1.08 1.12 1.16 1.19 
+
+PDF output:  Scenarios/El Dorado_scenario_actTwoWeeks.pdf 

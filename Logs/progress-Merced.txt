@@ -462,3 +462,14 @@ Chain 1:  Elapsed Time: 27.5546 seconds (Warm-up)
 Chain 1:                28540 seconds (Sampling)
 Chain 1:                28567.6 seconds (Total)
 Chain 1: 
+     user    system   elapsed 
+66255.217     2.443 28621.897 
+Projecting
+   user  system elapsed 
+328.253   1.847 330.111 
+
+Excel output:  Forecasts/Merced.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.84 0.88 0.92 0.98 1.08 1.11 1.15 
+
+PDF output:  Forecasts/Merced.pdf 
