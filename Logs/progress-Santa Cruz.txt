@@ -465,3 +465,25 @@ Chain 4:
      user    system   elapsed 
 52593.438   159.703 15826.621 
 Projecting
+   user  system elapsed 
+379.782   1.427 381.220 
+
+Excel output:  Forecasts/Santa Cruz.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.80 0.84 0.89 0.95 1.00 1.04 1.07 
+
+PDF output:  Forecasts/Santa Cruz.pdf 
+   user  system elapsed 
+385.441   1.531 386.980 
+
+Excel output:  Scenarios/Santa Cruz_scenario_actToday.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.80 0.84 0.89 0.95 1.00 1.04 1.07 
+
+PDF output:  Scenarios/Santa Cruz_scenario_actToday.pdf 
+   user  system elapsed 
+384.407   1.243 385.691 
+
+Excel output:  Scenarios/Santa Cruz_scenario_actTwoWeeks.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.80 0.84 0.89 0.95 1.00 1.04 1.07 
