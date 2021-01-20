@@ -457,3 +457,27 @@ Chain 1: Iteration: 970 / 1000 [ 97%]  (Sampling)
 Chain 1: Iteration: 980 / 1000 [ 98%]  (Sampling)
 Chain 1: Iteration: 990 / 1000 [ 99%]  (Sampling)
 Chain 1: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 1: 
+Chain 1:  Elapsed Time: 12958.8 seconds (Warm-up)
+Chain 1:                16579 seconds (Sampling)
+Chain 1:                29537.8 seconds (Total)
+Chain 1: 
+    user   system  elapsed 
+84711.43     3.89 29570.63 
+Projecting
+   user  system elapsed 
+452.397   2.191 454.599 
+
+Excel output:  Regional/Forecasts/GreaterSacramento.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.84 0.87 0.90 0.94 0.97 1.00 1.02 
+
+PDF output:  Regional/Forecasts/GreaterSacramento.pdf 
+   user  system elapsed 
+503.870   3.190 507.071 
+
+Excel output:  Scenarios/GreaterSacramento_scenario_actToday.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.84 0.87 0.90 0.94 0.97 1.00 1.02 
+
+PDF output:  Scenarios/GreaterSacramento_scenario_actToday.pdf 
