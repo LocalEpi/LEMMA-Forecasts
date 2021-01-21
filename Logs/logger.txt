@@ -147,3 +147,6 @@
 2021-01-21 10:25:49	[Thread 3]	INFO			county = BayArea
 2021-01-21 10:29:18	[Thread 14]	INFO			county = Monterey
 2021-01-21 10:38:07	[Thread 4]	INFO			county = SouthernCalifornia
+2021-01-21 10:39:00	[Thread 12]	WARN	rstan	throw_sampler_warnings	There were 10 divergent transitions after warmup. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup to find out why this is a problem and how to eliminate them.
+2021-01-21 10:39:00	[Thread 12]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
+2021-01-21 11:08:52	[Thread 12]	INFO			county = Sacramento
