@@ -454,3 +454,38 @@ Chain 2:                22320.1 seconds (Sampling)
 Chain 2:                22331.6 seconds (Total)
 Chain 2: 
 Chain 1: Iteration: 970 / 1000 [ 97%]  (Sampling)
+Chain 1: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 1: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 1: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 1: 
+Chain 1:  Elapsed Time: 739.907 seconds (Warm-up)
+Chain 1:                23047.3 seconds (Sampling)
+Chain 1:                23787.2 seconds (Total)
+Chain 1: 
+    user   system  elapsed 
+68629.45     2.45 26743.74 
+Projecting
+   user  system elapsed 
+296.269   2.212 298.496 
+
+Excel output:  Forecasts/Madera.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.95 0.97 1.00 1.04 1.07 1.11 1.13 
+
+PDF output:  Forecasts/Madera.pdf 
+   user  system elapsed 
+271.108   1.916 273.036 
+
+Excel output:  Scenarios/Madera_scenario_actToday.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.95 0.97 1.00 1.04 1.07 1.11 1.13 
+
+PDF output:  Scenarios/Madera_scenario_actToday.pdf 
+   user  system elapsed 
+264.263   1.850 266.128 
+
+Excel output:  Scenarios/Madera_scenario_actTwoWeeks.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.95 0.97 1.00 1.04 1.07 1.11 1.13 
+
+PDF output:  Scenarios/Madera_scenario_actTwoWeeks.pdf 
