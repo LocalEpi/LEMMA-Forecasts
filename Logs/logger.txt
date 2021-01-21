@@ -132,3 +132,17 @@
 2021-01-21 09:52:13	[Thread 4]	TRACE			Thread 4 terminated
 2021-01-21 09:53:02	[Thread 16]	INFO			county = Ventura
 2021-01-21 09:59:52	[Thread 9]	INFO			county = Stanislaus
+2021-01-21 10:06:16	[Thread 5]	WARN	rstan	throw_sampler_warnings	There were 2 divergent transitions after warmup. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup to find out why this is a problem and how to eliminate them.
+2021-01-21 10:06:16	[Thread 5]	WARN	rstan	throw_sampler_warnings	There were 489 transitions after warmup that exceeded the maximum treedepth. Increase max_treedepth above 15. See http://mc-stan.org/misc/warnings.html#maximum-treedepth-exceeded
+2021-01-21 10:06:16	[Thread 5]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
+2021-01-21 10:06:25	[Thread 5]	WARN	rstan	throw_sampler_warnings	The largest R-hat is 1.17, indicating chains have not mixed. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#r-hat
+2021-01-21 10:06:31	[Thread 5]	WARN	rstan	throw_sampler_warnings	Bulk Effective Samples Size (ESS) is too low, indicating posterior means and medians may be unreliable. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#bulk-ess
+2021-01-21 10:06:43	[Thread 5]	WARN	rstan	throw_sampler_warnings	Tail Effective Samples Size (ESS) is too low, indicating posterior variances and tail quantiles may be unreliable. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#tail-ess
+2021-01-21 10:08:22	[Thread 4]	WARN	rstan	throw_sampler_warnings	There were 13 divergent transitions after warmup. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup to find out why this is a problem and how to eliminate them.
+2021-01-21 10:08:22	[Thread 4]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
+2021-01-21 10:11:04	[Thread 18]	INFO			county = Tulare
+2021-01-21 10:12:47	[Thread 21]	INFO			county = Placer
+2021-01-21 10:16:36	[Thread 1]	INFO			county = Lake
+2021-01-21 10:23:04	[Thread 5]	INFO			county = Yuba
+2021-01-21 10:25:49	[Thread 3]	INFO			county = BayArea
+2021-01-21 10:29:18	[Thread 14]	INFO			county = Monterey
