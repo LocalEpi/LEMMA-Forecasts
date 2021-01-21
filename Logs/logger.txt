@@ -45,3 +45,6 @@
 2021-01-21 01:54:46	[Thread 13]	FATAL			Error in unserialize(node$con) : error reading from connection Calls: local ... doTryCatch -> recvData -> recvData.SOCKnode -> unserialize 
 2021-01-21 01:54:46	[Thread 13]	TRACE			Thread 13 terminated
 2021-01-21 01:57:51	[Thread 1]	INFO			county = Colusa
+2021-01-21 03:32:03	[Thread 9]	WARN	rstan	throw_sampler_warnings	There were 4 divergent transitions after warmup. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup to find out why this is a problem and how to eliminate them.
+2021-01-21 03:32:03	[Thread 9]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
+2021-01-21 03:45:56	[Thread 12]	INFO			county = Humboldt
