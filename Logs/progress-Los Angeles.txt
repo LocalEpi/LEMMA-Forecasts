@@ -434,3 +434,50 @@ Chain 1: Iteration: 930 / 1000 [ 93%]  (Sampling)
 Chain 3: Iteration: 870 / 1000 [ 87%]  (Sampling)
 Chain 3: Iteration: 880 / 1000 [ 88%]  (Sampling)
 Chain 1: Iteration: 940 / 1000 [ 94%]  (Sampling)
+Chain 3: Iteration: 890 / 1000 [ 89%]  (Sampling)
+Chain 1: Iteration: 950 / 1000 [ 95%]  (Sampling)
+Chain 3: Iteration: 900 / 1000 [ 90%]  (Sampling)
+Chain 3: Iteration: 910 / 1000 [ 91%]  (Sampling)
+Chain 1: Iteration: 960 / 1000 [ 96%]  (Sampling)
+Chain 3: Iteration: 920 / 1000 [ 92%]  (Sampling)
+Chain 3: Iteration: 930 / 1000 [ 93%]  (Sampling)
+Chain 1: Iteration: 970 / 1000 [ 97%]  (Sampling)
+Chain 3: Iteration: 940 / 1000 [ 94%]  (Sampling)
+Chain 3: Iteration: 950 / 1000 [ 95%]  (Sampling)
+Chain 1: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 3: Iteration: 960 / 1000 [ 96%]  (Sampling)
+Chain 3: Iteration: 970 / 1000 [ 97%]  (Sampling)
+Chain 1: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 3: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 3: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 1: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 1: 
+Chain 1:  Elapsed Time: 11061.3 seconds (Warm-up)
+Chain 1:                7458.08 seconds (Sampling)
+Chain 1:                18519.4 seconds (Total)
+Chain 1: 
+Chain 3: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 3: 
+Chain 3:  Elapsed Time: 14560.7 seconds (Warm-up)
+Chain 3:                4014.8 seconds (Sampling)
+Chain 3:                18575.5 seconds (Total)
+Chain 3: 
+     user    system   elapsed 
+67469.548     2.998 18599.424 
+Projecting
+   user  system elapsed 
+486.048   2.508 488.580 
+
+Excel output:  Forecasts/Los Angeles.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.82 0.83 0.85 0.88 0.90 0.92 0.94 
+
+PDF output:  Forecasts/Los Angeles.pdf 
+   user  system elapsed 
+455.264   2.496 457.771 
+
+Excel output:  Scenarios/Los Angeles_scenario_actToday.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.82 0.83 0.85 0.88 0.90 0.92 0.94 
+
+PDF output:  Scenarios/Los Angeles_scenario_actToday.pdf 
