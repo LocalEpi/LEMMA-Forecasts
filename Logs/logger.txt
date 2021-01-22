@@ -167,3 +167,6 @@
 2021-01-22 05:28:10	[Thread 22]	INFO			county = Kern
 2021-01-22 05:29:32	[Thread 13]	INFO			county = Tuolumne
 2021-01-22 05:35:57	[Thread 19]	INFO			county = Napa
+2021-01-22 05:36:55	[Thread 5]	WARN	rstan	throw_sampler_warnings	There were 2 divergent transitions after warmup. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup to find out why this is a problem and how to eliminate them.
+2021-01-22 05:36:55	[Thread 5]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
+2021-01-22 05:36:56	[Thread 17]	INFO			county = Sonoma
