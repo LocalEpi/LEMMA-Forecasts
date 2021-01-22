@@ -462,3 +462,16 @@ Chain 2:  Elapsed Time: 11.2486 seconds (Warm-up)
 Chain 2:                20026.7 seconds (Sampling)
 Chain 2:                20037.9 seconds (Total)
 Chain 2: 
+     user    system   elapsed 
+40790.196     3.174 20073.220 
+Projecting
+   user  system elapsed 
+265.214   1.592 266.820 
+
+Excel output:  Forecasts/Madera.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.96 0.98 1.00 1.04 1.07 1.11 1.14 
+
+PDF output:  Forecasts/Madera.pdf 
+   user  system elapsed 
+260.497   1.755 262.260 
