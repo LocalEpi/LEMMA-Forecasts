@@ -462,3 +462,22 @@ Chain 2:  Elapsed Time: 9412.25 seconds (Warm-up)
 Chain 2:                11485 seconds (Sampling)
 Chain 2:                20897.2 seconds (Total)
 Chain 2: 
+     user    system   elapsed 
+72836.546     1.994 20918.293 
+Projecting
+   user  system elapsed 
+412.066   1.839 413.914 
+
+Excel output:  Forecasts/Tulare.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.84 0.87 0.91 0.95 0.98 1.01 1.02 
+
+PDF output:  Forecasts/Tulare.pdf 
+   user  system elapsed 
+414.621   2.091 416.721 
+
+Excel output:  Scenarios/Tulare_scenario_actToday.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.84 0.87 0.91 0.95 0.98 1.01 1.02 
+
+PDF output:  Scenarios/Tulare_scenario_actToday.pdf 
