@@ -457,3 +457,19 @@ Chain 3: Iteration: 970 / 1000 [ 97%]  (Sampling)
 Chain 3: Iteration: 980 / 1000 [ 98%]  (Sampling)
 Chain 3: Iteration: 990 / 1000 [ 99%]  (Sampling)
 Chain 3: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 3: 
+Chain 3:  Elapsed Time: 5129.87 seconds (Warm-up)
+Chain 3:                7646.3 seconds (Sampling)
+Chain 3:                12776.2 seconds (Total)
+Chain 3: 
+     user    system   elapsed 
+41515.678    84.148 12796.579 
+Projecting
+   user  system elapsed 
+401.208   1.506 402.723 
+
+Excel output:  Forecasts/San Luis Obispo.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.72 0.76 0.82 0.87 0.92 0.97 1.00 
+
+PDF output:  Forecasts/San Luis Obispo.pdf 
