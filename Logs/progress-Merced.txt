@@ -447,3 +447,29 @@ Chain 2:  Elapsed Time: 14.5618 seconds (Warm-up)
 Chain 2:                26779.7 seconds (Sampling)
 Chain 2:                26794.2 seconds (Total)
 Chain 2: 
+Chain 1: Iteration: 970 / 1000 [ 97%]  (Sampling)
+Chain 3: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 3: 
+Chain 3:  Elapsed Time: 21.6574 seconds (Warm-up)
+Chain 3:                27649.1 seconds (Sampling)
+Chain 3:                27670.8 seconds (Total)
+Chain 3: 
+Chain 1: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 1: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 1: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 1: 
+Chain 1:  Elapsed Time: 1329.11 seconds (Warm-up)
+Chain 1:                28413.7 seconds (Sampling)
+Chain 1:                29742.8 seconds (Total)
+Chain 1: 
+     user    system   elapsed 
+98876.066     3.225 29791.095 
+Projecting
+   user  system elapsed 
+383.050   2.246 385.306 
+
+Excel output:  Forecasts/Merced.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.90 0.92 0.96 1.00 1.05 1.08 1.11 
+
+PDF output:  Forecasts/Merced.pdf 
