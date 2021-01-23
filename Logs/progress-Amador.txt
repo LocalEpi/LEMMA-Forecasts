@@ -453,3 +453,39 @@ Chain 3:
 Chain 2: Iteration: 940 / 1000 [ 94%]  (Sampling)
 Chain 2: Iteration: 950 / 1000 [ 95%]  (Sampling)
 Chain 2: Iteration: 960 / 1000 [ 96%]  (Sampling)
+Chain 2: Iteration: 970 / 1000 [ 97%]  (Sampling)
+Chain 2: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 2: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 2: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 2: 
+Chain 2:  Elapsed Time: 162.828 seconds (Warm-up)
+Chain 2:                159.876 seconds (Sampling)
+Chain 2:                322.704 seconds (Total)
+Chain 2: 
+    user   system  elapsed 
+1126.088    7.201  335.042 
+Projecting
+   user  system elapsed 
+ 92.331   1.224  93.560 
+
+Excel output:  Forecasts/Amador.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+1.08 1.10 1.13 1.17 1.21 1.26 1.30 
+
+PDF output:  Forecasts/Amador.pdf 
+   user  system elapsed 
+ 78.357   0.752  79.111 
+
+Excel output:  Scenarios/Amador_scenario_actToday.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+1.08 1.10 1.13 1.17 1.21 1.26 1.30 
+
+PDF output:  Scenarios/Amador_scenario_actToday.pdf 
+   user  system elapsed 
+ 76.656   0.772  77.430 
+
+Excel output:  Scenarios/Amador_scenario_actTwoWeeks.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+1.08 1.10 1.13 1.17 1.21 1.26 1.30 
+
+PDF output:  Scenarios/Amador_scenario_actTwoWeeks.pdf 
