@@ -168,3 +168,6 @@
 2021-01-24 08:01:18	[Thread 8]	INFO			county = Santa Cruz
 2021-01-24 08:05:10	[Thread 5]	INFO			county = Solano
 2021-01-24 08:07:28	[Thread 7]	INFO			county = Nevada
+2021-01-24 08:08:44	[Thread 22]	WARN	rstan	throw_sampler_warnings	There were 11 divergent transitions after warmup. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup to find out why this is a problem and how to eliminate them.
+2021-01-24 08:08:44	[Thread 22]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
+2021-01-24 08:09:58	[Thread 3]	INFO			county = Kern
