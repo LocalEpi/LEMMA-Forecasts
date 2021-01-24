@@ -462,3 +462,14 @@ Chain 3:  Elapsed Time: 7448.87 seconds (Warm-up)
 Chain 3:                14207.3 seconds (Sampling)
 Chain 3:                21656.1 seconds (Total)
 Chain 3: 
+     user    system   elapsed 
+77613.869     4.217 21676.718 
+Projecting
+   user  system elapsed 
+408.491   1.701 410.212 
+
+Excel output:  Forecasts/Placer.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.58 0.62 0.68 0.73 0.78 0.83 0.85 
+
+PDF output:  Forecasts/Placer.pdf 
