@@ -455,3 +455,29 @@ Chain 4: Iteration: 950 / 1000 [ 95%]  (Sampling)
 Chain 4: Iteration: 960 / 1000 [ 96%]  (Sampling)
 Chain 4: Iteration: 970 / 1000 [ 97%]  (Sampling)
 Chain 4: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 4: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 4: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 4: 
+Chain 4:  Elapsed Time: 4669.7 seconds (Warm-up)
+Chain 4:                9453.8 seconds (Sampling)
+Chain 4:                14123.5 seconds (Total)
+Chain 4: 
+     user    system   elapsed 
+50414.971   125.197 14145.616 
+Projecting
+   user  system elapsed 
+405.388   1.265 406.669 
+
+Excel output:  Forecasts/Solano.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.76 0.79 0.85 0.90 0.95 0.99 1.01 
+
+PDF output:  Forecasts/Solano.pdf 
+   user  system elapsed 
+407.805   1.855 409.673 
+
+Excel output:  Scenarios/Solano_scenario_actToday.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.76 0.79 0.85 0.90 0.95 0.99 1.01 
+
+PDF output:  Scenarios/Solano_scenario_actToday.pdf 
