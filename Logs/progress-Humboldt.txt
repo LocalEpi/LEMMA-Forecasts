@@ -441,3 +441,51 @@ Chain 3: Iteration: 940 / 1000 [ 94%]  (Sampling)
 Chain 2: Iteration: 930 / 1000 [ 93%]  (Sampling)
 Chain 3: Iteration: 950 / 1000 [ 95%]  (Sampling)
 Chain 2: Iteration: 940 / 1000 [ 94%]  (Sampling)
+Chain 2: Iteration: 950 / 1000 [ 95%]  (Sampling)
+Chain 3: Iteration: 960 / 1000 [ 96%]  (Sampling)
+Chain 2: Iteration: 960 / 1000 [ 96%]  (Sampling)
+Chain 3: Iteration: 970 / 1000 [ 97%]  (Sampling)
+Chain 2: Iteration: 970 / 1000 [ 97%]  (Sampling)
+Chain 3: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 2: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 3: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 2: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 3: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 3: 
+Chain 3:  Elapsed Time: 2389.25 seconds (Warm-up)
+Chain 3:                1068.57 seconds (Sampling)
+Chain 3:                3457.83 seconds (Total)
+Chain 3: 
+Chain 2: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 2: 
+Chain 2:  Elapsed Time: 1994.9 seconds (Warm-up)
+Chain 2:                1477.13 seconds (Sampling)
+Chain 2:                3472.04 seconds (Total)
+Chain 2: 
+     user    system   elapsed 
+11611.871    89.484  3507.198 
+Projecting
+   user  system elapsed 
+332.207   2.515 334.736 
+
+Excel output:  Forecasts/Humboldt.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+1.12 1.16 1.22 1.30 1.37 1.45 1.49 
+
+PDF output:  Forecasts/Humboldt.pdf 
+   user  system elapsed 
+314.703   2.488 317.203 
+
+Excel output:  Scenarios/Humboldt_scenario_actToday.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+1.12 1.16 1.22 1.30 1.37 1.45 1.49 
+
+PDF output:  Scenarios/Humboldt_scenario_actToday.pdf 
+   user  system elapsed 
+330.049   2.892 332.953 
+
+Excel output:  Scenarios/Humboldt_scenario_actTwoWeeks.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+1.12 1.16 1.22 1.30 1.37 1.45 1.49 
+
+PDF output:  Scenarios/Humboldt_scenario_actTwoWeeks.pdf 
