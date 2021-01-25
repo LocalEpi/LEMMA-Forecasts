@@ -60,3 +60,10 @@
 2021-01-25 02:21:34	[Thread 17]	WARN	rstan	throw_sampler_warnings	Tail Effective Samples Size (ESS) is too low, indicating posterior variances and tail quantiles may be unreliable. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#tail-ess
 2021-01-25 02:24:01	[Thread 23]	INFO			county = Lake
 2021-01-25 02:29:56	[Thread 7]	INFO			county = BayArea
+2021-01-25 02:30:46	[Thread 14]	WARN	rstan	throw_sampler_warnings	There were 650 transitions after warmup that exceeded the maximum treedepth. Increase max_treedepth above 15. See http://mc-stan.org/misc/warnings.html#maximum-treedepth-exceeded
+2021-01-25 02:30:46	[Thread 14]	WARN	rstan	throw_sampler_warnings	There were 1 chains where the estimated Bayesian Fraction of Missing Information was low. See http://mc-stan.org/misc/warnings.html#bfmi-low
+2021-01-25 02:30:46	[Thread 14]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
+2021-01-25 02:30:52	[Thread 14]	WARN	rstan	throw_sampler_warnings	The largest R-hat is 1.07, indicating chains have not mixed. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#r-hat
+2021-01-25 02:30:56	[Thread 14]	WARN	rstan	throw_sampler_warnings	Bulk Effective Samples Size (ESS) is too low, indicating posterior means and medians may be unreliable. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#bulk-ess
+2021-01-25 02:31:04	[Thread 14]	WARN	rstan	throw_sampler_warnings	Tail Effective Samples Size (ESS) is too low, indicating posterior variances and tail quantiles may be unreliable. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#tail-ess
+2021-01-25 02:32:32	[Thread 21]	INFO			county = Lassen
