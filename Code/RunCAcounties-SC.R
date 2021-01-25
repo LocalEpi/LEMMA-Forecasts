@@ -2,6 +2,9 @@
 
 library(data.table)
 
+if (file.exists("~/Documents/GitHub/LEMMA-Forecasts/")) {
+  setwd("~/Documents/GitHub/LEMMA-Forecasts/")
+}
 source('Code/GetCountyData.R')
 
 #git.pw <- readline("Enter github password: ")
@@ -18,7 +21,8 @@ county1 <- "Santa Clara"
 county.dt1 <- GetSantaClaraData()
 county.pop1 <- county.dt1[, Get1(population)]
 
-cat("start time = ", as.character(Sys.time() - 3600 * 8), "\n")
+cat("start time if AWS = ", as.character(Sys.time() - 3600 * 8), "\n")
+cat("start time if local = ", as.character(Sys.time()), "\n")
 cat("max date = ", as.character(max(county.dt1$date)), "\n")
 
 input.file <- "Inputs/CAcounties.xlsx"
