@@ -90,6 +90,9 @@ GetCountyData <- function(include.regions = TRUE) {
   county.dt[county == 'Yuba' & date == '2020-12-09', deaths.conf := NA_real_]
   county.dt[county == 'Yolo' & date == '2020-12-25', deaths.conf := NA_real_]
   county.dt[county == 'Alameda' & date == '2021-01-01', deaths.conf := NA_real_]
+  county.dt[county == 'Alameda' & date == '2021-01-14', deaths.conf := NA_real_]
+  county.dt[county == 'Alameda' & date == '2021-01-15', deaths.conf := NA_real_]
+  county.dt[county == 'Placer' & date == '2021-01-12', deaths.conf := NA_real_]
 
   #data errors
   county.dt[county == 'Merced' & date == '2020-08-16', hosp.conf := NA_real_]

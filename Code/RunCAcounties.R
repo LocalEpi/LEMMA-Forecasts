@@ -21,6 +21,7 @@ while (T) {
 
 exclude.set <- c("San Francisco", "Santa Clara") #SF is run separately, SC uses local data
 county.dt <- county.dt[!(county %in% exclude.set)]
+county.dt <- rbind(county.dt, GetSantaClaraData())
 saveRDS(county.dt, "Inputs/CountyData.rds")
 
 quick.test <- F
