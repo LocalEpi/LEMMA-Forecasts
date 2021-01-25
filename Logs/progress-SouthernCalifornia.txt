@@ -455,3 +455,37 @@ Chain 2: Iteration: 950 / 1000 [ 95%]  (Sampling)
 Chain 2: Iteration: 960 / 1000 [ 96%]  (Sampling)
 Chain 2: Iteration: 970 / 1000 [ 97%]  (Sampling)
 Chain 2: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 2: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 2: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 2: 
+Chain 2:  Elapsed Time: 16879.3 seconds (Warm-up)
+Chain 2:                9496.75 seconds (Sampling)
+Chain 2:                26376.1 seconds (Total)
+Chain 2: 
+     user    system   elapsed 
+88248.663     3.787 26422.679 
+Projecting
+   user  system elapsed 
+564.249   3.471 567.743 
+
+Excel output:  Regional/Forecasts/SouthernCalifornia.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.77 0.79 0.82 0.86 0.88 0.91 0.92 
+
+PDF output:  Regional/Forecasts/SouthernCalifornia.pdf 
+   user  system elapsed 
+563.077   4.483 567.580 
+
+Excel output:  Scenarios/SouthernCalifornia_scenario_actToday.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.77 0.79 0.82 0.86 0.88 0.91 0.92 
+
+PDF output:  Scenarios/SouthernCalifornia_scenario_actToday.pdf 
+   user  system elapsed 
+545.274   3.306 548.599 
+
+Excel output:  Scenarios/SouthernCalifornia_scenario_actTwoWeeks.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.77 0.79 0.82 0.86 0.88 0.91 0.92 
+
+PDF output:  Scenarios/SouthernCalifornia_scenario_actTwoWeeks.pdf 
