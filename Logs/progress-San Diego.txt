@@ -456,3 +456,20 @@ Chain 4: Iteration: 960 / 1000 [ 96%]  (Sampling)
 Chain 4: Iteration: 970 / 1000 [ 97%]  (Sampling)
 Chain 4: Iteration: 980 / 1000 [ 98%]  (Sampling)
 Chain 4: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 4: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 4: 
+Chain 4:  Elapsed Time: 11068.9 seconds (Warm-up)
+Chain 4:                10294.7 seconds (Sampling)
+Chain 4:                21363.5 seconds (Total)
+Chain 4: 
+     user    system   elapsed 
+79543.004     3.149 21387.174 
+Projecting
+   user  system elapsed 
+421.001   1.953 422.964 
+
+Excel output:  Forecasts/San Diego.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.75 0.78 0.82 0.87 0.91 0.94 0.96 
+
+PDF output:  Forecasts/San Diego.pdf 
