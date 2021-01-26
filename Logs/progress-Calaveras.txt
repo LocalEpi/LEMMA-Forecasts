@@ -439,3 +439,53 @@ Chain 3: Iteration: 790 / 1000 [ 79%]  (Sampling)
 Chain 3: Iteration: 800 / 1000 [ 80%]  (Sampling)
 Chain 3: Iteration: 810 / 1000 [ 81%]  (Sampling)
 Chain 3: Iteration: 820 / 1000 [ 82%]  (Sampling)
+Chain 3: Iteration: 830 / 1000 [ 83%]  (Sampling)
+Chain 3: Iteration: 840 / 1000 [ 84%]  (Sampling)
+Chain 3: Iteration: 850 / 1000 [ 85%]  (Sampling)
+Chain 3: Iteration: 860 / 1000 [ 86%]  (Sampling)
+Chain 3: Iteration: 870 / 1000 [ 87%]  (Sampling)
+Chain 3: Iteration: 880 / 1000 [ 88%]  (Sampling)
+Chain 3: Iteration: 890 / 1000 [ 89%]  (Sampling)
+Chain 3: Iteration: 900 / 1000 [ 90%]  (Sampling)
+Chain 3: Iteration: 910 / 1000 [ 91%]  (Sampling)
+Chain 3: Iteration: 920 / 1000 [ 92%]  (Sampling)
+Chain 3: Iteration: 930 / 1000 [ 93%]  (Sampling)
+Chain 3: Iteration: 940 / 1000 [ 94%]  (Sampling)
+Chain 3: Iteration: 950 / 1000 [ 95%]  (Sampling)
+Chain 3: Iteration: 960 / 1000 [ 96%]  (Sampling)
+Chain 3: Iteration: 970 / 1000 [ 97%]  (Sampling)
+Chain 3: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 3: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 3: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 3: 
+Chain 3:  Elapsed Time: 3253.3 seconds (Warm-up)
+Chain 3:                1256.28 seconds (Sampling)
+Chain 3:                4509.59 seconds (Total)
+Chain 3: 
+     user    system   elapsed 
+12194.816    43.593  4547.159 
+Projecting
+   user  system elapsed 
+321.264   2.912 324.191 
+
+Excel output:  Forecasts/Calaveras.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.68 0.73 0.84 0.93 1.02 1.09 1.13 
+
+PDF output:  Forecasts/Calaveras.pdf 
+   user  system elapsed 
+316.757   2.436 319.205 
+
+Excel output:  Scenarios/Calaveras_scenario_actToday.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.68 0.73 0.84 0.93 1.02 1.09 1.13 
+
+PDF output:  Scenarios/Calaveras_scenario_actToday.pdf 
+   user  system elapsed 
+311.677   2.915 314.604 
+
+Excel output:  Scenarios/Calaveras_scenario_actTwoWeeks.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.68 0.73 0.84 0.93 1.02 1.09 1.13 
+
+PDF output:  Scenarios/Calaveras_scenario_actTwoWeeks.pdf 
