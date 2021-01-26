@@ -456,3 +456,20 @@ Chain 3: Iteration: 960 / 1000 [ 96%]  (Sampling)
 Chain 3: Iteration: 970 / 1000 [ 97%]  (Sampling)
 Chain 3: Iteration: 980 / 1000 [ 98%]  (Sampling)
 Chain 3: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 3: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 3: 
+Chain 3:  Elapsed Time: 14549.9 seconds (Warm-up)
+Chain 3:                17096.3 seconds (Sampling)
+Chain 3:                31646.3 seconds (Total)
+Chain 3: 
+      user     system    elapsed 
+115407.135      5.006  31688.363 
+Projecting
+   user  system elapsed 
+480.920   2.855 483.791 
+
+Excel output:  Forecasts/Santa Clara.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.75 0.77 0.80 0.85 0.88 0.91 0.93 
+
+PDF output:  Forecasts/Santa Clara.pdf 
