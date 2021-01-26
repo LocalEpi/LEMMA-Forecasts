@@ -453,3 +453,23 @@ Chain 3: Iteration: 930 / 1000 [ 93%]  (Sampling)
 Chain 3: Iteration: 940 / 1000 [ 94%]  (Sampling)
 Chain 3: Iteration: 950 / 1000 [ 95%]  (Sampling)
 Chain 3: Iteration: 960 / 1000 [ 96%]  (Sampling)
+Chain 3: Iteration: 970 / 1000 [ 97%]  (Sampling)
+Chain 3: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 3: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 3: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 3: 
+Chain 3:  Elapsed Time: 3771.87 seconds (Warm-up)
+Chain 3:                10899 seconds (Sampling)
+Chain 3:                14670.9 seconds (Total)
+Chain 3: 
+     user    system   elapsed 
+51363.336   179.929 14692.705 
+Projecting
+   user  system elapsed 
+412.427   1.695 414.136 
+
+Excel output:  Forecasts/Riverside.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.75 0.77 0.81 0.85 0.88 0.90 0.92 
+
+PDF output:  Forecasts/Riverside.pdf 
