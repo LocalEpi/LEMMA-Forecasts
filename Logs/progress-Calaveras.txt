@@ -462,3 +462,30 @@ Chain 4:  Elapsed Time: 1227.8 seconds (Warm-up)
 Chain 4:                9587.9 seconds (Sampling)
 Chain 4:                10815.7 seconds (Total)
 Chain 4: 
+     user    system   elapsed 
+20581.843    76.029 10830.104 
+Projecting
+   user  system elapsed 
+221.388   1.016 222.416 
+
+Excel output:  Forecasts/Calaveras.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.54 0.61 0.73 0.84 0.93 1.02 1.06 
+
+PDF output:  Forecasts/Calaveras.pdf 
+   user  system elapsed 
+219.493   1.148 220.651 
+
+Excel output:  Scenarios/Calaveras_scenario_actToday.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.54 0.61 0.73 0.84 0.93 1.02 1.06 
+
+PDF output:  Scenarios/Calaveras_scenario_actToday.pdf 
+   user  system elapsed 
+215.939   0.896 216.846 
+
+Excel output:  Scenarios/Calaveras_scenario_actTwoWeeks.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.54 0.61 0.73 0.84 0.93 1.02 1.06 
+
+PDF output:  Scenarios/Calaveras_scenario_actTwoWeeks.pdf 

@@ -206,3 +206,5 @@
 2021-01-27 08:32:29	[Thread 8]	WARN	rstan	throw_sampler_warnings	There were 77 transitions after warmup that exceeded the maximum treedepth. Increase max_treedepth above 15. See http://mc-stan.org/misc/warnings.html#maximum-treedepth-exceeded
 2021-01-27 08:32:29	[Thread 8]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
 2021-01-27 08:32:36	[Thread 19]	INFO			county = Santa Barbara
+2021-01-27 08:32:43	[Thread 8]	WARN	rstan	throw_sampler_warnings	Tail Effective Samples Size (ESS) is too low, indicating posterior variances and tail quantiles may be unreliable. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#tail-ess
+2021-01-27 08:44:29	[Thread 8]	INFO			county = Calaveras
