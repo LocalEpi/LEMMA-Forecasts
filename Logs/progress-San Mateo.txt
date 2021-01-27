@@ -462,3 +462,14 @@ Chain 3:  Elapsed Time: 6586.64 seconds (Warm-up)
 Chain 3:                4042.4 seconds (Sampling)
 Chain 3:                10629 seconds (Total)
 Chain 3: 
+     user    system   elapsed 
+42003.998   153.753 10652.559 
+Projecting
+   user  system elapsed 
+406.106   1.663 407.777 
+
+Excel output:  Forecasts/San Mateo.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.75 0.79 0.84 0.89 0.93 0.97 0.99 
+
+PDF output:  Forecasts/San Mateo.pdf 
