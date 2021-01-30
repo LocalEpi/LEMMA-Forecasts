@@ -135,3 +135,6 @@
 2021-01-30 05:38:05	[Thread 4]	INFO			county = Amador
 2021-01-30 05:40:51	[Thread 14]	INFO			county = Merced
 2021-01-30 05:42:56	[Thread 8]	INFO			county = El Dorado
+2021-01-30 05:43:12	[Thread 4]	WARN	rstan	throw_sampler_warnings	There were 1 divergent transitions after warmup. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup to find out why this is a problem and how to eliminate them.
+2021-01-30 05:43:12	[Thread 4]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
+2021-01-30 05:43:57	[Thread 7]	INFO			county = Contra Costa
