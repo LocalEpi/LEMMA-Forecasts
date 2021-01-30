@@ -196,3 +196,9 @@
 2021-01-30 08:20:10	[Thread 10]	WARN	rstan	throw_sampler_warnings	Bulk Effective Samples Size (ESS) is too low, indicating posterior means and medians may be unreliable. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#bulk-ess
 2021-01-30 08:20:20	[Thread 10]	WARN	rstan	throw_sampler_warnings	Tail Effective Samples Size (ESS) is too low, indicating posterior variances and tail quantiles may be unreliable. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#tail-ess
 2021-01-30 08:32:15	[Thread 10]	INFO			county = Madera
+2021-01-30 09:05:17	[Thread 1]	WARN	rstan	throw_sampler_warnings	There were 380 divergent transitions after warmup. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup to find out why this is a problem and how to eliminate them.
+2021-01-30 09:05:17	[Thread 1]	WARN	rstan	throw_sampler_warnings	There were 252 transitions after warmup that exceeded the maximum treedepth. Increase max_treedepth above 15. See http://mc-stan.org/misc/warnings.html#maximum-treedepth-exceeded
+2021-01-30 09:05:17	[Thread 1]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
+2021-01-30 09:05:29	[Thread 1]	WARN	rstan	throw_sampler_warnings	Bulk Effective Samples Size (ESS) is too low, indicating posterior means and medians may be unreliable. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#bulk-ess
+2021-01-30 09:05:36	[Thread 1]	WARN	rstan	throw_sampler_warnings	Tail Effective Samples Size (ESS) is too low, indicating posterior variances and tail quantiles may be unreliable. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#tail-ess
+2021-01-30 09:25:24	[Thread 1]	INFO			county = Imperial
