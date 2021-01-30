@@ -457,3 +457,27 @@ Chain 3: Iteration: 970 / 1000 [ 97%]  (Sampling)
 Chain 3: Iteration: 980 / 1000 [ 98%]  (Sampling)
 Chain 3: Iteration: 990 / 1000 [ 99%]  (Sampling)
 Chain 3: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 3: 
+Chain 3:  Elapsed Time: 5311.68 seconds (Warm-up)
+Chain 3:                11815.4 seconds (Sampling)
+Chain 3:                17127.1 seconds (Total)
+Chain 3: 
+     user    system   elapsed 
+57221.957   347.746 17148.812 
+Projecting
+   user  system elapsed 
+410.111   1.703 411.818 
+
+Excel output:  Forecasts/Sonoma.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.84 0.88 0.92 0.98 1.03 1.08 1.11 
+
+PDF output:  Forecasts/Sonoma.pdf 
+   user  system elapsed 
+404.806   2.031 406.837 
+
+Excel output:  Scenarios/Sonoma_scenario_actToday.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.84 0.88 0.92 0.98 1.03 1.08 1.11 
+
+PDF output:  Scenarios/Sonoma_scenario_actToday.pdf 
