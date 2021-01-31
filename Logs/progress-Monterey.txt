@@ -454,3 +454,22 @@ Chain 3: Iteration: 940 / 1000 [ 94%]  (Sampling)
 Chain 3: Iteration: 950 / 1000 [ 95%]  (Sampling)
 Chain 3: Iteration: 960 / 1000 [ 96%]  (Sampling)
 Chain 3: Iteration: 970 / 1000 [ 97%]  (Sampling)
+Chain 3: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 3: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 3: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 3: 
+Chain 3:  Elapsed Time: 19700.2 seconds (Warm-up)
+Chain 3:                9791.21 seconds (Sampling)
+Chain 3:                29491.4 seconds (Total)
+Chain 3: 
+     user    system   elapsed 
+91627.809     5.236 29535.498 
+Projecting
+   user  system elapsed 
+527.686   3.123 530.830 
+
+Excel output:  Forecasts/Monterey.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.63 0.66 0.72 0.77 0.81 0.85 0.88 
+
+PDF output:  Forecasts/Monterey.pdf 
