@@ -445,3 +445,47 @@ Chain 2: Iteration: 930 / 1000 [ 93%]  (Sampling)
 Chain 3: Iteration: 980 / 1000 [ 98%]  (Sampling)
 Chain 2: Iteration: 940 / 1000 [ 94%]  (Sampling)
 Chain 3: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 2: Iteration: 950 / 1000 [ 95%]  (Sampling)
+Chain 3: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 3: 
+Chain 3:  Elapsed Time: 5785 seconds (Warm-up)
+Chain 3:                4071.72 seconds (Sampling)
+Chain 3:                9856.72 seconds (Total)
+Chain 3: 
+Chain 2: Iteration: 960 / 1000 [ 96%]  (Sampling)
+Chain 2: Iteration: 970 / 1000 [ 97%]  (Sampling)
+Chain 2: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 2: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 2: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 2: 
+Chain 2:  Elapsed Time: 6594.3 seconds (Warm-up)
+Chain 2:                3543.83 seconds (Sampling)
+Chain 2:                10138.1 seconds (Total)
+Chain 2: 
+     user    system   elapsed 
+34095.390    79.095 10160.071 
+Projecting
+   user  system elapsed 
+400.177   1.567 401.771 
+
+Excel output:  Forecasts/Sonoma.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.82 0.86 0.91 0.96 1.01 1.06 1.09 
+
+PDF output:  Forecasts/Sonoma.pdf 
+   user  system elapsed 
+397.063   1.812 398.882 
+
+Excel output:  Scenarios/Sonoma_scenario_actToday.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.82 0.86 0.91 0.96 1.01 1.06 1.09 
+
+PDF output:  Scenarios/Sonoma_scenario_actToday.pdf 
+   user  system elapsed 
+404.774   1.463 406.245 
+
+Excel output:  Scenarios/Sonoma_scenario_actTwoWeeks.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.82 0.86 0.91 0.96 1.01 1.06 1.09 
+
+PDF output:  Scenarios/Sonoma_scenario_actTwoWeeks.pdf 
