@@ -7,6 +7,7 @@ git.pw <- readline("Enter github password: ")
 git.pw <- paste0("Q2zDSR4BEaV6GnHgYh", git.pw)
 
 prev.county.dt <- readRDS("Inputs/CountyData.rds")
+curr.max.date <- NA
 while (T) {
   county.dt <- GetCountyData()
   prev.max.date <- prev.county.dt[county == "San Mateo", max(date)] #San Mateo is arbitrary
@@ -59,7 +60,7 @@ if (quick.test) {
   county.set <- setdiff(county.set, insuff.data)
 }
 print(county.set)
-cat("Data through", as.character(county.dt[, max(date)]), "\n")
+cat("Data through", as.character(curr.max.date), "\n")
 
 RunOneCounty <- function(county1, git.pw, quick.test) {
   library(data.table)
@@ -237,7 +238,7 @@ for (i in 1:nrow(dt)) {
 cat("\n\nData through", as.character(county.dt[, max(date)]), "\n")
 
 
-commit.name <- paste0('"', "finished data through ", as.character(county.dt[, max(date)]), '"')
+commit.name <- paste0('"', "finished data through ", as.character(curr.max.date), '"')
 system2("git", args = c('commit', '-a', '-m', commit.name))
 system2("git", args = "pull")
 git.dest <- paste0("https://joshuaschwab:", git.pw, "@github.com/LocalEpi/LEMMA-Forecasts")
