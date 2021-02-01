@@ -154,3 +154,20 @@
 2021-02-01 05:01:36	[Thread 3]	INFO			county = Riverside
 2021-02-01 05:08:58	[Thread 11]	INFO			county = Merced
 2021-02-01 05:12:28	[Thread 18]	INFO			county = Contra Costa
+2021-02-01 05:12:37	[Thread 18]	FATAL			Error in unserialize(node$con) : error reading from connection Calls: local ... doTryCatch -> recvData -> recvData.SOCKnode -> unserialize 
+2021-02-01 05:12:37	[Thread 18]	TRACE			Thread 18 terminated
+2021-02-01 05:12:37	[Thread 17]	FATAL			Error in unserialize(node$con) : error reading from connection Calls: local ... doTryCatch -> recvData -> recvData.SOCKnode -> unserialize 
+2021-02-01 05:12:37	[Thread 17]	TRACE			Thread 17 terminated
+2021-02-01 05:12:38	[Thread 15]	FATAL			Error in unserialize(node$con) : error reading from connection Calls: local ... doTryCatch -> recvData -> recvData.SOCKnode -> unserialize 
+2021-02-01 05:12:38	[Thread 15]	TRACE			Thread 15 terminated
+2021-02-01 05:12:38	[Thread 14]	FATAL			Error in unserialize(node$con) : error reading from connection Calls: local ... doTryCatch -> recvData -> recvData.SOCKnode -> unserialize 
+2021-02-01 05:12:38	[Thread 14]	TRACE			Thread 14 terminated
+2021-02-01 05:12:38	[Thread 13]	FATAL			Error in unserialize(node$con) : error reading from connection Calls: local ... doTryCatch -> recvData -> recvData.SOCKnode -> unserialize 
+2021-02-01 05:12:38	[Thread 13]	TRACE			Thread 13 terminated
+2021-02-01 05:12:39	[Thread 12]	FATAL			Error in unserialize(node$con) : error reading from connection Calls: local ... doTryCatch -> recvData -> recvData.SOCKnode -> unserialize 
+2021-02-01 05:12:39	[Thread 12]	TRACE			Thread 12 terminated
+2021-02-01 05:12:39	[Thread 11]	FATAL			Error in unserialize(node$con) : error reading from connection Calls: local ... doTryCatch -> recvData -> recvData.SOCKnode -> unserialize 
+2021-02-01 05:12:39	[Thread 11]	TRACE			Thread 11 terminated
+2021-02-01 05:12:39	[Thread 10]	FATAL			Error in unserialize(node$con) : error reading from connection Calls: local ... doTryCatch -> recvData -> recvData.SOCKnode -> unserialize 
+2021-02-01 05:12:39	[Thread 10]	TRACE			Thread 10 terminated
+2021-02-01 05:17:34	[Thread 9]	INFO			county = Kern
