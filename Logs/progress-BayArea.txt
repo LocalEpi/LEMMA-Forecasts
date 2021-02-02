@@ -448,3 +448,44 @@ Chain 4: Iteration: 960 / 1000 [ 96%]  (Sampling)
 Chain 1: Iteration: 980 / 1000 [ 98%]  (Sampling)
 Chain 4: Iteration: 970 / 1000 [ 97%]  (Sampling)
 Chain 1: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 4: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 1: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 1: 
+Chain 1:  Elapsed Time: 13021.7 seconds (Warm-up)
+Chain 1:                13748 seconds (Sampling)
+Chain 1:                26769.7 seconds (Total)
+Chain 1: 
+Chain 4: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 4: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 4: 
+Chain 4:  Elapsed Time: 13657.7 seconds (Warm-up)
+Chain 4:                13796.3 seconds (Sampling)
+Chain 4:                27454 seconds (Total)
+Chain 4: 
+     user    system   elapsed 
+94083.752     4.263 27498.454 
+Projecting
+   user  system elapsed 
+519.813   4.078 523.923 
+
+Excel output:  Regional/Forecasts/BayArea.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.63 0.66 0.71 0.75 0.80 0.83 0.85 
+
+PDF output:  Regional/Forecasts/BayArea.pdf 
+   user  system elapsed 
+502.748   3.983 506.758 
+
+Excel output:  Scenarios/BayArea_scenario_actToday.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.63 0.66 0.71 0.75 0.80 0.83 0.85 
+
+PDF output:  Scenarios/BayArea_scenario_actToday.pdf 
+   user  system elapsed 
+443.594   2.619 446.256 
+
+Excel output:  Scenarios/BayArea_scenario_actTwoWeeks.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.63 0.66 0.71 0.75 0.80 0.83 0.85 
+
+PDF output:  Scenarios/BayArea_scenario_actTwoWeeks.pdf 
