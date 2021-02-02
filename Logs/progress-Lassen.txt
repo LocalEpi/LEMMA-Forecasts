@@ -456,3 +456,20 @@ Chain 4:                28496.5 seconds (Total)
 Chain 4: 
 Chain 3: Iteration: 980 / 1000 [ 98%]  (Sampling)
 Chain 3: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 3: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 3: 
+Chain 3:  Elapsed Time: 15659.2 seconds (Warm-up)
+Chain 3:                13476.9 seconds (Sampling)
+Chain 3:                29136.1 seconds (Total)
+Chain 3: 
+      user     system    elapsed 
+100015.176      3.559  29178.036 
+Projecting
+   user  system elapsed 
+463.787   2.511 466.313 
+
+Excel output:  Forecasts/Lassen.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.72 0.77 0.86 0.93 1.01 1.07 1.11 
+
+PDF output:  Forecasts/Lassen.pdf 
