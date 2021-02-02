@@ -462,3 +462,30 @@ Chain 2:  Elapsed Time: 3078.78 seconds (Warm-up)
 Chain 2:                3467.43 seconds (Sampling)
 Chain 2:                6546.21 seconds (Total)
 Chain 2: 
+     user    system   elapsed 
+20635.051    79.372  6579.084 
+Projecting
+   user  system elapsed 
+439.953   2.173 442.147 
+
+Excel output:  Forecasts/Nevada.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.62 0.67 0.73 0.80 0.86 0.92 0.94 
+
+PDF output:  Forecasts/Nevada.pdf 
+   user  system elapsed 
+493.161   4.046 497.225 
+
+Excel output:  Scenarios/Nevada_scenario_actToday.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.62 0.67 0.73 0.80 0.86 0.92 0.94 
+
+PDF output:  Scenarios/Nevada_scenario_actToday.pdf 
+   user  system elapsed 
+463.359   3.194 466.573 
+
+Excel output:  Scenarios/Nevada_scenario_actTwoWeeks.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.62 0.67 0.73 0.80 0.86 0.92 0.94 
+
+PDF output:  Scenarios/Nevada_scenario_actTwoWeeks.pdf 
