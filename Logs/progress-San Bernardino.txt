@@ -448,3 +448,44 @@ Chain 3: Iteration: 880 / 1000 [ 88%]  (Sampling)
 Chain 3: Iteration: 890 / 1000 [ 89%]  (Sampling)
 Chain 3: Iteration: 900 / 1000 [ 90%]  (Sampling)
 Chain 3: Iteration: 910 / 1000 [ 91%]  (Sampling)
+Chain 3: Iteration: 920 / 1000 [ 92%]  (Sampling)
+Chain 3: Iteration: 930 / 1000 [ 93%]  (Sampling)
+Chain 3: Iteration: 940 / 1000 [ 94%]  (Sampling)
+Chain 3: Iteration: 950 / 1000 [ 95%]  (Sampling)
+Chain 3: Iteration: 960 / 1000 [ 96%]  (Sampling)
+Chain 3: Iteration: 970 / 1000 [ 97%]  (Sampling)
+Chain 3: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 3: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 3: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 3: 
+Chain 3:  Elapsed Time: 11355.6 seconds (Warm-up)
+Chain 3:                11582.8 seconds (Sampling)
+Chain 3:                22938.4 seconds (Total)
+Chain 3: 
+     user    system   elapsed 
+73566.227   173.026 22983.772 
+Projecting
+   user  system elapsed 
+746.957   3.809 750.804 
+
+Excel output:  Forecasts/San Bernardino.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.60 0.62 0.67 0.72 0.76 0.79 0.81 
+
+PDF output:  Forecasts/San Bernardino.pdf 
+   user  system elapsed 
+741.794   4.798 746.633 
+
+Excel output:  Scenarios/San Bernardino_scenario_actToday.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.60 0.62 0.67 0.72 0.76 0.79 0.81 
+
+PDF output:  Scenarios/San Bernardino_scenario_actToday.pdf 
+   user  system elapsed 
+646.990   2.491 649.512 
+
+Excel output:  Scenarios/San Bernardino_scenario_actTwoWeeks.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.60 0.62 0.67 0.72 0.76 0.79 0.81 
+
+PDF output:  Scenarios/San Bernardino_scenario_actTwoWeeks.pdf 
