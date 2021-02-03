@@ -656,3 +656,36 @@ Chain 2: Iteration: 1460 / 1500 [ 97%]  (Sampling)
 Chain 2: Iteration: 1470 / 1500 [ 98%]  (Sampling)
 Chain 2: Iteration: 1480 / 1500 [ 98%]  (Sampling)
 Chain 2: Iteration: 1490 / 1500 [ 99%]  (Sampling)
+Chain 2: Iteration: 1500 / 1500 [100%]  (Sampling)
+Chain 2: 
+Chain 2:  Elapsed Time: 22.9714 seconds (Warm-up)
+Chain 2:                4457.61 seconds (Sampling)
+Chain 2:                4480.58 seconds (Total)
+Chain 2: 
+    user   system  elapsed 
+4694.279    2.362 4546.549 
+Projecting
+   user  system elapsed 
+529.262   3.726 533.029 
+
+Excel output:  Forecasts/Yuba.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.84 0.84 0.85 0.89 1.16 1.27 1.28 
+
+PDF output:  Forecasts/Yuba.pdf 
+   user  system elapsed 
+527.741   4.032 531.791 
+
+Excel output:  Scenarios/Yuba_scenario_actToday.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.84 0.84 0.85 0.89 1.16 1.27 1.28 
+
+PDF output:  Scenarios/Yuba_scenario_actToday.pdf 
+   user  system elapsed 
+528.282   3.607 531.914 
+
+Excel output:  Scenarios/Yuba_scenario_actTwoWeeks.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.84 0.84 0.85 0.89 1.16 1.27 1.28 
+
+PDF output:  Scenarios/Yuba_scenario_actTwoWeeks.pdf 
