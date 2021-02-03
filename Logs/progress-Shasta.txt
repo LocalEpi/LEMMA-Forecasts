@@ -635,3 +635,57 @@ Chain 2: Iteration: 1250 / 1500 [ 83%]  (Sampling)
 Chain 2: Iteration: 1260 / 1500 [ 84%]  (Sampling)
 Chain 2: Iteration: 1270 / 1500 [ 84%]  (Sampling)
 Chain 2: Iteration: 1280 / 1500 [ 85%]  (Sampling)
+Chain 2: Iteration: 1290 / 1500 [ 86%]  (Sampling)
+Chain 2: Iteration: 1300 / 1500 [ 86%]  (Sampling)
+Chain 2: Iteration: 1310 / 1500 [ 87%]  (Sampling)
+Chain 2: Iteration: 1320 / 1500 [ 88%]  (Sampling)
+Chain 2: Iteration: 1330 / 1500 [ 88%]  (Sampling)
+Chain 2: Iteration: 1340 / 1500 [ 89%]  (Sampling)
+Chain 2: Iteration: 1350 / 1500 [ 90%]  (Sampling)
+Chain 2: Iteration: 1360 / 1500 [ 90%]  (Sampling)
+Chain 2: Iteration: 1370 / 1500 [ 91%]  (Sampling)
+Chain 2: Iteration: 1380 / 1500 [ 92%]  (Sampling)
+Chain 2: Iteration: 1390 / 1500 [ 92%]  (Sampling)
+Chain 2: Iteration: 1400 / 1500 [ 93%]  (Sampling)
+Chain 2: Iteration: 1410 / 1500 [ 94%]  (Sampling)
+Chain 2: Iteration: 1420 / 1500 [ 94%]  (Sampling)
+Chain 2: Iteration: 1430 / 1500 [ 95%]  (Sampling)
+Chain 2: Iteration: 1440 / 1500 [ 96%]  (Sampling)
+Chain 2: Iteration: 1450 / 1500 [ 96%]  (Sampling)
+Chain 2: Iteration: 1460 / 1500 [ 97%]  (Sampling)
+Chain 2: Iteration: 1470 / 1500 [ 98%]  (Sampling)
+Chain 2: Iteration: 1480 / 1500 [ 98%]  (Sampling)
+Chain 2: Iteration: 1490 / 1500 [ 99%]  (Sampling)
+Chain 2: Iteration: 1500 / 1500 [100%]  (Sampling)
+Chain 2: 
+Chain 2:  Elapsed Time: 12538.4 seconds (Warm-up)
+Chain 2:                3644.4 seconds (Sampling)
+Chain 2:                16182.8 seconds (Total)
+Chain 2: 
+     user    system   elapsed 
+50213.340     3.351 16217.496 
+Projecting
+   user  system elapsed 
+440.430   2.621 443.070 
+
+Excel output:  Forecasts/Shasta.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.47 0.53 0.60 0.68 0.74 0.78 0.81 
+
+PDF output:  Forecasts/Shasta.pdf 
+   user  system elapsed 
+464.804   3.467 468.291 
+
+Excel output:  Scenarios/Shasta_scenario_actToday.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.47 0.53 0.60 0.68 0.74 0.78 0.81 
+
+PDF output:  Scenarios/Shasta_scenario_actToday.pdf 
+   user  system elapsed 
+465.855   3.335 469.213 
+
+Excel output:  Scenarios/Shasta_scenario_actTwoWeeks.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.47 0.53 0.60 0.68 0.74 0.78 0.81 
+
+PDF output:  Scenarios/Shasta_scenario_actTwoWeeks.pdf 
