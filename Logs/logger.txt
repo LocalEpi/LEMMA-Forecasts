@@ -122,3 +122,9 @@
 2021-02-04 05:08:50	[Thread 11]	INFO			county = Merced
 2021-02-04 05:33:53	[Thread 11]	INFO			county = San Benito
 2021-02-04 05:57:22	[Thread 11]	INFO			county = Amador
+2021-02-04 06:15:23	[Thread 19]	WARN	rstan	throw_sampler_warnings	There were 274 divergent transitions after warmup. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup to find out why this is a problem and how to eliminate them.
+2021-02-04 06:15:23	[Thread 19]	WARN	rstan	throw_sampler_warnings	There were 277 transitions after warmup that exceeded the maximum treedepth. Increase max_treedepth above 15. See http://mc-stan.org/misc/warnings.html#maximum-treedepth-exceeded
+2021-02-04 06:15:23	[Thread 19]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
+2021-02-04 06:15:46	[Thread 19]	WARN	rstan	throw_sampler_warnings	Bulk Effective Samples Size (ESS) is too low, indicating posterior means and medians may be unreliable. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#bulk-ess
+2021-02-04 06:16:04	[Thread 19]	WARN	rstan	throw_sampler_warnings	Tail Effective Samples Size (ESS) is too low, indicating posterior variances and tail quantiles may be unreliable. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#tail-ess
+2021-02-04 06:19:44	[Thread 11]	INFO			county = Siskiyou
