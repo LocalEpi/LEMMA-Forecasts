@@ -442,3 +442,50 @@ Chain 2: Iteration: 920 / 1000 [ 92%]  (Sampling)
 Chain 1: Iteration: 960 / 1000 [ 96%]  (Sampling)
 Chain 2: Iteration: 930 / 1000 [ 93%]  (Sampling)
 Chain 1: Iteration: 970 / 1000 [ 97%]  (Sampling)
+Chain 2: Iteration: 940 / 1000 [ 94%]  (Sampling)
+Chain 1: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 2: Iteration: 950 / 1000 [ 95%]  (Sampling)
+Chain 1: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 2: Iteration: 960 / 1000 [ 96%]  (Sampling)
+Chain 1: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 1: 
+Chain 1:  Elapsed Time: 8975.6 seconds (Warm-up)
+Chain 1:                13086.3 seconds (Sampling)
+Chain 1:                22061.9 seconds (Total)
+Chain 1: 
+Chain 2: Iteration: 970 / 1000 [ 97%]  (Sampling)
+Chain 2: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 2: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 2: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 2: 
+Chain 2:  Elapsed Time: 10230.2 seconds (Warm-up)
+Chain 2:                12586.9 seconds (Sampling)
+Chain 2:                22817.2 seconds (Total)
+Chain 2: 
+     user    system   elapsed 
+76211.012     2.848 22858.511 
+Projecting
+   user  system elapsed 
+728.297   3.338 731.668 
+
+Excel output:  Regional/Forecasts/SanJoaquinValley.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.68 0.71 0.74 0.78 0.81 0.83 0.85 
+
+PDF output:  Regional/Forecasts/SanJoaquinValley.pdf 
+   user  system elapsed 
+732.798   4.196 737.018 
+
+Excel output:  Scenarios/SanJoaquinValley_scenario_actToday.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.68 0.71 0.74 0.78 0.81 0.83 0.85 
+
+PDF output:  Scenarios/SanJoaquinValley_scenario_actToday.pdf 
+   user  system elapsed 
+614.747   2.316 617.078 
+
+Excel output:  Scenarios/SanJoaquinValley_scenario_actTwoWeeks.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.68 0.71 0.74 0.78 0.81 0.83 0.85 
+
+PDF output:  Scenarios/SanJoaquinValley_scenario_actTwoWeeks.pdf 
