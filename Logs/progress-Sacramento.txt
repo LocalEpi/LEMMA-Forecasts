@@ -462,3 +462,14 @@ Chain 2:  Elapsed Time: 21120.4 seconds (Warm-up)
 Chain 2:                7924.77 seconds (Sampling)
 Chain 2:                29045.2 seconds (Total)
 Chain 2: 
+      user     system    elapsed 
+106870.185      4.471  29069.644 
+Projecting
+   user  system elapsed 
+666.790   2.625 669.437 
+
+Excel output:  Forecasts/Sacramento.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.60 0.64 0.69 0.74 0.79 0.84 0.86 
+
+PDF output:  Forecasts/Sacramento.pdf 
