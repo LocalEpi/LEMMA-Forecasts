@@ -428,3 +428,48 @@ Chain 1: Iteration: 920 / 1000 [ 92%]  (Sampling)
 Chain 3: Iteration: 910 / 1000 [ 91%]  (Sampling)
 Chain 2: Iteration: 970 / 1000 [ 97%]  (Sampling)
 Chain 1: Iteration: 930 / 1000 [ 93%]  (Sampling)
+Chain 3: Iteration: 920 / 1000 [ 92%]  (Sampling)
+Chain 2: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 1: Iteration: 940 / 1000 [ 94%]  (Sampling)
+Chain 2: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 1: Iteration: 950 / 1000 [ 95%]  (Sampling)
+Chain 3: Iteration: 930 / 1000 [ 93%]  (Sampling)
+Chain 2: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 2: 
+Chain 2:  Elapsed Time: 10312 seconds (Warm-up)
+Chain 2:                11011.2 seconds (Sampling)
+Chain 2:                21323.2 seconds (Total)
+Chain 2: 
+Chain 1: Iteration: 960 / 1000 [ 96%]  (Sampling)
+Chain 3: Iteration: 940 / 1000 [ 94%]  (Sampling)
+Chain 1: Iteration: 970 / 1000 [ 97%]  (Sampling)
+Chain 1: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 3: Iteration: 950 / 1000 [ 95%]  (Sampling)
+Chain 1: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 3: Iteration: 960 / 1000 [ 96%]  (Sampling)
+Chain 1: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 3: Iteration: 970 / 1000 [ 97%]  (Sampling)
+Chain 1: 
+Chain 1:  Elapsed Time: 10550.7 seconds (Warm-up)
+Chain 1:                11436.4 seconds (Sampling)
+Chain 1:                21987.1 seconds (Total)
+Chain 1: 
+Chain 3: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 3: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 3: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 3: 
+Chain 3:  Elapsed Time: 9799.34 seconds (Warm-up)
+Chain 3:                12560.7 seconds (Sampling)
+Chain 3:                22360.1 seconds (Total)
+Chain 3: 
+     user    system   elapsed 
+81995.535     3.883 22399.081 
+Projecting
+   user  system elapsed 
+645.556   2.473 648.055 
+
+Excel output:  Forecasts/Monterey.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.54 0.58 0.64 0.69 0.75 0.79 0.82 
+
+PDF output:  Forecasts/Monterey.pdf 

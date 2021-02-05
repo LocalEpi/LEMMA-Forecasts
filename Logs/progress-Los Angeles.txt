@@ -462,3 +462,30 @@ Chain 2:  Elapsed Time: 13241.3 seconds (Warm-up)
 Chain 2:                7679.67 seconds (Sampling)
 Chain 2:                20921 seconds (Total)
 Chain 2: 
+     user    system   elapsed 
+77267.309     4.675 20963.189 
+Projecting
+   user  system elapsed 
+736.152   3.216 739.411 
+
+Excel output:  Forecasts/Los Angeles.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.66 0.68 0.70 0.73 0.76 0.78 0.79 
+
+PDF output:  Forecasts/Los Angeles.pdf 
+   user  system elapsed 
+673.288   3.628 676.939 
+
+Excel output:  Scenarios/Los Angeles_scenario_actToday.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.66 0.68 0.70 0.73 0.76 0.78 0.79 
+
+PDF output:  Scenarios/Los Angeles_scenario_actToday.pdf 
+   user  system elapsed 
+668.166   2.208 670.392 
+
+Excel output:  Scenarios/Los Angeles_scenario_actTwoWeeks.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.66 0.68 0.70 0.73 0.76 0.78 0.79 
+
+PDF output:  Scenarios/Los Angeles_scenario_actTwoWeeks.pdf 

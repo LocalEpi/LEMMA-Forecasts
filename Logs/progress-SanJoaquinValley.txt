@@ -454,3 +454,30 @@ Chain 3: Iteration: 940 / 1000 [ 94%]  (Sampling)
 Chain 3: Iteration: 950 / 1000 [ 95%]  (Sampling)
 Chain 3: Iteration: 960 / 1000 [ 96%]  (Sampling)
 Chain 3: Iteration: 970 / 1000 [ 97%]  (Sampling)
+Chain 3: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 3: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 3: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 3: 
+Chain 3:  Elapsed Time: 7552.9 seconds (Warm-up)
+Chain 3:                13931.4 seconds (Sampling)
+Chain 3:                21484.3 seconds (Total)
+Chain 3: 
+     user    system   elapsed 
+74137.661     4.284 21525.841 
+Projecting
+   user  system elapsed 
+754.204   3.419 757.650 
+
+Excel output:  Regional/Forecasts/SanJoaquinValley.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.67 0.70 0.73 0.77 0.80 0.83 0.84 
+
+PDF output:  Regional/Forecasts/SanJoaquinValley.pdf 
+   user  system elapsed 
+647.585   2.783 650.388 
+
+Excel output:  Scenarios/SanJoaquinValley_scenario_actToday.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.67 0.70 0.73 0.77 0.80 0.83 0.84 
+
+PDF output:  Scenarios/SanJoaquinValley_scenario_actToday.pdf 
