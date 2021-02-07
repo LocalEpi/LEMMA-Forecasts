@@ -453,3 +453,31 @@ Chain 3: Iteration: 930 / 1000 [ 93%]  (Sampling)
 Chain 3: Iteration: 940 / 1000 [ 94%]  (Sampling)
 Chain 3: Iteration: 950 / 1000 [ 95%]  (Sampling)
 Chain 3: Iteration: 960 / 1000 [ 96%]  (Sampling)
+Chain 3: Iteration: 970 / 1000 [ 97%]  (Sampling)
+Chain 3: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 3: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 3: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 3: 
+Chain 3:  Elapsed Time: 1567.59 seconds (Warm-up)
+Chain 3:                22049.4 seconds (Sampling)
+Chain 3:                23617 seconds (Total)
+Chain 3: 
+     user    system   elapsed 
+72852.601     6.062 23640.422 
+Projecting
+   user  system elapsed 
+636.757   2.536 639.307 
+
+Excel output:  Forecasts/Kings.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.71 0.75 0.79 0.84 0.88 0.92 0.95 
+
+PDF output:  Forecasts/Kings.pdf 
+   user  system elapsed 
+604.814   3.039 607.861 
+
+Excel output:  Scenarios/Kings_scenario_actToday.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.71 0.75 0.79 0.84 0.88 0.92 0.95 
+
+PDF output:  Scenarios/Kings_scenario_actToday.pdf 
