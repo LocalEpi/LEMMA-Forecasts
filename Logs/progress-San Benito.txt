@@ -453,3 +453,31 @@ Chain 4: Iteration: 930 / 1000 [ 93%]  (Sampling)
 Chain 4: Iteration: 940 / 1000 [ 94%]  (Sampling)
 Chain 4: Iteration: 950 / 1000 [ 95%]  (Sampling)
 Chain 4: Iteration: 960 / 1000 [ 96%]  (Sampling)
+Chain 4: Iteration: 970 / 1000 [ 97%]  (Sampling)
+Chain 4: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 4: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 4: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 4: 
+Chain 4:  Elapsed Time: 190.316 seconds (Warm-up)
+Chain 4:                196.135 seconds (Sampling)
+Chain 4:                386.452 seconds (Total)
+Chain 4: 
+    user   system  elapsed 
+1381.406    7.745  393.915 
+Projecting
+   user  system elapsed 
+153.802   1.215 155.025 
+
+Excel output:  Forecasts/San Benito.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.67 0.70 0.73 0.77 0.80 0.83 0.84 
+
+PDF output:  Forecasts/San Benito.pdf 
+   user  system elapsed 
+153.862   1.076 154.941 
+
+Excel output:  Scenarios/San Benito_scenario_actToday.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.67 0.70 0.73 0.77 0.80 0.83 0.84 
+
+PDF output:  Scenarios/San Benito_scenario_actToday.pdf 
