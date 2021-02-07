@@ -205,3 +205,10 @@
 2021-02-07 08:23:51	[Thread 14]	INFO			county = Stanislaus
 2021-02-07 08:30:17	[Thread 2]	INFO			county = Imperial
 2021-02-07 08:38:44	[Thread 1]	INFO			county = San Joaquin
+2021-02-07 09:04:54	[Thread 15]	WARN	rstan	throw_sampler_warnings	There were 492 transitions after warmup that exceeded the maximum treedepth. Increase max_treedepth above 15. See http://mc-stan.org/misc/warnings.html#maximum-treedepth-exceeded
+2021-02-07 09:04:54	[Thread 15]	WARN	rstan	throw_sampler_warnings	There were 1 chains where the estimated Bayesian Fraction of Missing Information was low. See http://mc-stan.org/misc/warnings.html#bfmi-low
+2021-02-07 09:04:54	[Thread 15]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
+2021-02-07 09:05:00	[Thread 15]	WARN	rstan	throw_sampler_warnings	The largest R-hat is 1.22, indicating chains have not mixed. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#r-hat
+2021-02-07 09:05:05	[Thread 15]	WARN	rstan	throw_sampler_warnings	Bulk Effective Samples Size (ESS) is too low, indicating posterior means and medians may be unreliable. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#bulk-ess
+2021-02-07 09:05:12	[Thread 15]	WARN	rstan	throw_sampler_warnings	Tail Effective Samples Size (ESS) is too low, indicating posterior variances and tail quantiles may be unreliable. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#tail-ess
+2021-02-07 09:23:57	[Thread 15]	INFO			county = Nevada
