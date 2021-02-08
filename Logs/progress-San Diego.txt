@@ -446,3 +446,30 @@ Chain 1:  Elapsed Time: 6772.15 seconds (Warm-up)
 Chain 1:                13737.5 seconds (Sampling)
 Chain 1:                20509.7 seconds (Total)
 Chain 1: 
+Chain 3: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 4: Iteration: 970 / 1000 [ 97%]  (Sampling)
+Chain 3: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 3: 
+Chain 3:  Elapsed Time: 9248.48 seconds (Warm-up)
+Chain 3:                11449.5 seconds (Sampling)
+Chain 3:                20698 seconds (Total)
+Chain 3: 
+Chain 4: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 4: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 4: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 4: 
+Chain 4:  Elapsed Time: 8644.84 seconds (Warm-up)
+Chain 4:                12420.6 seconds (Sampling)
+Chain 4:                21065.5 seconds (Total)
+Chain 4: 
+     user    system   elapsed 
+82729.266     2.126 21103.353 
+Projecting
+   user  system elapsed 
+661.046   2.547 663.629 
+
+Excel output:  Forecasts/San Diego.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.59 0.62 0.67 0.71 0.75 0.79 0.81 
+
+PDF output:  Forecasts/San Diego.pdf 
