@@ -438,3 +438,54 @@ Chain 2: Iteration: 780 / 1000 [ 78%]  (Sampling)
 Chain 2: Iteration: 790 / 1000 [ 79%]  (Sampling)
 Chain 2: Iteration: 800 / 1000 [ 80%]  (Sampling)
 Chain 2: Iteration: 810 / 1000 [ 81%]  (Sampling)
+Chain 2: Iteration: 820 / 1000 [ 82%]  (Sampling)
+Chain 2: Iteration: 830 / 1000 [ 83%]  (Sampling)
+Chain 2: Iteration: 840 / 1000 [ 84%]  (Sampling)
+Chain 2: Iteration: 850 / 1000 [ 85%]  (Sampling)
+Chain 2: Iteration: 860 / 1000 [ 86%]  (Sampling)
+Chain 2: Iteration: 870 / 1000 [ 87%]  (Sampling)
+Chain 2: Iteration: 880 / 1000 [ 88%]  (Sampling)
+Chain 2: Iteration: 890 / 1000 [ 89%]  (Sampling)
+Chain 2: Iteration: 900 / 1000 [ 90%]  (Sampling)
+Chain 2: Iteration: 910 / 1000 [ 91%]  (Sampling)
+Chain 2: Iteration: 920 / 1000 [ 92%]  (Sampling)
+Chain 2: Iteration: 930 / 1000 [ 93%]  (Sampling)
+Chain 2: Iteration: 940 / 1000 [ 94%]  (Sampling)
+Chain 2: Iteration: 950 / 1000 [ 95%]  (Sampling)
+Chain 2: Iteration: 960 / 1000 [ 96%]  (Sampling)
+Chain 2: Iteration: 970 / 1000 [ 97%]  (Sampling)
+Chain 2: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 2: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 2: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 2: 
+Chain 2:  Elapsed Time: 494.107 seconds (Warm-up)
+Chain 2:                9017.32 seconds (Sampling)
+Chain 2:                9511.43 seconds (Total)
+Chain 2: 
+     user    system   elapsed 
+15851.789    32.474  9527.220 
+Projecting
+   user  system elapsed 
+361.324   1.359 362.691 
+
+Excel output:  Forecasts/Humboldt.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.76 0.80 0.87 0.95 1.02 1.09 1.13 
+
+PDF output:  Forecasts/Humboldt.pdf 
+   user  system elapsed 
+343.727   1.492 345.224 
+
+Excel output:  Scenarios/Humboldt_scenario_actToday.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.76 0.80 0.87 0.95 1.02 1.09 1.13 
+
+PDF output:  Scenarios/Humboldt_scenario_actToday.pdf 
+   user  system elapsed 
+361.636   1.524 363.167 
+
+Excel output:  Scenarios/Humboldt_scenario_actTwoWeeks.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.76 0.80 0.87 0.95 1.02 1.09 1.13 
+
+PDF output:  Scenarios/Humboldt_scenario_actTwoWeeks.pdf 
