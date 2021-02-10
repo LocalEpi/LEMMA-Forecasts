@@ -445,3 +445,47 @@ Chain 4: Iteration: 850 / 1000 [ 85%]  (Sampling)
 Chain 4: Iteration: 860 / 1000 [ 86%]  (Sampling)
 Chain 4: Iteration: 870 / 1000 [ 87%]  (Sampling)
 Chain 4: Iteration: 880 / 1000 [ 88%]  (Sampling)
+Chain 4: Iteration: 890 / 1000 [ 89%]  (Sampling)
+Chain 4: Iteration: 900 / 1000 [ 90%]  (Sampling)
+Chain 4: Iteration: 910 / 1000 [ 91%]  (Sampling)
+Chain 4: Iteration: 920 / 1000 [ 92%]  (Sampling)
+Chain 4: Iteration: 930 / 1000 [ 93%]  (Sampling)
+Chain 4: Iteration: 940 / 1000 [ 94%]  (Sampling)
+Chain 4: Iteration: 950 / 1000 [ 95%]  (Sampling)
+Chain 4: Iteration: 960 / 1000 [ 96%]  (Sampling)
+Chain 4: Iteration: 970 / 1000 [ 97%]  (Sampling)
+Chain 4: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 4: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 4: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 4: 
+Chain 4:  Elapsed Time: 3992.01 seconds (Warm-up)
+Chain 4:                28175.2 seconds (Sampling)
+Chain 4:                32167.2 seconds (Total)
+Chain 4: 
+     user    system   elapsed 
+83189.937   274.138 32188.153 
+Projecting
+   user  system elapsed 
+546.047   1.771 547.840 
+
+Excel output:  Forecasts/Stanislaus.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.63 0.65 0.70 0.74 0.78 0.81 0.83 
+
+PDF output:  Forecasts/Stanislaus.pdf 
+   user  system elapsed 
+555.900   2.084 558.005 
+
+Excel output:  Scenarios/Stanislaus_scenario_actToday.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.63 0.65 0.70 0.74 0.78 0.81 0.83 
+
+PDF output:  Scenarios/Stanislaus_scenario_actToday.pdf 
+   user  system elapsed 
+544.214   2.047 546.285 
+
+Excel output:  Scenarios/Stanislaus_scenario_actTwoWeeks.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.63 0.65 0.70 0.74 0.78 0.81 0.83 
+
+PDF output:  Scenarios/Stanislaus_scenario_actTwoWeeks.pdf 
