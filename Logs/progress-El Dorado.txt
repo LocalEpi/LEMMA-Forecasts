@@ -443,3 +443,33 @@ Chain 2: Iteration: 950 / 1000 [ 95%]  (Sampling)
 Chain 1: Iteration: 940 / 1000 [ 94%]  (Sampling)
 Chain 2: Iteration: 960 / 1000 [ 96%]  (Sampling)
 Chain 1: Iteration: 950 / 1000 [ 95%]  (Sampling)
+Chain 2: Iteration: 970 / 1000 [ 97%]  (Sampling)
+Chain 1: Iteration: 960 / 1000 [ 96%]  (Sampling)
+Chain 2: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 1: Iteration: 970 / 1000 [ 97%]  (Sampling)
+Chain 2: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 1: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 2: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 1: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 2: 
+Chain 2:  Elapsed Time: 114.557 seconds (Warm-up)
+Chain 2:                137.885 seconds (Sampling)
+Chain 2:                252.441 seconds (Total)
+Chain 2: 
+Chain 1: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 1: 
+Chain 1:  Elapsed Time: 130.588 seconds (Warm-up)
+Chain 1:                124.34 seconds (Sampling)
+Chain 1:                254.928 seconds (Total)
+Chain 1: 
+   user  system elapsed 
+947.568   4.996 262.923 
+Projecting
+   user  system elapsed 
+169.374   1.224 170.602 
+
+Excel output:  Forecasts/El Dorado.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.35 0.40 0.47 0.55 0.62 0.67 0.69 
+
+PDF output:  Forecasts/El Dorado.pdf 
