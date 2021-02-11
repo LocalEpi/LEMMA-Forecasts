@@ -456,3 +456,20 @@ Chain 1:                25693.4 seconds (Total)
 Chain 1: 
 Chain 2: Iteration: 980 / 1000 [ 98%]  (Sampling)
 Chain 2: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 2: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 2: 
+Chain 2:  Elapsed Time: 10468.9 seconds (Warm-up)
+Chain 2:                15594.2 seconds (Sampling)
+Chain 2:                26063.2 seconds (Total)
+Chain 2: 
+     user    system   elapsed 
+99154.060     3.417 26084.651 
+Projecting
+   user  system elapsed 
+616.527   2.000 618.537 
+
+Excel output:  Regional/Forecasts/BayArea.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.54 0.58 0.63 0.69 0.74 0.78 0.80 
+
+PDF output:  Regional/Forecasts/BayArea.pdf 
