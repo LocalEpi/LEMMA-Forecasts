@@ -453,3 +453,39 @@ Chain 4: Iteration: 930 / 1000 [ 93%]  (Sampling)
 Chain 4: Iteration: 940 / 1000 [ 94%]  (Sampling)
 Chain 4: Iteration: 950 / 1000 [ 95%]  (Sampling)
 Chain 4: Iteration: 960 / 1000 [ 96%]  (Sampling)
+Chain 4: Iteration: 970 / 1000 [ 97%]  (Sampling)
+Chain 4: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 4: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 4: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 4: 
+Chain 4:  Elapsed Time: 18.6214 seconds (Warm-up)
+Chain 4:                32179.6 seconds (Sampling)
+Chain 4:                32198.2 seconds (Total)
+Chain 4: 
+     user    system   elapsed 
+84539.821    12.272 32262.888 
+Projecting
+   user  system elapsed 
+543.436   4.035 547.505 
+
+Excel output:  Forecasts/Merced.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.68 0.72 0.77 0.83 0.88 0.93 0.95 
+
+PDF output:  Forecasts/Merced.pdf 
+   user  system elapsed 
+518.654   3.833 522.513 
+
+Excel output:  Scenarios/Merced_scenario_actToday.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.68 0.72 0.77 0.83 0.88 0.93 0.95 
+
+PDF output:  Scenarios/Merced_scenario_actToday.pdf 
+   user  system elapsed 
+584.276   3.806 588.112 
+
+Excel output:  Scenarios/Merced_scenario_actTwoWeeks.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.68 0.72 0.77 0.83 0.88 0.93 0.95 
+
+PDF output:  Scenarios/Merced_scenario_actTwoWeeks.pdf 
