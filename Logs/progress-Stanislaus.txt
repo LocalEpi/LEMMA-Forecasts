@@ -454,3 +454,22 @@ Chain 2:  Elapsed Time: 14342.8 seconds (Warm-up)
 Chain 2:                7533.07 seconds (Sampling)
 Chain 2:                21875.9 seconds (Total)
 Chain 2: 
+Chain 3: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 3: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 3: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 3: 
+Chain 3:  Elapsed Time: 15864.1 seconds (Warm-up)
+Chain 3:                6464.26 seconds (Sampling)
+Chain 3:                22328.4 seconds (Total)
+Chain 3: 
+     user    system   elapsed 
+79595.093     2.657 22369.952 
+Projecting
+   user  system elapsed 
+693.481   2.781 696.295 
+
+Excel output:  Forecasts/Stanislaus.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.61 0.64 0.69 0.73 0.77 0.80 0.83 
+
+PDF output:  Forecasts/Stanislaus.pdf 
