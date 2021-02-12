@@ -456,3 +456,20 @@ Chain 1:
 Chain 3: Iteration: 970 / 1000 [ 97%]  (Sampling)
 Chain 3: Iteration: 980 / 1000 [ 98%]  (Sampling)
 Chain 3: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 3: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 3: 
+Chain 3:  Elapsed Time: 2983.88 seconds (Warm-up)
+Chain 3:                15241.2 seconds (Sampling)
+Chain 3:                18225.1 seconds (Total)
+Chain 3: 
+     user    system   elapsed 
+64159.901   232.125 18247.686 
+Projecting
+   user  system elapsed 
+594.792   1.606 596.402 
+
+Excel output:  Forecasts/Marin.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.67 0.72 0.79 0.87 0.94 1.00 1.03 
+
+PDF output:  Forecasts/Marin.pdf 
