@@ -101,3 +101,6 @@
 2021-02-12 03:23:47	[Thread 7]	INFO			county = Butte
 2021-02-12 03:28:29	[Thread 16]	INFO			county = Madera
 2021-02-12 03:32:47	[Thread 4]	INFO			county = BayArea
+2021-02-12 03:32:49	[Thread 6]	WARN	rstan	throw_sampler_warnings	There were 34 divergent transitions after warmup. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup to find out why this is a problem and how to eliminate them.
+2021-02-12 03:32:49	[Thread 6]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
+2021-02-12 03:47:30	[Thread 17]	INFO			county = Lassen
