@@ -454,3 +454,22 @@ Chain 2:                22102.5 seconds (Total)
 Chain 2: 
 Chain 4: Iteration: 960 / 1000 [ 96%]  (Sampling)
 Chain 4: Iteration: 970 / 1000 [ 97%]  (Sampling)
+Chain 4: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 4: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 4: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 4: 
+Chain 4:  Elapsed Time: 15.843 seconds (Warm-up)
+Chain 4:                25729.8 seconds (Sampling)
+Chain 4:                25745.6 seconds (Total)
+Chain 4: 
+    user   system  elapsed 
+73024.33   298.63 25797.55 
+Projecting
+   user  system elapsed 
+520.006   3.190 523.216 
+
+Excel output:  Forecasts/Yolo.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.35 0.40 0.48 0.56 0.64 0.71 0.75 
+
+PDF output:  Forecasts/Yolo.pdf 
