@@ -450,3 +450,42 @@ Chain 1:
 Chain 3: Iteration: 910 / 1000 [ 91%]  (Sampling)
 Chain 3: Iteration: 920 / 1000 [ 92%]  (Sampling)
 Chain 3: Iteration: 930 / 1000 [ 93%]  (Sampling)
+Chain 3: Iteration: 940 / 1000 [ 94%]  (Sampling)
+Chain 3: Iteration: 950 / 1000 [ 95%]  (Sampling)
+Chain 3: Iteration: 960 / 1000 [ 96%]  (Sampling)
+Chain 3: Iteration: 970 / 1000 [ 97%]  (Sampling)
+Chain 3: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 3: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 3: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 3: 
+Chain 3:  Elapsed Time: 3060.03 seconds (Warm-up)
+Chain 3:                11410.1 seconds (Sampling)
+Chain 3:                14470.1 seconds (Total)
+Chain 3: 
+     user    system   elapsed 
+50089.011   227.422 14493.642 
+Projecting
+   user  system elapsed 
+597.508   1.915 599.428 
+
+Excel output:  Forecasts/Imperial.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.61 0.63 0.66 0.69 0.72 0.75 0.77 
+
+PDF output:  Forecasts/Imperial.pdf 
+   user  system elapsed 
+604.593   2.483 607.078 
+
+Excel output:  Scenarios/Imperial_scenario_actToday.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.61 0.63 0.66 0.69 0.72 0.75 0.77 
+
+PDF output:  Scenarios/Imperial_scenario_actToday.pdf 
+   user  system elapsed 
+601.909   1.847 603.764 
+
+Excel output:  Scenarios/Imperial_scenario_actTwoWeeks.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.61 0.63 0.66 0.69 0.72 0.75 0.77 
+
+PDF output:  Scenarios/Imperial_scenario_actTwoWeeks.pdf 
