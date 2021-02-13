@@ -447,3 +447,45 @@ Chain 1: Iteration: 950 / 1000 [ 95%]  (Sampling)
 Chain 3: Iteration: 980 / 1000 [ 98%]  (Sampling)
 Chain 1: Iteration: 960 / 1000 [ 96%]  (Sampling)
 Chain 3: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 1: Iteration: 970 / 1000 [ 97%]  (Sampling)
+Chain 3: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 3: 
+Chain 3:  Elapsed Time: 4185.46 seconds (Warm-up)
+Chain 3:                7672.28 seconds (Sampling)
+Chain 3:                11857.7 seconds (Total)
+Chain 3: 
+Chain 1: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 1: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 1: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 1: 
+Chain 1:  Elapsed Time: 5683.2 seconds (Warm-up)
+Chain 1:                6521.94 seconds (Sampling)
+Chain 1:                12205.1 seconds (Total)
+Chain 1: 
+     user    system   elapsed 
+44214.065     3.517 12254.446 
+Projecting
+   user  system elapsed 
+786.117   4.283 790.428 
+
+Excel output:  Forecasts/Kings.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.65 0.69 0.74 0.80 0.85 0.89 0.92 
+
+PDF output:  Forecasts/Kings.pdf 
+   user  system elapsed 
+780.827   5.055 785.907 
+
+Excel output:  Scenarios/Kings_scenario_actToday.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.65 0.69 0.74 0.80 0.85 0.89 0.92 
+
+PDF output:  Scenarios/Kings_scenario_actToday.pdf 
+   user  system elapsed 
+677.122   3.080 680.220 
+
+Excel output:  Scenarios/Kings_scenario_actTwoWeeks.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.65 0.69 0.74 0.80 0.85 0.89 0.92 
+
+PDF output:  Scenarios/Kings_scenario_actTwoWeeks.pdf 
