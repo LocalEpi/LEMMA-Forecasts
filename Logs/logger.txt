@@ -71,3 +71,10 @@
 2021-02-15 02:43:38	[Thread 14]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
 2021-02-15 02:46:31	[Thread 5]	INFO			county = SouthernCalifornia
 2021-02-15 02:46:32	[Thread 6]	INFO			county = BayArea
+2021-02-15 02:48:22	[Thread 13]	WARN	rstan	throw_sampler_warnings	There were 470 transitions after warmup that exceeded the maximum treedepth. Increase max_treedepth above 15. See http://mc-stan.org/misc/warnings.html#maximum-treedepth-exceeded
+2021-02-15 02:48:22	[Thread 13]	WARN	rstan	throw_sampler_warnings	There were 1 chains where the estimated Bayesian Fraction of Missing Information was low. See http://mc-stan.org/misc/warnings.html#bfmi-low
+2021-02-15 02:48:22	[Thread 13]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
+2021-02-15 02:48:32	[Thread 13]	WARN	rstan	throw_sampler_warnings	The largest R-hat is 1.17, indicating chains have not mixed. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#r-hat
+2021-02-15 02:48:41	[Thread 13]	WARN	rstan	throw_sampler_warnings	Bulk Effective Samples Size (ESS) is too low, indicating posterior means and medians may be unreliable. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#bulk-ess
+2021-02-15 02:48:57	[Thread 13]	WARN	rstan	throw_sampler_warnings	Tail Effective Samples Size (ESS) is too low, indicating posterior variances and tail quantiles may be unreliable. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#tail-ess
+2021-02-15 02:50:39	[Thread 4]	INFO			county = GreaterSacramento
