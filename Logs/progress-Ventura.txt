@@ -453,3 +453,23 @@ Chain 3: Iteration: 930 / 1000 [ 93%]  (Sampling)
 Chain 3: Iteration: 940 / 1000 [ 94%]  (Sampling)
 Chain 3: Iteration: 950 / 1000 [ 95%]  (Sampling)
 Chain 3: Iteration: 960 / 1000 [ 96%]  (Sampling)
+Chain 3: Iteration: 970 / 1000 [ 97%]  (Sampling)
+Chain 3: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 3: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 3: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 3: 
+Chain 3:  Elapsed Time: 15177.3 seconds (Warm-up)
+Chain 3:                9022.51 seconds (Sampling)
+Chain 3:                24199.8 seconds (Total)
+Chain 3: 
+     user    system   elapsed 
+75923.665     2.445 24239.587 
+Projecting
+   user  system elapsed 
+735.509   2.992 738.524 
+
+Excel output:  Forecasts/Ventura.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.49 0.53 0.59 0.65 0.70 0.74 0.76 
+
+PDF output:  Forecasts/Ventura.pdf 
