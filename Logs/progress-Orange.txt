@@ -462,3 +462,30 @@ Chain 3:  Elapsed Time: 11747.4 seconds (Warm-up)
 Chain 3:                14311 seconds (Sampling)
 Chain 3:                26058.4 seconds (Total)
 Chain 3: 
+     user    system   elapsed 
+85538.979     4.228 26104.437 
+Projecting
+   user  system elapsed 
+764.064   3.884 767.974 
+
+Excel output:  Forecasts/Orange.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.54 0.56 0.60 0.64 0.68 0.71 0.73 
+
+PDF output:  Forecasts/Orange.pdf 
+   user  system elapsed 
+700.418   3.675 704.114 
+
+Excel output:  Scenarios/Orange_scenario_actToday.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.54 0.56 0.60 0.64 0.68 0.71 0.73 
+
+PDF output:  Scenarios/Orange_scenario_actToday.pdf 
+   user  system elapsed 
+653.537   2.103 655.655 
+
+Excel output:  Scenarios/Orange_scenario_actTwoWeeks.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.54 0.56 0.60 0.64 0.68 0.71 0.73 
+
+PDF output:  Scenarios/Orange_scenario_actTwoWeeks.pdf 

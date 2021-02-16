@@ -429,3 +429,47 @@ Chain 4: Iteration: 930 / 1000 [ 93%]  (Sampling)
 Chain 3: Iteration: 970 / 1000 [ 97%]  (Sampling)
 Chain 2: Iteration: 910 / 1000 [ 91%]  (Sampling)
 Chain 4: Iteration: 940 / 1000 [ 94%]  (Sampling)
+Chain 2: Iteration: 920 / 1000 [ 92%]  (Sampling)
+Chain 3: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 4: Iteration: 950 / 1000 [ 95%]  (Sampling)
+Chain 4: Iteration: 960 / 1000 [ 96%]  (Sampling)
+Chain 2: Iteration: 930 / 1000 [ 93%]  (Sampling)
+Chain 3: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 2: Iteration: 940 / 1000 [ 94%]  (Sampling)
+Chain 3: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 4: Iteration: 970 / 1000 [ 97%]  (Sampling)
+Chain 3: 
+Chain 3:  Elapsed Time: 8430.03 seconds (Warm-up)
+Chain 3:                12416.1 seconds (Sampling)
+Chain 3:                20846.1 seconds (Total)
+Chain 3: 
+Chain 4: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 2: Iteration: 950 / 1000 [ 95%]  (Sampling)
+Chain 4: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 2: Iteration: 960 / 1000 [ 96%]  (Sampling)
+Chain 4: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 4: 
+Chain 4:  Elapsed Time: 12625.5 seconds (Warm-up)
+Chain 4:                8566.58 seconds (Sampling)
+Chain 4:                21192.1 seconds (Total)
+Chain 4: 
+Chain 2: Iteration: 970 / 1000 [ 97%]  (Sampling)
+Chain 2: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 2: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 2: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 2: 
+Chain 2:  Elapsed Time: 10425 seconds (Warm-up)
+Chain 2:                11401.4 seconds (Sampling)
+Chain 2:                21826.4 seconds (Total)
+Chain 2: 
+     user    system   elapsed 
+83588.890   216.406 21853.199 
+Projecting
+   user  system elapsed 
+637.759   2.346 640.111 
+
+Excel output:  Forecasts/Contra Costa.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.43 0.47 0.53 0.60 0.66 0.71 0.75 
+
+PDF output:  Forecasts/Contra Costa.pdf 
