@@ -454,3 +454,24 @@ Chain 1:
 Chain 4: Iteration: 950 / 1000 [ 95%]  (Sampling)
 Chain 4: Iteration: 960 / 1000 [ 96%]  (Sampling)
 Chain 4: Iteration: 970 / 1000 [ 97%]  (Sampling)
+Chain 4: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 4: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 4: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 4: 
+Chain 4:  Elapsed Time: 13738.2 seconds (Warm-up)
+Chain 4:                18570.6 seconds (Sampling)
+Chain 4:                32308.8 seconds (Total)
+Chain 4: 
+      user     system    elapsed 
+112805.769      4.017  32355.859 
+Projecting
+   user  system elapsed 
+766.701   3.879 770.595 
+
+Excel output:  Regional/Forecasts/BayArea.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.54 0.58 0.63 0.68 0.73 0.78 0.80 
+
+PDF output:  Regional/Forecasts/BayArea.pdf 
+   user  system elapsed 
+762.385   4.415 766.816 

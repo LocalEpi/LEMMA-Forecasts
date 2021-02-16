@@ -462,3 +462,30 @@ Chain 3:  Elapsed Time: 9446.78 seconds (Warm-up)
 Chain 3:                22155.3 seconds (Sampling)
 Chain 3:                31602.1 seconds (Total)
 Chain 3: 
+     user    system   elapsed 
+95381.852     3.146 31650.351 
+Projecting
+   user  system elapsed 
+769.624   4.234 773.875 
+
+Excel output:  Forecasts/San Bernardino.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.51 0.55 0.61 0.65 0.70 0.74 0.76 
+
+PDF output:  Forecasts/San Bernardino.pdf 
+   user  system elapsed 
+753.240   4.343 757.617 
+
+Excel output:  Scenarios/San Bernardino_scenario_actToday.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.51 0.55 0.61 0.65 0.70 0.74 0.76 
+
+PDF output:  Scenarios/San Bernardino_scenario_actToday.pdf 
+   user  system elapsed 
+656.292   2.967 659.277 
+
+Excel output:  Scenarios/San Bernardino_scenario_actTwoWeeks.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.51 0.55 0.61 0.65 0.70 0.74 0.76 
+
+PDF output:  Scenarios/San Bernardino_scenario_actTwoWeeks.pdf 
