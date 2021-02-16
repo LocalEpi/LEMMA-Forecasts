@@ -453,3 +453,23 @@ Chain 4: Iteration: 930 / 1000 [ 93%]  (Sampling)
 Chain 4: Iteration: 940 / 1000 [ 94%]  (Sampling)
 Chain 4: Iteration: 950 / 1000 [ 95%]  (Sampling)
 Chain 4: Iteration: 960 / 1000 [ 96%]  (Sampling)
+Chain 4: Iteration: 970 / 1000 [ 97%]  (Sampling)
+Chain 4: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 4: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 4: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 4: 
+Chain 4:  Elapsed Time: 5738.9 seconds (Warm-up)
+Chain 4:                1454.59 seconds (Sampling)
+Chain 4:                7193.49 seconds (Total)
+Chain 4: 
+     user    system   elapsed 
+17657.198    74.030  7208.388 
+Projecting
+   user  system elapsed 
+316.397   1.707 318.102 
+
+Excel output:  Forecasts/Mendocino.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.79 0.83 0.89 0.94 0.99 1.05 1.08 
+
+PDF output:  Forecasts/Mendocino.pdf 
