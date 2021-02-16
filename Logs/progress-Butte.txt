@@ -647,3 +647,29 @@ Chain 4: Iteration: 1370 / 1500 [ 91%]  (Sampling)
 Chain 4: Iteration: 1380 / 1500 [ 92%]  (Sampling)
 Chain 4: Iteration: 1390 / 1500 [ 92%]  (Sampling)
 Chain 4: Iteration: 1400 / 1500 [ 93%]  (Sampling)
+Chain 4: Iteration: 1410 / 1500 [ 94%]  (Sampling)
+Chain 4: Iteration: 1420 / 1500 [ 94%]  (Sampling)
+Chain 4: Iteration: 1430 / 1500 [ 95%]  (Sampling)
+Chain 4: Iteration: 1440 / 1500 [ 96%]  (Sampling)
+Chain 4: Iteration: 1450 / 1500 [ 96%]  (Sampling)
+Chain 4: Iteration: 1460 / 1500 [ 97%]  (Sampling)
+Chain 4: Iteration: 1470 / 1500 [ 98%]  (Sampling)
+Chain 4: Iteration: 1480 / 1500 [ 98%]  (Sampling)
+Chain 4: Iteration: 1490 / 1500 [ 99%]  (Sampling)
+Chain 4: Iteration: 1500 / 1500 [100%]  (Sampling)
+Chain 4: 
+Chain 4:  Elapsed Time: 19214.8 seconds (Warm-up)
+Chain 4:                2848.33 seconds (Sampling)
+Chain 4:                22063.1 seconds (Total)
+Chain 4: 
+     user    system   elapsed 
+65328.510     3.004 22097.213 
+Projecting
+   user  system elapsed 
+477.108   2.957 480.084 
+
+Excel output:  Forecasts/Butte.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.40 0.44 0.53 0.61 0.68 0.74 0.78 
+
+PDF output:  Forecasts/Butte.pdf 
