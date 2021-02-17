@@ -456,3 +456,20 @@ Chain 1:                23644 seconds (Total)
 Chain 1: 
 Chain 2: Iteration: 980 / 1000 [ 98%]  (Sampling)
 Chain 2: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 2: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 2: 
+Chain 2:  Elapsed Time: 20.358 seconds (Warm-up)
+Chain 2:                25128.5 seconds (Sampling)
+Chain 2:                25148.9 seconds (Total)
+Chain 2: 
+     user    system   elapsed 
+56920.008   174.874 25192.342 
+Projecting
+   user  system elapsed 
+513.733   3.314 517.065 
+
+Excel output:  Forecasts/Humboldt.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.84 0.88 0.94 1.02 1.08 1.15 1.20 
+
+PDF output:  Forecasts/Humboldt.pdf 
