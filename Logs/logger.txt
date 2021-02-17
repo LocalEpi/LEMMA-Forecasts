@@ -101,3 +101,10 @@
 2021-02-17 06:11:37	[Thread 12]	INFO			county = Placer
 2021-02-17 06:40:18	[Thread 10]	INFO			county = Marin
 2021-02-17 06:41:55	[Thread 18]	INFO			county = Monterey
+2021-02-17 07:10:42	[Thread 15]	WARN	rstan	throw_sampler_warnings	There were 6 divergent transitions after warmup. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup to find out why this is a problem and how to eliminate them.
+2021-02-17 07:10:42	[Thread 15]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
+2021-02-17 07:43:55	[Thread 9]	WARN	rstan	throw_sampler_warnings	There were 336 divergent transitions after warmup. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup to find out why this is a problem and how to eliminate them.
+2021-02-17 07:43:55	[Thread 9]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
+2021-02-17 07:44:22	[Thread 9]	WARN	rstan	throw_sampler_warnings	Bulk Effective Samples Size (ESS) is too low, indicating posterior means and medians may be unreliable. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#bulk-ess
+2021-02-17 07:44:42	[Thread 9]	WARN	rstan	throw_sampler_warnings	Tail Effective Samples Size (ESS) is too low, indicating posterior variances and tail quantiles may be unreliable. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#tail-ess
+2021-02-17 07:53:10	[Thread 15]	INFO			county = Sacramento
