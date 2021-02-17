@@ -638,3 +638,54 @@ Chain 4: Iteration: 1400 / 1500 [ 93%]  (Sampling)
 Chain 4: Iteration: 1410 / 1500 [ 94%]  (Sampling)
 Chain 2: Iteration: 1440 / 1500 [ 96%]  (Sampling)
 Chain 4: Iteration: 1420 / 1500 [ 94%]  (Sampling)
+Chain 2: Iteration: 1450 / 1500 [ 96%]  (Sampling)
+Chain 4: Iteration: 1430 / 1500 [ 95%]  (Sampling)
+Chain 4: Iteration: 1440 / 1500 [ 96%]  (Sampling)
+Chain 2: Iteration: 1460 / 1500 [ 97%]  (Sampling)
+Chain 4: Iteration: 1450 / 1500 [ 96%]  (Sampling)
+Chain 4: Iteration: 1460 / 1500 [ 97%]  (Sampling)
+Chain 2: Iteration: 1470 / 1500 [ 98%]  (Sampling)
+Chain 4: Iteration: 1470 / 1500 [ 98%]  (Sampling)
+Chain 2: Iteration: 1480 / 1500 [ 98%]  (Sampling)
+Chain 4: Iteration: 1480 / 1500 [ 98%]  (Sampling)
+Chain 4: Iteration: 1490 / 1500 [ 99%]  (Sampling)
+Chain 2: Iteration: 1490 / 1500 [ 99%]  (Sampling)
+Chain 4: Iteration: 1500 / 1500 [100%]  (Sampling)
+Chain 4: 
+Chain 4:  Elapsed Time: 12207.8 seconds (Warm-up)
+Chain 4:                2616.57 seconds (Sampling)
+Chain 4:                14824.4 seconds (Total)
+Chain 4: 
+Chain 2: Iteration: 1500 / 1500 [100%]  (Sampling)
+Chain 2: 
+Chain 2:  Elapsed Time: 10337.6 seconds (Warm-up)
+Chain 2:                4576.29 seconds (Sampling)
+Chain 2:                14913.9 seconds (Total)
+Chain 2: 
+     user    system   elapsed 
+55403.488     7.196 14955.359 
+Projecting
+   user  system elapsed 
+539.969   4.088 544.083 
+
+Excel output:  Forecasts/Butte.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.36 0.42 0.51 0.59 0.67 0.73 0.77 
+
+PDF output:  Forecasts/Butte.pdf 
+   user  system elapsed 
+540.036   4.491 544.551 
+
+Excel output:  Scenarios/Butte_scenario_actToday.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.36 0.42 0.51 0.59 0.67 0.73 0.77 
+
+PDF output:  Scenarios/Butte_scenario_actToday.pdf 
+   user  system elapsed 
+534.411   3.604 538.041 
+
+Excel output:  Scenarios/Butte_scenario_actTwoWeeks.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.36 0.42 0.51 0.59 0.67 0.73 0.77 
+
+PDF output:  Scenarios/Butte_scenario_actTwoWeeks.pdf 
