@@ -456,3 +456,20 @@ Chain 1: Iteration: 960 / 1000 [ 96%]  (Sampling)
 Chain 1: Iteration: 970 / 1000 [ 97%]  (Sampling)
 Chain 1: Iteration: 980 / 1000 [ 98%]  (Sampling)
 Chain 1: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 1: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 1: 
+Chain 1:  Elapsed Time: 1959.4 seconds (Warm-up)
+Chain 1:                6247.97 seconds (Sampling)
+Chain 1:                8207.37 seconds (Total)
+Chain 1: 
+     user    system   elapsed 
+27324.100    96.070  8232.838 
+Projecting
+   user  system elapsed 
+603.148   1.787 604.966 
+
+Excel output:  Forecasts/Imperial.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.60 0.63 0.66 0.70 0.74 0.77 0.79 
+
+PDF output:  Forecasts/Imperial.pdf 
