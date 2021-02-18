@@ -456,3 +456,20 @@ Chain 2: Iteration: 960 / 1000 [ 96%]  (Sampling)
 Chain 2: Iteration: 970 / 1000 [ 97%]  (Sampling)
 Chain 2: Iteration: 980 / 1000 [ 98%]  (Sampling)
 Chain 2: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 2: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 2: 
+Chain 2:  Elapsed Time: 14921.2 seconds (Warm-up)
+Chain 2:                11799.1 seconds (Sampling)
+Chain 2:                26720.3 seconds (Total)
+Chain 2: 
+      user     system    elapsed 
+101646.533      4.184  26764.767 
+Projecting
+   user  system elapsed 
+666.220   2.662 668.895 
+
+Excel output:  Forecasts/San Bernardino.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.50 0.53 0.59 0.65 0.69 0.73 0.76 
+
+PDF output:  Forecasts/San Bernardino.pdf 
