@@ -438,3 +438,54 @@ Chain 2: Iteration: 910 / 1000 [ 91%]  (Sampling)
 Chain 3: Iteration: 930 / 1000 [ 93%]  (Sampling)
 Chain 2: Iteration: 920 / 1000 [ 92%]  (Sampling)
 Chain 3: Iteration: 940 / 1000 [ 94%]  (Sampling)
+Chain 2: Iteration: 930 / 1000 [ 93%]  (Sampling)
+Chain 3: Iteration: 950 / 1000 [ 95%]  (Sampling)
+Chain 2: Iteration: 940 / 1000 [ 94%]  (Sampling)
+Chain 3: Iteration: 960 / 1000 [ 96%]  (Sampling)
+Chain 2: Iteration: 950 / 1000 [ 95%]  (Sampling)
+Chain 3: Iteration: 970 / 1000 [ 97%]  (Sampling)
+Chain 2: Iteration: 960 / 1000 [ 96%]  (Sampling)
+Chain 3: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 2: Iteration: 970 / 1000 [ 97%]  (Sampling)
+Chain 3: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 2: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 3: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 3: 
+Chain 3:  Elapsed Time: 18.3542 seconds (Warm-up)
+Chain 3:                23772.3 seconds (Sampling)
+Chain 3:                23790.6 seconds (Total)
+Chain 3: 
+Chain 2: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 2: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 2: 
+Chain 2:  Elapsed Time: 25.0287 seconds (Warm-up)
+Chain 2:                24391.6 seconds (Sampling)
+Chain 2:                24416.6 seconds (Total)
+Chain 2: 
+     user    system   elapsed 
+75177.124   269.866 24442.652 
+Projecting
+   user  system elapsed 
+401.467   1.560 403.044 
+
+Excel output:  Forecasts/Merced.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.68 0.71 0.76 0.81 0.86 0.91 0.93 
+
+PDF output:  Forecasts/Merced.pdf 
+   user  system elapsed 
+418.807   1.659 420.483 
+
+Excel output:  Scenarios/Merced_scenario_actToday.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.68 0.71 0.76 0.81 0.86 0.91 0.93 
+
+PDF output:  Scenarios/Merced_scenario_actToday.pdf 
+   user  system elapsed 
+420.522   1.387 421.925 
+
+Excel output:  Scenarios/Merced_scenario_actTwoWeeks.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.68 0.71 0.76 0.81 0.86 0.91 0.93 
+
+PDF output:  Scenarios/Merced_scenario_actTwoWeeks.pdf 
