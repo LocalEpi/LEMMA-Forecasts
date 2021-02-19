@@ -455,3 +455,21 @@ Chain 4: Iteration: 950 / 1000 [ 95%]  (Sampling)
 Chain 4: Iteration: 960 / 1000 [ 96%]  (Sampling)
 Chain 4: Iteration: 970 / 1000 [ 97%]  (Sampling)
 Chain 4: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 4: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 4: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 4: 
+Chain 4:  Elapsed Time: 6597.48 seconds (Warm-up)
+Chain 4:                10716.8 seconds (Sampling)
+Chain 4:                17314.3 seconds (Total)
+Chain 4: 
+     user    system   elapsed 
+60366.296   184.692 17337.172 
+Projecting
+   user  system elapsed 
+600.573   2.111 602.702 
+
+Excel output:  Forecasts/Alameda.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.47 0.52 0.59 0.66 0.72 0.78 0.81 
+
+PDF output:  Forecasts/Alameda.pdf 
