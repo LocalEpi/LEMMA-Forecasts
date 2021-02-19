@@ -454,3 +454,38 @@ Chain 4: Iteration: 940 / 1000 [ 94%]  (Sampling)
 Chain 4: Iteration: 950 / 1000 [ 95%]  (Sampling)
 Chain 4: Iteration: 960 / 1000 [ 96%]  (Sampling)
 Chain 4: Iteration: 970 / 1000 [ 97%]  (Sampling)
+Chain 4: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 4: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 4: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 4: 
+Chain 4:  Elapsed Time: 654.445 seconds (Warm-up)
+Chain 4:                47499.8 seconds (Sampling)
+Chain 4:                48154.3 seconds (Total)
+Chain 4: 
+      user     system    elapsed 
+127987.090    366.291  48176.240 
+Projecting
+   user  system elapsed 
+569.909   1.638 571.560 
+
+Excel output:  Forecasts/San Diego.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.53 0.57 0.63 0.68 0.72 0.76 0.79 
+
+PDF output:  Forecasts/San Diego.pdf 
+   user  system elapsed 
+573.651   2.226 575.890 
+
+Excel output:  Scenarios/San Diego_scenario_actToday.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.53 0.57 0.63 0.68 0.72 0.76 0.79 
+
+PDF output:  Scenarios/San Diego_scenario_actToday.pdf 
+   user  system elapsed 
+557.166   1.586 558.769 
+
+Excel output:  Scenarios/San Diego_scenario_actTwoWeeks.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.53 0.57 0.63 0.68 0.72 0.76 0.79 
+
+PDF output:  Scenarios/San Diego_scenario_actTwoWeeks.pdf 
