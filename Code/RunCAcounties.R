@@ -9,7 +9,7 @@ git.pw <- paste0("Q2zDSR4BEaV6GnHgYh", git.pw)
 prev.county.dt <- readRDS("Inputs/CountyData.rds")
 curr.max.date <- NA
 while (T) {
-  county.dt <- GetCountyData()
+  county.dt <- GetCountyData(include.regions = F)
   prev.max.date <- prev.county.dt[county == "San Mateo", max(date)] #San Mateo is arbitrary
   curr.max.date <- county.dt[county == "San Mateo", max(date)]
   cat("prev.max.date =", as.character(prev.max.date), "curr.max.date =", as.character(curr.max.date), "\n")
@@ -237,6 +237,11 @@ for (i in 1:nrow(dt)) {
 
 cat("\n\nData through", as.character(county.dt[, max(date)]), "\n")
 
+#temp to fix untracked files
+for (i in c("Yuba", "Madera", "Butte", "Shasta", "Tehama")) {
+  system2("git", args = c("add", paste0("Forecasts/", i, ".pdf")))
+  system2("git", args = c("add", paste0("Forecasts/", i, ".xlsx")))
+}
 
 commit.name <- paste0('"', "finished data through ", as.character(curr.max.date), '"')
 system2("git", args = c('commit', '-a', '-m', commit.name))
