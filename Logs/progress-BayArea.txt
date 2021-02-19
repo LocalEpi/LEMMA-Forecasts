@@ -426,3 +426,58 @@ Chain 1: Iteration: 900 / 1000 [ 90%]  (Sampling)
 Chain 3: Iteration: 940 / 1000 [ 94%]  (Sampling)
 Chain 4: Iteration: 940 / 1000 [ 94%]  (Sampling)
 Chain 1: Iteration: 910 / 1000 [ 91%]  (Sampling)
+Chain 3: Iteration: 950 / 1000 [ 95%]  (Sampling)
+Chain 4: Iteration: 950 / 1000 [ 95%]  (Sampling)
+Chain 1: Iteration: 920 / 1000 [ 92%]  (Sampling)
+Chain 3: Iteration: 960 / 1000 [ 96%]  (Sampling)
+Chain 4: Iteration: 960 / 1000 [ 96%]  (Sampling)
+Chain 1: Iteration: 930 / 1000 [ 93%]  (Sampling)
+Chain 3: Iteration: 970 / 1000 [ 97%]  (Sampling)
+Chain 1: Iteration: 940 / 1000 [ 94%]  (Sampling)
+Chain 4: Iteration: 970 / 1000 [ 97%]  (Sampling)
+Chain 3: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 1: Iteration: 950 / 1000 [ 95%]  (Sampling)
+Chain 4: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 3: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 3: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 1: Iteration: 960 / 1000 [ 96%]  (Sampling)
+Chain 3: 
+Chain 3:  Elapsed Time: 15276.3 seconds (Warm-up)
+Chain 3:                10630 seconds (Sampling)
+Chain 3:                25906.3 seconds (Total)
+Chain 3: 
+Chain 4: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 1: Iteration: 970 / 1000 [ 97%]  (Sampling)
+Chain 4: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 4: 
+Chain 4:  Elapsed Time: 12975.8 seconds (Warm-up)
+Chain 4:                13300.5 seconds (Sampling)
+Chain 4:                26276.2 seconds (Total)
+Chain 4: 
+Chain 1: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 1: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 1: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 1: 
+Chain 1:  Elapsed Time: 13633.8 seconds (Warm-up)
+Chain 1:                12999.3 seconds (Sampling)
+Chain 1:                26633.1 seconds (Total)
+Chain 1: 
+      user     system    elapsed 
+102364.562      5.007  26674.283 
+Projecting
+   user  system elapsed 
+670.264   2.387 672.671 
+
+Excel output:  Regional/Forecasts/BayArea.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.52 0.56 0.62 0.68 0.73 0.78 0.80 
+
+PDF output:  Regional/Forecasts/BayArea.pdf 
+   user  system elapsed 
+616.471   2.811 619.291 
+
+Excel output:  Scenarios/BayArea_scenario_actToday.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.52 0.56 0.62 0.68 0.73 0.78 0.80 
+
+PDF output:  Scenarios/BayArea_scenario_actToday.pdf 

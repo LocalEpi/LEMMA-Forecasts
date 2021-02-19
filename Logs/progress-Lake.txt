@@ -433,3 +433,51 @@ Chain 4: Iteration: 970 / 1000 [ 97%]  (Sampling)
 Chain 2: Iteration: 900 / 1000 [ 90%]  (Sampling)
 Chain 3: Iteration: 980 / 1000 [ 98%]  (Sampling)
 Chain 4: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 2: Iteration: 910 / 1000 [ 91%]  (Sampling)
+Chain 4: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 3: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 2: Iteration: 920 / 1000 [ 92%]  (Sampling)
+Chain 4: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 4: 
+Chain 4:  Elapsed Time: 15850.8 seconds (Warm-up)
+Chain 4:                9401.12 seconds (Sampling)
+Chain 4:                25252 seconds (Total)
+Chain 4: 
+Chain 2: Iteration: 930 / 1000 [ 93%]  (Sampling)
+Chain 3: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 3: 
+Chain 3:  Elapsed Time: 13606.7 seconds (Warm-up)
+Chain 3:                11886.5 seconds (Sampling)
+Chain 3:                25493.2 seconds (Total)
+Chain 3: 
+Chain 2: Iteration: 940 / 1000 [ 94%]  (Sampling)
+Chain 2: Iteration: 950 / 1000 [ 95%]  (Sampling)
+Chain 2: Iteration: 960 / 1000 [ 96%]  (Sampling)
+Chain 2: Iteration: 970 / 1000 [ 97%]  (Sampling)
+Chain 2: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 2: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 2: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 2: 
+Chain 2:  Elapsed Time: 13732.4 seconds (Warm-up)
+Chain 2:                12794.8 seconds (Sampling)
+Chain 2:                26527.2 seconds (Total)
+Chain 2: 
+     user    system   elapsed 
+95713.080     2.631 26552.068 
+Projecting
+   user  system elapsed 
+652.348   2.660 655.021 
+
+Excel output:  Forecasts/Lake.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.27 0.32 0.41 0.51 0.60 0.69 0.74 
+
+PDF output:  Forecasts/Lake.pdf 
+   user  system elapsed 
+618.538   3.227 621.771 
+
+Excel output:  Scenarios/Lake_scenario_actToday.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.27 0.32 0.41 0.51 0.60 0.69 0.74 
+
+PDF output:  Scenarios/Lake_scenario_actToday.pdf 
