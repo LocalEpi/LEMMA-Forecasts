@@ -147,14 +147,23 @@ RunOneCounty <- function(county1, quick.test) {
     inputs$model.inputs$end.date <- as.Date("2021/8/1")
     nt <- as.numeric(inputs$model.inputs$end.date - inputs$internal.args$simulation.start.date)
     #uk now and growth is good for San Diego but uk now is too high for SF -- need estimates of uk now and sa now by county? assume no SA for now
-    inputs$vaccines <- GetVaccineParams(vaccinated_per_day_max = 6000, vaccinated_per_day_increase = 135, uk_growth = 1.05, sa_growth = 1, uk_now = 0.01, sa_now = 0.0001, nt = nt)
-    inputs$vaccines$vaccinated_per_day <- inputs$vaccines$vaccinated_per_day * county.pop1 / 883305
+
+
+    if (county1 %in% restart.set) {
+      inputs$vaccines$vaccinated_per_day <- rep(0, nt)
+      inputs$vaccines$efficacy_transmission <- rep(1, nt)
+      inputs$vaccines$duration_vaccinated <- inputs$vaccines$duration_natural <- rep(360, nt)
+      inputs$vaccines$frac_hosp_multiplier <- inputs$vaccines$frac_icu_multiplier <- inputs$vaccines$frac_mort_multiplier <- rep(1, nt)
+    } else {
+      inputs$vaccines <- GetVaccineParams(vaccinated_per_day_max = 6000, vaccinated_per_day_increase = 135, uk_growth = 1.05, sa_growth = 1, uk_now = 0.01, sa_now = 0.0001, nt = nt)
+      inputs$vaccines$vaccinated_per_day <- inputs$vaccines$vaccinated_per_day * county.pop1 / 883305
+    }
+
     stopifnot(exists("branchname", envir = asNamespace("LEMMA")))
 
     cred.int <- LEMMA:::CredibilityInterval(inputs)
 
     max.date <- max(cred.int$inputs$obs.data$date)
-    outfile <- paste0(dir, "Scenarios/", county1)
 
     sink()
     ParallelLogger::logInfo("county = ", county1)
