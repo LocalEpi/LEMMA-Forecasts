@@ -20,9 +20,16 @@ while (T) {
   system("sleep 60")
 }
 
-exclude.set <- c("San Francisco", "Santa Clara") #SF is run separately, SC uses local data
-county.dt <- county.dt[!(county %in% exclude.set)]
-county.dt <- rbind(county.dt, GetSantaClaraData())
+if (F) {
+  exclude.set <- c("San Francisco", "Santa Clara") #SF is run separately, SC uses local data
+  county.dt <- county.dt[!(county %in% exclude.set)]
+  county.dt <- rbind(county.dt, GetSantaClaraData())
+} else {
+  cat("TEMP! SC was down\n")
+  exclude.set <- c("San Francisco") #SF is run separately, SC uses local data
+  county.dt <- county.dt[!(county %in% exclude.set)]
+}
+
 saveRDS(county.dt, "Inputs/CountyData.rds")
 
 quick.test <- F
