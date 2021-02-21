@@ -178,3 +178,8 @@
 2021-02-21 13:37:25	[Thread 8]	WARN	rstan	throw_sampler_warnings	Tail Effective Samples Size (ESS) is too low, indicating posterior variances and tail quantiles may be unreliable. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#tail-ess
 2021-02-21 13:42:18	[Thread 18]	INFO			county = Mendocino
 2021-02-21 13:56:08	[Thread 1]	INFO			county = Kern
+2021-02-21 14:01:33	[Thread 21]	WARN	rstan	throw_sampler_warnings	There were 25 divergent transitions after warmup. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup to find out why this is a problem and how to eliminate them.
+2021-02-21 14:01:33	[Thread 21]	WARN	rstan	throw_sampler_warnings	There were 43 transitions after warmup that exceeded the maximum treedepth. Increase max_treedepth above 15. See http://mc-stan.org/misc/warnings.html#maximum-treedepth-exceeded
+2021-02-21 14:01:33	[Thread 21]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
+2021-02-21 14:01:53	[Thread 21]	WARN	rstan	throw_sampler_warnings	Tail Effective Samples Size (ESS) is too low, indicating posterior variances and tail quantiles may be unreliable. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#tail-ess
+2021-02-21 14:03:07	[Thread 19]	INFO			county = Fresno
