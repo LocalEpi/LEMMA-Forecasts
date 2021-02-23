@@ -465,3 +465,27 @@ Chain 1:
       user     system    elapsed 
 113947.738      4.903  33981.728 
 Projecting
+   user  system elapsed 
+730.178   2.238 732.438 
+
+Excel output:  Forecasts/Sacramento.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.50 0.54 0.61 0.68 0.75 0.81 0.85 
+
+PDF output:  Forecasts/Sacramento.pdf 
+   user  system elapsed 
+650.315   3.404 653.742 
+
+Excel output:  Scenarios/Sacramento_scenario_actToday.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.50 0.54 0.61 0.68 0.75 0.81 0.85 
+
+PDF output:  Scenarios/Sacramento_scenario_actToday.pdf 
+   user  system elapsed 
+614.343   2.207 616.567 
+
+Excel output:  Scenarios/Sacramento_scenario_actTwoWeeks.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.50 0.54 0.61 0.68 0.75 0.81 0.85 
+
+PDF output:  Scenarios/Sacramento_scenario_actTwoWeeks.pdf 
