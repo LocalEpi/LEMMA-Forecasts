@@ -462,3 +462,30 @@ Chain 3:  Elapsed Time: 11452.9 seconds (Warm-up)
 Chain 3:                9274.35 seconds (Sampling)
 Chain 3:                20727.3 seconds (Total)
 Chain 3: 
+    user   system  elapsed 
+79610.45     6.13 20782.12 
+Projecting
+   user  system elapsed 
+779.478   3.322 782.843 
+
+Excel output:  Forecasts/Alameda.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.50 0.54 0.61 0.68 0.74 0.80 0.84 
+
+PDF output:  Forecasts/Alameda.pdf 
+   user  system elapsed 
+784.782   5.771 790.597 
+
+Excel output:  Scenarios/Alameda_scenario_actToday.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.50 0.54 0.61 0.68 0.74 0.80 0.84 
+
+PDF output:  Scenarios/Alameda_scenario_actToday.pdf 
+   user  system elapsed 
+764.934   3.387 768.356 
+
+Excel output:  Scenarios/Alameda_scenario_actTwoWeeks.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.50 0.54 0.61 0.68 0.74 0.80 0.84 
+
+PDF output:  Scenarios/Alameda_scenario_actTwoWeeks.pdf 
