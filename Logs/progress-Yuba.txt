@@ -662,3 +662,14 @@ Chain 4:  Elapsed Time: 23678.3 seconds (Warm-up)
 Chain 4:                3741.34 seconds (Sampling)
 Chain 4:                27419.6 seconds (Total)
 Chain 4: 
+    user   system  elapsed 
+86837.83    20.35 27441.22 
+Projecting
+   user  system elapsed 
+416.493   1.564 418.067 
+
+Excel output:  Forecasts/Yuba.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.39 0.46 0.55 0.63 0.71 0.78 0.81 
+
+PDF output:  Forecasts/Yuba.pdf 
