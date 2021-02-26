@@ -462,3 +462,30 @@ Chain 2:  Elapsed Time: 8213.27 seconds (Warm-up)
 Chain 2:                15083.9 seconds (Sampling)
 Chain 2:                23297.1 seconds (Total)
 Chain 2: 
+    user   system  elapsed 
+88486.24     5.89 23344.45 
+Projecting
+   user  system elapsed 
+820.435   5.578 826.055 
+
+Excel output:  Forecasts/San Mateo.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.50 0.55 0.62 0.70 0.77 0.84 0.87 
+
+PDF output:  Forecasts/San Mateo.pdf 
+   user  system elapsed 
+759.600   4.810 764.436 
+
+Excel output:  Scenarios/San Mateo_scenario_actToday.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.50 0.55 0.62 0.70 0.77 0.84 0.87 
+
+PDF output:  Scenarios/San Mateo_scenario_actToday.pdf 
+   user  system elapsed 
+708.890   2.467 711.385 
+
+Excel output:  Scenarios/San Mateo_scenario_actTwoWeeks.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.50 0.55 0.62 0.70 0.77 0.84 0.87 
+
+PDF output:  Scenarios/San Mateo_scenario_actTwoWeeks.pdf 
