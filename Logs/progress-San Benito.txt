@@ -454,3 +454,22 @@ Chain 2: Iteration: 940 / 1000 [ 94%]  (Sampling)
 Chain 2: Iteration: 950 / 1000 [ 95%]  (Sampling)
 Chain 2: Iteration: 960 / 1000 [ 96%]  (Sampling)
 Chain 2: Iteration: 970 / 1000 [ 97%]  (Sampling)
+Chain 2: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 2: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 2: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 2: 
+Chain 2:  Elapsed Time: 583.358 seconds (Warm-up)
+Chain 2:                328.274 seconds (Sampling)
+Chain 2:                911.632 seconds (Total)
+Chain 2: 
+   user  system elapsed 
+3256.01   16.85  927.43 
+Projecting
+   user  system elapsed 
+170.199   1.411 171.617 
+
+Excel output:  Forecasts/San Benito.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.84 0.86 0.89 0.93 0.96 0.99 1.01 
+
+PDF output:  Forecasts/San Benito.pdf 
