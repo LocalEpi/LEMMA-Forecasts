@@ -440,3 +440,52 @@ Chain 1: Iteration: 800 / 1000 [ 80%]  (Sampling)
 Chain 1: Iteration: 810 / 1000 [ 81%]  (Sampling)
 Chain 1: Iteration: 820 / 1000 [ 82%]  (Sampling)
 Chain 1: Iteration: 830 / 1000 [ 83%]  (Sampling)
+Chain 1: Iteration: 840 / 1000 [ 84%]  (Sampling)
+Chain 1: Iteration: 850 / 1000 [ 85%]  (Sampling)
+Chain 1: Iteration: 860 / 1000 [ 86%]  (Sampling)
+Chain 1: Iteration: 870 / 1000 [ 87%]  (Sampling)
+Chain 1: Iteration: 880 / 1000 [ 88%]  (Sampling)
+Chain 1: Iteration: 890 / 1000 [ 89%]  (Sampling)
+Chain 1: Iteration: 900 / 1000 [ 90%]  (Sampling)
+Chain 1: Iteration: 910 / 1000 [ 91%]  (Sampling)
+Chain 1: Iteration: 920 / 1000 [ 92%]  (Sampling)
+Chain 1: Iteration: 930 / 1000 [ 93%]  (Sampling)
+Chain 1: Iteration: 940 / 1000 [ 94%]  (Sampling)
+Chain 1: Iteration: 950 / 1000 [ 95%]  (Sampling)
+Chain 1: Iteration: 960 / 1000 [ 96%]  (Sampling)
+Chain 1: Iteration: 970 / 1000 [ 97%]  (Sampling)
+Chain 1: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 1: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 1: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 1: 
+Chain 1:  Elapsed Time: 9.54214 seconds (Warm-up)
+Chain 1:                12474 seconds (Sampling)
+Chain 1:                12483.5 seconds (Total)
+Chain 1: 
+     user    system   elapsed 
+23950.807    73.297 12501.511 
+Projecting
+   user  system elapsed 
+290.135   1.111 291.264 
+
+Excel output:  Forecasts/Mendocino.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.75 0.80 0.86 0.92 0.98 1.03 1.06 
+
+PDF output:  Forecasts/Mendocino.pdf 
+   user  system elapsed 
+288.580   1.087 289.684 
+
+Excel output:  Scenarios/Mendocino_scenario_actToday.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.75 0.80 0.86 0.92 0.98 1.03 1.06 
+
+PDF output:  Scenarios/Mendocino_scenario_actToday.pdf 
+   user  system elapsed 
+289.119   1.088 290.225 
+
+Excel output:  Scenarios/Mendocino_scenario_actTwoWeeks.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.75 0.80 0.86 0.92 0.98 1.03 1.06 
+
+PDF output:  Scenarios/Mendocino_scenario_actTwoWeeks.pdf 
