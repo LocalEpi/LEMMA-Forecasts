@@ -33,7 +33,7 @@ RunLemma <- function(county1, county.dt, restart.date, end.date, prev.state) {
   inputs <- GetInputsVaxRestart(county1, county.dt, restart.date, end.date, initial.state = prev.state, vaccines)
 
   inputs$internal.args$output.filestr <- paste0("Restart/Forecast/test vax with restart_", county1, "_", restart.date)
-  inputs$internal.args$refresh <- 500
+  inputs$internal.args$refresh <- 10 #500
   inputs$internal.args$iter <- 2000
   lemma <- LEMMA:::CredibilityInterval(inputs)
 
@@ -70,6 +70,25 @@ RunLemma <- function(county1, county.dt, restart.date, end.date, prev.state) {
   return(state)
 }
 
+GetStartDate <- function(county1, county.dt) {
+  dt <- county.dt[frollsum(hosp.conf, 5) <= 1 & county == county1]
+  if (nrow(dt) == 0) {
+    return(list(start.date = as.Date("2020/2/17"), state = NULL))
+  } else {
+    dt <- dt[date == max(date)]
+    start.date <- dt[, date]
+    deaths <- dt[, deaths.conf]
+    pop <- dt[, population]
+
+    cases.est <- pmax(deaths, 1) / 0.006 #0.006 = estimated IFR
+
+    state <- list(mu_iniE = pop * 1e-5, mu_ini_Imild = 0.1, mu_ini_Ipreh = 0.1, mu_ini_Rlive = cases.est, mu_ini_cases = cases.est,
+                  sigma_iniE = pop * 1e-3, sigma_ini_Imild = 10, sigma_ini_Ipreh = 10, sigma_ini_Rlive = cases.est / 2, sigma_ini_cases = cases.est / 2,
+                  from_beginning = 0)
+    return(list(start.date = start.date, state = state))
+  }
+}
+
 RunOneCounty <- function(county1, county.dt) {
   try.result <- try({
 
@@ -79,13 +98,19 @@ RunOneCounty <- function(county1, county.dt) {
     cat("start time = ", as.character(Sys.time() - 3600 * 8), "\n")
     cat("max date = ", as.character(max(county.dt$date)), "\n")
 
-    restart.date.set <- round(seq(as.Date("2020/2/17"), as.Date("2020/12/15"), length.out = 6)) #3 works well for SF, 6 is fast but had some warnings
-
+    start.list <- GetStartDate(county1, county.dt)
+    restart.interval <- 9999 #140 #60
+    last.restart.date <- as.Date("2020/12/15")
+    if (start.list$start.date > (last.restart.date - 30)) {
+      stop("not enough data before vaccine roll-out in ", county1)
+    }
+    num.intervals <- pmax(2, ceiling(as.numeric(last.restart.date - start.list$start.date) / restart.interval))
+    restart.date.set <- round(seq(start.list$start.date, as.Date("2020/12/15"), length.out = num.intervals))
     total.time <- system.time({
       for (i in seq_along(restart.date.set)) {
         restart.date <- restart.date.set[i]
         if (i == 1) {
-          prev.state <- NULL
+          prev.state <- start.list$state
         } else {
           prev.state <- state
         }
@@ -103,12 +128,8 @@ RunOneCounty <- function(county1, county.dt) {
       }
     })
     print(total.time)
-
-    sink()
-
     sink()
     ParallelLogger::logInfo("county = ", county1)
-
   })
 
   if (inherits(try.result, "try-error")) {
