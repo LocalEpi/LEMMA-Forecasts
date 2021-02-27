@@ -94,6 +94,10 @@ GetCountyData <- function(include.regions = TRUE) {
   county.dt[county == 'Alameda' & date == '2021-01-15', deaths.conf := NA_real_]
   county.dt[county == 'Placer' & date == '2021-01-12', deaths.conf := NA_real_]
   county.dt[county == 'Nevada' & date == '2021-01-25', deaths.conf := NA_real_]
+  county.dt[county == 'Contra Costa' & date == '2021-02-22', deaths.conf := NA_real_]
+  county.dt[county == 'Imperial' & date == '2021-02-23', deaths.conf := NA_real_]
+  county.dt[county == 'San Diego' & date == '2021-02-22', deaths.conf := NA_real_]
+  county.dt[county == 'Solano' & date == '2021-02-23', deaths.conf := NA_real_]
 
   #data errors
   county.dt[county == 'Merced' & date == '2020-08-16', hosp.conf := NA_real_]
@@ -101,6 +105,7 @@ GetCountyData <- function(include.regions = TRUE) {
   county.dt[county == 'Merced' & date == '2020-08-16', icu.conf := NA_real_]
   county.dt[county == 'Merced' & date == '2020-08-16', icu.pui := NA_real_]
   county.dt[county == "Kings" & date == '2020-04-03', icu.conf := NA_real_]
+  county.dt[county == "Kings" & date == '2020-04-03', icu.pui := NA_real_]
   county.dt[county == "Yolo" & date == '2020-12-12', hosp.conf := NA_real_]
   county.dt[county == "Yolo" & date == '2020-12-12', icu.conf := NA_real_]
 
