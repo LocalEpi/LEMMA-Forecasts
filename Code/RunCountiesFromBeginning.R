@@ -33,14 +33,13 @@ RunLemma <- function(county1, county.dt, restart.date, end.date, prev.state) {
   inputs <- GetInputsVaxRestart(county1, county.dt, restart.date, end.date, initial.state = prev.state, vaccines)
 
   inputs$internal.args$output.filestr <- paste0("Restart/Forecast/test vax with restart_", county1, "_", restart.date)
-  inputs$internal.args$refresh <- 250
+  inputs$internal.args$refresh <- 500
+  inputs$internal.args$iter <- 2000
   lemma <- LEMMA:::CredibilityInterval(inputs)
 
   x <- rstan::extract(lemma$fit.to.data, pars = "x")[[1]]
   cases <- rstan::extract(lemma$fit.to.data, pars = "total_cases")[[1]]
 
-  inputs$params[name == "r0", mu := 1]
-  inputs$params[name == "r0", sigma := 0.1]
   index <- dim(x)[3]
   mu <- colMedians(x[, , index])
   sigma <- colSds(x[, , index])

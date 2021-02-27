@@ -25,7 +25,6 @@ GetInputsVaxRestart <- function(county1, county.dt, restart.date, end.date, init
   sheets$Internal[internal.name == "simulation.start.date", value := restart.date - 1]
 
   inputs <- LEMMA:::ProcessSheets(sheets, input.file)
-  inputs$internal.args$iter <- 40 #1000
 
   inputs$interventions <- inputs$interventions[mu_t_inter >= restart.date & mu_t_inter <= end.date]
   inputs$model.inputs$start.display.date <- restart.date
@@ -35,6 +34,8 @@ GetInputsVaxRestart <- function(county1, county.dt, restart.date, end.date, init
   } else {
     initial.state$from_beginning <- 0
     inputs$initial.state <- initial.state
+    inputs$params[name == "r0", mu := 1]
+    inputs$params[name == "r0", sigma := 0.1]
   }
 
   inputs$model.inputs$end.date <- end.date

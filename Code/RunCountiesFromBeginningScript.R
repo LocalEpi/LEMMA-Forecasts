@@ -15,7 +15,8 @@ if (!exists("county.dt")) {
 }
 
 options(warn = 1)
-county.set <- c("Los Angeles", "San Diego", "Orange", "Riverside", "San Bernardino", "Santa Clara", "Alameda", "Sacramento", "Contra Costa", "Fresno")[1:3]
+# county.set <- c("Los Angeles", "San Diego", "Orange", "Riverside", "San Bernardino", "Santa Clara", "Alameda", "Sacramento", "Contra Costa", "Fresno")[1:3]
+county.set <- county.dt[, unique(county)]
 
 options(warn = 1)
 assign("last.warning", NULL, envir = baseenv())
