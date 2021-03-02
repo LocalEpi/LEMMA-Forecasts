@@ -456,3 +456,20 @@ Chain 3: Iteration: 960 / 1000 [ 96%]  (Sampling)
 Chain 3: Iteration: 970 / 1000 [ 97%]  (Sampling)
 Chain 3: Iteration: 980 / 1000 [ 98%]  (Sampling)
 Chain 3: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 3: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 3: 
+Chain 3:  Elapsed Time: 3892.93 seconds (Warm-up)
+Chain 3:                45469.8 seconds (Sampling)
+Chain 3:                49362.7 seconds (Total)
+Chain 3: 
+     user    system   elapsed 
+142341.40      8.57  49384.40 
+Projecting
+   user  system elapsed 
+591.614   1.769 593.388 
+
+Excel output:  Forecasts/Placer.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.55 0.59 0.68 0.76 0.84 0.92 0.97 
+
+PDF output:  Forecasts/Placer.pdf 
