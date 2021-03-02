@@ -1,207 +1,29 @@
-2021-02-25 19:27:28	[Main thread]	TRACE			Initiating cluster with 23 threads
-2021-02-25 19:27:32	[Thread 2]	TRACE			Thread 2 initiated
-2021-02-25 19:27:32	[Thread 1]	TRACE			Thread 1 initiated
-2021-02-25 19:27:32	[Thread 3]	TRACE			Thread 3 initiated
-2021-02-25 19:27:32	[Thread 5]	TRACE			Thread 5 initiated
-2021-02-25 19:27:32	[Thread 4]	TRACE			Thread 4 initiated
-2021-02-25 19:27:32	[Thread 8]	TRACE			Thread 8 initiated
-2021-02-25 19:27:32	[Thread 7]	TRACE			Thread 7 initiated
-2021-02-25 19:27:32	[Thread 6]	TRACE			Thread 6 initiated
-2021-02-25 19:27:32	[Thread 12]	TRACE			Thread 12 initiated
-2021-02-25 19:27:32	[Thread 15]	TRACE			Thread 15 initiated
-2021-02-25 19:27:32	[Thread 9]	TRACE			Thread 9 initiated
-2021-02-25 19:27:32	[Thread 10]	TRACE			Thread 10 initiated
-2021-02-25 19:27:32	[Thread 11]	TRACE			Thread 11 initiated
-2021-02-25 19:27:32	[Thread 13]	TRACE			Thread 13 initiated
-2021-02-25 19:27:32	[Thread 18]	TRACE			Thread 18 initiated
-2021-02-25 19:27:32	[Thread 17]	TRACE			Thread 17 initiated
-2021-02-25 19:27:32	[Thread 14]	TRACE			Thread 14 initiated
-2021-02-25 19:27:32	[Thread 20]	TRACE			Thread 20 initiated
-2021-02-25 19:27:32	[Thread 16]	TRACE			Thread 16 initiated
-2021-02-25 19:27:32	[Thread 22]	TRACE			Thread 22 initiated
-2021-02-25 19:27:32	[Thread 21]	TRACE			Thread 21 initiated
-2021-02-25 19:27:32	[Thread 19]	TRACE			Thread 19 initiated
-2021-02-25 19:27:32	[Thread 23]	TRACE			Thread 23 initiated
-2021-02-25 19:36:14	[Thread 1]	WARN	rstan	throw_sampler_warnings	There were 95 divergent transitions after warmup. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup to find out why this is a problem and how to eliminate them.
-2021-02-25 19:36:14	[Thread 1]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
-2021-02-25 19:49:51	[Thread 1]	INFO			county = Colusa
-2021-02-26 00:28:08	[Thread 1]	WARN	rstan	throw_sampler_warnings	There were 178 divergent transitions after warmup. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup to find out why this is a problem and how to eliminate them.
-2021-02-26 00:28:08	[Thread 1]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
-2021-02-26 01:13:02	[Thread 1]	INFO			county = Los Angeles
-2021-02-26 01:13:03	[Thread 16]	WARN	rstan	throw_sampler_warnings	There were 45 divergent transitions after warmup. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup to find out why this is a problem and how to eliminate them.
-2021-02-26 01:13:03	[Thread 16]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
-2021-02-26 01:13:55	[Thread 16]	WARN	rstan	throw_sampler_warnings	Tail Effective Samples Size (ESS) is too low, indicating posterior variances and tail quantiles may be unreliable. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#tail-ess
-2021-02-26 01:55:52	[Thread 23]	WARN	rstan	throw_sampler_warnings	There were 4 divergent transitions after warmup. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup to find out why this is a problem and how to eliminate them.
-2021-02-26 01:55:52	[Thread 23]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
-2021-02-26 01:56:16	[Thread 16]	INFO			county = Alameda
-2021-02-26 02:09:39	[Thread 20]	WARN	rstan	throw_sampler_warnings	There were 82 divergent transitions after warmup. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup to find out why this is a problem and how to eliminate them.
-2021-02-26 02:09:39	[Thread 20]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
-2021-02-26 02:10:24	[Thread 20]	WARN	rstan	throw_sampler_warnings	Tail Effective Samples Size (ESS) is too low, indicating posterior variances and tail quantiles may be unreliable. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#tail-ess
-2021-02-26 02:28:39	[Thread 21]	WARN	rstan	throw_sampler_warnings	There were 9 divergent transitions after warmup. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup to find out why this is a problem and how to eliminate them.
-2021-02-26 02:28:39	[Thread 21]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
-2021-02-26 02:37:27	[Thread 23]	INFO			county = San Mateo
-2021-02-26 02:37:56	[Thread 15]	WARN	rstan	throw_sampler_warnings	There were 46 divergent transitions after warmup. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup to find out why this is a problem and how to eliminate them.
-2021-02-26 02:37:56	[Thread 15]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
-2021-02-26 02:44:09	[Thread 11]	WARN	rstan	throw_sampler_warnings	There were 82 divergent transitions after warmup. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup to find out why this is a problem and how to eliminate them.
-2021-02-26 02:44:09	[Thread 11]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
-2021-02-26 02:49:23	[Thread 20]	INFO			county = Santa Clara
-2021-02-26 02:53:33	[Thread 17]	WARN	rstan	throw_sampler_warnings	There were 1 divergent transitions after warmup. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup to find out why this is a problem and how to eliminate them.
-2021-02-26 02:53:33	[Thread 17]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
-2021-02-26 02:53:56	[Thread 17]	WARN	rstan	throw_sampler_warnings	Tail Effective Samples Size (ESS) is too low, indicating posterior variances and tail quantiles may be unreliable. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#tail-ess
-2021-02-26 03:01:57	[Thread 2]	WARN	rstan	throw_sampler_warnings	There were 3 divergent transitions after warmup. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup to find out why this is a problem and how to eliminate them.
-2021-02-26 03:01:57	[Thread 2]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
-2021-02-26 03:02:21	[Thread 2]	WARN	rstan	throw_sampler_warnings	Tail Effective Samples Size (ESS) is too low, indicating posterior variances and tail quantiles may be unreliable. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#tail-ess
-2021-02-26 03:02:47	[Thread 18]	WARN	rstan	throw_sampler_warnings	There were 73 divergent transitions after warmup. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup to find out why this is a problem and how to eliminate them.
-2021-02-26 03:02:47	[Thread 18]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
-2021-02-26 03:02:54	[Thread 22]	WARN	rstan	throw_sampler_warnings	There were 1 divergent transitions after warmup. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup to find out why this is a problem and how to eliminate them.
-2021-02-26 03:02:54	[Thread 22]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
-2021-02-26 03:03:10	[Thread 22]	WARN	rstan	throw_sampler_warnings	Tail Effective Samples Size (ESS) is too low, indicating posterior variances and tail quantiles may be unreliable. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#tail-ess
-2021-02-26 03:03:56	[Thread 19]	WARN	rstan	throw_sampler_warnings	There were 44 divergent transitions after warmup. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup to find out why this is a problem and how to eliminate them.
-2021-02-26 03:03:56	[Thread 19]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
-2021-02-26 03:04:36	[Thread 14]	WARN	rstan	throw_sampler_warnings	There were 2 divergent transitions after warmup. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup to find out why this is a problem and how to eliminate them.
-2021-02-26 03:04:36	[Thread 14]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
-2021-02-26 03:04:38	[Thread 21]	INFO			county = Ventura
-2021-02-26 03:12:29	[Thread 15]	INFO			county = Santa Barbara
-2021-02-26 03:14:20	[Thread 10]	WARN	rstan	throw_sampler_warnings	There were 11 divergent transitions after warmup. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup to find out why this is a problem and how to eliminate them.
-2021-02-26 03:14:20	[Thread 10]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
-2021-02-26 03:14:30	[Thread 3]	WARN	rstan	throw_sampler_warnings	There were 17 divergent transitions after warmup. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup to find out why this is a problem and how to eliminate them.
-2021-02-26 03:14:30	[Thread 3]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
-2021-02-26 03:14:46	[Thread 10]	WARN	rstan	throw_sampler_warnings	Tail Effective Samples Size (ESS) is too low, indicating posterior variances and tail quantiles may be unreliable. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#tail-ess
-2021-02-26 03:21:03	[Thread 11]	INFO			county = San Diego
-2021-02-26 03:25:28	[Thread 22]	INFO			county = Butte
-2021-02-26 03:27:05	[Thread 14]	INFO			county = Yuba
-2021-02-26 03:29:01	[Thread 17]	INFO			county = Contra Costa
-2021-02-26 03:38:27	[Thread 2]	INFO			county = San Bernardino
-2021-02-26 03:39:20	[Thread 18]	INFO			county = Santa Cruz
-2021-02-26 03:40:22	[Thread 19]	INFO			county = Lake
-2021-02-26 03:50:00	[Thread 10]	INFO			county = Marin
-2021-02-26 03:52:58	[Thread 3]	INFO			county = Stanislaus
-2021-02-26 04:19:57	[Thread 9]	WARN	rstan	throw_sampler_warnings	There were 7 divergent transitions after warmup. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup to find out why this is a problem and how to eliminate them.
-2021-02-26 04:19:57	[Thread 9]	WARN	rstan	throw_sampler_warnings	There were 937 transitions after warmup that exceeded the maximum treedepth. Increase max_treedepth above 15. See http://mc-stan.org/misc/warnings.html#maximum-treedepth-exceeded
-2021-02-26 04:19:57	[Thread 9]	WARN	rstan	throw_sampler_warnings	There were 2 chains where the estimated Bayesian Fraction of Missing Information was low. See http://mc-stan.org/misc/warnings.html#bfmi-low
-2021-02-26 04:19:57	[Thread 9]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
-2021-02-26 04:20:07	[Thread 9]	WARN	rstan	throw_sampler_warnings	The largest R-hat is 1.35, indicating chains have not mixed. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#r-hat
-2021-02-26 04:20:22	[Thread 9]	WARN	rstan	throw_sampler_warnings	Bulk Effective Samples Size (ESS) is too low, indicating posterior means and medians may be unreliable. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#bulk-ess
-2021-02-26 04:20:43	[Thread 9]	WARN	rstan	throw_sampler_warnings	Tail Effective Samples Size (ESS) is too low, indicating posterior variances and tail quantiles may be unreliable. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#tail-ess
-2021-02-26 04:35:22	[Thread 8]	WARN	rstan	throw_sampler_warnings	There were 66 divergent transitions after warmup. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup to find out why this is a problem and how to eliminate them.
-2021-02-26 04:35:22	[Thread 8]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
-2021-02-26 04:36:05	[Thread 8]	WARN	rstan	throw_sampler_warnings	Tail Effective Samples Size (ESS) is too low, indicating posterior variances and tail quantiles may be unreliable. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#tail-ess
-2021-02-26 04:48:23	[Thread 9]	INFO			county = Humboldt
-2021-02-26 04:49:37	[Thread 13]	WARN	rstan	throw_sampler_warnings	There were 5 divergent transitions after warmup. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup to find out why this is a problem and how to eliminate them.
-2021-02-26 04:49:37	[Thread 13]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
-2021-02-26 05:06:58	[Thread 7]	WARN	rstan	throw_sampler_warnings	There were 62 divergent transitions after warmup. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup to find out why this is a problem and how to eliminate them.
-2021-02-26 05:06:58	[Thread 7]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
-2021-02-26 05:11:32	[Thread 5]	WARN	rstan	throw_sampler_warnings	There were 48 divergent transitions after warmup. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup to find out why this is a problem and how to eliminate them.
-2021-02-26 05:11:32	[Thread 5]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
-2021-02-26 05:16:56	[Thread 8]	INFO			county = Orange
-2021-02-26 05:19:18	[Thread 12]	WARN	rstan	throw_sampler_warnings	There were 8 divergent transitions after warmup. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup to find out why this is a problem and how to eliminate them.
-2021-02-26 05:19:18	[Thread 12]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
-2021-02-26 05:22:56	[Thread 6]	WARN	rstan	throw_sampler_warnings	There were 215 divergent transitions after warmup. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup to find out why this is a problem and how to eliminate them.
-2021-02-26 05:22:56	[Thread 6]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
-2021-02-26 05:31:59	[Thread 13]	INFO			county = Sonoma
-2021-02-26 05:36:48	[Thread 3]	WARN	rstan	throw_sampler_warnings	There were 12 divergent transitions after warmup. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup to find out why this is a problem and how to eliminate them.
-2021-02-26 05:36:48	[Thread 3]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
-2021-02-26 05:37:07	[Thread 3]	WARN	rstan	throw_sampler_warnings	Tail Effective Samples Size (ESS) is too low, indicating posterior variances and tail quantiles may be unreliable. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#tail-ess
-2021-02-26 05:37:09	[Thread 2]	WARN	rstan	throw_sampler_warnings	There were 3 chains where the estimated Bayesian Fraction of Missing Information was low. See http://mc-stan.org/misc/warnings.html#bfmi-low
-2021-02-26 05:37:09	[Thread 2]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
-2021-02-26 05:37:19	[Thread 2]	WARN	rstan	throw_sampler_warnings	The largest R-hat is 3.26, indicating chains have not mixed. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#r-hat
-2021-02-26 05:37:36	[Thread 2]	WARN	rstan	throw_sampler_warnings	Bulk Effective Samples Size (ESS) is too low, indicating posterior means and medians may be unreliable. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#bulk-ess
-2021-02-26 05:38:06	[Thread 15]	WARN	rstan	throw_sampler_warnings	There were 34 divergent transitions after warmup. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup to find out why this is a problem and how to eliminate them.
-2021-02-26 05:38:06	[Thread 15]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
-2021-02-26 05:38:07	[Thread 2]	WARN	rstan	throw_sampler_warnings	Tail Effective Samples Size (ESS) is too low, indicating posterior variances and tail quantiles may be unreliable. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#tail-ess
-2021-02-26 05:38:48	[Thread 15]	WARN	rstan	throw_sampler_warnings	Tail Effective Samples Size (ESS) is too low, indicating posterior variances and tail quantiles may be unreliable. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#tail-ess
-2021-02-26 05:42:36	[Thread 7]	INFO			county = Sacramento
-2021-02-26 05:45:55	[Thread 1]	WARN	rstan	throw_sampler_warnings	There were 8 divergent transitions after warmup. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup to find out why this is a problem and how to eliminate them.
-2021-02-26 05:45:55	[Thread 1]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
-2021-02-26 05:45:59	[Thread 9]	WARN	rstan	throw_sampler_warnings	There were 1 divergent transitions after warmup. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup to find out why this is a problem and how to eliminate them.
-2021-02-26 05:45:59	[Thread 9]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
-2021-02-26 05:46:36	[Thread 19]	WARN	rstan	throw_sampler_warnings	There were 3 divergent transitions after warmup. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup to find out why this is a problem and how to eliminate them.
-2021-02-26 05:46:36	[Thread 19]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
-2021-02-26 05:47:01	[Thread 5]	INFO			county = Monterey
-2021-02-26 05:47:37	[Thread 13]	WARN	rstan	throw_sampler_warnings	Tail Effective Samples Size (ESS) is too low, indicating posterior variances and tail quantiles may be unreliable. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#tail-ess
-2021-02-26 05:51:15	[Thread 4]	WARN	rstan	throw_sampler_warnings	There were 107 divergent transitions after warmup. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup to find out why this is a problem and how to eliminate them.
-2021-02-26 05:51:15	[Thread 4]	WARN	rstan	throw_sampler_warnings	There were 937 transitions after warmup that exceeded the maximum treedepth. Increase max_treedepth above 15. See http://mc-stan.org/misc/warnings.html#maximum-treedepth-exceeded
-2021-02-26 05:51:15	[Thread 4]	WARN	rstan	throw_sampler_warnings	There were 2 chains where the estimated Bayesian Fraction of Missing Information was low. See http://mc-stan.org/misc/warnings.html#bfmi-low
-2021-02-26 05:51:15	[Thread 4]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
-2021-02-26 05:51:26	[Thread 4]	WARN	rstan	throw_sampler_warnings	The largest R-hat is 1.3, indicating chains have not mixed. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#r-hat
-2021-02-26 05:51:38	[Thread 4]	WARN	rstan	throw_sampler_warnings	Bulk Effective Samples Size (ESS) is too low, indicating posterior means and medians may be unreliable. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#bulk-ess
-2021-02-26 05:52:01	[Thread 4]	WARN	rstan	throw_sampler_warnings	Tail Effective Samples Size (ESS) is too low, indicating posterior variances and tail quantiles may be unreliable. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#tail-ess
-2021-02-26 05:52:52	[Thread 20]	INFO			county = Shasta
-2021-02-26 05:53:29	[Thread 5]	WARN	rstan	throw_sampler_warnings	There were 1 divergent transitions after warmup. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup to find out why this is a problem and how to eliminate them.
-2021-02-26 05:53:29	[Thread 5]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
-2021-02-26 05:54:21	[Thread 12]	INFO			county = Placer
-2021-02-26 05:56:09	[Thread 7]	WARN	rstan	throw_sampler_warnings	There were 2 divergent transitions after warmup. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup to find out why this is a problem and how to eliminate them.
-2021-02-26 05:56:09	[Thread 7]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
-2021-02-26 05:56:17	[Thread 7]	WARN	rstan	throw_sampler_warnings	Tail Effective Samples Size (ESS) is too low, indicating posterior variances and tail quantiles may be unreliable. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#tail-ess
-2021-02-26 05:56:35	[Thread 6]	INFO			county = San Luis Obispo
-2021-02-26 05:56:51	[Thread 13]	INFO			county = San Benito
-2021-02-26 05:59:16	[Thread 9]	INFO			county = Tehama
-2021-02-26 05:59:38	[Thread 3]	INFO			county = Calaveras
-2021-02-26 06:00:59	[Thread 2]	INFO			county = Madera
-2021-02-26 06:02:48	[Thread 5]	INFO			county = Siskiyou
-2021-02-26 06:04:49	[Thread 7]	INFO			county = Amador
-2021-02-26 06:08:05	[Thread 20]	INFO			county = El Dorado
-2021-02-26 06:08:33	[Thread 19]	INFO			county = Nevada
-2021-02-26 06:10:54	[Thread 15]	INFO			county = Tulare
-2021-02-26 06:15:58	[Thread 16]	WARN	rstan	throw_sampler_warnings	There were 8 divergent transitions after warmup. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup to find out why this is a problem and how to eliminate them.
-2021-02-26 06:15:58	[Thread 16]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
-2021-02-26 06:16:00	[Thread 4]	INFO			county = Merced
-2021-02-26 06:16:20	[Thread 16]	WARN	rstan	throw_sampler_warnings	Tail Effective Samples Size (ESS) is too low, indicating posterior variances and tail quantiles may be unreliable. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#tail-ess
-2021-02-26 06:18:11	[Thread 1]	INFO			county = San Joaquin
-2021-02-26 06:19:17	[Thread 21]	INFO			county = Tuolumne
-2021-02-26 06:39:29	[Thread 18]	WARN	rstan	throw_sampler_warnings	There were 59 divergent transitions after warmup. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup to find out why this is a problem and how to eliminate them.
-2021-02-26 06:39:29	[Thread 18]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
-2021-02-26 06:45:08	[Thread 14]	WARN	rstan	throw_sampler_warnings	There were 2 divergent transitions after warmup. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup to find out why this is a problem and how to eliminate them.
-2021-02-26 06:45:08	[Thread 14]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
-2021-02-26 06:46:01	[Thread 10]	WARN	rstan	throw_sampler_warnings	There were 4 divergent transitions after warmup. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup to find out why this is a problem and how to eliminate them.
-2021-02-26 06:46:01	[Thread 10]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
-2021-02-26 06:46:18	[Thread 10]	WARN	rstan	throw_sampler_warnings	Tail Effective Samples Size (ESS) is too low, indicating posterior variances and tail quantiles may be unreliable. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#tail-ess
-2021-02-26 06:47:27	[Thread 16]	INFO			county = Riverside
-2021-02-26 06:53:54	[Thread 17]	WARN	rstan	throw_sampler_warnings	There were 34 divergent transitions after warmup. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup to find out why this is a problem and how to eliminate them.
-2021-02-26 06:53:54	[Thread 17]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
-2021-02-26 07:02:17	[Thread 22]	WARN	rstan	throw_sampler_warnings	There were 70 divergent transitions after warmup. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup to find out why this is a problem and how to eliminate them.
-2021-02-26 07:02:17	[Thread 22]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
-2021-02-26 07:04:02	[Thread 11]	WARN	rstan	throw_sampler_warnings	There were 43 divergent transitions after warmup. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup to find out why this is a problem and how to eliminate them.
-2021-02-26 07:04:02	[Thread 11]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
-2021-02-26 07:04:15	[Thread 11]	WARN	rstan	throw_sampler_warnings	Bulk Effective Samples Size (ESS) is too low, indicating posterior means and medians may be unreliable. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#bulk-ess
-2021-02-26 07:04:24	[Thread 11]	WARN	rstan	throw_sampler_warnings	Tail Effective Samples Size (ESS) is too low, indicating posterior variances and tail quantiles may be unreliable. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#tail-ess
-2021-02-26 07:06:28	[Thread 10]	INFO			county = Yolo
-2021-02-26 07:10:46	[Thread 18]	INFO			county = Kings
-2021-02-26 07:15:28	[Thread 23]	INFO			county = Solano
-2021-02-26 07:16:27	[Thread 14]	INFO			county = Kern
-2021-02-26 07:24:24	[Thread 17]	INFO			county = Imperial
-2021-02-26 07:32:36	[Thread 22]	INFO			county = Fresno
-2021-02-26 07:34:31	[Thread 11]	INFO			county = Napa
-2021-02-26 08:45:10	[Thread 8]	WARN	rstan	throw_sampler_warnings	There were 29 divergent transitions after warmup. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup to find out why this is a problem and how to eliminate them.
-2021-02-26 08:45:10	[Thread 8]	WARN	rstan	throw_sampler_warnings	There were 440 transitions after warmup that exceeded the maximum treedepth. Increase max_treedepth above 15. See http://mc-stan.org/misc/warnings.html#maximum-treedepth-exceeded
-2021-02-26 08:45:10	[Thread 8]	WARN	rstan	throw_sampler_warnings	There were 1 chains where the estimated Bayesian Fraction of Missing Information was low. See http://mc-stan.org/misc/warnings.html#bfmi-low
-2021-02-26 08:45:10	[Thread 8]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
-2021-02-26 08:45:15	[Thread 8]	WARN	rstan	throw_sampler_warnings	The largest R-hat is 1.18, indicating chains have not mixed. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#r-hat
-2021-02-26 08:45:19	[Thread 8]	WARN	rstan	throw_sampler_warnings	Bulk Effective Samples Size (ESS) is too low, indicating posterior means and medians may be unreliable. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#bulk-ess
-2021-02-26 08:45:27	[Thread 8]	WARN	rstan	throw_sampler_warnings	Tail Effective Samples Size (ESS) is too low, indicating posterior variances and tail quantiles may be unreliable. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#tail-ess
-2021-02-26 09:00:52	[Thread 8]	INFO			county = Mendocino
-2021-02-26 09:01:02	[Thread 4]	TRACE			Thread 4 terminated
-2021-02-26 09:01:02	[Main thread]	TRACE			Stopping cluster
-2021-02-26 09:01:02	[Thread 2]	TRACE			Thread 2 terminated
-2021-02-26 09:01:02	[Thread 3]	TRACE			Thread 3 terminated
-2021-02-26 09:01:02	[Thread 5]	TRACE			Thread 5 terminated
-2021-02-26 09:01:02	[Thread 11]	TRACE			Thread 11 terminated
-2021-02-26 09:01:02	[Thread 12]	TRACE			Thread 12 terminated
-2021-02-26 09:01:02	[Thread 18]	TRACE			Thread 18 terminated
-2021-02-26 09:01:02	[Thread 19]	TRACE			Thread 19 terminated
-2021-02-26 09:01:02	[Thread 22]	TRACE			Thread 22 terminated
-2021-02-26 09:01:02	[Thread 16]	TRACE			Thread 16 terminated
-2021-02-26 09:01:02	[Thread 6]	TRACE			Thread 6 terminated
-2021-02-26 09:01:02	[Thread 21]	TRACE			Thread 21 terminated
-2021-02-26 09:01:02	[Main thread]	INFO			done
-2021-02-26 09:01:02	[Thread 23]	TRACE			Thread 23 terminated
-2021-02-26 09:01:02	[Thread 1]	TRACE			Thread 1 terminated
-2021-02-26 09:01:02	[Thread 10]	TRACE			Thread 10 terminated
-2021-02-26 09:01:02	[Thread 9]	TRACE			Thread 9 terminated
-2021-02-26 09:01:02	[Thread 7]	TRACE			Thread 7 terminated
-2021-02-26 09:01:02	[Thread 15]	TRACE			Thread 15 terminated
-2021-02-26 09:01:02	[Thread 14]	TRACE			Thread 14 terminated
-2021-02-26 09:01:02	[Thread 13]	TRACE			Thread 13 terminated
-2021-02-26 09:01:02	[Thread 20]	TRACE			Thread 20 terminated
-2021-02-26 09:01:02	[Thread 17]	TRACE			Thread 17 terminated
-2021-02-26 09:01:02	[Thread 8]	TRACE			Thread 8 terminated
+2021-03-02 03:27:26	[Main thread]	TRACE			Initiating cluster with 23 threads
+2021-03-02 03:27:30	[Thread 2]	TRACE			Thread 2 initiated
+2021-03-02 03:27:30	[Thread 1]	TRACE			Thread 1 initiated
+2021-03-02 03:27:30	[Thread 3]	TRACE			Thread 3 initiated
+2021-03-02 03:27:30	[Thread 4]	TRACE			Thread 4 initiated
+2021-03-02 03:27:30	[Thread 5]	TRACE			Thread 5 initiated
+2021-03-02 03:27:30	[Thread 6]	TRACE			Thread 6 initiated
+2021-03-02 03:27:30	[Thread 8]	TRACE			Thread 8 initiated
+2021-03-02 03:27:30	[Thread 7]	TRACE			Thread 7 initiated
+2021-03-02 03:27:30	[Thread 9]	TRACE			Thread 9 initiated
+2021-03-02 03:27:30	[Thread 10]	TRACE			Thread 10 initiated
+2021-03-02 03:27:30	[Thread 11]	TRACE			Thread 11 initiated
+2021-03-02 03:27:30	[Thread 13]	TRACE			Thread 13 initiated
+2021-03-02 03:27:30	[Thread 14]	TRACE			Thread 14 initiated
+2021-03-02 03:27:30	[Thread 17]	TRACE			Thread 17 initiated
+2021-03-02 03:27:30	[Thread 12]	TRACE			Thread 12 initiated
+2021-03-02 03:27:30	[Thread 15]	TRACE			Thread 15 initiated
+2021-03-02 03:27:30	[Thread 16]	TRACE			Thread 16 initiated
+2021-03-02 03:27:30	[Thread 21]	TRACE			Thread 21 initiated
+2021-03-02 03:27:30	[Thread 22]	TRACE			Thread 22 initiated
+2021-03-02 03:27:30	[Thread 18]	TRACE			Thread 18 initiated
+2021-03-02 03:27:30	[Thread 19]	TRACE			Thread 19 initiated
+2021-03-02 03:27:30	[Thread 23]	TRACE			Thread 23 initiated
+2021-03-02 03:27:30	[Thread 20]	TRACE			Thread 20 initiated
+2021-03-02 03:33:23	[Thread 1]	WARN	rstan	throw_sampler_warnings	There were 79 divergent transitions after warmup. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup to find out why this is a problem and how to eliminate them.
+2021-03-02 03:33:23	[Thread 1]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
+2021-03-02 03:33:34	[Thread 1]	WARN	rstan	throw_sampler_warnings	Bulk Effective Samples Size (ESS) is too low, indicating posterior means and medians may be unreliable. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#bulk-ess
+2021-03-02 03:33:44	[Thread 1]	WARN	rstan	throw_sampler_warnings	Tail Effective Samples Size (ESS) is too low, indicating posterior variances and tail quantiles may be unreliable. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#tail-ess
+2021-03-02 03:47:19	[Thread 1]	INFO			county = Colusa
