@@ -456,3 +456,36 @@ Chain 2: Iteration: 960 / 1000 [ 96%]  (Sampling)
 Chain 2: Iteration: 970 / 1000 [ 97%]  (Sampling)
 Chain 2: Iteration: 980 / 1000 [ 98%]  (Sampling)
 Chain 2: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 2: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 2: 
+Chain 2:  Elapsed Time: 4188.53 seconds (Warm-up)
+Chain 2:                6530.75 seconds (Sampling)
+Chain 2:                10719.3 seconds (Total)
+Chain 2: 
+     user    system   elapsed 
+38794.750   170.669 10736.859 
+Projecting
+   user  system elapsed 
+399.578   1.551 401.136 
+
+Excel output:  Forecasts/Tuolumne.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.43 0.48 0.58 0.67 0.76 0.83 0.87 
+
+PDF output:  Forecasts/Tuolumne.pdf 
+   user  system elapsed 
+382.937   1.659 384.603 
+
+Excel output:  Scenarios/Tuolumne_scenario_actToday.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.43 0.48 0.58 0.67 0.76 0.83 0.87 
+
+PDF output:  Scenarios/Tuolumne_scenario_actToday.pdf 
+   user  system elapsed 
+388.132   1.675 389.814 
+
+Excel output:  Scenarios/Tuolumne_scenario_actTwoWeeks.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.43 0.48 0.58 0.67 0.76 0.83 0.87 
+
+PDF output:  Scenarios/Tuolumne_scenario_actTwoWeeks.pdf 
