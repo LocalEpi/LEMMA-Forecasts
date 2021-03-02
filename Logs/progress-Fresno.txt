@@ -465,3 +465,21 @@ Chain 2:
      user    system   elapsed 
 43964.727   134.817 13563.556 
 Projecting
+   user  system elapsed 
+604.822   1.658 606.488 
+
+Excel output:  Forecasts/Fresno.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.50 0.54 0.60 0.66 0.72 0.77 0.79 
+
+PDF output:  Forecasts/Fresno.pdf 
+   user  system elapsed 
+598.509   2.555 601.074 
+
+Excel output:  Scenarios/Fresno_scenario_actToday.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.50 0.54 0.60 0.66 0.72 0.77 0.79 
+
+PDF output:  Scenarios/Fresno_scenario_actToday.pdf 
+   user  system elapsed 
+602.681   1.900 604.587 
