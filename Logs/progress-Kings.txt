@@ -434,3 +434,58 @@ Chain 2: Iteration: 740 / 1000 [ 74%]  (Sampling)
 Chain 2: Iteration: 750 / 1000 [ 75%]  (Sampling)
 Chain 2: Iteration: 760 / 1000 [ 76%]  (Sampling)
 Chain 2: Iteration: 770 / 1000 [ 77%]  (Sampling)
+Chain 2: Iteration: 780 / 1000 [ 78%]  (Sampling)
+Chain 2: Iteration: 790 / 1000 [ 79%]  (Sampling)
+Chain 2: Iteration: 800 / 1000 [ 80%]  (Sampling)
+Chain 2: Iteration: 810 / 1000 [ 81%]  (Sampling)
+Chain 2: Iteration: 820 / 1000 [ 82%]  (Sampling)
+Chain 2: Iteration: 830 / 1000 [ 83%]  (Sampling)
+Chain 2: Iteration: 840 / 1000 [ 84%]  (Sampling)
+Chain 2: Iteration: 850 / 1000 [ 85%]  (Sampling)
+Chain 2: Iteration: 860 / 1000 [ 86%]  (Sampling)
+Chain 2: Iteration: 870 / 1000 [ 87%]  (Sampling)
+Chain 2: Iteration: 880 / 1000 [ 88%]  (Sampling)
+Chain 2: Iteration: 890 / 1000 [ 89%]  (Sampling)
+Chain 2: Iteration: 900 / 1000 [ 90%]  (Sampling)
+Chain 2: Iteration: 910 / 1000 [ 91%]  (Sampling)
+Chain 2: Iteration: 920 / 1000 [ 92%]  (Sampling)
+Chain 2: Iteration: 930 / 1000 [ 93%]  (Sampling)
+Chain 2: Iteration: 940 / 1000 [ 94%]  (Sampling)
+Chain 2: Iteration: 950 / 1000 [ 95%]  (Sampling)
+Chain 2: Iteration: 960 / 1000 [ 96%]  (Sampling)
+Chain 2: Iteration: 970 / 1000 [ 97%]  (Sampling)
+Chain 2: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 2: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 2: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 2: 
+Chain 2:  Elapsed Time: 31.7512 seconds (Warm-up)
+Chain 2:                31988.1 seconds (Sampling)
+Chain 2:                32019.8 seconds (Total)
+Chain 2: 
+     user    system   elapsed 
+59903.668   220.876 32043.932 
+Projecting
+   user  system elapsed 
+555.967   1.546 557.536 
+
+Excel output:  Forecasts/Kings.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.42 0.47 0.54 0.61 0.67 0.73 0.76 
+
+PDF output:  Forecasts/Kings.pdf 
+   user  system elapsed 
+538.574   2.275 540.872 
+
+Excel output:  Scenarios/Kings_scenario_actToday.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.42 0.47 0.54 0.61 0.67 0.73 0.76 
+
+PDF output:  Scenarios/Kings_scenario_actToday.pdf 
+   user  system elapsed 
+553.533   1.551 555.107 
+
+Excel output:  Scenarios/Kings_scenario_actTwoWeeks.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.42 0.47 0.54 0.61 0.67 0.73 0.76 
+
+PDF output:  Scenarios/Kings_scenario_actTwoWeeks.pdf 
