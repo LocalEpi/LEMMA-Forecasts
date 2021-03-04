@@ -1,88 +1,89 @@
 library(data.table)
+library(matrixStats)
 
-#1M nationally = 2700 in SF
-#1.5M nationally = 4000 in SF
-#2M nationally = 5400 in SF
-#2.5M nationally = 6750 in SF
-#3M nationally = 8100 in SF
 
-#2/1 471 uk+brazil+SA, 467 uk => SA ~0.01 of variants
-GetVaccineParams <- function(vaccinated_per_day_max, vaccinated_per_day_increase, uk_growth, sa_growth, uk_now, sa_now, nt) {
-  vax.update <- 0.85
+#currently uses total first and second doses per day with stable age distribution - could extend in future to day x age x dose_num
+GetDoses <- function(doses_actual, doses_per_day_base, doses_per_day_increase, doses_per_day_maximum, start_increase_day, start_date, end_date, dose_proportion, population, vax_uptake, max_second_dose_frac) {
+  doses <- merge(doses_actual, data.table(date = seq(start_date, end_date, by ="day")), all.y = T)
+  doses[is.na(dose1), dose1 := 0]
+  doses[is.na(dose2), dose2 := 0]
+  max_actual_vaccine_date <- doses_actual[, max(date)]
+  doses[date > max_actual_vaccine_date, doses_available := doses_per_day_base]
+  doses[date >= start_increase_day, doses_available := pmin(doses_per_day_maximum, doses_per_day_base + seq(from = 0, by = doses_per_day_increase, length.out = length(start_increase_day:end_date)))]
 
-  rate.dt <- data.table(age = c(0, 5, 18, 30, 40, 50, 65, 75, 85),
-                        hosp = c(1/4, 1/9, 1, 2, 3, 4, 5, 8, 13),
-                        death = c(1/9, 1/16, 1, 4, 10, 30, 90, 220, 630),
-                        vax_prop = c(0, 0, 7.3, 10.4, 10.8, 18.5, 24.6, 18.4, 10.0)/100) #as of 2/16 (assumed 85+ is 35% of 75+ same as SF population)
-  rate.dt[, icu_rate := sqrt(death/hosp)]
-  rate.dt[, mort_rate := sqrt(death/hosp)]
+  population[, max_vax := vax_uptake * pop]
+  population[dose_proportion == 0, max_vax := 0]
+  total_max_vaccinated <- population[, sum(max_vax)]
 
-  if (F) {
-    #convert from census age categories to CDC vax age categories
-    sf.pop <- as.data.table(colSums(readRDS("~/Documents/CensusData/SF pop by age and zip.rds")), keep.rownames = T)
-    setnames(sf.pop, c("age1", "pop"))
-    sf.pop$age <- c(0, 5, 5, 5, 18, 18, 18, 18, 18, 30, 30, 40, 40, 50, 50, 50, 50, 65, 65, 65, 75, 75, 85)
-    sf.pop <- sf.pop[, .(pop = sum(pop)), by = "age"]
+  dose_spacing <- 24 #avg Moderna and Pfizer
+  doses[, need_second_dose := NA]
+  doses[1:dose_spacing, need_second_dose := 0]
+  doses[, first_dose_done := F]
+  nt <- nrow(doses)
+  for (it in (dose_spacing + 1):nt) {
+    doses$need_second_dose[it] <- pmax(0, sum(doses$dose1[1:(it - dose_spacing)]) - sum(doses$dose2[1:it]))
+    if (doses[it, date] > max_actual_vaccine_date) {
+      first_dose_done <- sum(doses$dose1[1:(it - 1)]) >= total_max_vaccinated
+      if (first_dose_done) {
+        max_second_dose_frac1 <- 1
+        doses[it, first_dose_done := T]
+      } else {
+        max_second_dose_frac1 <- max_second_dose_frac[it]
+      }
+      doses[it, dose2 := pmin(doses_available * max_second_dose_frac1, need_second_dose)]
+      if (first_dose_done) {
+        doses[it, dose1 := 0]
+      } else {
+        doses[it, dose1 := doses_available - dose2]
+      }
+    }
 
-    sf.pop[, pop := pop * 883305 / sum(pop)] #fixme - change if not SF
-
-  } else {
-    sf.pop <- as.data.table(structure(list(age = c(0, 5, 18, 30, 40, 50, 65, 75, 85), pop = c(39906.3731406559,
-                                                                                              78740.7974681953, 166750.621255458, 180965.550761221, 122148.668191433,
-                                                                                              158523.262709589, 74677.0819111263, 39658.0686133239, 21934.5759489982
-    )), row.names = c(NA, -9L), class = "data.frame"))
   }
+  return(doses[, .(date, dose1, dose2)])
+}
 
+#CA 55% January, 15% end November
+GetVaccineParams <- function(doses, variants, start_date, end_date, variant_day0, population, dose_proportion) {
+  lethality <- data.table(age = c(0, 5, 18, 30, 40, 50, 65, 75, 85),
+                          hosp = c(1/4, 1/9, 1, 2, 3, 4, 5, 8, 13),
+                          death = c(1/9, 1/16, 1, 4, 10, 30, 90, 220, 630))
+  lethality[, icu_rate := sqrt(death/hosp)]
+  lethality[, mort_rate := sqrt(death/hosp)]
 
-  rate.dt <- merge(sf.pop, rate.dt, by = "age", all = T)
-  rate.dt[, max.vax := vax.update * pop]
-  rate.dt[vax_prop == 0, max.vax := 0]
+  nt <- nrow(doses)
+  num_variants <- nrow(variants)
+  time_to_effect <- 10
+  doses[, dose1_effective := shift(dose1, time_to_effect, fill = 0)]
+  doses[, dose2_effective := shift(dose2, time_to_effect, fill = 0)]
+  doses[, frac_fully := pmin(1, cumsum(dose2_effective) / cumsum(dose1_effective + 1e-10))]
 
-  #day 345 is Jan 26
-  vaccinated_per_day <- rep(0, nt)
-  #start 12/17, 2800 as of 1/26 [move these 10-14 days for vaccine to take effect?]
-  time_to_effect <- 14
-  vaccinated_per_day[time_to_effect + 305:345] <- seq(0, 2800, length.out = length(305:345))
-  vaccinated_per_day[time_to_effect + 346:nt] <- pmin(vaccinated_per_day_max, 2800 + seq(from = 0, by = vaccinated_per_day_increase, length.out = nt - 345))
-  vaccinated_per_day <- vaccinated_per_day[1:nt]
-  fully_vaccinated_per_day <- shift(vaccinated_per_day, n = 30, fill = 0)
-  #frac_fully <- fully_vaccinated_per_day / (vaccinated_per_day + 1e-10) #avoid NaN
-  frac_fully <- rep(1, nt) #frac_fully isn't working correctly - total vaccinated is not pop * uptake * 0.99, need to count people moving to fully vaccinated somewhere; for now assume immediate fully vaccinated
+  vaccinated_per_day <- doses[, dose1_effective]
+  frac_fully <- doses[, frac_fully]
 
-  vaccinated_per_day[cumsum(vaccinated_per_day) > sum(rate.dt$max.vax)] <- 0 #do this after calculating frac_fully, otherwise late people don't get second dose
+  it <- as.numeric(doses[, date] - variant_day0)
+  variant_frac <- matrix(variants$frac_on_day0, nrow = nt, ncol = num_variants, byrow = T)
+  variant_frac <- variant_frac * matrix(variants$daily_growth, nrow = nt, ncol = num_variants, byrow = T) ^ it #recycles it
+  variant_frac <- variant_frac / rowSums(variant_frac) #recycles row sum
 
-  wild_growth <- 0.96
-  n <- nt - 345
-  wild_now <- 1 - (uk_now + sa_now)
-  wild <- wild_now * wild_growth^(1:n)
-  uk <- uk_now * uk_growth^(1:n)
-  sa <- sa_now * sa_growth^(1:n)
-
-  frac_prevariants <- matrix(c(1, 0, 0), nrow = 345, ncol = 3, byrow = T)
-  frac <- rbind(frac_prevariants, cbind(wild / (wild + uk + sa), uk / (wild + uk + sa), sa / (wild + uk + sa)))
-  efficacy_transmission_1 <- c(0.5, 0.5, 0.2) #if one dose
-  efficacy_transmission_2 <- c(0.7, 0.7, 0.35) #if two doses
-  efficacy_susceptible_1 <- c(0.90, 0.90, 0.80) #if one dose
-  efficacy_susceptible_2 <- c(0.99, 0.99, 0.90) #if two doses
-
-  variant_hosp_mult <- c(1, 1.3, 1) #wild (should be 1), uk, sa
-  variant_mort_mult <- c(1, 1.5, 1) / variant_hosp_mult
-
-  duration_vaccinated_ <- c(360, 360, 180)
-  duration_natural_ <- c(360, 360, 90)
-
-  efficacy_transmission <- efficacy_susceptible <- duration_vaccinated <- duration_natural  <- rep(NA_real_, nt)
+  vaccine_efficacy_against_progression <- vaccine_efficacy_for_susceptibility <- duration_vaccinated <- duration_natural  <- transmission_variant_multiplier <- rep(NA_real_, nt)
   for (it in 1:nt) {
-    efficacy_transmission[it] <- sum((efficacy_transmission_1 * (1 - frac_fully[it]) + efficacy_transmission_2 * frac_fully[it]) * frac[it, ])
-    efficacy_susceptible[it] <- sum((efficacy_susceptible_1 * (1 - frac_fully[it]) + efficacy_susceptible_2 * frac_fully[it]) * frac[it, ])
+    vaccine_efficacy_against_progression[it] <- sum((variants$vaccine_efficacy_against_progression_1 * (1 - frac_fully[it]) + variants$vaccine_efficacy_against_progression_2 * frac_fully[it]) * variant_frac[it, ])
+    vaccine_efficacy_for_susceptibility[it] <- sum((variants$vaccine_efficacy_for_susceptibility_1 * (1 - frac_fully[it]) + variants$vaccine_efficacy_for_susceptibility_2 * frac_fully[it]) * variant_frac[it, ])
 
-    duration_vaccinated[it] <- sum(frac[it, ] * duration_vaccinated_)
-    duration_natural[it] <- sum(frac[it, ] * duration_natural_)
+
+    duration_vaccinated[it] <- sum(variant_frac[it, ] * variants$duration_vaccinated_)
+    duration_natural[it] <- sum(variant_frac[it, ] * variants$duration_natural_)
+    transmission_variant_multiplier[it] <- sum(variant_frac[it, ] * variants$transmisson_mult)
   }
 
+  #input is mort|infected, LEMMA uses icu|hosp and mort|icu
+  var_hosp_mult <- variants$hosp_mult
+  var_mort_mult <- var_icu_mult <- sqrt(variants$mort_mult / var_hosp_mult)
+
+  #multiplier = rate_unvax / rate_pop
   frac_hosp_multiplier <- frac_icu_multiplier <- frac_mort_multiplier <- rep(NA_real_, nt)
-  dt <- copy(rate.dt)
-  # hosp_rate_unvax / hosp_rate_pop
+  dt <- cbind(lethality, population, dose_proportion)
+
   dt[, vax := 0]
   dt[, pop_frac := pop / sum(pop)]
   hosp_rate_pop <- dt[, sum(hosp * pop_frac)] #rate relative to 18-30
@@ -90,39 +91,18 @@ GetVaccineParams <- function(vaccinated_per_day_max, vaccinated_per_day_increase
   mort_rate_pop <- dt[, sum(mort_rate * pop_frac)] #rate relative to 18-30
 
   for (it in 1:nt) {
-    not.maxed.prop <- dt[vax < max.vax, sum(vax_prop)]
-    dt[, new_doses := (vax < max.vax) * vax_prop / (1e-10 + not.maxed.prop) * vaccinated_per_day[it]]
+    not_maxed_prop <- dt[vax < max_vax, sum(dose_proportion)]
+    dt[, new_doses := (vax < max_vax) * dose_proportion / (1e-10 + not_maxed_prop) * vaccinated_per_day[it]]
     dt[, vax := vax + new_doses]
     stopifnot(!anyNA(dt))
     dt[, unvaccinated_pop := pmax(0, pop - vax)]
     dt[, unvaccinated_pop_frac := unvaccinated_pop / sum(unvaccinated_pop)] #num unvax/total unvax
 
-    frac_hosp_multiplier[it] <- dt[, sum(hosp * unvaccinated_pop_frac)] / hosp_rate_pop * sum(variant_hosp_mult * frac[it, ])
-    frac_icu_multiplier[it] <- dt[, sum(icu_rate * unvaccinated_pop_frac)] / icu_rate_pop
-    frac_mort_multiplier[it] <- dt[, sum(mort_rate * unvaccinated_pop_frac)] / mort_rate_pop * sum(variant_mort_mult * frac[it, ])
+    frac_hosp_multiplier[it] <- dt[, sum(hosp * unvaccinated_pop_frac)] / hosp_rate_pop * sum(var_hosp_mult * variant_frac[it, ])
+    frac_icu_multiplier[it] <- dt[, sum(icu_rate * unvaccinated_pop_frac)] / icu_rate_pop * sum(var_icu_mult * variant_frac[it, ])
+    frac_mort_multiplier[it] <- dt[, sum(mort_rate * unvaccinated_pop_frac)] / mort_rate_pop * sum(var_mort_mult * variant_frac[it, ])
   }
 
-
-  #return number of successfully vaccinated per day
-  return(list(vaccinated_per_day = efficacy_susceptible * vaccinated_per_day, efficacy_transmission = efficacy_transmission, duration_vaccinated = duration_vaccinated, duration_natural = duration_natural, frac_hosp_multiplier = frac_hosp_multiplier, frac_icu_multiplier = frac_icu_multiplier, frac_mort_multiplier = frac_mort_multiplier))
+  return(list(vaccinated_per_day = vaccinated_per_day, vaccine_efficacy_for_susceptibility = vaccine_efficacy_for_susceptibility, vaccine_efficacy_against_progression = vaccine_efficacy_against_progression, duration_vaccinated = duration_vaccinated, duration_natural = duration_natural, frac_hosp_multiplier = frac_hosp_multiplier, frac_icu_multiplier = frac_icu_multiplier, frac_mort_multiplier = frac_mort_multiplier, transmission_variant_multiplier = transmission_variant_multiplier)) #vaccines is temp for plotting
 }
 
-
-  input.file.sf <- "Inputs/SF.xlsx"
-  sheets.sf <- LEMMA:::ReadInputs(input.file.sf)
-  input.file <- "Inputs/CAcounties_sigmaobs.xlsx"
-  sheets <- LEMMA:::ReadInputs(input.file)
-  sheets$Data <- sheets.sf$Data
-  sheets$`Model Inputs` <- sheets.sf$`Model Inputs`
-
-  inputs <- LEMMA:::ProcessSheets(sheets, input.file)
-
-  #inputs$internal.args$iter <- 1000; inputs$internal.args$warmup <- NULL #7.7 hours
-  inputs$internal.args$iter <- 300; inputs$internal.args$warmup <- NULL  #temp #1.4 hours, rhat = 1.05
-
-  inputs$model.inputs$end.date <- as.Date("2021/8/1")
-  nt <- inputs$model.inputs$end.date - inputs$internal.args$simulation.start.date
-
-  #uk now and growth is good for San Diego but uk now is too high for SF -- need estimates of uk now and sa now by county?
-  inputs$vaccines <- GetVaccineParams(vaccinated_per_day_max = 6000, vaccinated_per_day_increase = 135, uk_growth = 1.05, sa_growth = 1.08, uk_now = 0.01, sa_now = 0.0001, nt = nt)
-  inputs$internal.args$output.filestr <- "~/Dropbox/LEMMA_shared/JS code branch/lemma input and output/SF vax/vax-base"
