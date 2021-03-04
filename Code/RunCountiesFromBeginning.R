@@ -1,20 +1,11 @@
-#this looks good! no warnings, ran in ~90sec
-
-#test on larger set of counties - need to output colMedians and colSds x[, , index] for some or all index for each county
 #also output median and sd other posteriors, should we use these (e.g. frac_mort?); I think depends in part on if we want to fit to recent death rate or overall
-#automate some process for starting from scratch and caching state/posteriors and also for starting from cache
 #email Paul, Chris
 #think about how to generate full fit if needed (e.g. save Rt quantiles up to restart date for plotting)
 #think about when to move restart date and update cache - if restart is after vaccines start would need more categories
-#how to get initial cache - will take a really long time using correct sigmaobs, maybe can run in stages - eg feb 2020-july-sept-dec
-#compare feb2020-july2020 vs feb2020-may2020-july2020 for some counties
 #document this change + sigmaobs fix + variants/vaccines - set a deadline and priorities
-#clean up LEMMA code (GetStanInputs, LEMMA.stan)
+#clean up LEMMA code (GetStanInputs, LEMMA.stan) - check for any fixme/todo/temp
 #plan for new spreadsheet format (caching + variants + vaccines)
-#think about fitting to cases, admits
-#sort out priors (SF is different than counties)
-#** is transmission blocking correct? are case calculations correct?
-#update RunCACounties-SF
+#update RunCACounties-SF - have something to just add one line with Wayne's latest (use nonICU+ICU as input and convert to total) to the state data and UeS to cases
 
 
 library(matrixStats)
@@ -24,15 +15,10 @@ library(data.table)
 source('Code/GetInputsVaxRestart.R')
 source('Code/GetVaccineParams.R')
 
-RunLemma <- function(county1, county.dt, doses.dt, restart.date, end.date, prev.state) {
-  vaccines <- GetVaccineParamsForCounty(county1, doses.dt)
-  inputs <- GetInputsVaxRestart(county1, county.dt, restart.date, end.date, initial.state = prev.state, vaccines)
-
-  inputs$internal.args$output.filestr <- paste0("Restart/Forecast/test vax with cases and seroprev_", county1, "_", restart.date)
-  inputs$internal.args$refresh <- 100 #500
-  inputs$internal.args$iter <- 1000
+RunLemma <- function(inputs) {
   lemma <- LEMMA:::CredibilityInterval(inputs)
 
+  #TODO: move this to LEMMA package
   x <- rstan::extract(lemma$fit.to.data, pars = "x")[[1]]
   cases <- rstan::extract(lemma$fit.to.data, pars = "total_cases")[[1]]
 
@@ -58,7 +44,7 @@ RunLemma <- function(county1, county.dt, doses.dt, restart.date, end.date, prev.
   # int Rlivev = 14;
   # int Rmort = 15;
 
-  stopifnot(restart.date <= as.Date("2020/12/15"))
+  #TODO: add stopifnot to check that initial state shouldnt have any vaccines yet - not sure how to do this
   #assumes vaccinations haven't started
   state <- list(mu_iniE = mu[3], mu_ini_Imild = mu[5], mu_ini_Ipreh = mu[7], mu_ini_Rlive = mu[13], mu_ini_cases = mu_cases,
                 sigma_iniE = sigma[3], sigma_ini_Imild = sigma[5], sigma_ini_Ipreh = sigma[7], sigma_ini_Rlive = sigma[13], sigma_ini_cases = sigma_cases, from_beginning = 0)
@@ -68,7 +54,7 @@ RunLemma <- function(county1, county.dt, doses.dt, restart.date, end.date, prev.
             "beta_multiplier", "t_inter", "sigma_obs", "ini_E", "ini_Imild", "ini_Ipreh", "ini_Rlive", "frac_tested")
   posteriors <- lapply(rstan::extract(lemma$fit.to.data, pars = pars), function (z) colQuantiles(as.matrix(z), probs = seq(0, 1, by = 0.05)))
   state <- c(state, posteriors = list(posteriors))
-  return(state)
+  return(list(lemma = lemma, state = state))
 }
 
 
@@ -108,13 +94,14 @@ GetVaccineParamsForCounty <- function(county1, doses.dt) {
                          frac_on_day0 = c(0.25, 0, 0, 0.75, 0))
   variant_day0 <- as.Date("2021/2/24")
 
-  start_date <- as.Date("2020/12/1")
-  end_date <- as.Date("2021/8/1")
+  #generate extra doses/variants, will subset
+  start_date <- as.Date("2020/1/1")
+  end_date <- as.Date("2022/1/1")
 
   scale <- population[, sum(pop)] / 883305  #scale to SF
 
 #Youyang says ~1.6% daily increase = 80 per day increase from 5000 (this might be off - not fully vaccinated until end June, 10000 per day May 10)
-  doses <- GetDoses(doses_actual, doses_per_day_base = 5000, doses_per_day_increase  = 80, doses_per_day_maximum = 10000, start_increase_day = as.Date("2021/3/1"), start_date, end_date,  dose_proportion, population, vax_uptake = 0.85, max_second_dose_frac = rep(0.7, length(start_date:end_date)))
+  doses <- GetDoses(doses_actual, doses_per_day_base = 5000 * scale, doses_per_day_increase  = 80 * scale, doses_per_day_maximum = 10000 * scale, start_increase_day = as.Date("2021/3/1"), start_date, end_date,  dose_proportion, population, vax_uptake = 0.85, max_second_dose_frac = rep(0.7, length(start_date:end_date)))
   v <- GetVaccineParams(doses, variants, start_date, end_date, variant_day0, population, dose_proportion)
   return(v)
 }
@@ -127,7 +114,7 @@ GetStartDate <- function(county1, county.dt) {
     return(list(start.date = as.Date("2020/2/17"), state = NULL))
   } else {
     dt <- dt[date == max(date)]
-    start.date <- dt[, date] - 5
+    start.date <- dt[, date] - 7 #-5 worked for all but Lake, El Dorado, Madera, Siskiyou, not sure why these crashed
     deaths <- dt[, deaths.conf]
     pop <- dt[, population]
 
@@ -140,43 +127,87 @@ GetStartDate <- function(county1, county.dt) {
   }
 }
 
+#county1 is used for printing and filename, could be removed/put in inputs
+RunFromBeginning <- function(inputs.orig, county1) {
+  restart.date.set <- inputs.orig$internal.args$restart.date.set
+  for (i in seq_along(restart.date.set)) {
+    restart.date <- restart.date.set[i]
+    if (i == 1) {
+      prev.state <- inputs.orig$internal.args$initial.state
+    } else {
+      prev.state <- state
+    }
+    if (i == length(restart.date.set)) {
+      end.date <- as.Date("2021/7/1")
+    } else {
+      end.date <- restart.date.set[i + 1]
+    }
+    print(county1)
+    print(c(restart.date, end.date))
+    inputs <- GetInputsRestart(inputs.orig, restart.date, end.date, initial.state = prev.state)
+    obj <- RunLemma(inputs)
+    state <- obj$state
+    warning(paste("-----------", county1, i, restart.date, end.date, "-----------"))
+    print(warnings())
+    saveRDS(prev.state, paste0("Restart/State/state_", county1, "_", restart.date, ".rds"))
+    if (i  == length(restart.date.set)) {
+      #useful for diagnostics
+      saveRDS(state, paste0("Restart/State/state_", county1, "_", end.date, ".rds"))
+    }
+  }
+  return(obj)
+}
+
+Get1 <- function(zz) {
+  stopifnot(uniqueN(zz) == 1)
+  zz[1]
+}
+
+GetCountyInputs <- function(county1, county.dt, doses.dt) {
+  start.list <- GetStartDate(county1, county.dt)
+  restart.interval <- 60 #9999 #140 #60
+  last.restart.date <- as.Date("2020/12/15")
+  if (start.list$start.date > (last.restart.date - 30)) {
+    stop("not enough data before vaccine roll-out in ", county1)
+  }
+  num.intervals <- pmax(2, ceiling(as.numeric(last.restart.date - start.list$start.date) / restart.interval))
+  restart.date.set <- round(seq(start.list$start.date, as.Date("2020/12/15"), length.out = num.intervals))
+
+  county.pop1 <- county.dt[county == county1, Get1(population)]
+  if (county1 == "San Francisco") {
+    cat("SF is using state data, not SF data\n")
+  }
+  input.file <- "Inputs/CAcounties_sigmaobs.xlsx"
+  sheets <- LEMMA:::ReadInputs(input.file)
+  county.dt1 <- county.dt[county == county1, .(date, hosp.conf, hosp.pui, icu.conf, icu.pui,  deaths.conf, admits.conf, admits.pui, cases.conf, cases.pui, seroprev.conf, seroprev.pui)]
+  county.dt1[!is.na(deaths.conf), deaths.pui := 0]
+  sheets$Data <- county.dt1
+
+  sheets$`Model Inputs`[internal.name == "total.population", value := county.pop1]
+
+  sheets$Data[is.na(deaths.pui) & !is.na(deaths.conf), deaths.pui := 0]
+  inputs <- LEMMA:::ProcessSheets(sheets, input.file)
+  inputs$vaccines <- GetVaccineParamsForCounty(county1, doses.dt)
+  inputs$internal.args$output.filestr <- paste0("Restart/Forecast/test vax with cases and seroprev_", county1)
+
+  #TODO: move these to another list element?
+  inputs$internal.args$restart.date.set <- restart.date.set
+  inputs$internal.args$initial.state <- start.list$state
+  return(inputs)
+}
+
 RunOneCounty <- function(county1, county.dt, doses.dt) {
   try.result <- try({
     ParallelLogger::logInfo("starting county = ", county1)
     sink.file <- paste0("Restart/Logs/progress-", county1, ".txt")
     sink(sink.file)
     cat("county = ", county1, "\n")
-    cat("start time = ", as.character(Sys.time() - 3600 * 8), "\n")
+    cat("start time = ", format(Sys.time(), usetz = T, tz = "America/Los_Angeles"), "\n")
     cat("max date = ", as.character(max(county.dt$date)), "\n")
 
-    start.list <- GetStartDate(county1, county.dt)
-    restart.interval <- 60 #9999 #140 #60
-    last.restart.date <- as.Date("2020/12/15")
-    if (start.list$start.date > (last.restart.date - 30)) {
-      stop("not enough data before vaccine roll-out in ", county1)
-    }
-    num.intervals <- pmax(2, ceiling(as.numeric(last.restart.date - start.list$start.date) / restart.interval))
-    restart.date.set <- round(seq(start.list$start.date, as.Date("2020/12/15"), length.out = num.intervals))
     total.time <- system.time({
-      for (i in seq_along(restart.date.set)) {
-        restart.date <- restart.date.set[i]
-        if (i == 1) {
-          prev.state <- start.list$state
-        } else {
-          prev.state <- state
-        }
-        if (i == length(restart.date.set)) {
-          end.date <- as.Date("2021/7/1")
-        } else {
-          end.date <- restart.date.set[i + 1]
-        }
-        print(county1)
-        print(c(restart.date, end.date))
-        state <- RunLemma(county1, county.dt, doses.dt, restart.date, end.date, prev.state)
-        warning(paste("-----------", county1, i, restart.date, end.date, "-----------"))
-        print(warnings())
-        saveRDS(prev.state, paste0("Restart/State/state_", county1, "_", restart.date, ".rds"))
-      }
+      inputs <- GetCountyInputs(county1, county.dt, doses.dt)
+      RunFromBeginning(inputs, county1)
     })
     print(total.time)
     sink()

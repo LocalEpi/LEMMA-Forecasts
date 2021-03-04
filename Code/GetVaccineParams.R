@@ -70,7 +70,6 @@ GetVaccineParams <- function(doses, variants, start_date, end_date, variant_day0
     vaccine_efficacy_against_progression[it] <- sum((variants$vaccine_efficacy_against_progression_1 * (1 - frac_fully[it]) + variants$vaccine_efficacy_against_progression_2 * frac_fully[it]) * variant_frac[it, ])
     vaccine_efficacy_for_susceptibility[it] <- sum((variants$vaccine_efficacy_for_susceptibility_1 * (1 - frac_fully[it]) + variants$vaccine_efficacy_for_susceptibility_2 * frac_fully[it]) * variant_frac[it, ])
 
-
     duration_vaccinated[it] <- sum(variant_frac[it, ] * variants$duration_vaccinated_)
     duration_natural[it] <- sum(variant_frac[it, ] * variants$duration_natural_)
     transmission_variant_multiplier[it] <- sum(variant_frac[it, ] * variants$transmisson_mult)
@@ -103,6 +102,8 @@ GetVaccineParams <- function(doses, variants, start_date, end_date, variant_day0
     frac_mort_multiplier[it] <- dt[, sum(mort_rate * unvaccinated_pop_frac)] / mort_rate_pop * sum(var_mort_mult * variant_frac[it, ])
   }
 
-  return(list(vaccinated_per_day = vaccinated_per_day, vaccine_efficacy_for_susceptibility = vaccine_efficacy_for_susceptibility, vaccine_efficacy_against_progression = vaccine_efficacy_against_progression, duration_vaccinated = duration_vaccinated, duration_natural = duration_natural, frac_hosp_multiplier = frac_hosp_multiplier, frac_icu_multiplier = frac_icu_multiplier, frac_mort_multiplier = frac_mort_multiplier, transmission_variant_multiplier = transmission_variant_multiplier)) #vaccines is temp for plotting
+  date <- seq(start_date, end_date, by = "day")
+  vaccines <- data.table(date, vaccinated_per_day, vaccine_efficacy_for_susceptibility, vaccine_efficacy_against_progression, duration_vaccinated, duration_natural, frac_hosp_multiplier, frac_icu_multiplier, frac_mort_multiplier, transmission_variant_multiplier)
+  return(vaccines)
 }
 

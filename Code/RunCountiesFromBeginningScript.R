@@ -42,9 +42,8 @@ if (!exists("county.dt")) {
 
   county.dt <- GetCountyData(include.regions = F)
   county.dt[, deaths.pui := NA_real_]
-  case.dt <- fread("https://data.ca.gov/dataset/590188d5-8545-4c93-a9a0-e230f0db7290/resource/926fd08f-cc91-4828-af38-bd45de97f8c3/download/statewide_cases.csv")
-  admits.dt <- fread("https://healthdata.gov/node/3651441/download")[state == "CA"]
 
+  admits.dt <- fread("https://healthdata.gov/node/3651441/download")[state == "CA"]
   admits.dt[, previous_day_admission_adult_covid_confirmed_7_day_sum := ConvertNegative(previous_day_admission_adult_covid_confirmed_7_day_sum)]
   admits.dt[, previous_day_admission_pediatric_covid_confirmed_7_day_sum := ConvertNegative(previous_day_admission_pediatric_covid_confirmed_7_day_sum)]
   admits.dt[, previous_day_admission_adult_covid_suspected_7_day_sum := ConvertNegative(previous_day_admission_adult_covid_suspected_7_day_sum)]
@@ -58,6 +57,7 @@ if (!exists("county.dt")) {
   admits.dt2[is.na(admits.conf), admits.pui := NA_real_]
   admits.dt2[is.na(admits.pui), admits.conf := NA_real_]
 
+  case.dt <- fread("https://data.ca.gov/dataset/590188d5-8545-4c93-a9a0-e230f0db7290/resource/926fd08f-cc91-4828-af38-bd45de97f8c3/download/statewide_cases.csv")
   case.dt[, date := as.Date(date)]
   stopifnot(uniqueN(case.dt[, max(date), by = county]$V1) == 1)
   max.date <- case.dt[, max(date)] - 4 #assume last 4 days are not reliable
@@ -65,13 +65,16 @@ if (!exists("county.dt")) {
   case.dt2[, cases.conf := frollmean(cases.conf, 7), by = county]
 
   county.dt <- merge(county.dt, case.dt2[, .(date, county, cases.conf, cases.pui)], by = c("date", "county"), all = T)
-  county.dt <- merge(county.dt, admits.dt2[!(county %in% c("Out of Country", "Unassigned")), .(date, county, admits.conf, admits.pui)], by = c("date", "county"), all = T)
+  county.dt <- merge(county.dt, admits.dt2[, .(date, county, admits.conf, admits.pui)], by = c("date", "county"), all = T)
   county.dt <- merge(county.dt, seroprev.dt, by = c("date", "county"), all = T)
+  county.dt <- county.dt[!(county %in% c("Out Of Country", "Unassigned", "Unknown"))]
 }
 
 options(warn = 1)
+# county.set <- "San Francisco"
 # county.set <- c("Alameda", "Los Angeles", "San Francisco", "Kern", "Madera", "Kings")
 county.set <- county.dt[, unique(county)]
+print(county.set)
 
 options(warn = 1)
 assign("last.warning", NULL, envir = baseenv())
