@@ -70,12 +70,12 @@ if (!exists("county.dt")) {
   county.dt <- county.dt[!(county %in% c("Out Of Country", "Unassigned", "Unknown"))]
 }
 
-
-### temp
-county.dt[, seroprev.conf := NA_real_]
-county.dt[, seroprev.pui := NA_real_]
-cat("----- temp -- no seroprev\n\n")
-
+if (F) {
+  ### temp
+  county.dt[, seroprev.conf := NA_real_]
+  county.dt[, seroprev.pui := NA_real_]
+  cat("----- temp -- no seroprev\n\n")
+}
 
 options(warn = 1)
 setkey(county.dt, county, date)
