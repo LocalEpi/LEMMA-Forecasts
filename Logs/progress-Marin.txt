@@ -434,3 +434,42 @@ Chain 4: Iteration: 960 / 1000 [ 96%]  (Sampling)
 Chain 2: Iteration: 940 / 1000 [ 94%]  (Sampling)
 Chain 1: Iteration: 960 / 1000 [ 96%]  (Sampling)
 Chain 4: Iteration: 970 / 1000 [ 97%]  (Sampling)
+Chain 2: Iteration: 950 / 1000 [ 95%]  (Sampling)
+Chain 4: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 1: Iteration: 970 / 1000 [ 97%]  (Sampling)
+Chain 2: Iteration: 960 / 1000 [ 96%]  (Sampling)
+Chain 4: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 2: Iteration: 970 / 1000 [ 97%]  (Sampling)
+Chain 4: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 4: 
+Chain 4:  Elapsed Time: 16950.1 seconds (Warm-up)
+Chain 4:                12083.7 seconds (Sampling)
+Chain 4:                29033.7 seconds (Total)
+Chain 4: 
+Chain 1: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 2: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 2: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 1: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 2: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 2: 
+Chain 2:  Elapsed Time: 15967.5 seconds (Warm-up)
+Chain 2:                13468.9 seconds (Sampling)
+Chain 2:                29436.4 seconds (Total)
+Chain 2: 
+Chain 1: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 1: 
+Chain 1:  Elapsed Time: 11491 seconds (Warm-up)
+Chain 1:                18121.1 seconds (Sampling)
+Chain 1:                29612.1 seconds (Total)
+Chain 1: 
+      user     system    elapsed 
+110480.161      6.044  29655.556 
+Projecting
+   user  system elapsed 
+686.549   2.694 689.256 
+
+Excel output:  Forecasts/Marin.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.54 0.63 0.73 0.82 0.91 0.99 1.03 
+
+PDF output:  Forecasts/Marin.pdf 
