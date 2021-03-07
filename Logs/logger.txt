@@ -195,3 +195,37 @@
 2021-03-07 16:31:26	[Thread 9]	WARN	rstan	throw_sampler_warnings	Bulk Effective Samples Size (ESS) is too low, indicating posterior means and medians may be unreliable. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#bulk-ess
 2021-03-07 16:31:35	[Thread 9]	WARN	rstan	throw_sampler_warnings	Tail Effective Samples Size (ESS) is too low, indicating posterior variances and tail quantiles may be unreliable. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#tail-ess
 2021-03-07 16:32:51	[Thread 3]	INFO			county = Santa Clara
+2021-03-07 17:01:05	[Thread 9]	INFO			county = Riverside
+2021-03-07 17:02:20	[Thread 19]	WARN	rstan	throw_sampler_warnings	There were 68 divergent transitions after warmup. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup to find out why this is a problem and how to eliminate them.
+2021-03-07 17:02:20	[Thread 19]	WARN	rstan	throw_sampler_warnings	There were 493 transitions after warmup that exceeded the maximum treedepth. Increase max_treedepth above 15. See http://mc-stan.org/misc/warnings.html#maximum-treedepth-exceeded
+2021-03-07 17:02:20	[Thread 19]	WARN	rstan	throw_sampler_warnings	There were 1 chains where the estimated Bayesian Fraction of Missing Information was low. See http://mc-stan.org/misc/warnings.html#bfmi-low
+2021-03-07 17:02:20	[Thread 19]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
+2021-03-07 17:02:27	[Thread 19]	WARN	rstan	throw_sampler_warnings	The largest R-hat is 1.09, indicating chains have not mixed. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#r-hat
+2021-03-07 17:02:34	[Thread 19]	WARN	rstan	throw_sampler_warnings	Bulk Effective Samples Size (ESS) is too low, indicating posterior means and medians may be unreliable. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#bulk-ess
+2021-03-07 17:02:43	[Thread 19]	WARN	rstan	throw_sampler_warnings	Tail Effective Samples Size (ESS) is too low, indicating posterior variances and tail quantiles may be unreliable. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#tail-ess
+2021-03-07 17:31:52	[Thread 19]	INFO			county = Fresno
+2021-03-07 17:31:56	[Thread 4]	TRACE			Thread 4 terminated
+2021-03-07 17:31:56	[Thread 2]	TRACE			Thread 2 terminated
+2021-03-07 17:31:56	[Thread 5]	TRACE			Thread 5 terminated
+2021-03-07 17:31:56	[Thread 8]	TRACE			Thread 8 terminated
+2021-03-07 17:31:56	[Thread 6]	TRACE			Thread 6 terminated
+2021-03-07 17:31:56	[Thread 3]	TRACE			Thread 3 terminated
+2021-03-07 17:31:56	[Thread 11]	TRACE			Thread 11 terminated
+2021-03-07 17:31:56	[Thread 10]	TRACE			Thread 10 terminated
+2021-03-07 17:31:56	[Main thread]	TRACE			Stopping cluster
+2021-03-07 17:31:56	[Thread 7]	TRACE			Thread 7 terminated
+2021-03-07 17:31:56	[Thread 1]	TRACE			Thread 1 terminated
+2021-03-07 17:31:56	[Thread 15]	TRACE			Thread 15 terminated
+2021-03-07 17:31:56	[Thread 16]	TRACE			Thread 16 terminated
+2021-03-07 17:31:56	[Thread 23]	TRACE			Thread 23 terminated
+2021-03-07 17:31:56	[Thread 13]	TRACE			Thread 13 terminated
+2021-03-07 17:31:56	[Thread 19]	TRACE			Thread 19 terminated
+2021-03-07 17:31:56	[Main thread]	INFO			done
+2021-03-07 17:31:56	[Thread 17]	TRACE			Thread 17 terminated
+2021-03-07 17:31:56	[Thread 14]	TRACE			Thread 14 terminated
+2021-03-07 17:31:56	[Thread 9]	TRACE			Thread 9 terminated
+2021-03-07 17:31:56	[Thread 12]	TRACE			Thread 12 terminated
+2021-03-07 17:31:56	[Thread 18]	TRACE			Thread 18 terminated
+2021-03-07 17:31:56	[Thread 21]	TRACE			Thread 21 terminated
+2021-03-07 17:31:56	[Thread 20]	TRACE			Thread 20 terminated
+2021-03-07 17:31:56	[Thread 22]	TRACE			Thread 22 terminated
