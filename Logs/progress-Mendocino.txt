@@ -462,3 +462,22 @@ Chain 3:  Elapsed Time: 5701.11 seconds (Warm-up)
 Chain 3:                1847.18 seconds (Sampling)
 Chain 3:                7548.29 seconds (Total)
 Chain 3: 
+     user    system   elapsed 
+23470.817    67.613  7567.890 
+Projecting
+   user  system elapsed 
+367.972   2.135 370.115 
+
+Excel output:  Forecasts/Mendocino.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.52 0.58 0.68 0.77 0.85 0.92 0.96 
+
+PDF output:  Forecasts/Mendocino.pdf 
+   user  system elapsed 
+392.550   2.799 395.358 
+
+Excel output:  Scenarios/Mendocino_scenario_actToday.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.52 0.58 0.68 0.77 0.85 0.92 0.96 
+
+PDF output:  Scenarios/Mendocino_scenario_actToday.pdf 
