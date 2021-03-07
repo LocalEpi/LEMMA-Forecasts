@@ -140,7 +140,7 @@ RunFromBeginning <- function(inputs.orig, county1) {
     if (i == length(restart.date.set)) {
       end.date <- as.Date("2021/7/1")
     } else {
-      end.date <- restart.date.set[i + 1] + inputs$internal.args$overlap_days
+      end.date <- restart.date.set[i + 1] + inputs.orig$internal.args$overlap_days
     }
     print(county1)
     print(c(restart.date, end.date))
