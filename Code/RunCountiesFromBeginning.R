@@ -22,7 +22,7 @@ RunLemma <- function(inputs) {
   x <- rstan::extract(lemma$fit.to.data, pars = "x")[[1]]
   cases <- rstan::extract(lemma$fit.to.data, pars = "total_cases")[[1]]
 
-  index <- dim(x)[3]
+  index <- dim(x)[3] - inputs$internal.args$overlap_days
   mu <- colMedians(x[, , index])
   sigma <- colSds(x[, , index])
   mu_cases <- median(cases[, index])
@@ -53,7 +53,7 @@ RunLemma <- function(inputs) {
             "duration_hosp_icu", "frac_hosp", "frac_icu", "frac_mort",
             "beta_multiplier", "t_inter", "sigma_obs", "ini_E", "ini_Imild", "ini_Ipreh", "ini_Rlive", "frac_tested")
   posteriors <- lapply(rstan::extract(lemma$fit.to.data, pars = pars), function (z) colQuantiles(as.matrix(z), probs = seq(0, 1, by = 0.05)))
-  state <- c(state, posteriors = list(posteriors))
+  state <- c(state, posteriors = list(posteriors), inputs = inputs)
   return(list(lemma = lemma, state = state))
 }
 
@@ -140,7 +140,7 @@ RunFromBeginning <- function(inputs.orig, county1) {
     if (i == length(restart.date.set)) {
       end.date <- as.Date("2021/7/1")
     } else {
-      end.date <- restart.date.set[i + 1]
+      end.date <- restart.date.set[i + 1] + inputs$internal.args$overlap_days
     }
     print(county1)
     print(c(restart.date, end.date))
@@ -193,6 +193,7 @@ GetCountyInputs <- function(county1, county.dt, doses.dt) {
   #TODO: move these to another list element?
   inputs$internal.args$restart.date.set <- restart.date.set
   inputs$internal.args$initial.state <- start.list$state
+  inputs$internal.args$overlap_days <- 21
   return(inputs)
 }
 
