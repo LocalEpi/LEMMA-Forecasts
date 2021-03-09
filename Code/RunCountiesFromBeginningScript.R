@@ -70,13 +70,6 @@ if (!exists("county.dt")) {
   county.dt <- county.dt[!(county %in% c("Out Of Country", "Unassigned", "Unknown"))]
 }
 
-if (F) {
-  ### temp
-  county.dt[, seroprev.conf := NA_real_]
-  county.dt[, seroprev.pui := NA_real_]
-  cat("----- temp -- no seroprev\n\n")
-}
-
 options(warn = 1)
 setkey(county.dt, county, date)
 county.by.pop <- unique(county.dt[!is.na(population), .(county, population)]) #NA population if no hospitalizations

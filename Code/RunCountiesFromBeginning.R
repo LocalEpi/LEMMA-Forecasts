@@ -129,33 +129,48 @@ GetStartDate <- function(county1, county.dt) {
 
 #county1 is used for printing and filename, could be removed/put in inputs
 RunFromBeginning <- function(inputs.orig, county1) {
-  restart.date.set <- inputs.orig$internal.args$restart.date.set
-  for (i in seq_along(restart.date.set)) {
-    restart.date <- restart.date.set[i]
-    if (i == 1) {
-      prev.state <- inputs.orig$internal.args$initial.state
-    } else {
-      prev.state <- state
+  if (F) {
+    restart.date.set <- inputs.orig$internal.args$restart.date.set
+    for (i in seq_along(restart.date.set)) {
+      restart.date <- restart.date.set[i]
+      if (i == 1) {
+        prev.state <- inputs.orig$internal.args$initial.state
+      } else {
+        prev.state <- state
+      }
+      if (i == length(restart.date.set)) {
+        end.date <- as.Date("2021/7/1")
+      } else {
+        end.date <- restart.date.set[i + 1] + inputs.orig$internal.args$overlap_days
+      }
+      print(county1)
+      print(c(restart.date, end.date))
+      inputs <- GetInputsRestart(inputs.orig, restart.date, end.date, initial.state = prev.state)
+      obj <- RunLemma(inputs)
+      state <- obj$state
+      warning(paste("-----------", county1, i, restart.date, end.date, "-----------"))
+      print(warnings())
+      saveRDS(prev.state, paste0("Restart/State/state_", county1, "_", restart.date, ".rds"))
+      if (i  == length(restart.date.set)) {
+        #useful for diagnostics
+        saveRDS(state, paste0("Restart/State/state_", county1, "_", end.date, ".rds"))
+      }
     }
-    if (i == length(restart.date.set)) {
-      end.date <- as.Date("2021/7/1")
-    } else {
-      end.date <- restart.date.set[i + 1] + inputs.orig$internal.args$overlap_days
+    return(obj)
+  } else {
+    inputs <- inputs.orig
+    inputs$initial.state <- list(mu_iniE = 1e-5 * inputs$model.inputs$total.population, from_beginning = 1)
+
+    if (F) {
+      ### temp
+      inputs$obs.data[, seroprev.conf := NA_real_]
+      inputs$obs.data[, seroprev.pui := NA_real_]
+      cat("----- temp -- no seroprev\n\n")
     }
-    print(county1)
-    print(c(restart.date, end.date))
-    inputs <- GetInputsRestart(inputs.orig, restart.date, end.date, initial.state = prev.state)
-    obj <- RunLemma(inputs)
-    state <- obj$state
-    warning(paste("-----------", county1, i, restart.date, end.date, "-----------"))
-    print(warnings())
-    saveRDS(prev.state, paste0("Restart/State/state_", county1, "_", restart.date, ".rds"))
-    if (i  == length(restart.date.set)) {
-      #useful for diagnostics
-      saveRDS(state, paste0("Restart/State/state_", county1, "_", end.date, ".rds"))
-    }
+    inputs$internal.args$iter <- 100; cat("temp! iter = 100\n")
+    inputs$internal.args$max_treedepth <- 10; cat("temp! max_treedepth = 10\n")
+    lemma <- LEMMA:::CredibilityInterval(inputs)
   }
-  return(obj)
 }
 
 Get1 <- function(zz) {
