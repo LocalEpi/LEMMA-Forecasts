@@ -402,3 +402,90 @@ Chain 1: Iteration: 740 / 1000 [ 74%]  (Sampling)
 Chain 4: Iteration: 740 / 1000 [ 74%]  (Sampling)
 Chain 4: Iteration: 750 / 1000 [ 75%]  (Sampling)
 Chain 1: Iteration: 750 / 1000 [ 75%]  (Sampling)
+Chain 4: Iteration: 760 / 1000 [ 76%]  (Sampling)
+Chain 1: Iteration: 760 / 1000 [ 76%]  (Sampling)
+Chain 4: Iteration: 770 / 1000 [ 77%]  (Sampling)
+Chain 1: Iteration: 770 / 1000 [ 77%]  (Sampling)
+Chain 4: Iteration: 780 / 1000 [ 78%]  (Sampling)
+Chain 4: Iteration: 790 / 1000 [ 79%]  (Sampling)
+Chain 1: Iteration: 780 / 1000 [ 78%]  (Sampling)
+Chain 4: Iteration: 800 / 1000 [ 80%]  (Sampling)
+Chain 1: Iteration: 790 / 1000 [ 79%]  (Sampling)
+Chain 4: Iteration: 810 / 1000 [ 81%]  (Sampling)
+Chain 1: Iteration: 800 / 1000 [ 80%]  (Sampling)
+Chain 4: Iteration: 820 / 1000 [ 82%]  (Sampling)
+Chain 4: Iteration: 830 / 1000 [ 83%]  (Sampling)
+Chain 1: Iteration: 810 / 1000 [ 81%]  (Sampling)
+Chain 4: Iteration: 840 / 1000 [ 84%]  (Sampling)
+Chain 1: Iteration: 820 / 1000 [ 82%]  (Sampling)
+Chain 4: Iteration: 850 / 1000 [ 85%]  (Sampling)
+Chain 4: Iteration: 860 / 1000 [ 86%]  (Sampling)
+Chain 1: Iteration: 830 / 1000 [ 83%]  (Sampling)
+Chain 4: Iteration: 870 / 1000 [ 87%]  (Sampling)
+Chain 1: Iteration: 840 / 1000 [ 84%]  (Sampling)
+Chain 4: Iteration: 880 / 1000 [ 88%]  (Sampling)
+Chain 4: Iteration: 890 / 1000 [ 89%]  (Sampling)
+Chain 1: Iteration: 850 / 1000 [ 85%]  (Sampling)
+Chain 4: Iteration: 900 / 1000 [ 90%]  (Sampling)
+Chain 1: Iteration: 860 / 1000 [ 86%]  (Sampling)
+Chain 4: Iteration: 910 / 1000 [ 91%]  (Sampling)
+Chain 4: Iteration: 920 / 1000 [ 92%]  (Sampling)
+Chain 1: Iteration: 870 / 1000 [ 87%]  (Sampling)
+Chain 4: Iteration: 930 / 1000 [ 93%]  (Sampling)
+Chain 1: Iteration: 880 / 1000 [ 88%]  (Sampling)
+Chain 4: Iteration: 940 / 1000 [ 94%]  (Sampling)
+Chain 4: Iteration: 950 / 1000 [ 95%]  (Sampling)
+Chain 1: Iteration: 890 / 1000 [ 89%]  (Sampling)
+Chain 4: Iteration: 960 / 1000 [ 96%]  (Sampling)
+Chain 1: Iteration: 900 / 1000 [ 90%]  (Sampling)
+Chain 4: Iteration: 970 / 1000 [ 97%]  (Sampling)
+Chain 1: Iteration: 910 / 1000 [ 91%]  (Sampling)
+Chain 4: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 4: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 1: Iteration: 920 / 1000 [ 92%]  (Sampling)
+Chain 4: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 4: 
+Chain 4:  Elapsed Time: 2477.26 seconds (Warm-up)
+Chain 4:                863.124 seconds (Sampling)
+Chain 4:                3340.39 seconds (Total)
+Chain 4: 
+Chain 1: Iteration: 930 / 1000 [ 93%]  (Sampling)
+Chain 1: Iteration: 940 / 1000 [ 94%]  (Sampling)
+Chain 1: Iteration: 950 / 1000 [ 95%]  (Sampling)
+Chain 1: Iteration: 960 / 1000 [ 96%]  (Sampling)
+Chain 1: Iteration: 970 / 1000 [ 97%]  (Sampling)
+Chain 1: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 1: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 1: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 1: 
+Chain 1:  Elapsed Time: 2294.17 seconds (Warm-up)
+Chain 1:                1218.57 seconds (Sampling)
+Chain 1:                3512.74 seconds (Total)
+Chain 1: 
+     user    system   elapsed 
+12081.124    33.684  3526.490 
+Projecting
+   user  system elapsed 
+243.982   1.342 245.330 
+
+Excel output:  Forecasts/Tehama.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.40 0.47 0.60 0.72 0.84 0.94 0.99 
+
+PDF output:  Forecasts/Tehama.pdf 
+   user  system elapsed 
+234.529   1.322 235.852 
+
+Excel output:  Scenarios/Tehama_scenario_actToday.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.40 0.47 0.60 0.72 0.84 0.94 0.99 
+
+PDF output:  Scenarios/Tehama_scenario_actToday.pdf 
+   user  system elapsed 
+243.613   1.230 244.847 
+
+Excel output:  Scenarios/Tehama_scenario_actTwoWeeks.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.40 0.47 0.60 0.72 0.84 0.94 0.99 
+
+PDF output:  Scenarios/Tehama_scenario_actTwoWeeks.pdf 
