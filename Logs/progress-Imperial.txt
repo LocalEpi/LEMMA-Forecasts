@@ -465,3 +465,19 @@ Chain 4:
      user    system   elapsed 
 77003.841    25.566 25791.184 
 Projecting
+   user  system elapsed 
+730.582   3.340 733.939 
+
+Excel output:  Forecasts/Imperial.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.70 0.74 0.80 0.86 0.92 0.97 0.99 
+
+PDF output:  Forecasts/Imperial.pdf 
+   user  system elapsed 
+806.325   5.137 811.561 
+
+Excel output:  Scenarios/Imperial_scenario_actToday.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.70 0.74 0.80 0.86 0.92 0.97 0.99 
+
+PDF output:  Scenarios/Imperial_scenario_actToday.pdf 
