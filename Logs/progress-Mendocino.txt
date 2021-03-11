@@ -448,3 +448,44 @@ Chain 4: Iteration: 880 / 1000 [ 88%]  (Sampling)
 Chain 4: Iteration: 890 / 1000 [ 89%]  (Sampling)
 Chain 4: Iteration: 900 / 1000 [ 90%]  (Sampling)
 Chain 4: Iteration: 910 / 1000 [ 91%]  (Sampling)
+Chain 4: Iteration: 920 / 1000 [ 92%]  (Sampling)
+Chain 4: Iteration: 930 / 1000 [ 93%]  (Sampling)
+Chain 4: Iteration: 940 / 1000 [ 94%]  (Sampling)
+Chain 4: Iteration: 950 / 1000 [ 95%]  (Sampling)
+Chain 4: Iteration: 960 / 1000 [ 96%]  (Sampling)
+Chain 4: Iteration: 970 / 1000 [ 97%]  (Sampling)
+Chain 4: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 4: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 4: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 4: 
+Chain 4:  Elapsed Time: 11.9754 seconds (Warm-up)
+Chain 4:                14602 seconds (Sampling)
+Chain 4:                14614 seconds (Total)
+Chain 4: 
+     user    system   elapsed 
+33366.524   117.377 14632.378 
+Projecting
+   user  system elapsed 
+290.044   1.291 291.342 
+
+Excel output:  Forecasts/Mendocino.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.41 0.49 0.59 0.70 0.80 0.89 0.93 
+
+PDF output:  Forecasts/Mendocino.pdf 
+   user  system elapsed 
+284.246   1.271 285.532 
+
+Excel output:  Scenarios/Mendocino_scenario_actToday.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.41 0.49 0.59 0.70 0.80 0.89 0.93 
+
+PDF output:  Scenarios/Mendocino_scenario_actToday.pdf 
+   user  system elapsed 
+285.517   1.143 286.667 
+
+Excel output:  Scenarios/Mendocino_scenario_actTwoWeeks.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.41 0.49 0.59 0.70 0.80 0.89 0.93 
+
+PDF output:  Scenarios/Mendocino_scenario_actTwoWeeks.pdf 
