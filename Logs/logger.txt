@@ -233,3 +233,12 @@
 2021-03-11 17:20:25	[Thread 16]	WARN	rstan	throw_sampler_warnings	Tail Effective Samples Size (ESS) is too low, indicating posterior variances and tail quantiles may be unreliable. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#tail-ess
 2021-03-11 17:24:22	[Thread 22]	INFO			county = Kern
 2021-03-11 17:30:55	[Thread 12]	INFO			county = San Joaquin
+2021-03-11 17:34:21	[Thread 5]	WARN	rstan	throw_sampler_warnings	There were 99 divergent transitions after warmup. See http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup to find out why this is a problem and how to eliminate them.
+2021-03-11 17:34:21	[Thread 5]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
+2021-03-11 17:34:43	[Thread 5]	INFO			ERROR in = San Luis Obispo
+2021-03-11 17:34:43	[Thread 5]	INFO			Error in matrix(rep(sim.data.without.error, each = 10), niter * nrep,  :    'data' must be of a vector type, was 'NULL' 
+2021-03-11 17:34:43	[Thread 5]	FATAL			Error in unserialize(node$con) : error reading from connection Calls: local ... doTryCatch -> recvData -> recvData.SOCKnode -> unserialize 
+2021-03-11 17:34:43	[Thread 5]	TRACE			Thread 5 terminated
+2021-03-11 17:34:43	[Thread 4]	FATAL			Error in unserialize(node$con) : error reading from connection Calls: local ... doTryCatch -> recvData -> recvData.SOCKnode -> unserialize 
+2021-03-11 17:34:43	[Thread 4]	TRACE			Thread 4 terminated
+2021-03-11 17:37:38	[Thread 21]	INFO			county = Santa Barbara
