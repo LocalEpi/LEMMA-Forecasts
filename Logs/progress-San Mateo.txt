@@ -457,3 +457,21 @@ Chain 1: Iteration: 970 / 1000 [ 97%]  (Sampling)
 Chain 1: Iteration: 980 / 1000 [ 98%]  (Sampling)
 Chain 1: Iteration: 990 / 1000 [ 99%]  (Sampling)
 Chain 1: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 1: 
+Chain 1:  Elapsed Time: 13345.5 seconds (Warm-up)
+Chain 1:                13967.8 seconds (Sampling)
+Chain 1:                27313.3 seconds (Total)
+Chain 1: 
+     user    system   elapsed 
+88683.833    16.503 31013.310 
+Projecting
+   user  system elapsed 
+792.888   4.057 796.975 
+
+Excel output:  Forecasts/San Mateo.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.46 0.51 0.61 0.70 0.78 0.86 0.90 
+
+PDF output:  Forecasts/San Mateo.pdf 
+   user  system elapsed 
+786.868   4.518 791.407 
