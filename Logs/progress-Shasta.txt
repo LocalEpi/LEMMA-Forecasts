@@ -647,3 +647,37 @@ Chain 4: Iteration: 1370 / 1500 [ 91%]  (Sampling)
 Chain 4: Iteration: 1380 / 1500 [ 92%]  (Sampling)
 Chain 4: Iteration: 1390 / 1500 [ 92%]  (Sampling)
 Chain 4: Iteration: 1400 / 1500 [ 93%]  (Sampling)
+Chain 4: Iteration: 1410 / 1500 [ 94%]  (Sampling)
+Chain 4: Iteration: 1420 / 1500 [ 94%]  (Sampling)
+Chain 4: Iteration: 1430 / 1500 [ 95%]  (Sampling)
+Chain 4: Iteration: 1440 / 1500 [ 96%]  (Sampling)
+Chain 4: Iteration: 1450 / 1500 [ 96%]  (Sampling)
+Chain 4: Iteration: 1460 / 1500 [ 97%]  (Sampling)
+Chain 4: Iteration: 1470 / 1500 [ 98%]  (Sampling)
+Chain 4: Iteration: 1480 / 1500 [ 98%]  (Sampling)
+Chain 4: Iteration: 1490 / 1500 [ 99%]  (Sampling)
+Chain 4: Iteration: 1500 / 1500 [100%]  (Sampling)
+Chain 4: 
+Chain 4:  Elapsed Time: 5991.88 seconds (Warm-up)
+Chain 4:                2139.46 seconds (Sampling)
+Chain 4:                8131.34 seconds (Total)
+Chain 4: 
+     user    system   elapsed 
+27726.588    87.887  8148.931 
+Projecting
+   user  system elapsed 
+366.527   1.418 367.956 
+
+Excel output:  Forecasts/Shasta.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.70 0.74 0.82 0.89 0.95 1.01 1.05 
+
+PDF output:  Forecasts/Shasta.pdf 
+   user  system elapsed 
+365.976   1.558 367.548 
+
+Excel output:  Scenarios/Shasta_scenario_actToday.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.70 0.74 0.82 0.89 0.95 1.01 1.05 
+
+PDF output:  Scenarios/Shasta_scenario_actToday.pdf 
