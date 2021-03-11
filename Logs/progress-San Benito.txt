@@ -404,3 +404,80 @@ Chain 2: Iteration: 810 / 1000 [ 81%]  (Sampling)
 Chain 3: Iteration: 930 / 1000 [ 93%]  (Sampling)
 Chain 4: Iteration: 820 / 1000 [ 82%]  (Sampling)
 Chain 2: Iteration: 820 / 1000 [ 82%]  (Sampling)
+Chain 3: Iteration: 940 / 1000 [ 94%]  (Sampling)
+Chain 4: Iteration: 830 / 1000 [ 83%]  (Sampling)
+Chain 2: Iteration: 830 / 1000 [ 83%]  (Sampling)
+Chain 4: Iteration: 840 / 1000 [ 84%]  (Sampling)
+Chain 2: Iteration: 840 / 1000 [ 84%]  (Sampling)
+Chain 4: Iteration: 850 / 1000 [ 85%]  (Sampling)
+Chain 3: Iteration: 950 / 1000 [ 95%]  (Sampling)
+Chain 2: Iteration: 850 / 1000 [ 85%]  (Sampling)
+Chain 4: Iteration: 860 / 1000 [ 86%]  (Sampling)
+Chain 4: Iteration: 870 / 1000 [ 87%]  (Sampling)
+Chain 2: Iteration: 860 / 1000 [ 86%]  (Sampling)
+Chain 4: Iteration: 880 / 1000 [ 88%]  (Sampling)
+Chain 3: Iteration: 960 / 1000 [ 96%]  (Sampling)
+Chain 2: Iteration: 870 / 1000 [ 87%]  (Sampling)
+Chain 4: Iteration: 890 / 1000 [ 89%]  (Sampling)
+Chain 2: Iteration: 880 / 1000 [ 88%]  (Sampling)
+Chain 4: Iteration: 900 / 1000 [ 90%]  (Sampling)
+Chain 3: Iteration: 970 / 1000 [ 97%]  (Sampling)
+Chain 4: Iteration: 910 / 1000 [ 91%]  (Sampling)
+Chain 2: Iteration: 890 / 1000 [ 89%]  (Sampling)
+Chain 4: Iteration: 920 / 1000 [ 92%]  (Sampling)
+Chain 2: Iteration: 900 / 1000 [ 90%]  (Sampling)
+Chain 3: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 4: Iteration: 930 / 1000 [ 93%]  (Sampling)
+Chain 2: Iteration: 910 / 1000 [ 91%]  (Sampling)
+Chain 4: Iteration: 940 / 1000 [ 94%]  (Sampling)
+Chain 2: Iteration: 920 / 1000 [ 92%]  (Sampling)
+Chain 4: Iteration: 950 / 1000 [ 95%]  (Sampling)
+Chain 3: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 2: Iteration: 930 / 1000 [ 93%]  (Sampling)
+Chain 4: Iteration: 960 / 1000 [ 96%]  (Sampling)
+Chain 4: Iteration: 970 / 1000 [ 97%]  (Sampling)
+Chain 2: Iteration: 940 / 1000 [ 94%]  (Sampling)
+Chain 3: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 3: 
+Chain 3:  Elapsed Time: 318.341 seconds (Warm-up)
+Chain 3:                520.618 seconds (Sampling)
+Chain 3:                838.959 seconds (Total)
+Chain 3: 
+Chain 4: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 2: Iteration: 950 / 1000 [ 95%]  (Sampling)
+Chain 4: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 2: Iteration: 960 / 1000 [ 96%]  (Sampling)
+Chain 4: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 4: 
+Chain 4:  Elapsed Time: 516.186 seconds (Warm-up)
+Chain 4:                334.315 seconds (Sampling)
+Chain 4:                850.501 seconds (Total)
+Chain 4: 
+Chain 2: Iteration: 970 / 1000 [ 97%]  (Sampling)
+Chain 2: Iteration: 980 / 1000 [ 98%]  (Sampling)
+Chain 2: Iteration: 990 / 1000 [ 99%]  (Sampling)
+Chain 2: Iteration: 1000 / 1000 [100%]  (Sampling)
+Chain 2: 
+Chain 2:  Elapsed Time: 530.766 seconds (Warm-up)
+Chain 2:                338.331 seconds (Sampling)
+Chain 2:                869.097 seconds (Total)
+Chain 2: 
+    user   system  elapsed 
+3224.198   38.541  885.245 
+Projecting
+   user  system elapsed 
+192.672   1.400 194.080 
+
+Excel output:  Forecasts/San Benito.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.38 0.43 0.50 0.57 0.63 0.69 0.72 
+
+PDF output:  Forecasts/San Benito.pdf 
+   user  system elapsed 
+183.468   1.716 185.188 
+
+Excel output:  Scenarios/San Benito_scenario_actToday.xlsx 
+  5%  10%  25%  50%  75%  90%  95% 
+0.38 0.43 0.50 0.57 0.63 0.69 0.72 
+
+PDF output:  Scenarios/San Benito_scenario_actToday.pdf 
