@@ -144,3 +144,12 @@
 2021-03-11 16:03:17	[Thread 7]	WARN	rstan	throw_sampler_warnings	Bulk Effective Samples Size (ESS) is too low, indicating posterior means and medians may be unreliable. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#bulk-ess
 2021-03-11 16:03:25	[Thread 7]	WARN	rstan	throw_sampler_warnings	Tail Effective Samples Size (ESS) is too low, indicating posterior variances and tail quantiles may be unreliable. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#tail-ess
 2021-03-11 16:03:26	[Thread 6]	INFO			county = Siskiyou
+2021-03-11 16:03:28	[Thread 6]	WARN	rstan	throw_sampler_warnings	There were 1667 transitions after warmup that exceeded the maximum treedepth. Increase max_treedepth above 15. See http://mc-stan.org/misc/warnings.html#maximum-treedepth-exceeded
+2021-03-11 16:03:28	[Thread 6]	WARN	rstan	throw_sampler_warnings	There were 3 chains where the estimated Bayesian Fraction of Missing Information was low. See http://mc-stan.org/misc/warnings.html#bfmi-low
+2021-03-11 16:03:28	[Thread 6]	WARN	rstan	throw_sampler_warnings	Examine the pairs() plot to diagnose sampling problems 
+2021-03-11 16:03:39	[Thread 6]	WARN	rstan	throw_sampler_warnings	The largest R-hat is 1.42, indicating chains have not mixed. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#r-hat
+2021-03-11 16:03:52	[Thread 6]	WARN	rstan	throw_sampler_warnings	Bulk Effective Samples Size (ESS) is too low, indicating posterior means and medians may be unreliable. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#bulk-ess
+2021-03-11 16:04:12	[Thread 6]	WARN	rstan	throw_sampler_warnings	Tail Effective Samples Size (ESS) is too low, indicating posterior variances and tail quantiles may be unreliable. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#tail-ess
+2021-03-11 16:04:15	[Thread 6]	INFO			ERROR in = Tehama
+2021-03-11 16:04:15	[Thread 6]	INFO			Error in matrix(rep(sim.data.without.error, each = 10), niter * nrep,  :    'data' must be of a vector type, was 'NULL' 
+2021-03-11 16:06:16	[Thread 14]	INFO			county = Sonoma
