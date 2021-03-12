@@ -107,7 +107,7 @@ GetCountyData <- function(include.regions = TRUE) {
   county.dt[county == "Kings" & date == '2020-04-03', icu.conf := NA_real_]
   county.dt[county == "Kings" & date == '2020-04-03', icu.pui := NA_real_]
   county.dt[county == "Yolo" & date == '2020-12-12', hosp.conf := NA_real_]
-  county.dt[county == "Yolo" & date == '2020-12-12', icu.conf := NA_real_]
+  county.dt[county == "Yolo" & date == '2020-12-12', hosp.pui := NA_real_]
 
   #check for new problems with death reporting
   for (county1 in unique(county.dt$county)) {

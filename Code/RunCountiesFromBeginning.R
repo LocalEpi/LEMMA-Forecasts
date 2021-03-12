@@ -15,48 +15,6 @@ library(data.table)
 source('Code/GetInputsVaxRestart.R')
 source('Code/GetVaccineParams.R')
 
-RunLemma <- function(inputs) {
-  lemma <- LEMMA:::CredibilityInterval(inputs)
-
-  #TODO: move this to LEMMA package
-  x <- rstan::extract(lemma$fit.to.data, pars = "x")[[1]]
-  cases <- rstan::extract(lemma$fit.to.data, pars = "total_cases")[[1]]
-
-  index <- dim(x)[3] - inputs$internal.args$overlap_days
-  mu <- colMedians(x[, , index])
-  sigma <- colSds(x[, , index])
-  mu_cases <- median(cases[, index])
-  sigma_cases <- sd(cases[, index])
-
-  # int Su = 1;
-  # int Sv = 2;
-  # int Eu = 3;
-  # int Ev = 4;
-  # int Imildu = 5;
-  # int Imildv = 6;
-  # int Iprehu = 7;
-  # int Iprehv = 8;
-  # int Hmodu  = 9;
-  # int Hmodv  = 10;
-  # int Hicuu  = 11;
-  # int Hicuv  = 12;
-  # int Rliveu = 13;
-  # int Rlivev = 14;
-  # int Rmort = 15;
-
-  #TODO: add stopifnot to check that initial state shouldnt have any vaccines yet - not sure how to do this
-  #assumes vaccinations haven't started
-  state <- list(mu_iniE = mu[3], mu_ini_Imild = mu[5], mu_ini_Ipreh = mu[7], mu_ini_Rlive = mu[13], mu_ini_cases = mu_cases,
-                sigma_iniE = sigma[3], sigma_ini_Imild = sigma[5], sigma_ini_Ipreh = sigma[7], sigma_ini_Rlive = sigma[13], sigma_ini_cases = sigma_cases, from_beginning = 0)
-
-  pars <- c("r0", "duration_latent", "duration_rec_mild", "duration_pre_hosp", "duration_hosp_mod",
-            "duration_hosp_icu", "frac_hosp", "frac_icu", "frac_mort",
-            "beta_multiplier", "t_inter", "sigma_obs", "ini_E", "ini_Imild", "ini_Ipreh", "ini_Rlive", "frac_tested")
-  posteriors <- lapply(rstan::extract(lemma$fit.to.data, pars = pars), function (z) colQuantiles(as.matrix(z), probs = seq(0, 1, by = 0.05)))
-  state <- c(state, posteriors = list(posteriors), inputs = inputs)
-  return(list(lemma = lemma, state = state))
-}
-
 
 GetVaccineParamsForCounty <- function(county1, doses.dt) {
   pop <- readRDS("Inputs/county population by age.rds")[county1, ]
@@ -100,78 +58,12 @@ GetVaccineParamsForCounty <- function(county1, doses.dt) {
 
   scale <- population[, sum(pop)] / 883305  #scale to SF
 
-#Youyang says ~1.6% daily increase = 80 per day increase from 5000 (this might be off - not fully vaccinated until end June, 10000 per day May 10)
+  #Youyang says ~1.6% daily increase = 80 per day increase from 5000 (this might be off - not fully vaccinated until end June, 10000 per day May 10)
   doses <- GetDoses(doses_actual, doses_per_day_base = 5000 * scale, doses_per_day_increase  = 80 * scale, doses_per_day_maximum = 10000 * scale, start_increase_day = as.Date("2021/3/1"), start_date, end_date,  dose_proportion, population, vax_uptake = 0.85, max_second_dose_frac = rep(0.7, length(start_date:end_date)))
   v <- GetVaccineParams(doses, variants, start_date, end_date, variant_day0, population, dose_proportion)
   return(v)
 }
 
-#Get start date and state if hosp goes to zero
-GetStartDate <- function(county1, county.dt) {
-  dt <- county.dt[county == county1]
-  dt <- dt[frollsum(hosp.conf, 5) <= 1]
-  if (nrow(dt) == 0) {
-    return(list(start.date = as.Date("2020/2/17"), state = NULL))
-  } else {
-    dt <- dt[date == max(date)]
-    start.date <- dt[, date] - 7 #-5 worked for all but Lake, El Dorado, Madera, Siskiyou, not sure why these crashed
-    deaths <- dt[, deaths.conf]
-    pop <- dt[, population]
-
-    cases.est <- pmax(deaths, 1) / 0.006 #0.006 = estimated IFR
-
-    state <- list(mu_iniE = pop * 1e-5, mu_ini_Imild = 0.1, mu_ini_Ipreh = 0.1, mu_ini_Rlive = cases.est, mu_ini_cases = cases.est,
-                  sigma_iniE = pop * 1e-3, sigma_ini_Imild = 10, sigma_ini_Ipreh = 10, sigma_ini_Rlive = cases.est / 2, sigma_ini_cases = cases.est / 2,
-                  from_beginning = 0)
-    return(list(start.date = start.date, state = state))
-  }
-}
-
-#county1 is used for printing and filename, could be removed/put in inputs
-RunFromBeginning <- function(inputs.orig, county1) {
-  if (F) {
-    restart.date.set <- inputs.orig$internal.args$restart.date.set
-    for (i in seq_along(restart.date.set)) {
-      restart.date <- restart.date.set[i]
-      if (i == 1) {
-        prev.state <- inputs.orig$internal.args$initial.state
-      } else {
-        prev.state <- state
-      }
-      if (i == length(restart.date.set)) {
-        end.date <- as.Date("2021/7/1")
-      } else {
-        end.date <- restart.date.set[i + 1] + inputs.orig$internal.args$overlap_days
-      }
-      print(county1)
-      print(c(restart.date, end.date))
-      inputs <- GetInputsRestart(inputs.orig, restart.date, end.date, initial.state = prev.state)
-      obj <- RunLemma(inputs)
-      state <- obj$state
-      warning(paste("-----------", county1, i, restart.date, end.date, "-----------"))
-      print(warnings())
-      saveRDS(prev.state, paste0("Restart/State/state_", county1, "_", restart.date, ".rds"))
-      if (i  == length(restart.date.set)) {
-        #useful for diagnostics
-        saveRDS(state, paste0("Restart/State/state_", county1, "_", end.date, ".rds"))
-      }
-    }
-    return(obj)
-  } else {
-    inputs <- inputs.orig
-    inputs$initial.state <- list(mu_iniE = 1e-5 * inputs$model.inputs$total.population, from_beginning = 1)
-
-    if (F) {
-      ### temp
-      inputs$obs.data[, seroprev.conf := NA_real_]
-      inputs$obs.data[, seroprev.pui := NA_real_]
-      cat("----- temp -- no seroprev\n\n")
-    }
-    inputs$internal.args$iter <- 100; cat("temp! iter = 100\n")
-    inputs$internal.args$max_treedepth <- 10; cat("temp! max_treedepth = 10\n")
-    lemma <- LEMMA:::CredibilityInterval(inputs)
-  }
-}
 
 Get1 <- function(zz) {
   stopifnot(uniqueN(zz) == 1)
@@ -179,15 +71,6 @@ Get1 <- function(zz) {
 }
 
 GetCountyInputs <- function(county1, county.dt, doses.dt) {
-  start.list <- GetStartDate(county1, county.dt)
-  restart.interval <- 60 #9999 #140 #60
-  last.restart.date <- as.Date("2020/12/15")
-  if (start.list$start.date > (last.restart.date - 30)) {
-    stop("not enough data before vaccine roll-out in ", county1)
-  }
-  num.intervals <- pmax(2, ceiling(as.numeric(last.restart.date - start.list$start.date) / restart.interval))
-  restart.date.set <- round(seq(start.list$start.date, as.Date("2020/12/15"), length.out = num.intervals))
-
   county.pop1 <- county.dt[county == county1, Get1(population)]
   if (county1 == "San Francisco") {
     cat("SF is using state data, not SF data\n")
@@ -203,39 +86,29 @@ GetCountyInputs <- function(county1, county.dt, doses.dt) {
   sheets$Data[is.na(deaths.pui) & !is.na(deaths.conf), deaths.pui := 0]
   inputs <- LEMMA:::ProcessSheets(sheets, input.file)
   inputs$vaccines <- GetVaccineParamsForCounty(county1, doses.dt)
-  inputs$internal.args$output.filestr <- paste0("Restart/Forecast/test vax with cases and seroprev_", county1)
+  inputs$internal.args$output.filestr <- paste0("Restart/Forecast/test point est_", county1)
 
-  #TODO: move these to another list element?
-  inputs$internal.args$restart.date.set <- restart.date.set
-  inputs$internal.args$initial.state <- start.list$state
-  inputs$internal.args$overlap_days <- 21
+  mean.ini <- 1e-5 * county.pop1
+  inputs$internal.args$lambda_ini_exposed <- 1 / mean.ini
   return(inputs)
 }
 
 RunOneCounty <- function(county1, county.dt, doses.dt) {
-  try.result <- try({
-    ParallelLogger::logInfo("starting county = ", county1)
-    sink.file <- paste0("Restart/Logs/progress-", county1, ".txt")
-    sink(sink.file)
-    cat("county = ", county1, "\n")
-    cat("start time = ", format(Sys.time(), usetz = T, tz = "America/Los_Angeles"), "\n")
-    cat("max date = ", as.character(max(county.dt$date)), "\n")
 
-    total.time <- system.time({
-      inputs <- GetCountyInputs(county1, county.dt, doses.dt)
-      RunFromBeginning(inputs, county1)
-    })
-    print(total.time)
-    sink()
-    ParallelLogger::logInfo("finished county = ", county1)
-  })
+  inputs <- GetCountyInputs(county1, county.dt, doses.dt)
+  #county1 is used for printing and filename, could be removed/put in inputs
 
-  if (inherits(try.result, "try-error")) {
-    ParallelLogger::logInfo("ERROR in = ", county1)
-    ParallelLogger::logInfo(as.character(try.result))
+  if (include.seroprev) {
+    inputs$internal.args$output.filestr <- paste0("~/Documents/tempForecasts/march12-withSP/test point est_", county1)
+  } else {
+    inputs$internal.args$output.filestr <- paste0("~/Documents/tempForecasts/march12-noSP/test point est_", county1)
+    ### temp
+    inputs$obs.data[, seroprev.conf := NA_real_]
+    inputs$obs.data[, seroprev.pui := NA_real_]
+    cat("----- temp -- no seroprev\n\n")
   }
-
-  return(NULL)
+  lemma <- LEMMA:::CredibilityInterval(inputs)
+  return(lemma)
 }
 
 
