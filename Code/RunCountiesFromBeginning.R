@@ -101,7 +101,9 @@ RunOneCounty <- function(county1, county.dt, doses.dt) {
   if (include.seroprev) {
     inputs$internal.args$output.filestr <- paste0("~/Documents/tempForecasts/march12-withSP/test point est_", county1)
   } else {
-    inputs$internal.args$output.filestr <- paste0("~/Documents/tempForecasts/march12-noSP/test point est_", county1)
+    #also new deaths, removed case holidays
+    inputs$internal.args$output.filestr <- paste0("~/Documents/tempForecasts/march13-noSP-newint-noAdmits/test point est_", county1)
+    # inputs$internal.args$output.filestr <- paste0("Forecasts/", county1)
     ### temp
     inputs$obs.data[, seroprev.conf := NA_real_]
     inputs$obs.data[, seroprev.pui := NA_real_]

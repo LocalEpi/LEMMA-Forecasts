@@ -1,131 +1,34 @@
 GetCountyData <- function(include.regions = TRUE) {
-  dt <- fread("https://data.ca.gov/dataset/529ac907-6ba1-4cb7-9aae-8966fc96aeef/resource/42d33765-20fd-44b8-a978-b083b7542225/download/hospitals_by_county.csv")
-  #dt <- dt[todays_date != "", .(county, date = as.Date(todays_date), hosp.conf = hospitalized_covid_confirmed_patients, hosp.pui = hospitalized_suspected_covid_patients, icu.conf = icu_covid_confirmed_patients, icu.pui = icu_suspected_covid_patients)]
+  dt <- fread("https://data.chhs.ca.gov/dataset/2df3e19e-9ee4-42a6-a087-9761f82033f6/resource/47af979d-8685-4981-bced-96a6b79d3ed5/download/covid19hospitalbycounty.csv")
   dt <- dt[, .(county, date = as.Date(todays_date), hosp.conf = hospitalized_covid_confirmed_patients, hosp.pui = hospitalized_suspected_covid_patients, icu.conf = icu_covid_confirmed_patients, icu.pui = icu_suspected_covid_patients)]
 
-  dt <- dt[date >= as.Date("2020/4/1"), .(county, date, hosp.conf, hosp.pui, icu.conf, icu.pui)]
+  deaths.cases <- fread("https://data.chhs.ca.gov/dataset/f333528b-4d38-4814-bebb-12db1f10f535/resource/046cdd2b-31e5-4d34-9ed3-b48cdbc4be7a/download/covid19cases_test.csv")
+  deaths.cases[, date := as.Date(date)]
+  deaths.cases[, county := area]
+  deaths.cases <- deaths.cases[!(county %in% c("Unknown", "Out of state", "California")) & !is.na(date)]
+  setkey(deaths.cases, county, date)
 
-  deaths <- fread("https://data.ca.gov/dataset/590188d5-8545-4c93-a9a0-e230f0db7290/resource/926fd08f-cc91-4828-af38-bd45de97f8c3/download/statewide_cases.csv")
-  deaths <- deaths[, .(county, date = as.Date(date), deaths.conf = as.numeric(totalcountdeaths))]
-  county.dt <- merge(dt, deaths, all = T, keyby = c("county", "date"))
+  #assume last 3 days of cases, 30 days of deaths are not reliable
+  max.date <- deaths.cases[, max(date)]
+  case.dt <- deaths.cases[date >= as.Date("2020/9/25") & date < (max.date - 3), .(date, county, cases.conf = cases, cases.pui = NA_real_)]
+  case.dt[date %in% as.Date(c("2020/11/26", "2020/11/27", "2020/12/25", "2021/1/1")), cases.conf := NA_real_] #remove major holidays before and after frollmean
+  case.dt[, cases.conf := frollmean(cases.conf, 7, na.rm = T), by = county]
+  case.dt[date %in% as.Date(c("2020/11/26", "2020/11/27", "2020/12/25", "2021/1/1")), cases.conf := NA_real_] #remove major holidays before and after frollmean
 
+  deaths.dt <- deaths.cases[date <= (max.date - 30), .(date, deaths.conf = cumsum(deaths), deaths.pui = NA_real_), by = "county"]
+  county.dt <- merge(dt, deaths.dt, all = T, by = c("county", "date"))
+  county.dt <- merge(county.dt, case.dt, all = T, by = c("county", "date"))
+  county.dt <- county.dt[date >= as.Date("2020/3/1")]
   county.dt[, mean10 := mean(hosp.conf[date >= (Sys.Date() - 10)], na.rm=T), by = "county"]
   county.dt <- county.dt[mean10 > 1] #exclude if average hosp over last 10 days < 1
   county.dt$mean10 <- NULL
-
-  #make deaths NA for outliers that imply cumulative deaths decrease
-  county.dt[county == 'Alameda' & date == '2020-08-22', deaths.conf := NA_real_]
-  county.dt[county == 'Alameda' & date == '2020-10-04', deaths.conf := NA_real_]
-  county.dt[county == 'Alameda' & date == '2020-10-11', deaths.conf := NA_real_]
-  county.dt[county == 'Alameda' & date == '2020-10-12', deaths.conf := NA_real_]
-  county.dt[county == 'Alameda' & date == '2020-10-13', deaths.conf := NA_real_]
-  county.dt[county == 'Alameda' & date == '2020-10-15', deaths.conf := NA_real_]
-  county.dt[county == 'Alameda' & date == '2020-10-18', deaths.conf := NA_real_]
-  county.dt[county == 'Alameda' & date == '2020-10-20', deaths.conf := NA_real_]
-  county.dt[county == 'Amador' & date == '2020-08-31', deaths.conf := NA_real_]
-  county.dt[county == 'Amador' & date == '2020-09-06', deaths.conf := NA_real_]
-  county.dt[county == 'Contra Costa' & date == '2020-03-24', deaths.conf := NA_real_]
-  county.dt[county == 'Contra Costa' & date == '2020-03-25', deaths.conf := NA_real_]
-  county.dt[county == 'Contra Costa' & date == '2020-05-10', deaths.conf := NA_real_]
-  county.dt[county == 'Kern' & date == '2020-09-03', deaths.conf := NA_real_]
-  county.dt[county == 'Lake' & date == '2020-11-02', deaths.conf := NA_real_]
-  county.dt[county == 'Los Angeles' & date == '2020-03-25', deaths.conf := NA_real_]
-  county.dt[county == 'Marin' & date == '2020-08-27', deaths.conf := NA_real_]
-  county.dt[county == 'Marin' & date == '2020-10-27', deaths.conf := NA_real_]
-  county.dt[county == 'Mendocino' & date == '2020-09-11', deaths.conf := NA_real_]
-  county.dt[county == 'Monterey' & date == '2020-10-26', deaths.conf := NA_real_]
-  county.dt[county == 'Orange' & date == '2020-04-10', deaths.conf := NA_real_]
-  county.dt[county == 'Orange' & date == '2020-07-19', deaths.conf := NA_real_]
-  county.dt[county == 'Orange' & date == '2020-08-10', deaths.conf := NA_real_]
-  county.dt[county == 'Sacramento' & date == '2020-03-21', deaths.conf := NA_real_]
-  county.dt[county == 'Sacramento' & date == '2020-06-17', deaths.conf := NA_real_]
-  county.dt[county == 'Sacramento' & date == '2020-06-18', deaths.conf := NA_real_]
-  county.dt[county == 'Sacramento' & date == '2020-06-19', deaths.conf := NA_real_]
-  county.dt[county == 'Sacramento' & date == '2020-06-20', deaths.conf := NA_real_]
-  county.dt[county == 'Sacramento' & date == '2020-06-21', deaths.conf := NA_real_]
-  county.dt[county == 'San Bernardino' & date == '2020-04-10', deaths.conf := NA_real_]
-  county.dt[county == 'San Bernardino' & date == '2020-07-30', deaths.conf := NA_real_]
-  county.dt[county == 'San Joaquin' & date == '2020-09-28', deaths.conf := NA_real_]
-  county.dt[county == 'San Luis Obispo' & date == '2020-08-31', deaths.conf := NA_real_]
-  county.dt[county == 'San Francisco' & date == '2020-03-26', deaths.conf := NA_real_]
-  county.dt[county == 'San Mateo' & date == '2020-03-30', deaths.conf := NA_real_]
-  county.dt[county == 'San Mateo' & date == '2020-04-10', deaths.conf := NA_real_]
-  county.dt[county == 'Santa Barbara' & date == '2020-04-10', deaths.conf := NA_real_]
-  county.dt[county == 'Santa Barbara' & date == '2020-07-08', deaths.conf := NA_real_]
-  county.dt[county == 'Santa Clara' & date == '2020-03-31', deaths.conf := NA_real_]
-  county.dt[county == 'Santa Clara' & date == '2020-08-29', deaths.conf := NA_real_]
-  county.dt[county == 'Santa Cruz' & date == '2020-06-18', deaths.conf := NA_real_]
-  county.dt[county == 'Shasta' & date == '2020-06-11', deaths.conf := NA_real_]
-  county.dt[county == 'Shasta' & date == '2020-06-12', deaths.conf := NA_real_]
-  county.dt[county == 'Shasta' & date == '2020-06-13', deaths.conf := NA_real_]
-  county.dt[county == 'Shasta' & date == '2020-06-14', deaths.conf := NA_real_]
-  county.dt[county == 'Stanislaus' & date == '2020-06-20', deaths.conf := NA_real_]
-  county.dt[county == 'Stanislaus' & date == '2020-06-21', deaths.conf := NA_real_]
-  county.dt[county == 'Sonoma' & date == '2020-05-12', deaths.conf := NA_real_]
-  county.dt[county == 'Yolo' & date == '2020-04-06', deaths.conf := NA_real_]
-  county.dt[county == 'Yolo' & date == '2020-04-08', deaths.conf := NA_real_]
-  county.dt[county == 'Yolo' & date == '2020-04-09', deaths.conf := NA_real_]
-  county.dt[county == 'Yuba' & date == '2020-06-16', deaths.conf := NA_real_]
-  county.dt[county == 'Yuba' & date == '2020-06-17', deaths.conf := NA_real_]
-  county.dt[county == 'Yuba' & date == '2020-06-18', deaths.conf := NA_real_]
-
-  county.dt[county == 'Alameda' & date == '2020-11-04', deaths.conf := NA_real_]
-  county.dt[county == 'Alameda' & date == '2020-11-10', deaths.conf := NA_real_]
-  county.dt[county == 'Contra Costa' & date == '2020-11-12', deaths.conf := NA_real_]
-  county.dt[county == 'Humboldt' & date == '2020-11-17', deaths.conf := NA_real_]
-  county.dt[county == 'Kings' & date == '2020-11-14', deaths.conf := NA_real_]
-  county.dt[county == 'Kings' & date == '2020-11-18', deaths.conf := NA_real_]
-  county.dt[county == 'Orange' & date == '2020-11-02', deaths.conf := NA_real_]
-  county.dt[county == 'San Joaquin' & date == '2020-11-19', deaths.conf := NA_real_]
-  county.dt[county == 'San Joaquin' & date == '2020-11-20', deaths.conf := NA_real_]
-  county.dt[county == 'Yolo' & date == '2020-11-23', deaths.conf := NA_real_]
-  county.dt[county == 'Inyo' & date == '2020-09-04', deaths.conf := NA_real_]
-  county.dt[county == 'San Joaquin' & date == '2020-11-25', deaths.conf := NA_real_]
-  county.dt[county == 'Alameda' & date == '2020-12-07', deaths.conf := NA_real_]
-  county.dt[county == 'Lake' & date == '2020-12-16', deaths.conf := NA_real_]
-  county.dt[county == 'San Joaquin' & date == '2020-12-11', deaths.conf := NA_real_]
-  county.dt[county == 'Santa Barbara' & date == '2020-12-12', deaths.conf := NA_real_]
-  county.dt[county == 'Stanislaus' & date == '2020-12-16', deaths.conf := NA_real_]
-  county.dt[county == 'Yolo' & date == '2020-12-10', deaths.conf := NA_real_]
-  county.dt[county == 'Yuba' & date == '2020-12-09', deaths.conf := NA_real_]
-  county.dt[county == 'Yolo' & date == '2020-12-25', deaths.conf := NA_real_]
-  county.dt[county == 'Alameda' & date == '2021-01-01', deaths.conf := NA_real_]
-  county.dt[county == 'Alameda' & date == '2021-01-14', deaths.conf := NA_real_]
-  county.dt[county == 'Alameda' & date == '2021-01-15', deaths.conf := NA_real_]
-  county.dt[county == 'Placer' & date == '2021-01-12', deaths.conf := NA_real_]
-  county.dt[county == 'Nevada' & date == '2021-01-25', deaths.conf := NA_real_]
-  county.dt[county == 'Contra Costa' & date == '2021-02-22', deaths.conf := NA_real_]
-  county.dt[county == 'Imperial' & date == '2021-02-23', deaths.conf := NA_real_]
-  county.dt[county == 'San Diego' & date == '2021-02-22', deaths.conf := NA_real_]
-  county.dt[county == 'Solano' & date == '2021-02-23', deaths.conf := NA_real_]
-
-  #data errors
-  county.dt[county == 'Merced' & date == '2020-08-16', hosp.conf := NA_real_]
-  county.dt[county == 'Merced' & date == '2020-08-16', hosp.pui := NA_real_]
-  county.dt[county == 'Merced' & date == '2020-08-16', icu.conf := NA_real_]
-  county.dt[county == 'Merced' & date == '2020-08-16', icu.pui := NA_real_]
-  county.dt[county == "Kings" & date == '2020-04-03', icu.conf := NA_real_]
-  county.dt[county == "Kings" & date == '2020-04-03', icu.pui := NA_real_]
-  county.dt[county == "Yolo" & date == '2020-12-12', hosp.conf := NA_real_]
-  county.dt[county == "Yolo" & date == '2020-12-12', hosp.pui := NA_real_]
-
-  #check for new problems with death reporting
-  for (county1 in unique(county.dt$county)) {
-    dt <- county.dt[county == county1]
-    dt[, deaths.inc := c(NA, diff(deaths.conf))]
-    index <- which(dt[, deaths.inc < 0])
-    for (index1 in index) {
-      index2 <- seq(pmax(1, index1-5),pmin(nrow(dt), index1+5))
-      # print(dt[index2, .(county, date, deaths.conf, deaths.inc)])
-      d <- dt[index1, date]
-      cat("county.dt[county == '", county1, "' & date == '", as.character(d), "', deaths.conf := NA_real_]\n", sep = "")
-    }
-  }
 
   county.pop <- data.table::fread("Inputs/county population.csv")
   county.dt <- merge(county.dt, county.pop, by = "county")
   county.dt[, is.region := F]
 
+  county.dt[county == "Nevada" & date=="2020-03-29", hosp.conf := NA_real_]
+  county.dt[county == "Inyo" & date=="2020-03-31", hosp.pui := NA_real_]
   if (include.regions) {
     regions <- list(BayArea = c("Alameda", "Contra Costa", "Marin", "Monterey", "Napa", "San Francisco", "San Mateo", "Santa Clara", "Santa Cruz", "Solano", "Sonoma"),
                     GreaterSacramento = c("Alpine", "Amador", "Butte", "Colusa", "El Dorado", "Nevada",

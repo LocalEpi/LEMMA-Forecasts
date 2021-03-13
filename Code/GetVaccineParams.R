@@ -65,6 +65,8 @@ GetVaccineParams <- function(doses, variants, start_date, end_date, variant_day0
   variant_frac <- variant_frac * matrix(variants$daily_growth, nrow = nt, ncol = num_variants, byrow = T) ^ it #recycles it
   variant_frac <- variant_frac / rowSums(variant_frac) #recycles row sum
 
+  variant_frac_temp <<- variant_frac #temp
+
   vaccine_efficacy_against_progression <- vaccine_efficacy_for_susceptibility <- duration_vaccinated <- duration_natural  <- transmission_variant_multiplier <- rep(NA_real_, nt)
   for (it in 1:nt) {
     vaccine_efficacy_against_progression[it] <- sum((variants$vaccine_efficacy_against_progression_1 * (1 - frac_fully[it]) + variants$vaccine_efficacy_against_progression_2 * frac_fully[it]) * variant_frac[it, ])
