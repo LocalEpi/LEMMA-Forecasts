@@ -41,7 +41,9 @@ if (!exists("county.dt")) {
   county.dt <- GetCountyData(include.regions = F)
   county.dt[, deaths.pui := NA_real_]
 
-  admits.dt <- fread("https://healthdata.gov/node/3651441/download")[state == "CA"]
+  # TODO this code relies on a soon-to-be-retired API. legacy domain will keep the code working for a few weeks
+  # But need to update the code to the new API long term... 
+  admits.dt <- fread("https://legacy.healthdata.gov/node/3651441/download")[state == "CA"]
   admits.dt[, previous_day_admission_adult_covid_confirmed_7_day_sum := ConvertNegative(previous_day_admission_adult_covid_confirmed_7_day_sum)]
   admits.dt[, previous_day_admission_pediatric_covid_confirmed_7_day_sum := ConvertNegative(previous_day_admission_pediatric_covid_confirmed_7_day_sum)]
   admits.dt[, previous_day_admission_adult_covid_suspected_7_day_sum := ConvertNegative(previous_day_admission_adult_covid_suspected_7_day_sum)]
