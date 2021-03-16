@@ -42,9 +42,11 @@ setorder(county.by.pop, -population)
 county.set <- county.by.pop[, county]
 
 county.set <- setdiff(county.set, c("Siskiyou", "Humboldt", "El Dorado")) #not currently working
+# county.set <- "San Francisco"
 
 print(county.set)
+print(system.time(
 lemma.set <- mclapply(county.set, RunOneCounty, county.dt, doses.dt, mc.cores = 15)
-
+))
 
 
