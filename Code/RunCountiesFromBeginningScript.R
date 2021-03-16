@@ -1,18 +1,10 @@
 library(matrixStats)
 library(data.table)
 
-
-# setwd("~/Documents/GitHub/LEMMA-Forecasts/")
+setwd("~/Documents/GitHub/LEMMA-Forecasts/")
 
 source('Code/GetCountyData.R')
 source('Code/RunCountiesFromBeginning.R')
-
-ConvertNegative <- function(value) {
-  #-999999 in admits data means 1 2 or 3 => use 2
-  stopifnot(all(value >= 0 | is.na(value) | value == -999999))
-  value[value == -999999] <- 2
-  return(value)
-}
 
 ReadCsvAWS <- function(object) {
   filestr <- tempfile()
@@ -23,8 +15,6 @@ ReadCsvAWS <- function(object) {
   return(csv)
 }
 
-# county.dt <- readRDS("~/Documents/Temp/countydt.rds"); cat("temp - using saved county.dt\n")
-# doses.dt <- readRDS("~/Documents/Temp/dosesdt.rds")
 #TODO: move this to GetCountyData
 if (!exists("county.dt")) {
   seroprev.dt <- ReadCsvAWS("countySP_ts.csv")
@@ -38,28 +28,7 @@ if (!exists("county.dt")) {
   doses.dt[, date := as.Date(date)]
   doses.dt[, count := as.numeric(count)]
 
-  county.dt <- GetCountyData(include.regions = F)
-
-  if (F) {
-    admits.dt <- fread("https://healthdata.gov/node/3651441/download")[state == "CA"]
-    admits.dt[, previous_day_admission_adult_covid_confirmed_7_day_sum := ConvertNegative(previous_day_admission_adult_covid_confirmed_7_day_sum)]
-    admits.dt[, previous_day_admission_pediatric_covid_confirmed_7_day_sum := ConvertNegative(previous_day_admission_pediatric_covid_confirmed_7_day_sum)]
-    admits.dt[, previous_day_admission_adult_covid_suspected_7_day_sum := ConvertNegative(previous_day_admission_adult_covid_suspected_7_day_sum)]
-    admits.dt[, previous_day_admission_pediatric_covid_suspected_7_day_sum := ConvertNegative(previous_day_admission_pediatric_covid_suspected_7_day_sum)]
-    admits.dt2 <- admits.dt[, .(admits.conf = sum(previous_day_admission_adult_covid_confirmed_7_day_sum + previous_day_admission_pediatric_covid_confirmed_7_day_sum) / 7,
-                                admits.pui = sum(previous_day_admission_adult_covid_suspected_7_day_sum + previous_day_admission_pediatric_covid_suspected_7_day_sum) / 7),
-                            by = c("fips_code", "collection_week")]
-    admits.dt2[, date := as.Date(collection_week) + 3] #add 3 for midpoint of week
-    setnames(admits.dt2, "fips_code", "fips")
-    admits.dt2 <- merge(admits.dt2, fread("Inputs/CountyFips.csv"))
-    admits.dt2[is.na(admits.conf), admits.pui := NA_real_]
-    admits.dt2[is.na(admits.pui), admits.conf := NA_real_]
-
-    county.dt <- merge(county.dt, admits.dt2[, .(date, county, admits.conf, admits.pui)], by = c("date", "county"), all = T)
-  } else {
-    county.dt[, admits.conf := NA_real_]
-    county.dt[, admits.pui := NA_real_]
-  }
+  county.dt <- GetCountyData(include.regions = F, remove.holidays = T)
   county.dt <- merge(county.dt, seroprev.dt, by = c("date", "county"), all = T)
 
   county.dt <- county.dt[!(county %in% c("Out Of Country", "Unassigned", "Unknown"))]
@@ -72,16 +41,10 @@ county.by.pop <- unique(county.dt[!is.na(population), .(county, population)]) #N
 setorder(county.by.pop, -population)
 county.set <- county.by.pop[, county]
 
-county.dt <- county.dt[date <= as.Date("2021/3/8")] #to compare with LEMMA1
+county.set <- setdiff(county.set, c("Siskiyou", "Humboldt", "El Dorado")) #not currently working
 
 print(county.set)
-include.seroprev <- F
-s=system.time(
-  z.nosero <- mclapply(county.set, RunOneCounty, county.dt, doses.dt, mc.cores = 15)
-)
-# include.seroprev <- T
-# s=system.time(
-#   z.withsero <- mclapply(county.set, RunOneCounty, county.dt, doses.dt, mc.cores = 15)
-# )
+lemma.set <- mclapply(county.set, RunOneCounty, county.dt, doses.dt, mc.cores = 15)
+
 
 

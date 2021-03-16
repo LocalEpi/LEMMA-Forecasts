@@ -1,20 +1,7 @@
-#also output median and sd other posteriors, should we use these (e.g. frac_mort?); I think depends in part on if we want to fit to recent death rate or overall
-#email Paul, Chris
-#think about how to generate full fit if needed (e.g. save Rt quantiles up to restart date for plotting)
-#think about when to move restart date and update cache - if restart is after vaccines start would need more categories
-#document this change + sigmaobs fix + variants/vaccines - set a deadline and priorities
-#clean up LEMMA code (GetStanInputs, LEMMA.stan) - check for any fixme/todo/temp
-#plan for new spreadsheet format (caching + variants + vaccines)
-#update RunCACounties-SF - have something to just add one line with Wayne's latest (use nonICU+ICU as input and convert to total) to the state data and UeS to cases
-
-
 library(matrixStats)
 library(data.table)
-# setwd("~/Documents/GitHub/LEMMA-Forecasts/")
 
-source('Code/GetInputsVaxRestart.R')
 source('Code/GetVaccineParams.R')
-
 
 GetVaccineParamsForCounty <- function(county1, doses.dt) {
   pop <- readRDS("Inputs/county population by age.rds")[county1, ]
@@ -72,21 +59,26 @@ Get1 <- function(zz) {
 
 GetCountyInputs <- function(county1, county.dt, doses.dt) {
   county.pop1 <- county.dt[county == county1, Get1(population)]
-  if (county1 == "San Francisco") {
-    cat("SF is using state data, not SF data\n")
-  }
-  input.file <- "Inputs/CAcounties_sigmaobs.xlsx"
+  county.dt1 <- county.dt[county == county1, .(date, hosp.conf, hosp.pui, icu.conf, icu.pui,  deaths.conf, deaths.pui, admits.conf, admits.pui, cases.conf, cases.pui, seroprev.conf, seroprev.pui)]
+  input.file <- "Inputs/CAcounties.xlsx"
   sheets <- LEMMA:::ReadInputs(input.file)
-  county.dt1 <- county.dt[county == county1, .(date, hosp.conf, hosp.pui, icu.conf, icu.pui,  deaths.conf, admits.conf, admits.pui, cases.conf, cases.pui, seroprev.conf, seroprev.pui)]
-  county.dt1[!is.na(deaths.conf), deaths.pui := 0]
   sheets$Data <- county.dt1
+  if (county1 == "San Francisco") {
+    sf.input.file <- "Inputs/SF.xlsx"
+    sf.sheets <- list(LEMMA:::ReadExcel(sf.input.file, sheet = "Interventions", skip = 2),
+                      LEMMA:::ReadExcel(sf.input.file, sheet = "Data", skip = 3))
+    names(sf.sheets) <- sapply(sf.sheets, function (z) attr(z, "sheetname"))
+    sf.sheets <- rapply(sheets, as.Date, classes = "POSIXt", how = "replace") #convert dates
+    sheets$Interventions <- sf.sheets$Interventions
+    sheets$Data$hosp.conf <- sheets$Data$hosp.pui <- sheets$Data$icu.conf <- sheets$Data$icu.pui <- NULL
+    sheets$Data <- merge(sheets$Data, sf.sheets$Data[, .(date, hosp.conf, hosp.pui, icu.conf, icu.pui)], by = "date", all = T)
+  }
+
 
   sheets$`Model Inputs`[internal.name == "total.population", value := county.pop1]
 
-  sheets$Data[is.na(deaths.pui) & !is.na(deaths.conf), deaths.pui := 0]
   inputs <- LEMMA:::ProcessSheets(sheets, input.file)
   inputs$vaccines <- GetVaccineParamsForCounty(county1, doses.dt)
-  inputs$internal.args$output.filestr <- paste0("Restart/Forecast/test point est_", county1)
 
   mean.ini <- 1e-5 * county.pop1
   inputs$internal.args$lambda_ini_exposed <- 1 / mean.ini
@@ -94,21 +86,17 @@ GetCountyInputs <- function(county1, county.dt, doses.dt) {
 }
 
 RunOneCounty <- function(county1, county.dt, doses.dt) {
-
   inputs <- GetCountyInputs(county1, county.dt, doses.dt)
-  #county1 is used for printing and filename, could be removed/put in inputs
 
-  if (include.seroprev) {
-    inputs$internal.args$output.filestr <- paste0("~/Documents/tempForecasts/march12-withSP/test point est_", county1)
-  } else {
-    #also new deaths, removed case holidays
-    inputs$internal.args$output.filestr <- paste0("~/Documents/tempForecasts/march13-noSP-newint-noAdmits/test point est_", county1)
-    # inputs$internal.args$output.filestr <- paste0("Forecasts/", county1)
-    ### temp
-    inputs$obs.data[, seroprev.conf := NA_real_]
-    inputs$obs.data[, seroprev.pui := NA_real_]
-    cat("----- temp -- no seroprev\n\n")
-  }
+  date1 <- as.Date("2020/10/1")
+  inputs$obs.data[date <= date1, icu.conf := NA]
+  inputs$obs.data[date <= date1, icu.pui := NA]
+  inputs$obs.data[date <= date1, deaths.conf := NA]
+  inputs$obs.data[date <= date1, deaths.pui := NA]
+
+  inputs$internal.args$weights <- c(1, 1, 1, 1, 0.5, 1)
+  inputs$internal.args$output.filestr <- paste0("Forecasts/", county1)
+
   lemma <- LEMMA:::CredibilityInterval(inputs)
   return(lemma)
 }
