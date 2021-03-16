@@ -6,8 +6,9 @@ https://github.com/LocalEpi/LEMMA
 
 These forecasts can be reproduced by installing the LEMMA package and running Code/RunCAcounties.R
 
-The .xlsx files have quantile forecasts of hospitalization, ICU and deaths due to COVID-19.  
-The .pdf files have plots with these same forecasts, along with posterior distributions of the model parameters.
+
+As of March 15, these forecasts have been updated to run using the `vaxNonhospmort` branch of LEMMA. Additional documentation will be posted by March 19.
+
 
 Note: Except for San Francisco, our forecasts are not adjusted for mutual aid transfers between counties. 
 
