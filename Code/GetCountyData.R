@@ -22,7 +22,6 @@ GetCountyData <- function(include.regions = FALSE, remove.holidays = TRUE) {
     case.dt[date %in% as.Date(c("2020/11/26", "2020/11/27", "2020/12/25", "2021/1/1")), cases.conf := NA_real_] #remove major holidays before and after frollmean
   }
 
-
   deaths.dt <- deaths.cases[date <= (max.date - 30), .(date, deaths.conf = cumsum(deaths), deaths.pui = NA_real_), by = "county"]
   county.dt <- merge(dt, deaths.dt, all = T, by = c("county", "date"))
   county.dt <- merge(county.dt, case.dt, all = T, by = c("county", "date"))
@@ -30,6 +29,14 @@ GetCountyData <- function(include.regions = FALSE, remove.holidays = TRUE) {
   admits.dt <- GetAdmits()
   county.dt <- merge(county.dt, admits.dt, all = T, by = c("county", "date"))
 
+  seroprev.dt <- ReadCsvAWS("countySP_ts.csv")
+  seroprev.dt[, county := sub(" County", "", county)]
+  seroprev.dt[, year := substr(as.character(end_4wk), 1, 4)]
+  seroprev.dt[, week := substr(as.character(end_4wk), 5, 6)]
+  seroprev.dt[, date := as.Date(paste0(year, "/1/1")) + as.numeric(week) * 7 - 14] #subtract two weeks to get middle of 4 week period
+  seroprev.dt <- seroprev.dt[, .(date, county, seroprev.conf = reweightedSP, seroprev.pui = NA_real_)]
+
+  county.dt <- merge(county.dt, seroprev.dt, by = c("date", "county"), all = T)
 
   county.dt <- county.dt[date >= as.Date("2020/3/1")]
   county.dt[, mean10 := mean(hosp.conf[date >= (Sys.Date() - 10)], na.rm=T), by = "county"]
@@ -38,6 +45,9 @@ GetCountyData <- function(include.regions = FALSE, remove.holidays = TRUE) {
 
   county.pop <- data.table::fread("Inputs/county population.csv")
   county.dt <- merge(county.dt, county.pop, by = "county")
+
+  county.dt <- county.dt[!(county %in% c("Out Of Country", "Unassigned", "Unknown"))]
+
 
   #Imperial has weird hosp data for a few days late March
   county.dt[date < as.Date("2020/4/1") & county == "Imperial", hosp.conf := NA]
@@ -49,11 +59,11 @@ GetCountyData <- function(include.regions = FALSE, remove.holidays = TRUE) {
   county.dt[date < as.Date("2020-08-24") & county == "San Bernardino", admits.conf := NA]
   county.dt[date < as.Date("2020-08-24") & county == "San Bernardino", admits.pui := NA]
 
-
-  county.dt[, is.region := F]
-
+  #Misc data problems
   county.dt[county == "Nevada" & date=="2020-03-29", hosp.conf := NA_real_]
   county.dt[county == "Inyo" & date=="2020-03-31", hosp.pui := NA_real_]
+
+  county.dt[, is.region := F]
   if (include.regions) {
     regions <- list(BayArea = c("Alameda", "Contra Costa", "Marin", "Monterey", "Napa", "San Francisco", "San Mateo", "Santa Clara", "Santa Cruz", "Solano", "Sonoma"),
                     GreaterSacramento = c("Alpine", "Amador", "Butte", "Colusa", "El Dorado", "Nevada",
@@ -76,6 +86,21 @@ GetCountyData <- function(include.regions = FALSE, remove.holidays = TRUE) {
 
   setkey(county.dt, county, date)
   return(county.dt)
+}
+
+ReadCsvAWS <- function(object) {
+  filestr <- tempfile()
+  aws.s3::save_object(object, bucket = "js-lemma-bucket1", file = filestr, region = "us-west-1")
+  csv <- fread(filestr)
+  value <- unlink(filestr)
+  if (!identical(value, 0L)) stop("failed to delete temp file")
+  return(csv)
+}
+
+GetDosesData <- function() {
+  doses.dt <- ReadCsvAWS("VaccinesByCounty.csv")
+  doses.dt[, date := as.Date(date)]
+  doses.dt[, count := as.numeric(count)]
 }
 
 ConvertNegative <- function(value) {
@@ -126,6 +151,7 @@ GetAdmits <- function() {
   return(admits.dt2)
 }
 
+#not currently used
 GetSantaClaraData <- function() {
   sc.deaths <- fread("https://data.sccgov.org/api/views/tg4j-23y2/rows.csv?accessType=DOWNLOAD")
   sc.deaths[, date := as.Date(Date)]
@@ -140,42 +166,3 @@ GetSantaClaraData <- function() {
   sc[, population := pop]
   return(sc)
 }
-
-GetRunTime <- function(county1) {
-  filestr <- paste0("Logs/progress-", county1, ".txt")
-  time.num <- NA
-  if (file.exists(filestr)) {
-    log.str <- readLines(filestr)
-    index <- grep("elapsed", log.str)
-    if (length(index) >= 1) {
-      index <- min(index) + 1
-      time.num <- as.numeric(strsplit(trimws(log.str[index]), " ")[[1]])
-      time.num <- time.num[length(time.num)]
-    }
-  }
-  if (is.na(time.num)) {
-    time.num <- 100000
-  }
-  if (county1 %in% c("Yuba")) { #temp
-    time.num <- time.num + 1
-  }
-  return(time.num)
-}
-
-
-IsBad <- function(w) {
-  if (w %in% c("Bulk Effective Samples Size (ESS) is too low, indicating posterior means and medians may be unreliable. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#bulk-ess",
-               "Tail Effective Samples Size (ESS) is too low, indicating posterior variances and tail quantiles may be unreliable. Running the chains for more iterations may help. See http://mc-stan.org/misc/warnings.html#tail-ess",
-               "Examine the pairs() plot to diagnose sampling problems")) return(F)
-  if (grepl("There were [[:digit:]]+ divergent transitions after warmup.", w)) {
-    x <- as.numeric(strsplit(sub("There were ", "", w), split = " divergent")[[1]][1])
-    return(x > 50)
-  }
-  if (grepl("There were [[:digit:]]+ transitions after warmup that exceeded the maximum treedepth.", w)) {
-    x <- as.numeric(strsplit(sub("There were ", "", w), split = " transitions")[[1]][1])
-    return(x > 50)
-  }
-  return(T)
-}
-
-

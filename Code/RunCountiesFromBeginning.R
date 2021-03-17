@@ -1,5 +1,6 @@
 library(matrixStats)
 library(data.table)
+library(ggplot2)
 
 source('Code/GetVaccineParams.R')
 
@@ -64,16 +65,25 @@ GetCountyInputs <- function(county1, county.dt, doses.dt) {
   sheets <- LEMMA:::ReadInputs(input.file)
   sheets$Data <- county.dt1
   if (county1 == "San Francisco") {
-    sf.input.file <- "Inputs/SF.xlsx"
-    sf.sheets <- list(LEMMA:::ReadExcel(sf.input.file, sheet = "Interventions", skip = 2),
-                      LEMMA:::ReadExcel(sf.input.file, sheet = "Data", skip = 3))
-    names(sf.sheets) <- sapply(sf.sheets, function (z) attr(z, "sheetname"))
-    sf.sheets <- rapply(sheets, as.Date, classes = "POSIXt", how = "replace") #convert dates
-    sheets$Interventions <- sf.sheets$Interventions
-    sheets$Data$hosp.conf <- sheets$Data$hosp.pui <- sheets$Data$icu.conf <- sheets$Data$icu.pui <- NULL
-    sheets$Data <- merge(sheets$Data, sf.sheets$Data[, .(date, hosp.conf, hosp.pui, icu.conf, icu.pui)], by = "date", all = T)
-  }
+    # #use local data for intervention dates and hospital/ICU census
+    # sf.input.file <- "Inputs/SF.xlsx"
+    # sf.sheets <- list(LEMMA:::ReadExcel(sf.input.file, sheet = "Interventions", skip = 2),
+    #                   LEMMA:::ReadExcel(sf.input.file, sheet = "Data", skip = 3))
+    # names(sf.sheets) <- sapply(sf.sheets, function (z) attr(z, "sheetname"))
+    # sf.sheets <- rapply(sf.sheets, as.Date, classes = "POSIXt", how = "replace") #convert dates
+    # sheets$Interventions <- sf.sheets$Interventions
+    # sheets$Data$hosp.conf <- sheets$Data$hosp.pui <- sheets$Data$icu.conf <- sheets$Data$icu.pui <- NULL
+    # sheets$Data <- merge(sheets$Data, sf.sheets$Data[, .(date, hosp.conf, hosp.pui, icu.conf, icu.pui)], by = "date", all = T)
 
+    #add UeS cases
+    ues <- c(34, 39, 43, 45, 0, 50, 0, 57, 53, 44, 36, 0, 37, 0, 35, 43, 31, 23, 0, 38, 0, 0, 0, 0, 20, 0, 0, 0, 14, 16, 11, 19, 0, 0, 0, 12, 9, 10, 7, 0, 0, 0, 7, 12, 4, 7, 0, 0, 0, 5, 9, 2, 7, 0, 0, 0, 5, 1, 1, 2, 0, 0, 0, 7, 7)
+    ues.dt <- data.table(date = as.Date("2021/1/10") + (1:length(ues)) - 1, ues)
+    print(ues.dt)
+    sheets$Data <- merge(sheets$Data, ues.dt, by = "date", all.x = T)
+    sheets$Data[, ues := frollmean(ues, 7)]
+    sheets$Data[!is.na(ues), cases.conf := ues + cases.conf]
+    sheets$Data$ues <- NULL
+  }
 
   sheets$`Model Inputs`[internal.name == "total.population", value := county.pop1]
 
