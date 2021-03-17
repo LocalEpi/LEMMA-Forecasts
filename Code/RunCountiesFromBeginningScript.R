@@ -12,8 +12,6 @@ county.by.pop <- unique(county.dt[!is.na(population), .(county, population)]) #N
 setorder(county.by.pop, -population)
 county.set <- county.by.pop[, county]
 
-county.set <- setdiff(county.set, c("Siskiyou", "Humboldt", "El Dorado")) #not currently working
-
 print(county.set)
 print(system.time(
 lemma.set <- parallel::mclapply(county.set, RunOneCounty, county.dt, doses.dt, mc.cores = 15)

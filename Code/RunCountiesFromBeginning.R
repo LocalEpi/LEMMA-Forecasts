@@ -88,6 +88,14 @@ GetCountyInputs <- function(county1, county.dt, doses.dt) {
   sheets$`Model Inputs`[internal.name == "total.population", value := county.pop1]
 
   inputs <- LEMMA:::ProcessSheets(sheets, input.file)
+
+  if (county1 == "Siskiyou") {
+    inputs$internal.args$init_frac_mort_nonhosp <- 0.0001
+  }
+  if (county1 == "Humboldt") {
+    inputs$internal.args$init_frac_mort_nonhosp <- 0.001
+  }
+
   inputs$vaccines <- GetVaccineParamsForCounty(county1, doses.dt)
 
   mean.ini <- 1e-5 * county.pop1
