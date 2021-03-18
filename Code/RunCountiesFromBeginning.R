@@ -91,9 +91,12 @@ GetCountyInputs <- function(county1, county.dt, doses.dt) {
 
   #need different initial conditions to converge
   if (county1 == "Siskiyou") {
-    inputs$internal.args$init_frac_mort_nonhosp <- 0.0001
+    inputs$internal.args$init_frac_mort_nonhosp <- 0.00001
   }
   if (county1 == "Humboldt") {
+    inputs$internal.args$init_frac_mort_nonhosp <- 0.001
+  }
+  if (county1 == "El Dorado") {
     inputs$internal.args$init_frac_mort_nonhosp <- 0.001
   }
 
