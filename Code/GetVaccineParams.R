@@ -61,11 +61,11 @@ GetVaccineParams <- function(doses, variants, start_date, end_date, variant_day0
   frac_fully <- doses[, frac_fully]
 
   it <- as.numeric(doses[, date] - variant_day0)
+  growth <- rbind(matrix(variants$daily_growth_prior, nrow = sum(it <= 0), ncol = num_variants, byrow = T),
+                  matrix(variants$daily_growth_future, nrow = sum(it > 0), ncol = num_variants, byrow = T))
   variant_frac <- matrix(variants$frac_on_day0, nrow = nt, ncol = num_variants, byrow = T)
-  variant_frac <- variant_frac * matrix(variants$daily_growth, nrow = nt, ncol = num_variants, byrow = T) ^ it #recycles it
+  variant_frac <- variant_frac * growth ^ it #recycles it
   variant_frac <- variant_frac / rowSums(variant_frac) #recycles row sum
-
-  variant_frac_temp <<- variant_frac #temp
 
   vaccine_efficacy_against_progression <- vaccine_efficacy_for_susceptibility <- duration_vaccinated <- duration_natural  <- transmission_variant_multiplier <- rep(NA_real_, nt)
   for (it in 1:nt) {
@@ -106,6 +106,6 @@ GetVaccineParams <- function(doses, variants, start_date, end_date, variant_day0
 
   date <- seq(start_date, end_date, by = "day")
   vaccines <- data.table(date, vaccinated_per_day, vaccine_efficacy_for_susceptibility, vaccine_efficacy_against_progression, duration_vaccinated, duration_natural, frac_hosp_multiplier, frac_icu_multiplier, frac_mort_multiplier, transmission_variant_multiplier)
-  return(vaccines)
+  return(list(vaccines = vaccines, vaccines_nonstan = list(doses = doses, variant_frac = variant_frac, variants = variants)))
 }
 

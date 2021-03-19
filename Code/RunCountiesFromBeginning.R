@@ -4,7 +4,7 @@ library(ggplot2)
 
 source('Code/GetVaccineParams.R')
 
-GetVaccineParamsForCounty <- function(county1, doses.dt) {
+GetVaccineParamsForCounty <- function(county1, doses.dt, start_date, end_date) {
   pop <- readRDS("Inputs/county population by age.rds")[county1, ]
   population <- data.table(pop)
   #convert census age categories to CDC age categories
@@ -27,27 +27,23 @@ GetVaccineParamsForCounty <- function(county1, doses.dt) {
   doses_actual <- doses_actual[, .(dose1 = sum(count * (dose_num == 1)), dose2 = sum(count * (dose_num == 2))), by = "date"]
 
   variants <- data.table(name = c("Wild", "UK", "SA", "CA", "BR"),
-                         vaccine_efficacy_for_susceptibility_1 =  c(0.81, 0.81, 0.7, 0.81, 0.81),
-                         vaccine_efficacy_for_susceptibility_2 = c(0.89, 0.89, 0.8, 0.89, 0.89),
-                         vaccine_efficacy_against_progression_1 = c(0.90, 0.90, 0.80, 0.90, 0.90),
+                         vaccine_efficacy_for_susceptibility_1 =  c(0.60, 0.60, 0.50, 0.60, 0.50),
+                         vaccine_efficacy_for_susceptibility_2 = c(0.80, 0.80, 0.70, 0.80, 0.70),
+                         vaccine_efficacy_against_progression_1 = c(0.90, 0.90, 0.80, 0.90, 0.80),
                          vaccine_efficacy_against_progression_2 = c(0.99, 0.99, 0.90, 0.99, 0.90),
                          transmisson_mult = c(1, 1.5, 1, 1.25, 1.8),
-                         duration_vaccinated_12 = 365 * c(3, 3, 1, 3, 2),
+                         duration_vaccinated_12 = 365 * c(5, 5, 1, 5, 2),
                          duration_natural_12 =    365 * c(3, 3, 1, 3, 2),
                          hosp_mult = c(1, 1.3, 1, 1, 1.3),
                          mort_mult = c(1, 1.5, 1, 1, 1.5),
-                         daily_growth = c(1, 1, 1, 1.034, 1),
-                         frac_on_day0 = c(0.25, 0, 0, 0.75, 0))
-  variant_day0 <- as.Date("2021/2/24")
-
-  #generate extra doses/variants, will subset
-  start_date <- as.Date("2020/1/1")
-  end_date <- as.Date("2022/1/1")
+                         daily_growth_prior = c(1, 1, 1, 1.034, 1),
+                         daily_growth_future = c(1, 1, 1, 1, 1),
+                         frac_on_day0 = c(0.45, 0, 0, 0.55, 0))
+  variant_day0 <- as.Date("2021/1/25")
 
   scale <- population[, sum(pop)] / 883305  #scale to SF
 
-  #Youyang says ~1.6% daily increase = 80 per day increase from 5000 (this might be off - not fully vaccinated until end June, 10000 per day May 10)
-  doses <- GetDoses(doses_actual, doses_per_day_base = 5000 * scale, doses_per_day_increase  = 80 * scale, doses_per_day_maximum = 10000 * scale, start_increase_day = as.Date("2021/3/1"), start_date, end_date,  dose_proportion, population, vax_uptake = 0.85, max_second_dose_frac = rep(0.7, length(start_date:end_date)))
+  doses <- GetDoses(doses_actual, doses_per_day_base = 6000 * scale, doses_per_day_increase  = 70 * scale, doses_per_day_maximum = 12000 * scale, start_increase_day = as.Date("2021/3/1"), start_date, end_date,  dose_proportion, population, vax_uptake = 0.85, max_second_dose_frac = rep(0.7, length(start_date:end_date)))
   v <- GetVaccineParams(doses, variants, start_date, end_date, variant_day0, population, dose_proportion)
   return(v)
 }
@@ -100,15 +96,11 @@ GetCountyInputs <- function(county1, county.dt, doses.dt) {
     inputs$internal.args$init_frac_mort_nonhosp <- 0.001
   }
 
-  inputs$vaccines <- GetVaccineParamsForCounty(county1, doses.dt)
+  inputs <- c(inputs, GetVaccineParamsForCounty(county1, doses.dt, start_date = inputs$internal.args$simulation.start.date + 1, end_date = inputs$model.inputs$end.date))
 
   mean.ini <- 1e-5 * county.pop1
   inputs$internal.args$lambda_ini_exposed <- 1 / mean.ini
-  return(inputs)
-}
 
-RunOneCounty <- function(county1, county.dt, doses.dt) {
-  inputs <- GetCountyInputs(county1, county.dt, doses.dt)
 
   date1 <- as.Date("2020/10/1")
   inputs$obs.data[date <= date1, icu.conf := NA]
@@ -118,7 +110,11 @@ RunOneCounty <- function(county1, county.dt, doses.dt) {
 
   inputs$internal.args$weights <- c(1, 1, 1, 1, 0.5, 1)
   inputs$internal.args$output.filestr <- paste0("Forecasts/", county1)
+  return(inputs)
+}
 
+RunOneCounty <- function(county1, county.dt, doses.dt) {
+  inputs <- GetCountyInputs(county1, county.dt, doses.dt)
   lemma <- LEMMA:::CredibilityInterval(inputs)
   return(lemma)
 }
