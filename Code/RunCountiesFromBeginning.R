@@ -2,51 +2,8 @@ library(matrixStats)
 library(data.table)
 library(ggplot2)
 
-source('Code/GetVaccineParams.R')
-
-GetVaccineParamsForCounty <- function(county1, doses.dt, start_date, end_date) {
-  pop <- readRDS("Inputs/county population by age.rds")[county1, ]
-  population <- data.table(pop)
-  #convert census age categories to CDC age categories
-  population$age <- c(0, 5, 5, 5, 18, 18, 18, 18, 18, 30, 30, 40, 40, 50, 50, 50, 50, 65, 65, 65, 75, 75, 85)
-  population <- population[, .(pop = sum(pop)), by = "age"]
-
-  age = c(0, 5, 18, 30, 40, 50, 65, 75, 85)
-  vax_prop_sf = c(0, 0, 7.3, 10.4, 10.8, 18.5, 24.6, 18.4, 10.0)/100 #as of 2/16 (assumed 85+ is 35% of 75+ same as SF population)
-
-  doses_actual <- doses.dt[county == county1, .(date, dose_num, age_bin, count)]
-  frac_65plus <- doses_actual[dose_num == 1, sum(count * (age_bin == "65+")) / sum(count)]
-
-  #scale SF vax props to county level above and below 65
-  dose_proportion <- data.table(age, vax_prop_sf)
-  dose_proportion[age >= 65, vax_prop := vax_prop_sf * frac_65plus / sum(vax_prop_sf)]
-  dose_proportion[age < 65, vax_prop := vax_prop_sf * (1 - frac_65plus) / sum(vax_prop_sf)]
-  dose_proportion <- dose_proportion[, vax_prop]
-
-  doses_actual[, date := as.Date(date)]
-  doses_actual <- doses_actual[, .(dose1 = sum(count * (dose_num == 1)), dose2 = sum(count * (dose_num == 2))), by = "date"]
-
-  variants <- data.table(name = c("Wild", "UK", "SA", "CA", "BR"),
-                         vaccine_efficacy_for_susceptibility_1 =  c(0.60, 0.60, 0.50, 0.60, 0.50),
-                         vaccine_efficacy_for_susceptibility_2 = c(0.80, 0.80, 0.70, 0.80, 0.70),
-                         vaccine_efficacy_against_progression_1 = c(0.90, 0.90, 0.80, 0.90, 0.80),
-                         vaccine_efficacy_against_progression_2 = c(0.99, 0.99, 0.90, 0.99, 0.90),
-                         transmisson_mult = c(1, 1.5, 1, 1.25, 1.8),
-                         duration_vaccinated_12 = 365 * c(5, 5, 1, 5, 2),
-                         duration_natural_12 =    365 * c(3, 3, 1, 3, 2),
-                         hosp_mult = c(1, 1.3, 1, 1, 1.3),
-                         mort_mult = c(1, 1.5, 1, 1, 1.5),
-                         daily_growth_prior = c(1, 1, 1, 1.034, 1),
-                         daily_growth_future = c(1, 1, 1, 1, 1),
-                         frac_on_day0 = c(0.45, 0, 0, 0.55, 0))
-  variant_day0 <- as.Date("2021/1/25")
-
-  scale <- population[, sum(pop)] / 883305  #scale to SF
-
-  doses <- GetDoses(doses_actual, doses_per_day_base = 6000 * scale, doses_per_day_increase  = 70 * scale, doses_per_day_maximum = 12000 * scale, start_increase_day = as.Date("2021/3/1"), start_date, end_date,  dose_proportion, population, vax_uptake = 0.85, max_second_dose_frac = rep(0.7, length(start_date:end_date)))
-  v <- GetVaccineParams(doses, variants, start_date, end_date, variant_day0, population, dose_proportion)
-  return(v)
-}
+#SF: CA variant 55% January, 15% end November
+# vax_prop_sf = c(0, 0, 7.3, 10.4, 10.8, 18.5, 24.6, 18.4, 10.0)/100 #as of 2/16 (assumed 85+ is 35% of 75+ same as SF population) #in CAcounties.xlsx
 
 
 Get1 <- function(zz) {
@@ -83,6 +40,34 @@ GetCountyInputs <- function(county1, county.dt, doses.dt) {
 
   sheets$`Model Inputs`[internal.name == "total.population", value := county.pop1]
 
+
+  pop <- readRDS("Inputs/county population by age.rds")[county1, ]
+  population <- data.table(pop)
+  #convert census age categories to CDC age categories
+  population$age <- c(0, 5, 5, 5, 18, 18, 18, 18, 18, 30, 30, 40, 40, 50, 50, 50, 50, 65, 65, 65, 75, 75, 85)
+  sheets$VaccinesPopulation$pop <- population[, .(pop = sum(pop)), by = "age"]$pop
+
+
+  doses_actual <- doses.dt[county == county1, .(date, dose_num, age_bin, count)]
+  frac_65plus <- doses_actual[dose_num == 1, sum(count * (age_bin == "65+")) / sum(count)]
+
+  #scale SF vax props to county level above and below 65
+  sheets$VaccinesPopulation[age >= 65, dose_proportion := dose_proportion * frac_65plus / sum(dose_proportion)]
+  sheets$VaccinesPopulation[age < 65, dose_proportion := dose_proportion * (1 - frac_65plus) / sum(dose_proportion)]
+
+  doses_actual[, date := as.Date(date)]
+  doses_actual <- doses_actual[, .(dose1 = sum(count * (dose_num == 1)), dose2 = sum(count * (dose_num == 2))), by = "date"]
+
+  sheets$VaccinesDoses <- doses_actual
+
+  scale <- county.pop1 / 883305  #scale to SF
+  #rescale doses_per_day_base, doses_per_day_increase, doses_per_day_maximum - this is clunky because value is a list
+  for (i in c("doses_per_day_base", "doses_per_day_increase", "doses_per_day_maximum")) {
+    index <- sheets$VaccinesMisc[, which(internal.name == i)]
+    rescaled.value <- unlist(sheets$VaccinesMisc[index, value]) * scale
+    sheets$VaccinesMisc[index, value := rescaled.value]
+  }
+
   inputs <- LEMMA:::ProcessSheets(sheets, input.file)
 
   #need different initial conditions to converge
@@ -95,12 +80,6 @@ GetCountyInputs <- function(county1, county.dt, doses.dt) {
   if (county1 == "El Dorado") {
     inputs$internal.args$init_frac_mort_nonhosp <- 0.001
   }
-
-  inputs <- c(inputs, GetVaccineParamsForCounty(county1, doses.dt, start_date = inputs$internal.args$simulation.start.date + 1, end_date = inputs$model.inputs$end.date))
-
-  mean.ini <- 1e-5 * county.pop1
-  inputs$internal.args$lambda_ini_exposed <- 1 / mean.ini
-
 
   date1 <- as.Date("2020/10/1")
   inputs$obs.data[date <= date1, icu.conf := NA]
