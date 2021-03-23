@@ -97,10 +97,32 @@ ReadCsvAWS <- function(object) {
   return(csv)
 }
 
+ReadSFDoses <- function(sheet) {
+  d <- as.data.table(readxl::read_excel("~/Documents/MissionCovid/VaccineData_OverandUnder65_3.19.21.xlsx", sheet = sheet))
+  setnames(d, c("date", "vax_type", "dose", "count"))
+  d[, date := as.Date(date)]
+  d <- d[!(dose %in% c("INV", "UNK"))]
+  d <- d[vax_type %in% c("Moderna", "Pfizer", "J&J")]
+  d[vax_type %in% c("Moderna", "Pfizer"), dose_num := dose]
+  d[vax_type == "J&J", dose_num := "J"]
+  d <- d[, .(count = sum(count)), keyby = c("date", "dose_num")]
+  return(d)
+}
+
 GetDosesData <- function() {
   doses.dt <- ReadCsvAWS("VaccinesByCounty.csv")
   doses.dt[, date := as.Date(date)]
   doses.dt[, count := as.numeric(count)]
+
+  doses.sf.under <- cbind(ReadSFDoses("Under 65 SF Residents"), age_bin = "<65")
+  doses.sf.over <- cbind(ReadSFDoses("Over 65 SF Residents"), age_bin = "65+")
+  doses.sf <- rbind(doses.sf.under, doses.sf.over)
+  doses.sf[, county := "San Francisco"]
+  doses.sf <- doses.sf[date <= (max(date) - 2)] #last few days incomplete
+
+  doses.dt <- rbind(doses.dt[county != "San Francisco"], doses.sf)
+  setkey(doses.dt, county, date)
+  return(doses.dt)
 }
 
 ConvertNegative <- function(value) {
@@ -166,3 +188,4 @@ GetSantaClaraData <- function() {
   sc[, population := pop]
   return(sc)
 }
+
