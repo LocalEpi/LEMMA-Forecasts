@@ -152,6 +152,29 @@ GetOldAdmits <- function() {
 }
 
 GetAdmits <- function() {
+  admits.dt <- fread("https://healthdata.gov/api/views/anag-cw7u/rows.csv?accessType=DOWNLOAD")[state == "CA"]
+  admits.dt[, previous_day_admission_adult_covid_confirmed_7_day_sum := ConvertNegative(previous_day_admission_adult_covid_confirmed_7_day_sum)]
+  admits.dt[, previous_day_admission_pediatric_covid_confirmed_7_day_sum := ConvertNegative(previous_day_admission_pediatric_covid_confirmed_7_day_sum)]
+  admits.dt[, previous_day_admission_adult_covid_suspected_7_day_sum := ConvertNegative(previous_day_admission_adult_covid_suspected_7_day_sum)]
+  admits.dt[, previous_day_admission_pediatric_covid_suspected_7_day_sum := ConvertNegative(previous_day_admission_pediatric_covid_suspected_7_day_sum)]
+  admits.dt2 <- admits.dt[, .(admits.conf = sum(previous_day_admission_adult_covid_confirmed_7_day_sum + previous_day_admission_pediatric_covid_confirmed_7_day_sum) / 7,
+                              admits.pui = sum(previous_day_admission_adult_covid_suspected_7_day_sum + previous_day_admission_pediatric_covid_suspected_7_day_sum) / 7),
+                          by = c("fips_code", "collection_week")]
+  admits.dt2[, date := as.Date(collection_week) + 3] #add 3 for midpoint of week (collection_week is start of week)
+  admits.dt2 <- admits.dt2[date > as.Date("2021-2-1")] #data errors
+  setnames(admits.dt2, "fips_code", "fips")
+  admits.dt2 <- merge(admits.dt2, fread("Inputs/CountyFips.csv"))
+  admits.dt2[is.na(admits.conf), admits.pui := NA_real_]
+  admits.dt2[is.na(admits.pui), admits.conf := NA_real_]
+
+  admits.old <- readRDS("Inputs/AdmitsUntilFeb19.rds")
+  admits.dt2 <- rbind(admits.old[, .(county, date, admits.conf, admits.pui)], admits.dt2[date > as.Date("2021/2/22"), .(county, date, admits.conf, admits.pui)]) #some overlap between sources
+  setkey(admits.dt2, county, date)
+  return(admits.dt2)
+}
+
+GetAdmits_notused <- function() {
+  #this data source hasn't updated since late feb
   admits.dt <- fread("https://opendata.arcgis.com/datasets/cebaea39dc3b4a4d858105a170318731_0.csv")[state == "CA"]
   admits.dt[, previous_day_admission_adult_covid_confirmed_7_day_sum := ConvertNegative(prevadmit_adult_conf_7d_sum)]
   admits.dt[, previous_day_admission_pediatric_covid_confirmed_7_day_sum := ConvertNegative(prevadmit_pedi_conf_7d_sum)]
@@ -160,7 +183,7 @@ GetAdmits <- function() {
   admits.dt2 <- admits.dt[, .(admits.conf = sum(previous_day_admission_adult_covid_confirmed_7_day_sum + previous_day_admission_pediatric_covid_confirmed_7_day_sum) / 7,
                               admits.pui = sum(previous_day_admission_adult_covid_suspected_7_day_sum + previous_day_admission_pediatric_covid_suspected_7_day_sum) / 7),
                           by = c("fips_code", "collection_week")]
-  admits.dt2[, date := as.Date(collection_week) + 3] #add 3 for midpoint of week
+  admits.dt2[, date := as.Date(collection_week) + 3] #add 3 for midpoint of week (collection_week is start of week)
   admits.dt2 <- admits.dt2[date > as.Date("2021-2-1")] #data errors
   setnames(admits.dt2, "fips_code", "fips")
   admits.dt2 <- merge(admits.dt2, fread("Inputs/CountyFips.csv"))
