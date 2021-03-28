@@ -103,6 +103,9 @@ GetCountyInputs <- function(county1, county.dt, doses.dt) {
   if (county1 == "Del Norte") {
     inputs$internal.args$init_frac_mort_nonhosp <- 0.001
   }
+  if (county1 == "Imperial") {
+    inputs$obs.data <- rbind(data.table(date = as.Date("2020/3/10"), hosp.conf = 0, hosp.pui = 0), inputs$obs.data, fill = T)
+  }
 
   inputs$internal.args$weights <- c(1, 1, 1, 1, 0.5, 1)
   inputs$internal.args$output.filestr <- paste0("Forecasts/", county1)
