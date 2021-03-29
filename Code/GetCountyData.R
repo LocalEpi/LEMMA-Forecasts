@@ -97,7 +97,18 @@ ReadCsvAWS <- function(object) {
   return(csv)
 }
 
-ReadSFDoses <- function(sheet) {
+#data sources for doses
+#VaccinesByCounty.csv ; dose_num age_bin count; all counties up to 2/24, emailed from Tomas Leon
+#~/Documents/MissionCovid/CAIR Summary Report.xlsx; ADMIN_DATE VAX_TYPE DOSE_NUM COUNT_65_AND_OLDER COUNT_UNDER_65; SF only, emailed daily
+#https://data.chhs.ca.gov/dataset/e283ee5a-cf18-4f20-a92c-ee94a2866ccd/resource/130d7ba2-b6eb-438d-a412-741bde207e1c/download/covid19vaccinesbycounty.csv ;
+# c("county", "administered_date", "total_doses", "cumulative_total_doses",
+#   "pfizer_doses", "cumulative_pfizer_doses", "moderna_doses", "cumulative_moderna_doses",
+#   "jj_doses", "cumulative_jj_doses", "partially_vaccinated", "total_partially_vaccinated",
+#   "fully_vaccinated", "cumulative_fully_vaccinated", "at_least_one_dose",
+#   "cumulative_at_least_one_dose", "california_flag")
+#all counties, updated daily
+
+ReadSFDoses.old <- function(sheet) {
   d <- as.data.table(readxl::read_excel("~/Documents/MissionCovid/VaccineData_OverandUnder65_3.19.21.xlsx", sheet = sheet))
   setnames(d, c("date", "vax_type", "dose", "count"))
   d[, date := as.Date(date)]
@@ -109,7 +120,23 @@ ReadSFDoses <- function(sheet) {
   return(d)
 }
 
-GetDosesData <- function() {
+ReadSFDoses <- function() {
+  suppressWarnings(d <- as.data.table(readxl::read_excel("~/Documents/MissionCovid/CAIR Summary Report.xlsx", col_types = c("date", "text", "text", "numeric", "numeric")))) #suppress numeric to date warnings
+  setnames(d, c("date", "vax_type", "dose", "count_65plus", "count_under65"))
+  d[, date := as.Date(date)]
+  d <- d[!(dose %in% c("INV", "UNK"))]
+  d <- d[vax_type %in% c("Moderna", "Pfizer", "Johnson & Johnson")]
+  d[vax_type %in% c("Moderna", "Pfizer"), dose_num := dose]
+  d[vax_type == "Johnson & Johnson", dose_num := "J"]
+  d[, count := count_65plus + count_under65]
+  d <- d[, .(count = sum(count)), keyby = c("date", "dose_num")]
+
+  d <- d[, .(dose1 = sum(count * (dose_num == "1")), dose2 = sum(count * (dose_num == "2")), doseJ = sum(count * (dose_num == "J"))), by = "date"]
+  d[, county := "San Francisco"]
+  return(d)
+}
+
+GetDosesData.old <- function() {
   doses.dt <- ReadCsvAWS("VaccinesByCounty.csv")
   doses.dt[, date := as.Date(date)]
   doses.dt[, count := as.numeric(count)]
@@ -122,6 +149,19 @@ GetDosesData <- function() {
 
   doses.dt <- rbind(doses.dt[county != "San Francisco"], doses.sf)
   setkey(doses.dt, county, date)
+  return(doses.dt)
+}
+
+GetDosesData <- function() {
+  x <- fread("https://data.chhs.ca.gov/dataset/e283ee5a-cf18-4f20-a92c-ee94a2866ccd/resource/130d7ba2-b6eb-438d-a412-741bde207e1c/download/covid19vaccinesbycounty.csv")
+  x[, doseJ := jj_doses]
+  x[, dose2 := fully_vaccinated - jj_doses]
+  x[, dose1 := total_doses - (dose2 + doseJ)]
+  x[, date := as.Date(administered_date)]
+  x <- x[county != "San Francisco", .(county, date, dose1, dose2, doseJ)]
+  sf <- ReadSFDoses()
+  doses.dt <- rbind(x, sf)
+  doses.dt <- doses.dt[date <= (max(date) - 2)] #last few days incomplete
   return(doses.dt)
 }
 

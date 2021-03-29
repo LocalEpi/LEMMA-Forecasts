@@ -4,6 +4,7 @@ library(ggplot2)
 
 #SF: CA variant 55% January, 15% end November
 # vax_prop_sf = c(0, 0, 7.3, 10.4, 10.8, 18.5, 24.6, 18.4, 10.0)/100 #as of 2/16 (assumed 85+ is 35% of 75+ same as SF population) #in CAcounties.xlsx
+# updated CAcounties.xlsx Vaccine Distribution to data as of 3/29; note: has formula to divide 75+ into 85+ and 75-84; age categories dont line up exactly, estimated
 
 #100M J&J by end of May
 #Pfizer+Moderna "another 100 million people by the end of July" = 200M doses [article March 8, ~0 J&J], so J&J should be 1/3 of doses to come
@@ -53,16 +54,23 @@ GetCountySheets <- function(county1, county.dt, doses.dt) {
   sheets$`Vaccine Distribution`$pop <- population[, .(pop = sum(pop)), by = "age"]$pop
 
 
-  doses_actual <- doses.dt[county == county1, .(date, dose_num, age_bin, count)]
-  frac_65plus <- doses_actual[dose_num == 1, sum(count * (age_bin == "65+")) / sum(count)]
+  #doses_actual <- doses.dt[county == county1, .(date, dose_num, age_bin, count)]
+  #frac_65plus <- doses_actual[dose_num == 1, sum(count * (age_bin == "65+")) / sum(count)]
 
   #scale SF vax props to county level above and below 65
-  sheets$`Vaccine Distribution`[age >= 65, dose_proportion := dose_proportion * frac_65plus / sum(dose_proportion)]
-  sheets$`Vaccine Distribution`[age < 65, dose_proportion := dose_proportion * (1 - frac_65plus) / sum(dose_proportion)]
+  #sheets$`Vaccine Distribution`[age >= 65, dose_proportion := dose_proportion * frac_65plus / sum(dose_proportion)]
+  #sheets$`Vaccine Distribution`[age < 65, dose_proportion := dose_proportion * (1 - frac_65plus) / sum(dose_proportion)]
 
-  doses_actual[, date := as.Date(date)]
-  doses_actual <- doses_actual[, .(dose1 = sum(count * (dose_num == "1")), dose2 = sum(count * (dose_num == "2")), doseJ = sum(count * (dose_num == "J"))), by = "date"]
+  #doses_actual[, date := as.Date(date)]
+  #doses_actual <- doses_actual[, .(dose1 = sum(count * (dose_num == "1")), dose2 = sum(count * (dose_num == "2")), doseJ = sum(count * (dose_num == "J"))), by = "date"]
 
+  #no updated vaccinations by age and county, assume same distribution as SF but adjust for county age distribution
+  sf_pop_weights <- c(0.045, 0.036, 0.034, 0.21, 0.202, 0.141, 0.181, 0.082, 0.045, 0.024)
+  sf_vax_weights <- sheets$`Vaccine Distribution`$dose_proportion
+  county_weights <- sheets$`Vaccine Distribution`$pop / sum(sheets$`Vaccine Distribution`$pop) * sf_vax_weights / sf_pop_weights
+  sheets$`Vaccine Distribution`$dose_proportion <- county_weights / sum(county_weights)
+
+  doses_actual <- doses.dt[county == county1]
   sheets$`Vaccine Doses - Observed` <- doses_actual
 
   scale <- county.pop1 / 883305  #scale to SF
