@@ -16,7 +16,6 @@ Get1 <- function(zz) {
 }
 
 GetCountySheets <- function(county1, county.dt, doses.dt) {
-  county.pop1 <- county.dt[county == county1, Get1(population)]
   county.dt1 <- county.dt[county == county1, .(date, hosp.conf, hosp.pui, icu.conf, icu.pui,  deaths.conf, deaths.pui, admits.conf, admits.pui, cases.conf, cases.pui, seroprev.conf, seroprev.pui)]
   input.file <- "Inputs/CAcounties.xlsx"
   sheets <- LEMMA:::ReadInputs(input.file)
@@ -33,7 +32,7 @@ GetCountySheets <- function(county1, county.dt, doses.dt) {
     # sheets$Data <- merge(sheets$Data, sf.sheets$Data[, .(date, hosp.conf, hosp.pui, icu.conf, icu.pui)], by = "date", all = T)
 
     #add UeS cases
-    ues <- c(34, 39, 43, 45, 0, 50, 0, 57, 53, 44, 36, 0, 37, 0, 35, 43, 31, 23, 0, 38, 0, 0, 0, 0, 20, 0, 0, 0, 14, 16, 11, 19, 0, 0, 0, 12, 9, 10, 7, 0, 0, 0, 7, 12, 4, 7, 0, 0, 0, 5, 9, 2, 7, 0, 0, 0, 5, 1, 1, 2, 0, 0, 0, 7, 7, 3, 3, 0, 0, 0, 3, 1, 1, 2)
+    ues <- c(34, 39, 43, 45, 0, 50, 0, 57, 53, 44, 36, 0, 37, 0, 35, 43, 31, 23, 0, 38, 0, 0, 0, 0, 20, 0, 0, 0, 14, 16, 11, 19, 0, 0, 0, 12, 9, 10, 7, 0, 0, 0, 7, 12, 4, 7, 0, 0, 0, 5, 9, 2, 7, 0, 0, 0, 5, 1, 1, 2, 0, 0, 0, 7, 7, 3, 3, 0, 0, 0, 3, 1, 1, 2, 0, 0, 0, 0, 1, 2, 2)
     ues.dt <- data.table(date = as.Date("2021/1/10") + (1:length(ues)) - 1, ues)
     print(tail(ues.dt))
     sheets$Data <- merge(sheets$Data, ues.dt, by = "date", all.x = T)
@@ -44,8 +43,12 @@ GetCountySheets <- function(county1, county.dt, doses.dt) {
 
   # sheets$`Model Inputs`[internal.name == "total.population", value := county.pop1]
 
-
-  pop <- readRDS("Inputs/county population by age.rds")[county1, ]
+  is.state <- nchar(county1) == 2
+  if (is.state) {
+    pop <- readRDS("Inputs/state population by age.rds")[county1, ]
+  } else {
+    pop <- readRDS("Inputs/county population by age.rds")[county1, ]
+  }
   population <- data.table(pop)
   #convert census age categories to CDC/vaccine eligibility age categories - for simplicity use CDC 12-15 = census 10-14, CDC 16-30 = census 15-30
   #CDC:    0  5 12 16                30    40    50          65       75    85
@@ -73,7 +76,7 @@ GetCountySheets <- function(county1, county.dt, doses.dt) {
   doses_actual <- doses.dt[county == county1]
   sheets$`Vaccine Doses - Observed` <- doses_actual
 
-  scale <- county.pop1 / 883305  #scale to SF
+  scale <- sum(sheets$`Vaccine Distribution`$pop) / 883305  #scale to SF
   #rescale doses_per_day_base, doses_per_day_increase, doses_per_day_maximum - this is clunky because value is a list
   for (i in c("doses_per_day_base", "doses_per_day_increase", "doses_per_day_maximum")) {
     index <- sheets$`Vaccine Doses - Future`[, which(internal.name == i)]
@@ -83,11 +86,16 @@ GetCountySheets <- function(county1, county.dt, doses.dt) {
     sheets$`Vaccine Doses - Future`[index, jj := rescaled.jj]
   }
 
-  date1 <- as.Date("2020/10/1")
-  sheets$Data[date <= date1, icu.conf := NA]
-  sheets$Data[date <= date1, icu.pui := NA]
-  sheets$Data[date <= date1, deaths.conf := NA]
-  sheets$Data[date <= date1, deaths.pui := NA]
+  if (is.state) {
+    #no hosp data before 7/15 so use all death data
+    sheets$Data <- sheets$Data[date >= as.Date("2020/3/1")]
+  } else {
+    date1 <- as.Date("2020/10/1")
+    sheets$Data[date <= date1, icu.conf := NA]
+    sheets$Data[date <= date1, icu.pui := NA]
+    sheets$Data[date <= date1, deaths.conf := NA]
+    sheets$Data[date <= date1, deaths.pui := NA]
+  }
 
   return(sheets)
 }

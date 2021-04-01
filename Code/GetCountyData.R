@@ -1,4 +1,5 @@
-GetCountyData <- function(include.regions = FALSE, remove.holidays = TRUE) {
+GetCountyData <- function(include.regions = FALSE, remove.holidays = TRUE, states = FALSE) {
+  if (states) return(GetStateData(remove.holidays))
   dt <- fread("https://data.chhs.ca.gov/dataset/2df3e19e-9ee4-42a6-a087-9761f82033f6/resource/47af979d-8685-4981-bced-96a6b79d3ed5/download/covid19hospitalbycounty.csv")
   dt <- dt[, .(county, date = as.Date(todays_date), hosp.conf = hospitalized_covid_confirmed_patients, hosp.pui = hospitalized_suspected_covid_patients, icu.conf = icu_covid_confirmed_patients, icu.pui = icu_suspected_covid_patients)]
 
@@ -88,6 +89,102 @@ GetCountyData <- function(include.regions = FALSE, remove.holidays = TRUE) {
   return(county.dt)
 }
 
+
+GetStateData <- function(remove.holidays = TRUE) {
+  GetHospData <- function(f) {
+    x <- fread(f)
+    if ("reporting_cutoff_start" %in% names(x)) {
+      #used in daily updates, not in time series
+      x[, date := as.Date(reporting_cutoff_start) + 3]
+    } else {
+      x[, date := as.Date(date)]
+    }
+    setkey(x, state, date)
+    hosp.dt <- x[, .(state, date,
+                     hosp.conf = total_adult_patients_hospitalized_confirmed_covid + total_pediatric_patients_hospitalized_confirmed_covid,
+                     hosp.pui = pmax(0, total_adult_patients_hospitalized_confirmed_and_suspected_covid +
+                       total_pediatric_patients_hospitalized_confirmed_and_suspected_covid -
+                       total_adult_patients_hospitalized_confirmed_covid - total_pediatric_patients_hospitalized_confirmed_covid),
+                     icu.conf = staffed_icu_adult_patients_confirmed_covid,
+                     icu.pui = pmax(0, staffed_icu_adult_patients_confirmed_and_suspected_covid - staffed_icu_adult_patients_confirmed_covid),
+                     admits.conf = previous_day_admission_adult_covid_confirmed + previous_day_admission_pediatric_covid_confirmed,
+                     admits.pui = previous_day_admission_adult_covid_suspected + previous_day_admission_pediatric_covid_suspected)]
+    return(hosp.dt)
+  }
+
+  hosp.dt <- GetHospData("https://healthdata.gov/api/views/6xf2-c3ie/rows.csv?accessType=DOWNLOAD") #daily, by state
+  if (F) {
+    hosp.dt.prev <- GetHospData("https://healthdata.gov/api/views/g62h-syeh/rows.csv?accessType=DOWNLOAD")[date >= as.Date("2020-08-01")] #time series
+    ctp.dt <- fread("~/Documents/MissionCovid/all-states-history.csv")
+    ctp.dt[, date := as.Date(date)]
+    ctp.dt <- ctp.dt[date < as.Date("2020-08-01"), .(state, date, hosp.conf = hospitalizedCurrently, hosp.pui = ifelse(is.na(hospitalizedCurrently), NA_real_, 0), icu.conf = inIcuCurrently, icu.pui = ifelse(is.na(inIcuCurrently), NA_real_, 0), admits.conf = hospitalizedIncrease, admits.pui = ifelse(is.na(hospitalizedIncrease), NA_real_, 0))]
+    ctp.dt[, index := admits.conf == 0]
+    ctp.dt[index == T, admits.conf := NA_real_]
+    ctp.dt[index == T, admits.pui := NA_real_]
+    ctp.dt$index <- NULL
+    hosp.dt.prev <- rbind(ctp.dt, hosp.dt.prev)
+    setkey(hosp.dt.prev, state, date)
+    saveRDS(hosp.dt.prev, "Inputs/StateHosp.rds")
+  }
+  hosp.dt.prev <- readRDS("Inputs/StateHosp.rds")
+  stopifnot(uniqueN(hosp.dt$date) == 1)
+  new.date <- unique(hosp.dt$date)
+
+  if (new.date %in% hosp.dt.prev$date) {
+    hosp.dt <- hosp.dt.prev
+  } else {
+    hosp.dt <- rbind(hosp.dt.prev, hosp.dt)
+    setkey(hosp.dt, state, date)
+    saveRDS(hosp.dt, "Inputs/StateHosp.rds")
+  }
+
+
+  state.abbr.dt <- fread("Inputs/state abbreviations.csv")
+  setnames(state.abbr.dt, c("StateName", "state"))
+
+  #these seem unreliable
+  # s=fread("https://data.cdc.gov/api/views/d2tw-32xv/rows.csv?accessType=DOWNLOAD")
+  # #seroprev - may be mix of infected only and infected or vaccinated - only use up to Dec 2020
+  # z <- s[, strsplit(`Date Range of Specimen Collection`, "-")]
+  # s$date <- as.Date(sapply(z, function (z1) z1[[2]]), format = " %b %d, %Y")
+  # s <- s[date <= as.Date("2020/12/31") & `Catchment Area Description` == "Statewide", .(state = Site, date, seroprev.conf = `Rate (%) [Cumulative Prevalence]` / 100)]
+
+  #deaths (with date of death - NCHS data - see https://covidtracking.com/analysis-updates/federal-covid-data-101-working-with-death-numbers)
+  x <- fread("https://data.cdc.gov/api/views/r8kw-7aab/rows.csv?accessType=DOWNLOAD")
+  x <- x[Group == "By Week", .(StateName = State, date = as.Date(`End Date`, format = "%m/%d/%Y"), newdeaths = `COVID-19 Deaths`)]
+  x[is.na(newdeaths), newdeaths := 5] #1-9 deaths is NA, estimate with 5
+  x <- merge(x, state.abbr.dt)
+  x[, deaths.conf := cumsum(newdeaths), by = "state"]
+  death.dt <- x[, .(state, date, deaths.conf, deaths.pui = NA_real_)]
+  death.dt[date > (max(date) - 30), deaths.conf := NA_real_] #assume last 30 days not reliable
+  setkey(death.dt, state, date)
+
+  #cases
+  x <- fread("https://data.cdc.gov/api/views/9mfq-cb36/rows.csv?accessType=DOWNLOAD")
+  x[, date := as.Date(submission_date, "%m/%d/%Y")]
+  setkey(x, state, date)
+  x[, cases.conf := as.numeric(new_case - ifelse(is.na(pnew_case), 0, pnew_case))]
+  x[, cases.pui := as.numeric(pnew_case)]
+
+  if (remove.holidays) {
+    x[date %in% as.Date(c("2020/11/26", "2020/11/27", "2020/12/25", "2021/1/1")), cases.conf := NA_real_] #remove major holidays before and after frollmean
+    x[date %in% as.Date(c("2020/11/26", "2020/11/27", "2020/12/25", "2021/1/1")), cases.pui := NA_real_]
+  }
+
+  x[, cases.conf := frollmean(cases.conf, 7, na.rm = T), by = state]
+  x[, cases.pui := frollmean(cases.pui, 7, na.rm = T), by = state]
+
+  if (remove.holidays) {
+    x[date %in% as.Date(c("2020/11/26", "2020/11/27", "2020/12/25", "2021/1/1")), cases.conf := NA_real_] #remove major holidays before and after frollmean
+    x[date %in% as.Date(c("2020/11/26", "2020/11/27", "2020/12/25", "2021/1/1")), cases.pui := NA_real_]
+  }
+  case.dt <- x[date >= as.Date("2020/9/25"), .(state, date, cases.conf, cases.pui, seroprev.conf = NA_real_, seroprev.pui= NA_real_)]
+  state.dt <- merge(hosp.dt, case.dt, all = T)
+  state.dt <- merge(state.dt, death.dt, all = T)
+  state.dt <- state.dt[state %in% state.abbr.dt$state]
+  return(state.dt)
+}
+
 ReadCsvAWS <- function(object) {
   filestr <- tempfile()
   aws.s3::save_object(object, bucket = "js-lemma-bucket1", file = filestr, region = "us-west-1")
@@ -152,15 +249,58 @@ GetDosesData.old <- function() {
   return(doses.dt)
 }
 
-GetDosesData <- function() {
-  x <- fread("https://data.chhs.ca.gov/dataset/e283ee5a-cf18-4f20-a92c-ee94a2866ccd/resource/130d7ba2-b6eb-438d-a412-741bde207e1c/download/covid19vaccinesbycounty.csv")
-  x[, doseJ := jj_doses]
-  x[, dose2 := fully_vaccinated - jj_doses]
-  x[, dose1 := total_doses - (dose2 + doseJ)]
-  x[, date := as.Date(administered_date)]
-  x <- x[county != "San Francisco", .(county, date, dose1, dose2, doseJ)]
-  sf <- ReadSFDoses()
-  doses.dt <- rbind(x, sf)
+GetDosesData <- function(states = FALSE) {
+  if (states) {
+    state.dt <- fread("Inputs/state abbreviations.csv")
+    setnames(state.dt, c("StateName", "state"))
+
+    x <- fread("https://raw.githubusercontent.com/owid/covid-19-data/master/public/data/vaccinations/us_state_vaccinations.csv")
+    x[location == "New York State", location := "New York"]
+    x <- x[location %in% state.dt$StateName]
+    x[, .(date, doses = daily_vaccinations)]
+    base_vac <- x[date == as.Date("2021/1/15"), .(location, total_vaccinations)]
+    base_dates <- seq(as.Date("2020/12/15"), as.Date("2021/1/15"), by = "day")
+    num_days <- length(base_dates)
+    base_vac[, per_day := total_vaccinations / num_days]
+    x[, people_vaccinated := na.approx(people_vaccinated, na.rm=F), by = "location"]
+    x[, people_fully_vaccinated := na.approx(people_fully_vaccinated, na.rm=F), by = "location"]
+    x[, frac_2_or_jj := c(NA, diff(people_fully_vaccinated)) / daily_vaccinations, by = "location"]
+
+    y <- fread("https://raw.githubusercontent.com/owid/covid-19-data/master/public/data/vaccinations/vaccinations-by-manufacturer.csv")[location == "United States"]
+    y[, date := as.Date(date)]
+    jj <- y[vaccine == "Johnson&Johnson"]
+    setkey(jj, date)
+    jj <- rbind(data.table(total_vaccinations = 0), jj, fill=T)
+    jj[, new_jj := c(NA, diff(total_vaccinations))]
+
+    z <- y[, .(all_vac = sum(total_vaccinations)), by = "date"]
+    z[, new_vac := c(NA, diff(all_vac))]
+    z <- merge(z, jj, by = "date", all.x = T)
+    z[date < as.Date("2021/3/8"), jj_frac := 0]
+    z[date >= as.Date("2021/3/8"), jj_frac := pmin(1, pmax(0, new_jj / new_vac))]
+    z <- z[, .(date, jj_frac)]
+
+    doses.dt <- merge(x[, .(date, StateName = location, frac_2_or_jj, doses = daily_vaccinations)], z, by = "date")
+    doses.dt[, date := as.Date(date)]
+    doses.dt[, frac_2 := pmin(1, pmax(0, frac_2_or_jj - jj_frac))]
+    doses.dt[, frac_1 := pmin(1, pmax(0, 1 - (frac_2 + jj_frac)))]
+    doses.dt[, dose1 := doses * frac_1]
+    doses.dt[, dose2 := doses * frac_2]
+    doses.dt[, doseJ := doses * jj_frac]
+    doses.dt <- rbind(doses.dt[date > as.Date("2021/1/15"), .(StateName, date, dose1, dose2, doseJ)], merge(data.frame(date = base_dates), as.data.frame(base_vac[, .(StateName = location, dose1 = per_day, dose2 = 0, doseJ = 0)]), by = NULL, all = T)) #merge.data.frame allows by=NULL
+    setkey(doses.dt, StateName, date)
+    doses.dt <- merge(doses.dt, state.dt, by = "StateName")
+    doses.dt <- doses.dt[, .(state, date, dose1, dose2, doseJ)]
+  } else {
+    x <- fread("https://data.chhs.ca.gov/dataset/e283ee5a-cf18-4f20-a92c-ee94a2866ccd/resource/130d7ba2-b6eb-438d-a412-741bde207e1c/download/covid19vaccinesbycounty.csv")
+    x[, doseJ := jj_doses]
+    x[, dose2 := fully_vaccinated - jj_doses]
+    x[, dose1 := total_doses - (dose2 + doseJ)]
+    x[, date := as.Date(administered_date)]
+    x <- x[county != "San Francisco", .(county, date, dose1, dose2, doseJ)]
+    sf <- ReadSFDoses()
+    doses.dt <- rbind(x, sf)
+  }
   doses.dt <- doses.dt[date <= (max(date) - 2)] #last few days incomplete
   return(doses.dt)
 }
