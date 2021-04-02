@@ -115,7 +115,7 @@ GetStateData <- function(remove.holidays = TRUE) {
   hosp.dt <- GetHospData("https://healthdata.gov/api/views/6xf2-c3ie/rows.csv?accessType=DOWNLOAD") #daily, by state
   if (F) {
     hosp.dt.prev <- GetHospData("https://healthdata.gov/api/views/g62h-syeh/rows.csv?accessType=DOWNLOAD")[date >= as.Date("2020-08-01")] #time series
-    ctp.dt <- fread("~/Documents/MissionCovid/all-states-history.csv")
+    ctp.dt <- fread("https://covidtracking.com/data/download/all-states-history.csv")
     ctp.dt[, date := as.Date(date)]
     ctp.dt <- ctp.dt[date < as.Date("2020-08-01"), .(state, date, hosp.conf = hospitalizedCurrently, hosp.pui = ifelse(is.na(hospitalizedCurrently), NA_real_, 0), icu.conf = inIcuCurrently, icu.pui = ifelse(is.na(inIcuCurrently), NA_real_, 0), admits.conf = hospitalizedIncrease, admits.pui = ifelse(is.na(hospitalizedIncrease), NA_real_, 0))]
     ctp.dt[, index := admits.conf == 0]
