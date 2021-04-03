@@ -68,14 +68,14 @@ GetCountyData <- function(include.regions = FALSE, remove.holidays = TRUE, state
   if (include.regions) {
     regions <- list(BayArea = c("Alameda", "Contra Costa", "Marin", "Monterey", "Napa", "San Francisco", "San Mateo", "Santa Clara", "Santa Cruz", "Solano", "Sonoma"),
                     GreaterSacramento = c("Alpine", "Amador", "Butte", "Colusa", "El Dorado", "Nevada",
-                             "Placer", "Plumas", "Sacramento", "Sierra", "Sutter", "Yolo",
-                             "Yuba"),
+                                          "Placer", "Plumas", "Sacramento", "Sierra", "Sutter", "Yolo",
+                                          "Yuba"),
                     SanJoaquinValley = c("Calaveras", "Fresno", "Kern", "Kings", "Madera", "Mariposa",
-                            "Merced", "San Benito", "San Joaquin", "Stanislaus", "Tulare",
-                            "Tuolumne"),
+                                         "Merced", "San Benito", "San Joaquin", "Stanislaus", "Tulare",
+                                         "Tuolumne"),
                     SouthernCalifornia = c("Imperial", "Inyo", "Los Angeles", "Mono", "Orange", "Riverside",
-                              "San Bernardino", "San Diego", "San Luis Obispo", "Santa Barbara",
-                              "Ventura"))
+                                           "San Bernardino", "San Diego", "San Luis Obispo", "Santa Barbara",
+                                           "Ventura"))
 
     for (reg in names(regions)) {
       region.dt <- county.dt[county %in% regions[[reg]], lapply(.SD, sum), by = "date", .SDcols = -c("county", "is.region")]
@@ -103,8 +103,8 @@ GetStateData <- function(remove.holidays = TRUE) {
     hosp.dt <- x[, .(state, date,
                      hosp.conf = total_adult_patients_hospitalized_confirmed_covid + total_pediatric_patients_hospitalized_confirmed_covid,
                      hosp.pui = pmax(0, total_adult_patients_hospitalized_confirmed_and_suspected_covid +
-                       total_pediatric_patients_hospitalized_confirmed_and_suspected_covid -
-                       total_adult_patients_hospitalized_confirmed_covid - total_pediatric_patients_hospitalized_confirmed_covid),
+                                       total_pediatric_patients_hospitalized_confirmed_and_suspected_covid -
+                                       total_adult_patients_hospitalized_confirmed_covid - total_pediatric_patients_hospitalized_confirmed_covid),
                      icu.conf = staffed_icu_adult_patients_confirmed_covid,
                      icu.pui = pmax(0, staffed_icu_adult_patients_confirmed_and_suspected_covid - staffed_icu_adult_patients_confirmed_covid),
                      admits.conf = previous_day_admission_adult_covid_confirmed + previous_day_admission_pediatric_covid_confirmed,
@@ -114,10 +114,21 @@ GetStateData <- function(remove.holidays = TRUE) {
 
   hosp.dt <- GetHospData("https://healthdata.gov/api/views/6xf2-c3ie/rows.csv?accessType=DOWNLOAD") #daily, by state
   if (F) {
-    hosp.dt.prev <- GetHospData("https://healthdata.gov/api/views/g62h-syeh/rows.csv?accessType=DOWNLOAD")[date >= as.Date("2020-08-01")] #time series
+    hosp.dt.prev <- GetHospData("https://healthdata.gov/api/views/g62h-syeh/rows.csv?accessType=DOWNLOAD")[date > as.Date("2020-08-01") & date != as.Date("2021-03-27")] #time series #2021-03-27 is duplicate of 3-26
+    ar <- fread("https://healthdata.gov/api/views/4cnb-m4rz/rows.csv?accessType=DOWNLOAD")
+    ar[, date := as.Date(ar$`Update Date`, format = "%m/%d/%Y")]
+    for (i in ar[date > as.Date("2021-03-15"), `Archive Link`]) {
+      hosp.dt.temp <- GetHospData(i)
+      stopifnot(uniqueN(hosp.dt.temp$date) == 1)
+      new.date <- unique(hosp.dt.temp$date)
+      if (!(new.date %in% hosp.dt.prev$date)) {
+        print(new.date)
+        hosp.dt.prev <- rbind(hosp.dt.prev, hosp.dt.temp)
+      }
+    }
     ctp.dt <- fread("https://covidtracking.com/data/download/all-states-history.csv")
     ctp.dt[, date := as.Date(date)]
-    ctp.dt <- ctp.dt[date < as.Date("2020-08-01"), .(state, date, hosp.conf = hospitalizedCurrently, hosp.pui = ifelse(is.na(hospitalizedCurrently), NA_real_, 0), icu.conf = inIcuCurrently, icu.pui = ifelse(is.na(inIcuCurrently), NA_real_, 0), admits.conf = hospitalizedIncrease, admits.pui = ifelse(is.na(hospitalizedIncrease), NA_real_, 0))]
+    ctp.dt <- ctp.dt[date <= as.Date("2020-08-01"), .(state, date, hosp.conf = hospitalizedCurrently, hosp.pui = ifelse(is.na(hospitalizedCurrently), NA_real_, 0), icu.conf = inIcuCurrently, icu.pui = ifelse(is.na(inIcuCurrently), NA_real_, 0), admits.conf = hospitalizedIncrease, admits.pui = ifelse(is.na(hospitalizedIncrease), NA_real_, 0))]
     ctp.dt[, index := admits.conf == 0]
     ctp.dt[index == T, admits.conf := NA_real_]
     ctp.dt[index == T, admits.pui := NA_real_]
@@ -142,12 +153,15 @@ GetStateData <- function(remove.holidays = TRUE) {
   state.abbr.dt <- fread("Inputs/state abbreviations.csv")
   setnames(state.abbr.dt, c("StateName", "state"))
 
-  #these seem unreliable
-  # s=fread("https://data.cdc.gov/api/views/d2tw-32xv/rows.csv?accessType=DOWNLOAD")
-  # #seroprev - may be mix of infected only and infected or vaccinated - only use up to Dec 2020
-  # z <- s[, strsplit(`Date Range of Specimen Collection`, "-")]
-  # s$date <- as.Date(sapply(z, function (z1) z1[[2]]), format = " %b %d, %Y")
-  # s <- s[date <= as.Date("2020/12/31") & `Catchment Area Description` == "Statewide", .(state = Site, date, seroprev.conf = `Rate (%) [Cumulative Prevalence]` / 100)]
+  if (F) {
+    #these seem unreliable
+    s=fread("https://data.cdc.gov/api/views/d2tw-32xv/rows.csv?accessType=DOWNLOAD")
+    #seroprev - may be mix of infected only and infected or vaccinated - only use up to Dec 2020
+    z <- s[, strsplit(`Date Range of Specimen Collection`, "-")]
+    s$date <- as.Date(sapply(z, function (z1) z1[[2]]), format = " %b %d, %Y")
+    s <- s[date <= as.Date("2020/12/31") & `Catchment Area Description` == "Statewide", .(state = Site, date, seroprev.conf = `Rate (%) [Cumulative Prevalence]` / 100)]
+  }
+
 
   #deaths (with date of death - NCHS data - see https://covidtracking.com/analysis-updates/federal-covid-data-101-working-with-death-numbers)
   x <- fread("https://data.cdc.gov/api/views/r8kw-7aab/rows.csv?accessType=DOWNLOAD")
