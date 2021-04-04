@@ -1,6 +1,6 @@
 setwd("~/Documents/GitHub/LEMMA-Forecasts/")
 
-source('Code/GetCountyData.R')
+# source('Code/GetCountyData.R')
 source('Code/RunCountiesFromBeginning.R')
 
 county.dt <- GetCountyData()
