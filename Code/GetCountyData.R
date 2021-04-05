@@ -3,27 +3,37 @@ GetCountyData <- function(include.regions = FALSE, remove.holidays = TRUE, state
   dt <- fread("https://data.chhs.ca.gov/dataset/2df3e19e-9ee4-42a6-a087-9761f82033f6/resource/47af979d-8685-4981-bced-96a6b79d3ed5/download/covid19hospitalbycounty.csv")
   dt <- dt[, .(county, date = as.Date(todays_date), hosp.conf = hospitalized_covid_confirmed_patients, hosp.pui = hospitalized_suspected_covid_patients, icu.conf = icu_covid_confirmed_patients, icu.pui = icu_suspected_covid_patients)]
 
-  deaths.cases <- fread("https://data.chhs.ca.gov/dataset/f333528b-4d38-4814-bebb-12db1f10f535/resource/046cdd2b-31e5-4d34-9ed3-b48cdbc4be7a/download/covid19cases_test.csv")
-  deaths.cases[, date := as.Date(date)]
-  deaths.cases[, county := area]
-  deaths.cases <- deaths.cases[!(county %in% c("Unknown", "Out of state", "California")) & !is.na(date)]
-  setkey(deaths.cases, county, date)
+  if (F) {
+    deaths.cases <- fread("https://data.chhs.ca.gov/dataset/f333528b-4d38-4814-bebb-12db1f10f535/resource/046cdd2b-31e5-4d34-9ed3-b48cdbc4be7a/download/covid19cases_test.csv")
+    deaths.cases[, date := as.Date(date)]
+    deaths.cases[, county := area]
+    deaths.cases <- deaths.cases[!(county %in% c("Unknown", "Out of state", "California")) & !is.na(date)]
+    setkey(deaths.cases, county, date)
 
-  #assume last 3 days of cases, 30 days of deaths are not reliable
-  max.date <- deaths.cases[, max(date)]
-  case.dt <- deaths.cases[date >= as.Date("2020/9/25") & date < (max.date - 3), .(date, county, cases.conf = cases, cases.pui = NA_real_)]
+    #assume last 3 days of cases, 30 days of deaths are not reliable
+    max.date <- deaths.cases[, max(date)]
+    case.dt <- deaths.cases[date >= as.Date("2020/9/25") & date < (max.date - 3), .(date, county, cases.conf = cases, cases.pui = NA_real_)]
 
-  if (remove.holidays) {
-    case.dt[date %in% as.Date(c("2020/11/26", "2020/11/27", "2020/12/25", "2021/1/1")), cases.conf := NA_real_] #remove major holidays before and after frollmean
+    if (remove.holidays) {
+      case.dt[date %in% as.Date(c("2020/11/26", "2020/11/27", "2020/12/25", "2021/1/1")), cases.conf := NA_real_] #remove major holidays before and after frollmean
+    }
+
+    case.dt[, cases.conf := frollmean(cases.conf, 7, na.rm = T), by = county]
+
+    if (remove.holidays) {
+      case.dt[date %in% as.Date(c("2020/11/26", "2020/11/27", "2020/12/25", "2021/1/1")), cases.conf := NA_real_] #remove major holidays before and after frollmean
+    }
+
+    deaths.dt <- deaths.cases[date <= (max.date - 30), .(date, deaths.conf = cumsum(deaths), deaths.pui = NA_real_), by = "county"]
+  } else {
+    #CHHS server is down
+    cat("Using saved cases and deaths!\n")
+    prev <- readRDS("Inputs/savedCountyData.rds")
+    case.dt <- prev[, .(date, county, cases.conf, cases.pui)]
+    sf.cases <- c(32, 33, 34, 36, 39, 37, 36, 36)
+    case.dt[county == "San Francisco" & date >= as.Date("2021-03-21") & date <= (as.Date("2021-03-21") + length(sf.cases) - 1), cases.conf := sf.cases]
+    deaths.dt <- prev[, .(date, county, deaths.conf, deaths.pui)]
   }
-
-  case.dt[, cases.conf := frollmean(cases.conf, 7, na.rm = T), by = county]
-
-  if (remove.holidays) {
-    case.dt[date %in% as.Date(c("2020/11/26", "2020/11/27", "2020/12/25", "2021/1/1")), cases.conf := NA_real_] #remove major holidays before and after frollmean
-  }
-
-  deaths.dt <- deaths.cases[date <= (max.date - 30), .(date, deaths.conf = cumsum(deaths), deaths.pui = NA_real_), by = "county"]
   county.dt <- merge(dt, deaths.dt, all = T, by = c("county", "date"))
   county.dt <- merge(county.dt, case.dt, all = T, by = c("county", "date"))
 
@@ -231,9 +241,17 @@ ReadSFDoses.old <- function(sheet) {
   return(d)
 }
 
-ReadSFDoses <- function() {
+SFDosesToAWS <- function() {
   suppressWarnings(d <- as.data.table(readxl::read_excel("~/Documents/MissionCovid/CAIR Summary Report.xlsx", col_types = c("date", "text", "text", "numeric", "numeric")))) #suppress numeric to date warnings
   setnames(d, c("date", "vax_type", "dose", "count_65plus", "count_under65"))
+  write.csv(d, "~/Documents/MissionCovid/CAIR Summary Report.csv", row.names = F)
+  aws.s3::put_object("~/Documents/MissionCovid/CAIR Summary Report.csv", bucket = "js-lemma-bucket1", region = "us-west-1")
+}
+
+ReadSFDoses <- function() {
+  #suppressWarnings(d <- as.data.table(readxl::read_excel("~/Documents/MissionCovid/CAIR Summary Report.xlsx", col_types = c("date", "text", "text", "numeric", "numeric")))) #suppress numeric to date warnings
+  #setnames(d, c("date", "vax_type", "dose", "count_65plus", "count_under65"))
+  d <- ReadCsvAWS("CAIR Summary Report.csv")
   d[, date := as.Date(date)]
   d <- d[!(dose %in% c("INV", "UNK"))]
   d <- d[vax_type %in% c("Moderna", "Pfizer", "Johnson & Johnson")]
