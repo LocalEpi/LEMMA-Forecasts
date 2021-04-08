@@ -30,7 +30,7 @@ GetCountyData <- function(include.regions = FALSE, remove.holidays = TRUE, state
     cat("Using saved cases and deaths!\n")
     prev <- readRDS("Inputs/savedCountyData.rds")
     case.dt <- prev[, .(date, county, cases.conf, cases.pui)]
-    sf.cases <- c(32, 33, 34, 36, 39, 38, 36, 36, 38)
+    sf.cases <- c(32, 33, 34, 36, 39, 38, 36, 36, 38, 37)
     case.dt[county == "San Francisco" & date >= as.Date("2021-03-21") & date <= (as.Date("2021-03-21") + length(sf.cases) - 1), cases.conf := sf.cases]
     deaths.dt <- prev[, .(date, county, deaths.conf, deaths.pui)]
   }
