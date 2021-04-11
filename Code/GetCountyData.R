@@ -283,6 +283,7 @@ GetDosesData.old <- function() {
 
 GetDosesData <- function(states = FALSE) {
   if (states) {
+    library(zoo)
     state.dt <- fread("Inputs/state abbreviations.csv")
     setnames(state.dt, c("StateName", "state"))
 
