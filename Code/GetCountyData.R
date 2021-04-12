@@ -124,7 +124,9 @@ GetStateData <- function(remove.holidays = TRUE) {
 
   hosp.dt <- GetHospData("https://healthdata.gov/api/views/6xf2-c3ie/rows.csv?accessType=DOWNLOAD") #daily, by state
   if (F) {
-    hosp.dt.prev <- GetHospData("https://healthdata.gov/api/views/g62h-syeh/rows.csv?accessType=DOWNLOAD")[date > as.Date("2020-08-01") & date != as.Date("2021-03-27")] #time series #2021-03-27 is duplicate of 3-26
+    hosp.dt.prev <- GetHospData("https://healthdata.gov/api/views/g62h-syeh/rows.csv?accessType=DOWNLOAD")[date > as.Date("2020-08-01")] #time series
+    cat("last date may be duplicated - check\n")
+    print(tail(hosp.dt.prev[state == "MI"]))
     ar <- fread("https://healthdata.gov/api/views/4cnb-m4rz/rows.csv?accessType=DOWNLOAD")
     ar[, date := as.Date(ar$`Update Date`, format = "%m/%d/%Y")]
     for (i in ar[date > as.Date("2021-03-15"), `Archive Link`]) {
@@ -206,6 +208,9 @@ GetStateData <- function(remove.holidays = TRUE) {
   state.dt <- merge(hosp.dt, case.dt, all = T)
   state.dt <- merge(state.dt, death.dt, all = T)
   state.dt <- state.dt[state %in% state.abbr.dt$state]
+
+  state.dt[admits.conf < 0, admits.pui := NA_real_]
+  state.dt[admits.conf < 0, admits.conf := NA_real_]
   return(state.dt)
 }
 
