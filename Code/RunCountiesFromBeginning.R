@@ -15,10 +15,20 @@ Get1 <- function(zz) {
   zz[1]
 }
 
-GetCountySheets <- function(county1, county.dt, doses.dt) {
+GetCountySheets <- function(county1, county.dt, doses.dt, dload = FALSE) {
   county.dt1 <- county.dt[county == county1, .(date, hosp.conf, hosp.pui, icu.conf, icu.pui,  deaths.conf, deaths.pui, admits.conf, admits.pui, cases.conf, cases.pui, seroprev.conf, seroprev.pui)]
-  input.file <- "Inputs/CAcounties.xlsx"
+  
+  if (dload) {
+    input.file <- tempfile(pattern = "file", tmpdir = tempdir(), fileext = ".xlsx")
+    download.file(url = "https://github.com/LocalEpi/LEMMA-Forecasts/raw/master/Inputs/CAcounties.xlsx",destfile = input.file)
+  } else {
+    input.file <- "Inputs/CAcounties.xlsx"  
+  }
+  
   sheets <- LEMMA:::ReadInputs(input.file)
+  if (dload) {
+    unlink(x = input.file)
+  }
   sheets$Data <- county.dt1
   if (county1 == "San Francisco") {
     # #use local data for intervention dates and hospital/ICU census
