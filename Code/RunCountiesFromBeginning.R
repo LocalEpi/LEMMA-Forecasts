@@ -55,9 +55,17 @@ GetCountySheets <- function(county1, county.dt, doses.dt, dload = FALSE) {
 
   is.state <- nchar(county1) == 2
   if (is.state) {
-    pop <- readRDS("Inputs/state population by age.rds")[county1, ]
+    if (dload) {
+      pop <- readRDS(file = url("https://github.com/LocalEpi/LEMMA-Forecasts/raw/master/Inputs/state%20population%20by%20age.rds"))
+    } else {
+      pop <- readRDS("Inputs/state population by age.rds")[county1, ]  
+    }
   } else {
-    pop <- readRDS("Inputs/county population by age.rds")[county1, ]
+    if (dload) {
+      pop <- readRDS(file = url("https://github.com/LocalEpi/LEMMA-Forecasts/raw/master/Inputs/county%20population%20by%20age.rds"))
+    } else {
+      pop <- readRDS("Inputs/county population by age.rds")[county1, ]  
+    }
   }
   population <- data.table(pop)
   #convert census age categories to CDC/vaccine eligibility age categories - for simplicity use CDC 12-15 = census 10-14, CDC 16-30 = census 15-30
@@ -111,8 +119,8 @@ GetCountySheets <- function(county1, county.dt, doses.dt, dload = FALSE) {
 }
 
 
-GetCountyInputs <- function(county1, county.dt, doses.dt) {
-  sheets <- GetCountySheets(county1, county.dt, doses.dt)
+GetCountyInputs <- function(county1, county.dt, doses.dt, dload = FALSE) {
+  sheets <- GetCountySheets(county1, county.dt, doses.dt, dload)
 
   inputs <- LEMMA:::ProcessSheets(sheets)
 
@@ -138,8 +146,8 @@ GetCountyInputs <- function(county1, county.dt, doses.dt) {
   return(inputs)
 }
 
-RunOneCounty <- function(county1, county.dt, doses.dt) {
-  inputs <- GetCountyInputs(county1, county.dt, doses.dt)
+RunOneCounty <- function(county1, county.dt, doses.dt, dload = FALSE) {
+  inputs <- GetCountyInputs(county1, county.dt, doses.dt, dload)
   lemma <- LEMMA:::CredibilityInterval(inputs)
   return(lemma)
 }

@@ -291,10 +291,15 @@ GetDosesData.old <- function() {
   return(doses.dt)
 }
 
-GetDosesData <- function(states = FALSE) {
+GetDosesData <- function(states = FALSE, dload = FALSE) {
   if (states) {
     library(zoo)
-    state.dt <- fread("Inputs/state abbreviations.csv")
+    if (dload) {
+      state.dt <- fread("https://raw.githubusercontent.com/LocalEpi/LEMMA-Forecasts/master/Inputs/state%20abbreviations.csv")
+    } else {
+      state.dt <- fread("Inputs/state abbreviations.csv")      
+    }
+    
     setnames(state.dt, c("StateName", "state"))
 
     x <- fread("https://raw.githubusercontent.com/owid/covid-19-data/master/public/data/vaccinations/us_state_vaccinations.csv")
