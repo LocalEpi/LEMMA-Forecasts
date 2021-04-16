@@ -56,13 +56,13 @@ GetCountySheets <- function(county1, county.dt, doses.dt, dload = FALSE) {
   is.state <- nchar(county1) == 2
   if (is.state) {
     if (dload) {
-      pop <- readRDS(file = url("https://github.com/LocalEpi/LEMMA-Forecasts/raw/master/Inputs/state%20population%20by%20age.rds"))
+      pop <- readRDS(file = url("https://github.com/LocalEpi/LEMMA-Forecasts/raw/master/Inputs/state%20population%20by%20age.rds"))[county1, ]  
     } else {
       pop <- readRDS("Inputs/state population by age.rds")[county1, ]  
     }
   } else {
     if (dload) {
-      pop <- readRDS(file = url("https://github.com/LocalEpi/LEMMA-Forecasts/raw/master/Inputs/county%20population%20by%20age.rds"))
+      pop <- readRDS(file = url("https://github.com/LocalEpi/LEMMA-Forecasts/raw/master/Inputs/county%20population%20by%20age.rds"))[county1, ]  
     } else {
       pop <- readRDS("Inputs/county population by age.rds")[county1, ]  
     }
@@ -142,7 +142,13 @@ GetCountyInputs <- function(county1, county.dt, doses.dt, dload = FALSE) {
   }
 
   inputs$internal.args$weights <- c(1, 1, 1, 1, 0.5, 1)
-  inputs$internal.args$output.filestr <- paste0("Forecasts/", county1)
+  
+  if (dload) {
+    inputs$internal.args$output.filestr <- tempfile(pattern = county1) 
+  } else {
+    inputs$internal.args$output.filestr <- paste0("Forecasts/", county1) 
+  }
+  
   return(inputs)
 }
 
