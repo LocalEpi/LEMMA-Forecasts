@@ -21,7 +21,3 @@ print(county.set)
 print(system.time(
 lemma.set <- parallel::mclapply(county.set, RunOneCounty, county.dt, doses.dt, mc.cores = parallel::detectCores() - 1)
 ))
-
-system.time(
-RunOneCounty(county1 = county.set[1],county.dt = county.dt,doses.dt = doses.dt,dload = T)
-)
