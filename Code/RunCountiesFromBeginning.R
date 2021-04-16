@@ -121,6 +121,8 @@ GetCountyInputs <- function(county1, county.dt, doses.dt) {
   }
   if (county1 == "Imperial") {
     inputs$obs.data <- rbind(data.table(date = as.Date("2020/3/10"), hosp.conf = 0, hosp.pui = 0), inputs$obs.data, fill = T)
+    inputs$obs.data[, admits.conf := NA_real_]
+    inputs$obs.data[, admits.pui := NA_real_]
   }
 
   inputs$internal.args$weights <- c(1, 1, 1, 1, 0.5, 1)
