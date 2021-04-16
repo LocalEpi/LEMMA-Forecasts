@@ -197,6 +197,10 @@ GetStateData <- function(remove.holidays = TRUE) {
   x[, cases.conf := as.numeric(new_case - ifelse(is.na(pnew_case), 0, pnew_case))]
   x[, cases.pui := as.numeric(pnew_case)]
 
+  x[, cases.invalid := (cases.conf < 0) | (cases.pui < 0)]
+  x[cases.invalid == T, cases.conf := NA_real_]
+  x[cases.invalid == T, cases.pui := NA_real_]
+
   if (remove.holidays) {
     x[date %in% as.Date(c("2020/11/26", "2020/11/27", "2020/12/25", "2021/1/1")), cases.conf := NA_real_] #remove major holidays before and after frollmean
     x[date %in% as.Date(c("2020/11/26", "2020/11/27", "2020/12/25", "2021/1/1")), cases.pui := NA_real_]
