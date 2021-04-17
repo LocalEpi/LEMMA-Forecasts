@@ -14,8 +14,6 @@ county.by.pop <- unique(county.dt[!is.na(population), .(county, population)]) #N
 setorder(county.by.pop, -population)
 county.set <- county.by.pop[, county]
 
-county.set <- setdiff(county.set, "Glenn")
-cat("excluding Glenn\n")
 print(county.set)
 
 print(system.time(
