@@ -148,16 +148,16 @@ RunOneCounty <- function(county1, county.dt, doses.dt) {
 
     options(scipen = 3)
 
-    sf_scen_output <<- capture.output({
-      print(results.dt, digits=0)
+    sink("Scenarios/San Francisco_ScenarioSummary.txt")
+    print(results.dt, digits=0)
 
-      cat("base = 75% open by June 22; uptake: 70% for <65, 85% for 65+; wild type and West Coast variants; 12-15 eligible May 1, 0-11 eligible Jan 1 \n")
-      cat("other scenarios same as base except:\n")
-      cat("open90percent = 90% open\n")
-      cat("uptake85 = 85% uptake all ages\n")
-      cat("UKvariant = UK variant dominant by August\n")
-      cat("BRvariant = Brazil variant dominant by August\n")
-    })
+    cat("base = 75% open by June 22; uptake: 70% for <65, 85% for 65+; wild type and West Coast variants; 12-15 eligible May 1, 0-11 eligible Jan 1 \n")
+    cat("other scenarios same as base except:\n")
+    cat("open90percent = 90% open\n")
+    cat("uptake85 = 85% uptake all ages\n")
+    cat("UKvariant = UK variant dominant by August\n")
+    cat("BRvariant = Brazil variant dominant by August\n")
+    sink()
   }
   return(lemma)
 }
