@@ -6,9 +6,6 @@ library(ggplot2)
 # vax_prop_sf = c(0, 0, 7.3, 10.4, 10.8, 18.5, 24.6, 18.4, 10.0)/100 #as of 2/16 (assumed 85+ is 35% of 75+ same as SF population) #in CAcounties.xlsx
 # updated CAcounties.xlsx Vaccine Distribution to data as of 3/29; note: has formula to divide 75+ into 85+ and 75-84; age categories dont line up exactly, estimated
 
-#100M J&J by end of May
-#Pfizer+Moderna "another 100 million people by the end of July" = 200M doses [article March 8, ~0 J&J], so J&J should be 1/3 of doses to come
-#https://www.statnews.com/2021/03/08/will-the-u-s-have-covid-vaccine-doses-for-everyone-by-the-end-of-may-probably/
 
 Get1 <- function(zz) {
   stopifnot(uniqueN(zz) == 1)
@@ -32,7 +29,7 @@ GetCountySheets <- function(county1, county.dt, doses.dt) {
     # sheets$Data <- merge(sheets$Data, sf.sheets$Data[, .(date, hosp.conf, hosp.pui, icu.conf, icu.pui)], by = "date", all = T)
 
     #add UeS cases
-    ues <- c(34, 39, 43, 45, 0, 50, 0, 57, 53, 44, 36, 0, 37, 0, 35, 43, 31, 23, 0, 38, 0, 0, 0, 0, 20, 0, 0, 0, 14, 16, 11, 19, 0, 0, 0, 12, 9, 10, 7, 0, 0, 0, 7, 12, 4, 7, 0, 0, 0, 5, 9, 2, 7, 0, 0, 0, 5, 1, 1, 2, 0, 0, 0, 7, 7, 3, 3, 0, 0, 0, 3, 1, 1, 2, 0, 0, 0, 0, 1, 2, 2, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 2)
+    ues <- c(34, 39, 43, 45, 0, 50, 0, 57, 53, 44, 36, 0, 37, 0, 35, 43, 31, 23, 0, 38, 0, 0, 0, 0, 20, 0, 0, 0, 14, 16, 11, 19, 0, 0, 0, 12, 9, 10, 7, 0, 0, 0, 7, 12, 4, 7, 0, 0, 0, 5, 9, 2, 7, 0, 0, 0, 5, 1, 1, 2, 0, 0, 0, 7, 7, 3, 3, 0, 0, 0, 3, 1, 1, 2, 0, 0, 0, 0, 1, 2, 2, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 2)
     ues.dt <- data.table(date = as.Date("2021/1/10") + (1:length(ues)) - 1, ues)
     print(tail(ues.dt))
     sheets$Data <- merge(sheets$Data, ues.dt, by = "date", all.x = T)
@@ -101,39 +98,39 @@ GetCountySheets <- function(county1, county.dt, doses.dt) {
 }
 
 
-GetCountyInputs <- function(county1, county.dt, doses.dt) {
-  sheets <- GetCountySheets(county1, county.dt, doses.dt)
-
-  inputs <- LEMMA:::ProcessSheets(sheets)
-
-  #need different initial conditions to converge
-  if (county1 == "Siskiyou") {
-    inputs$internal.args$init_frac_mort_nonhosp <- 0.00001
-  }
-  if (county1 == "Humboldt") {
-    inputs$internal.args$init_frac_mort_nonhosp <- 0.001
-  }
-  if (county1 == "El Dorado") {
-    inputs$internal.args$init_frac_mort_nonhosp <- 0.001
-  }
-  if (county1 == "Del Norte") {
-    inputs$internal.args$init_frac_mort_nonhosp <- 0.001
-  }
-  if (county1 == "Imperial") {
-    inputs$obs.data <- rbind(data.table(date = as.Date("2020/3/10"), hosp.conf = 0, hosp.pui = 0), inputs$obs.data, fill = T)
-    inputs$obs.data[, admits.conf := NA_real_]
-    inputs$obs.data[, admits.pui := NA_real_]
-  }
-
-  inputs$internal.args$weights <- c(1, 1, 1, 1, 0.5, 1)
-  inputs$internal.args$output.filestr <- paste0("Forecasts/", county1)
-  return(inputs)
-}
-
-RunOneCounty <- function(county1, county.dt, doses.dt) {
-  inputs <- GetCountyInputs(county1, county.dt, doses.dt)
-  lemma <- LEMMA:::CredibilityInterval(inputs)
-  return(lemma)
-}
+# GetCountyInputs <- function(county1, county.dt, doses.dt) {
+#   sheets <- GetCountySheets(county1, county.dt, doses.dt)
+#
+#   inputs <- LEMMA:::ProcessSheets(sheets)
+#
+#   #need different initial conditions to converge
+#   if (county1 == "Siskiyou") {
+#     inputs$internal.args$init_frac_mort_nonhosp <- 0.00001
+#   }
+#   if (county1 == "Humboldt") {
+#     inputs$internal.args$init_frac_mort_nonhosp <- 0.001
+#   }
+#   if (county1 == "El Dorado") {
+#     inputs$internal.args$init_frac_mort_nonhosp <- 0.001
+#   }
+#   if (county1 == "Del Norte") {
+#     inputs$internal.args$init_frac_mort_nonhosp <- 0.001
+#   }
+#   if (county1 == "Imperial") {
+#     inputs$obs.data <- rbind(data.table(date = as.Date("2020/3/10"), hosp.conf = 0, hosp.pui = 0), inputs$obs.data, fill = T)
+#     inputs$obs.data[, admits.conf := NA_real_]
+#     inputs$obs.data[, admits.pui := NA_real_]
+#   }
+#
+#   inputs$internal.args$weights <- c(1, 1, 1, 1, 0.5, 1)
+#   inputs$internal.args$output.filestr <- paste0("Forecasts/", county1)
+#   return(inputs)
+# }
+#
+# RunOneCounty <- function(county1, county.dt, doses.dt) {
+#   inputs <- GetCountyInputs(county1, county.dt, doses.dt)
+#   lemma <- LEMMA:::CredibilityInterval(inputs)
+#   return(lemma)
+# }
 
 
