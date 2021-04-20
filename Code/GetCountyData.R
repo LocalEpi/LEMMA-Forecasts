@@ -354,6 +354,9 @@ GetDosesData <- function(states = FALSE, dload = FALSE) {
     doses.dt <- rbind(x, sf)
   }
   doses.dt <- doses.dt[date <= (max(date) - 2)] #last few days incomplete
+  doses.dt$dose1 <- as.numeric(doses.dt$dose1)
+  doses.dt$dose2 <- as.numeric(doses.dt$dose2)
+  doses.dt$doseJ <- as.numeric(doses.dt$doseJ)
   return(doses.dt)
 }
 

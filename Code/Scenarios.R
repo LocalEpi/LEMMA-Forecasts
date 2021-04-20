@@ -1,0 +1,138 @@
+GetCountyInputs_scen <- function(county1, county.dt, doses.dt, k_uptake, k_ukgrowth, k_brgrowth) {
+  sheets <- GetCountySheets(county1, county.dt, doses.dt)
+
+  stopifnot(k_uptake %in% c("low", "normal"))
+  if (k_uptake == "low") {
+    sheets$`Vaccine Distribution`[age < 65, vax_uptake := pmin(vax_uptake, 0.70)]
+  }
+
+  x <- as.data.table(readxl::read_excel("Inputs/variants.xlsx"))
+  if (county1 %in% x$county) {
+    index <- x[, which(county == county1)]
+  } else {
+    index <- x[, which(county == "California")]
+  }
+  uk <- x[index, B.1.1.7] / 100
+  ca <- x[index, B.1.427 + B.1.429] / 100
+  br <- x[index, P.1] / 100
+  sa <- x[index, B.1.351] / 100
+  wild <- 1 - (uk + ca + br + sa)
+  max.date <- sheets$Data[, max(date)]
+  sheets$Variants[, variant_day0 := max.date]
+  sheets$Variants[, frac_on_day0 := c(wild, uk, ca, br, sa)]
+  sheets$Variants[, daily_growth_prior := c(1, 1.05, 1.034, 1.03, 1.03)]
+  sheets$Variants[, daily_growth_future := 1]
+
+  #these have to be positive or growth won't matter
+  if (k_ukgrowth > 0) stopifnot(sheets$Variants[name == "UK", frac_on_day0 > 0])
+  if (k_brgrowth > 0) stopifnot(sheets$Variants[name == "BR", frac_on_day0 > 0])
+
+  sheets$Variants[name == "UK", daily_growth_future := k_ukgrowth]
+  sheets$Variants[name == "BR", daily_growth_future := k_brgrowth]
+
+  inputs <- LEMMA:::ProcessSheets(sheets)
+  #need different initial conditions to converge
+  if (county1 == "Siskiyou") {
+    inputs$internal.args$init_frac_mort_nonhosp <- 0.00001
+  }
+  if (county1 == "Humboldt") {
+    inputs$internal.args$init_frac_mort_nonhosp <- 0.001
+  }
+  if (county1 == "El Dorado") {
+    inputs$internal.args$init_frac_mort_nonhosp <- 0.001
+  }
+  if (county1 == "Del Norte") {
+    inputs$internal.args$init_frac_mort_nonhosp <- 0.001
+  }
+  if (county1 == "Imperial") {
+    inputs$obs.data <- rbind(data.table(date = as.Date("2020/3/10"), hosp.conf = 0, hosp.pui = 0), inputs$obs.data, fill = T)
+    inputs$obs.data[, admits.conf := NA_real_]
+    inputs$obs.data[, admits.pui := NA_real_]
+  }
+
+  inputs$internal.args$weights <- c(1, 1, 1, 1, 0.5, 1)
+  inputs$internal.args$output.filestr <- paste0("Forecasts/", county1)
+  return(inputs)
+}
+
+Scenario <- function(filestr1, county1, k_mu_beta_inter, lemma_statusquo, k_uptake = "low", k_ukgrowth = 1, k_brgrowth = 1, k_max_open = 0.75) {
+  inputs <- GetCountyInputs_scen(county1, county.dt, doses.dt, k_uptake, k_ukgrowth, k_brgrowth)
+  if (filestr1 == "statusquo") {
+    lemma <- LEMMA:::CredibilityInterval(inputs)
+    return(lemma)
+  }
+
+  if (county1 == "San Francisco") {
+    tier_date <- as.Date("2021/4/21")
+  } else {
+    tier_date <- as.Date("2021/5/1")
+  }
+
+  filestr <- paste0("Scenarios/", county1, "_", filestr1)
+  inputs$internal.args$output.filestr <- filestr
+
+  #k_mu_beta_inter is multiplier to get to 100% open
+  mu_beta <- sqrt(pmax(1, k_mu_beta_inter * k_max_open))
+  new.int <- data.table(mu_t_inter = c(tier_date, as.Date("2021/6/15")),
+                        sigma_t_inter = 2, mu_beta_inter = c(mu_beta, mu_beta), sigma_beta_inter = 1e-04,
+                        mu_len_inter = 7, sigma_len_inter = 2)
+
+  inputs$interventions <- rbind(inputs$interventions, new.int)
+
+  if (is.null(lemma_statusquo)) {
+    #refit
+    lemma <- LEMMA:::CredibilityInterval(inputs)
+  } else {
+    lemma <- LEMMA:::ProjectScenario(lemma_statusquo, inputs)
+  }
+
+  pdf(paste0(filestr, ".pdf"), width = 11, height = 8.5)
+  relative.contact.rate <- lemma$fit.extended$par$beta / (lemma$fit.extended$par$beta[1] * lemma$inputs$vaccines$transmission_variant_multiplier)
+  dt <- data.table(date = lemma$projection$date, relative.contact.rate)
+  print(ggplot(dt, aes(x = date, y = relative.contact.rate)) + geom_line() + scale_x_date(date_breaks = "1 month", date_labels = "%b") + ggtitle("Effective contact rate relative to initial effective contact rate\nnot including vaccine or variant effects") + xlab(""))
+
+  doses <- lemma$inputs$vaccines_nonstan$doses
+  doses[, doses_given := dose1 + dose2 + doseJ]
+  print(ggplot(doses[date >= as.Date("2021/1/1")], aes(x = date, y = doses_given)) + geom_point() + scale_x_date(date_breaks = "1 month", date_labels = "%b") + xlab("") + labs(title = "Actual and Projected Vaccines Doses", subtitle = "note: scattered doses in the summer are wrapping up second doses, later doses are children"))
+
+  variant_frac <- lemma$inputs$vaccines_nonstan$variant_frac
+  colnames(variant_frac) <- lemma$inputs$vaccines_nonstan$variants$name
+  variant_frac <- data.table(date = lemma$projection$date, variant_frac)
+  dt <- melt(variant_frac[date >= as.Date("2020/10/1")], id.vars = "date", variable.name = "variant", value.name = "fraction")
+  print(ggplot(dt, aes(x = date, y = fraction, color = variant)) + geom_line() + scale_x_date(date_breaks = "1 month", date_labels = "%b") + xlab("")) + ylab("Fraction of SARS-COV2")
+
+  print(lemma$gplot$long.term)
+  dev.off()
+
+  # if (county1 == "San Francisco") {
+  #   results <- GetResults(lemma$projection, filestr1)
+  #   results.dt <<- rbind(results.dt, results)
+  # }
+  invisible(NULL)
+}
+
+GetResults <- function(projection, name) {
+  projection1 <- projection[date >= Sys.Date()]
+  hosp.peak <- projection1[, max(hosp)]
+  hosp.peak.date <- projection1[, date[which.max(hosp)]]
+  additional.admits <- projection1[, sum(admits)]
+  additional.deaths <- projection1[, max(deaths) - min(deaths)]
+  additional.cases <- projection1[, max(totalCases) - min(totalCases)]
+  return(data.table(name, hosp.peak, hosp.peak.date, additional.admits, additional.deaths, additional.cases))
+}
+
+RunOneCounty <- function(county1, county.dt, doses.dt) {
+  lemma <- Scenario("statusquo", county1)
+
+  relative.contact.rate.statusquo <- lemma$fit.extended$par$beta / (lemma$fit.extended$par$beta[1] * lemma$inputs$vaccines$transmission_variant_multiplier)
+  k_mu_beta_inter <- 1 / pmin(1, tail(relative.contact.rate.statusquo, 1))
+
+  Scenario("base", county1, k_mu_beta_inter, lemma)
+  Scenario("open90percent", county1, k_mu_beta_inter, lemma, k_max_open = 0.9)
+  Scenario("uptake85", county1, k_mu_beta_inter, lemma = NULL, k_uptake = "normal") #refit - can change age dist
+  Scenario("UKvariant", county1, k_mu_beta_inter, lemma, k_ukgrowth = 1.06)
+  Scenario("BRvariant", county1, k_mu_beta_inter, lemma, k_brgrowth = 1.06)
+
+  return(lemma)
+}
+

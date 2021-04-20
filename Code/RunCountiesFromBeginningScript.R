@@ -2,6 +2,7 @@ setwd("~/Documents/GitHub/LEMMA-Forecasts/")
 
 source('Code/GetCountyData.R')
 source('Code/RunCountiesFromBeginning.R')
+source('Code/Scenarios.R')
 
 county.dt <- GetCountyData()
 max.date <- Get1(county.dt[!is.na(hosp.conf), max(date), by = "county"]$V1)
@@ -14,8 +15,7 @@ county.by.pop <- unique(county.dt[!is.na(population), .(county, population)]) #N
 setorder(county.by.pop, -population)
 county.set <- county.by.pop[, county]
 
-county.set <- setdiff(county.set, "Glenn")
-cat("excluding Glenn\n")
+county.set <- setdiff(county.set, "Colusa"); cat("excluding Colusa\n")
 print(county.set)
 
 print(system.time(
