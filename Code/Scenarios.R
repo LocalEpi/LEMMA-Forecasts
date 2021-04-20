@@ -1,9 +1,12 @@
 GetCountyInputs_scen <- function(county1, county.dt, doses.dt, k_uptake, k_ukgrowth, k_brgrowth) {
   sheets <- GetCountySheets(county1, county.dt, doses.dt)
 
-  stopifnot(k_uptake %in% c("low", "normal"))
+  stopifnot(k_uptake %in% c("low", "high"))
   if (k_uptake == "low") {
-    sheets$`Vaccine Distribution`[age < 65, vax_uptake := pmin(vax_uptake, 0.70)]
+    sheets$`Vaccine Distribution`[age < 65, vax_uptake := 0.70]
+    sheets$`Vaccine Distribution`[age >= 65, vax_uptake := 0.85]
+  } else {
+    sheets$`Vaccine Distribution`[, vax_uptake := 0.85]
   }
 
   x <- as.data.table(readxl::read_excel("Inputs/variants.xlsx"))
@@ -104,11 +107,8 @@ Scenario <- function(filestr1, county1, k_mu_beta_inter, lemma_statusquo, k_upta
   print(lemma$gplot$long.term)
   dev.off()
 
-  # if (county1 == "San Francisco") {
-  #   results <- GetResults(lemma$projection, filestr1)
-  #   results.dt <<- rbind(results.dt, results)
-  # }
-  invisible(NULL)
+  results <- GetResults(lemma$projection, filestr1)
+  invisible(results)
 }
 
 GetResults <- function(projection, name) {
@@ -122,17 +122,43 @@ GetResults <- function(projection, name) {
 }
 
 RunOneCounty <- function(county1, county.dt, doses.dt) {
+  Scenario1 <- function(filestr1, ...) {
+    results <- Scenario(filestr1, county1, k_mu_beta_inter, ...)
+    results.dt <<- rbind(results.dt, results)
+  }
+
+  results.dt <- NULL
   lemma <- Scenario("statusquo", county1)
 
   relative.contact.rate.statusquo <- lemma$fit.extended$par$beta / (lemma$fit.extended$par$beta[1] * lemma$inputs$vaccines$transmission_variant_multiplier)
   k_mu_beta_inter <- 1 / pmin(1, tail(relative.contact.rate.statusquo, 1))
 
-  Scenario("base", county1, k_mu_beta_inter, lemma)
-  Scenario("open90percent", county1, k_mu_beta_inter, lemma, k_max_open = 0.9)
-  Scenario("uptake85", county1, k_mu_beta_inter, lemma = NULL, k_uptake = "normal") #refit - can change age dist
-  Scenario("UKvariant", county1, k_mu_beta_inter, lemma, k_ukgrowth = 1.06)
-  Scenario("BRvariant", county1, k_mu_beta_inter, lemma, k_brgrowth = 1.06)
+  Scenario1("base", lemma)
+  Scenario1("open90percent", lemma, k_max_open = 0.9)
+  Scenario1("uptake85", lemma = NULL, k_uptake = "high") #refit - can change age dist
+  Scenario1("UKvariant", lemma, k_ukgrowth = 1.06)
+  Scenario1("BRvariant", lemma, k_brgrowth = 1.06)
 
+  if (county1 == "San Francisco") {
+    Scenario1("uptake85_open90percent", lemma = NULL, k_uptake = "high", k_max_open = 0.9)
+    Scenario1("uptake85_open90percent_UKvariant", lemma = NULL, k_uptake = "high", k_max_open = 0.9, k_ukgrowth = 1.06)
+    Scenario1("open90percent_UKvariant", lemma = NULL, k_max_open = 0.9, k_ukgrowth = 1.06)
+    Scenario1("uptake85_BRvariant", lemma = NULL, k_uptake = "high", k_brgrowth = 1.06)
+    Scenario1("uptake85_open90percent_BRvariant", lemma = NULL, k_uptake = "high", k_max_open = 0.9, k_brgrowth = 1.06)
+
+    options(scipen = 3)
+
+    sf_scen_output <<- capture.output({
+      print(results.dt, digits=0)
+
+      cat("base = 75% open by June 22; uptake: 70% for <65, 85% for 65+; wild type and West Coast variants; 12-15 eligible May 1, 0-11 eligible Jan 1 \n")
+      cat("other scenarios same as base except:\n")
+      cat("open90percent = 90% open\n")
+      cat("uptake85 = 85% uptake all ages\n")
+      cat("UKvariant = UK variant dominant by August\n")
+      cat("BRvariant = Brazil variant dominant by August\n")
+    })
+  }
   return(lemma)
 }
 
