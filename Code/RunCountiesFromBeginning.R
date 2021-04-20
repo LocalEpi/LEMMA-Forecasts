@@ -12,10 +12,10 @@ Get1 <- function(zz) {
   zz[1]
 }
 
-GetCountySheets <- function(county1, county.dt, doses.dt, dload = FALSE) {
+GetCountySheets <- function(county1, county.dt, doses.dt, remote = FALSE) {
   county.dt1 <- county.dt[county == county1, .(date, hosp.conf, hosp.pui, icu.conf, icu.pui,  deaths.conf, deaths.pui, admits.conf, admits.pui, cases.conf, cases.pui, seroprev.conf, seroprev.pui)]
   
-  if (dload) {
+  if (remote) {
     input.file <- tempfile(pattern = "file", tmpdir = tempdir(), fileext = ".xlsx")
     download.file(url = "https://github.com/LocalEpi/LEMMA-Forecasts/raw/master/Inputs/CAcounties.xlsx",destfile = input.file)
   } else {
@@ -23,7 +23,7 @@ GetCountySheets <- function(county1, county.dt, doses.dt, dload = FALSE) {
   }
   
   sheets <- LEMMA:::ReadInputs(input.file)
-  if (dload) {
+  if (remote) {
     unlink(x = input.file)
   }
   sheets$Data <- county.dt1
@@ -52,13 +52,13 @@ GetCountySheets <- function(county1, county.dt, doses.dt, dload = FALSE) {
 
   is.state <- nchar(county1) == 2
   if (is.state) {
-    if (dload) {
+    if (remote) {
       pop <- readRDS(file = url("https://github.com/LocalEpi/LEMMA-Forecasts/raw/master/Inputs/state%20population%20by%20age.rds"))[county1, ]  
     } else {
       pop <- readRDS("Inputs/state population by age.rds")[county1, ]  
     }
   } else {
-    if (dload) {
+    if (remote) {
       pop <- readRDS(file = url("https://github.com/LocalEpi/LEMMA-Forecasts/raw/master/Inputs/county%20population%20by%20age.rds"))[county1, ]  
     } else {
       pop <- readRDS("Inputs/county population by age.rds")[county1, ]  
@@ -115,8 +115,8 @@ GetCountySheets <- function(county1, county.dt, doses.dt, dload = FALSE) {
   return(sheets)
 }
 
-GetCountyInputs <- function(county1, county.dt, doses.dt, dload = FALSE) {
-  sheets <- GetCountySheets(county1, county.dt, doses.dt, dload)
+GetCountyInputs <- function(county1, county.dt, doses.dt, remote = FALSE) {
+  sheets <- GetCountySheets(county1, county.dt, doses.dt, remote)
 
   inputs <- LEMMA:::ProcessSheets(sheets)
 
@@ -141,7 +141,7 @@ GetCountyInputs <- function(county1, county.dt, doses.dt, dload = FALSE) {
 
   inputs$internal.args$weights <- c(1, 1, 1, 1, 0.5, 1)
   
-  if (dload) {
+  if (remote) {
     inputs$internal.args$output.filestr <- tempfile(pattern = county1) 
   } else {
     inputs$internal.args$output.filestr <- paste0("Forecasts/", county1) 
@@ -150,8 +150,8 @@ GetCountyInputs <- function(county1, county.dt, doses.dt, dload = FALSE) {
   return(inputs)
 }
 
-RunOneCounty <- function(county1, county.dt, doses.dt, dload = FALSE) {
-  inputs <- GetCountyInputs(county1, county.dt, doses.dt, dload)
+RunOneCounty <- function(county1, county.dt, doses.dt, remote = FALSE) {
+  inputs <- GetCountyInputs(county1, county.dt, doses.dt, remote)
   lemma <- LEMMA:::CredibilityInterval(inputs)
   return(lemma)
 }

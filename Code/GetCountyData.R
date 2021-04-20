@@ -1,4 +1,4 @@
-GetCountyData <- function(include.regions = FALSE, remove.holidays = TRUE, states = FALSE, dload = FALSE) {
+GetCountyData <- function(include.regions = FALSE, remove.holidays = TRUE, states = FALSE, remote = FALSE) {
   if (states) return(GetStateData(remove.holidays))
   dt <- fread("https://data.chhs.ca.gov/dataset/2df3e19e-9ee4-42a6-a087-9761f82033f6/resource/47af979d-8685-4981-bced-96a6b79d3ed5/download/covid19hospitalbycounty.csv")
   dt <- dt[, .(county, date = as.Date(todays_date), hosp.conf = hospitalized_covid_confirmed_patients, hosp.pui = hospitalized_suspected_covid_patients, icu.conf = icu_covid_confirmed_patients, icu.pui = icu_suspected_covid_patients)]
@@ -37,7 +37,7 @@ GetCountyData <- function(include.regions = FALSE, remove.holidays = TRUE, state
   county.dt <- merge(dt, deaths.dt, all = T, by = c("county", "date"))
   county.dt <- merge(county.dt, case.dt, all = T, by = c("county", "date"))
 
-  admits.dt <- GetAdmits(dload = dload)
+  admits.dt <- GetAdmits(remote = remote)
   county.dt <- merge(county.dt, admits.dt, all = T, by = c("county", "date"))
 
   seroprev.dt <- ReadCsvAWS("countySP_ts.csv")
@@ -54,7 +54,7 @@ GetCountyData <- function(include.regions = FALSE, remove.holidays = TRUE, state
   county.dt <- county.dt[mean10 > 1] #exclude if average hosp over last 10 days < 1
   county.dt$mean10 <- NULL
   
-  if (dload) {
+  if (remote) {
     county.pop <- data.table::fread("https://raw.githubusercontent.com/LocalEpi/LEMMA-Forecasts/master/Inputs/county%20population.csv")
   } else {
     county.pop <- data.table::fread("Inputs/county population.csv")
@@ -295,10 +295,10 @@ GetDosesData.old <- function() {
   return(doses.dt)
 }
 
-GetDosesData <- function(states = FALSE, dload = FALSE) {
+GetDosesData <- function(states = FALSE, remote = FALSE) {
   if (states) {
     library(zoo)
-    if (dload) {
+    if (remote) {
       state.dt <- fread("https://raw.githubusercontent.com/LocalEpi/LEMMA-Forecasts/master/Inputs/state%20abbreviations.csv")
     } else {
       state.dt <- fread("Inputs/state abbreviations.csv")      
@@ -386,7 +386,7 @@ GetOldAdmits <- function() {
   saveRDS(admits.dt2, "Inputs/AdmitsUntilFeb19.rds")
 }
 
-GetAdmits <- function(dload = FALSE) {
+GetAdmits <- function(remote = FALSE) {
   admits.dt <- fread("https://healthdata.gov/api/views/anag-cw7u/rows.csv?accessType=DOWNLOAD")[state == "CA"]
   admits.dt[, previous_day_admission_adult_covid_confirmed_7_day_sum := ConvertNegative(previous_day_admission_adult_covid_confirmed_7_day_sum)]
   admits.dt[, previous_day_admission_pediatric_covid_confirmed_7_day_sum := ConvertNegative(previous_day_admission_pediatric_covid_confirmed_7_day_sum)]
@@ -398,7 +398,7 @@ GetAdmits <- function(dload = FALSE) {
   admits.dt2[, date := as.Date(collection_week) + 3] #add 3 for midpoint of week (collection_week is start of week)
   admits.dt2 <- admits.dt2[date > as.Date("2021-2-1")] #data errors
   setnames(admits.dt2, "fips_code", "fips")
-  if (dload) {
+  if (remote) {
     admits.dt2 <- merge(admits.dt2, fread("https://raw.githubusercontent.com/LocalEpi/LEMMA-Forecasts/master/Inputs/CountyFips.csv"))
   } else {
     admits.dt2 <- merge(admits.dt2, fread("Inputs/CountyFips.csv")) 
@@ -406,7 +406,7 @@ GetAdmits <- function(dload = FALSE) {
   admits.dt2[is.na(admits.conf), admits.pui := NA_real_]
   admits.dt2[is.na(admits.pui), admits.conf := NA_real_]
   
-  if (dload) {
+  if (remote) {
     admits.old <- readRDS(file = url("https://github.com/LocalEpi/LEMMA-Forecasts/raw/master/Inputs/AdmitsUntilFeb19.rds"))
   } else {
     admits.old <- readRDS("Inputs/AdmitsUntilFeb19.rds")
