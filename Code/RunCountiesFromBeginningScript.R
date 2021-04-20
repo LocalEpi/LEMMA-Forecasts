@@ -21,3 +21,13 @@ print(county.set)
 print(system.time(
 lemma.set <- parallel::mclapply(county.set, RunOneCounty, county.dt, doses.dt, mc.cores = parallel::detectCores() - 1)
 ))
+
+
+debugonce(RunOneCounty)
+scen_dir <- tempdir()
+RunOneCounty(county1 = county.set[11],county.dt = county.dt,doses.dt = doses.dt,remote = TRUE,writedir = scen_dir)
+unlink(x = paste0(scen_dir,"/Forecasts"),recursive = T)
+unlink(x = paste0(scen_dir,"/Scenarios"),recursive = T)
+list.files(scen_dir)
+list.files(paste0(scen_dir,"/Forecasts"))
+list.files(paste0(scen_dir,"/Scenarios"))
