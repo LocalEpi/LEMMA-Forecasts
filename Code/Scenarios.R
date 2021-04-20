@@ -1,9 +1,12 @@
 GetCountyInputs_scen <- function(county1, county.dt, doses.dt, k_uptake, k_ukgrowth, k_brgrowth, remote = FALSE, writedir = writedir) {
   sheets <- GetCountySheets(county1, county.dt, doses.dt,remote = remote)
 
-  stopifnot(k_uptake %in% c("low", "normal"))
+  stopifnot(k_uptake %in% c("low", "high"))
   if (k_uptake == "low") {
-    sheets$`Vaccine Distribution`[age < 65, vax_uptake := pmin(vax_uptake, 0.70)]
+    sheets$`Vaccine Distribution`[age < 65, vax_uptake := 0.70]
+    sheets$`Vaccine Distribution`[age >= 65, vax_uptake := 0.85]
+  } else {
+    sheets$`Vaccine Distribution`[, vax_uptake := 0.85]
   }
   
   if (remote) {
@@ -129,11 +132,8 @@ Scenario <- function(filestr1, county1, k_mu_beta_inter, lemma_statusquo = NULL,
   print(lemma$gplot$long.term)
   dev.off()
 
-  # if (county1 == "San Francisco") {
-  #   results <- GetResults(lemma$projection, filestr1)
-  #   results.dt <<- rbind(results.dt, results)
-  # }
-  invisible(NULL)
+  results <- GetResults(lemma$projection, filestr1)
+  invisible(results)
 }
 
 GetResults <- function(projection, name) {
@@ -151,16 +151,16 @@ RunOneCounty <- function(county1, county.dt, doses.dt, remote = FALSE, writedir 
     stop("if running for shiny, a writedirectory to write to must be provided")
   }
   lemma <- Scenario("statusquo", county1, remote = remote, writedir = writedir)
-
+  
   relative.contact.rate.statusquo <- lemma$fit.extended$par$beta / (lemma$fit.extended$par$beta[1] * lemma$inputs$vaccines$transmission_variant_multiplier)
   k_mu_beta_inter <- 1 / pmin(1, tail(relative.contact.rate.statusquo, 1))
-
+  
   Scenario("base", county1, k_mu_beta_inter, lemma, remote = remote, writedir = writedir)
   Scenario("open90percent", county1, k_mu_beta_inter, lemma, k_max_open = 0.9, remote = remote, writedir = writedir)
   Scenario("uptake85", county1, k_mu_beta_inter, lemma = NULL, k_uptake = "normal", remote = remote, writedir = writedir) #refit - can change age dist
   Scenario("UKvariant", county1, k_mu_beta_inter, lemma, k_ukgrowth = 1.06, remote = remote, writedir = writedir)
   Scenario("BRvariant", county1, k_mu_beta_inter, lemma, k_brgrowth = 1.06, remote = remote, writedir = writedir)
-
+  
   return(lemma)
 }
 
