@@ -14,14 +14,14 @@ Get1 <- function(zz) {
 
 GetCountySheets <- function(county1, county.dt, doses.dt, remote = FALSE) {
   county.dt1 <- county.dt[county == county1, .(date, hosp.conf, hosp.pui, icu.conf, icu.pui,  deaths.conf, deaths.pui, admits.conf, admits.pui, cases.conf, cases.pui, seroprev.conf, seroprev.pui)]
-  
+
   if (remote) {
     input.file <- tempfile(pattern = "file", tmpdir = tempdir(), fileext = ".xlsx")
     download.file(url = "https://github.com/LocalEpi/LEMMA-Forecasts/raw/master/Inputs/CAcounties.xlsx",destfile = input.file)
   } else {
-    input.file <- "Inputs/CAcounties.xlsx"  
+    input.file <- "Inputs/CAcounties.xlsx"
   }
-  
+
   sheets <- LEMMA:::ReadInputs(input.file)
   if (remote) {
     unlink(x = input.file)
@@ -39,7 +39,7 @@ GetCountySheets <- function(county1, county.dt, doses.dt, remote = FALSE) {
     # sheets$Data <- merge(sheets$Data, sf.sheets$Data[, .(date, hosp.conf, hosp.pui, icu.conf, icu.pui)], by = "date", all = T)
 
     #add UeS cases
-    ues <- c(34, 39, 43, 45, 0, 50, 0, 57, 53, 44, 36, 0, 37, 0, 35, 43, 31, 23, 0, 38, 0, 0, 0, 0, 20, 0, 0, 0, 14, 16, 11, 19, 0, 0, 0, 12, 9, 10, 7, 0, 0, 0, 7, 12, 4, 7, 0, 0, 0, 5, 9, 2, 7, 0, 0, 0, 5, 1, 1, 2, 0, 0, 0, 7, 7, 3, 3, 0, 0, 0, 3, 1, 1, 2, 0, 0, 0, 0, 1, 2, 2, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 2)
+    ues <- c(34, 39, 43, 45, 0, 50, 0, 57, 53, 44, 36, 0, 37, 0, 35, 43, 31, 23, 0, 38, 0, 0, 0, 0, 20, 0, 0, 0, 14, 16, 11, 19, 0, 0, 0, 12, 9, 10, 7, 0, 0, 0, 7, 12, 4, 7, 0, 0, 0, 5, 9, 2, 7, 0, 0, 0, 5, 1, 1, 2, 0, 0, 0, 7, 7, 3, 3, 0, 0, 0, 3, 1, 1, 2, 0, 0, 0, 0, 1, 2, 2, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 2, 1, 1, 3)
     ues.dt <- data.table(date = as.Date("2021/1/10") + (1:length(ues)) - 1, ues)
     print(tail(ues.dt))
     sheets$Data <- merge(sheets$Data, ues.dt, by = "date", all.x = T)
@@ -53,15 +53,15 @@ GetCountySheets <- function(county1, county.dt, doses.dt, remote = FALSE) {
   is.state <- nchar(county1) == 2
   if (is.state) {
     if (remote) {
-      pop <- readRDS(file = url("https://github.com/LocalEpi/LEMMA-Forecasts/raw/master/Inputs/state%20population%20by%20age.rds"))[county1, ]  
+      pop <- readRDS(file = url("https://github.com/LocalEpi/LEMMA-Forecasts/raw/master/Inputs/state%20population%20by%20age.rds"))[county1, ]
     } else {
-      pop <- readRDS("Inputs/state population by age.rds")[county1, ]  
+      pop <- readRDS("Inputs/state population by age.rds")[county1, ]
     }
   } else {
     if (remote) {
-      pop <- readRDS(file = url("https://github.com/LocalEpi/LEMMA-Forecasts/raw/master/Inputs/county%20population%20by%20age.rds"))[county1, ]  
+      pop <- readRDS(file = url("https://github.com/LocalEpi/LEMMA-Forecasts/raw/master/Inputs/county%20population%20by%20age.rds"))[county1, ]
     } else {
-      pop <- readRDS("Inputs/county population by age.rds")[county1, ]  
+      pop <- readRDS("Inputs/county population by age.rds")[county1, ]
     }
   }
   population <- data.table(pop)
@@ -140,13 +140,13 @@ GetCountyInputs <- function(county1, county.dt, doses.dt, remote = FALSE) {
   }
 
   inputs$internal.args$weights <- c(1, 1, 1, 1, 0.5, 1)
-  
+
   if (remote) {
-    inputs$internal.args$output.filestr <- tempfile(pattern = county1) 
+    inputs$internal.args$output.filestr <- tempfile(pattern = county1)
   } else {
-    inputs$internal.args$output.filestr <- paste0("Forecasts/", county1) 
+    inputs$internal.args$output.filestr <- paste0("Forecasts/", county1)
   }
-  
+
   return(inputs)
 }
 
