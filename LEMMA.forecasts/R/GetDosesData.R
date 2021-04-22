@@ -31,7 +31,7 @@
 #   doses.sf <- doses.sf[date <= (max(date) - 2)] #last few days incomplete
 #
 #   doses.dt <- rbind(doses.dt[county != "San Francisco"], doses.sf)
-#   setkey(doses.dt, county, date)
+#   data.table::setkey(doses.dt, county, date)
 #   return(doses.dt)
 # }
 
@@ -43,14 +43,14 @@
 GetDosesData <- function(states = FALSE, remote = FALSE) {
   if (states) {
     if (remote) {
-      state.dt <- fread("https://raw.githubusercontent.com/LocalEpi/LEMMA-Forecasts/master/Inputs/state%20abbreviations.csv")
+      state.dt <- data.table::fread("https://raw.githubusercontent.com/LocalEpi/LEMMA-Forecasts/master/Inputs/state%20abbreviations.csv")
     } else {
-      state.dt <- fread("Inputs/state abbreviations.csv")
+      state.dt <- data.table::fread("Inputs/state abbreviations.csv")
     }
 
     setnames(state.dt, c("StateName", "state"))
 
-    x <- fread("https://raw.githubusercontent.com/owid/covid-19-data/master/public/data/vaccinations/us_state_vaccinations.csv")
+    x <- data.table::fread("https://raw.githubusercontent.com/owid/covid-19-data/master/public/data/vaccinations/us_state_vaccinations.csv")
     x[location == "New York State", location := "New York"]
     x <- x[location %in% state.dt$StateName]
     x[, .(date, doses = daily_vaccinations)]
@@ -62,10 +62,10 @@ GetDosesData <- function(states = FALSE, remote = FALSE) {
     x[, people_fully_vaccinated := na.approx(people_fully_vaccinated, na.rm=F), by = "location"]
     x[, frac_2_or_jj := c(NA, diff(people_fully_vaccinated)) / daily_vaccinations, by = "location"]
 
-    y <- fread("https://raw.githubusercontent.com/owid/covid-19-data/master/public/data/vaccinations/vaccinations-by-manufacturer.csv")[location == "United States"]
+    y <- data.table::fread("https://raw.githubusercontent.com/owid/covid-19-data/master/public/data/vaccinations/vaccinations-by-manufacturer.csv")[location == "United States"]
     y[, date := as.Date(date)]
     jj <- y[vaccine == "Johnson&Johnson"]
-    setkey(jj, date)
+    data.table::setkey(jj, date)
     jj <- rbind(data.table(total_vaccinations = 0), jj, fill=T)
     jj[, new_jj := c(NA, diff(total_vaccinations))]
 
@@ -84,11 +84,11 @@ GetDosesData <- function(states = FALSE, remote = FALSE) {
     doses.dt[, dose2 := doses * frac_2]
     doses.dt[, doseJ := doses * jj_frac]
     doses.dt <- rbind(doses.dt[date > as.Date("2021/1/15"), .(StateName, date, dose1, dose2, doseJ)], merge(data.frame(date = base_dates), as.data.frame(base_vac[, .(StateName = location, dose1 = per_day, dose2 = 0, doseJ = 0)]), by = NULL, all = T)) #merge.data.frame allows by=NULL
-    setkey(doses.dt, StateName, date)
+    data.table::setkey(doses.dt, StateName, date)
     doses.dt <- merge(doses.dt, state.dt, by = "StateName")
     doses.dt <- doses.dt[, .(state, date, dose1, dose2, doseJ)]
   } else {
-    x <- fread("https://data.chhs.ca.gov/dataset/e283ee5a-cf18-4f20-a92c-ee94a2866ccd/resource/130d7ba2-b6eb-438d-a412-741bde207e1c/download/covid19vaccinesbycounty.csv")
+    x <- data.table::fread("https://data.chhs.ca.gov/dataset/e283ee5a-cf18-4f20-a92c-ee94a2866ccd/resource/130d7ba2-b6eb-438d-a412-741bde207e1c/download/covid19vaccinesbycounty.csv")
     x[, doseJ := jj_doses]
     x[, dose2 := fully_vaccinated - jj_doses]
     x[, dose1 := total_doses - (dose2 + doseJ)]

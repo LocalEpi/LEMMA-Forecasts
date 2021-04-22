@@ -34,3 +34,28 @@ directory the code is organized as:
     1.  `RunOneCounty_scen`
 6.  `RunCounty.R`
     1.  `RunOneCounty`
+
+# Useage
+
+To run a set of scenarios for Alameda county, you’d run the same code as
+the non-package version of LEMMA-Forecasts:
+
+``` r
+library(LEMMA.forecasts)
+
+writedir <- normalizePath("~/Desktop/tmp/")
+county.dt <- GetCountyData(remote = TRUE)
+max.date <- Get1(county.dt[!is.na(hosp.conf), max(date), by = "county"]$V1)
+cat("max date = ", as.character(max.date), "\n")
+
+doses.dt <- GetDosesData(remote = TRUE)
+
+county.by.pop <- unique(county.dt[!is.na(population), .(county, population)]) #NA population if no hospitalizations
+setorder(county.by.pop, -population)
+county.set <- county.by.pop[, county]
+
+county.set <- setdiff(county.set, "Colusa"); cat("excluding Colusa\n")
+print(county.set)
+
+RunOneCounty_scen(county1 = "Alameda",county.dt = county.dt,doses.dt = doses.dt,remote = TRUE,writedir = writedir)
+```

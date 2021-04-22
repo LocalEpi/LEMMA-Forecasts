@@ -20,28 +20,28 @@
 #' @export
 GetCountyData <- function(include.regions = FALSE, remove.holidays = TRUE, states = FALSE, remote = FALSE) {
   if (states) return(GetStateData(remove.holidays))
-  dt <- fread("https://data.chhs.ca.gov/dataset/2df3e19e-9ee4-42a6-a087-9761f82033f6/resource/47af979d-8685-4981-bced-96a6b79d3ed5/download/covid19hospitalbycounty.csv")
+  dt <- data.table::fread("https://data.chhs.ca.gov/dataset/2df3e19e-9ee4-42a6-a087-9761f82033f6/resource/47af979d-8685-4981-bced-96a6b79d3ed5/download/covid19hospitalbycounty.csv")
   dt <- dt[, .(county, date = as.Date(todays_date), hosp.conf = hospitalized_covid_confirmed_patients, hosp.pui = hospitalized_suspected_covid_patients, icu.conf = icu_covid_confirmed_patients, icu.pui = icu_suspected_covid_patients)]
 
   if (T) {
-    deaths.cases <- fread("https://data.chhs.ca.gov/dataset/f333528b-4d38-4814-bebb-12db1f10f535/resource/046cdd2b-31e5-4d34-9ed3-b48cdbc4be7a/download/covid19cases_test.csv")
+    deaths.cases <- data.table::fread("https://data.chhs.ca.gov/dataset/f333528b-4d38-4814-bebb-12db1f10f535/resource/046cdd2b-31e5-4d34-9ed3-b48cdbc4be7a/download/covid19cases_test.csv")
     deaths.cases[, date := as.Date(date)]
     deaths.cases[, county := area]
     deaths.cases <- deaths.cases[!(county %in% c("Unknown", "Out of state", "California")) & !is.na(date)]
-    setkey(deaths.cases, county, date)
+    data.table::setkey(deaths.cases, county, date)
 
     #assume last 3 days of cases, 30 days of deaths are not reliable
     max.date <- deaths.cases[, max(date)]
     case.dt <- deaths.cases[date >= as.Date("2020/9/25") & date < (max.date - 3), .(date, county, cases.conf = cases, cases.pui = NA_real_)]
 
     if (remove.holidays) {
-      case.dt[date %in% as.Date(c("2020/11/26", "2020/11/27", "2020/12/25", "2021/1/1")), cases.conf := NA_real_] #remove major holidays before and after frollmean
+      case.dt[date %in% as.Date(c("2020/11/26", "2020/11/27", "2020/12/25", "2021/1/1")), cases.conf := NA_real_] #remove major holidays before and after data.table::frollmean
     }
 
-    case.dt[, cases.conf := frollmean(cases.conf, 7, na.rm = T), by = county]
+    case.dt[, cases.conf := data.table::frollmean(cases.conf, 7, na.rm = T), by = county]
 
     if (remove.holidays) {
-      case.dt[date %in% as.Date(c("2020/11/26", "2020/11/27", "2020/12/25", "2021/1/1")), cases.conf := NA_real_] #remove major holidays before and after frollmean
+      case.dt[date %in% as.Date(c("2020/11/26", "2020/11/27", "2020/12/25", "2021/1/1")), cases.conf := NA_real_] #remove major holidays before and after data.table::frollmean
     }
 
     deaths.dt <- deaths.cases[date <= (max.date - 30), .(date, deaths.conf = cumsum(deaths), deaths.pui = NA_real_), by = "county"]
@@ -120,7 +120,7 @@ GetCountyData <- function(include.regions = FALSE, remove.holidays = TRUE, state
     }
   }
 
-  setkey(county.dt, county, date)
+  data.table::setkey(county.dt, county, date)
   return(county.dt)
 }
 
@@ -129,14 +129,14 @@ GetCountyData <- function(include.regions = FALSE, remove.holidays = TRUE, state
 #' @param remove.holidays
 GetStateData <- function(remove.holidays = TRUE) {
   GetHospData <- function(f) {
-    x <- fread(f)
+    x <- data.table::fread(f)
     if ("reporting_cutoff_start" %in% names(x)) {
       #used in daily updates, not in time series
       x[, date := as.Date(reporting_cutoff_start) + 3]
     } else {
       x[, date := as.Date(date)]
     }
-    setkey(x, state, date)
+    data.table::setkey(x, state, date)
     hosp.dt <- x[, .(state, date,
                      hosp.conf = total_adult_patients_hospitalized_confirmed_covid + total_pediatric_patients_hospitalized_confirmed_covid,
                      hosp.pui = pmax(0, total_adult_patients_hospitalized_confirmed_and_suspected_covid +
@@ -154,7 +154,7 @@ GetStateData <- function(remove.holidays = TRUE) {
     hosp.dt.prev <- GetHospData("https://healthdata.gov/api/views/g62h-syeh/rows.csv?accessType=DOWNLOAD")[date > as.Date("2020-08-01")] #time series
     cat("last date may be duplicated - check\n")
     print(tail(hosp.dt.prev[state == "MI"]))
-    ar <- fread("https://healthdata.gov/api/views/4cnb-m4rz/rows.csv?accessType=DOWNLOAD")
+    ar <- data.table::fread("https://healthdata.gov/api/views/4cnb-m4rz/rows.csv?accessType=DOWNLOAD")
     ar[, date := as.Date(ar$`Update Date`, format = "%m/%d/%Y")]
     for (i in ar[date > as.Date("2021-03-15"), `Archive Link`]) {
       hosp.dt.temp <- GetHospData(i)
@@ -165,7 +165,7 @@ GetStateData <- function(remove.holidays = TRUE) {
         hosp.dt.prev <- rbind(hosp.dt.prev, hosp.dt.temp)
       }
     }
-    ctp.dt <- fread("https://covidtracking.com/data/download/all-states-history.csv")
+    ctp.dt <- data.table::fread("https://covidtracking.com/data/download/all-states-history.csv")
     ctp.dt[, date := as.Date(date)]
     ctp.dt <- ctp.dt[date <= as.Date("2020-08-01"), .(state, date, hosp.conf = hospitalizedCurrently, hosp.pui = ifelse(is.na(hospitalizedCurrently), NA_real_, 0), icu.conf = inIcuCurrently, icu.pui = ifelse(is.na(inIcuCurrently), NA_real_, 0), admits.conf = hospitalizedIncrease, admits.pui = ifelse(is.na(hospitalizedIncrease), NA_real_, 0))]
     ctp.dt[, index := admits.conf == 0]
@@ -173,7 +173,7 @@ GetStateData <- function(remove.holidays = TRUE) {
     ctp.dt[index == T, admits.pui := NA_real_]
     ctp.dt$index <- NULL
     hosp.dt.prev <- rbind(ctp.dt, hosp.dt.prev)
-    setkey(hosp.dt.prev, state, date)
+    data.table::setkey(hosp.dt.prev, state, date)
     saveRDS(hosp.dt.prev, "Inputs/StateHosp.rds")
   }
   hosp.dt.prev <- readRDS("Inputs/StateHosp.rds")
@@ -184,17 +184,17 @@ GetStateData <- function(remove.holidays = TRUE) {
     hosp.dt <- hosp.dt.prev
   } else {
     hosp.dt <- rbind(hosp.dt.prev, hosp.dt)
-    setkey(hosp.dt, state, date)
+    data.table::setkey(hosp.dt, state, date)
     saveRDS(hosp.dt, "Inputs/StateHosp.rds")
   }
 
 
-  state.abbr.dt <- fread("Inputs/state abbreviations.csv")
+  state.abbr.dt <- data.table::fread("Inputs/state abbreviations.csv")
   setnames(state.abbr.dt, c("StateName", "state"))
 
   if (F) {
     #these seem unreliable
-    s=fread("https://data.cdc.gov/api/views/d2tw-32xv/rows.csv?accessType=DOWNLOAD")
+    s=data.table::fread("https://data.cdc.gov/api/views/d2tw-32xv/rows.csv?accessType=DOWNLOAD")
     #seroprev - may be mix of infected only and infected or vaccinated - only use up to Dec 2020
     z <- s[, strsplit(`Date Range of Specimen Collection`, "-")]
     s$date <- as.Date(sapply(z, function (z1) z1[[2]]), format = " %b %d, %Y")
@@ -203,19 +203,19 @@ GetStateData <- function(remove.holidays = TRUE) {
 
 
   #deaths (with date of death - NCHS data - see https://covidtracking.com/analysis-updates/federal-covid-data-101-working-with-death-numbers)
-  x <- fread("https://data.cdc.gov/api/views/r8kw-7aab/rows.csv?accessType=DOWNLOAD")
+  x <- data.table::fread("https://data.cdc.gov/api/views/r8kw-7aab/rows.csv?accessType=DOWNLOAD")
   x <- x[Group == "By Week", .(StateName = State, date = as.Date(`End Date`, format = "%m/%d/%Y"), newdeaths = `COVID-19 Deaths`)]
   x[is.na(newdeaths), newdeaths := 5] #1-9 deaths is NA, estimate with 5
   x <- merge(x, state.abbr.dt)
   x[, deaths.conf := cumsum(newdeaths), by = "state"]
   death.dt <- x[, .(state, date, deaths.conf, deaths.pui = NA_real_)]
   death.dt[date > (max(date) - 30), deaths.conf := NA_real_] #assume last 30 days not reliable
-  setkey(death.dt, state, date)
+  data.table::setkey(death.dt, state, date)
 
   #cases
-  x <- fread("https://data.cdc.gov/api/views/9mfq-cb36/rows.csv?accessType=DOWNLOAD")
+  x <- data.table::fread("https://data.cdc.gov/api/views/9mfq-cb36/rows.csv?accessType=DOWNLOAD")
   x[, date := as.Date(submission_date, "%m/%d/%Y")]
-  setkey(x, state, date)
+  data.table::setkey(x, state, date)
   x[, cases.conf := as.numeric(new_case - ifelse(is.na(pnew_case), 0, pnew_case))]
   x[, cases.pui := as.numeric(pnew_case)]
 
@@ -224,15 +224,15 @@ GetStateData <- function(remove.holidays = TRUE) {
   x[cases.invalid == T, cases.pui := NA_real_]
 
   if (remove.holidays) {
-    x[date %in% as.Date(c("2020/11/26", "2020/11/27", "2020/12/25", "2021/1/1")), cases.conf := NA_real_] #remove major holidays before and after frollmean
+    x[date %in% as.Date(c("2020/11/26", "2020/11/27", "2020/12/25", "2021/1/1")), cases.conf := NA_real_] #remove major holidays before and after data.table::frollmean
     x[date %in% as.Date(c("2020/11/26", "2020/11/27", "2020/12/25", "2021/1/1")), cases.pui := NA_real_]
   }
 
-  x[, cases.conf := frollmean(cases.conf, 7, na.rm = T), by = state]
-  x[, cases.pui := frollmean(cases.pui, 7, na.rm = T), by = state]
+  x[, cases.conf := data.table::frollmean(cases.conf, 7, na.rm = T), by = state]
+  x[, cases.pui := data.table::frollmean(cases.pui, 7, na.rm = T), by = state]
 
   if (remove.holidays) {
-    x[date %in% as.Date(c("2020/11/26", "2020/11/27", "2020/12/25", "2021/1/1")), cases.conf := NA_real_] #remove major holidays before and after frollmean
+    x[date %in% as.Date(c("2020/11/26", "2020/11/27", "2020/12/25", "2021/1/1")), cases.conf := NA_real_] #remove major holidays before and after data.table::frollmean
     x[date %in% as.Date(c("2020/11/26", "2020/11/27", "2020/12/25", "2021/1/1")), cases.pui := NA_real_]
   }
   case.dt <- x[date >= as.Date("2020/9/25"), .(state, date, cases.conf, cases.pui, seroprev.conf = NA_real_, seroprev.pui= NA_real_)]
@@ -251,7 +251,7 @@ GetStateData <- function(remove.holidays = TRUE) {
 ReadCsvAWS <- function(object) {
   filestr <- tempfile()
   aws.s3::save_object(object, bucket = "js-lemma-bucket1", file = filestr, region = "us-west-1")
-  csv <- fread(filestr)
+  csv <- data.table::fread(filestr)
   value <- unlink(filestr)
   if (!identical(value, 0L)) stop("failed to delete temp file")
   return(csv)
@@ -270,7 +270,7 @@ ConvertNegative <- function(value) {
 
 # GetOldAdmits <- function() {
 #   #also in JS code branch
-#   admits.dt <- fread("~/Documents/MissionCovid/reported_hospital_capacity_admissions_facility_level_weekly_average_timeseries_20210228.csv")[state == "CA"]
+#   admits.dt <- data.table::fread("~/Documents/MissionCovid/reported_hospital_capacity_admissions_facility_level_weekly_average_timeseries_20210228.csv")[state == "CA"]
 #
 #   admits.dt[, previous_day_admission_adult_covid_confirmed_7_day_sum := ConvertNegative(previous_day_admission_adult_covid_confirmed_7_day_sum)]
 #   admits.dt[, previous_day_admission_pediatric_covid_confirmed_7_day_sum := ConvertNegative(previous_day_admission_pediatric_covid_confirmed_7_day_sum)]
@@ -281,7 +281,7 @@ ConvertNegative <- function(value) {
 #                           by = c("fips_code", "collection_week")]
 #   admits.dt2[, date := as.Date(collection_week) + 3] #add 3 for midpoint of week
 #   setnames(admits.dt2, "fips_code", "fips")
-#   admits.dt2 <- merge(admits.dt2, fread("Inputs/CountyFips.csv"))
+#   admits.dt2 <- merge(admits.dt2, data.table::fread("Inputs/CountyFips.csv"))
 #   admits.dt2[is.na(admits.conf), admits.pui := NA_real_]
 #   admits.dt2[is.na(admits.pui), admits.conf := NA_real_]
 #   saveRDS(admits.dt2, "Inputs/AdmitsUntilFeb19.rds")
@@ -291,7 +291,7 @@ ConvertNegative <- function(value) {
 #' @title Get information on hospital admissions
 #' @remote remote a logical value, if \code{TRUE} download all data from remotes, otherwise use local data
 GetAdmits <- function(remote = FALSE) {
-  admits.dt <- fread("https://healthdata.gov/api/views/anag-cw7u/rows.csv?accessType=DOWNLOAD")[state == "CA"]
+  admits.dt <- data.table::fread("https://healthdata.gov/api/views/anag-cw7u/rows.csv?accessType=DOWNLOAD")[state == "CA"]
   admits.dt[, previous_day_admission_adult_covid_confirmed_7_day_sum := ConvertNegative(previous_day_admission_adult_covid_confirmed_7_day_sum)]
   admits.dt[, previous_day_admission_pediatric_covid_confirmed_7_day_sum := ConvertNegative(previous_day_admission_pediatric_covid_confirmed_7_day_sum)]
   admits.dt[, previous_day_admission_adult_covid_suspected_7_day_sum := ConvertNegative(previous_day_admission_adult_covid_suspected_7_day_sum)]
@@ -303,9 +303,9 @@ GetAdmits <- function(remote = FALSE) {
   admits.dt2 <- admits.dt2[date > as.Date("2021-2-1")] #data errors
   setnames(admits.dt2, "fips_code", "fips")
   if (remote) {
-    admits.dt2 <- merge(admits.dt2, fread("https://raw.githubusercontent.com/LocalEpi/LEMMA-Forecasts/master/Inputs/CountyFips.csv"))
+    admits.dt2 <- merge(admits.dt2, data.table::fread("https://raw.githubusercontent.com/LocalEpi/LEMMA-Forecasts/master/Inputs/CountyFips.csv"))
   } else {
-    admits.dt2 <- merge(admits.dt2, fread("Inputs/CountyFips.csv"))
+    admits.dt2 <- merge(admits.dt2, data.table::fread("Inputs/CountyFips.csv"))
   }
   admits.dt2[is.na(admits.conf), admits.pui := NA_real_]
   admits.dt2[is.na(admits.pui), admits.conf := NA_real_]
@@ -317,14 +317,14 @@ GetAdmits <- function(remote = FALSE) {
   }
 
   admits.dt2 <- rbind(admits.old[, .(county, date, admits.conf, admits.pui)], admits.dt2[date > as.Date("2021/2/22"), .(county, date, admits.conf, admits.pui)]) #some overlap between sources
-  setkey(admits.dt2, county, date)
+  data.table::setkey(admits.dt2, county, date)
   return(admits.dt2)
 }
 
 
 # GetAdmits_notused <- function() {
 #   #this data source hasn't updated since late feb
-#   admits.dt <- fread("https://opendata.arcgis.com/datasets/cebaea39dc3b4a4d858105a170318731_0.csv")[state == "CA"]
+#   admits.dt <- data.table::fread("https://opendata.arcgis.com/datasets/cebaea39dc3b4a4d858105a170318731_0.csv")[state == "CA"]
 #   admits.dt[, previous_day_admission_adult_covid_confirmed_7_day_sum := ConvertNegative(prevadmit_adult_conf_7d_sum)]
 #   admits.dt[, previous_day_admission_pediatric_covid_confirmed_7_day_sum := ConvertNegative(prevadmit_pedi_conf_7d_sum)]
 #   admits.dt[, previous_day_admission_adult_covid_suspected_7_day_sum := ConvertNegative(prevadmit_adult_susp_7d_sum)]
@@ -335,23 +335,23 @@ GetAdmits <- function(remote = FALSE) {
 #   admits.dt2[, date := as.Date(collection_week) + 3] #add 3 for midpoint of week (collection_week is start of week)
 #   admits.dt2 <- admits.dt2[date > as.Date("2021-2-1")] #data errors
 #   setnames(admits.dt2, "fips_code", "fips")
-#   admits.dt2 <- merge(admits.dt2, fread("Inputs/CountyFips.csv"))
+#   admits.dt2 <- merge(admits.dt2, data.table::fread("Inputs/CountyFips.csv"))
 #   admits.dt2[is.na(admits.conf), admits.pui := NA_real_]
 #   admits.dt2[is.na(admits.pui), admits.conf := NA_real_]
 #
 #   admits.old <- readRDS("Inputs/AdmitsUntilFeb19.rds")
 #   admits.dt2 <- rbind(admits.old[, .(county, date, admits.conf, admits.pui)], admits.dt2[, .(county, date, admits.conf, admits.pui)])
-#   setkey(admits.dt2, county, date)
+#   data.table::setkey(admits.dt2, county, date)
 #   return(admits.dt2)
 # }
 
 
 #' @title Get data for Santa Clara County
 GetSantaClaraData <- function() {
-  sc.deaths <- fread("https://data.sccgov.org/api/views/tg4j-23y2/rows.csv?accessType=DOWNLOAD")
+  sc.deaths <- data.table::fread("https://data.sccgov.org/api/views/tg4j-23y2/rows.csv?accessType=DOWNLOAD")
   sc.deaths[, date := as.Date(Date)]
   sc.deaths <- sc.deaths[date <= Sys.Date()] #remove data errors
-  sc.hosp <- fread("https://data.sccgov.org/api/views/5xkz-6esm/rows.csv?accessType=DOWNLOAD")
+  sc.hosp <- data.table::fread("https://data.sccgov.org/api/views/5xkz-6esm/rows.csv?accessType=DOWNLOAD")
   sc.hosp <- sc.hosp[, .(date = as.Date(Date), icu_covid, icu_pui, non_icu_covid, non_icu_pui)]
   sc <- merge(sc.deaths[, .(Cumulative, date)], sc.hosp, all = T, by = "date")
   sc <- sc[date >= as.Date("2020/3/27"), .(county = "Santa Clara", date, hosp.conf = icu_covid + non_icu_covid, hosp.pui = icu_pui + non_icu_pui, icu.conf = icu_covid, icu.pui = icu_pui, deaths.conf = Cumulative)]
