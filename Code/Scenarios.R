@@ -82,11 +82,7 @@ Scenario <- function(filestr1, county1, k_mu_beta_inter, lemma_statusquo = NULL,
     return(lemma)
   }
 
-  if (county1 == "San Francisco") {
-    tier_date <- as.Date("2021/4/21")
-  } else {
-    tier_date <- as.Date("2021/5/1")
-  }
+  tier_date <- as.Date("2021/5/4")
 
   if (!is.null(writedir)) {
     # filestr <- normalizePath(path = paste0(writedir, "/", county1, "_", filestr1))
