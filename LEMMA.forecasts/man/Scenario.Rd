@@ -38,7 +38,8 @@ Scenario(
 
 \item{remote}{a logical value, if \code{TRUE} download all data from remotes, otherwise use local data}
 
-\item{writedir}{a character string giving a directory to write to. Ignored if \code{remote} is \code{FALSE}}
+\item{writedir}{a character string giving a directory to write to, it should only be used if \code{remote} is \code{TRUE}.
+This assumes the directory whose path is given already exists.}
 }
 \value{
 a named list of values
