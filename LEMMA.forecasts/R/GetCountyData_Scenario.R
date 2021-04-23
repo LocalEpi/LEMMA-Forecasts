@@ -1,3 +1,22 @@
+# --------------------------------------------------------------------------------
+#   Functions to prepare data for running scenarios:
+#   1. GetCountyInputs_scen
+#   2. Scenario
+#   3. GetResults_scen
+# --------------------------------------------------------------------------------
+
+
+#' @title Get county inputs for scenarios
+#' @description This function is called from \code{\link[LEMMA.forecasts]{Scenario}}.
+#' @param county1 a character string giving the name of the county
+#' @param county.dt a \code{\link[data.table]{data.table}} object returned from \code{\link[LEMMA.forecasts]{GetCountyData}}
+#' @param doses.dt a \code{\link[data.table]{data.table}} object returned from \code{\link[LEMMA.forecasts]{GetDosesData}}
+#' @param k_uptake a character string, "low" or "high" giving vaccine uptake
+#' @param k_ukgrowth growth rate of UK variant
+#' @param k_brgrowth growth rate of BR variant
+#' @param remote a logical value, if \code{TRUE} download all data from remotes, otherwise use local data
+#' @param writedir a character string giving a directory to write to. Ignored if \code{remote} is \code{FALSE}
+#' @return a named list of values
 GetCountyInputs_scen <- function(county1, county.dt, doses.dt, k_uptake, k_ukgrowth, k_brgrowth, remote = FALSE, writedir = writedir) {
   sheets <- GetCountySheets(county1, county.dt, doses.dt,remote = remote)
 
@@ -75,14 +94,45 @@ GetCountyInputs_scen <- function(county1, county.dt, doses.dt, k_uptake, k_ukgro
   return(inputs)
 }
 
-Scenario <- function(filestr1, county1, k_mu_beta_inter, lemma_statusquo = NULL, k_uptake = "low", k_ukgrowth = 1, k_brgrowth = 1, k_max_open = 0.75, remote = FALSE, writedir = NULL) {
-  inputs <- GetCountyInputs_scen(county1, county.dt, doses.dt, k_uptake, k_ukgrowth, k_brgrowth, remote = remote, writedir = writedir)
+
+#' @title Run a scenario
+#' @description This function is called from \code{\link[LEMMA.forecasts]{RunOneCounty_scen}}.
+#' @param filestr1 a character string giving the type of scenario to run
+#' @param county1 a character string giving the name of the county
+#' @param county.dt a \code{\link[data.table]{data.table}} object returned from \code{\link[LEMMA.forecasts]{GetCountyData}}
+#' @param doses.dt a \code{\link[data.table]{data.table}} object returned from \code{\link[LEMMA.forecasts]{GetDosesData}}
+#' @param k_mu_beta_inter
+#' @param lemma_statusquo either \code{NULL} or the result of a call to \code{Scenario} with \code{filestr1 = "statusquo"}
+#' @param k_uptake a character string, "low" or "high" giving vaccine uptake
+#' @param k_ukgrowth growth rate of UK variant
+#' @param k_brgrowth growth rate of BR variant
+#' @param k_max_open
+#' @param remote a logical value, if \code{TRUE} download all data from remotes, otherwise use local data
+#' @param writedir a character string giving a directory to write to. Ignored if \code{remote} is \code{FALSE}
+#' @return a named list of values
+Scenario <- function(
+  filestr1, county1, county.dt, doses.dt,
+  k_mu_beta_inter = NULL, lemma_statusquo = NULL, k_uptake = "low",
+  k_ukgrowth = 1, k_brgrowth = 1, k_max_open = 0.75,
+  remote = FALSE, writedir = NULL
+) {
+
+  inputs <- GetCountyInputs_scen(
+    county1 = county1, county.dt = county.dt, doses.dt = doses.dt, k_uptake = k_uptake,
+    k_ukgrowth = k_ukgrowth, k_brgrowth = k_brgrowth,
+    remote = remote, writedir = writedir
+  )
+
   if (filestr1 == "statusquo") {
     lemma <- LEMMA:::CredibilityInterval(inputs)
     return(lemma)
   }
 
-  tier_date <- as.Date("2021/5/4")
+  if (county1 == "San Francisco") {
+    tier_date <- as.Date("2021/4/21")
+  } else {
+    tier_date <- as.Date("2021/5/1")
+  }
 
   if (!is.null(writedir)) {
     # filestr <- normalizePath(path = paste0(writedir, "/", county1, "_", filestr1))
@@ -113,8 +163,7 @@ Scenario <- function(filestr1, county1, k_mu_beta_inter, lemma_statusquo = NULL,
   pdf(paste0(filestr, ".pdf"), width = 11, height = 8.5)
   relative.contact.rate <- lemma$fit.extended$par$beta / (lemma$fit.extended$par$beta[1] * lemma$inputs$vaccines$transmission_variant_multiplier)
   dt <- data.table(date = lemma$projection$date, relative.contact.rate)
-  dt[, type := ifelse(date >= inputs$obs.data[, max(date) - 7], "Scenario", "Estimate")]
-  print(ggplot(dt, aes(x = date, y = relative.contact.rate)) + geom_line(aes(color = type), size = 2) + scale_x_date(date_breaks = "1 month", date_labels = "%b") + ggtitle("Effective contact rate relative to initial effective contact rate\nnot including vaccine or variant effects") + xlab("") + ylab("Effective Contact Rate") + theme(legend.title = element_blank()))
+  print(ggplot(dt, aes(x = date, y = relative.contact.rate)) + geom_line() + scale_x_date(date_breaks = "1 month", date_labels = "%b") + ggtitle("Effective contact rate relative to initial effective contact rate\nnot including vaccine or variant effects") + xlab(""))
 
   doses <- lemma$inputs$vaccines_nonstan$doses
   doses[, doses_given := dose1 + dose2 + doseJ]
@@ -133,6 +182,11 @@ Scenario <- function(filestr1, county1, k_mu_beta_inter, lemma_statusquo = NULL,
   invisible(results)
 }
 
+
+#' @title Get results of running a scenario
+#' @description This function is called from \code{\link[LEMMA.forecasts]{Scenario}}.
+#' @param projection output of a LEMMA model run
+#' @param name a character string giving the type of scenario to run
 GetResults_scen <- function(projection, name) {
   projection1 <- projection[date >= Sys.Date()]
   hosp.peak <- projection1[, max(hosp)]
@@ -142,71 +196,3 @@ GetResults_scen <- function(projection, name) {
   additional.cases <- projection1[, max(totalCases) - min(totalCases)]
   return(data.table(name, hosp.peak, hosp.peak.date, additional.admits, additional.deaths, additional.cases))
 }
-
-RunOneCounty_scen <- function(county1, county.dt, doses.dt, remote = FALSE, writedir = NULL) {
-  Scenario1 <- function(filestr1, ...) {
-    results <- Scenario(filestr1, county1, k_mu_beta_inter, ...)
-    results.dt <<- rbind(results.dt, results)
-  }
-
-  results.dt <- NULL
-  lemma <- Scenario("statusquo", county1, remote = remote, writedir = writedir)
-
-  relative.contact.rate.statusquo <- lemma$fit.extended$par$beta / (lemma$fit.extended$par$beta[1] * lemma$inputs$vaccines$transmission_variant_multiplier)
-  k_mu_beta_inter <- 1 / pmin(1, tail(relative.contact.rate.statusquo, 1))
-
-  Scenario1("base", lemma, remote = remote, writedir = writedir)
-  Scenario1("open90percent", lemma, k_max_open = 0.9, remote = remote, writedir = writedir)
-  Scenario1("uptake85", lemma = NULL, k_uptake = "high", remote = remote, writedir = writedir) #refit - can change age dist
-  Scenario1("UKvariant", lemma, k_ukgrowth = 1.06, remote = remote, writedir = writedir)
-  Scenario1("BRvariant", lemma, k_brgrowth = 1.06, remote = remote, writedir = writedir)
-
-  if (county1 == "San Francisco") {
-    Scenario1("uptake85_open90percent", lemma = NULL, k_uptake = "high", k_max_open = 0.9, remote = remote, writedir = writedir)
-    Scenario1("uptake85_open90percent_UKvariant", lemma = NULL, k_uptake = "high", k_max_open = 0.9, k_ukgrowth = 1.06, remote = remote, writedir = writedir)
-    Scenario1("open90percent_UKvariant", lemma = NULL, k_max_open = 0.9, k_ukgrowth = 1.06, remote = remote, writedir = writedir)
-    Scenario1("uptake85_BRvariant", lemma = NULL, k_uptake = "high", k_brgrowth = 1.06, remote = remote, writedir = writedir)
-    Scenario1("uptake85_open90percent_BRvariant", lemma = NULL, k_uptake = "high", k_max_open = 0.9, k_brgrowth = 1.06, remote = remote, writedir = writedir)
-
-    options(scipen = 3)
-
-    if (remote) {
-      scen_path <- paste0(writedir, "/Scenarios")
-      if (dir.exists(scen_path)) {
-        sink(file = paste0(scen_path, "/San Francisco_ScenarioSummary.txt"))
-      }
-    } else {
-      sink("Scenarios/San Francisco_ScenarioSummary.txt")
-    }
-
-    print(results.dt, digits=0)
-
-    cat("base = 75% open by June 22; uptake: 70% for <65, 85% for 65+; wild type and West Coast variants; 12-15 eligible May 1, 0-11 eligible Jan 1 \n")
-    cat("other scenarios same as base except:\n")
-    cat("open90percent = 90% open\n")
-    cat("uptake85 = 85% uptake all ages\n")
-    cat("UKvariant = UK variant dominant by August\n")
-    cat('BRvariant = "Brazil-like" (near worst case) variant dominant by August\n')
-    sink()
-  }
-  return(lemma)
-}
-
-# RunOneCounty <- function(county1, county.dt, doses.dt, remote = FALSE, writedir = NULL) {
-#   if (is.null(writedir) & remote) {
-#     stop("if running for shiny, a writedirectory to write to must be provided")
-#   }
-#   lemma <- Scenario("statusquo", county1, remote = remote, writedir = writedir)
-#
-#   relative.contact.rate.statusquo <- lemma$fit.extended$par$beta / (lemma$fit.extended$par$beta[1] * lemma$inputs$vaccines$transmission_variant_multiplier)
-#   k_mu_beta_inter <- 1 / pmin(1, tail(relative.contact.rate.statusquo, 1))
-#
-#   Scenario("base", county1, k_mu_beta_inter, lemma, remote = remote, writedir = writedir)
-#   Scenario("open90percent", county1, k_mu_beta_inter, lemma, k_max_open = 0.9, remote = remote, writedir = writedir)
-#   Scenario("uptake85", county1, k_mu_beta_inter, lemma = NULL, k_uptake = "normal", remote = remote, writedir = writedir) #refit - can change age dist
-#   Scenario("UKvariant", county1, k_mu_beta_inter, lemma, k_ukgrowth = 1.06, remote = remote, writedir = writedir)
-#   Scenario("BRvariant", county1, k_mu_beta_inter, lemma, k_brgrowth = 1.06, remote = remote, writedir = writedir)
-#
-#   return(lemma)
-# }
-
