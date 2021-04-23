@@ -186,7 +186,7 @@ RunOneCounty_scen <- function(county1, county.dt, doses.dt, remote = FALSE, writ
     cat("open90percent = 90% open\n")
     cat("uptake85 = 85% uptake all ages\n")
     cat("UKvariant = UK variant dominant by August\n")
-    cat('BRvariant = "Brazil-like" (near worst case) variant dominant by August\n')
+    cat('BRvariant = "Brazil-like" (near worst case) variant dominant by August (possible but unlikely)\n')
     sink()
   }
   return(lemma)

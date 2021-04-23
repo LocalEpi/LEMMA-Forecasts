@@ -7,8 +7,7 @@ https://github.com/LocalEpi/LEMMA
 These forecasts can be reproduced by installing the LEMMA package and running Code/RunCAcounties.R
 
 
-As of March 20, these forecasts have been updated to run using the `master` branch of LEMMA including vaccines and variants. Additional documentation will be posted by March 24.
-
+As of March 20, these forecasts have been updated to run using the `master` branch of LEMMA including vaccines and variants. 
 
 Note: Except for San Francisco, our forecasts are not adjusted for mutual aid transfers between counties. 
 
