@@ -4,7 +4,7 @@
 \alias{GetCountyInputs}
 \title{Get input data for county}
 \usage{
-GetCountyInputs(county1, county.dt, doses.dt, remote = FALSE)
+GetCountyInputs(county1, county.dt, doses.dt, remote = FALSE, writedir = NULL)
 }
 \arguments{
 \item{county1}{a character string giving the name of the county}
@@ -14,6 +14,8 @@ GetCountyInputs(county1, county.dt, doses.dt, remote = FALSE)
 \item{doses.dt}{a \code{\link[data.table]{data.table}} object returned from \code{\link[LEMMA.forecasts]{GetDosesData}}}
 
 \item{remote}{a logical value, if \code{TRUE} download all data from remotes, otherwise use local data}
+
+\item{writedir}{a character string giving a directory to write to. Ignored if \code{remote} is \code{FALSE}}
 }
 \description{
 Get input data for county

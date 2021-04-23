@@ -12,7 +12,7 @@ GetCountyInputs_scen(
   k_ukgrowth,
   k_brgrowth,
   remote = FALSE,
-  writedir = writedir
+  writedir = NULL
 )
 }
 \arguments{

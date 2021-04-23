@@ -4,7 +4,7 @@
 \alias{RunOneCounty}
 \title{Run a county}
 \usage{
-RunOneCounty(county1, county.dt, doses.dt, remote = FALSE)
+RunOneCounty(county1, county.dt, doses.dt, remote = FALSE, writedir = NULL)
 }
 \arguments{
 \item{county1}{a character string giving the name of the county}
@@ -14,6 +14,8 @@ RunOneCounty(county1, county.dt, doses.dt, remote = FALSE)
 \item{doses.dt}{a \code{\link[data.table]{data.table}} object returned from \code{\link[LEMMA.forecasts]{GetDosesData}}}
 
 \item{remote}{a logical value, if \code{TRUE} download all data from remotes, otherwise use local data}
+
+\item{writedir}{a character string giving a directory to write to. Ignored if \code{remote} is \code{FALSE}}
 }
 \description{
 Run a county

@@ -17,7 +17,7 @@
 #' @param remote a logical value, if \code{TRUE} download all data from remotes, otherwise use local data
 #' @param writedir a character string giving a directory to write to. Ignored if \code{remote} is \code{FALSE}
 #' @return a named list of values
-GetCountyInputs_scen <- function(county1, county.dt, doses.dt, k_uptake, k_ukgrowth, k_brgrowth, remote = FALSE, writedir = writedir) {
+GetCountyInputs_scen <- function(county1, county.dt, doses.dt, k_uptake, k_ukgrowth, k_brgrowth, remote = FALSE, writedir = NULL) {
   sheets <- GetCountySheets(county1, county.dt, doses.dt,remote = remote)
 
   stopifnot(k_uptake %in% c("low", "high"))
