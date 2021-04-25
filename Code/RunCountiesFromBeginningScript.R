@@ -19,5 +19,5 @@ county.set <- setdiff(county.set, "Colusa"); cat("excluding Colusa\n")
 print(county.set)
 
 print(system.time(
-lemma.set <- parallel::mclapply(county.set, RunOneCounty, county.dt, doses.dt, mc.cores = parallel::detectCores() - 1)
+lemma.set <- parallel::mclapply(county.set, RunOneCounty_scen, county.dt, doses.dt, mc.cores = parallel::detectCores() - 1)
 ))
