@@ -15,9 +15,10 @@
 #' @param k_ukgrowth growth rate of UK variant
 #' @param k_brgrowth growth rate of BR variant
 #' @param remote a logical value, if \code{TRUE} download all data from remotes, otherwise use local data
-#' @param writedir a character string giving a directory to write to. Ignored if \code{remote} is \code{FALSE}
+#' @param writedir a character string giving a directory to write to, it should only be used if \code{remote} is \code{TRUE}.
+#' This assumes the directory whose path is given already exists.
 #' @return a named list of values
-GetCountyInputs_scen <- function(county1, county.dt, doses.dt, k_uptake, k_ukgrowth, k_brgrowth, remote = FALSE, writedir = writedir) {
+GetCountyInputs_scen <- function(county1, county.dt, doses.dt, k_uptake, k_ukgrowth, k_brgrowth, remote = FALSE, writedir = NULL) {
   sheets <- GetCountySheets(county1, county.dt, doses.dt,remote = remote)
 
   stopifnot(k_uptake %in% c("low", "high"))
@@ -108,7 +109,8 @@ GetCountyInputs_scen <- function(county1, county.dt, doses.dt, k_uptake, k_ukgro
 #' @param k_brgrowth growth rate of BR variant
 #' @param k_max_open
 #' @param remote a logical value, if \code{TRUE} download all data from remotes, otherwise use local data
-#' @param writedir a character string giving a directory to write to. Ignored if \code{remote} is \code{FALSE}
+#' @param writedir a character string giving a directory to write to, it should only be used if \code{remote} is \code{TRUE}.
+#' This assumes the directory whose path is given already exists.
 #' @return a named list of values
 Scenario <- function(
   filestr1, county1, county.dt, doses.dt,

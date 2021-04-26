@@ -9,9 +9,14 @@
 #' @param county.dt a \code{\link[data.table]{data.table}} object returned from \code{\link[LEMMA.forecasts]{GetCountyData}}
 #' @param doses.dt a \code{\link[data.table]{data.table}} object returned from \code{\link[LEMMA.forecasts]{GetDosesData}}
 #' @param remote a logical value, if \code{TRUE} download all data from remotes, otherwise use local data
-#' @param writedir a character string giving a directory to write to. Ignored if \code{remote} is \code{FALSE}
+#' @param writedir a character string giving a directory to write to, it should only be used if \code{remote} is \code{TRUE}.
+#' This assumes the directory whose path is given already exists.
 #' @export
 RunOneCounty_scen <- function(county1, county.dt, doses.dt, remote = FALSE, writedir = NULL) {
+
+  if (remote & is.null(writedir)) {
+    stop("if 'remote' is TRUE, please provide a directory to write results to in 'writedir'")
+  }
 
   Scenario1 <- function(filestr1, ...) {
     results <- Scenario(filestr1 = filestr1, county1 = county1, county.dt = county.dt, doses.dt = doses.dt, k_mu_beta_inter = k_mu_beta_inter, ...)

@@ -135,7 +135,9 @@ GetCountySheets <- function(county1, county.dt, doses.dt, remote = FALSE) {
 #' @param county.dt a \code{\link[data.table]{data.table}} object returned from \code{\link[LEMMA.forecasts]{GetCountyData}}
 #' @param doses.dt a \code{\link[data.table]{data.table}} object returned from \code{\link[LEMMA.forecasts]{GetDosesData}}
 #' @param remote a logical value, if \code{TRUE} download all data from remotes, otherwise use local data
-GetCountyInputs <- function(county1, county.dt, doses.dt, remote = FALSE) {
+#' @param writedir a character string giving a directory to write to, it should only be used if \code{remote} is \code{TRUE}.
+#' This assumes the directory whose path is given already exists.
+GetCountyInputs <- function(county1, county.dt, doses.dt, remote = FALSE, writedir = NULL) {
   sheets <- GetCountySheets(county1, county.dt, doses.dt, remote)
 
   inputs <- LEMMA:::ProcessSheets(sheets)
@@ -161,11 +163,21 @@ GetCountyInputs <- function(county1, county.dt, doses.dt, remote = FALSE) {
 
   inputs$internal.args$weights <- c(1, 1, 1, 1, 0.5, 1)
 
-  if (remote) {
-    inputs$internal.args$output.filestr <- tempfile(pattern = county1)
+  if (!is.null(writedir)) {
+    outpath <- paste0(writedir, "/Forecasts")
+    dir.create(path = outpath, showWarnings = FALSE)
+    filestr <- paste0(outpath, "/", county1)
   } else {
-    inputs$internal.args$output.filestr <- paste0("Forecasts/", county1)
+    filestr <- paste0("Forecasts/", county1)
   }
+
+  inputs$internal.args$output.filestr <- filestr
+
+  # if (remote) {
+  #   inputs$internal.args$output.filestr <- tempfile(pattern = county1)
+  # } else {
+  #   inputs$internal.args$output.filestr <- paste0("Forecasts/", county1)
+  # }
 
   return(inputs)
 }

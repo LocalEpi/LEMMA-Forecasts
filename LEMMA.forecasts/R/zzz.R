@@ -11,4 +11,5 @@
 #' @import ggplot2
 #' @import LEMMA
 #' @import matrixStats
+#' @import aws.s3
 NULL
