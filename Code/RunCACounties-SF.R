@@ -13,7 +13,7 @@ stopifnot(county.rt[, Rt] > 0.5 & county.rt[, Rt] < 2)
 setorder(county.rt, -Rt)
 print(county.rt, digits = 2)
 
-if (F) {
+if (T) {
   outfile <- paste0("~/Dropbox/LEMMA_shared/JS code branch/lemma input and output/SF-updating/SF-", max.date)
   file.copy("~/Documents/GitHub/LEMMA-Forecasts/Forecasts/San Francisco.pdf", paste0(outfile, ".pdf"), overwrite = T)
   file.copy("~/Documents/GitHub/LEMMA-Forecasts/Forecasts/San Francisco.xlsx", paste0(outfile, ".xlsx"), overwrite = T)
