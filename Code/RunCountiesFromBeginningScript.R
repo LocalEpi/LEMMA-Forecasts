@@ -16,6 +16,8 @@ setorder(county.by.pop, -population)
 county.set <- county.by.pop[, county]
 
 county.set <- setdiff(county.set, "Colusa"); cat("excluding Colusa\n")
+
+# county.set <- county.set[1:3]; cat("temp!\n")
 print(county.set)
 
 print(system.time(
