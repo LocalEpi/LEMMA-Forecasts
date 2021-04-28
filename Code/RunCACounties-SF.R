@@ -1,4 +1,4 @@
-# setwd("~/Documents/GitHub/LEMMA-Forecasts/")
+setwd("~/Documents/GitHub/LEMMA-Forecasts/")
 library(data.table)
 source('Code/GetCountyData.R')
 
@@ -28,7 +28,7 @@ if (T) {
 system2("git", args = "pull")
 commit.name <- paste0('"', "data through ", as.character(max.date), '"')
 system2("git", args = c('commit', '-a', '-m', commit.name))
-#system2("git", args = "push")
+system2("git", args = "push")
 
 GenerateEmail(max.date)
 cat("\n")
