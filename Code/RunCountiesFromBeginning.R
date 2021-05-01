@@ -117,20 +117,22 @@ GetCountySheets <- function(county1, county.dt, doses.dt, remote = FALSE) {
 
 GetCountyInputs <- function(county1, county.dt, doses.dt, remote = FALSE) {
   sheets <- GetCountySheets(county1, county.dt, doses.dt, remote)
-
   inputs <- LEMMA:::ProcessSheets(sheets)
+  inputs <- ModifyCountyInputs(county1, inputs)
+  if (remote) {
+    inputs$internal.args$output.filestr <- tempfile(pattern = county1)
+  } else {
+    inputs$internal.args$output.filestr <- paste0("Forecasts/", county1)
+  }
+  return(inputs)
+}
 
+ModifyCountyInputs <- function(county1, inputs) {
   #need different initial conditions to converge
   if (county1 == "Siskiyou") {
     inputs$internal.args$init_frac_mort_nonhosp <- 0.00001
   }
-  if (county1 == "Humboldt") {
-    inputs$internal.args$init_frac_mort_nonhosp <- 0.001
-  }
-  if (county1 == "El Dorado") {
-    inputs$internal.args$init_frac_mort_nonhosp <- 0.001
-  }
-  if (county1 == "Del Norte") {
+  if (county1 %in% c("Humboldt", "El Dorado", "Del Norte", "Yuba", "Napa")) {
     inputs$internal.args$init_frac_mort_nonhosp <- 0.001
   }
   if (county1 == "Imperial") {
@@ -138,15 +140,7 @@ GetCountyInputs <- function(county1, county.dt, doses.dt, remote = FALSE) {
     inputs$obs.data[, admits.conf := NA_real_]
     inputs$obs.data[, admits.pui := NA_real_]
   }
-
   inputs$internal.args$weights <- c(1, 1, 1, 1, 0.5, 1)
-
-  if (remote) {
-    inputs$internal.args$output.filestr <- tempfile(pattern = county1)
-  } else {
-    inputs$internal.args$output.filestr <- paste0("Forecasts/", county1)
-  }
-
   return(inputs)
 }
 

@@ -36,4 +36,3 @@ RtMap(max.date, county.rt)
 cat("\n")
 system2("cat", '"Scenarios/San Francisco_ScenarioSummary.txt"')
 
-cat("git push from console!\n")
