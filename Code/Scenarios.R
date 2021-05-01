@@ -164,6 +164,7 @@ RunOneCounty_scen <- function(county1, county.dt, doses.dt, remote = FALSE, writ
   if (county1 == "San Francisco") {
     Scenario1("uptake85_open90percent", lemma = NULL, k_uptake = "high", k_max_open = 0.9, remote = remote, writedir = writedir)
     Scenario1("uptake85_open90percent_UKvariant", lemma = NULL, k_uptake = "high", k_max_open = 0.9, k_ukgrowth = 1.06, remote = remote, writedir = writedir)
+    Scenario1("uptake85_UKvariant", lemma = NULL, k_uptake = "high", k_ukgrowth = 1.06, remote = remote, writedir = writedir)
     Scenario1("open90percent_UKvariant", lemma = NULL, k_max_open = 0.9, k_ukgrowth = 1.06, remote = remote, writedir = writedir)
     Scenario1("uptake85_BRvariant", lemma = NULL, k_uptake = "high", k_brgrowth = 1.06, remote = remote, writedir = writedir)
     Scenario1("uptake85_open90percent_BRvariant", lemma = NULL, k_uptake = "high", k_max_open = 0.9, k_brgrowth = 1.06, remote = remote, writedir = writedir)
@@ -181,7 +182,7 @@ RunOneCounty_scen <- function(county1, county.dt, doses.dt, remote = FALSE, writ
 
     print(results.dt, digits=0)
 
-    cat("base = 75% open by June 22; uptake: 70% for <65, 85% for 65+; wild type and West Coast variants; 12-15 eligible May 1, 0-11 eligible Jan 1 \n")
+    cat("base = 75% open by June 22; uptake: 70% for <65, 85% for 65+; wild type and West Coast variants; 12-15 eligible June 1, 0-11 eligible Jan 1 \n")
     cat("other scenarios same as base except:\n")
     cat("open90percent = 90% open\n")
     cat("uptake85 = 85% uptake all ages\n")
