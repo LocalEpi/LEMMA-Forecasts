@@ -272,8 +272,13 @@ ReadSFDoses <- function() {
   d[vax_type %in% c("Moderna", "Pfizer"), dose_num := dose]
   d[vax_type == "Johnson & Johnson", dose_num := "J"]
   d[, count := count_65plus + count_under65]
-  d <- d[, .(count = sum(count)), keyby = c("date", "dose_num")]
 
+  cat("at least one dose:\n")
+  cat("16-64: ", d[dose_num %in% c("1", "J"), sum(count_under65)] / 633762, "\n")
+  cat("65+: ", d[dose_num %in% c("1", "J"), sum(count_65plus)] / 135027, "\n")
+
+
+  d <- d[, .(count = sum(count)), keyby = c("date", "dose_num")]
   d <- d[, .(dose1 = sum(count * (dose_num == "1")), dose2 = sum(count * (dose_num == "2")), doseJ = sum(count * (dose_num == "J"))), by = "date"]
   d[, county := "San Francisco"]
   return(d)

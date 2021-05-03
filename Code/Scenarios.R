@@ -3,10 +3,10 @@ GetCountyInputs_scen <- function(county1, county.dt, doses.dt, k_uptake, k_ukgro
 
   stopifnot(k_uptake %in% c("low", "high"))
   if (k_uptake == "low") {
-    sheets$`Vaccine Distribution`[age < 65, vax_uptake := 0.70]
-    sheets$`Vaccine Distribution`[age >= 65, vax_uptake := 0.85]
+    sheets$`Vaccine Distribution`[age < 65, vax_uptake := 0.75]
+    sheets$`Vaccine Distribution`[age >= 65, vax_uptake := 0.87]
   } else {
-    sheets$`Vaccine Distribution`[, vax_uptake := 0.85]
+    sheets$`Vaccine Distribution`[, vax_uptake := 0.87]
   }
 
   if (remote) {
@@ -63,7 +63,7 @@ Scenario <- function(filestr1, county1, k_mu_beta_inter, lemma_statusquo = NULL,
     return(lemma)
   }
 
-  tier_date <- as.Date("2021/5/4")
+  tier_date <- as.Date("2021/5/7")
 
   if (!is.null(writedir)) {
     # filestr <- normalizePath(path = paste0(writedir, "/", county1, "_", filestr1))
@@ -120,8 +120,9 @@ GetResults_scen <- function(projection, name) {
   hosp.peak.date <- projection1[, date[which.max(hosp)]]
   additional.admits <- projection1[, sum(admits)]
   additional.deaths <- projection1[, max(deaths) - min(deaths)]
+  additional.deaths.byNov2021 <- projection1[date <= as.Date("2021/11/1"), max(deaths) - min(deaths)]
   additional.cases <- projection1[, max(totalCases) - min(totalCases)]
-  return(data.table(name, hosp.peak, hosp.peak.date, additional.admits, additional.deaths, additional.cases))
+  return(data.table(name, hosp.peak, hosp.peak.date, additional.admits, additional.deaths, additional.deaths.byNov2021, additional.cases))
 }
 
 RunOneCounty_scen <- function(county1, county.dt, doses.dt, remote = FALSE, writedir = NULL) {
@@ -163,7 +164,7 @@ RunOneCounty_scen <- function(county1, county.dt, doses.dt, remote = FALSE, writ
 
     print(results.dt, digits=0)
 
-    cat("base = 75% open by June 22; uptake: 70% for <65, 85% for 65+; wild type and West Coast variants; 12-15 eligible June 1, 0-11 eligible Jan 1 \n")
+    cat("base = 75% open by June 22; uptake: 75% for <65, 87% for 65+; wild type and West Coast variants; 12-15 eligible June 1, 0-11 eligible Jan 1 \n")
     cat("other scenarios same as base except:\n")
     cat("open90percent = 90% open\n")
     cat("uptake85 = 85% uptake all ages\n")
