@@ -1,4 +1,4 @@
-GetCountyInputs_scen <- function(county1, county.dt, doses.dt, k_uptake, k_ukgrowth, k_brgrowth, remote = FALSE, writedir = writedir) {
+GetCountyInputs_scen <- function(county1, county.dt, doses.dt, k_uptake, k_ukgrowth, k_brgrowth, remote = FALSE, writedir = NULL) {
   sheets <- GetCountySheets(county1, county.dt, doses.dt,remote = remote)
 
   stopifnot(k_uptake %in% c("low", "high"))

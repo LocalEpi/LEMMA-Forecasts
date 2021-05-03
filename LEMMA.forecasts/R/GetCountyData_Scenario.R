@@ -23,10 +23,10 @@ GetCountyInputs_scen <- function(county1, county.dt, doses.dt, k_uptake, k_ukgro
 
   stopifnot(k_uptake %in% c("low", "high"))
   if (k_uptake == "low") {
-    sheets$`Vaccine Distribution`[age < 65, vax_uptake := 0.70]
-    sheets$`Vaccine Distribution`[age >= 65, vax_uptake := 0.85]
+    sheets$`Vaccine Distribution`[age < 65, vax_uptake := 0.75]
+    sheets$`Vaccine Distribution`[age >= 65, vax_uptake := 0.87]
   } else {
-    sheets$`Vaccine Distribution`[, vax_uptake := 0.85]
+    sheets$`Vaccine Distribution`[, vax_uptake := 0.87]
   }
 
   if (remote) {
@@ -62,26 +62,7 @@ GetCountyInputs_scen <- function(county1, county.dt, doses.dt, k_uptake, k_ukgro
   sheets$Variants[name == "BR", daily_growth_future := k_brgrowth]
 
   inputs <- LEMMA:::ProcessSheets(sheets)
-  #need different initial conditions to converge
-  if (county1 == "Siskiyou") {
-    inputs$internal.args$init_frac_mort_nonhosp <- 0.00001
-  }
-  if (county1 == "Humboldt") {
-    inputs$internal.args$init_frac_mort_nonhosp <- 0.001
-  }
-  if (county1 == "El Dorado") {
-    inputs$internal.args$init_frac_mort_nonhosp <- 0.001
-  }
-  if (county1 == "Del Norte") {
-    inputs$internal.args$init_frac_mort_nonhosp <- 0.001
-  }
-  if (county1 == "Imperial") {
-    inputs$obs.data <- rbind(data.table(date = as.Date("2020/3/10"), hosp.conf = 0, hosp.pui = 0), inputs$obs.data, fill = T)
-    inputs$obs.data[, admits.conf := NA_real_]
-    inputs$obs.data[, admits.pui := NA_real_]
-  }
-
-  inputs$internal.args$weights <- c(1, 1, 1, 1, 0.5, 1)
+  inputs <- ModifyCountyInputs(county1, inputs)
 
   if (remote) {
     # inputs$internal.args$output.filestr <- tempfile(pattern = county1)
@@ -130,11 +111,7 @@ Scenario <- function(
     return(lemma)
   }
 
-  if (county1 == "San Francisco") {
-    tier_date <- as.Date("2021/4/21")
-  } else {
-    tier_date <- as.Date("2021/5/1")
-  }
+  tier_date <- as.Date("2021/5/7")
 
   if (!is.null(writedir)) {
     # filestr <- normalizePath(path = paste0(writedir, "/", county1, "_", filestr1))
@@ -195,6 +172,7 @@ GetResults_scen <- function(projection, name) {
   hosp.peak.date <- projection1[, date[which.max(hosp)]]
   additional.admits <- projection1[, sum(admits)]
   additional.deaths <- projection1[, max(deaths) - min(deaths)]
+  additional.deaths.byNov2021 <- projection1[date <= as.Date("2021/11/1"), max(deaths) - min(deaths)]
   additional.cases <- projection1[, max(totalCases) - min(totalCases)]
-  return(data.table(name, hosp.peak, hosp.peak.date, additional.admits, additional.deaths, additional.cases))
+  return(data.table(name, hosp.peak, hosp.peak.date, additional.admits, additional.deaths, additional.deaths.byNov2021, additional.cases))
 }

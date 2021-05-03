@@ -38,6 +38,7 @@ RunOneCounty_scen <- function(county1, county.dt, doses.dt, remote = FALSE, writ
   if (county1 == "San Francisco") {
     Scenario1("uptake85_open90percent", lemma_statusquo = NULL, k_uptake = "high", k_max_open = 0.9, remote = remote, writedir = writedir)
     Scenario1("uptake85_open90percent_UKvariant", lemma_statusquo = NULL, k_uptake = "high", k_max_open = 0.9, k_ukgrowth = 1.06, remote = remote, writedir = writedir)
+    Scenario1("uptake85_UKvariant", lemma_statusquo = NULL, k_uptake = "high", k_ukgrowth = 1.06, remote = remote, writedir = writedir)
     Scenario1("open90percent_UKvariant", lemma_statusquo = NULL, k_max_open = 0.9, k_ukgrowth = 1.06, remote = remote, writedir = writedir)
     Scenario1("uptake85_BRvariant", lemma_statusquo = NULL, k_uptake = "high", k_brgrowth = 1.06, remote = remote, writedir = writedir)
     Scenario1("uptake85_open90percent_BRvariant", lemma_statusquo = NULL, k_uptake = "high", k_max_open = 0.9, k_brgrowth = 1.06, remote = remote, writedir = writedir)
