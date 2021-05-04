@@ -23,10 +23,6 @@ if (T) {
   for (i in list.files("~/Documents/GitHub/LEMMA-Forecasts/Scenarios/", pattern = "San Francisco")) {
     file.copy(paste0("~/Documents/GitHub/LEMMA-Forecasts/Scenarios/", i), paste0("~/Dropbox/LEMMA_shared/JS code branch/lemma input and output/SF-updating/", i), overwrite = T)
   }
-
-
-  file.copy(paste0("~/Documents/GitHub/LEMMA-Forecasts/Map/Rt_map_", as.character(max.date - 14), ".csv"), paste0("~/Dropbox/LEMMA_shared/JS code branch/lemma input and output/SF-updating/Rt_map_", as.character(max.date - 14), ".csv"), overwrite = T)
-  file.copy(paste0("~/Documents/GitHub/LEMMA-Forecasts/Map/Rt_map_", as.character(max.date - 14), ".pdf"), paste0("~/Dropbox/LEMMA_shared/JS code branch/lemma input and output/SF-updating/Rt_map_", as.character(max.date - 14), ".pdf"), overwrite = T)
 }
 
 system2("git", args = "pull")
@@ -40,3 +36,5 @@ RtMap(max.date, county.rt)
 cat("\n")
 system2("cat", '"Scenarios/San Francisco_ScenarioSummary.txt"')
 
+file.copy(paste0("~/Documents/GitHub/LEMMA-Forecasts/Map/Rt_map_", as.character(max.date - 14), ".csv"), paste0("~/Dropbox/LEMMA_shared/JS code branch/lemma input and output/SF-updating/Rt_map_", as.character(max.date - 14), ".csv"), overwrite = T)
+file.copy(paste0("~/Documents/GitHub/LEMMA-Forecasts/Map/Rt_map_", as.character(max.date - 14), ".pdf"), paste0("~/Dropbox/LEMMA_shared/JS code branch/lemma input and output/SF-updating/Rt_map_", as.character(max.date - 14), ".pdf"), overwrite = T)
