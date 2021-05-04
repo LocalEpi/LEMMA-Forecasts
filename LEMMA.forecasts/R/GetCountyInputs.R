@@ -3,6 +3,7 @@
 #   1. Get1
 #   2. GetCountySheets
 #   3. GetCountyInputs
+#   4. ModifyCountyInputs
 # --------------------------------------------------------------------------------
 
 
@@ -141,27 +142,7 @@ GetCountyInputs <- function(county1, county.dt, doses.dt, remote = FALSE, writed
   sheets <- GetCountySheets(county1, county.dt, doses.dt, remote)
 
   inputs <- LEMMA:::ProcessSheets(sheets)
-
-  #need different initial conditions to converge
-  if (county1 == "Siskiyou") {
-    inputs$internal.args$init_frac_mort_nonhosp <- 0.00001
-  }
-  if (county1 == "Humboldt") {
-    inputs$internal.args$init_frac_mort_nonhosp <- 0.001
-  }
-  if (county1 == "El Dorado") {
-    inputs$internal.args$init_frac_mort_nonhosp <- 0.001
-  }
-  if (county1 == "Del Norte") {
-    inputs$internal.args$init_frac_mort_nonhosp <- 0.001
-  }
-  if (county1 == "Imperial") {
-    inputs$obs.data <- rbind(data.table(date = as.Date("2020/3/10"), hosp.conf = 0, hosp.pui = 0), inputs$obs.data, fill = TRUE)
-    inputs$obs.data[, admits.conf := NA_real_]
-    inputs$obs.data[, admits.pui := NA_real_]
-  }
-
-  inputs$internal.args$weights <- c(1, 1, 1, 1, 0.5, 1)
+  inputs <- ModifyCountyInputs(county1 = county1, inputs = inputs)
 
   if (!is.null(writedir)) {
     outpath <- paste0(writedir, "/Forecasts")
@@ -173,11 +154,26 @@ GetCountyInputs <- function(county1, county.dt, doses.dt, remote = FALSE, writed
 
   inputs$internal.args$output.filestr <- filestr
 
-  # if (remote) {
-  #   inputs$internal.args$output.filestr <- tempfile(pattern = county1)
-  # } else {
-  #   inputs$internal.args$output.filestr <- paste0("Forecasts/", county1)
-  # }
+  return(inputs)
+}
 
+
+#' @title Get input data for county
+#' @param county1 a character string giving the name of the county
+#' @param inputs a named list returned from \code{\link[LEMMA]{ProcessSheets}}
+ModifyCountyInputs <- function(county1, inputs) {
+  #need different initial conditions to converge
+  if (county1 == "Siskiyou") {
+    inputs$internal.args$init_frac_mort_nonhosp <- 0.00001
+  }
+  if (county1 %in% c("Humboldt", "El Dorado", "Del Norte", "Yuba", "Napa")) {
+    inputs$internal.args$init_frac_mort_nonhosp <- 0.001
+  }
+  if (county1 == "Imperial") {
+    inputs$obs.data <- rbind(data.table(date = as.Date("2020/3/10"), hosp.conf = 0, hosp.pui = 0), inputs$obs.data, fill = TRUE)
+    inputs$obs.data[, admits.conf := NA_real_]
+    inputs$obs.data[, admits.pui := NA_real_]
+  }
+  inputs$internal.args$weights <- c(1, 1, 1, 1, 0.5, 1)
   return(inputs)
 }
