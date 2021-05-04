@@ -151,8 +151,8 @@ RunOneCounty_scen <- function(county1, county.dt, doses.dt, remote = FALSE, writ
     Scenario1("uptake85_BRvariant", lemma = NULL, k_uptake = "high", k_brgrowth = 1.06, remote = remote, writedir = writedir)
     Scenario1("uptake85_open90percent_BRvariant", lemma = NULL, k_uptake = "high", k_max_open = 0.9, k_brgrowth = 1.06, remote = remote, writedir = writedir)
 
-    options(scipen = 3)
-
+    prev.width <- getOption("width")
+    options(scipen = 3, width = 9999)
     if (remote) {
       scen_path <- paste0(writedir, "/Scenarios")
       if (dir.exists(scen_path)) {
@@ -161,8 +161,8 @@ RunOneCounty_scen <- function(county1, county.dt, doses.dt, remote = FALSE, writ
     } else {
       sink("Scenarios/San Francisco_ScenarioSummary.txt")
     }
-
     print(results.dt, digits=0)
+    options(width = prev.width)
 
     cat("base = 75% open by June 22; uptake: 75% for <65, 87% for 65+; wild type and West Coast variants; 12-15 eligible June 1, 0-11 eligible Jan 1 \n")
     cat("other scenarios same as base except:\n")
