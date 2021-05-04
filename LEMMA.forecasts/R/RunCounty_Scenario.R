@@ -93,7 +93,7 @@ RunOneCounty_scen_input <- function(
     results <- Scenario(filestr1 = filestr1, county1 = county1, county.dt = county.dt, doses.dt = doses.dt, k_mu_beta_inter = k_mu_beta_inter, ...)
   }
 
-  lemma <- Scenario(filestr1 = "statusquo", county1 = county1, county.dt = county.dt, doses.dt = doses.dt, remote = remote, writedir = writedir)
+  lemma <- Scenario(filestr1 = "statusquo", county1 = county1, county.dt = county.dt, doses.dt = doses.dt, k_uptake = k_uptake, k_ukgrowth = k_ukgrowth, k_brgrowth = k_brgrowth, k_max_open = k_max_open, remote = remote, writedir = writedir)
 
   relative.contact.rate.statusquo <- lemma$fit.extended$par$beta / (lemma$fit.extended$par$beta[1] * lemma$inputs$vaccines$transmission_variant_multiplier)
   k_mu_beta_inter <- 1 / pmin(1, tail(relative.contact.rate.statusquo, 1))
