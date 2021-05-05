@@ -44,6 +44,8 @@ RunOneCounty_scen(county1 = "Alameda",county.dt = county.dt,doses.dt = doses.dt,
 This package simply collects the functions in **LEMMA-Forecasts** into a package, for easier use in the Shiny application.
 Within the `R/` directory the code is organized as:
 
+  1. `GenerateEmail.R`
+      1. `GenerateEmail`
   1. `GetCountyData_Scenario.R`
       1. `GetCountyInputs_scen`
       2. `Scenario`
@@ -71,3 +73,6 @@ Within the `R/` directory the code is organized as:
       1. `RunOneCounty_scen`
   6. `RunCounty.R`
       1. `RunOneCounty`
+  7. `CreateStateOverview.R`
+      1. `CreateOverview`
+      2. `RtMap`
