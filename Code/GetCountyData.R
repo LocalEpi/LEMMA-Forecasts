@@ -274,8 +274,8 @@ ReadSFDoses <- function() {
   d[, count := count_65plus + count_under65]
 
   cat("at least one dose:\n")
-  cat("16-64: ", d[dose_num %in% c("1", "J"), sum(count_under65)] / 633762, "\n")
-  cat("65+: ", d[dose_num %in% c("1", "J"), sum(count_65plus)] / 135027, "\n")
+  cat("16-64: ", d[dose_num %in% c("1", "J"), sum(count_under65)] / 603606, "\n") #includes reduced population est
+  cat("65+: ", d[dose_num %in% c("1", "J"), sum(count_65plus)] / 132892, "\n") #includes reduced population est
 
 
   d <- d[, .(count = sum(count)), keyby = c("date", "dose_num")]
