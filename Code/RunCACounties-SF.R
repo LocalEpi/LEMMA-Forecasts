@@ -1,11 +1,29 @@
 setwd("~/Documents/GitHub/LEMMA-Forecasts/")
 library(data.table)
-source('Code/GetCountyData.R')
+devtools::load_all("LEMMA.forecasts")
 
 SFDosesToAWS()
-source('Code/RunCountiesFromBeginningScript.R') #assigns max.date and lemma.set
-source('Code/CreateStateOverview.R')
-source('Code/GenerateEmail.R')
+
+
+county.dt <- GetCountyData()
+max.date <- Get1(county.dt[!is.na(hosp.conf), max(date), by = "county"]$V1)
+cat("max date = ", as.character(max.date), "\n")
+
+saveRDS(county.dt, "Inputs/savedCountyData.rds") #save in case HHS server is down later
+doses.dt <- GetDosesData()
+ReadSFDoses(print_outdate = T) #only for printing
+
+county.by.pop <- unique(county.dt[!is.na(population), .(county, population)]) #NA population if no hospitalizations
+setorder(county.by.pop, -population)
+county.set <- county.by.pop[, county]
+
+print(county.set)
+
+print(system.time(
+  lemma.set <- parallel::mclapply(county.set, RunOneCounty_scen, county.dt, doses.dt, mc.cores = parallel::detectCores() - 1)
+))
+
+
 
 print(tail(doses.dt[county == "San Francisco", .(date, doses = dose1 + dose2 + doseJ, doses7 = frollmean(dose1 + dose2 + doseJ, 7))], 20))
 county.rt <- CreateOverview(lemma.set)

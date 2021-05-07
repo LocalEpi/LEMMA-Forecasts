@@ -1,39 +1,9 @@
 # --------------------------------------------------------------------------------
 #   Functions to get doses data:
-#   1. GetDosesData.old
-#   2. GetDosesData
-#   3. ReadSFDoses.old
-#   4. SFDosesToAWS
-#   5. ReadSFDoses
+#   1. GetDosesData
+#   2. SFDosesToAWS
+#   3. ReadSFDoses
 # --------------------------------------------------------------------------------
-
-
-#data sources for doses
-#VaccinesByCounty.csv ; dose_num age_bin count; all counties up to 2/24, emailed from Tomas Leon
-#~/Documents/MissionCovid/CAIR Summary Report.xlsx; ADMIN_DATE VAX_TYPE DOSE_NUM COUNT_65_AND_OLDER COUNT_UNDER_65; SF only, emailed daily
-#https://data.chhs.ca.gov/dataset/e283ee5a-cf18-4f20-a92c-ee94a2866ccd/resource/130d7ba2-b6eb-438d-a412-741bde207e1c/download/covid19vaccinesbycounty.csv ;
-# c("county", "administered_date", "total_doses", "cumulative_total_doses",
-#   "pfizer_doses", "cumulative_pfizer_doses", "moderna_doses", "cumulative_moderna_doses",
-#   "jj_doses", "cumulative_jj_doses", "partially_vaccinated", "total_partially_vaccinated",
-#   "fully_vaccinated", "cumulative_fully_vaccinated", "at_least_one_dose",
-#   "cumulative_at_least_one_dose", "california_flag")
-#all counties, updated daily
-
-# GetDosesData.old <- function() {
-#   doses.dt <- ReadCsvAWS("VaccinesByCounty.csv")
-#   doses.dt[, date := as.Date(date)]
-#   doses.dt[, count := as.numeric(count)]
-#
-#   doses.sf.under <- cbind(ReadSFDoses("Under 65 SF Residents"), age_bin = "<65")
-#   doses.sf.over <- cbind(ReadSFDoses("Over 65 SF Residents"), age_bin = "65+")
-#   doses.sf <- rbind(doses.sf.under, doses.sf.over)
-#   doses.sf[, county := "San Francisco"]
-#   doses.sf <- doses.sf[date <= (max(date) - 2)] #last few days incomplete
-#
-#   doses.dt <- rbind(doses.dt[county != "San Francisco"], doses.sf)
-#   data.table::setkey(doses.dt, county, date)
-#   return(doses.dt)
-# }
 
 
 #' @title Get doses data
@@ -104,20 +74,6 @@ GetDosesData <- function(states = FALSE, remote = FALSE) {
   return(doses.dt)
 }
 
-
-# ReadSFDoses.old <- function(sheet) {
-#   d <- as.data.table(readxl::read_excel("~/Documents/MissionCovid/VaccineData_OverandUnder65_3.19.21.xlsx", sheet = sheet))
-#   setnames(d, c("date", "vax_type", "dose", "count"))
-#   d[, date := as.Date(date)]
-#   d <- d[!(dose %in% c("INV", "UNK"))]
-#   d <- d[vax_type %in% c("Moderna", "Pfizer", "J&J")]
-#   d[vax_type %in% c("Moderna", "Pfizer"), dose_num := dose]
-#   d[vax_type == "J&J", dose_num := "J"]
-#   d <- d[, .(count = sum(count)), keyby = c("date", "dose_num")]
-#   return(d)
-# }
-
-
 #' @title Upload SF doses to AWS
 #' @export
 SFDosesToAWS <- function() {
@@ -130,7 +86,7 @@ SFDosesToAWS <- function() {
 
 #' @title Read SF doses from AWS
 #' @export
-ReadSFDoses <- function() {
+ReadSFDoses <- function(print_outdate = FALSE) {
   #suppressWarnings(d <- as.data.table(readxl::read_excel("~/Documents/MissionCovid/CAIR Summary Report.xlsx", col_types = c("date", "text", "text", "numeric", "numeric")))) #suppress numeric to date warnings
   #setnames(d, c("date", "vax_type", "dose", "count_65plus", "count_under65"))
   d <- ReadCsvAWS("CAIR Summary Report.csv")
@@ -140,8 +96,14 @@ ReadSFDoses <- function() {
   d[vax_type %in% c("Moderna", "Pfizer"), dose_num := dose]
   d[vax_type == "Johnson & Johnson", dose_num := "J"]
   d[, count := count_65plus + count_under65]
-  d <- d[, .(count = sum(count)), keyby = c("date", "dose_num")]
 
+  if (print_outdate) {
+    cat("at least one dose:\n")
+    cat("16-64: ", d[dose_num %in% c("1", "J"), sum(count_under65)] / 603606, "\n") #includes reduced population est
+    cat("65+: ", d[dose_num %in% c("1", "J"), sum(count_65plus)] / 132892, "\n") #includes reduced population est
+  }
+
+  d <- d[, .(count = sum(count)), keyby = c("date", "dose_num")]
   d <- d[, .(dose1 = sum(count * (dose_num == "1")), dose2 = sum(count * (dose_num == "2")), doseJ = sum(count * (dose_num == "J"))), by = "date"]
   d[, county := "San Francisco"]
   return(d)

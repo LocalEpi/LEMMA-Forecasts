@@ -83,7 +83,7 @@ RtMap <- function(max.date, county.rt) {
   ca <- merge(ca, county.rt, by = "subregion", all.x = T)
   ca[, Rt := pmin(1.5, Rt)]
   ca[, Rt := pmax(0.8, Rt)]
-  print(ggplot(ca, aes(long, lat)) + geom_polygon(aes(group = group, fill = Rt), colour = "black") + theme_map() + scale_fill_gradient(low = "green2", high = "red", limits = c(0.8, 1.5)) + ggtitle(datestr))
+  print(ggplot(ca, aes(long, lat)) + geom_polygon(aes(group = group, fill = Rt), colour = "black") + ggthemes::theme_map() + scale_fill_gradient(low = "green2", high = "red", limits = c(0.8, 1.5)) + ggtitle(datestr))
   dev.off()
 
   bay.area <- c("San Francisco", "San Mateo",  "Alameda", "Contra Costa", "Santa Clara", "Marin")

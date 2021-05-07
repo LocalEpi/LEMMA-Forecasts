@@ -43,7 +43,8 @@ RunOneCounty_scen <- function(county1, county.dt, doses.dt, remote = FALSE, writ
     Scenario1("uptake85_BRvariant", lemma_statusquo = NULL, k_uptake = "high", k_brgrowth = 1.06, remote = remote, writedir = writedir)
     Scenario1("uptake85_open90percent_BRvariant", lemma_statusquo = NULL, k_uptake = "high", k_max_open = 0.9, k_brgrowth = 1.06, remote = remote, writedir = writedir)
 
-    options(scipen = 3)
+    prev.width <- getOption("width")
+    options(scipen = 3, width = 9999)
 
     if (remote) {
       scen_path <- paste0(writedir, "/Scenarios")
@@ -55,13 +56,14 @@ RunOneCounty_scen <- function(county1, county.dt, doses.dt, remote = FALSE, writ
     }
 
     print(results.dt, digits=0)
+    options(width = prev.width)
 
-    cat("base = 75% open by June 22; uptake: 70% for <65, 85% for 65+; wild type and West Coast variants; 12-15 eligible May 1, 0-11 eligible Jan 1 \n")
+    cat("base = 75% open by June 22; uptake: 75% for <65, 87% for 65+; wild type and West Coast variants; 12-15 eligible June 1, 0-11 eligible Jan 1 \n")
     cat("other scenarios same as base except:\n")
     cat("open90percent = 90% open\n")
     cat("uptake85 = 85% uptake all ages\n")
     cat("UKvariant = UK variant dominant by August\n")
-    cat("BRvariant = Brazil variant dominant by August\n")
+    cat('BRvariant = "Brazil-like" (near worst case) variant dominant by August (possible but unlikely)\n')
     sink()
   }
   return(lemma)

@@ -156,7 +156,7 @@ GetStateData <- function(remove.holidays = TRUE) {
     print(tail(hosp.dt.prev[state == "MI"]))
     ar <- data.table::fread("https://healthdata.gov/api/views/4cnb-m4rz/rows.csv?accessType=DOWNLOAD")
     ar[, date := as.Date(ar$`Update Date`, format = "%m/%d/%Y")]
-    for (i in ar[date > as.Date("2021-03-15"), `Archive Link`]) {
+    for (i in ar[date > as.Date("2021-05-01"), `Archive Link`]) {
       hosp.dt.temp <- GetHospData(i)
       stopifnot(uniqueN(hosp.dt.temp$date) == 1)
       new.date <- unique(hosp.dt.temp$date)

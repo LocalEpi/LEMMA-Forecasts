@@ -142,7 +142,8 @@ Scenario <- function(
   pdf(paste0(filestr, ".pdf"), width = 11, height = 8.5)
   relative.contact.rate <- lemma$fit.extended$par$beta / (lemma$fit.extended$par$beta[1] * lemma$inputs$vaccines$transmission_variant_multiplier)
   dt <- data.table(date = lemma$projection$date, relative.contact.rate)
-  print(ggplot(dt, aes(x = date, y = relative.contact.rate)) + geom_line() + scale_x_date(date_breaks = "1 month", date_labels = "%b") + ggtitle("Effective contact rate relative to initial effective contact rate\nnot including vaccine or variant effects") + xlab(""))
+  dt[, type := ifelse(date >= inputs$obs.data[, max(date) - 7], "Scenario", "Estimate")]
+  print(ggplot(dt, aes(x = date, y = relative.contact.rate)) + geom_line(aes(color = type), size = 2) + scale_x_date(date_breaks = "1 month", date_labels = "%b") + ggtitle("Effective contact rate relative to initial effective contact rate\nnot including vaccine or variant effects") + xlab("") + ylab("Effective Contact Rate") + theme(legend.title = element_blank()))
 
   doses <- lemma$inputs$vaccines_nonstan$doses
   doses[, doses_given := dose1 + dose2 + doseJ]
