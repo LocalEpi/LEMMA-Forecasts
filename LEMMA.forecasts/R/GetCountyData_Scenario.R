@@ -111,7 +111,7 @@ Scenario <- function(
     return(lemma)
   }
 
-  tier_date <- as.Date("2021/5/7")
+  tier_date <- as.Date("2021/5/10")
 
   if (!is.null(writedir)) {
     # filestr <- normalizePath(path = paste0(writedir, "/", county1, "_", filestr1))
