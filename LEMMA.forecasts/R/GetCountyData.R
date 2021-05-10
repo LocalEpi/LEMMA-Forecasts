@@ -292,6 +292,9 @@ ConvertNegative <- function(value) {
 #' @remote remote a logical value, if \code{TRUE} download all data from remotes, otherwise use local data
 GetAdmits <- function(remote = FALSE) {
   admits.dt <- data.table::fread("https://healthdata.gov/api/views/anag-cw7u/rows.csv?accessType=DOWNLOAD")[state == "CA"]
+  max.week <- admits.dt[, max(as.Date(collection_week))]
+  admits.dt <- admits.dt[collection_week != max.week] #starting with collection_week = 2021-05-07, last update seems incomplete? (this should be week starting May 7 and including data through May 16 but was posted May 9) - for now omit last week but need to check this after next update - will collection_week = 2021-05-07 be corrected?
+
   admits.dt[, previous_day_admission_adult_covid_confirmed_7_day_sum := ConvertNegative(previous_day_admission_adult_covid_confirmed_7_day_sum)]
   admits.dt[, previous_day_admission_pediatric_covid_confirmed_7_day_sum := ConvertNegative(previous_day_admission_pediatric_covid_confirmed_7_day_sum)]
   admits.dt[, previous_day_admission_adult_covid_suspected_7_day_sum := ConvertNegative(previous_day_admission_adult_covid_suspected_7_day_sum)]
