@@ -111,7 +111,7 @@ Scenario <- function(
     return(lemma)
   }
 
-  tier_date <- as.Date("2021/5/11")
+  tier_date <- as.Date("2021/5/15") #after 5/15, delete this and change to one intervention on 6/15
 
   if (!is.null(writedir)) {
     # filestr <- normalizePath(path = paste0(writedir, "/", county1, "_", filestr1))

@@ -8,6 +8,7 @@ SFDosesToAWS()
 county.dt <- GetCountyData()
 max.date <- Get1(county.dt[!is.na(hosp.conf), max(date), by = "county"]$V1)
 cat("max date = ", as.character(max.date), "\n")
+if (max.date >= as.Date("2021/5/15")) stop("remove tier date in GetCountyData_scenarios")
 
 saveRDS(county.dt, "Inputs/savedCountyData.rds") #save in case HHS server is down later
 doses.dt <- GetDosesData()
@@ -17,15 +18,22 @@ county.by.pop <- unique(county.dt[!is.na(population), .(county, population)]) #N
 setorder(county.by.pop, -population)
 county.set <- county.by.pop[, county]
 
+deaths.cases <- data.table::fread("https://data.chhs.ca.gov/dataset/f333528b-4d38-4814-bebb-12db1f10f535/resource/046cdd2b-31e5-4d34-9ed3-b48cdbc4be7a/download/covid19cases_test.csv")
+deaths.cases[, date := as.Date(date)]
+deaths.cases[, county := area]
+deaths.cases <- deaths.cases[!(county %in% c("Unknown", "Out of state", "California")) & !is.na(date)]
+data.table::setkey(deaths.cases, county, date)
+print(tail(deaths.cases[county == "San Francisco", .(date, cases, cases7=frollmean(cases, 7))], 20))
+
+
+print(tail(doses.dt[county == "San Francisco", .(date, doses = dose1 + dose2 + doseJ, doses_7 = frollmean(dose1 + dose2 + doseJ, 7), dose1, dose1_7 = frollmean(dose1, 7))], 20))
+
 print(county.set)
 
 print(system.time(
   lemma.set <- parallel::mclapply(county.set, RunOneCounty_scen, county.dt, doses.dt, mc.cores = parallel::detectCores() - 1)
 ))
 
-
-
-print(tail(doses.dt[county == "San Francisco", .(date, doses = dose1 + dose2 + doseJ, doses7 = frollmean(dose1 + dose2 + doseJ, 7))], 20))
 county.rt <- CreateOverview(lemma.set)
 stopifnot(county.rt[, Rt] > 0.5 & county.rt[, Rt] < 2)
 setorder(county.rt, -Rt)
