@@ -4,7 +4,7 @@
 \alias{RtMap}
 \title{Create Rt map results}
 \usage{
-RtMap(max.date, county.rt)
+RtMap(max.date, county.rt, writedir = NULL)
 }
 \arguments{
 \item{max.date}{write me!}

@@ -4,7 +4,7 @@
 \alias{ReadSFDoses}
 \title{Read SF doses from AWS}
 \usage{
-ReadSFDoses()
+ReadSFDoses(print_outdate = FALSE)
 }
 \description{
 Read SF doses from AWS

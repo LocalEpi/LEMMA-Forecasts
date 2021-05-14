@@ -8,9 +8,10 @@
 #' @title Create overview from results
 #' @description write me!
 #' @param lemma.set write me!
+#' @param writedir
 #' @export
-CreateOverview <- function(lemma.set) {
-  GetProjectionPlot1 <- function(projection, data.type, inputs, title1) {
+CreateOverview <- function(lemma.set, writedir = NULL) {
+  GetProjectionPlot1 <- function(projection, data.type, inputs, title1, writedir = NULL) {
     obs.data <- inputs$obs.data[, .(date, conf = get(paste0(data.type, ".conf")), pui = get(paste0(data.type, ".pui")))]
     if (all(is.na(obs.data$conf))) return(NULL)
     projection.dt <- projection[, c("date", data.type), with = F]
@@ -53,7 +54,13 @@ CreateOverview <- function(lemma.set) {
   }
 
   county.rt <- data.table(county = county.set)
-  pdf("Forecasts/StateOverview.pdf", width = 11, height = 8.5)
+
+  if (is.null(writedir)) {
+    pdf("Forecasts/StateOverview.pdf", width = 11, height = 8.5)
+  } else {
+    pdf(file = file.path(writedir,"StateOverview.pdf"), width = 11, height = 8.5)
+  }
+
   for (i in seq_along(county.set)) {
     lemma1 <- lemma.set[[i]]
     rt1 <- lemma1$projection[date == (lemma1$inputs$obs.data[, max(date)] - 14), rt]
@@ -72,11 +79,19 @@ CreateOverview <- function(lemma.set) {
 #' @description write me!
 #' @param max.date write me!
 #' @param county.rt write me!
+#' @param writedir
 #' @export
-RtMap <- function(max.date, county.rt) {
+RtMap <- function(max.date, county.rt, writedir = NULL) {
   datestr <- as.character(max.date - 14)
-  filestr <- paste0("Map/Rt_map_", datestr)
-  grDevices::pdf(file = paste0(filestr, ".pdf"), width = 9.350, height = 7.225)
+
+  if (is.null(writedir)) {
+    filestr <- paste0("Map/Rt_map_", datestr)
+    grDevices::pdf(file = paste0(filestr, ".pdf"), width = 9.350, height = 7.225)
+  } else {
+    filestr <- paste0("Rt_map_", datestr)
+    grDevices::pdf(file = file.path(writedir, paste0(filestr, ".pdf")), width = 9.350, height = 7.225)
+  }
+
   county.rt[, subregion := tolower(county)]
   ca <- map_data("county", "california")
   ca <- as.data.table(ca)
@@ -86,20 +101,24 @@ RtMap <- function(max.date, county.rt) {
   print(ggplot(ca, aes(long, lat)) + geom_polygon(aes(group = group, fill = Rt), colour = "black") + ggthemes::theme_map() + scale_fill_gradient(low = "green2", high = "red", limits = c(0.8, 1.5)) + ggtitle(datestr))
   dev.off()
 
-  bay.area <- c("San Francisco", "San Mateo",  "Alameda", "Contra Costa", "Santa Clara", "Marin")
-  print(county.rt[county %in% bay.area, .(county, Re = round(Rt, 2))])
+  # only write the csv if running assuming user is specifying the working directory for R (internal use)
+  if (is.null(writedir)) {
+    bay.area <- c("San Francisco", "San Mateo",  "Alameda", "Contra Costa", "Santa Clara", "Marin")
+    print(county.rt[county %in% bay.area, .(county, Re = round(Rt, 2))])
 
-  prev.file <- paste0("Map/Rt_map_", as.character(max.date - 15), ".csv")
-  if (file.exists(prev.file)) {
-    prev.rt <- fread(file = prev.file)
-    setnames(prev.rt, "Rt", "previousRt")
-    county.rt <- merge(county.rt, prev.rt, all = T)
-    county.rt[, Rt_change := Rt - previousRt]
-  } else {
-    county.rt[, Rt_change := NA_real_]
+    prev.file <- paste0("Map/Rt_map_", as.character(max.date - 15), ".csv")
+    if (file.exists(prev.file)) {
+      prev.rt <- fread(file = prev.file)
+      setnames(prev.rt, "Rt", "previousRt")
+      county.rt <- merge(county.rt, prev.rt, all = T)
+      county.rt[, Rt_change := Rt - previousRt]
+    } else {
+      county.rt[, Rt_change := NA_real_]
+    }
+
+    write.csv(county.rt[!is.na(Rt), .(county, Rt = round(Rt, 2), Rt_change = round(Rt_change, 2))], file = paste0(filestr, ".csv"), row.names = F)
   }
 
-  write.csv(county.rt[!is.na(Rt), .(county, Rt = round(Rt, 2), Rt_change = round(Rt_change, 2))], file = paste0(filestr, ".csv"), row.names = F)
   invisible(NULL)
 }
 
