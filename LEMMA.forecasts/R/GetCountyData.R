@@ -4,10 +4,7 @@
 #   2. GetStateData
 #   3. ReadCsvAWS
 #   4. ConvertNegative
-#   5. GetOldAdmits
-#   6. GetAdmits
-#   7. GetAdmits_notused
-#   8. GetSantaClaraData
+#   5. GetAdmits
 # --------------------------------------------------------------------------------
 
 
@@ -267,27 +264,6 @@ ConvertNegative <- function(value) {
   return(value)
 }
 
-
-# GetOldAdmits <- function() {
-#   #also in JS code branch
-#   admits.dt <- data.table::fread("~/Documents/MissionCovid/reported_hospital_capacity_admissions_facility_level_weekly_average_timeseries_20210228.csv")[state == "CA"]
-#
-#   admits.dt[, previous_day_admission_adult_covid_confirmed_7_day_sum := ConvertNegative(previous_day_admission_adult_covid_confirmed_7_day_sum)]
-#   admits.dt[, previous_day_admission_pediatric_covid_confirmed_7_day_sum := ConvertNegative(previous_day_admission_pediatric_covid_confirmed_7_day_sum)]
-#   admits.dt[, previous_day_admission_adult_covid_suspected_7_day_sum := ConvertNegative(previous_day_admission_adult_covid_suspected_7_day_sum)]
-#   admits.dt[, previous_day_admission_pediatric_covid_suspected_7_day_sum := ConvertNegative(previous_day_admission_pediatric_covid_suspected_7_day_sum)]
-#   admits.dt2 <- admits.dt[, .(admits.conf = sum(previous_day_admission_adult_covid_confirmed_7_day_sum + previous_day_admission_pediatric_covid_confirmed_7_day_sum) / 7,
-#                               admits.pui = sum(previous_day_admission_adult_covid_suspected_7_day_sum + previous_day_admission_pediatric_covid_suspected_7_day_sum) / 7),
-#                           by = c("fips_code", "collection_week")]
-#   admits.dt2[, date := as.Date(collection_week) + 3] #add 3 for midpoint of week
-#   setnames(admits.dt2, "fips_code", "fips")
-#   admits.dt2 <- merge(admits.dt2, data.table::fread("Inputs/CountyFips.csv"))
-#   admits.dt2[is.na(admits.conf), admits.pui := NA_real_]
-#   admits.dt2[is.na(admits.pui), admits.conf := NA_real_]
-#   saveRDS(admits.dt2, "Inputs/AdmitsUntilFeb19.rds")
-# }
-
-
 #' @title Get information on hospital admissions
 #' @remote remote a logical value, if \code{TRUE} download all data from remotes, otherwise use local data
 GetAdmits <- function(remote = FALSE) {
@@ -322,46 +298,5 @@ GetAdmits <- function(remote = FALSE) {
   admits.dt2 <- rbind(admits.old[, .(county, date, admits.conf, admits.pui)], admits.dt2[date > as.Date("2021/2/22"), .(county, date, admits.conf, admits.pui)]) #some overlap between sources
   data.table::setkey(admits.dt2, county, date)
   return(admits.dt2)
-}
-
-
-# GetAdmits_notused <- function() {
-#   #this data source hasn't updated since late feb
-#   admits.dt <- data.table::fread("https://opendata.arcgis.com/datasets/cebaea39dc3b4a4d858105a170318731_0.csv")[state == "CA"]
-#   admits.dt[, previous_day_admission_adult_covid_confirmed_7_day_sum := ConvertNegative(prevadmit_adult_conf_7d_sum)]
-#   admits.dt[, previous_day_admission_pediatric_covid_confirmed_7_day_sum := ConvertNegative(prevadmit_pedi_conf_7d_sum)]
-#   admits.dt[, previous_day_admission_adult_covid_suspected_7_day_sum := ConvertNegative(prevadmit_adult_susp_7d_sum)]
-#   admits.dt[, previous_day_admission_pediatric_covid_suspected_7_day_sum := ConvertNegative(prevadmit_pedi_susp_7d_sum)]
-#   admits.dt2 <- admits.dt[, .(admits.conf = sum(previous_day_admission_adult_covid_confirmed_7_day_sum + previous_day_admission_pediatric_covid_confirmed_7_day_sum) / 7,
-#                               admits.pui = sum(previous_day_admission_adult_covid_suspected_7_day_sum + previous_day_admission_pediatric_covid_suspected_7_day_sum) / 7),
-#                           by = c("fips_code", "collection_week")]
-#   admits.dt2[, date := as.Date(collection_week) + 3] #add 3 for midpoint of week (collection_week is start of week)
-#   admits.dt2 <- admits.dt2[date > as.Date("2021-2-1")] #data errors
-#   setnames(admits.dt2, "fips_code", "fips")
-#   admits.dt2 <- merge(admits.dt2, data.table::fread("Inputs/CountyFips.csv"))
-#   admits.dt2[is.na(admits.conf), admits.pui := NA_real_]
-#   admits.dt2[is.na(admits.pui), admits.conf := NA_real_]
-#
-#   admits.old <- readRDS("Inputs/AdmitsUntilFeb19.rds")
-#   admits.dt2 <- rbind(admits.old[, .(county, date, admits.conf, admits.pui)], admits.dt2[, .(county, date, admits.conf, admits.pui)])
-#   data.table::setkey(admits.dt2, county, date)
-#   return(admits.dt2)
-# }
-
-
-#' @title Get data for Santa Clara County
-GetSantaClaraData <- function() {
-  sc.deaths <- data.table::fread("https://data.sccgov.org/api/views/tg4j-23y2/rows.csv?accessType=DOWNLOAD")
-  sc.deaths[, date := as.Date(Date)]
-  sc.deaths <- sc.deaths[date <= Sys.Date()] #remove data errors
-  sc.hosp <- data.table::fread("https://data.sccgov.org/api/views/5xkz-6esm/rows.csv?accessType=DOWNLOAD")
-  sc.hosp <- sc.hosp[, .(date = as.Date(Date), icu_covid, icu_pui, non_icu_covid, non_icu_pui)]
-  sc <- merge(sc.deaths[, .(Cumulative, date)], sc.hosp, all = T, by = "date")
-  sc <- sc[date >= as.Date("2020/3/27"), .(county = "Santa Clara", date, hosp.conf = icu_covid + non_icu_covid, hosp.pui = icu_pui + non_icu_pui, icu.conf = icu_covid, icu.pui = icu_pui, deaths.conf = Cumulative)]
-  stopifnot(all(sc$date <= Sys.Date()))
-  sc[, is.region := F]
-  pop <- data.table::fread("Inputs/county population.csv")[county == "Santa Clara", population]
-  sc[, population := pop]
-  return(sc)
 }
 
