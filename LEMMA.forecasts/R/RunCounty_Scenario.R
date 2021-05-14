@@ -58,7 +58,7 @@ RunOneCounty_scen <- function(county1, county.dt, doses.dt, remote = FALSE, writ
     print(results.dt, digits=0)
     options(width = prev.width)
 
-    cat("base = 75% open by June 22; uptake: 75% for <65, 87% for 65+; wild type and West Coast variants; 12-15 eligible June 1, 0-11 eligible Jan 1 \n")
+    cat("base = 75% open by June 22; uptake: 75% for <65, 87% for 65+; wild type and West Coast variants; 12-15 eligible May 13, 0-11 eligible Jan 1 \n")
     cat("other scenarios same as base except:\n")
     cat("open90percent = 90% open\n")
     cat("uptake85 = 85% uptake all ages\n")
