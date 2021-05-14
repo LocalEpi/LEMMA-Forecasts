@@ -6,9 +6,8 @@
 
 
 #' @title Create overview from results
-#' @description write me!
-#' @param lemma.set write me!
-#' @param writedir
+#' @param lemma.set list of results from running \code{\link[LEMMA.forecasts]{RunOneCounty}} on multiple counties
+#' @param writedir a character string giving a directory to write to
 #' @export
 CreateOverview <- function(lemma.set, writedir = NULL) {
   GetProjectionPlot1 <- function(projection, data.type, inputs, title1, writedir = NULL) {
@@ -76,10 +75,9 @@ CreateOverview <- function(lemma.set, writedir = NULL) {
 
 
 #' @title Create Rt map results
-#' @description write me!
-#' @param max.date write me!
-#' @param county.rt write me!
-#' @param writedir
+#' @param max.date maximum date of data
+#' @param county.rt `data.table` object produced by \code{\link[LEMMA.forecasts]{CreateOverview}}
+#' @param writedir a character string giving a directory to write to
 #' @export
 RtMap <- function(max.date, county.rt, writedir = NULL) {
   datestr <- as.character(max.date - 14)

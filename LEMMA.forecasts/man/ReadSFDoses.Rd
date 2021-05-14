@@ -6,6 +6,10 @@
 \usage{
 ReadSFDoses(print_outdate = FALSE)
 }
+\arguments{
+\item{print_outdate}{write dose number to console or not}
+}
 \description{
-Read SF doses from AWS
+This function requires the following environment variables to be set:
+"AWS_ACCESS_KEY_ID","AWS_SECRET_ACCESS_KEY", and "AWS_DEFAULT_REGION" (see \code{\link{EnvVar}}).
 }

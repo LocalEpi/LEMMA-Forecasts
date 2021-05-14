@@ -7,6 +7,8 @@
 GetDosesData(states = FALSE, remote = FALSE)
 }
 \arguments{
+\item{states}{get data for states or counties}
+
 \item{remote}{a logical value, if \code{TRUE} download all data from remotes, otherwise use local data}
 }
 \description{
