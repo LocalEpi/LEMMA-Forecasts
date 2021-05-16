@@ -4,11 +4,13 @@
 \alias{CreateOverview}
 \title{Create overview from results}
 \usage{
-CreateOverview(lemma.set)
+CreateOverview(lemma.set, writedir = NULL)
 }
 \arguments{
-\item{lemma.set}{write me!}
+\item{lemma.set}{list of results from running \code{\link[LEMMA.forecasts]{RunOneCounty}} on multiple counties}
+
+\item{writedir}{a character string giving a directory to write to}
 }
 \description{
-write me!
+Create overview from results
 }

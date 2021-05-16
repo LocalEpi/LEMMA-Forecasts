@@ -29,6 +29,8 @@ RunOneCounty_scen_input(
 
 \item{k_brgrowth}{growth rate of BR variant}
 
+\item{k_max_open}{percentage of pre-pandemic activity after reopening (scales contact rate)}
+
 \item{remote}{a logical value, if \code{TRUE} download all data from remotes, otherwise use local data}
 
 \item{writedir}{a character string giving a directory to write to, it should only be used if \code{remote} is \code{TRUE}.

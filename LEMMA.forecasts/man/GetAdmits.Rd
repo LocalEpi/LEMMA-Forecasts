@@ -6,6 +6,9 @@
 \usage{
 GetAdmits(remote = FALSE)
 }
+\arguments{
+\item{remote}{a logical value, if \code{TRUE} download all data from remotes, otherwise use local data}
+}
 \description{
 Get information on hospital admissions
 }

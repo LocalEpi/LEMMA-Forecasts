@@ -13,6 +13,7 @@
 
 
 #' @title Get1
+#' @noRd
 #' @export
 Get1 <- function(zz) {
   stopifnot(uniqueN(zz) == 1)

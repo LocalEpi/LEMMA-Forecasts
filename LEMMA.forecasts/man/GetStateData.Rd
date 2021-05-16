@@ -6,6 +6,9 @@
 \usage{
 GetStateData(remove.holidays = TRUE)
 }
+\arguments{
+\item{remove.holidays}{remove major holidays?}
+}
 \description{
 Get state data
 }

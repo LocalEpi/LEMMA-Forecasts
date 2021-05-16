@@ -7,7 +7,7 @@
 
 
 #' @title Get doses data
-#' @param states
+#' @param states get data for states or counties
 #' @param remote a logical value, if \code{TRUE} download all data from remotes, otherwise use local data
 #' @export
 GetDosesData <- function(states = FALSE, remote = FALSE) {
@@ -85,6 +85,9 @@ SFDosesToAWS <- function() {
 
 
 #' @title Read SF doses from AWS
+#' @description This function requires the following environment variables to be set:
+#' "AWS_ACCESS_KEY_ID","AWS_SECRET_ACCESS_KEY", and "AWS_DEFAULT_REGION" (see \code{\link{EnvVar}}).
+#' @param print_outdate write dose number to console or not
 #' @export
 ReadSFDoses <- function(print_outdate = FALSE) {
   #suppressWarnings(d <- as.data.table(readxl::read_excel("~/Documents/MissionCovid/CAIR Summary Report.xlsx", col_types = c("date", "text", "text", "numeric", "numeric")))) #suppress numeric to date warnings

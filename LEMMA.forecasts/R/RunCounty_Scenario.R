@@ -77,7 +77,7 @@ RunOneCounty_scen <- function(county1, county.dt, doses.dt, remote = FALSE, writ
 #' @param k_uptake a character string, "low" or "high" giving vaccine uptake
 #' @param k_ukgrowth growth rate of UK variant
 #' @param k_brgrowth growth rate of BR variant
-#' @param k_max_open
+#' @param k_max_open percentage of pre-pandemic activity after reopening (scales contact rate)
 #' @param remote a logical value, if \code{TRUE} download all data from remotes, otherwise use local data
 #' @param writedir a character string giving a directory to write to, it should only be used if \code{remote} is \code{TRUE}.
 #' This assumes the directory whose path is given already exists.

@@ -4,13 +4,15 @@
 \alias{RtMap}
 \title{Create Rt map results}
 \usage{
-RtMap(max.date, county.rt)
+RtMap(max.date, county.rt, writedir = NULL)
 }
 \arguments{
-\item{max.date}{write me!}
+\item{max.date}{maximum date of data}
 
-\item{county.rt}{write me!}
+\item{county.rt}{`data.table` object produced by \code{\link[LEMMA.forecasts]{CreateOverview}}}
+
+\item{writedir}{a character string giving a directory to write to}
 }
 \description{
-write me!
+Create Rt map results
 }

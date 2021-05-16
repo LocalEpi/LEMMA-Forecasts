@@ -18,3 +18,7 @@ Imports:
     readxl
 Remotes: 
     LocalEpi/LEMMA
+Suggests: 
+    rmarkdown,
+    knitr
+VignetteBuilder: knitr
