@@ -71,14 +71,6 @@ GetCountyData <- function(include.regions = FALSE, remove.holidays = TRUE, state
   county.dt <- county.dt[mean10 > 1] #exclude if average hosp over last 10 days < 1
   county.dt$mean10 <- NULL
 
-  if (remote) {
-    county.pop <- data.table::fread("https://raw.githubusercontent.com/LocalEpi/LEMMA-Forecasts/master/Inputs/county%20population.csv")
-  } else {
-    county.pop <- data.table::fread("Inputs/county population.csv")
-  }
-
-  county.dt <- merge(county.dt, county.pop, by = "county")
-
   county.dt <- county.dt[!(county %in% c("Out Of Country", "Unassigned", "Unknown"))]
 
 

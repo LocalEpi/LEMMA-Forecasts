@@ -22,11 +22,11 @@ GetCountyInputs_scen <- function(county1, county.dt, doses.dt, k_uptake, k_ukgro
   sheets <- GetCountySheets(county1, county.dt, doses.dt,remote = remote)
 
   stopifnot(k_uptake %in% c("low", "high"))
+  #uptake in 65+ is set in CAcounties.xlsx
   if (k_uptake == "low") {
     sheets$`Vaccine Distribution`[age < 65, vax_uptake := 0.75]
-    sheets$`Vaccine Distribution`[age >= 65, vax_uptake := 0.87]
   } else {
-    sheets$`Vaccine Distribution`[, vax_uptake := 0.87]
+    sheets$`Vaccine Distribution`[age < 65, vax_uptake := 0.80]
   }
 
   if (remote) {
@@ -111,7 +111,6 @@ Scenario <- function(
     return(lemma)
   }
 
-  tier_date <- as.Date("2021/5/15") #after 5/15, delete this and change to one intervention on 6/15
 
   if (!is.null(writedir)) {
     # filestr <- normalizePath(path = paste0(writedir, "/", county1, "_", filestr1))
@@ -125,10 +124,19 @@ Scenario <- function(
   inputs$internal.args$output.filestr <- filestr
 
   #k_mu_beta_inter is multiplier to get to 100% open
-  mu_beta <- sqrt(pmax(1, k_mu_beta_inter * k_max_open))
-  new.int <- data.table(mu_t_inter = c(tier_date, as.Date("2021/6/15")),
-                        sigma_t_inter = 2, mu_beta_inter = c(mu_beta, mu_beta), sigma_beta_inter = 1e-04,
-                        mu_len_inter = 7, sigma_len_inter = 2)
+  if (F) {
+    tier_date <- as.Date("2021/5/15") #after 5/15, delete this and change to one intervention on 6/15
+    mu_beta <- sqrt(pmax(1, k_mu_beta_inter * k_max_open))
+    new.int <- data.table(mu_t_inter = c(tier_date, as.Date("2021/6/15")),
+                          sigma_t_inter = 2, mu_beta_inter = c(mu_beta, mu_beta), sigma_beta_inter = 1e-04,
+                          mu_len_inter = 7, sigma_len_inter = 2)
+  } else {
+    mu_beta <- pmax(1, k_mu_beta_inter * k_max_open)
+    new.int <- data.table(mu_t_inter = as.Date("2021/6/15"),
+                          sigma_t_inter = 2, mu_beta_inter = mu_beta, sigma_beta_inter = 1e-04,
+                          mu_len_inter = 7, sigma_len_inter = 2)
+  }
+
 
   inputs$interventions <- rbind(inputs$interventions, new.int)
 
@@ -171,9 +179,8 @@ GetResults_scen <- function(projection, name) {
   projection1 <- projection[date >= Sys.Date()]
   hosp.peak <- projection1[, max(hosp)]
   hosp.peak.date <- projection1[, date[which.max(hosp)]]
-  additional.admits <- projection1[, sum(admits)]
-  additional.deaths <- projection1[, max(deaths) - min(deaths)]
-  additional.deaths.byNov2021 <- projection1[date <= as.Date("2021/11/1"), max(deaths) - min(deaths)]
-  additional.cases <- projection1[, max(totalCases) - min(totalCases)]
-  return(data.table(name, hosp.peak, hosp.peak.date, additional.admits, additional.deaths, additional.deaths.byNov2021, additional.cases))
+  additional.admits.byNov1 <- projection1[date <= as.Date("2021/11/1"), sum(admits)]
+  additional.deaths.byNov1 <- projection1[date <= as.Date("2021/11/1"), max(deaths) - min(deaths)]
+  additional.cases.byNov1 <- projection1[date <= as.Date("2021/11/1"), max(totalCases) - min(totalCases)]
+  return(data.table(name, hosp.peak, hosp.peak.date, additional.admits.byNov1, additional.deaths.byNov1, additional.cases.byNov1))
 }
