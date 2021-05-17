@@ -5,8 +5,7 @@
 
 
 #' @title Generate email from results
-#' @description write me!
-#' @param max.date write me!
+#' @param max.date maximum date of data
 #' @export
 GenerateEmail <- function(max.date) {
   Format <- function(x) sprintf("%2.2f", x)

@@ -7,8 +7,8 @@
 GenerateEmail(max.date)
 }
 \arguments{
-\item{max.date}{write me!}
+\item{max.date}{maximum date of data}
 }
 \description{
-write me!
+Generate email from results
 }

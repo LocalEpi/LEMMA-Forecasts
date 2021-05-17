@@ -28,6 +28,8 @@ Scenario(
 
 \item{doses.dt}{a \code{\link[data.table]{data.table}} object returned from \code{\link[LEMMA.forecasts]{GetDosesData}}}
 
+\item{k_mu_beta_inter}{multiplier to contact rate required to get to 100\% reopening}
+
 \item{lemma_statusquo}{either \code{NULL} or the result of a call to \code{Scenario} with \code{filestr1 = "statusquo"}}
 
 \item{k_uptake}{a character string, "low" or "high" giving vaccine uptake}
@@ -35,6 +37,8 @@ Scenario(
 \item{k_ukgrowth}{growth rate of UK variant}
 
 \item{k_brgrowth}{growth rate of BR variant}
+
+\item{k_max_open}{percentage of pre-pandemic activity after reopening (scales contact rate)}
 
 \item{remote}{a logical value, if \code{TRUE} download all data from remotes, otherwise use local data}
 

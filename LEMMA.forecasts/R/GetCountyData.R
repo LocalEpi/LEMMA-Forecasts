@@ -9,9 +9,9 @@
 
 
 #' @title Get data for counties
-#' @param include.regions
-#' @param remove.holidays
-#' @param states
+#' @param include.regions include regions in addition to counties
+#' @param remove.holidays remove major holidays
+#' @param states get data for states
 #' @param remote a logical value, if \code{TRUE} download all data from remotes, otherwise use local data
 #' @return a \code{\link[data.table]{data.table}} object \code{county.dt}
 #' @export
@@ -115,7 +115,7 @@ GetCountyData <- function(include.regions = FALSE, remove.holidays = TRUE, state
 
 
 #' @title Get state data
-#' @param remove.holidays
+#' @param remove.holidays remove major holidays?
 GetStateData <- function(remove.holidays = TRUE) {
   GetHospData <- function(f) {
     x <- data.table::fread(f)
@@ -257,7 +257,7 @@ ConvertNegative <- function(value) {
 }
 
 #' @title Get information on hospital admissions
-#' @remote remote a logical value, if \code{TRUE} download all data from remotes, otherwise use local data
+#' @param remote a logical value, if \code{TRUE} download all data from remotes, otherwise use local data
 GetAdmits <- function(remote = FALSE) {
   admits.dt <- data.table::fread("https://healthdata.gov/api/views/anag-cw7u/rows.csv?accessType=DOWNLOAD")[state == "CA"]
   max.week <- admits.dt[, max(as.Date(collection_week))]
