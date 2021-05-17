@@ -25,6 +25,8 @@ print(tail(deaths.cases[county == "San Francisco", .(date, cases, cases7=frollme
 
 print(tail(doses.dt[county == "San Francisco", .(date, doses = dose1 + dose2 + doseJ, doses_7 = frollmean(dose1 + dose2 + doseJ, 7), dose1, dose1_7 = frollmean(dose1, 7))], 20))
 
+county.pop <- rowSums(readRDS("Inputs/county population by age.rds"))
+county.set <- names(sort(county.pop[county.set], decreasing = T))
 print(county.set)
 
 print(system.time(
