@@ -12,6 +12,9 @@ RunOneCounty_scen_input(
   k_ukgrowth = 1,
   k_brgrowth = 1,
   k_max_open = 0.75,
+  vaccine_uptake = NULL,
+  vaccine_dosing_jj = NULL,
+  vaccine_dosing_mrna = NULL,
   remote = FALSE,
   writedir = NULL
 )
@@ -30,6 +33,13 @@ RunOneCounty_scen_input(
 \item{k_brgrowth}{growth rate of BR variant}
 
 \item{k_max_open}{percentage of pre-pandemic activity after reopening (scales contact rate)}
+
+\item{vaccine_uptake}{a numeric vector with 3 values, for vaccine uptake in age groups 12-15, 16-64, and 65+; if not \code{NULL}
+this will override the option \code{k_uptake}}
+
+\item{vaccine_dosing_jj}{daily increase in J&J vaccine delivery, leave \code{NULL} for default}
+
+\item{vaccine_dosing_mrna}{daily increase in mRNA vaccines delivery, leave \code{NULL} for default}
 
 \item{remote}{a logical value, if \code{TRUE} download all data from remotes, otherwise use local data}
 

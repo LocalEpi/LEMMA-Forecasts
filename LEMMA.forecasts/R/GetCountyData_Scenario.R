@@ -1,7 +1,6 @@
 # --------------------------------------------------------------------------------
 #   Functions to prepare data for running scenarios:
 #   1. GetCountyInputs_scen
-#   2. Scenario
 #   3. GetResults_scen
 # --------------------------------------------------------------------------------
 
@@ -50,6 +49,8 @@ GetCountyInputs_scen <- function(
     stopifnot(all(is.finite(vaccine_uptake)))
     stopifnot(length(vaccine_uptake)==3L)
 
+    cat("running scenario with vaccine uptake scheme: ",vaccine_uptake," --- \n")
+
     sheets$`Vaccine Distribution`[12 <= age & age <= 15, vax_uptake := vaccine_uptake[1]]
     sheets$`Vaccine Distribution`[16 <= age & age <= 64, vax_uptake := vaccine_uptake[2]]
     sheets$`Vaccine Distribution`[age >= 65, vax_uptake := vaccine_uptake[3]]
@@ -60,11 +61,15 @@ GetCountyInputs_scen <- function(
   if (!is.null(vaccine_dosing_jj)) {
     stopifnot(is.finite(vaccine_dosing_jj))
     sheets$`Vaccine Doses - Future`[internal.name == "doses_per_day_increase", jj := vaccine_dosing_jj]
+
+    cat("running scenario with jj increase rate: ",vaccine_dosing_jj," --- \n")
   }
 
   if (!is.null(vaccine_dosing_mrna)) {
     stopifnot(is.finite(vaccine_dosing_mrna))
     sheets$`Vaccine Doses - Future`[internal.name == "doses_per_day_increase", mrna := vaccine_dosing_mrna]
+
+    cat("running scenario with mrna increase rate: ",vaccine_dosing_mrna," --- \n")
   }
 
   # download from remote?
@@ -112,100 +117,6 @@ GetCountyInputs_scen <- function(
   }
 
   return(inputs)
-}
-
-
-#' @title Run a scenario
-#' @description This function is called from \code{\link[LEMMA.forecasts]{RunOneCounty_scen}}.
-#' @param filestr1 a character string giving the type of scenario to run
-#' @param county1 a character string giving the name of the county
-#' @param county.dt a \code{\link[data.table]{data.table}} object returned from \code{\link[LEMMA.forecasts]{GetCountyData}}
-#' @param doses.dt a \code{\link[data.table]{data.table}} object returned from \code{\link[LEMMA.forecasts]{GetDosesData}}
-#' @param k_mu_beta_inter multiplier to contact rate required to get to 100\% reopening
-#' @param lemma_statusquo either \code{NULL} or the result of a call to \code{Scenario} with \code{filestr1 = "statusquo"}
-#' @param k_uptake a character string, "low" or "high" giving vaccine uptake
-#' @param k_ukgrowth growth rate of UK variant
-#' @param k_brgrowth growth rate of BR variant
-#' @param k_max_open percentage of pre-pandemic activity after reopening (scales contact rate)
-#' @param remote a logical value, if \code{TRUE} download all data from remotes, otherwise use local data
-#' @param writedir a character string giving a directory to write to, it should only be used if \code{remote} is \code{TRUE}.
-#' This assumes the directory whose path is given already exists.
-#' @return a named list of values
-Scenario <- function(
-  filestr1, county1, county.dt, doses.dt,
-  k_mu_beta_inter = NULL, lemma_statusquo = NULL, k_uptake = "low",
-  k_ukgrowth = 1, k_brgrowth = 1, k_max_open = 0.75,
-  remote = FALSE, writedir = NULL
-) {
-
-  inputs <- GetCountyInputs_scen(
-    county1 = county1, county.dt = county.dt, doses.dt = doses.dt, k_uptake = k_uptake,
-    k_ukgrowth = k_ukgrowth, k_brgrowth = k_brgrowth,
-    remote = remote, writedir = writedir
-  )
-
-  if (filestr1 == "statusquo") {
-    lemma <- LEMMA:::CredibilityInterval(inputs)
-    return(lemma)
-  }
-
-
-  if (!is.null(writedir)) {
-    # filestr <- normalizePath(path = paste0(writedir, "/", county1, "_", filestr1))
-    scen_path <- paste0(writedir, "/Scenarios")
-    dir.create(path = scen_path,showWarnings = FALSE)
-    filestr <- paste0(scen_path, "/", county1, "_", filestr1)
-  } else {
-    filestr <- paste0("Scenarios/", county1, "_", filestr1)
-  }
-
-  inputs$internal.args$output.filestr <- filestr
-
-  #k_mu_beta_inter is multiplier to get to 100% open
-  if (F) {
-    tier_date <- as.Date("2021/5/15") #after 5/15, delete this and change to one intervention on 6/15
-    mu_beta <- sqrt(pmax(1, k_mu_beta_inter * k_max_open))
-    new.int <- data.table(mu_t_inter = c(tier_date, as.Date("2021/6/15")),
-                          sigma_t_inter = 2, mu_beta_inter = c(mu_beta, mu_beta), sigma_beta_inter = 1e-04,
-                          mu_len_inter = 7, sigma_len_inter = 2)
-  } else {
-    mu_beta <- pmax(1, k_mu_beta_inter * k_max_open)
-    new.int <- data.table(mu_t_inter = as.Date("2021/6/15"),
-                          sigma_t_inter = 2, mu_beta_inter = mu_beta, sigma_beta_inter = 1e-04,
-                          mu_len_inter = 7, sigma_len_inter = 2)
-  }
-
-
-  inputs$interventions <- rbind(inputs$interventions, new.int)
-
-  if (is.null(lemma_statusquo)) {
-    #refit
-    lemma <- LEMMA:::CredibilityInterval(inputs)
-  } else {
-    lemma <- LEMMA:::ProjectScenario(lemma_statusquo, inputs)
-  }
-
-  pdf(paste0(filestr, ".pdf"), width = 11, height = 8.5)
-  relative.contact.rate <- lemma$fit.extended$par$beta / (lemma$fit.extended$par$beta[1] * lemma$inputs$vaccines$transmission_variant_multiplier)
-  dt <- data.table(date = lemma$projection$date, relative.contact.rate)
-  dt[, type := ifelse(date >= inputs$obs.data[, max(date) - 7], "Scenario", "Estimate")]
-  print(ggplot(dt, aes(x = date, y = relative.contact.rate)) + geom_line(aes(color = type), size = 2) + scale_x_date(date_breaks = "1 month", date_labels = "%b") + ggtitle("Effective contact rate relative to initial effective contact rate\nnot including vaccine or variant effects") + xlab("") + ylab("Effective Contact Rate") + theme(legend.title = element_blank()))
-
-  doses <- lemma$inputs$vaccines_nonstan$doses
-  doses[, doses_given := dose1 + dose2 + doseJ]
-  print(ggplot(doses[date >= as.Date("2021/1/1")], aes(x = date, y = doses_given)) + geom_point() + scale_x_date(date_breaks = "1 month", date_labels = "%b") + xlab("") + labs(title = "Actual and Projected Vaccines Doses", subtitle = "note: scattered doses in the summer are wrapping up second doses, later doses are children"))
-
-  variant_frac <- lemma$inputs$vaccines_nonstan$variant_frac
-  colnames(variant_frac) <- lemma$inputs$vaccines_nonstan$variants$name
-  variant_frac <- data.table(date = lemma$projection$date, variant_frac)
-  dt <- melt(variant_frac[date >= as.Date("2020/10/1")], id.vars = "date", variable.name = "variant", value.name = "fraction")
-  print(ggplot(dt, aes(x = date, y = fraction, color = variant)) + geom_line() + scale_x_date(date_breaks = "1 month", date_labels = "%b") + xlab("")) + ylab("Fraction of SARS-COV2")
-
-  print(lemma$gplot$long.term)
-  dev.off()
-
-  results <- GetResults_scen(lemma$projection, filestr1)
-  invisible(results)
 }
 
 
