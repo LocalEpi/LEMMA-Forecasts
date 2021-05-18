@@ -101,7 +101,12 @@
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="https://github.com/LocalEpi/LEMMA-Forecasts/">
+    <span class="fab fa-github fa-lg"></span>
+     
+  </a>
+</li>
       </ul>
       
     </div><!--/.nav-collapse -->
@@ -116,7 +121,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Get county inputs for scenarios</h1>
-    
+    <small class="dont-index">Source: <a href='https://github.com/LocalEpi/LEMMA-Forecasts/blob/master/R/GetCountyData_Scenario.R'><code>R/GetCountyData_Scenario.R</code></a></small>
     <div class="hidden name"><code>GetCountyInputs_scen.Rd</code></div>
     </div>
 
@@ -131,6 +136,9 @@
   <span class='va'>k_uptake</span>,
   <span class='va'>k_ukgrowth</span>,
   <span class='va'>k_brgrowth</span>,
+  vaccine_uptake <span class='op'>=</span> <span class='cn'>NULL</span>,
+  vaccine_dosing_jj <span class='op'>=</span> <span class='cn'>NULL</span>,
+  vaccine_dosing_mrna <span class='op'>=</span> <span class='cn'>NULL</span>,
   remote <span class='op'>=</span> <span class='cn'>FALSE</span>,
   writedir <span class='op'>=</span> <span class='cn'>NULL</span>
 <span class='op'>)</span></pre>
@@ -163,6 +171,19 @@
       <td><p>growth rate of BR variant</p></td>
     </tr>
     <tr>
+      <th>vaccine_uptake</th>
+      <td><p>a numeric vector with 3 values, for vaccine uptake in age groups 12-15, 16-64, and 65+; if not <code>NULL</code>
+this will override the option <code>k_uptake</code></p></td>
+    </tr>
+    <tr>
+      <th>vaccine_dosing_jj</th>
+      <td><p>daily increase in J&amp;J vaccine delivery, leave <code>NULL</code> for default</p></td>
+    </tr>
+    <tr>
+      <th>vaccine_dosing_mrna</th>
+      <td><p>daily increase in mRNA vaccines delivery, leave <code>NULL</code> for default</p></td>
+    </tr>
+    <tr>
       <th>remote</th>
       <td><p>a logical value, if <code>TRUE</code> download all data from remotes, otherwise use local data</p></td>
     </tr>
@@ -188,7 +209,7 @@ This assumes the directory whose path is given already exists.</p></td>
 
       <footer>
       <div class="copyright">
-  <p>Developed by The package maintainer.</p>
+  <p>Developed by Joshua Schwab, Sean L. Wu.</p>
 </div>
 
 <div class="pkgdown">

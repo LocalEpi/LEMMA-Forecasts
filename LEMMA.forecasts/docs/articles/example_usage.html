@@ -59,7 +59,14 @@
   </ul>
 </li>
       </ul>
-<ul class="nav navbar-nav navbar-right"></ul>
+<ul class="nav navbar-nav navbar-right">
+<li>
+  <a href="https://github.com/LocalEpi/LEMMA-Forecasts/">
+    <span class="fab fa-github fa-lg"></span>
+     
+  </a>
+</li>
+      </ul>
 </div>
 <!--/.nav-collapse -->
   </div>
@@ -75,7 +82,7 @@
       <h1 data-toc-skip>Example Usage</h1>
             
       
-      
+      <small class="dont-index">Source: <a href="https://github.com/LocalEpi/LEMMA-Forecasts/blob/master/vignettes/example_usage.Rmd"><code>vignettes/example_usage.Rmd</code></a></small>
       <div class="hidden name"><code>example_usage.Rmd</code></div>
 
     </div>
@@ -83,9 +90,47 @@
     
     
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">LEMMA.forecasts</span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://r-datatable.com">data.table</a></span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/LocalEpi/LEMMA-Forecasts/">LEMMA.forecasts</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://r-datatable.com">data.table</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">parallel</span><span class="op">)</span></code></pre></div>
 <p>This package provides an interface to <a href="https://localepi.github.io/LEMMA/">LEMMA</a> which makes it easy for users to run forecasts of future disease trajectories or to simulate different scenarios taking into account future changes in variants of concern or vaccination.</p>
+<p>This example assumes that the person running LEMMA.forecasts has not downloaded local data (found in <a href="https://github.com/LocalEpi/LEMMA-Forecasts/tree/master/Inputs">LEMMA-Forecasts/Inputs/</a>), so we have not set the working directory to the base repository. Therefore the argument <code>remote = TRUE</code> is set for all functions which have that option to downloads raw data from the repository. This is slower but works regardless of the local R environment, and is used for the <a href="https://slwu89.shinyapps.io/LEMMA-Shiny/">LEMMA Shiny app</a>.</p>
+<p>The first step is to download data for all counties, using <code>GetCountyData</code>. This function returns a <code>data.table</code> object containing case data for each county. This takes some time to download, so please be patient. After downloading, <code>Get1</code> retrieves the maximum date for which data exists.</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">county.dt</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/GetCountyData.html">GetCountyData</a></span><span class="op">(</span>remote <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
+<span class="va">max.date</span> <span class="op">&lt;-</span> <span class="fu">Get1</span><span class="op">(</span><span class="va">county.dt</span><span class="op">[</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">hosp.conf</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">date</span><span class="op">)</span>, by <span class="op">=</span> <span class="st">"county"</span><span class="op">]</span><span class="op">$</span><span class="va">V1</span><span class="op">)</span></code></pre></div>
+<p>Next administered vaccine doses are retrieved.</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">doses.dt</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/GetDosesData.html">GetDosesData</a></span><span class="op">(</span>remote <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
+<p>Get list of counties by population.</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">county.set</span> <span class="op">&lt;-</span> <span class="va">county.dt</span><span class="op">[</span>, <span class="fu"><a href="https://Rdatatable.gitlab.io/data.table/reference/duplicated.html">unique</a></span><span class="op">(</span><span class="va">county</span><span class="op">)</span><span class="op">]</span>
+<span class="va">county.pop</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/colSums.html">rowSums</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/readRDS.html">readRDS</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/connections.html">url</a></span><span class="op">(</span><span class="st">"https://github.com/LocalEpi/LEMMA-Forecasts/raw/master/Inputs/county%20population%20by%20age.rds"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
+<span class="va">county.set</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sort.html">sort</a></span><span class="op">(</span><span class="va">county.pop</span><span class="op">[</span><span class="va">county.set</span><span class="op">]</span>, decreasing <span class="op">=</span> <span class="cn">T</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<p>The <code>data.table</code> input objects can now be passed to either <code>RunOneCounty</code> or <code>RunOneCounty_scen</code> (also <code>RunOneCounty_scen_input</code>, which is designed to be used in the Shiny app allowing for adjustment of certain parameters). We will run a simple forecast using <code>RunOneCounty</code> here for time. This step takes a while as an MCMC chain has to be run for each county, so it is run in parallel. The output files can be found in a directory called <code>Forecasts</code> within the directory specified by <code>writedir</code>. Each county’s report is given as a .xlsx and .pdf file, which can be viewed with <code><a href="https://rdrr.io/r/base/list.files.html">list.files(file.path(writedir,"Forecasts"))</a></code>.</p>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">writedir</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/tempfile.html">tempdir</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
+
+<span class="fu"><a href="https://rdrr.io/r/base/system.time.html">system.time</a></span><span class="op">(</span>
+  <span class="va">lemma.set</span> <span class="op">&lt;-</span> <span class="fu">parallel</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/parallel/mclapply.html">mclapply</a></span><span class="op">(</span><span class="va">county.set</span>, <span class="va">RunOneCounty</span>, <span class="va">county.dt</span>, <span class="va">doses.dt</span>, remote <span class="op">=</span> <span class="cn">TRUE</span>, writedir <span class="op">=</span> <span class="va">writedir</span>, mc.cores <span class="op">=</span> <span class="fu">parallel</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/parallel/detectCores.html">detectCores</a></span><span class="op">(</span><span class="op">)</span> <span class="op">-</span> <span class="fl">2</span><span class="op">)</span>
+<span class="op">)</span></code></pre></div>
+<p>These results can be used to create an overview of the state. This will write a .pdf file “StateOverview.pdf” into the <code>writedir</code> directory. We display the first page below:</p>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">county.rt</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/CreateOverview.html">CreateOverview</a></span><span class="op">(</span><span class="va">lemma.set</span>,writedir <span class="op">=</span> <span class="va">writedir</span><span class="op">)</span></code></pre></div>
+<p><img src="overview.png" width="50%"></p>
+<p>We can also use it to make a map of Rt.</p>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/RtMap.html">RtMap</a></span><span class="op">(</span>max.date <span class="op">=</span> <span class="va">max.date</span>,county.rt <span class="op">=</span> <span class="va">county.rt</span>,writedir <span class="op">=</span> <span class="va">writedir</span><span class="op">)</span></code></pre></div>
+<p><img src="Rt.png" width="50%"></p>
+<!-- ```{r} -->
+<!-- file.path(writedir,rt_map) -->
+<!-- ``` -->
+<!-- ```{r} -->
+<!-- list.files(file.path(writedir,"Forecasts")) -->
+<!-- ``` -->
+<!-- ```{r} -->
+<!-- list.files(writedir) -->
+<!-- ``` -->
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
@@ -97,7 +142,7 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by The package maintainer.</p>
+  <p>Developed by Joshua Schwab, Sean L. Wu.</p>
 </div>
 
 <div class="pkgdown">

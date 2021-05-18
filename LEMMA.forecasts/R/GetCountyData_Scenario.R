@@ -5,6 +5,10 @@
 #   3. GetResults_scen
 # --------------------------------------------------------------------------------
 
+# #' @param vaccine_dosing_jj a numeric vector with 2 values giving future dosing information for J&J vaccine, the first
+# #' value is the daily increase in number of doses and second is the maximum number of doses per day
+# #' @param vaccine_dosing_mrna a numeric vector with 2 values giving future dosing information for mRNA based vaccines, the first
+# #' value is the daily increase in number of doses and second is the maximum number of doses per day
 
 #' @title Get county inputs for scenarios
 #' @description This function is called from \code{\link[LEMMA.forecasts]{Scenario}}.
@@ -14,16 +18,23 @@
 #' @param k_uptake a character string, "low" or "high" giving vaccine uptake
 #' @param k_ukgrowth growth rate of UK variant
 #' @param k_brgrowth growth rate of BR variant
-#' @param vaccine_uptake a numeric vector with 3 values, for vaccine uptake in age groups 12-15, 16-64, and 65+; if specified
+#' @param vaccine_uptake a numeric vector with 3 values, for vaccine uptake in age groups 12-15, 16-64, and 65+; if not \code{NULL}
 #' this will override the option \code{k_uptake}
+#' @param vaccine_dosing_jj daily increase in J&J vaccine delivery, leave \code{NULL} for default
+#' @param vaccine_dosing_mrna daily increase in mRNA vaccines delivery, leave \code{NULL} for default
 #' @param remote a logical value, if \code{TRUE} download all data from remotes, otherwise use local data
 #' @param writedir a character string giving a directory to write to, it should only be used if \code{remote} is \code{TRUE}.
 #' This assumes the directory whose path is given already exists.
 #' @return a named list of values
-GetCountyInputs_scen <- function(county1, county.dt, doses.dt, k_uptake, k_ukgrowth, k_brgrowth, vaccine_uptake = NULL, remote = FALSE, writedir = NULL) {
+GetCountyInputs_scen <- function(
+  county1, county.dt, doses.dt, k_uptake, k_ukgrowth, k_brgrowth,
+  vaccine_uptake = NULL, vaccine_dosing_jj = NULL, vaccine_dosing_mrna = NULL,
+  remote = FALSE, writedir = NULL
+) {
 
   sheets <- GetCountySheets(county1, county.dt, doses.dt,remote = remote)
 
+  # vaccine uptake; use low/high or 3 age groups input?
   if (is.null(vaccine_uptake)) {
 
     stopifnot(k_uptake %in% c("low", "high"))
@@ -45,6 +56,18 @@ GetCountyInputs_scen <- function(county1, county.dt, doses.dt, k_uptake, k_ukgro
 
   }
 
+  # vaccine dosing: user input?
+  if (!is.null(vaccine_dosing_jj)) {
+    stopifnot(is.finite(vaccine_dosing_jj))
+    sheets$`Vaccine Doses - Future`[internal.name == "doses_per_day_increase", jj := vaccine_dosing_jj]
+  }
+
+  if (!is.null(vaccine_dosing_mrna)) {
+    stopifnot(is.finite(vaccine_dosing_mrna))
+    sheets$`Vaccine Doses - Future`[internal.name == "doses_per_day_increase", mrna := vaccine_dosing_mrna]
+  }
+
+  # download from remote?
   if (remote) {
     tmp <- tempfile(fileext = ".xlsx")
     download.file(url = "https://github.com/LocalEpi/LEMMA-Forecasts/raw/master/Inputs/variants.xlsx",destfile = tmp)

@@ -40,7 +40,8 @@
 
 
 <meta property="og:title" content="Read SF doses from AWS — ReadSFDoses" />
-<meta property="og:description" content="Read SF doses from AWS" />
+<meta property="og:description" content="This function requires the following environment variables to be set:
+&quot;AWS_ACCESS_KEY_ID&quot;,&quot;AWS_SECRET_ACCESS_KEY&quot;, and &quot;AWS_DEFAULT_REGION&quot; (see EnvVar)." />
 
 
 
@@ -101,7 +102,12 @@
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="https://github.com/LocalEpi/LEMMA-Forecasts/">
+    <span class="fab fa-github fa-lg"></span>
+     
+  </a>
+</li>
       </ul>
       
     </div><!--/.nav-collapse -->
@@ -116,16 +122,25 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Read SF doses from AWS</h1>
-    
+    <small class="dont-index">Source: <a href='https://github.com/LocalEpi/LEMMA-Forecasts/blob/master/R/GetDosesData.R'><code>R/GetDosesData.R</code></a></small>
     <div class="hidden name"><code>ReadSFDoses.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Read SF doses from AWS</p>
+    <p>This function requires the following environment variables to be set:
+"AWS_ACCESS_KEY_ID","AWS_SECRET_ACCESS_KEY", and "AWS_DEFAULT_REGION" (see <code>EnvVar</code>).</p>
     </div>
 
     <pre class="usage"><span class='fu'>ReadSFDoses</span><span class='op'>(</span>print_outdate <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></pre>
 
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>print_outdate</th>
+      <td><p>write dose number to console or not</p></td>
+    </tr>
+    </table>
 
 
   </div>
@@ -139,7 +154,7 @@
 
       <footer>
       <div class="copyright">
-  <p>Developed by The package maintainer.</p>
+  <p>Developed by Joshua Schwab, Sean L. Wu.</p>
 </div>
 
 <div class="pkgdown">

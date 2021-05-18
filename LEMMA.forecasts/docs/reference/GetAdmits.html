@@ -101,7 +101,12 @@
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="https://github.com/LocalEpi/LEMMA-Forecasts/">
+    <span class="fab fa-github fa-lg"></span>
+     
+  </a>
+</li>
       </ul>
       
     </div><!--/.nav-collapse -->
@@ -116,7 +121,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Get information on hospital admissions</h1>
-    
+    <small class="dont-index">Source: <a href='https://github.com/LocalEpi/LEMMA-Forecasts/blob/master/R/GetCountyData.R'><code>R/GetCountyData.R</code></a></small>
     <div class="hidden name"><code>GetAdmits.Rd</code></div>
     </div>
 
@@ -126,6 +131,14 @@
 
     <pre class="usage"><span class='fu'>GetAdmits</span><span class='op'>(</span>remote <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></pre>
 
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>remote</th>
+      <td><p>a logical value, if <code>TRUE</code> download all data from remotes, otherwise use local data</p></td>
+    </tr>
+    </table>
 
 
   </div>
@@ -139,7 +152,7 @@
 
       <footer>
       <div class="copyright">
-  <p>Developed by The package maintainer.</p>
+  <p>Developed by Joshua Schwab, Sean L. Wu.</p>
 </div>
 
 <div class="pkgdown">

@@ -40,7 +40,7 @@
 
 
 <meta property="og:title" content="Create overview from results — CreateOverview" />
-<meta property="og:description" content="write me!" />
+<meta property="og:description" content="Create overview from results" />
 
 
 
@@ -101,7 +101,12 @@
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="https://github.com/LocalEpi/LEMMA-Forecasts/">
+    <span class="fab fa-github fa-lg"></span>
+     
+  </a>
+</li>
       </ul>
       
     </div><!--/.nav-collapse -->
@@ -116,22 +121,26 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Create overview from results</h1>
-    
+    <small class="dont-index">Source: <a href='https://github.com/LocalEpi/LEMMA-Forecasts/blob/master/R/CreateStateOverview.R'><code>R/CreateStateOverview.R</code></a></small>
     <div class="hidden name"><code>CreateOverview.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>write me!</p>
+    <p>Create overview from results</p>
     </div>
 
-    <pre class="usage"><span class='fu'>CreateOverview</span><span class='op'>(</span><span class='va'>lemma.set</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>CreateOverview</span><span class='op'>(</span><span class='va'>lemma.set</span>, writedir <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>lemma.set</th>
-      <td><p>write me!</p></td>
+      <td><p>list of results from running <code><a href='RunOneCounty.html'>RunOneCounty</a></code> on multiple counties</p></td>
+    </tr>
+    <tr>
+      <th>writedir</th>
+      <td><p>a character string giving a directory to write to</p></td>
     </tr>
     </table>
 
@@ -147,7 +156,7 @@
 
       <footer>
       <div class="copyright">
-  <p>Developed by The package maintainer.</p>
+  <p>Developed by Joshua Schwab, Sean L. Wu.</p>
 </div>
 
 <div class="pkgdown">
