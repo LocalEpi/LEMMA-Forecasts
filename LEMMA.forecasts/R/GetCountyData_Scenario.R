@@ -49,8 +49,6 @@ GetCountyInputs_scen <- function(
     stopifnot(all(is.finite(vaccine_uptake)))
     stopifnot(length(vaccine_uptake)==3L)
 
-    cat("running scenario with vaccine uptake scheme: ",vaccine_uptake," --- \n")
-
     sheets$`Vaccine Distribution`[12 <= age & age <= 15, vax_uptake := vaccine_uptake[1]]
     sheets$`Vaccine Distribution`[16 <= age & age <= 64, vax_uptake := vaccine_uptake[2]]
     sheets$`Vaccine Distribution`[age >= 65, vax_uptake := vaccine_uptake[3]]
@@ -61,15 +59,11 @@ GetCountyInputs_scen <- function(
   if (!is.null(vaccine_dosing_jj)) {
     stopifnot(is.finite(vaccine_dosing_jj))
     sheets$`Vaccine Doses - Future`[internal.name == "doses_per_day_increase", jj := vaccine_dosing_jj]
-
-    cat("running scenario with jj increase rate: ",vaccine_dosing_jj," --- \n")
   }
 
   if (!is.null(vaccine_dosing_mrna)) {
     stopifnot(is.finite(vaccine_dosing_mrna))
     sheets$`Vaccine Doses - Future`[internal.name == "doses_per_day_increase", mrna := vaccine_dosing_mrna]
-
-    cat("running scenario with mrna increase rate: ",vaccine_dosing_mrna," --- \n")
   }
 
   # download from remote?
