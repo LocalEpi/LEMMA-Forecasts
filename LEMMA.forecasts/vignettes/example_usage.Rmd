@@ -37,12 +37,12 @@ Next administered vaccine doses are retrieved.
 doses.dt <- GetDosesData(remote = TRUE)
 ```
 
-County data is now ordered by population.
+Get list of counties by population.
 
 ```{r}
-county.by.pop <- unique(county.dt[!is.na(population), .(county, population)]) #NA population if no hospitalizations
-setorder(county.by.pop, -population)
-county.set <- county.by.pop[, county]
+county.set <- county.dt[, unique(county)]
+county.pop <- rowSums(readRDS(url("https://github.com/LocalEpi/LEMMA-Forecasts/raw/master/Inputs/county%20population%20by%20age.rds")))
+county.set <- names(sort(county.pop[county.set], decreasing = T))
 ```
 
 The `data.table` input objects can now be passed to either `RunOneCounty` or `RunOneCounty_scen` (also `RunOneCounty_scen_input`, which is designed to be used in the Shiny app allowing for adjustment of certain parameters). We will run a simple forecast using `RunOneCounty` here for time. This step takes a while as an MCMC chain has to be run for each county, so it is run in parallel. The output files can be found in a directory called `Forecasts` within the directory specified by `writedir`. Each county's report is given as a .xlsx and .pdf file, which can be viewed with `list.files(file.path(writedir,"Forecasts"))`.

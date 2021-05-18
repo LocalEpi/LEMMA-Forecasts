@@ -11,6 +11,7 @@ GetCountyInputs_scen(
   k_uptake,
   k_ukgrowth,
   k_brgrowth,
+  vaccine_uptake = NULL,
   remote = FALSE,
   writedir = NULL
 )
@@ -27,6 +28,9 @@ GetCountyInputs_scen(
 \item{k_ukgrowth}{growth rate of UK variant}
 
 \item{k_brgrowth}{growth rate of BR variant}
+
+\item{vaccine_uptake}{a numeric vector with 3 values, for vaccine uptake in age groups 12-15, 16-64, and 65+; if specified
+this will override the option \code{k_uptake}}
 
 \item{remote}{a logical value, if \code{TRUE} download all data from remotes, otherwise use local data}
 

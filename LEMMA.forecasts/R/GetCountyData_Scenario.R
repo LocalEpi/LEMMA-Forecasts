@@ -14,19 +14,35 @@
 #' @param k_uptake a character string, "low" or "high" giving vaccine uptake
 #' @param k_ukgrowth growth rate of UK variant
 #' @param k_brgrowth growth rate of BR variant
+#' @param vaccine_uptake a numeric vector with 3 values, for vaccine uptake in age groups 12-15, 16-64, and 65+; if specified
+#' this will override the option \code{k_uptake}
 #' @param remote a logical value, if \code{TRUE} download all data from remotes, otherwise use local data
 #' @param writedir a character string giving a directory to write to, it should only be used if \code{remote} is \code{TRUE}.
 #' This assumes the directory whose path is given already exists.
 #' @return a named list of values
-GetCountyInputs_scen <- function(county1, county.dt, doses.dt, k_uptake, k_ukgrowth, k_brgrowth, remote = FALSE, writedir = NULL) {
+GetCountyInputs_scen <- function(county1, county.dt, doses.dt, k_uptake, k_ukgrowth, k_brgrowth, vaccine_uptake = NULL, remote = FALSE, writedir = NULL) {
+
   sheets <- GetCountySheets(county1, county.dt, doses.dt,remote = remote)
 
-  stopifnot(k_uptake %in% c("low", "high"))
-  #uptake in 65+ is set in CAcounties.xlsx
-  if (k_uptake == "low") {
-    sheets$`Vaccine Distribution`[age < 65, vax_uptake := 0.75]
+  if (is.null(vaccine_uptake)) {
+
+    stopifnot(k_uptake %in% c("low", "high"))
+    #uptake in 65+ is set in CAcounties.xlsx
+    if (k_uptake == "low") {
+      sheets$`Vaccine Distribution`[age < 65, vax_uptake := 0.75]
+    } else {
+      sheets$`Vaccine Distribution`[age < 65, vax_uptake := 0.80]
+    }
+
   } else {
-    sheets$`Vaccine Distribution`[age < 65, vax_uptake := 0.80]
+
+    stopifnot(all(is.finite(vaccine_uptake)))
+    stopifnot(length(vaccine_uptake)==3L)
+
+    sheets$`Vaccine Distribution`[12 <= age & age <= 15, vax_uptake := vaccine_uptake[1]]
+    sheets$`Vaccine Distribution`[16 <= age & age <= 64, vax_uptake := vaccine_uptake[2]]
+    sheets$`Vaccine Distribution`[age >= 65, vax_uptake := vaccine_uptake[3]]
+
   }
 
   if (remote) {
@@ -64,7 +80,7 @@ GetCountyInputs_scen <- function(county1, county.dt, doses.dt, k_uptake, k_ukgro
   inputs <- LEMMA:::ProcessSheets(sheets)
   inputs <- ModifyCountyInputs(county1, inputs)
 
-  if (remote) {
+  if (!is.null(writedir)) {
     # inputs$internal.args$output.filestr <- tempfile(pattern = county1)
     forecast_path <- paste0(writedir, "/Forecasts")
     dir.create(path = forecast_path,showWarnings = FALSE)
