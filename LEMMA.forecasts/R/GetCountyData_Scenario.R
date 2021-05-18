@@ -81,7 +81,6 @@ GetCountyInputs_scen <- function(county1, county.dt, doses.dt, k_uptake, k_ukgro
   inputs <- ModifyCountyInputs(county1, inputs)
 
   if (!is.null(writedir)) {
-    # inputs$internal.args$output.filestr <- tempfile(pattern = county1)
     forecast_path <- paste0(writedir, "/Forecasts")
     dir.create(path = forecast_path,showWarnings = FALSE)
     inputs$internal.args$output.filestr <- paste0(forecast_path, "/", county1)
