@@ -18,7 +18,7 @@ CreateOverview <- function(lemma.set, writedir = NULL) {
     dt.plot <- merge(obs.data, projection.dt, all = T, by = "date")
 
     max.date <- obs.data[!is.na(conf), max(date)] + 14
-    min.date <- as.Date("2020/11/1") #max.date - 90
+    min.date <- as.Date("2021/3/1") #max.date - 90
 
     obs.size <- 1 #1.5
     frac.pui <- inputs$frac_pui[name == data.type, mu]
@@ -42,6 +42,7 @@ CreateOverview <- function(lemma.set, writedir = NULL) {
     gg <- gg +
       xlab("") +
       ylab(LEMMA:::GetYLabel(data.type)) +
+      coord_cartesian(ylim = c(0, NA), expand = F) +
       labs(title = title1, caption = "localepi.github.io/LEMMA") +
       scale_color_manual("", values = c("blue", "palegreen4", "red4"), breaks = c("Median", lb, ub)) +
       theme(plot.title = element_text(hjust = 0.5), plot.subtitle = element_text(hjust = 0.5)) +

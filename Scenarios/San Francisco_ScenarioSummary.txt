@@ -1,15 +1,15 @@
                                 name hosp.peak hosp.peak.date additional.admits.byNov1 additional.deaths.byNov1 additional.cases.byNov1
- 1:                             base        12     2021-05-18                       31                        3                    1826
- 2:                    open90percent       237     2022-01-28                      175                       13                   14705
- 3:                         uptake80        12     2021-05-18                       22                        2                    1272
- 4:                        UKvariant       229     2022-02-04                      150                       12                   10596
- 5:                        BRvariant      1629     2021-11-03                     4620                      308                  359812
- 6:           uptake80_open90percent        92     2022-03-02                       61                        5                    4580
- 7: uptake80_open90percent_UKvariant       307     2021-12-12                      593                       43                   46770
- 8:               uptake80_UKvariant        64     2022-05-01                       57                        5                    3715
- 9:          open90percent_UKvariant       434     2021-11-09                     1732                      128                  128094
-10:               uptake80_BRvariant      1510     2021-11-15                     2432                      144                  227415
-11: uptake80_open90percent_BRvariant      1887     2021-10-16                     7305                      567                  488056
+ 1:                             base        11     2021-05-19                       30                        3                    1899
+ 2:                    open90percent       210     2022-01-31                      155                       12                   13516
+ 3:                         uptake80        11     2021-05-19                       21                        2                    1234
+ 4:                        UKvariant       190     2022-02-07                      132                       11                    9745
+ 5:                        BRvariant      1500     2021-11-06                     3847                      252                  326600
+ 6:           uptake80_open90percent        65     2022-05-01                       52                        4                    3875
+ 7: uptake80_open90percent_UKvariant       281     2021-12-20                      470                       33                   37390
+ 8:               uptake80_UKvariant        40     2022-05-01                       50                        5                    3190
+ 9:          open90percent_UKvariant       387     2021-11-13                     1462                      108                  114486
+10:               uptake80_BRvariant      1447     2021-11-19                     1822                       98                  180015
+11: uptake80_open90percent_BRvariant      1820     2021-10-18                     6920                      515                  476261
 base = 75% open by June 22; uptake: 75% for <65, 90% for 65+; 40% UK, 30% West Coast variants; 12-15 eligible May 13, 0-11 eligible Jan 1 
 other scenarios same as base except:
 open90percent = 90% open
