@@ -98,27 +98,15 @@ RunOneCounty_scen_input <- function(
     stop("if 'remote' is TRUE, please provide a directory to write results to in 'writedir'")
   }
 
-  # Scenario1 <- function(filestr1, ...) {
-  #   results <- Scenario(filestr1 = filestr1, county1 = county1, county.dt = county.dt, doses.dt = doses.dt, k_mu_beta_inter = k_mu_beta_inter, ...)
-  # }
-
   lemma <- Scenario(
-    filestr1 = "statusquo", county1 = county1, county.dt = county.dt, doses.dt = doses.dt,
-    vaccine_uptake = vaccine_uptake, vaccine_dosing_jj = vaccine_dosing_jj, vaccine_dosing_mrna = vaccine_dosing_mrna,
-    remote = remote, writedir = writedir
+    filestr1 = "statusquo", county1 = county1, county.dt = county.dt, doses.dt = doses.dt, remote = remote, writedir = writedir
   )
 
   relative.contact.rate.statusquo <- lemma$fit.extended$par$beta / (lemma$fit.extended$par$beta[1] * lemma$inputs$vaccines$transmission_variant_multiplier)
   k_mu_beta_inter <- 1 / pmin(1, tail(relative.contact.rate.statusquo, 1))
 
-  # Scenario1(
-  #   filestr1 = "custom", lemma_statusquo = lemma,
-  #   k_uptake = k_uptake, k_ukgrowth = k_ukgrowth, k_brgrowth = k_brgrowth, k_max_open = k_max_open,
-  #   remote = remote, writedir = writedir
-  # )
-
   Scenario(
-    filestr1 = "custom", lemma_statusquo = lemma, county1 = county1, county.dt = county.dt, doses.dt = doses.dt,
+    filestr1 = "custom", lemma_statusquo = NULL, county1 = county1, county.dt = county.dt, doses.dt = doses.dt,
     k_mu_beta_inter = k_mu_beta_inter,k_uptake = k_uptake, k_ukgrowth = k_ukgrowth, k_brgrowth = k_brgrowth, k_max_open = k_max_open,
     vaccine_uptake = vaccine_uptake, vaccine_dosing_jj = vaccine_dosing_jj, vaccine_dosing_mrna = vaccine_dosing_mrna,
     remote = remote, writedir = writedir
