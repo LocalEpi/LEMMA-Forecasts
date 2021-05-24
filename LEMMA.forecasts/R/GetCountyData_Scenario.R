@@ -39,9 +39,9 @@ GetCountyInputs_scen <- function(
     stopifnot(k_uptake %in% c("low", "high"))
     #uptake in 65+ is set in CAcounties.xlsx
     if (k_uptake == "low") {
-      sheets$`Vaccine Distribution`[age < 65, vax_uptake := 0.75]
+      sheets$`Vaccine Distribution`[age < 65, vax_uptake := 0.78]
     } else {
-      sheets$`Vaccine Distribution`[age < 65, vax_uptake := 0.80]
+      sheets$`Vaccine Distribution`[age < 65, vax_uptake := 0.83]
     }
 
   } else {
