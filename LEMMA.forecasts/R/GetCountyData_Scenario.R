@@ -19,17 +19,23 @@
 #' @param k_brgrowth growth rate of BR variant
 #' @param vaccine_uptake a numeric vector with 3 values, for vaccine uptake in age groups 12-15, 16-64, and 65+; if not \code{NULL}
 #' this will override the option \code{k_uptake}
-#' @param vaccine_dosing_jj daily increase in J&J vaccine delivery, leave \code{NULL} for default
-#' @param vaccine_dosing_mrna daily increase in mRNA vaccines delivery, leave \code{NULL} for default
-#' @param vaccine_dosing_start_today if \code{TRUE} use today's date to start increasing vaccine, if \code{FALSE} use the default date from Excel input via \code{\link[LEMMA.forecasts]{GetCountySheets}}
+#' @param vaccine_dosing a named list that requires specific input, see section \code{vaccine_dosing}, or \code{NULL} for no adjustment of doses available
 #' @param remote a logical value, if \code{TRUE} download all data from remotes, otherwise use local data
 #' @param writedir a character string giving a directory to write to, it should only be used if \code{remote} is \code{TRUE}.
 #' This assumes the directory whose path is given already exists.
+#' @section vaccine_dosing:
+#' This is a named list that requires the following elements
+#' \itemize{
+#'  \item{vaccine_dosing_jj}{daily increase in J&J vaccine delivery}
+#'  \item{vaccine_dosing_mrna}{daily increase in mRNA vaccines delivery}
+#'  \item{vaccine_dosing_mrna_max}{increase over baseline in maximum number of doses per day for mRNA vaccines}
+#'  \item{vaccine_dosing_jj_max}{increase over baseline in maximum number of doses per day for J&J vaccines}
+#' }
 #' @return a named list of values
 GetCountyInputs_scen <- function(
   county1, county.dt, doses.dt, k_uptake, k_ukgrowth, k_brgrowth,
-  vaccine_uptake = NULL, vaccine_dosing_jj = NULL, vaccine_dosing_mrna = NULL,
-  vaccine_dosing_start_today = FALSE,
+  vaccine_uptake = NULL,
+  vaccine_dosing = NULL,
   remote = FALSE, writedir = NULL
 ) {
 
@@ -58,20 +64,18 @@ GetCountyInputs_scen <- function(
   }
 
   # vaccine dosing: user input?
-  if (!is.null(vaccine_dosing_jj)) {
-    stopifnot(is.finite(vaccine_dosing_jj))
-    sheets$`Vaccine Doses - Future`[internal.name == "doses_per_day_increase", jj := vaccine_dosing_jj]
-    if (vaccine_dosing_start_today) {
-      sheets$`Vaccine Doses - Future`[internal.name == "start_increase_day", jj := as.Date(Sys.time())]
-    }
-  }
+  if (!is.null(vaccine_dosing)) {
 
-  if (!is.null(vaccine_dosing_mrna)) {
-    stopifnot(is.finite(vaccine_dosing_mrna))
-    sheets$`Vaccine Doses - Future`[internal.name == "doses_per_day_increase", mrna := vaccine_dosing_mrna]
-    if (vaccine_dosing_start_today) {
-      sheets$`Vaccine Doses - Future`[internal.name == "start_increase_day", mrna := as.Date(Sys.time())]
-    }
+    stopifnot(all(sapply(X = vaccine_dosing,FUN = is.finite)))
+
+    sheets$`Vaccine Doses - Future`[internal.name == "doses_per_day_increase", jj := vaccine_dosing$vaccine_dosing_jj]
+    sheets$`Vaccine Doses - Future`[internal.name == "start_increase_day", jj := as.Date(Sys.time())]
+    sheets$`Vaccine Doses - Future`[internal.name == "doses_per_day_maximum", jj := as.numeric(jj) + vaccine_dosing$vaccine_dosing_jj_max]
+
+    sheets$`Vaccine Doses - Future`[internal.name == "doses_per_day_increase", mrna := vaccine_dosing$vaccine_dosing_mrna]
+    sheets$`Vaccine Doses - Future`[internal.name == "start_increase_day", mrna := as.Date(Sys.time())]
+    sheets$`Vaccine Doses - Future`[internal.name == "doses_per_day_maximum", mrna := as.numeric(mrna) + vaccine_dosing$vaccine_dosing_mrna_max]
+
   }
 
   # download from remote?

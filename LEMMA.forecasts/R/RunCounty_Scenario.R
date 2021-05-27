@@ -82,19 +82,26 @@ RunOneCounty_scen <- function(county1, county.dt, doses.dt, remote = FALSE, writ
 #' @param k_max_open percentage of pre-pandemic activity after reopening (scales contact rate)
 #' @param vaccine_uptake a numeric vector with 3 values, for vaccine uptake in age groups 12-15, 16-64, and 65+; if not \code{NULL}
 #' this will override the option \code{k_uptake}
-#' @param vaccine_dosing_jj daily increase in J&J vaccine delivery, leave \code{NULL} for default
-#' @param vaccine_dosing_mrna daily increase in mRNA vaccines delivery, leave \code{NULL} for default
-#' @param vaccine_dosing_start_today if \code{TRUE} use today's date to start increasing vaccine, if \code{FALSE} use the default date from Excel input via \code{\link[LEMMA.forecasts]{GetCountySheets}}
+#' @param vaccine_dosing a named list that requires specific input, see section \code{vaccine_dosing}, or \code{NULL} for no adjustment of doses available
 #' @param remote a logical value, if \code{TRUE} download all data from remotes, otherwise use local data
 #' @param writedir a character string giving a directory to write to, it should only be used if \code{remote} is \code{TRUE}.
 #' This assumes the directory whose path is given already exists.
+#' @section vaccine_dosing:
+#' This is a named list that requires the following elements
+#' \itemize{
+#'  \item{vaccine_dosing_jj}{daily increase in J&J vaccine delivery}
+#'  \item{vaccine_dosing_mrna}{daily increase in mRNA vaccines delivery}
+#'  \item{vaccine_dosing_mrna_max}{increase over baseline in maximum number of doses per day for mRNA vaccines}
+#'  \item{vaccine_dosing_jj_max}{increase over baseline in maximum number of doses per day for J&J vaccines}
+#' }
 #' @export
 RunOneCounty_scen_input <- function(
   county1, county.dt, doses.dt,
   k_uptake = "low", k_ukgrowth = 1, k_brgrowth = 1, k_max_open = 0.75,
-  vaccine_uptake = NULL, vaccine_dosing_jj = NULL, vaccine_dosing_mrna = NULL,
-  vaccine_dosing_start_today = FALSE,
-  remote = FALSE, writedir = NULL) {
+  vaccine_uptake = NULL,
+  vaccine_dosing = NULL,
+  remote = FALSE,
+  writedir = NULL) {
 
   if (remote & is.null(writedir)) {
     stop("if 'remote' is TRUE, please provide a directory to write results to in 'writedir'")
@@ -110,7 +117,7 @@ RunOneCounty_scen_input <- function(
   Scenario(
     filestr1 = "custom", lemma_statusquo = NULL, county1 = county1, county.dt = county.dt, doses.dt = doses.dt,
     k_mu_beta_inter = k_mu_beta_inter,k_uptake = k_uptake, k_ukgrowth = k_ukgrowth, k_brgrowth = k_brgrowth, k_max_open = k_max_open,
-    vaccine_uptake = vaccine_uptake, vaccine_dosing_jj = vaccine_dosing_jj, vaccine_dosing_mrna = vaccine_dosing_mrna, vaccine_dosing_start_today = vaccine_dosing_start_today,
+    vaccine_uptake = vaccine_uptake, vaccine_dosing = vaccine_dosing,
     remote = remote, writedir = writedir
   )
 
@@ -132,27 +139,33 @@ RunOneCounty_scen_input <- function(
 #' @param k_max_open percentage of pre-pandemic activity after reopening (scales contact rate)
 #' @param vaccine_uptake a numeric vector with 3 values, for vaccine uptake in age groups 12-15, 16-64, and 65+; if not \code{NULL}
 #' this will override the option \code{k_uptake}
-#' @param vaccine_dosing_jj daily increase in J&J vaccine delivery, leave \code{NULL} for default
-#' @param vaccine_dosing_mrna daily increase in mRNA vaccines delivery, leave \code{NULL} for default
-#' @param vaccine_dosing_start_today if \code{TRUE} use today's date to start increasing vaccine, if \code{FALSE} use the default date from Excel input via \code{\link[LEMMA.forecasts]{GetCountySheets}}
+#' @param vaccine_dosing a named list that requires specific input, see section \code{vaccine_dosing}, or \code{NULL} for no adjustment of doses available
 #' @param remote a logical value, if \code{TRUE} download all data from remotes, otherwise use local data
 #' @param writedir a character string giving a directory to write to, it should only be used if \code{remote} is \code{TRUE}.
 #' This assumes the directory whose path is given already exists.
+#' @section vaccine_dosing:
+#' This is a named list that requires the following elements
+#' \itemize{
+#'  \item{vaccine_dosing_jj}{daily increase in J&J vaccine delivery}
+#'  \item{vaccine_dosing_mrna}{daily increase in mRNA vaccines delivery}
+#'  \item{vaccine_dosing_mrna_max}{increase over baseline in maximum number of doses per day for mRNA vaccines}
+#'  \item{vaccine_dosing_jj_max}{increase over baseline in maximum number of doses per day for J&J vaccines}
+#' }
 #' @return a named list of values
 Scenario <- function(
   filestr1, county1, county.dt, doses.dt,
   k_mu_beta_inter = NULL, lemma_statusquo = NULL, k_uptake = "low",
   k_ukgrowth = 1, k_brgrowth = 1, k_max_open = 0.75,
-  vaccine_uptake = NULL, vaccine_dosing_jj = NULL, vaccine_dosing_mrna = NULL,
-  vaccine_dosing_start_today = FALSE,
+  vaccine_uptake = NULL,
+  vaccine_dosing = NULL,
   remote = FALSE, writedir = NULL
 ) {
 
   inputs <- GetCountyInputs_scen(
     county1 = county1, county.dt = county.dt, doses.dt = doses.dt, k_uptake = k_uptake,
     k_ukgrowth = k_ukgrowth, k_brgrowth = k_brgrowth,
-    vaccine_uptake = vaccine_uptake, vaccine_dosing_jj = vaccine_dosing_jj, vaccine_dosing_mrna = vaccine_dosing_mrna,
-    vaccine_dosing_start_today = vaccine_dosing_start_today,
+    vaccine_uptake = vaccine_uptake,
+    vaccine_dosing = vaccine_dosing,
     remote = remote, writedir = writedir
   )
 

@@ -16,9 +16,7 @@ Scenario(
   k_brgrowth = 1,
   k_max_open = 0.75,
   vaccine_uptake = NULL,
-  vaccine_dosing_jj = NULL,
-  vaccine_dosing_mrna = NULL,
-  vaccine_dosing_start_today = FALSE,
+  vaccine_dosing = NULL,
   remote = FALSE,
   writedir = NULL
 )
@@ -47,11 +45,7 @@ Scenario(
 \item{vaccine_uptake}{a numeric vector with 3 values, for vaccine uptake in age groups 12-15, 16-64, and 65+; if not \code{NULL}
 this will override the option \code{k_uptake}}
 
-\item{vaccine_dosing_jj}{daily increase in J&J vaccine delivery, leave \code{NULL} for default}
-
-\item{vaccine_dosing_mrna}{daily increase in mRNA vaccines delivery, leave \code{NULL} for default}
-
-\item{vaccine_dosing_start_today}{if \code{TRUE} use today's date to start increasing vaccine, if \code{FALSE} use the default date from Excel input via \code{\link[LEMMA.forecasts]{GetCountySheets}}}
+\item{vaccine_dosing}{a named list that requires specific input, see section \code{vaccine_dosing}, or \code{NULL} for no adjustment of doses available}
 
 \item{remote}{a logical value, if \code{TRUE} download all data from remotes, otherwise use local data}
 
@@ -64,3 +58,14 @@ a named list of values
 \description{
 This function is called from \code{\link[LEMMA.forecasts]{RunOneCounty_scen}}.
 }
+\section{vaccine_dosing}{
+
+This is a named list that requires the following elements
+\itemize{
+ \item{vaccine_dosing_jj}{daily increase in J&J vaccine delivery}
+ \item{vaccine_dosing_mrna}{daily increase in mRNA vaccines delivery}
+ \item{vaccine_dosing_mrna_max}{increase over baseline in maximum number of doses per day for mRNA vaccines}
+ \item{vaccine_dosing_jj_max}{increase over baseline in maximum number of doses per day for J&J vaccines}
+}
+}
+
