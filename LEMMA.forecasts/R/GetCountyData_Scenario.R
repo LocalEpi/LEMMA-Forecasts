@@ -21,6 +21,7 @@
 #' this will override the option \code{k_uptake}
 #' @param vaccine_dosing_jj daily increase in J&J vaccine delivery, leave \code{NULL} for default
 #' @param vaccine_dosing_mrna daily increase in mRNA vaccines delivery, leave \code{NULL} for default
+#' @param vaccine_dosing_start_today if \code{TRUE} use today's date to start increasing vaccine, if \code{FALSE} use the default date from Excel input via \code{\link[LEMMA.forecasts]{GetCountySheets}}
 #' @param remote a logical value, if \code{TRUE} download all data from remotes, otherwise use local data
 #' @param writedir a character string giving a directory to write to, it should only be used if \code{remote} is \code{TRUE}.
 #' This assumes the directory whose path is given already exists.
@@ -28,6 +29,7 @@
 GetCountyInputs_scen <- function(
   county1, county.dt, doses.dt, k_uptake, k_ukgrowth, k_brgrowth,
   vaccine_uptake = NULL, vaccine_dosing_jj = NULL, vaccine_dosing_mrna = NULL,
+  vaccine_dosing_start_today = FALSE,
   remote = FALSE, writedir = NULL
 ) {
 
@@ -59,11 +61,17 @@ GetCountyInputs_scen <- function(
   if (!is.null(vaccine_dosing_jj)) {
     stopifnot(is.finite(vaccine_dosing_jj))
     sheets$`Vaccine Doses - Future`[internal.name == "doses_per_day_increase", jj := vaccine_dosing_jj]
+    if (vaccine_dosing_start_today) {
+      sheets$`Vaccine Doses - Future`[internal.name == "start_increase_day", jj := as.Date(Sys.time())]
+    }
   }
 
   if (!is.null(vaccine_dosing_mrna)) {
     stopifnot(is.finite(vaccine_dosing_mrna))
     sheets$`Vaccine Doses - Future`[internal.name == "doses_per_day_increase", mrna := vaccine_dosing_mrna]
+    if (vaccine_dosing_start_today) {
+      sheets$`Vaccine Doses - Future`[internal.name == "start_increase_day", mrna := as.Date(Sys.time())]
+    }
   }
 
   # download from remote?
