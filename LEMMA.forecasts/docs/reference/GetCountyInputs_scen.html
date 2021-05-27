@@ -139,6 +139,7 @@
   vaccine_uptake <span class='op'>=</span> <span class='cn'>NULL</span>,
   vaccine_dosing_jj <span class='op'>=</span> <span class='cn'>NULL</span>,
   vaccine_dosing_mrna <span class='op'>=</span> <span class='cn'>NULL</span>,
+  vaccine_dosing_start_today <span class='op'>=</span> <span class='cn'>FALSE</span>,
   remote <span class='op'>=</span> <span class='cn'>FALSE</span>,
   writedir <span class='op'>=</span> <span class='cn'>NULL</span>
 <span class='op'>)</span></pre>
@@ -182,6 +183,10 @@ this will override the option <code>k_uptake</code></p></td>
     <tr>
       <th>vaccine_dosing_mrna</th>
       <td><p>daily increase in mRNA vaccines delivery, leave <code>NULL</code> for default</p></td>
+    </tr>
+    <tr>
+      <th>vaccine_dosing_start_today</th>
+      <td><p>if <code>TRUE</code> use today's date to start increasing vaccine, if <code>FALSE</code> use the default date from Excel input via <code><a href='GetCountySheets.html'>GetCountySheets</a></code></p></td>
     </tr>
     <tr>
       <th>remote</th>
