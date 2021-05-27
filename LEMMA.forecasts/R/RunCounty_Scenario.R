@@ -134,6 +134,7 @@ RunOneCounty_scen_input <- function(
 #' this will override the option \code{k_uptake}
 #' @param vaccine_dosing_jj daily increase in J&J vaccine delivery, leave \code{NULL} for default
 #' @param vaccine_dosing_mrna daily increase in mRNA vaccines delivery, leave \code{NULL} for default
+#' @param vaccine_dosing_start_today if \code{TRUE} use today's date to start increasing vaccine, if \code{FALSE} use the default date from Excel input via \code{\link[LEMMA.forecasts]{GetCountySheets}}
 #' @param remote a logical value, if \code{TRUE} download all data from remotes, otherwise use local data
 #' @param writedir a character string giving a directory to write to, it should only be used if \code{remote} is \code{TRUE}.
 #' This assumes the directory whose path is given already exists.
@@ -143,6 +144,7 @@ Scenario <- function(
   k_mu_beta_inter = NULL, lemma_statusquo = NULL, k_uptake = "low",
   k_ukgrowth = 1, k_brgrowth = 1, k_max_open = 0.75,
   vaccine_uptake = NULL, vaccine_dosing_jj = NULL, vaccine_dosing_mrna = NULL,
+  vaccine_dosing_start_today = FALSE,
   remote = FALSE, writedir = NULL
 ) {
 
@@ -150,6 +152,7 @@ Scenario <- function(
     county1 = county1, county.dt = county.dt, doses.dt = doses.dt, k_uptake = k_uptake,
     k_ukgrowth = k_ukgrowth, k_brgrowth = k_brgrowth,
     vaccine_uptake = vaccine_uptake, vaccine_dosing_jj = vaccine_dosing_jj, vaccine_dosing_mrna = vaccine_dosing_mrna,
+    vaccine_dosing_start_today = vaccine_dosing_start_today,
     remote = remote, writedir = writedir
   )
 

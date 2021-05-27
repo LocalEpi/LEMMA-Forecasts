@@ -18,6 +18,7 @@ Scenario(
   vaccine_uptake = NULL,
   vaccine_dosing_jj = NULL,
   vaccine_dosing_mrna = NULL,
+  vaccine_dosing_start_today = FALSE,
   remote = FALSE,
   writedir = NULL
 )
@@ -49,6 +50,8 @@ this will override the option \code{k_uptake}}
 \item{vaccine_dosing_jj}{daily increase in J&J vaccine delivery, leave \code{NULL} for default}
 
 \item{vaccine_dosing_mrna}{daily increase in mRNA vaccines delivery, leave \code{NULL} for default}
+
+\item{vaccine_dosing_start_today}{if \code{TRUE} use today's date to start increasing vaccine, if \code{FALSE} use the default date from Excel input via \code{\link[LEMMA.forecasts]{GetCountySheets}}}
 
 \item{remote}{a logical value, if \code{TRUE} download all data from remotes, otherwise use local data}
 
