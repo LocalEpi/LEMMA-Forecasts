@@ -31,19 +31,27 @@ RunOneCounty_scen <- function(county1, county.dt, doses.dt, remote = FALSE, writ
   relative.contact.rate.statusquo <- lemma$fit.extended$par$beta / (lemma$fit.extended$par$beta[1] * lemma$inputs$vaccines$transmission_variant_multiplier)
   k_mu_beta_inter <- 1 / pmin(1, tail(relative.contact.rate.statusquo, 1))
 
+  high_uk_growth <- 1.06
+  high_br_growth <- 1.08
+  high_in_growth <- 1.08
+
   Scenario1("base", lemma_statusquo = lemma, remote = remote, writedir = writedir)
   Scenario1("open90percent", lemma_statusquo = lemma, k_max_open = 0.9, remote = remote, writedir = writedir)
   Scenario1("uptake83", lemma_statusquo = NULL, k_uptake = "high", remote = remote, writedir = writedir) #refit - can change age dist
-  Scenario1("UKvariant", lemma_statusquo = lemma, k_ukgrowth = 1.06, remote = remote, writedir = writedir)
-  Scenario1("BRvariant", lemma_statusquo = lemma, k_brgrowth = 1.06, remote = remote, writedir = writedir)
+  Scenario1("UKvariant", lemma_statusquo = lemma, k_ukgrowth = high_uk_growth, remote = remote, writedir = writedir)
+  Scenario1("BRvariant", lemma_statusquo = lemma, k_brgrowth = high_br_growth, remote = remote, writedir = writedir)
+  Scenario1("INvariant", lemma_statusquo = lemma, k_ingrowth = high_in_growth, remote = remote, writedir = writedir)
 
   if (county1 == "San Francisco") {
     Scenario1("uptake83_open90percent", lemma_statusquo = NULL, k_uptake = "high", k_max_open = 0.9, remote = remote, writedir = writedir)
-    Scenario1("uptake83_open90percent_UKvariant", lemma_statusquo = NULL, k_uptake = "high", k_max_open = 0.9, k_ukgrowth = 1.06, remote = remote, writedir = writedir)
-    Scenario1("uptake83_UKvariant", lemma_statusquo = NULL, k_uptake = "high", k_ukgrowth = 1.06, remote = remote, writedir = writedir)
-    Scenario1("open90percent_UKvariant", lemma_statusquo = NULL, k_max_open = 0.9, k_ukgrowth = 1.06, remote = remote, writedir = writedir)
-    Scenario1("uptake83_BRvariant", lemma_statusquo = NULL, k_uptake = "high", k_brgrowth = 1.06, remote = remote, writedir = writedir)
-    Scenario1("uptake83_open90percent_BRvariant", lemma_statusquo = NULL, k_uptake = "high", k_max_open = 0.9, k_brgrowth = 1.06, remote = remote, writedir = writedir)
+    Scenario1("uptake83_open90percent_UKvariant", lemma_statusquo = NULL, k_uptake = "high", k_max_open = 0.9, k_ukgrowth = high_uk_growth, remote = remote, writedir = writedir)
+    Scenario1("uptake83_UKvariant", lemma_statusquo = NULL, k_uptake = "high", k_ukgrowth = high_uk_growth, remote = remote, writedir = writedir)
+    Scenario1("open90percent_UKvariant", lemma_statusquo = NULL, k_max_open = 0.9, k_ukgrowth = high_uk_growth, remote = remote, writedir = writedir)
+    Scenario1("uptake83_BRvariant", lemma_statusquo = NULL, k_uptake = "high", k_brgrowth = high_br_growth, remote = remote, writedir = writedir)
+    Scenario1("uptake83_open90percent_BRvariant", lemma_statusquo = NULL, k_uptake = "high", k_max_open = 0.9, k_brgrowth = high_br_growth, remote = remote, writedir = writedir)
+    Scenario1("uptake83_INvariant", lemma_statusquo = NULL, k_uptake = "high", k_ingrowth = high_in_growth, remote = remote, writedir = writedir)
+    Scenario1("uptake83_open90percent_INvariant", lemma_statusquo = NULL, k_uptake = "high", k_max_open = 0.9, k_ingrowth = high_in_growth, remote = remote, writedir = writedir)
+
 
     prev.width <- getOption("width")
     options(scipen = 3, width = 9999)
@@ -65,6 +73,7 @@ RunOneCounty_scen <- function(county1, county.dt, doses.dt, remote = FALSE, writ
     cat("open90percent = 90% open\n")
     cat("uptake83 = uptake 83% for 12-64\n")
     cat("UKvariant = UK variant dominant by August\n")
+    cat('INvariant = "India-like" variant dominant by August\n')
     cat('BRvariant = "Brazil-like" (near worst case) variant dominant by August (possible but unlikely)\n')
     sink()
   }
@@ -90,7 +99,7 @@ RunOneCounty_scen <- function(county1, county.dt, doses.dt, remote = FALSE, writ
 #' @export
 RunOneCounty_scen_input <- function(
   county1, county.dt, doses.dt,
-  k_uptake = "low", k_ukgrowth = 1, k_brgrowth = 1, k_max_open = 0.75,
+  k_uptake = "low", k_ukgrowth = 1, k_brgrowth = 1, k_ingrowth = 1, k_max_open = 0.75,
   vaccine_uptake = NULL, vaccine_dosing_jj = NULL, vaccine_dosing_mrna = NULL,
   remote = FALSE, writedir = NULL) {
 
@@ -107,7 +116,7 @@ RunOneCounty_scen_input <- function(
 
   Scenario(
     filestr1 = "custom", lemma_statusquo = NULL, county1 = county1, county.dt = county.dt, doses.dt = doses.dt,
-    k_mu_beta_inter = k_mu_beta_inter,k_uptake = k_uptake, k_ukgrowth = k_ukgrowth, k_brgrowth = k_brgrowth, k_max_open = k_max_open,
+    k_mu_beta_inter = k_mu_beta_inter,k_uptake = k_uptake, k_ukgrowth = k_ukgrowth, k_brgrowth = k_brgrowth, k_ingrowth = k_ingrowth, k_max_open = k_max_open,
     vaccine_uptake = vaccine_uptake, vaccine_dosing_jj = vaccine_dosing_jj, vaccine_dosing_mrna = vaccine_dosing_mrna,
     remote = remote, writedir = writedir
   )
@@ -139,14 +148,14 @@ RunOneCounty_scen_input <- function(
 Scenario <- function(
   filestr1, county1, county.dt, doses.dt,
   k_mu_beta_inter = NULL, lemma_statusquo = NULL, k_uptake = "low",
-  k_ukgrowth = 1, k_brgrowth = 1, k_max_open = 0.75,
+  k_ukgrowth = 1, k_brgrowth = 1, k_ingrowth = 1, k_max_open = 0.75,
   vaccine_uptake = NULL, vaccine_dosing_jj = NULL, vaccine_dosing_mrna = NULL,
   remote = FALSE, writedir = NULL
 ) {
 
   inputs <- GetCountyInputs_scen(
     county1 = county1, county.dt = county.dt, doses.dt = doses.dt, k_uptake = k_uptake,
-    k_ukgrowth = k_ukgrowth, k_brgrowth = k_brgrowth,
+    k_ukgrowth = k_ukgrowth, k_brgrowth = k_brgrowth, k_ingrowth = k_ingrowth,
     vaccine_uptake = vaccine_uptake, vaccine_dosing_jj = vaccine_dosing_jj, vaccine_dosing_mrna = vaccine_dosing_mrna,
     remote = remote, writedir = writedir
   )

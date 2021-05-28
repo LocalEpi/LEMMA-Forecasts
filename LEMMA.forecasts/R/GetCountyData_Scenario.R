@@ -26,7 +26,7 @@
 #' This assumes the directory whose path is given already exists.
 #' @return a named list of values
 GetCountyInputs_scen <- function(
-  county1, county.dt, doses.dt, k_uptake, k_ukgrowth, k_brgrowth,
+  county1, county.dt, doses.dt, k_uptake, k_ukgrowth, k_brgrowth, k_ingrowth,
   vaccine_uptake = NULL, vaccine_dosing_jj = NULL, vaccine_dosing_mrna = NULL,
   remote = FALSE, writedir = NULL
 ) {
@@ -85,19 +85,22 @@ GetCountyInputs_scen <- function(
   ca <- x[index, B.1.427 + B.1.429] / 100
   br <- x[index, P.1] / 100
   sa <- x[index, B.1.351] / 100
-  wild <- 1 - (uk + ca + br + sa)
+  india <- x[index, B.1.617.2] / 100
+  wild <- 1 - (uk + ca + br + sa + india)
   max.date <- sheets$Data[, max(date)]
   sheets$Variants[, variant_day0 := max.date]
-  sheets$Variants[, frac_on_day0 := c(wild, uk, ca, br, sa)]
-  sheets$Variants[, daily_growth_prior := c(1, 1.05, 1.034, 1.03, 1.03)]
+  sheets$Variants[, frac_on_day0 := c(wild, uk, ca, br, sa, india)]
+  sheets$Variants[, daily_growth_prior := c(1, 1.05, 1.034, 1.03, 1.03, 1.03)]
   sheets$Variants[, daily_growth_future := 1]
 
   #these have to be positive or growth won't matter
   if (k_ukgrowth > 0) stopifnot(sheets$Variants[name == "UK", frac_on_day0 > 0])
   if (k_brgrowth > 0) stopifnot(sheets$Variants[name == "BR", frac_on_day0 > 0])
+  if (k_ingrowth > 0) stopifnot(sheets$Variants[name == "IN", frac_on_day0 > 0])
 
   sheets$Variants[name == "UK", daily_growth_future := k_ukgrowth]
   sheets$Variants[name == "BR", daily_growth_future := k_brgrowth]
+  sheets$Variants[name == "IN", daily_growth_future := k_ingrowth]
 
   inputs <- LEMMA:::ProcessSheets(sheets)
   inputs <- ModifyCountyInputs(county1, inputs)
