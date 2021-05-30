@@ -136,10 +136,9 @@
   <span class='va'>k_uptake</span>,
   <span class='va'>k_ukgrowth</span>,
   <span class='va'>k_brgrowth</span>,
+  <span class='va'>k_ingrowth</span>,
   vaccine_uptake <span class='op'>=</span> <span class='cn'>NULL</span>,
-  vaccine_dosing_jj <span class='op'>=</span> <span class='cn'>NULL</span>,
-  vaccine_dosing_mrna <span class='op'>=</span> <span class='cn'>NULL</span>,
-  vaccine_dosing_start_today <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  vaccine_dosing <span class='op'>=</span> <span class='cn'>NULL</span>,
   remote <span class='op'>=</span> <span class='cn'>FALSE</span>,
   writedir <span class='op'>=</span> <span class='cn'>NULL</span>
 <span class='op'>)</span></pre>
@@ -165,11 +164,15 @@
     </tr>
     <tr>
       <th>k_ukgrowth</th>
-      <td><p>growth rate of UK variant</p></td>
+      <td><p>growth rate of UK variant (B.1.1.7)</p></td>
     </tr>
     <tr>
       <th>k_brgrowth</th>
-      <td><p>growth rate of BR variant</p></td>
+      <td><p>growth rate of BR variant (P.1)</p></td>
+    </tr>
+    <tr>
+      <th>k_ingrowth</th>
+      <td><p>growth rate of IN variant (B.1.617.2)</p></td>
     </tr>
     <tr>
       <th>vaccine_uptake</th>
@@ -177,16 +180,8 @@
 this will override the option <code>k_uptake</code></p></td>
     </tr>
     <tr>
-      <th>vaccine_dosing_jj</th>
-      <td><p>daily increase in J&amp;J vaccine delivery, leave <code>NULL</code> for default</p></td>
-    </tr>
-    <tr>
-      <th>vaccine_dosing_mrna</th>
-      <td><p>daily increase in mRNA vaccines delivery, leave <code>NULL</code> for default</p></td>
-    </tr>
-    <tr>
-      <th>vaccine_dosing_start_today</th>
-      <td><p>if <code>TRUE</code> use today's date to start increasing vaccine, if <code>FALSE</code> use the default date from Excel input via <code><a href='GetCountySheets.html'>GetCountySheets</a></code></p></td>
+      <th>vaccine_dosing</th>
+      <td><p>a named list that requires specific input, see section <code>vaccine_dosing</code>, or <code>NULL</code> for no adjustment of doses available</p></td>
     </tr>
     <tr>
       <th>remote</th>
@@ -202,6 +197,17 @@ This assumes the directory whose path is given already exists.</p></td>
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>a named list of values</p>
+    <h2 class="hasAnchor" id="vaccine-dosing"><a class="anchor" href="#vaccine-dosing"></a>vaccine_dosing</h2>
+
+    
+
+<p>This is a named list that requires the following elements</p><ul>
+<li><p>vaccine_dosing_jjdaily increase in J&amp;J vaccine delivery</p></li>
+<li><p>vaccine_dosing_mrnadaily increase in mRNA vaccines delivery</p></li>
+<li><p>vaccine_dosing_mrna_maxincrease over baseline in maximum number of doses per day for mRNA vaccines</p></li>
+<li><p>vaccine_dosing_jj_maxincrease over baseline in maximum number of doses per day for J&amp;J vaccines</p></li>
+</ul>
+
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
