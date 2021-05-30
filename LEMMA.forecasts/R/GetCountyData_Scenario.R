@@ -15,8 +15,9 @@
 #' @param county.dt a \code{\link[data.table]{data.table}} object returned from \code{\link[LEMMA.forecasts]{GetCountyData}}
 #' @param doses.dt a \code{\link[data.table]{data.table}} object returned from \code{\link[LEMMA.forecasts]{GetDosesData}}
 #' @param k_uptake a character string, "low" or "high" giving vaccine uptake
-#' @param k_ukgrowth growth rate of UK variant
-#' @param k_brgrowth growth rate of BR variant
+#' @param k_ukgrowth growth rate of UK variant (B.1.1.7)
+#' @param k_brgrowth growth rate of BR variant (P.1)
+#' @param k_ingrowth growth rate of IN variant (B.1.617.2)
 #' @param vaccine_uptake a numeric vector with 3 values, for vaccine uptake in age groups 12-15, 16-64, and 65+; if not \code{NULL}
 #' this will override the option \code{k_uptake}
 #' @param vaccine_dosing a named list that requires specific input, see section \code{vaccine_dosing}, or \code{NULL} for no adjustment of doses available

@@ -11,6 +11,7 @@ RunOneCounty_scen_input(
   k_uptake = "low",
   k_ukgrowth = 1,
   k_brgrowth = 1,
+  k_ingrowth = 1,
   k_max_open = 0.75,
   vaccine_uptake = NULL,
   vaccine_dosing = NULL,
@@ -27,9 +28,11 @@ RunOneCounty_scen_input(
 
 \item{k_uptake}{a character string, "low" or "high" giving vaccine uptake}
 
-\item{k_ukgrowth}{growth rate of UK variant}
+\item{k_ukgrowth}{growth rate of UK variant (B.1.1.7)}
 
-\item{k_brgrowth}{growth rate of BR variant}
+\item{k_brgrowth}{growth rate of BR variant (P.1)}
+
+\item{k_ingrowth}{growth rate of IN variant (B.1.617.2)}
 
 \item{k_max_open}{percentage of pre-pandemic activity after reopening (scales contact rate)}
 
