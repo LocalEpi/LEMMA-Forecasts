@@ -37,20 +37,13 @@ RunOneCounty_scen <- function(county1, county.dt, doses.dt, remote = FALSE, writ
 
   Scenario1("base", lemma_statusquo = lemma, remote = remote, writedir = writedir)
   Scenario1("open90percent", lemma_statusquo = lemma, k_max_open = 0.9, remote = remote, writedir = writedir)
-  Scenario1("uptake83", lemma_statusquo = NULL, k_uptake = "high", remote = remote, writedir = writedir) #refit - can change age dist
   Scenario1("UKvariant", lemma_statusquo = lemma, k_ukgrowth = high_uk_growth, remote = remote, writedir = writedir)
   Scenario1("BRvariant", lemma_statusquo = lemma, k_brgrowth = high_br_growth, remote = remote, writedir = writedir)
   Scenario1("INvariant", lemma_statusquo = lemma, k_ingrowth = high_in_growth, remote = remote, writedir = writedir)
 
   if (county1 == "San Francisco") {
-    Scenario1("uptake83_open90percent", lemma_statusquo = NULL, k_uptake = "high", k_max_open = 0.9, remote = remote, writedir = writedir)
-    Scenario1("uptake83_open90percent_UKvariant", lemma_statusquo = NULL, k_uptake = "high", k_max_open = 0.9, k_ukgrowth = high_uk_growth, remote = remote, writedir = writedir)
-    Scenario1("uptake83_UKvariant", lemma_statusquo = NULL, k_uptake = "high", k_ukgrowth = high_uk_growth, remote = remote, writedir = writedir)
     Scenario1("open90percent_UKvariant", lemma_statusquo = NULL, k_max_open = 0.9, k_ukgrowth = high_uk_growth, remote = remote, writedir = writedir)
-    Scenario1("uptake83_BRvariant", lemma_statusquo = NULL, k_uptake = "high", k_brgrowth = high_br_growth, remote = remote, writedir = writedir)
-    Scenario1("uptake83_open90percent_BRvariant", lemma_statusquo = NULL, k_uptake = "high", k_max_open = 0.9, k_brgrowth = high_br_growth, remote = remote, writedir = writedir)
-    Scenario1("uptake83_INvariant", lemma_statusquo = NULL, k_uptake = "high", k_ingrowth = high_in_growth, remote = remote, writedir = writedir)
-    Scenario1("uptake83_open90percent_INvariant", lemma_statusquo = NULL, k_uptake = "high", k_max_open = 0.9, k_ingrowth = high_in_growth, remote = remote, writedir = writedir)
+    Scenario1("open90percent_INvariant", lemma_statusquo = NULL, k_max_open = 0.9, k_ingrowth = high_in_growth, remote = remote, writedir = writedir)
 
 
     prev.width <- getOption("width")
@@ -68,10 +61,9 @@ RunOneCounty_scen <- function(county1, county.dt, doses.dt, remote = FALSE, writ
     print(results.dt, digits=0)
     options(width = prev.width)
 
-    cat("base = 75% open by June 22; uptake: 78% for 12-64, 90% for 65+; 40% UK, 30% West Coast variants; 12-15 eligible May 13, 0-11 eligible Jan 1 \n")
+    cat("base = 75% open by June 22; uptake: 80% for 12-64, 90% for 65+; 40% UK, 30% West Coast variants; 12-15 eligible May 13, 0-11 eligible Jan 1 \n")
     cat("other scenarios same as base except:\n")
     cat("open90percent = 90% open\n")
-    cat("uptake83 = uptake 83% for 12-64\n")
     cat("UKvariant = UK variant dominant by August\n")
     cat('INvariant = "India-like" variant dominant by August\n')
     cat('BRvariant = "Brazil-like" (near worst case) variant dominant by August (possible but unlikely)\n')
