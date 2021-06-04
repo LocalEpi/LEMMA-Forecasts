@@ -27,6 +27,12 @@ print(tail(doses.dt[county == "San Francisco", .(date, doses = dose1 + dose2 + d
 
 county.pop <- rowSums(readRDS("Inputs/county population by age.rds"))
 county.set <- names(sort(county.pop[county.set], decreasing = T))
+if ("Lassen" %in% county.set) {
+  cat("exlcuding Lassen\n")
+  print(tail(county.dt[county == "Lassen"], 10))
+  county.set <- setdiff(county.set, "Lassen")
+}
+
 print(county.set)
 
 print(system.time(
