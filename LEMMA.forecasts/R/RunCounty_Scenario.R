@@ -190,18 +190,10 @@ Scenario <- function(
   inputs$internal.args$output.filestr <- filestr
 
   #k_mu_beta_inter is multiplier to get to 100% open
-  if (F) {
-    tier_date <- as.Date("2021/5/15") #after 5/15, delete this and change to one intervention on 6/15
-    mu_beta <- sqrt(pmax(1, k_mu_beta_inter * k_max_open))
-    new.int <- data.table(mu_t_inter = c(tier_date, as.Date("2021/6/15")),
-                          sigma_t_inter = 2, mu_beta_inter = c(mu_beta, mu_beta), sigma_beta_inter = 1e-04,
-                          mu_len_inter = 7, sigma_len_inter = 2)
-  } else {
-    mu_beta <- pmax(1, k_mu_beta_inter * k_max_open)
-    new.int <- data.table(mu_t_inter = as.Date("2021/6/15"),
-                          sigma_t_inter = 2, mu_beta_inter = mu_beta, sigma_beta_inter = 1e-04,
-                          mu_len_inter = 7, sigma_len_inter = 2)
-  }
+  mu_beta <- pmax(1, k_mu_beta_inter * k_max_open)
+  new.int <- data.table(mu_t_inter = as.Date("2021/6/15"),
+                        sigma_t_inter = 2, mu_beta_inter = mu_beta, sigma_beta_inter = 1e-04,
+                        mu_len_inter = 7, sigma_len_inter = 2)
 
 
   inputs$interventions <- rbind(inputs$interventions, new.int)

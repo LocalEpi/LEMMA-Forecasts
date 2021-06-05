@@ -14,7 +14,6 @@
 #' @param county1 a character string giving the name of the county
 #' @param county.dt a \code{\link[data.table]{data.table}} object returned from \code{\link[LEMMA.forecasts]{GetCountyData}}
 #' @param doses.dt a \code{\link[data.table]{data.table}} object returned from \code{\link[LEMMA.forecasts]{GetDosesData}}
-#' @param k_uptake a character string, "low" or "high" giving vaccine uptake
 #' @param k_ukgrowth growth rate of UK variant (B.1.1.7)
 #' @param k_brgrowth growth rate of BR variant (P.1)
 #' @param k_ingrowth growth rate of IN variant (B.1.617.2)
@@ -43,25 +42,13 @@ GetCountyInputs_scen <- function(
   sheets <- GetCountySheets(county1, county.dt, doses.dt,remote = remote)
 
   # vaccine uptake; use low/high or 3 age groups input?
-  if (is.null(vaccine_uptake)) {
-
-    stopifnot(k_uptake %in% c("low", "high"))
-    #uptake in 65+ is set in CAcounties.xlsx
-    if (k_uptake == "low") {
-      sheets$`Vaccine Distribution`[age < 65, vax_uptake := 0.80]
-    } else {
-      sheets$`Vaccine Distribution`[age < 65, vax_uptake := 0.83]
-    }
-
-  } else {
-
+  if (!is.null(vaccine_uptake)) {
     stopifnot(all(is.finite(vaccine_uptake)))
     stopifnot(length(vaccine_uptake)==3L)
 
     sheets$`Vaccine Distribution`[12 <= age & age <= 15, vax_uptake := vaccine_uptake[1]]
     sheets$`Vaccine Distribution`[16 <= age & age <= 64, vax_uptake := vaccine_uptake[2]]
     sheets$`Vaccine Distribution`[age >= 65, vax_uptake := vaccine_uptake[3]]
-
   }
 
   # vaccine dosing: user input?
