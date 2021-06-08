@@ -8,7 +8,6 @@ GetCountyInputs_scen(
   county1,
   county.dt,
   doses.dt,
-  k_uptake,
   k_ukgrowth,
   k_brgrowth,
   k_ingrowth,
@@ -25,16 +24,13 @@ GetCountyInputs_scen(
 
 \item{doses.dt}{a \code{\link[data.table]{data.table}} object returned from \code{\link[LEMMA.forecasts]{GetDosesData}}}
 
-\item{k_uptake}{a character string, "low" or "high" giving vaccine uptake}
-
 \item{k_ukgrowth}{growth rate of UK variant (B.1.1.7)}
 
 \item{k_brgrowth}{growth rate of BR variant (P.1)}
 
 \item{k_ingrowth}{growth rate of IN variant (B.1.617.2)}
 
-\item{vaccine_uptake}{a numeric vector with 3 values, for vaccine uptake in age groups 12-15, 16-64, and 65+; if not \code{NULL}
-this will override the option \code{k_uptake}}
+\item{vaccine_uptake}{a numeric vector with 3 values, for vaccine uptake in age groups 12-15, 16-64, and 65+}
 
 \item{vaccine_dosing}{a named list that requires specific input, see section \code{vaccine_dosing}, or \code{NULL} for no adjustment of doses available}
 

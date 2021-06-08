@@ -77,13 +77,11 @@ RunOneCounty_scen <- function(county1, county.dt, doses.dt, remote = FALSE, writ
 #' @param county1 a character string giving the name of the county
 #' @param county.dt a \code{\link[data.table]{data.table}} object returned from \code{\link[LEMMA.forecasts]{GetCountyData}}
 #' @param doses.dt a \code{\link[data.table]{data.table}} object returned from \code{\link[LEMMA.forecasts]{GetDosesData}}
-#' @param k_uptake a character string, "low" or "high" giving vaccine uptake
 #' @param k_ukgrowth growth rate of UK variant (B.1.1.7)
 #' @param k_brgrowth growth rate of BR variant (P.1)
 #' @param k_ingrowth growth rate of IN variant (B.1.617.2)
 #' @param k_max_open percentage of pre-pandemic activity after reopening (scales contact rate)
-#' @param vaccine_uptake a numeric vector with 3 values, for vaccine uptake in age groups 12-15, 16-64, and 65+; if not \code{NULL}
-#' this will override the option \code{k_uptake}
+#' @param vaccine_uptake a numeric vector with 3 values, for vaccine uptake in age groups 12-15, 16-64, and 65+
 #' @param vaccine_dosing a named list that requires specific input, see section \code{vaccine_dosing}, or \code{NULL} for no adjustment of doses available
 #' @param remote a logical value, if \code{TRUE} download all data from remotes, otherwise use local data
 #' @param writedir a character string giving a directory to write to, it should only be used if \code{remote} is \code{TRUE}.
@@ -99,7 +97,7 @@ RunOneCounty_scen <- function(county1, county.dt, doses.dt, remote = FALSE, writ
 #' @export
 RunOneCounty_scen_input <- function(
   county1, county.dt, doses.dt,
-  k_uptake = "low", k_ukgrowth = 1, k_brgrowth = 1, k_ingrowth = 1, k_max_open = 0.75,
+  k_ukgrowth = 1, k_brgrowth = 1, k_ingrowth = 1, k_max_open = 0.75,
   vaccine_uptake = NULL,
   vaccine_dosing = NULL,
   remote = FALSE,
@@ -118,7 +116,7 @@ RunOneCounty_scen_input <- function(
 
   Scenario(
     filestr1 = "custom", lemma_statusquo = NULL, county1 = county1, county.dt = county.dt, doses.dt = doses.dt,
-    k_mu_beta_inter = k_mu_beta_inter,k_uptake = k_uptake, k_ukgrowth = k_ukgrowth, k_brgrowth = k_brgrowth, k_ingrowth = k_ingrowth, k_max_open = k_max_open,
+    k_mu_beta_inter = k_mu_beta_inter, k_ukgrowth = k_ukgrowth, k_brgrowth = k_brgrowth, k_ingrowth = k_ingrowth, k_max_open = k_max_open,
     vaccine_uptake = vaccine_uptake, vaccine_dosing = vaccine_dosing,
     remote = remote, writedir = writedir
   )
@@ -135,13 +133,11 @@ RunOneCounty_scen_input <- function(
 #' @param doses.dt a \code{\link[data.table]{data.table}} object returned from \code{\link[LEMMA.forecasts]{GetDosesData}}
 #' @param k_mu_beta_inter multiplier to contact rate required to get to 100\% reopening
 #' @param lemma_statusquo either \code{NULL} or the result of a call to \code{Scenario} with \code{filestr1 = "statusquo"}
-#' @param k_uptake a character string, "low" or "high" giving vaccine uptake
 #' @param k_ukgrowth growth rate of UK variant (B.1.1.7)
 #' @param k_brgrowth growth rate of BR variant (P.1)
 #' @param k_ingrowth growth rate of IN variant (B.1.617.2)
 #' @param k_max_open percentage of pre-pandemic activity after reopening (scales contact rate)
-#' @param vaccine_uptake a numeric vector with 3 values, for vaccine uptake in age groups 12-15, 16-64, and 65+; if not \code{NULL}
-#' this will override the option \code{k_uptake}
+#' @param vaccine_uptake a numeric vector with 3 values, for vaccine uptake in age groups 12-15, 16-64, and 65+
 #' @param vaccine_dosing a named list that requires specific input, see section \code{vaccine_dosing}, or \code{NULL} for no adjustment of doses available
 #' @param remote a logical value, if \code{TRUE} download all data from remotes, otherwise use local data
 #' @param writedir a character string giving a directory to write to, it should only be used if \code{remote} is \code{TRUE}.
@@ -157,7 +153,7 @@ RunOneCounty_scen_input <- function(
 #' @return a named list of values
 Scenario <- function(
   filestr1, county1, county.dt, doses.dt,
-  k_mu_beta_inter = NULL, lemma_statusquo = NULL, k_uptake = "low",
+  k_mu_beta_inter = NULL, lemma_statusquo = NULL,
   k_ukgrowth = 1, k_brgrowth = 1, k_ingrowth = 1, k_max_open = 0.75,
   vaccine_uptake = NULL,
   vaccine_dosing = NULL,
@@ -165,7 +161,7 @@ Scenario <- function(
 ) {
 
   inputs <- GetCountyInputs_scen(
-    county1 = county1, county.dt = county.dt, doses.dt = doses.dt, k_uptake = k_uptake,
+    county1 = county1, county.dt = county.dt, doses.dt = doses.dt,
     k_ukgrowth = k_ukgrowth, k_brgrowth = k_brgrowth, k_ingrowth = k_ingrowth,
     vaccine_uptake = vaccine_uptake,
     vaccine_dosing = vaccine_dosing,
