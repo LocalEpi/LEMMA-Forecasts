@@ -44,16 +44,6 @@ GetCountySheets <- function(county1, county.dt, doses.dt, remote = FALSE) {
   }
   sheets$Data <- county.dt1
   if (county1 == "San Francisco") {
-    # #use local data for intervention dates and hospital/ICU census
-    # sf.input.file <- "Inputs/SF.xlsx"
-    # sf.sheets <- list(LEMMA:::ReadExcel(sf.input.file, sheet = "Interventions", skip = 2),
-    #                   LEMMA:::ReadExcel(sf.input.file, sheet = "Data", skip = 3))
-    # names(sf.sheets) <- sapply(sf.sheets, function (z) attr(z, "sheetname"))
-    # sf.sheets <- rapply(sf.sheets, as.Date, classes = "POSIXt", how = "replace") #convert dates
-    # sheets$Interventions <- sf.sheets$Interventions
-    # sheets$Data$hosp.conf <- sheets$Data$hosp.pui <- sheets$Data$icu.conf <- sheets$Data$icu.pui <- NULL
-    # sheets$Data <- merge(sheets$Data, sf.sheets$Data[, .(date, hosp.conf, hosp.pui, icu.conf, icu.pui)], by = "date", all = T)
-
     #add UeS cases
     ues <- c(34, 39, 43, 45, 0, 50, 0, 57, 53, 44, 36, 0, 37, 0, 35, 43, 31, 23, 0, 38, 0, 0, 0, 0, 20, 0, 0, 0, 14, 16, 11, 19, 0, 0, 0, 12, 9, 10, 7, 0, 0, 0, 7, 12, 4, 7, 0, 0, 0, 5, 9, 2, 7, 0, 0, 0, 5, 1, 1, 2, 0, 0, 0, 7, 7, 3, 3, 0, 0, 0, 3, 1, 1, 2, 0, 0, 0, 0, 1, 2, 2, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 2, 1, 1, 3, 0, 0, 0, 1, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 2, 0, 2, 1, 0, 0, 0, 2, 0, 1, 1, 0, 0, 0, 0, 0, 1)
 
@@ -64,8 +54,6 @@ GetCountySheets <- function(county1, county.dt, doses.dt, remote = FALSE) {
     sheets$Data[!is.na(ues), cases.conf := ues + cases.conf]
     sheets$Data$ues <- NULL
   }
-
-  # sheets$`Model Inputs`[internal.name == "total.population", value := county.pop1]
 
   is.state <- nchar(county1) == 2
   if (is.state) {
@@ -88,17 +76,6 @@ GetCountySheets <- function(county1, county.dt, doses.dt, remote = FALSE) {
   population$age <- c(0, 5, 12, 16, 16, 16, 16, 16, 16, 30, 30, 40, 40, 50, 50, 50, 50, 65, 65, 65, 75, 75, 85)
   sheets$`Vaccine Distribution`$pop <- population[, .(pop = sum(pop)), by = "age"]$pop
 
-
-  #doses_actual <- doses.dt[county == county1, .(date, dose_num, age_bin, count)]
-  #frac_65plus <- doses_actual[dose_num == 1, sum(count * (age_bin == "65+")) / sum(count)]
-
-  #scale SF vax props to county level above and below 65
-  #sheets$`Vaccine Distribution`[age >= 65, dose_proportion := dose_proportion * frac_65plus / sum(dose_proportion)]
-  #sheets$`Vaccine Distribution`[age < 65, dose_proportion := dose_proportion * (1 - frac_65plus) / sum(dose_proportion)]
-
-  #doses_actual[, date := as.Date(date)]
-  #doses_actual <- doses_actual[, .(dose1 = sum(count * (dose_num == "1")), dose2 = sum(count * (dose_num == "2")), doseJ = sum(count * (dose_num == "J"))), by = "date"]
-
   #no updated vaccinations by age and county, assume same distribution as SF but adjust for county age distribution
   sf_pop_weights <- c(0.045, 0.036, 0.034, 0.21, 0.202, 0.141, 0.181, 0.082, 0.045, 0.024)
   sf_vax_weights <- sheets$`Vaccine Distribution`$dose_proportion
@@ -108,15 +85,23 @@ GetCountySheets <- function(county1, county.dt, doses.dt, remote = FALSE) {
   doses_actual <- doses.dt[county == county1]
   sheets$`Vaccine Doses - Observed` <- doses_actual
 
-  scale <- sum(sheets$`Vaccine Distribution`$pop) / 883305  #scale to SF
+  over12.pop.county <- sum(sheets$`Vaccine Distribution`$pop[-1:-2])
+  over12.pop.sf <- 759567
+
+  doses.scale <- over12.pop.county / over12.pop.sf  #scale doses to SF population
   #rescale doses_per_day_base, doses_per_day_increase, doses_per_day_maximum - this is clunky because value is a list
   for (i in c("doses_per_day_base", "doses_per_day_increase", "doses_per_day_maximum")) {
     index <- sheets$`Vaccine Doses - Future`[, which(internal.name == i)]
-    rescaled.mrna <- unlist(sheets$`Vaccine Doses - Future`[index, mrna]) * scale
-    rescaled.jj <- unlist(sheets$`Vaccine Doses - Future`[index, jj]) * scale
+    rescaled.mrna <- unlist(sheets$`Vaccine Doses - Future`[index, mrna]) * doses.scale
+    rescaled.jj <- unlist(sheets$`Vaccine Doses - Future`[index, jj]) * doses.scale
     sheets$`Vaccine Doses - Future`[index, mrna := rescaled.mrna]
     sheets$`Vaccine Doses - Future`[index, jj := rescaled.jj]
   }
+
+  uptake.sf <- doses.dt[county == "San Francisco", sum(dose1) + sum(doseJ)] / over12.pop.sf
+  uptake.county <- doses.dt[county == county1, sum(dose1) + sum(doseJ)] / over12.pop.county
+  uptake.scale <- uptake.county / uptake.sf
+  sheets$`Vaccine Distribution`[, vax_uptake := pmin(1, vax_uptake * uptake.scale)]
 
   if (is.state) {
     #no hosp data before 7/15 so use all death data
