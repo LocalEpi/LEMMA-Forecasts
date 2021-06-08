@@ -133,7 +133,6 @@
   <span class='va'>county1</span>,
   <span class='va'>county.dt</span>,
   <span class='va'>doses.dt</span>,
-  k_uptake <span class='op'>=</span> <span class='st'>"low"</span>,
   k_ukgrowth <span class='op'>=</span> <span class='fl'>1</span>,
   k_brgrowth <span class='op'>=</span> <span class='fl'>1</span>,
   k_ingrowth <span class='op'>=</span> <span class='fl'>1</span>,
@@ -160,10 +159,6 @@
       <td><p>a <code><a href='https://Rdatatable.gitlab.io/data.table/reference/data.table.html'>data.table</a></code> object returned from <code><a href='GetDosesData.html'>GetDosesData</a></code></p></td>
     </tr>
     <tr>
-      <th>k_uptake</th>
-      <td><p>a character string, "low" or "high" giving vaccine uptake</p></td>
-    </tr>
-    <tr>
       <th>k_ukgrowth</th>
       <td><p>growth rate of UK variant (B.1.1.7)</p></td>
     </tr>
@@ -181,8 +176,7 @@
     </tr>
     <tr>
       <th>vaccine_uptake</th>
-      <td><p>a numeric vector with 3 values, for vaccine uptake in age groups 12-15, 16-64, and 65+; if not <code>NULL</code>
-this will override the option <code>k_uptake</code></p></td>
+      <td><p>a numeric vector with 3 values, for vaccine uptake in age groups 12-15, 16-64, and 65+</p></td>
     </tr>
     <tr>
       <th>vaccine_dosing</th>
