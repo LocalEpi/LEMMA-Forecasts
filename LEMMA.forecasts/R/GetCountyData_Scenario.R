@@ -17,8 +17,7 @@
 #' @param k_ukgrowth growth rate of UK variant (B.1.1.7)
 #' @param k_brgrowth growth rate of BR variant (P.1)
 #' @param k_ingrowth growth rate of IN variant (B.1.617.2)
-#' @param vaccine_uptake a numeric vector with 3 values, for vaccine uptake in age groups 12-15, 16-64, and 65+; if not \code{NULL}
-#' this will override the option \code{k_uptake}
+#' @param vaccine_uptake a numeric vector with 3 values, for vaccine uptake in age groups 12-15, 16-64, and 65+
 #' @param vaccine_dosing a named list that requires specific input, see section \code{vaccine_dosing}, or \code{NULL} for no adjustment of doses available
 #' @param remote a logical value, if \code{TRUE} download all data from remotes, otherwise use local data
 #' @param writedir a character string giving a directory to write to, it should only be used if \code{remote} is \code{TRUE}.
@@ -33,7 +32,7 @@
 #' }
 #' @return a named list of values
 GetCountyInputs_scen <- function(
-  county1, county.dt, doses.dt, k_uptake, k_ukgrowth, k_brgrowth, k_ingrowth,
+  county1, county.dt, doses.dt, k_ukgrowth, k_brgrowth, k_ingrowth,
   vaccine_uptake = NULL,
   vaccine_dosing = NULL,
   remote = FALSE, writedir = NULL
