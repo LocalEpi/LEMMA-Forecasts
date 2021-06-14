@@ -24,8 +24,8 @@ This package provides functions to run forecasts
 (`LEMMA.forecasts::RunOneCounty`) or scenarios
 (`LEMMA.forecasts::RunOneCounty_scen`) using the [LEMMA
 model](https://localepi.github.io/LEMMA/). These functions are used in
-the LEMMA [Shiny app](https://slwu89.shinyapps.io/LEMMA-Shiny/). Please
-see the vignette for an example of how to use the package.
+the LEMMA [Shiny app](https://localepi.shinyapps.io/LEMMA-Shiny/).
+Please see the vignette for an example of how to use the package.
 
 Within the `R/` directory the code is organized as:
 
