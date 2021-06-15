@@ -87,19 +87,19 @@ GetCountyInputs_scen <- function(
   india <- x[index, B.1.617.2] / 100
   wild <- 1 - (uk + ca + br + sa + india)
   max.date <- sheets$Data[, max(date)]
-  sheets$Variants[, variant_day0 := max.date]
-  sheets$Variants[, frac_on_day0 := c(wild, uk, ca, br, sa, india)]
-  sheets$Variants[, daily_growth_prior := c(1, 1.05, 1.034, 1.03, 1.03, 1.03)]
-  sheets$Variants[, daily_growth_future := 1]
+  sheets$Variants[, variant_day0 := c(as.Date("2021/2/15"), max.date, as.Date("2021/2/15"), max.date, max.date, max.date)]
+  sheets$Variants[, frac_on_day0 := c(0.40, uk, 0.60, br, sa, india)]
+  sheets$Variants[, daily_growth_prior := c(1, 1.05, 1.034, 1.08, 1.04, 1.1)]
+  sheets$Variants[, daily_growth_future := c(0.97, 1, 0.97, 1, 1, 1)]
 
   #these have to be positive or growth won't matter
-  if (k_ukgrowth > 0) stopifnot(sheets$Variants[name == "UK", frac_on_day0 > 0])
-  if (k_brgrowth > 0) stopifnot(sheets$Variants[name == "BR", frac_on_day0 > 0])
-  if (k_ingrowth > 0) stopifnot(sheets$Variants[name == "IN", frac_on_day0 > 0])
+  if (k_ukgrowth > 0) stopifnot(sheets$Variants[name == "alpha", frac_on_day0 > 0])
+  if (k_brgrowth > 0) stopifnot(sheets$Variants[name == "gamma", frac_on_day0 > 0])
+  if (k_ingrowth > 0) stopifnot(sheets$Variants[name == "delta", frac_on_day0 > 0])
 
-  sheets$Variants[name == "UK", daily_growth_future := k_ukgrowth]
-  sheets$Variants[name == "BR", daily_growth_future := k_brgrowth]
-  sheets$Variants[name == "IN", daily_growth_future := k_ingrowth]
+  sheets$Variants[name == "alpha", daily_growth_future := k_ukgrowth]
+  sheets$Variants[name == "gamma", daily_growth_future := k_brgrowth]
+  sheets$Variants[name == "delta", daily_growth_future := k_ingrowth]
 
   inputs <- LEMMA:::ProcessSheets(sheets)
   inputs <- ModifyCountyInputs(county1, inputs)

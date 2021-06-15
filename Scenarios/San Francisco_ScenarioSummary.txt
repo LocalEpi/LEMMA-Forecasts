@@ -1,14 +1,14 @@
-                      name hosp.peak hosp.peak.date additional.admits.byNov1 additional.deaths.byNov1 additional.cases.byNov1
-1:                    base        42     2022-05-01                       66                        6                    4997
-2:           open90percent       215     2021-12-09                      627                       47                   55721
-3:               UKvariant        39     2022-05-01                       70                        7                    5115
-4:               BRvariant      1312     2021-10-12                     6113                      512                  413540
-5:               INvariant       678     2021-10-31                     2523                      186                  217845
-6: open90percent_UKvariant       212     2021-12-06                      664                       52                   55986
-7: open90percent_INvariant       926     2021-10-01                     4169                      369                  327798
-base = 75% open by June 22; uptake: 80% for 12-64, 91% for 65+; 60% UK, 30% West Coast variants; 12-15 eligible May 13, 0-11 eligible Jan 1 
+                         name hosp.peak hosp.peak.date additional.admits.byNov1 additional.deaths.byNov1 additional.cases.byNov1
+1:                       base        74     2022-02-14                      119                       15                    8179
+2:              open90percent       218     2021-11-06                     1152                      134                   84179
+3:               alphavariant         8     2021-06-15                       46                        6                    2982
+4:               gammavariant      1063     2021-10-04                     5141                      785                  262116
+5:               deltavariant       468     2021-10-24                     2101                      235                  157056
+6: open90percent_alphavariant       107     2022-01-03                      343                       38                   27208
+7: open90percent_deltavariant       674     2021-09-22                     3056                      398                  206799
+base = 75% open by June 22; uptake: 82% for 12-64, 91% for 65+; 60% alpha (UK), 2% delta (India), 10% gamma (Brazil), 13% epsilon (West Coast) variants; 12-15 eligible May 13, 0-11 eligible Jan 1 
 other scenarios same as base except:
 open90percent = 90% open
-UKvariant = UK variant dominant by August
-INvariant = "India-like" variant dominant by August
-BRvariant = "Brazil-like" (near worst case) variant dominant by August (possible but unlikely)
+alphavariant = alpha (UK) variant dominant by August
+deltavariant = delta (India) variant dominant by August
+gammavariant = "Brazil-like" (near worst case/vaccine escape) variant dominant by August (possible but unlikely)
