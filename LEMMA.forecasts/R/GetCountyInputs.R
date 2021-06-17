@@ -153,7 +153,7 @@ ModifyCountyInputs <- function(county1, inputs) {
   if (county1 == "Siskiyou") {
     inputs$internal.args$init_frac_mort_nonhosp <- 0.00001
   }
-  if (county1 %in% c("Humboldt", "El Dorado", "Del Norte", "Yuba", "Napa", "Lassen")) {
+  if (county1 %in% c("Humboldt", "El Dorado", "Del Norte", "Yuba", "Napa", "Lassen", "Nevada")) {
     inputs$internal.args$init_frac_mort_nonhosp <- 0.001
   }
   if (county1 == "Imperial") {

@@ -29,73 +29,73 @@ RunOneCounty_scen <- function(county1, county.dt, doses.dt, remote = FALSE, writ
 
   results.dt <- NULL
   lemma <- Scenario1("base") #generates forecast
-  # if (!remote) {
-  #   for (ext in c("pdf", "xlsx")) {
-  #     file.copy(paste0("Scenarios/", county1, "_base.", ext), paste0("Forecasts/", county1, ".", ext), overwrite = T)
-  #   }
-  # }
-  #
-  # if (county1 == "San Francisco") {
-  #   k_uptake_increase_set <- c(F, T)
-  #   k_beta_mult_set <- c(1.05, 1.1, 1.2)
-  # } else {
-  #   k_uptake_increase_set <- F
-  #   k_beta_mult_set <- 1.1
-  # }
-  # for (delta_epi_optimistic in c(T, F)) {
-  #   for (k_beta_mult in k_beta_mult_set) {
-  #     for (k_uptake_increase in k_uptake_increase_set) {
-  #       if (delta_epi_optimistic) {
-  #         k_in_hosp <- 1.3
-  #         k_in_trans <- 2.1
-  #         k_duration_years <- 999
-  #         delta_epi_optimistic_str <- "epiOptimistic"
-  #       } else {
-  #         k_in_hosp <- 2.6
-  #         k_in_trans <- 2.4
-  #         k_duration_years <- NULL
-  #         delta_epi_optimistic_str <- "epiPessimistic"
-  #       }
-  #       if (k_uptake_increase) {
-  #         k_vaccine_uptake <- c(0.85, 0.85, -1) #keep 65+ as is
-  #         k_uptake_increase_str <- "uptake85"
-  #       } else {
-  #         k_vaccine_uptake <- NULL
-  #         k_uptake_increase_str <- "uptakeCurrent"
-  #       }
-  #       name <- paste0(delta_epi_optimistic_str, "_reopenInc", 100 * (k_beta_mult - 1), "_", k_uptake_increase_str)
-  #       Scenario1(name, k_in_hosp = k_in_hosp, k_in_trans = k_in_trans, k_duration_years = k_duration_years, vaccine_uptake = k_vaccine_uptake, k_beta_mult = k_beta_mult)
-  #     }
-  #   }
-  # }
-  #
-  # if (county1 == "San Francisco") {
-  #   prev.width <- getOption("width")
-  #   options(scipen = 3, width = 9999)
-  #
-  #   if (remote) {
-  #     scen_path <- paste0(writedir, "/Scenarios")
-  #     if (dir.exists(scen_path)) {
-  #       sink(file = paste0(scen_path, "/San Francisco_ScenarioSummary.txt"))
-  #     }
-  #   } else {
-  #     sink("Scenarios/San Francisco_ScenarioSummary.txt")
-  #   }
-  #
-  #   print(results.dt, digits=0)
-  #   options(width = prev.width)
-  #
-  #   cat("base: Delta is 50% more transmissible than Alpha, no increase in severity over Alpha, waning immunity, 10% increase in effective contact rate on June 15, current vaccine uptake\n")
-  #   cat("epiOptimistic: Delta is 40% more transmissible than Alpha, no increase in severity over Alpha, no waning immunity\n")
-  #   cat("epiPessimistic: Delta is 60% more transmissible than Alpha, hospitalization rate twice Alpha, waning immunity\n")
-  #   cat("reopenInc5: 5% increase in effective contact rate on June 15\n")
-  #   cat("reopenInc10: 10% increase in effective contact rate on June 15\n")
-  #   cat("reopenInc20: 20% increase in effective contact rate on June 15\n")
-  #   cat("uptake85: 85% vaccine uptake in 12-64\n")
-  #   cat("uptakeCurrent: 82% vaccine uptake in 12-64\n")
-  #   cat("All scenarios: vaccine uptake 92% in 65+; age 0-11 eligible Jan 1; Delta 30% today, 75% by July 1\n")
-  #   sink()
-  # }
+  if (!remote) {
+    for (ext in c("pdf", "xlsx")) {
+      file.copy(paste0("Scenarios/", county1, "_base.", ext), paste0("Forecasts/", county1, ".", ext), overwrite = T)
+    }
+  }
+
+  if (county1 == "San Francisco") {
+    k_uptake_increase_set <- c(F, T)
+    k_beta_mult_set <- c(1.05, 1.1, 1.2)
+  } else {
+    k_uptake_increase_set <- F
+    k_beta_mult_set <- 1.1
+  }
+  for (delta_epi_optimistic in c(T, F)) {
+    for (k_beta_mult in k_beta_mult_set) {
+      for (k_uptake_increase in k_uptake_increase_set) {
+        if (delta_epi_optimistic) {
+          k_in_hosp <- 1.3
+          k_in_trans <- 2.1
+          k_duration_years <- 999
+          delta_epi_optimistic_str <- "epiOptimistic"
+        } else {
+          k_in_hosp <- 2.6
+          k_in_trans <- 2.4
+          k_duration_years <- NULL
+          delta_epi_optimistic_str <- "epiPessimistic"
+        }
+        if (k_uptake_increase) {
+          k_vaccine_uptake <- c(0.85, 0.85, -1) #keep 65+ as is
+          k_uptake_increase_str <- "uptake85"
+        } else {
+          k_vaccine_uptake <- NULL
+          k_uptake_increase_str <- "uptakeCurrent"
+        }
+        name <- paste0(delta_epi_optimistic_str, "_reopenInc", 100 * (k_beta_mult - 1), "_", k_uptake_increase_str)
+        Scenario1(name, k_in_hosp = k_in_hosp, k_in_trans = k_in_trans, k_duration_years = k_duration_years, vaccine_uptake = k_vaccine_uptake, k_beta_mult = k_beta_mult)
+      }
+    }
+  }
+
+  if (county1 == "San Francisco") {
+    prev.width <- getOption("width")
+    options(scipen = 3, width = 9999)
+
+    if (remote) {
+      scen_path <- paste0(writedir, "/Scenarios")
+      if (dir.exists(scen_path)) {
+        sink(file = paste0(scen_path, "/San Francisco_ScenarioSummary.txt"))
+      }
+    } else {
+      sink("Scenarios/San Francisco_ScenarioSummary.txt")
+    }
+
+    print(results.dt, digits=0)
+    options(width = prev.width)
+
+    cat("base: Delta is 50% more transmissible than Alpha, no increase in severity over Alpha, waning immunity, 10% increase in effective contact rate on June 15, current vaccine uptake\n")
+    cat("epiOptimistic: Delta is 40% more transmissible than Alpha, no increase in severity over Alpha, no waning immunity\n")
+    cat("epiPessimistic: Delta is 60% more transmissible than Alpha, hospitalization rate twice Alpha, waning immunity\n")
+    cat("reopenInc5: 5% increase in effective contact rate on June 15\n")
+    cat("reopenInc10: 10% increase in effective contact rate on June 15\n")
+    cat("reopenInc20: 20% increase in effective contact rate on June 15\n")
+    cat("uptake85: 85% vaccine uptake in 12-64\n")
+    cat("uptakeCurrent: 82% vaccine uptake in 12-64\n")
+    cat("All scenarios: vaccine uptake 92% in 65+; age 0-11 eligible Jan 1; Delta 30% today and dominant by July\n")
+    sink()
+  }
   return(lemma)
 }
 
@@ -210,7 +210,11 @@ Scenario <- function(
     dir.create(path = scen_path,showWarnings = FALSE)
     filestr <- paste0(scen_path, "/", county1, "_", filestr1)
   } else {
-    filestr <- paste0("Scenarios/", county1, "_", filestr1)
+    if (filestr1 == "base") {
+      filestr <- paste0("Forecasts/", county1)
+    } else {
+      filestr <- paste0("Scenarios/", county1, "_", filestr1)
+    }
   }
 
   inputs$internal.args$output.filestr <- filestr
@@ -231,8 +235,10 @@ Scenario <- function(
   pdf(paste0(filestr, ".pdf"), width = 11, height = 8.5)
   relative.contact.rate <- lemma$fit.extended$par$beta / lemma$fit.extended$par$beta[1]
   dt <- data.table(date = lemma$projection$date, relative.contact.rate)
+  relative.contact.rate.cur <- round(100 * dt[date == inputs$obs.data[, max(date) - 7], relative.contact.rate])
+  relative.contact.rate.final <- round(100 * dt[date == max(date), relative.contact.rate])
   dt[, type := ifelse(date >= inputs$obs.data[, max(date) - 7], "Scenario", "Estimate")]
-  print(ggplot(dt, aes(x = date, y = relative.contact.rate)) + geom_line(aes(color = type), size = 2) + scale_x_date(date_breaks = "1 month", date_labels = "%b") + ggtitle("Effective contact rate relative to initial effective contact rate\nnot including vaccine or variant effects") + xlab("") + ylab("Effective Contact Rate") + theme(legend.title = element_blank()))
+  print(ggplot(dt, aes(x = date, y = relative.contact.rate)) + geom_line(aes(color = type), size = 2) + scale_x_date(date_breaks = "1 month", date_labels = "%b") + ggtitle("Effective contact rate relative to initial effective contact rate\nnot including vaccine or variant effects") + xlab("") + ylab("Effective Contact Rate") + theme(legend.title = element_blank()) + labs(caption = paste("Current =", relative.contact.rate.cur, "%")))
 
   doses <- lemma$inputs$vaccines_nonstan$doses
   doses[, doses_given := dose1 + dose2 + doseJ]
@@ -247,6 +253,6 @@ Scenario <- function(
   print(lemma$gplot$long.term)
   dev.off()
 
-  results <- GetResults_scen(lemma$projection, filestr1)
+  results <- GetResults_scen(lemma$projection, filestr1, relative.contact.rate.cur, relative.contact.rate.final)
   return(list(results = results, lemma = lemma))
 }
