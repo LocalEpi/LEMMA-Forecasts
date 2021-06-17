@@ -107,8 +107,8 @@ GetResults_scen <- function(projection, name, relative.contact.rate.cur, relativ
   projection1 <- projection[date >= Sys.Date()]
   hosp.peak <- projection1[, max(hosp)]
   hosp.peak.date <- projection1[, date[which.max(hosp)]]
-  additional.admits.byNov1 <- projection1[date <= as.Date("2021/11/1"), sum(admits)]
-  additional.deaths.byNov1 <- projection1[date <= as.Date("2021/11/1"), max(deaths) - min(deaths)]
-  additional.cases.byNov1 <- projection1[date <= as.Date("2021/11/1"), max(totalCases) - min(totalCases)]
-  return(data.table(name, hosp.peak, hosp.peak.date, additional.admits.byNov1, additional.deaths.byNov1, additional.cases.byNov1, relative.contact.rate.cur, relative.contact.rate.final))
+  admits.byNov1 <- projection1[date <= as.Date("2021/11/1"), sum(admits)]
+  deaths.byNov1 <- projection1[date <= as.Date("2021/11/1"), max(deaths) - min(deaths)]
+  cases.byNov1 <- projection1[date <= as.Date("2021/11/1"), max(totalCases) - min(totalCases)]
+  return(data.table(name, hosp.peak, hosp.peak.date, admits.byNov1, deaths.byNov1, cases.byNov1, rel.cont.rate.cur = relative.contact.rate.cur, rel.cont.rate.new = relative.contact.rate.final))
 }
