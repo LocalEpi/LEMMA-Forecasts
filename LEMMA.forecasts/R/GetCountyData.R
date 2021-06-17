@@ -66,9 +66,10 @@ GetCountyData <- function(include.regions = FALSE, remove.holidays = TRUE, state
 
   county.dt <- merge(county.dt, seroprev.dt, by = c("date", "county"), all = T)
 
+  always.include <- c("Marin") #run these even if hosp < 1
   county.dt <- county.dt[date >= as.Date("2020/3/1")]
   county.dt[, mean10 := mean(hosp.conf[date >= (Sys.Date() - 10)], na.rm=T), by = "county"]
-  county.dt <- county.dt[mean10 > 1] #exclude if average hosp over last 10 days < 1
+  county.dt <- county.dt[(mean10 > 1) | (county %in% always.include)] #exclude if average hosp over last 10 days < 1
   county.dt$mean10 <- NULL
 
   county.dt <- county.dt[!(county %in% c("Out Of Country", "Unassigned", "Unknown"))]
