@@ -1,14 +1,23 @@
-                         name hosp.peak hosp.peak.date additional.admits.byNov1 additional.deaths.byNov1 additional.cases.byNov1
-1:                       base        74     2022-02-14                      119                       15                    8179
-2:              open90percent       218     2021-11-06                     1152                      134                   84179
-3:               alphavariant         8     2021-06-15                       46                        6                    2982
-4:               gammavariant      1063     2021-10-04                     5141                      785                  262116
-5:               deltavariant       468     2021-10-24                     2101                      235                  157056
-6: open90percent_alphavariant       107     2022-01-03                      343                       38                   27208
-7: open90percent_deltavariant       674     2021-09-22                     3056                      398                  206799
-base = 75% open by June 22; uptake: 82% for 12-64, 91% for 65+; 60% alpha (UK), 2% delta (India), 10% gamma (Brazil), 13% epsilon (West Coast) variants; 12-15 eligible May 13, 0-11 eligible Jan 1 
-other scenarios same as base except:
-open90percent = 90% open
-alphavariant = alpha (UK) variant dominant by August
-deltavariant = delta (India) variant dominant by August
-gammavariant = "Brazil-like" (near worst case/vaccine escape) variant dominant by August (possible but unlikely)
+                                        name hosp.peak hosp.peak.date additional.admits.byNov1 additional.deaths.byNov1 additional.cases.byNov1
+ 1:                                     base       159     2022-01-03                      312                       36                   24966
+ 2:   epiOptimistic_reopenInc5_uptakeCurrent        14     2022-02-16                      110                       13                    7218
+ 3:        epiOptimistic_reopenInc5_uptake85        11     2021-09-21                      131                       16                    8176
+ 4:  epiOptimistic_reopenInc10_uptakeCurrent        37     2021-12-28                      200                       23                   13878
+ 5:       epiOptimistic_reopenInc10_uptake85        23     2021-11-09                      217                       26                   14022
+ 6:  epiOptimistic_reopenInc20_uptakeCurrent       111     2021-11-09                      644                       70                   45699
+ 7:       epiOptimistic_reopenInc20_uptake85        57     2021-11-10                      405                       46                   28934
+ 8:  epiPessimistic_reopenInc5_uptakeCurrent       478     2021-11-06                     2338                      134                   91739
+ 9:       epiPessimistic_reopenInc5_uptake85       319     2021-11-20                     1487                       88                   59623
+10: epiPessimistic_reopenInc10_uptakeCurrent       547     2021-10-25                     3096                      180                  118472
+11:      epiPessimistic_reopenInc10_uptake85       383     2021-10-31                     2237                      132                   88454
+12: epiPessimistic_reopenInc20_uptakeCurrent       757     2021-10-01                     4587                      292                  162869
+13:      epiPessimistic_reopenInc20_uptake85       585     2021-10-02                     3806                      242                  139038
+base: Delta is 50% more transmissible than Alpha, no increase in severity over Alpha, waning immunity, 10% increase in effective contact rate on June 15, current vaccine uptake
+epiOptimistic: Delta is 40% more transmissible than Alpha, no increase in severity over Alpha, no waning immunity
+epiPessimistic: Delta is 60% more transmissible than Alpha, hospitalization rate twice Alpha, waning immunity
+reopenInc5: 5% increase in effective contact rate on June 15
+reopenInc10: 10% increase in effective contact rate on June 15
+reopenInc20: 20% increase in effective contact rate on June 15
+uptake85: 85% vaccine uptake in 12-64
+uptakeCurrent: 82% vaccine uptake in 12-64
+All scenarios: vaccine uptake 92% in 65+; age 0-11 eligible Jan 1; Delta 30% today, 75% by July 1
