@@ -17,7 +17,7 @@
 #' @param k_ukgrowth growth rate of UK variant (B.1.1.7)
 #' @param k_brgrowth growth rate of BR variant (P.1)
 #' @param k_ingrowth growth rate of IN variant (B.1.617.2)
-#' @param vaccine_uptake a numeric vector with 3 values, for vaccine uptake in age groups 12-15, 16-64, and 65+
+#' @param vaccine_uptake a numeric vector with 3 values, for vaccine uptake in age groups 12-15, 16-64, and 65+ (if a value is -1, keep as is)
 #' @param vaccine_dosing a named list that requires specific input, see section \code{vaccine_dosing}, or \code{NULL} for no adjustment of doses available
 #' @param remote a logical value, if \code{TRUE} download all data from remotes, otherwise use local data
 #' @param writedir a character string giving a directory to write to, it should only be used if \code{remote} is \code{TRUE}.
@@ -33,6 +33,7 @@
 #' @return a named list of values
 GetCountyInputs_scen <- function(
   county1, county.dt, doses.dt, k_ukgrowth, k_brgrowth, k_ingrowth,
+  k_in_trans, k_in_hosp, k_duration_years,
   vaccine_uptake = NULL,
   vaccine_dosing = NULL,
   remote = FALSE, writedir = NULL
@@ -45,9 +46,9 @@ GetCountyInputs_scen <- function(
     stopifnot(all(is.finite(vaccine_uptake)))
     stopifnot(length(vaccine_uptake)==3L)
 
-    sheets$`Vaccine Distribution`[12 <= age & age <= 15, vax_uptake := vaccine_uptake[1]]
-    sheets$`Vaccine Distribution`[16 <= age & age <= 64, vax_uptake := vaccine_uptake[2]]
-    sheets$`Vaccine Distribution`[age >= 65, vax_uptake := vaccine_uptake[3]]
+    if (vaccine_uptake[1] != -1) sheets$`Vaccine Distribution`[12 <= age & age <= 15, vax_uptake := vaccine_uptake[1]]
+    if (vaccine_uptake[2] != -1) sheets$`Vaccine Distribution`[16 <= age & age <= 64, vax_uptake := vaccine_uptake[2]]
+    if (vaccine_uptake[3] != -1) sheets$`Vaccine Distribution`[age >= 65, vax_uptake := vaccine_uptake[3]]
   }
 
   # vaccine dosing: user input?
@@ -65,41 +66,23 @@ GetCountyInputs_scen <- function(
 
   }
 
-  # download from remote?
-  if (remote) {
-    tmp <- tempfile(fileext = ".xlsx")
-    download.file(url = "https://github.com/LocalEpi/LEMMA-Forecasts/raw/master/Inputs/variants.xlsx",destfile = tmp)
-    x <- as.data.table(readxl::read_excel(path = tmp))
-    unlink(x = tmp)
-  } else {
-    x <- as.data.table(readxl::read_excel("Inputs/variants.xlsx"))
-  }
-
-  if (county1 %in% x$county) {
-    index <- x[, which(county == county1)]
-  } else {
-    index <- x[, which(county == "California")]
-  }
-  uk <- x[index, B.1.1.7] / 100
-  ca <- x[index, B.1.427 + B.1.429] / 100
-  br <- x[index, P.1] / 100
-  sa <- x[index, B.1.351] / 100
-  india <- x[index, B.1.617.2] / 100
-  wild <- 1 - (uk + ca + br + sa + india)
-  max.date <- sheets$Data[, max(date)]
-  sheets$Variants[, variant_day0 := c(as.Date("2021/2/15"), max.date, as.Date("2021/2/15"), max.date, max.date, max.date)]
-  sheets$Variants[, frac_on_day0 := c(0.40, uk, 0.60, br, sa, india)]
-  sheets$Variants[, daily_growth_prior := c(1, 1.05, 1.034, 1.08, 1.04, 1.1)]
-  sheets$Variants[, daily_growth_future := c(0.97, 1, 0.97, 1, 1, 1)]
 
   #these have to be positive or growth won't matter
-  if (k_ukgrowth > 0) stopifnot(sheets$Variants[name == "alpha", frac_on_day0 > 0])
-  if (k_brgrowth > 0) stopifnot(sheets$Variants[name == "gamma", frac_on_day0 > 0])
-  if (k_ingrowth > 0) stopifnot(sheets$Variants[name == "delta", frac_on_day0 > 0])
+  # if (k_ukgrowth > 0) stopifnot(sheets$Variants[name == "alpha", frac_on_day0 > 0])
+  # if (k_brgrowth > 0) stopifnot(sheets$Variants[name == "gamma", frac_on_day0 > 0])
+  # if (k_ingrowth > 0) stopifnot(sheets$Variants[name == "delta", frac_on_day0 > 0])
 
-  sheets$Variants[name == "alpha", daily_growth_future := k_ukgrowth]
-  sheets$Variants[name == "gamma", daily_growth_future := k_brgrowth]
-  sheets$Variants[name == "delta", daily_growth_future := k_ingrowth]
+  if (!is.null(k_ukgrowth)) sheets$Variants[name == "alpha", daily_growth_future := k_ukgrowth]
+  if (!is.null(k_brgrowth)) sheets$Variants[name == "gamma", daily_growth_future := k_brgrowth]
+  if (!is.null(k_ingrowth)) sheets$Variants[name == "delta", daily_growth_future := k_ingrowth]
+
+  if (!is.null(k_in_trans)) sheets$Variants[name == "delta", transmisson_mult := k_in_trans]
+  if (!is.null(k_in_hosp)) sheets$Variants[name == "delta", hosp_mult := k_in_hosp]
+  if (!is.null(k_duration_years)) {
+    sheets$Variants[, duration_vaccinated_years := k_duration_years]
+    sheets$Variants[, duration_natural_years := k_duration_years]
+  }
+
 
   inputs <- LEMMA:::ProcessSheets(sheets)
   inputs <- ModifyCountyInputs(county1, inputs)

@@ -21,54 +21,81 @@ RunOneCounty_scen <- function(county1, county.dt, doses.dt, remote = FALSE, writ
   }
 
   Scenario1 <- function(filestr1, ...) {
-    results <- Scenario(filestr1 = filestr1, county1 = county1, county.dt = county.dt, doses.dt = doses.dt, k_mu_beta_inter = k_mu_beta_inter, ...)
-    results.dt <<- rbind(results.dt, results)
+    scen_list <- Scenario(filestr1 = filestr1, county1 = county1, county.dt = county.dt, doses.dt = doses.dt, remote = remote, writedir = writedir, ...)
+    results.dt <<- rbind(results.dt, scen_list$results)
+    return(scen_list$lemma)
   }
+
 
   results.dt <- NULL
-  lemma <- Scenario(filestr1 = "statusquo", county1 = county1, county.dt = county.dt, doses.dt = doses.dt, remote = remote, writedir = writedir)
-
-  relative.contact.rate.statusquo <- lemma$fit.extended$par$beta / (lemma$fit.extended$par$beta[1] * lemma$inputs$vaccines$transmission_variant_multiplier)
-  k_mu_beta_inter <- 1 / pmin(1, tail(relative.contact.rate.statusquo, 1))
-
-  high_uk_growth <- 1.06
-  high_br_growth <- 1.08
-  high_in_growth <- 1.08
-
-  Scenario1("base", lemma_statusquo = lemma, remote = remote, writedir = writedir)
-  Scenario1("open90percent", lemma_statusquo = lemma, k_max_open = 0.9, remote = remote, writedir = writedir)
-  Scenario1("alphavariant", lemma_statusquo = lemma, k_ukgrowth = high_uk_growth, remote = remote, writedir = writedir)
-  Scenario1("gammavariant", lemma_statusquo = lemma, k_brgrowth = high_br_growth, remote = remote, writedir = writedir)
-  Scenario1("deltavariant", lemma_statusquo = lemma, k_ingrowth = high_in_growth, remote = remote, writedir = writedir)
-
-  if (county1 == "San Francisco") {
-    Scenario1("open90percent_alphavariant", lemma_statusquo = NULL, k_max_open = 0.9, k_ukgrowth = high_uk_growth, remote = remote, writedir = writedir)
-    Scenario1("open90percent_deltavariant", lemma_statusquo = NULL, k_max_open = 0.9, k_ingrowth = high_in_growth, remote = remote, writedir = writedir)
-
-
-    prev.width <- getOption("width")
-    options(scipen = 3, width = 9999)
-
-    if (remote) {
-      scen_path <- paste0(writedir, "/Scenarios")
-      if (dir.exists(scen_path)) {
-        sink(file = paste0(scen_path, "/San Francisco_ScenarioSummary.txt"))
-      }
-    } else {
-      sink("Scenarios/San Francisco_ScenarioSummary.txt")
-    }
-
-    print(results.dt, digits=0)
-    options(width = prev.width)
-
-    cat("base = 75% open by June 22; uptake: 82% for 12-64, 91% for 65+; 60% alpha (UK), 2% delta (India), 10% gamma (Brazil), 13% epsilon (West Coast) variants; 12-15 eligible May 13, 0-11 eligible Jan 1 \n")
-    cat("other scenarios same as base except:\n")
-    cat("open90percent = 90% open\n")
-    cat("alphavariant = alpha (UK) variant dominant by August\n")
-    cat('deltavariant = delta (India) variant dominant by August\n')
-    cat('gammavariant = "Brazil-like" (near worst case/vaccine escape) variant dominant by August (possible but unlikely)\n')
-    sink()
-  }
+  lemma <- Scenario1("base") #generates forecast
+  # if (!remote) {
+  #   for (ext in c("pdf", "xlsx")) {
+  #     file.copy(paste0("Scenarios/", county1, "_base.", ext), paste0("Forecasts/", county1, ".", ext), overwrite = T)
+  #   }
+  # }
+  #
+  # if (county1 == "San Francisco") {
+  #   k_uptake_increase_set <- c(F, T)
+  #   k_beta_mult_set <- c(1.05, 1.1, 1.2)
+  # } else {
+  #   k_uptake_increase_set <- F
+  #   k_beta_mult_set <- 1.1
+  # }
+  # for (delta_epi_optimistic in c(T, F)) {
+  #   for (k_beta_mult in k_beta_mult_set) {
+  #     for (k_uptake_increase in k_uptake_increase_set) {
+  #       if (delta_epi_optimistic) {
+  #         k_in_hosp <- 1.3
+  #         k_in_trans <- 2.1
+  #         k_duration_years <- 999
+  #         delta_epi_optimistic_str <- "epiOptimistic"
+  #       } else {
+  #         k_in_hosp <- 2.6
+  #         k_in_trans <- 2.4
+  #         k_duration_years <- NULL
+  #         delta_epi_optimistic_str <- "epiPessimistic"
+  #       }
+  #       if (k_uptake_increase) {
+  #         k_vaccine_uptake <- c(0.85, 0.85, -1) #keep 65+ as is
+  #         k_uptake_increase_str <- "uptake85"
+  #       } else {
+  #         k_vaccine_uptake <- NULL
+  #         k_uptake_increase_str <- "uptakeCurrent"
+  #       }
+  #       name <- paste0(delta_epi_optimistic_str, "_reopenInc", 100 * (k_beta_mult - 1), "_", k_uptake_increase_str)
+  #       Scenario1(name, k_in_hosp = k_in_hosp, k_in_trans = k_in_trans, k_duration_years = k_duration_years, vaccine_uptake = k_vaccine_uptake, k_beta_mult = k_beta_mult)
+  #     }
+  #   }
+  # }
+  #
+  # if (county1 == "San Francisco") {
+  #   prev.width <- getOption("width")
+  #   options(scipen = 3, width = 9999)
+  #
+  #   if (remote) {
+  #     scen_path <- paste0(writedir, "/Scenarios")
+  #     if (dir.exists(scen_path)) {
+  #       sink(file = paste0(scen_path, "/San Francisco_ScenarioSummary.txt"))
+  #     }
+  #   } else {
+  #     sink("Scenarios/San Francisco_ScenarioSummary.txt")
+  #   }
+  #
+  #   print(results.dt, digits=0)
+  #   options(width = prev.width)
+  #
+  #   cat("base: Delta is 50% more transmissible than Alpha, no increase in severity over Alpha, waning immunity, 10% increase in effective contact rate on June 15, current vaccine uptake\n")
+  #   cat("epiOptimistic: Delta is 40% more transmissible than Alpha, no increase in severity over Alpha, no waning immunity\n")
+  #   cat("epiPessimistic: Delta is 60% more transmissible than Alpha, hospitalization rate twice Alpha, waning immunity\n")
+  #   cat("reopenInc5: 5% increase in effective contact rate on June 15\n")
+  #   cat("reopenInc10: 10% increase in effective contact rate on June 15\n")
+  #   cat("reopenInc20: 20% increase in effective contact rate on June 15\n")
+  #   cat("uptake85: 85% vaccine uptake in 12-64\n")
+  #   cat("uptakeCurrent: 82% vaccine uptake in 12-64\n")
+  #   cat("All scenarios: vaccine uptake 92% in 65+; age 0-11 eligible Jan 1; Delta 30% today, 75% by July 1\n")
+  #   sink()
+  # }
   return(lemma)
 }
 
@@ -109,14 +136,15 @@ RunOneCounty_scen_input <- function(
 
   lemma <- Scenario(
     filestr1 = "statusquo", county1 = county1, county.dt = county.dt, doses.dt = doses.dt, remote = remote, writedir = writedir
-  )
+  )$lemma
 
-  relative.contact.rate.statusquo <- lemma$fit.extended$par$beta / (lemma$fit.extended$par$beta[1] * lemma$inputs$vaccines$transmission_variant_multiplier)
-  k_mu_beta_inter <- 1 / pmin(1, tail(relative.contact.rate.statusquo, 1))
+  relative.contact.rate.statusquo <- lemma$fit.extended$par$beta / lemma$fit.extended$par$beta[1]
+  multiplier_to_100open <- 1 / pmin(1, tail(relative.contact.rate.statusquo, 1))
+  k_beta_mult <- pmax(1, multiplier_to_100open * k_max_open)
 
   Scenario(
     filestr1 = "custom", lemma_statusquo = NULL, county1 = county1, county.dt = county.dt, doses.dt = doses.dt,
-    k_mu_beta_inter = k_mu_beta_inter, k_ukgrowth = k_ukgrowth, k_brgrowth = k_brgrowth, k_ingrowth = k_ingrowth, k_max_open = k_max_open,
+    k_beta_mult = k_beta_mult, k_ukgrowth = k_ukgrowth, k_brgrowth = k_brgrowth, k_ingrowth = k_ingrowth,
     vaccine_uptake = vaccine_uptake, vaccine_dosing = vaccine_dosing,
     remote = remote, writedir = writedir
   )
@@ -153,8 +181,9 @@ RunOneCounty_scen_input <- function(
 #' @return a named list of values
 Scenario <- function(
   filestr1, county1, county.dt, doses.dt,
-  k_mu_beta_inter = NULL, lemma_statusquo = NULL,
-  k_ukgrowth = 1, k_brgrowth = 1, k_ingrowth = 1, k_max_open = 0.75,
+  lemma_statusquo = NULL,
+  k_ukgrowth = NULL, k_brgrowth = NULL, k_ingrowth = NULL, k_beta_mult = 1,
+  k_in_trans = NULL, k_in_hosp = NULL, k_duration_years = NULL,
   vaccine_uptake = NULL,
   vaccine_dosing = NULL,
   remote = FALSE, writedir = NULL
@@ -163,6 +192,7 @@ Scenario <- function(
   inputs <- GetCountyInputs_scen(
     county1 = county1, county.dt = county.dt, doses.dt = doses.dt,
     k_ukgrowth = k_ukgrowth, k_brgrowth = k_brgrowth, k_ingrowth = k_ingrowth,
+    k_in_trans = k_in_trans, k_in_hosp = k_in_hosp, k_duration_years = k_duration_years,
     vaccine_uptake = vaccine_uptake,
     vaccine_dosing = vaccine_dosing,
     remote = remote, writedir = writedir
@@ -185,14 +215,11 @@ Scenario <- function(
 
   inputs$internal.args$output.filestr <- filestr
 
-  #k_mu_beta_inter is multiplier to get to 100% open
-  mu_beta <- pmax(1, k_mu_beta_inter * k_max_open)
-  new.int <- data.table(mu_t_inter = as.Date("2021/6/15"),
-                        sigma_t_inter = 2, mu_beta_inter = mu_beta, sigma_beta_inter = 1e-04,
-                        mu_len_inter = 7, sigma_len_inter = 2)
-
-
-  inputs$interventions <- rbind(inputs$interventions, new.int)
+  index <- which(inputs$interventions$mu_t_inter == as.Date("2021/6/15"))
+  if (length(index) != 1) {
+    stop("there should be an intervention with date 2021/6/15")
+  }
+  inputs$interventions$mu_beta_inter[index] <- k_beta_mult
 
   if (is.null(lemma_statusquo)) {
     #refit
@@ -202,7 +229,7 @@ Scenario <- function(
   }
 
   pdf(paste0(filestr, ".pdf"), width = 11, height = 8.5)
-  relative.contact.rate <- lemma$fit.extended$par$beta / (lemma$fit.extended$par$beta[1] * lemma$inputs$vaccines$transmission_variant_multiplier)
+  relative.contact.rate <- lemma$fit.extended$par$beta / lemma$fit.extended$par$beta[1]
   dt <- data.table(date = lemma$projection$date, relative.contact.rate)
   dt[, type := ifelse(date >= inputs$obs.data[, max(date) - 7], "Scenario", "Estimate")]
   print(ggplot(dt, aes(x = date, y = relative.contact.rate)) + geom_line(aes(color = type), size = 2) + scale_x_date(date_breaks = "1 month", date_labels = "%b") + ggtitle("Effective contact rate relative to initial effective contact rate\nnot including vaccine or variant effects") + xlab("") + ylab("Effective Contact Rate") + theme(legend.title = element_blank()))
@@ -221,5 +248,5 @@ Scenario <- function(
   dev.off()
 
   results <- GetResults_scen(lemma$projection, filestr1)
-  invisible(results)
+  return(list(results = results, lemma = lemma))
 }
