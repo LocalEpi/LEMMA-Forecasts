@@ -184,7 +184,7 @@ RunOneCounty_scen_input <- function(
 Scenario <- function(
   filestr1, county1, county.dt, doses.dt,
   lemma_statusquo = NULL,
-  k_ukgrowth = NULL, k_brgrowth = NULL, k_ingrowth = NULL, k_beta_mult = 1,
+  k_ukgrowth = NULL, k_brgrowth = NULL, k_ingrowth = NULL, k_beta_mult = NULL,
   k_in_trans = NULL, k_in_hosp = NULL, k_duration_years = NULL,
   vaccine_uptake = NULL,
   vaccine_dosing = NULL,
@@ -195,6 +195,7 @@ Scenario <- function(
     county1 = county1, county.dt = county.dt, doses.dt = doses.dt,
     k_ukgrowth = k_ukgrowth, k_brgrowth = k_brgrowth, k_ingrowth = k_ingrowth,
     k_in_trans = k_in_trans, k_in_hosp = k_in_hosp, k_duration_years = k_duration_years,
+    k_beta_mult = k_beta_mult,
     vaccine_uptake = vaccine_uptake,
     vaccine_dosing = vaccine_dosing,
     remote = remote, writedir = writedir
@@ -220,12 +221,6 @@ Scenario <- function(
   }
 
   inputs$internal.args$output.filestr <- filestr
-
-  index <- which(inputs$interventions$mu_t_inter == as.Date("2021/6/15"))
-  if (length(index) != 1) {
-    stop("there should be an intervention with date 2021/6/15")
-  }
-  inputs$interventions$mu_beta_inter[index] <- k_beta_mult
 
   if (is.null(lemma_statusquo)) {
     #refit

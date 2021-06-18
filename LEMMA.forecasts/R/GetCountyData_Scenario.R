@@ -33,7 +33,7 @@
 #' @return a named list of values
 GetCountyInputs_scen <- function(
   county1, county.dt, doses.dt, k_ukgrowth, k_brgrowth, k_ingrowth,
-  k_in_trans, k_in_hosp, k_duration_years,
+  k_in_trans, k_in_hosp, k_duration_years, k_beta_mult,
   vaccine_uptake = NULL,
   vaccine_dosing = NULL,
   remote = FALSE, writedir = NULL
@@ -83,6 +83,13 @@ GetCountyInputs_scen <- function(
     sheets$Variants[, duration_natural_years := k_duration_years]
   }
 
+  if (!is.null(k_beta_mult)) {
+    index <- which(sheets$Interventions$mu_t_inter == as.Date("2021/6/15"))
+    if (length(index) != 1) {
+      stop("there should be an intervention with date 2021/6/15")
+    }
+    sheets$Interventions[index, mu_beta_inter := k_beta_mult]
+  }
 
   inputs <- LEMMA:::ProcessSheets(sheets)
   inputs <- ModifyCountyInputs(county1, inputs)
