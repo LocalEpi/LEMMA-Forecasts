@@ -96,6 +96,7 @@ RunOneCounty_scen <- function(county1, county.dt, doses.dt, remote = FALSE, writ
     cat("All scenarios: vaccine uptake 92% in 65+; age 0-11 eligible Jan 1; Delta 30% today and dominant by July\n")
     cat("rel.cont.rate.cur = relative effective rate today\n")
     cat("rel.cont.rate.new = relative effective rate after reopening\n")
+    cat("links to pdf and xlsx outputs: https://localepi.github.io/LEMMA/ \n")
     sink()
   }
   return(lemma)
