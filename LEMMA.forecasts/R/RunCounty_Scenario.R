@@ -110,7 +110,7 @@ RunOneCounty_scen <- function(county1, county.dt, doses.dt, remote = FALSE, writ
 #' @param k_ukgrowth growth rate of UK variant (B.1.1.7)
 #' @param k_brgrowth growth rate of BR variant (P.1)
 #' @param k_ingrowth growth rate of IN variant (B.1.617.2)
-#' @param k_max_open percentage of pre-pandemic activity after reopening (scales contact rate)
+#' @param k_beta_mult increase in effective contact rate on June 15
 #' @param vaccine_uptake a numeric vector with 3 values, for vaccine uptake in age groups 12-15, 16-64, and 65+
 #' @param vaccine_dosing a named list that requires specific input, see section \code{vaccine_dosing}, or \code{NULL} for no adjustment of doses available
 #' @param remote a logical value, if \code{TRUE} download all data from remotes, otherwise use local data
@@ -127,7 +127,7 @@ RunOneCounty_scen <- function(county1, county.dt, doses.dt, remote = FALSE, writ
 #' @export
 RunOneCounty_scen_input <- function(
   county1, county.dt, doses.dt,
-  k_ukgrowth = 1, k_brgrowth = 1, k_ingrowth = 1, k_max_open = 0.75,
+  k_ukgrowth = 1, k_brgrowth = 1, k_ingrowth = 1, k_beta_mult = 1,
   vaccine_uptake = NULL,
   vaccine_dosing = NULL,
   remote = FALSE,
@@ -137,22 +137,14 @@ RunOneCounty_scen_input <- function(
     stop("if 'remote' is TRUE, please provide a directory to write results to in 'writedir'")
   }
 
-  lemma <- Scenario(
-    filestr1 = "statusquo", county1 = county1, county.dt = county.dt, doses.dt = doses.dt, remote = remote, writedir = writedir
-  )$lemma
-
-  relative.contact.rate.statusquo <- lemma$fit.extended$par$beta / lemma$fit.extended$par$beta[1]
-  multiplier_to_100open <- 1 / pmin(1, tail(relative.contact.rate.statusquo, 1))
-  k_beta_mult <- pmax(1, multiplier_to_100open * k_max_open)
-
-  Scenario(
-    filestr1 = "custom", lemma_statusquo = NULL, county1 = county1, county.dt = county.dt, doses.dt = doses.dt,
+  scen_list <- Scenario(
+    filestr1 = "custom", county1 = county1, county.dt = county.dt, doses.dt = doses.dt,
     k_beta_mult = k_beta_mult, k_ukgrowth = k_ukgrowth, k_brgrowth = k_brgrowth, k_ingrowth = k_ingrowth,
     vaccine_uptake = vaccine_uptake, vaccine_dosing = vaccine_dosing,
     remote = remote, writedir = writedir
   )
 
-  return(lemma)
+  return(scen_list$lemma)
 }
 
 
