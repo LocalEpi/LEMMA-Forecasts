@@ -57,6 +57,7 @@ if (T) {
 }
 
 system2("git", args = "pull")
+system2("git", args = c("add", "-A"))
 commit.name <- paste0('"', "data through ", as.character(max.date), '"')
 system2("git", args = c('commit', '-a', '-m', commit.name))
 system2("git", args = "push")
