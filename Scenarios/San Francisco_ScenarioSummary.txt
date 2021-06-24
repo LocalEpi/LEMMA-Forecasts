@@ -1,17 +1,17 @@
                                         name hosp.peak hosp.peak.date admits.byNov1 deaths.byNov1 cases.byNov1 rel.cont.rate.cur rel.cont.rate.new
- 1:                                     base       253     2021-10-25          1500           174       105151                62                69
- 2:   epiOptimistic_reopenInc5_uptakeCurrent        26     2021-12-17           201            24        12887                64                67
- 3:        epiOptimistic_reopenInc5_uptake85        17     2021-10-23           178            22        11343                66                69
- 4:  epiOptimistic_reopenInc10_uptakeCurrent        52     2021-11-30           346            40        22686                65                72
- 5:       epiOptimistic_reopenInc10_uptake85        28     2021-11-13           254            30        16865                65                71
- 6:  epiOptimistic_reopenInc20_uptakeCurrent       121     2021-10-30           828            91        54669                62                74
- 7:       epiOptimistic_reopenInc20_uptake85        88     2021-10-25           667            76        45049                62                74
- 8:  epiPessimistic_reopenInc5_uptakeCurrent       452     2021-11-05          2482           142        91313                58                61
- 9:       epiPessimistic_reopenInc5_uptake85       395     2021-10-27          2470           149        89273                64                67
-10: epiPessimistic_reopenInc10_uptakeCurrent       553     2021-10-20          3492           207       122589                58                64
-11:      epiPessimistic_reopenInc10_uptake85       432     2021-10-22          2836           170       103621                57                63
-12: epiPessimistic_reopenInc20_uptakeCurrent       740     2021-09-30          4793           304       161444                59                70
-13:      epiPessimistic_reopenInc20_uptake85       632     2021-09-29          4241           274       146745                57                68
+ 1:                                     base       119     2021-12-09           445            67        48477                54                59
+ 2:   epiOptimistic_reopenInc5_uptakeCurrent        27     2021-12-11           215            26        13818                62                65
+ 3:        epiOptimistic_reopenInc5_uptake85        16     2021-10-03           175            22        11230                63                66
+ 4:  epiOptimistic_reopenInc10_uptakeCurrent        16     2021-12-11           136            23        12690                60                65
+ 5:       epiOptimistic_reopenInc10_uptake85        31     2021-11-01           289            34        19029                62                68
+ 6:  epiOptimistic_reopenInc20_uptakeCurrent       124     2021-10-26           873            97        57700                64                76
+ 7:       epiOptimistic_reopenInc20_uptake85        84     2021-10-22           665            76        44244                62                74
+ 8:  epiPessimistic_reopenInc5_uptakeCurrent       443     2021-11-04          2463           142        90439                58                60
+ 9:       epiPessimistic_reopenInc5_uptake85       329     2021-11-08          1946           115        72494                58                60
+10: epiPessimistic_reopenInc10_uptakeCurrent       538     2021-10-20          3442           205       121435                57                63
+11:      epiPessimistic_reopenInc10_uptake85       417     2021-10-21          2804           170       101177                58                63
+12: epiPessimistic_reopenInc20_uptakeCurrent       727     2021-09-30          4741           303       159835                59                70
+13:      epiPessimistic_reopenInc20_uptake85       619     2021-09-29          4160           269       144013                58                69
 base: Delta is 50% more transmissible than Alpha, no increase in severity over Alpha, waning immunity, 10% increase in effective contact rate on June 15, current vaccine uptake
 epiOptimistic: Delta is 40% more transmissible than Alpha, no increase in severity over Alpha, no waning immunity
 epiPessimistic: Delta is 60% more transmissible than Alpha, hospitalization rate twice Alpha, waning immunity
