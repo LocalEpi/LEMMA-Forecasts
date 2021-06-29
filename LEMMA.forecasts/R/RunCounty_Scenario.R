@@ -92,7 +92,7 @@ RunOneCounty_scen <- function(county1, county.dt, doses.dt, remote = FALSE, writ
     cat("reopenInc10: 10% increase in effective contact rate on June 15\n")
     cat("reopenInc20: 20% increase in effective contact rate on June 15\n")
     cat("uptake85: 85% vaccine uptake in 12-64\n")
-    cat("uptakeCurrent: 82% vaccine uptake in 12-64\n")
+    cat("uptakeCurrent: 83% vaccine uptake in 12-64\n")
     cat("All scenarios: vaccine uptake 92% in 65+; age 0-11 eligible Jan 1; Delta 30% on June 15 and dominant by July\n")
     cat("rel.cont.rate.cur = relative effective rate today\n")
     cat("rel.cont.rate.new = relative effective rate after reopening\n")
