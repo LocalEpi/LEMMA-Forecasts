@@ -106,9 +106,9 @@ ReadSFDoses <- function(print_outdate = FALSE) {
     over65 <- d[dose_num %in% c("1", "J"), sum(count_65plus)]
     total <- under65 + over65
 
-    dt <- data.table(name = c("all", "12+", "12-64", "~16-64", "65+"),
-                     numer = c(total, total, under65, under65, over65),
-                     denom = c(833401, 759567, 629430, 606341, 132892)) #for 65+ my file uses 130137 but Ted has 132892
+    dt <- data.table(name = c("all", "12+", "12-64", "65+"),
+                     numer = c(total, total, under65, over65),
+                     denom = c(833401, 759567, 629430, 132892)) #for 65+ my file uses 130137 but Ted has 132892
     dt[, frac_vax := numer / denom]
     print(dt, digits = 3)
   }
