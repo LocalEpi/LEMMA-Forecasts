@@ -110,12 +110,12 @@ GetCountyInputs_scen <- function(
 #' @description This function is called from \code{\link[LEMMA.forecasts]{Scenario}}.
 #' @param projection output of a LEMMA model run
 #' @param name a character string giving the type of scenario to run
-GetResults_scen <- function(projection, name, relative.contact.rate.cur, relative.contact.rate.final) {
+GetResults_scen <- function(projection, name, relative.contact.rate.cur, june15.prior, june15.posterior) {
   projection1 <- projection[date >= Sys.Date()]
   hosp.peak <- projection1[, max(hosp)]
   hosp.peak.date <- projection1[, date[which.max(hosp)]]
   admits.byNov1 <- projection1[date <= as.Date("2021/11/1"), sum(admits)]
   deaths.byNov1 <- projection1[date <= as.Date("2021/11/1"), max(deaths) - min(deaths)]
   cases.byNov1 <- projection1[date <= as.Date("2021/11/1"), max(totalCases) - min(totalCases)]
-  return(data.table(name, hosp.peak, hosp.peak.date, admits.byNov1, deaths.byNov1, cases.byNov1, rel.cont.rate.cur = relative.contact.rate.cur, rel.cont.rate.new = relative.contact.rate.final))
+  return(data.table(name, hosp.peak, hosp.peak.date, admits.byNov1, deaths.byNov1, cases.byNov1, rel.cont.rate = relative.contact.rate.cur, june15.prior, june15.posterior))
 }

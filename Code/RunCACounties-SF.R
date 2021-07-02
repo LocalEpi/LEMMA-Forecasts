@@ -22,6 +22,9 @@ deaths.cases <- deaths.cases[!(county %in% c("Unknown", "Out of state", "Califor
 data.table::setkey(deaths.cases, county, date)
 print(tail(deaths.cases[county == "San Francisco", .(date, cases, cases7=frollmean(cases, 7))], 20))
 
+print(ggplot(county.dt[date >= as.Date("2021/6/10") & !is.na(cases.conf), .(cases = sum(cases.conf)), by = "date"], aes(x = date, y = cases)) + geom_point() + scale_y_log10() + ggtitle("State Cases")) + ylab("7 day average cases (log scale)")
+
+print(ggplot(county.dt[date >= as.Date("2021/6/10") & county == "San Francisco" & !is.na(cases.conf), ], aes(x = date, y = cases.conf)) + geom_point() + scale_y_log10() + ggtitle("SF Cases")) + ylab("7 day average cases (log scale)")
 
 print(tail(doses.dt[county == "San Francisco", .(date, doses = dose1 + dose2 + doseJ, doses_7 = frollmean(dose1 + dose2 + doseJ, 7), dose1, dose1_7 = frollmean(dose1, 7))], 20))
 

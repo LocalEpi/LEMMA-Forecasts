@@ -28,7 +28,7 @@ RunOneCounty_scen <- function(county1, county.dt, doses.dt, remote = FALSE, writ
 
 
   results.dt <- NULL
-  lemma <- Scenario1("base") #generates forecast
+  lemma <- Scenario1("base", k_duration_years = 999) #generates forecast
   if (!remote) {
     for (ext in c("pdf", "xlsx")) {
       file.copy(paste0("Scenarios/", county1, "_base.", ext), paste0("Forecasts/", county1, ".", ext), overwrite = T)
@@ -85,7 +85,7 @@ RunOneCounty_scen <- function(county1, county.dt, doses.dt, remote = FALSE, writ
     print(results.dt, digits=0)
     options(width = prev.width)
 
-    cat("base: Delta is 50% more transmissible than Alpha, no increase in severity over Alpha, waning immunity, 10% increase in effective contact rate on June 15, current vaccine uptake\n")
+    cat("base: Delta is 50% more transmissible than Alpha, no increase in severity over Alpha, no waning immunity, 10% increase in effective contact rate on June 15, current vaccine uptake\n")
     cat("epiOptimistic: Delta is 40% more transmissible than Alpha, no increase in severity over Alpha, no waning immunity\n")
     cat("epiPessimistic: Delta is 60% more transmissible than Alpha, hospitalization rate twice Alpha, waning immunity\n")
     cat("reopenInc5: 5% increase in effective contact rate on June 15\n")
@@ -94,8 +94,9 @@ RunOneCounty_scen <- function(county1, county.dt, doses.dt, remote = FALSE, writ
     cat("uptake85: 85% vaccine uptake in 12-64\n")
     cat("uptakeCurrent: 83% vaccine uptake in 12-64\n")
     cat("All scenarios: vaccine uptake 92% in 65+; age 0-11 eligible Jan 1; Delta 30% on June 15 and dominant by July\n")
-    cat("rel.cont.rate.cur = relative effective rate today\n")
-    cat("rel.cont.rate.new = relative effective rate after reopening\n")
+    cat("rel.cont.rate = relative effective rate today\n")
+    cat("june15.prior = prior % increase on June 15\n")
+    cat("june15.posterior = posterior % increase on June 15\n")
     cat("links to pdf and xlsx outputs: https://localepi.github.io/LEMMA/ \n")
     sink()
   }
@@ -227,6 +228,7 @@ Scenario <- function(
   dt <- data.table(date = lemma$projection$date, relative.contact.rate)
   relative.contact.rate.cur <- round(100 * dt[date == inputs$obs.data[, max(date) - 7], relative.contact.rate])
   relative.contact.rate.final <- round(100 * dt[date == max(date), relative.contact.rate])
+
   dt[, type := ifelse(date >= inputs$obs.data[, max(date) - 7], "Scenario", "Estimate")]
   print(ggplot(dt, aes(x = date, y = relative.contact.rate)) + geom_line(aes(color = type), size = 2) + scale_x_date(date_breaks = "1 month", date_labels = "%b") + ggtitle("Effective contact rate relative to initial effective contact rate\nnot including vaccine or variant effects") + xlab("") + ylab("Effective Contact Rate") + theme(legend.title = element_blank()) + labs(caption = paste("Current =", relative.contact.rate.cur, "%")))
 
@@ -243,6 +245,10 @@ Scenario <- function(
   print(lemma$gplot$long.term)
   dev.off()
 
-  results <- GetResults_scen(lemma$projection, filestr1, relative.contact.rate.cur, relative.contact.rate.final)
+ june15.index <- lemma$inputs$interventions[, which(mu_t_inter == as.Date("2021/6/15"))]
+ june15.prior <- round(100 * (lemma$inputs$interventions[june15.index, mu_beta_inter - 1]))
+ june15.posterior <- round(100 * (lemma$excel.output$posteriorInterventions[june15.index, beta_multiplier - 1]))
+
+  results <- GetResults_scen(lemma$projection, filestr1, relative.contact.rate.cur, june15.prior, june15.posterior)
   return(list(results = results, lemma = lemma))
 }
