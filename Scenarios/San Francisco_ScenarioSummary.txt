@@ -1,17 +1,17 @@
                                         name hosp.peak hosp.peak.date admits.byNov1 deaths.byNov1 cases.byNov1 rel.cont.rate june15.prior june15.posterior
- 1:                                     base        65     2021-11-05           437            66        43123            72           10               11
- 2:   epiOptimistic_reopenInc5_uptakeCurrent        26     2021-11-22           204            33        19625            71            5                6
- 3:        epiOptimistic_reopenInc5_uptake85        17     2021-10-27           157            27        15209            66            5                6
- 4:  epiOptimistic_reopenInc10_uptakeCurrent        40     2021-11-15           289            45        28128            74           10               11
- 5:       epiOptimistic_reopenInc10_uptake85        55     2021-10-29           451            53        30329            73           10                9
- 6:  epiOptimistic_reopenInc20_uptakeCurrent        81     2021-10-25           565            86        55228            78           20               20
- 7:       epiOptimistic_reopenInc20_uptake85        53     2021-11-01           386            61        39026            72           20               20
- 8:  epiPessimistic_reopenInc5_uptakeCurrent       297     2021-11-03          1681           129        90730            63            5                6
- 9:       epiPessimistic_reopenInc5_uptake85       250     2021-11-05          1476           116        80436            62            5                6
-10: epiPessimistic_reopenInc10_uptakeCurrent       594     2021-10-07          3726           238       135381            71           10                9
-11:      epiPessimistic_reopenInc10_uptake85       462     2021-10-15          3155           196       113514            63           10                8
-12: epiPessimistic_reopenInc20_uptakeCurrent       441     2021-10-05          2868           242       146146            70           20               20
-13:      epiPessimistic_reopenInc20_uptake85       365     2021-10-13          2437           201       126958            66           20               20
+ 1:                                     base        61     2021-11-08           407            62        40543            68           10               11
+ 2:   epiOptimistic_reopenInc5_uptakeCurrent        65     2021-11-04           492            57        32251            76            5                5
+ 3:        epiOptimistic_reopenInc5_uptake85        52     2021-11-05           382            45        26509            83            5                7
+ 4:  epiOptimistic_reopenInc10_uptakeCurrent        46     2021-11-11           328            51        31295            73           10               11
+ 5:       epiOptimistic_reopenInc10_uptake85        36     2021-11-03           286            45        27931            73           10               11
+ 6:  epiOptimistic_reopenInc20_uptakeCurrent        82     2021-10-27           567            86        54772            78           20               20
+ 7:       epiOptimistic_reopenInc20_uptake85        68     2021-10-22           504            78        49393            79           20               20
+ 8:  epiPessimistic_reopenInc5_uptakeCurrent       479     2021-10-21          3098           187       111712            61            5                4
+ 9:       epiPessimistic_reopenInc5_uptake85       418     2021-10-22          2783           170       101826            62            5                4
+10: epiPessimistic_reopenInc10_uptakeCurrent       562     2021-10-11          3764           235       131377            62           10                9
+11:      epiPessimistic_reopenInc10_uptake85       307     2021-10-20          1996           162       107034            65           10               10
+12: epiPessimistic_reopenInc20_uptakeCurrent       446     2021-10-04          2896           247       147557            70           20               20
+13:      epiPessimistic_reopenInc20_uptake85       366     2021-10-12          2450           203       129132            65           20               20
 base: Delta is 50% more transmissible than Alpha, no increase in severity over Alpha, no waning immunity, 10% increase in effective contact rate on June 15, current vaccine uptake
 epiOptimistic: Delta is 40% more transmissible than Alpha, no increase in severity over Alpha, no waning immunity
 epiPessimistic: Delta is 60% more transmissible than Alpha, hospitalization rate twice Alpha, waning immunity
