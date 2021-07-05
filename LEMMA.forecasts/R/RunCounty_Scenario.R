@@ -29,43 +29,34 @@ RunOneCounty_scen <- function(county1, county.dt, doses.dt, remote = FALSE, writ
 
   results.dt <- NULL
   lemma <- Scenario1("base", k_duration_years = 999) #generates forecast
-  if (!remote) {
-    for (ext in c("pdf", "xlsx")) {
-      file.copy(paste0("Scenarios/", county1, "_base.", ext), paste0("Forecasts/", county1, ".", ext), overwrite = T)
-    }
-  }
 
   if (county1 == "San Francisco") {
     k_uptake_increase_set <- c(F, T)
-    k_beta_mult_set <- c(1.05, 1.1, 1.2)
   } else {
     k_uptake_increase_set <- F
-    k_beta_mult_set <- 1.1
   }
   for (delta_epi_optimistic in c(T, F)) {
-    for (k_beta_mult in k_beta_mult_set) {
-      for (k_uptake_increase in k_uptake_increase_set) {
-        if (delta_epi_optimistic) {
-          k_in_hosp <- 1.3
-          k_in_trans <- 2.1
-          k_duration_years <- 999
-          delta_epi_optimistic_str <- "epiOptimistic"
-        } else {
-          k_in_hosp <- 2.6
-          k_in_trans <- 2.4
-          k_duration_years <- NULL
-          delta_epi_optimistic_str <- "epiPessimistic"
-        }
-        if (k_uptake_increase) {
-          k_vaccine_uptake <- c(0.85, 0.85, -1) #keep 65+ as is
-          k_uptake_increase_str <- "uptake85"
-        } else {
-          k_vaccine_uptake <- NULL
-          k_uptake_increase_str <- "uptakeCurrent"
-        }
-        name <- paste0(delta_epi_optimistic_str, "_reopenInc", 100 * (k_beta_mult - 1), "_", k_uptake_increase_str)
-        Scenario1(name, k_in_hosp = k_in_hosp, k_in_trans = k_in_trans, k_duration_years = k_duration_years, vaccine_uptake = k_vaccine_uptake, k_beta_mult = k_beta_mult)
+    for (k_uptake_increase in k_uptake_increase_set) {
+      if (delta_epi_optimistic) {
+        k_in_hosp <- 1.3
+        k_in_trans <- 2.1
+        k_duration_years <- 999
+        delta_epi_optimistic_str <- "epiOptimistic"
+      } else {
+        k_in_hosp <- 2.6
+        k_in_trans <- 2.4
+        k_duration_years <- NULL
+        delta_epi_optimistic_str <- "epiPessimistic"
       }
+      if (k_uptake_increase) {
+        k_vaccine_uptake <- c(0.85, 0.85, -1) #keep 65+ as is
+        k_uptake_increase_str <- "uptake85"
+      } else {
+        k_vaccine_uptake <- NULL
+        k_uptake_increase_str <- "uptakeCurrent"
+      }
+      name <- paste0(delta_epi_optimistic_str, "_", k_uptake_increase_str)
+      Scenario1(name, k_in_hosp = k_in_hosp, k_in_trans = k_in_trans, k_duration_years = k_duration_years, vaccine_uptake = k_vaccine_uptake)
     }
   }
 
@@ -224,17 +215,6 @@ Scenario <- function(
   }
 
   pdf(paste0(filestr, ".pdf"), width = 11, height = 8.5)
-  relative.contact.rate <- lemma$fit.extended$par$beta / lemma$fit.extended$par$beta[1]
-  dt <- data.table(date = lemma$projection$date, relative.contact.rate)
-  relative.contact.rate.cur <- round(100 * dt[date == inputs$obs.data[, max(date) - 7], relative.contact.rate])
-  relative.contact.rate.final <- round(100 * dt[date == max(date), relative.contact.rate])
-
-  dt[, type := ifelse(date >= inputs$obs.data[, max(date) - 7], "Scenario", "Estimate")]
-  print(ggplot(dt, aes(x = date, y = relative.contact.rate)) + geom_line(aes(color = type), size = 2) + scale_x_date(date_breaks = "1 month", date_labels = "%b") + ggtitle("Effective contact rate relative to initial effective contact rate\nnot including vaccine or variant effects") + xlab("") + ylab("Effective Contact Rate") + theme(legend.title = element_blank()) + labs(caption = paste("Current =", relative.contact.rate.cur, "%")))
-
-  doses <- lemma$inputs$vaccines_nonstan$doses
-  doses[, doses_given := dose1 + dose2 + doseJ]
-  print(ggplot(doses[date >= as.Date("2021/1/1")], aes(x = date, y = doses_given)) + geom_point() + scale_x_date(date_breaks = "1 month", date_labels = "%b") + xlab("") + labs(title = "Actual and Projected Vaccines Doses", subtitle = "note: scattered doses in the summer are wrapping up second doses, later doses are children"))
 
   variant_frac <- lemma$inputs$vaccines_nonstan$variant_frac
   colnames(variant_frac) <- lemma$inputs$vaccines_nonstan$variants$name
@@ -242,12 +222,26 @@ Scenario <- function(
   dt <- melt(variant_frac[date >= as.Date("2020/10/1")], id.vars = "date", variable.name = "variant", value.name = "fraction")
   print(ggplot(dt, aes(x = date, y = fraction, color = variant)) + geom_line() + scale_x_date(date_breaks = "1 month", date_labels = "%b") + xlab("")) + ylab("Fraction of SARS-COV2")
 
+  doses <- lemma$inputs$vaccines_nonstan$doses
+  doses[, doses_given := dose1 + dose2 + doseJ]
+  print(ggplot(doses[date >= as.Date("2021/1/1")], aes(x = date, y = doses_given)) + geom_point() + scale_x_date(date_breaks = "1 month", date_labels = "%b") + xlab("") + labs(title = "Actual and Projected Vaccines Doses", subtitle = "note: scattered doses in the summer are wrapping up second doses, later doses are children"))
+
   print(lemma$gplot$long.term)
+  print(lemma$gplot$rt)
+
+  relative.contact.rate <- lemma$fit.extended$par$beta / lemma$fit.extended$par$beta[1]
+  dt <- data.table(date = lemma$projection$date, relative.contact.rate)
+  relative.contact.rate.cur <- round(100 * dt[date == inputs$obs.data[, max(date) - 7], relative.contact.rate])
+  relative.contact.rate.final <- round(100 * dt[date == max(date), relative.contact.rate])
+
+  # dt[, type := ifelse(date >= inputs$obs.data[, max(date) - 7], "Scenario", "Estimate")]
+  # print(ggplot(dt, aes(x = date, y = relative.contact.rate)) + geom_line(aes(color = type), size = 2) + scale_x_date(date_breaks = "1 month", date_labels = "%b") + ggtitle("Effective contact rate relative to initial effective contact rate\nnot including vaccine or variant effects") + xlab("") + ylab("Effective Contact Rate") + theme(legend.title = element_blank()) + labs(caption = paste("Current =", relative.contact.rate.cur, "%")))
+
   dev.off()
 
- june15.index <- lemma$inputs$interventions[, which(mu_t_inter == as.Date("2021/6/15"))]
- june15.prior <- round(100 * (lemma$inputs$interventions[june15.index, mu_beta_inter - 1]))
- june15.posterior <- round(100 * (lemma$excel.output$posteriorInterventions[june15.index, beta_multiplier - 1]))
+  june15.index <- lemma$inputs$interventions[, which(mu_t_inter == as.Date("2021/6/15"))]
+  june15.prior <- round(100 * (lemma$inputs$interventions[june15.index, mu_beta_inter - 1]))
+  june15.posterior <- round(100 * (lemma$excel.output$posteriorInterventions[june15.index, beta_multiplier - 1]))
 
   results <- GetResults_scen(lemma$projection, filestr1, relative.contact.rate.cur, june15.prior, june15.posterior)
   return(list(results = results, lemma = lemma))

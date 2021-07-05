@@ -4,12 +4,16 @@ devtools::load_all("LEMMA.forecasts")
 
 SFDosesToAWS()
 
-
-county.dt <- GetCountyData()
+if (F) {
+  county.dt <- GetCountyData()
+  saveRDS(county.dt, "Inputs/savedCountyData.rds") #save in case HHS server is down later
+} else {
+  cat("using saved county data\n")
+  county.dt <- readRDS("Inputs/savedCountyData.rds")
+}
 max.date <- Get1(county.dt[!is.na(hosp.conf), max(date), by = "county"]$V1)
 cat("max date = ", as.character(max.date), "\n")
 
-saveRDS(county.dt, "Inputs/savedCountyData.rds") #save in case HHS server is down later
 doses.dt <- GetDosesData()
 ReadSFDoses(print_outdate = T) #only for printing
 
