@@ -4,27 +4,29 @@ devtools::load_all("LEMMA.forecasts")
 
 SFDosesToAWS()
 
-if (F) {
+if (T) {
   county.dt <- GetCountyData()
   saveRDS(county.dt, "Inputs/savedCountyData.rds") #save in case HHS server is down later
+
+  doses.dt <- GetDosesData()
+  saveRDS(doses.dt, "Inputs/savedDoses.rds") #save in case HHS server is down later
+  ReadSFDoses(print_outdate = T) #only for printing
+
+  deaths.cases <- data.table::fread("https://data.chhs.ca.gov/dataset/f333528b-4d38-4814-bebb-12db1f10f535/resource/046cdd2b-31e5-4d34-9ed3-b48cdbc4be7a/download/covid19cases_test.csv")
+  deaths.cases[, date := as.Date(date)]
+  deaths.cases[, county := area]
+  deaths.cases <- deaths.cases[!(county %in% c("Unknown", "Out of state", "California")) & !is.na(date)]
+  data.table::setkey(deaths.cases, county, date)
+  print(tail(deaths.cases[county == "San Francisco", .(date, cases, cases7=frollmean(cases, 7))], 20))
 } else {
   cat("using saved county data\n")
   county.dt <- readRDS("Inputs/savedCountyData.rds")
+  doses.dt <- readRDS("Inputs/savedDoses.rds")
 }
 max.date <- Get1(county.dt[!is.na(hosp.conf), max(date), by = "county"]$V1)
 cat("max date = ", as.character(max.date), "\n")
 
-doses.dt <- GetDosesData()
-ReadSFDoses(print_outdate = T) #only for printing
-
 county.set <- county.dt[, unique(county)]
-
-deaths.cases <- data.table::fread("https://data.chhs.ca.gov/dataset/f333528b-4d38-4814-bebb-12db1f10f535/resource/046cdd2b-31e5-4d34-9ed3-b48cdbc4be7a/download/covid19cases_test.csv")
-deaths.cases[, date := as.Date(date)]
-deaths.cases[, county := area]
-deaths.cases <- deaths.cases[!(county %in% c("Unknown", "Out of state", "California")) & !is.na(date)]
-data.table::setkey(deaths.cases, county, date)
-print(tail(deaths.cases[county == "San Francisco", .(date, cases, cases7=frollmean(cases, 7))], 20))
 
 print(ggplot(county.dt[date >= as.Date("2021/6/10") & !is.na(cases.conf), .(cases = sum(cases.conf)), by = "date"], aes(x = date, y = cases)) + geom_point() + scale_y_log10() + ggtitle("State Cases")) + ylab("7 day average cases (log scale)")
 

@@ -30,13 +30,7 @@ RunOneCounty_scen <- function(county1, county.dt, doses.dt, remote = FALSE, writ
   results.dt <- NULL
   lemma <- Scenario1("base", k_duration_years = 999) #generates forecast
 
-  if (county1 == "San Francisco") {
-    k_uptake_increase_set <- c(F, T)
-  } else {
-    k_uptake_increase_set <- F
-  }
   for (delta_epi_optimistic in c(T, F)) {
-    for (k_uptake_increase in k_uptake_increase_set) {
       if (delta_epi_optimistic) {
         k_in_hosp <- 1.3
         k_in_trans <- 2.1
@@ -48,16 +42,7 @@ RunOneCounty_scen <- function(county1, county.dt, doses.dt, remote = FALSE, writ
         k_duration_years <- NULL
         delta_epi_optimistic_str <- "epiPessimistic"
       }
-      if (k_uptake_increase) {
-        k_vaccine_uptake <- c(0.85, 0.85, -1) #keep 65+ as is
-        k_uptake_increase_str <- "uptake85"
-      } else {
-        k_vaccine_uptake <- NULL
-        k_uptake_increase_str <- "uptakeCurrent"
-      }
-      name <- paste0(delta_epi_optimistic_str, "_", k_uptake_increase_str)
-      Scenario1(name, k_in_hosp = k_in_hosp, k_in_trans = k_in_trans, k_duration_years = k_duration_years, vaccine_uptake = k_vaccine_uptake)
-    }
+      Scenario1(filestr1 = delta_epi_optimistic_str, k_in_hosp = k_in_hosp, k_in_trans = k_in_trans, k_duration_years = k_duration_years)
   }
 
   if (county1 == "San Francisco") {
@@ -76,15 +61,10 @@ RunOneCounty_scen <- function(county1, county.dt, doses.dt, remote = FALSE, writ
     print(results.dt, digits=0)
     options(width = prev.width)
 
-    cat("base: Delta is 50% more transmissible than Alpha, no increase in severity over Alpha, no waning immunity, 10% increase in effective contact rate on June 15, current vaccine uptake\n")
+    cat("base: Delta is 50% more transmissible than Alpha, no increase in severity over Alpha, no waning immunity\n")
     cat("epiOptimistic: Delta is 40% more transmissible than Alpha, no increase in severity over Alpha, no waning immunity\n")
     cat("epiPessimistic: Delta is 60% more transmissible than Alpha, hospitalization rate twice Alpha, waning immunity\n")
-    cat("reopenInc5: 5% increase in effective contact rate on June 15\n")
-    cat("reopenInc10: 10% increase in effective contact rate on June 15\n")
-    cat("reopenInc20: 20% increase in effective contact rate on June 15\n")
-    cat("uptake85: 85% vaccine uptake in 12-64\n")
-    cat("uptakeCurrent: 83% vaccine uptake in 12-64\n")
-    cat("All scenarios: vaccine uptake 92% in 65+; age 0-11 eligible Jan 1; Delta 30% on June 15 and dominant by July\n")
+    cat("All scenarios: vaccine uptake 85% in 12-64, 93% in 65+; age 0-11 eligible Jan 1; Delta 30% on June 15 and dominant by July\n")
     cat("rel.cont.rate = relative effective rate today\n")
     cat("june15.prior = prior % increase on June 15\n")
     cat("june15.posterior = posterior % increase on June 15\n")
