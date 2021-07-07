@@ -69,6 +69,8 @@ if (T) {
   }
 }
 
+AggregateState(county.set, county.pop, max.date)
+
 system2("git", args = "pull")
 system2("git", args = c("add", "-A"))
 commit.name <- paste0('"', "data through ", as.character(max.date), '"')
@@ -84,4 +86,4 @@ system2("cat", '"Scenarios/San Francisco_ScenarioSummary.txt"')
 file.copy(paste0("~/Documents/GitHub/LEMMA-Forecasts/Map/Rt_map_", as.character(max.date - 14), ".csv"), paste0("~/Dropbox/LEMMA_shared/JS code branch/lemma input and output/SF-updating/Rt_map_", as.character(max.date - 14), ".csv"), overwrite = T)
 file.copy(paste0("~/Documents/GitHub/LEMMA-Forecasts/Map/Rt_map_", as.character(max.date - 14), ".pdf"), paste0("~/Dropbox/LEMMA_shared/JS code branch/lemma input and output/SF-updating/Rt_map_", as.character(max.date - 14), ".pdf"), overwrite = T)
 
-AggregateState(county.set, county.pop, max.date)
+
