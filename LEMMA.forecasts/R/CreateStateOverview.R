@@ -121,3 +121,43 @@ RtMap <- function(max.date, county.rt, writedir = NULL) {
   invisible(NULL)
 }
 
+
+AggregateState <- function(county.set, county.pop, max.date) {
+  covered_pop_frac <- sum(county.pop[county.set]) / sum(county.pop)
+  scale <- 1 / covered_pop_frac
+  total_proj <- NULL
+  for (county1 in county.set) {
+    cur_frac <- county.pop[county1] / sum(county.pop[county.set])
+    proj <- as.data.table(read_excel(paste0("Forecasts/", county1, ".xlsx")))
+    proj[, date := as.Date(date)]
+    proj[, rt := rt * cur_frac]
+    proj[, seroprev := seroprev * cur_frac]
+    if (is.null(total_proj)) {
+      total_proj <- proj
+    } else {
+      stopifnot(all.equal(proj$date, total_proj$date))
+      for (i in setdiff(names(total_proj), "date")) {
+        if (i %in% c("rt", "seroprev")) {
+          temp <- proj[[i]] #don't scale these, using weighted avg
+        } else {
+          temp <- proj[[i]] * scale #scale up a little
+        }
+        total_proj[[i]] <- total_proj[[i]] + temp
+      }
+    }
+  }
+  openxlsx::write.xlsx(list(projection = total_proj), file = "Forecasts/California.xlsx")
+
+  dt <- merge(total_proj, county.dt[, .(hosp.conf = sum(hosp.conf), icu.conf = sum(icu.conf), cases.conf = sum(cases.conf)), by = "date"], all.x = T)
+  print(ggplot(dt, aes(x = date)) + geom_line(aes(y = hosp)) + geom_point(aes(y = hosp.conf)))
+  print(ggplot(dt[abs(date - max.date) < 60], aes(x = date)) + geom_line(aes(y = hosp)) + geom_point(aes(y = hosp.conf)))
+
+  print(ggplot(dt, aes(x = date)) + geom_line(aes(y = cases)) + geom_point(aes(y = cases.conf)))
+  print(ggplot(dt[abs(date - max.date) < 60], aes(x = date)) + geom_line(aes(y = cases)) + geom_point(aes(y = cases.conf)))
+
+  print(ggplot(dt, aes(x = date)) + geom_line(aes(y = icu)) + geom_point(aes(y = icu.conf)))
+  print(ggplot(dt[abs(date - max.date) < 60], aes(x = date)) + geom_line(aes(y = icu)) + geom_point(aes(y = icu.conf)))
+
+}
+
+
