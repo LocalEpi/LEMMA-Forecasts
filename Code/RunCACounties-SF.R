@@ -17,7 +17,7 @@ if (T) {
   deaths.cases[, county := area]
   deaths.cases <- deaths.cases[!(county %in% c("Unknown", "Out of state", "California")) & !is.na(date)]
   data.table::setkey(deaths.cases, county, date)
-  print(tail(deaths.cases[county == "San Francisco", .(date, cases, cases7=frollmean(cases, 7))], 20))
+  print(tail(deaths.cases[county == "San Francisco", .(date, cases, cases7=frollmean(cases, 7), total_tests, total_tests_7 = frollmean(total_tests, 7))], 20))
 } else {
   cat("using saved county data\n")
   county.dt <- readRDS("Inputs/savedCountyData.rds")
