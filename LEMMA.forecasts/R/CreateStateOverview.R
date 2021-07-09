@@ -122,13 +122,13 @@ RtMap <- function(max.date, county.rt, writedir = NULL) {
 }
 
 
-AggregateState <- function(county.set, county.pop, max.date) {
+AggregateState <- function(county.set, county.pop, max.date, path, postfix) {
   covered_pop_frac <- sum(county.pop[county.set]) / sum(county.pop)
   scale <- 1 / covered_pop_frac
   total_proj <- NULL
   for (county1 in county.set) {
     cur_frac <- county.pop[county1] / sum(county.pop[county.set])
-    proj <- as.data.table(read_excel(paste0("Forecasts/", county1, ".xlsx")))
+    proj <- as.data.table(read_excel(paste0(path, "/", county1, postfix, ".xlsx")))
     proj[, date := as.Date(date)]
     proj[, rt := rt * cur_frac]
     proj[, seroprev := seroprev * cur_frac]
@@ -146,17 +146,17 @@ AggregateState <- function(county.set, county.pop, max.date) {
       }
     }
   }
-  openxlsx::write.xlsx(list(projection = total_proj), file = "Forecasts/California.xlsx")
+  openxlsx::write.xlsx(list(projection = total_proj), file = paste0(path, "/California", postfix, ".xlsx"))
 
   dt <- merge(total_proj, county.dt[, .(hosp.conf = sum(hosp.conf), icu.conf = sum(icu.conf), cases.conf = sum(cases.conf)), by = "date"], all.x = T)
-  print(ggplot(dt, aes(x = date)) + geom_line(aes(y = hosp)) + geom_point(aes(y = hosp.conf)))
-  print(ggplot(dt[abs(date - max.date) < 60], aes(x = date)) + geom_line(aes(y = hosp)) + geom_point(aes(y = hosp.conf)))
+  print(ggplot(dt, aes(x = date)) + geom_line(aes(y = hosp)) + geom_point(aes(y = hosp.conf)) + ggtitle(postfix))
+  print(ggplot(dt[abs(date - max.date) < 60], aes(x = date)) + geom_line(aes(y = hosp)) + geom_point(aes(y = hosp.conf)) + ggtitle(postfix))
 
-  print(ggplot(dt, aes(x = date)) + geom_line(aes(y = cases)) + geom_point(aes(y = cases.conf)))
-  print(ggplot(dt[abs(date - max.date) < 60], aes(x = date)) + geom_line(aes(y = cases)) + geom_point(aes(y = cases.conf)))
+  print(ggplot(dt, aes(x = date)) + geom_line(aes(y = cases)) + geom_point(aes(y = cases.conf)) + ggtitle(postfix))
+  print(ggplot(dt[abs(date - max.date) < 60], aes(x = date)) + geom_line(aes(y = cases)) + geom_point(aes(y = cases.conf)) + ggtitle(postfix))
 
-  print(ggplot(dt, aes(x = date)) + geom_line(aes(y = icu)) + geom_point(aes(y = icu.conf)))
-  print(ggplot(dt[abs(date - max.date) < 60], aes(x = date)) + geom_line(aes(y = icu)) + geom_point(aes(y = icu.conf)))
+  print(ggplot(dt, aes(x = date)) + geom_line(aes(y = icu)) + geom_point(aes(y = icu.conf)) + ggtitle(postfix))
+  print(ggplot(dt[abs(date - max.date) < 60], aes(x = date)) + geom_line(aes(y = icu)) + geom_point(aes(y = icu.conf)) + ggtitle(postfix))
 
 }
 
