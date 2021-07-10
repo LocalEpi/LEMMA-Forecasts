@@ -28,11 +28,11 @@ cat("max date = ", as.character(max.date), "\n")
 
 county.set <- county.dt[, unique(county)]
 
-print(ggplot(county.dt[date >= as.Date("2021/6/10") & !is.na(cases.conf), .(cases = sum(cases.conf)), by = "date"], aes(x = date, y = cases)) + geom_point() + scale_y_log10() + ggtitle("State Cases")) + ylab("7 day average cases (log scale)")
+print(ggplot(county.dt[date >= as.Date("2021/6/10") & !is.na(cases.conf), .(cases = sum(cases.conf)), by = "date"], aes(x = date, y = cases)) + geom_point() + scale_y_log10() + ggtitle("State Cases") + ylab("7 day average cases (log scale)"))
 
-print(ggplot(county.dt[date >= as.Date("2021/6/10") & !is.na(hosp.conf), .(hosp = sum(hosp.conf)), by = "date"], aes(x = date, y = hosp)) + geom_point() + scale_y_log10() + ggtitle("State Hosp")) + ylab("sum hosp (log scale)")
+print(ggplot(county.dt[date >= as.Date("2021/6/10") & !is.na(hosp.conf), .(hosp = sum(hosp.conf)), by = "date"], aes(x = date, y = hosp)) + geom_point() + scale_y_log10() + ggtitle("State Hosp") + ylab("sum hosp (log scale)"))
 
-print(ggplot(county.dt[date >= as.Date("2021/6/10") & county == "San Francisco" & !is.na(cases.conf), ], aes(x = date, y = cases.conf)) + geom_point() + scale_y_log10() + ggtitle("SF Cases")) + ylab("7 day average cases (log scale)")
+print(ggplot(county.dt[date >= as.Date("2021/6/10") & county == "San Francisco" & !is.na(cases.conf), ], aes(x = date, y = cases.conf)) + geom_point() + scale_y_log10() + ggtitle("SF Cases") + ylab("7 day average cases (log scale)"))
 
 print(tail(doses.dt[county == "San Francisco", .(date, doses = dose1 + dose2 + doseJ, doses_7 = frollmean(dose1 + dose2 + doseJ, 7), dose1, dose1_7 = frollmean(dose1, 7))], 20))
 
@@ -69,7 +69,10 @@ if (T) {
   }
 }
 
-AggregateState(county.set, county.pop, max.date)
+AggregateState(county.set, county.pop, max.date, path = "Forecasts", "")
+AggregateState(county.set, county.pop, max.date, path = "Scenarios", "_epiOptimistic")
+AggregateState(county.set, county.pop, max.date, path = "Scenarios", "_epiPessimistic")
+
 
 system2("git", args = "pull")
 system2("git", args = c("add", "-A"))

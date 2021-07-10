@@ -214,8 +214,10 @@ Scenario <- function(
   relative.contact.rate.cur <- round(100 * dt[date == inputs$obs.data[, max(date) - 7], relative.contact.rate])
   relative.contact.rate.final <- round(100 * dt[date == max(date), relative.contact.rate])
 
-  # dt[, type := ifelse(date >= inputs$obs.data[, max(date) - 7], "Scenario", "Estimate")]
-  # print(ggplot(dt, aes(x = date, y = relative.contact.rate)) + geom_line(aes(color = type), size = 2) + scale_x_date(date_breaks = "1 month", date_labels = "%b") + ggtitle("Effective contact rate relative to initial effective contact rate\nnot including vaccine or variant effects") + xlab("") + ylab("Effective Contact Rate") + theme(legend.title = element_blank()) + labs(caption = paste("Current =", relative.contact.rate.cur, "%")))
+  if (county1 == "San Francisco") {
+    dt[, type := ifelse(date >= inputs$obs.data[, max(date) - 7], "Scenario", "Estimate")]
+    print(ggplot(dt, aes(x = date, y = relative.contact.rate)) + geom_line(aes(color = type), size = 2) + scale_x_date(date_breaks = "1 month", date_labels = "%b") + ggtitle("Effective contact rate relative to initial effective contact rate\nnot including vaccine or variant effects") + xlab("") + ylab("Effective Contact Rate") + theme(legend.title = element_blank()) + labs(caption = paste("Current =", relative.contact.rate.cur, "%")))
+  }
 
   dev.off()
 
